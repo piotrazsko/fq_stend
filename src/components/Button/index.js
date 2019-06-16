@@ -1,10 +1,6 @@
 import React from "react";
 import styles from "./styles.scss";
-const Button = () => (
-  <div className={styles.button}>
-    test_test
-    <span>sdfsd</span>
-  </div>
-);
+console.log(styles);
+const Button = () => <div className={"button"}>test_test</div>;
 
 export default Button;
