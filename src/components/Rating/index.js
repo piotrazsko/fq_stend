@@ -4,10 +4,11 @@ import RatingComponent from "react-rating";
 import emptyStar from "../../static/images/emptyStar.svg";
 import fullStar from "../../static/images/fullStar.svg";
 
+
 const Rating = ({ rating, className }) => (
   <RatingComponent
     initialRating={parseFloat(rating)}
-    readonly
+    placeholderRating={3.5}
     fractions={2}
     emptySymbol={
       <img className={className} src={emptyStar} alt="пустая звезда" />
