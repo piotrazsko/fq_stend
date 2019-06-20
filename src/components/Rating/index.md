@@ -1,3 +1,3 @@
 ```jsx
-<Rating rating />
+<Rating rating={3.5} />
 ```

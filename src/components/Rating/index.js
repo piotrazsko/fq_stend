@@ -5,17 +5,36 @@ import emptyStar from "../../static/images/emptyStar.svg";
 import fullStar from "../../static/images/fullStar.svg";
 
 
-const Rating = ({ rating, className }) => (
-  <RatingComponent
-    initialRating={parseFloat(rating)}
-    placeholderRating={3.5}
-    fractions={2}
-    emptySymbol={
-      <img className={className} src={emptyStar} alt="пустая звезда" />
+const Rating = ({
+  rating,
+  className
+}) => ( <
+  RatingComponent initialRating = {
+    parseFloat(rating)
+  }
+  readonly fractions = {
+    2
+  }
+  emptySymbol = {
+    <
+    img className = {
+      className
     }
-    fullSymbol={
-      <img className={className} src={fullStar} alt="заполненная звезда" />
+    src = {
+      emptyStar
     }
+    alt = "пустая звезда" / >
+  }
+  fullSymbol = {
+    <
+    img className = {
+      className
+    }
+    src = {
+      fullStar
+    }
+    alt = "заполненная звезда" / >
+  }
   />
 );
 
