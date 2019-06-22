@@ -1,0 +1,62 @@
+.container {
+	min-height: 50vh;
+	min-width: 50%;
+	height: 50vh;
+	.formTitle {
+		height: 45%;
+		background: linear-gradient(to right, #22c3ff, #1c72ff 76%);
+		height: 45%;
+		border-radius: 0 0 50% 50% / 0 0 100% 100%;
+		.formStar {
+			position: absolute;
+			background-position: center;
+			top: 920px;
+			right: 535px;
+			border-radius: 50%;
+			width: 138px;
+			height: 138px;
+			box-shadow: 0px 2px 4px 0 rgba(0, 0, 0, 0.25);
+			border: solid 2px #ffffff;
+			background-color: #ffffff;
+			background-image: url(../../static/images/bigstar.png);
+			background-repeat: no-repeat;
+		}
+
+		.formTitleText {
+			display: flex;
+			align-items: center;
+			flex-direction: column;
+			justify-content: center;
+			height: 100%;
+			object-fit: contain;
+			font-family: SFProDisplay;
+			font-size: 60px;
+			font-weight: 900;
+			font-style: normal;
+			font-stretch: normal;
+			line-height: normal;
+			letter-spacing: normal;
+			text-align: center;
+			color: #ffffff;
+		}
+	}
+
+	.formInputs {
+		text-align: center;
+
+		height: 34px;
+		object-fit: contain;
+		font-family: Helvetica;
+		font-size: 36.1px;
+		font-weight: bold;
+		font-style: normal;
+		font-stretch: normal;
+		line-height: 1.17;
+		letter-spacing: 0.51px;
+		color: #cccccc;
+		height: 45%;
+	}
+	.formSubmit {
+		height: 10%;
+	}
+}
