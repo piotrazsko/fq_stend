@@ -1,5 +1,5 @@
 .userInfo__user {
-   display: flex;
+  display: flex;
   justify-content: flex-start;
   // align-items: center;
 }
@@ -14,23 +14,18 @@
 }
 
 .userInfo__text {
-  position: absolute;
   text-align: left;
-  margin-left: 100px;
-  float: top;
+  margin-left: 40px;
 }
 
 .userInfo__user-status {
   font-family: Roboto;
   font-size: 15px;
-  
 }
 
-
 .userInfo__user-name {
-  line-height: 21px;
-  font-family: Roboto;
-  font-size: 17px;
+   font-family: Roboto;
+   font-size: 17px;
   font-weight: bold;
 }
 
