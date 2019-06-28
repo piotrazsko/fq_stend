@@ -8,7 +8,7 @@ const InputRating = ({ rating = 0, className, onClick }) => (
 	<RatingComponent
 		initialRating={parseFloat(rating)}
 		fractions={1}
-		onClick={rating => onClick(rating)}
+		onClick={onClick}
 		emptySymbol={<img className={className} src={emptyStar} alt="пустая звезда" />}
 		fullSymbol={<img className={className} src={fullStar} alt="заполненная звезда" />}
 	/>

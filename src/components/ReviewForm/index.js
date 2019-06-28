@@ -4,9 +4,13 @@ import Button from '@material-ui/core/Button'
 import TextField from '@material-ui/core/TextField'
 import InputRating from '../InputRating'
 import Avatar from '../Avatar'
-// import bigStar from '../../static/images/bigStar.svg'
+import image from '../../static/images/bigstar.png'
+import imagesmall from '../../static/images/invalid-name.png'
 
 class ReviewForm extends React.Component {
+	onChange={(event) => {
+                    this.setState({ value: event.target.value })
+                  }}
 	render() {
 		const { className, onClose, onClick } = this.props
 		return (
@@ -17,10 +21,8 @@ class ReviewForm extends React.Component {
 						<span>понравилось?</span>
 					</div>
 
-					<Avatar
-						imageUrl="https://randomuser.me/api/portraits/men/99.jpg"
-						className={styles.formStar}
-					/>
+					<Avatar imageUrl={image} className={styles.formStar} />
+					<Avatar imageUrl={imagesmall} className={styles.formStarsmall} />
 				</div>
 				<div className={styles.formInputs}>
 					<InputRating />
@@ -30,14 +32,17 @@ class ReviewForm extends React.Component {
 						placeholder="Напишите что-нибудь приятное!"
 						fullWidth
 						margin="normal"
+						state = { value: ''}
 						InputLabelProps={{
 							shrink: true,
 						}}
 					/>
 				</div>
 				<div className={styles.formSubmit}>
-					<Button className={styles.button}>Напомнить позже</Button>
-					<Button variant="contained" color="primary" className={styles.button}>
+					<Button onClose={this.onClose} className={styles.button}>
+						Напомнить позже
+					</Button>
+					<Button onClick={() => { onClick(this.state.value) }} variant="contained" color="primary" className={styles.button}>
 						ОСТАВИТЬ ОТЗЫВ
 					</Button>
 				</div>

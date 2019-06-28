@@ -7,16 +7,32 @@
 		background: linear-gradient(to right, #22c3ff, #1c72ff 76%);
 		height: 45%;
 		border-radius: 0 0 50% 50% / 0 0 100% 100%;
+
 		.formStar {
+			background-color: white;
 			position: absolute;
+			background-size: auto;
+			top: 41cm;
 			background-position: center;
-			// top: 977px;
+			// top: 977px;git
 			right: 40%;
 			border-radius: 50%;
 			width: 138px;
 			height: 138px;
 			box-shadow: 0px 2px 4px 0 rgba(0, 0, 0, 0.25);
 			border: solid 2px #ffffff;
+		}
+		.formStarsmall {
+			background-color: white;
+			position: absolute;
+			background-size: auto;
+			top: 41.3cm;
+			background-position: center;
+			// top: 977px;git
+			right: 44%;
+			border-radius: 50%;
+			width: 5px;
+			height: 5px;
 		}
 		.formTitleText {
 			display: flex;
