@@ -6,13 +6,31 @@ import InputRating from '../InputRating'
 import Avatar from '../Avatar'
 import image from '../../static/images/bigstar.png'
 import imagesmall from '../../static/images/invalid-name.png'
+import imagexsmall from '../../static/images/xsmallstar.svg'
 
 class ReviewForm extends React.Component {
-	onChange={(event) => {
-                    this.setState({ value: event.target.value })
-                  }}
+	state = {
+		rating: 0,
+		text: '',
+	}
+	onClickRating = rating => {
+		this.setState({ rating: rating })
+	}
+
+	onChangeText = ev => {
+		// console.log()
+		const value = ev.target.value
+		this.setState({ text: value })
+	}
+	onCkickSubmit = ev => {
+		const { onClick } = this.props
+		const state = { ...this.state }
+		onClick(state)
+	}
+
 	render() {
-		const { className, onClose, onClick } = this.props
+		console.log(this.myRef)
+		const { className, onClose = () => {}, onClick } = this.props
 		return (
 			<div className={styles.container}>
 				<div className={styles.formTitle}>
@@ -23,26 +41,31 @@ class ReviewForm extends React.Component {
 
 					<Avatar imageUrl={image} className={styles.formStar} />
 					<Avatar imageUrl={imagesmall} className={styles.formStarsmall} />
+					<Avatar imageUrl={imagexsmall} className={styles.formStarxsmall} />
 				</div>
 				<div className={styles.formInputs}>
-					<InputRating />
+					<InputRating rating={this.state.rating} onClick={this.onClickRating} />
 					<TextField
 						id="standard-full-width"
 						style={{ margin: 8 }}
 						placeholder="Напишите что-нибудь приятное!"
-						fullWidth
 						margin="normal"
-						state = { value: ''}
+						state={{ value: '' }}
+						className={styles.TextField}
+						onChange={this.onChangeText}
 						InputLabelProps={{
 							shrink: true,
 						}}
 					/>
 				</div>
 				<div className={styles.formSubmit}>
-					<Button onClose={this.onClose} className={styles.button}>
-						Напомнить позже
-					</Button>
-					<Button onClick={() => { onClick(this.state.value) }} variant="contained" color="primary" className={styles.button}>
+					<Button onClick={onClose}>Напомнить позже</Button>
+					<Button
+						onClick={this.onCkickSubmit}
+						variant="contained"
+						color="primary"
+						className={styles.button}
+					>
 						ОСТАВИТЬ ОТЗЫВ
 					</Button>
 				</div>

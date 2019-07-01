@@ -34,6 +34,18 @@
 			width: 5px;
 			height: 5px;
 		}
+		.formStarxsmall {
+			background-color: white;
+			position: absolute;
+			background-size: auto;
+			top: 41.3cm;
+			background-position: center;
+			// top: 977px;git
+			right: 41%;
+			border-radius: 50%;
+			width: 5px;
+			height: 5px;
+		}
 		.formTitleText {
 			display: flex;
 			align-items: center;
@@ -74,9 +86,19 @@
 			margin-left: 25px;
 			margin-right: 25px;
 		}
+		.TextField {
+			width: 500px;
+			input {
+				font-size: 30px;
+			}
+		}
 	}
 	.formSubmit {
 		height: 20%;
 		text-align: right;
+		.button {
+			margin-left: 20px;
+			background-color: #4688f1;
+		}
 	}
 }
