@@ -18,7 +18,6 @@ class ReviewForm extends React.Component {
 	}
 
 	onChangeText = ev => {
-		// console.log()
 		const value = ev.target.value
 		this.setState({ text: value })
 	}
@@ -29,8 +28,8 @@ class ReviewForm extends React.Component {
 	}
 
 	render() {
-		console.log(this.myRef)
 		const { className, onClose = () => {}, onClick } = this.props
+		const { rating } = this.state
 		return (
 			<div className={styles.container}>
 				<div className={styles.formTitle}>
@@ -44,7 +43,7 @@ class ReviewForm extends React.Component {
 					<Avatar imageUrl={imagexsmall} className={styles.formStarxsmall} />
 				</div>
 				<div className={styles.formInputs}>
-					<InputRating rating={this.state.rating} onClick={this.onClickRating} />
+					<InputRating rating={rating} onClick={this.onClickRating} />
 					<TextField
 						id="standard-full-width"
 						style={{ margin: 8 }}
