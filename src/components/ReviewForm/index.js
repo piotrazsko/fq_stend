@@ -43,7 +43,7 @@ class ReviewForm extends React.Component {
 					<Avatar imageUrl={imagexsmall} className={styles.formStarxsmall} />
 				</div>
 				<div className={styles.formInputs}>
-					<InputRating rating={rating} onClick={this.onClickRating} />
+					<InputRating className={styles.inputRatingStar} rating={rating} onClick={this.onClickRating} />
 					<TextField
 						id="standard-full-width"
 						style={{ margin: 8 }}
