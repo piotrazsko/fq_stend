@@ -8,44 +8,57 @@
 		height: 45%;
 		border-radius: 0 0 50% 50% / 0 0 100% 100%;
 
-		.formStar {
-			background-color: white;
-			position: absolute;
-			background-size: auto;
-			top: 41cm;
-			background-position: center;
-			// top: 977px;git
-			right: 40%;
-			border-radius: 50%;
-			width: 138px;
-			height: 138px;
-			box-shadow: 0px 2px 4px 0 rgba(0, 0, 0, 0.25);
-			border: solid 2px #ffffff;
+		.main {
+			display: flex;
+			width: 100%;
+			justify-content: center;
+			position: relative;
+			top: -60px;
+			.formStar {
+				background-color: white;
+
+				background-position: center;
+				background-size: auto;
+
+				background-position: center;
+				// top: 977px;git
+				right: 40%;
+				border-radius: 50%;
+				width: 138px;
+				height: 138px;
+				box-shadow: 0px 2px 4px 0 rgba(0, 0, 0, 0.25);
+				border: solid 2px #ffffff;
+			}
+
+			.formStarsmall {
+				background-color: white;
+				position: relative;
+				background-size: auto;
+
+				background-position: center;
+				// top: 977px;git
+				right: -12%;
+				border-radius: 50%;
+				width: 5px;
+				height: 5px;
+				top: 5%;
+			}
+			.formStarxsmall {
+				background-color: white;
+				position: relative;
+
+				background-size: auto;
+
+				background-position: center;
+				// top: 977px;git
+				right: -52%;
+				border-radius: 50%;
+				width: 5px;
+				height: 5px;
+				top: -30%;
+			}
 		}
-		.formStarsmall {
-			background-color: white;
-			position: absolute;
-			background-size: auto;
-			top: 41.3cm;
-			background-position: center;
-			// top: 977px;git
-			right: 44%;
-			border-radius: 50%;
-			width: 5px;
-			height: 5px;
-		}
-		.formStarxsmall {
-			background-color: white;
-			position: absolute;
-			background-size: auto;
-			top: 41.3cm;
-			background-position: center;
-			// top: 977px;git
-			right: 41%;
-			border-radius: 50%;
-			width: 5px;
-			height: 5px;
-		}
+
 		.formTitleText {
 			display: flex;
 			align-items: center;
