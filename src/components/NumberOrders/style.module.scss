@@ -1,0 +1,21 @@
+.container {
+	min-height: 30vh;
+	min-width: 50%;
+	height: 30vh;
+	.InputBase {
+		input {
+			font-size: 30px;
+		}
+	}
+	.numberblock {
+		display: inline-block;
+		width: 54px;
+		height: 54px;
+		background-color: #3196ff;
+		border-radius: 50%;
+		background-image: url(../../static/images/2@2x.png);
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: auto;
+	}
+}
