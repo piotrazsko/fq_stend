@@ -1,3 +1,3 @@
 ```jsx
-<ReviewForm onClose={alert} />
+<ReviewForm onClose={prompt} onClick={console.log} />
 ```
