@@ -1,22 +1,23 @@
 import React from 'react'
-import ButtonMaterial from '@material-ui/core/Button'
+import PropTypes from 'prop-types'
 import styles from './style.module.scss'
-import InputBase from '@material-ui/core/InputBase'
 
-class NumberOrders extends React.Component {
-	render() {
-		const { className } = this.props
-		return (
-			<div className={styles.container}>
-				<InputBase
-					className={styles.InputBase}
-					defaultValue="Количество заказов"
-					inputProps={{ 'aria-label': 'naked' }}
-				/>
-				<div className={styles.numberblock} />
-			</div>
-		)
-	}
+const NumberOrders = ({ ordersValue, text }) => {
+	return (
+		<div className={styles.container}>
+			<div className={styles.baseblock}>{text}</div>
+			<div className={styles.numberblock}>{ordersValue}</div>
+		</div>
+	)
+}
+NumberOrders.propTypes = {
+	text: PropTypes.string,
+	ordersValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+}
+NumberOrders.defaultProps = {
+	text: 'Количество заказов',
+
+	ordersValue: 0,
 }
 
 export default NumberOrders
