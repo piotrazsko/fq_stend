@@ -1,0 +1,52 @@
+.container{
+ margin-right: 15px;
+
+.button{
+    margin-right: 42.5px;
+    width: 156.5px;
+    height: 42.5px;
+    border-radius: 2px;
+  
+    border: solid 1px #000000;
+  // background-color: #000000;
+ 
+};
+.button:active{
+    border:  1px #4688f1;
+    background-color: #4688f1;
+    color:  #4688f1;
+   .label{  
+    color: #ffffff;
+};
+    .icon{
+        background-color: #ffffff;
+    }
+  };
+  
+  .label{
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+  
+    width: 80.5px;
+    height: 10px;
+    font-family: Roboto;
+    font-size: 13px;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000000;
+};
+}
+.icon{
+    width: 19.5px;
+  height: 19.5px;
+  background-color: #000000;
+ 
+   margin-right: 15px;
+ 
+};
+
