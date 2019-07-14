@@ -16,8 +16,6 @@ NumberOrders.propTypes = {
 }
 NumberOrders.defaultProps = {
 	text: 'Количество заказов',
-
 	ordersValue: 0,
 }
-
 export default NumberOrders
