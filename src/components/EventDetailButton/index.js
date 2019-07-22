@@ -18,15 +18,15 @@ class EventDetailButton extends React.Component {
             <div className={style.container}>
               <link href="https://fonts.googleapis.com/icon?family=Material+Icons"  rel="stylesheet"></link>
     
-            <Button variant="outlined" onClick={onClick} className = {style.button}>
+            <Button  onClick={onClick} className = {style.button}>
             <Icon className={style.icon}>highlight_off</Icon>
             <label className={style.label}>отказаться</label>
            </Button>
-           <Button variant="outlined" onClick={onClick} className = {style.button}>
+           <Button  onClick={onClick} className = {style.button}>
            <Icon className={style.icon}>textsms</Icon>
            <label className={style.label}>cвязаться</label>
            </Button>
-           <Button variant="outlined" onClick={onClick} className = {style.button}>
+           <Button  onClick={onClick} className = {style.button}>
             <Icon className={style.icon}>check_circle_outline</Icon>
            <label className={style.label}>подтвердить</label>
            </Button>
