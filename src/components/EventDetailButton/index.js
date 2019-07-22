@@ -1,12 +1,9 @@
 import React from 'react'
 import style from './style.module.scss'
 import Button from '@material-ui/core/Button'
-import PropTypes from "prop-types";
+
 import Icon from '@material-ui/core/Icon';
-import cancel from "../../static/images/1271.jpg";
 
-
-import DeleteIcon from '@material-ui/icons/Delete';
 
 
 class EventDetailButton extends React.Component {
@@ -15,21 +12,23 @@ class EventDetailButton extends React.Component {
 
     render() {
      
-		const { className, Text, onClick,  } = this.props;
+		const { className, Text, onClick,   } = this.props;
 
 		return (
             <div className={style.container}>
+              <link href="https://fonts.googleapis.com/icon?family=Material+Icons"  rel="stylesheet"></link>
+    
             <Button variant="outlined" onClick={onClick} className = {style.button}>
-            <DeleteIcon className={style.icon}/>
-            <label className={style.label}>{Text}</label>
+            <Icon className={style.icon}>highlight_off</Icon>
+            <label className={style.label}>отказаться</label>
            </Button>
            <Button variant="outlined" onClick={onClick} className = {style.button}>
-            <DeleteIcon className={style.icon}/>
-           <label className={style.label}>{Text}</label>
+           <Icon className={style.icon}>textsms</Icon>
+           <label className={style.label}>cвязаться</label>
            </Button>
            <Button variant="outlined" onClick={onClick} className = {style.button}>
-            <DeleteIcon className={style.icon}/>
-           <label className={style.label}>{Text}</label>
+            <Icon className={style.icon}>check_circle_outline</Icon>
+           <label className={style.label}>подтвердить</label>
            </Button>
             </div>
         )}

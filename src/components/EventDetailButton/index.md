@@ -1,3 +1,3 @@
 ```jsx
-<EventDetailButton   onClick={alert} Text="Отказаться" />
+<EventDetailButton   onClick={alert}  />
 ```
