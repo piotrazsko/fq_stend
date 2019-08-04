@@ -37,12 +37,10 @@ class ReviewForm extends React.Component {
 						<span>Все ли вам </span>
 						<span>понравилось?</span>
 					</div>
-					<div className={styles.main}>
-						<Avatar imageUrl={image} className={styles.formStar}>
-							<Avatar imageUrl={imagesmall} className={styles.formStarsmall} />
-							<Avatar imageUrl={imagexsmall} className={styles.formStarxsmall} />
-						</Avatar>
-					</div>
+
+					<Avatar imageUrl={image} className={styles.formStar} />
+					<Avatar imageUrl={imagesmall} className={styles.formStarsmall} />
+					<Avatar imageUrl={imagexsmall} className={styles.formStarxsmall} />
 				</div>
 				<div className={styles.formInputs}>
 					<InputRating className={styles.inputRatingStar} rating={rating} onClick={this.onClickRating} />
