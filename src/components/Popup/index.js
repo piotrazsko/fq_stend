@@ -12,7 +12,7 @@ class Popup extends Component {
 		this.setState({ showPopup: false })
 	}
 	handleCancell = () => {
-		const { onCancel } = this.props
+		const { onCancel = ()=>{} } = this.props
 		onCancel()
 		this.setState({ showPopup: false })
 	}

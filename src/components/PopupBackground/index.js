@@ -29,7 +29,7 @@ class PopupBackground extends React.Component {
 
 	render() {
 		const { visible = false } = this.props
-		return this.state.showPopup || visible ? (
+		return this.state.showPopup && visible ? (
 			<div
 				className={CLASS_BACKGROUND}
 				role="presentation"
