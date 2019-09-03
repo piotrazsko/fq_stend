@@ -20,14 +20,14 @@ const UserInfo = ({
       className={[styles["userInfo__icon"], classNames.avatar].join(" ")}
     />
     <div className={styles["userInfo__text"]}>
-      <span
-        className={[styles["userInfo__user-status"], classNames.status].join(
+      <div 
+        className={[ styles["userInfo__user-status"], classNames.status].join(
           " "
         )}
       >
         {userStatus}
-      </span>
-      <br />
+      </div>
+     
       <div
         className={[styles["userInfo__user-name"], classNames.name].join(" ")}
       >
