@@ -7,31 +7,37 @@ import styles from './style.module.scss'
 class Popup extends Component {
 	state = { showPopup: true }
 	handleSubmit = () => {
-		const { onSubmit } = this.props
+		const { onSubmit = () => {} } = this.props
 		onSubmit(this.state)
 		this.setState({ showPopup: false })
 	}
 	handleCancell = () => {
-		const { onCancel = ()=>{} } = this.props
+		const { onCancel = () => {} } = this.props
 		onCancel()
 		this.setState({ showPopup: false })
 	}
 	render() {
-		const { closePop, children = '', ...props } = this.props
-		const { showPopup } = this.state
+		const {
+			closePop,
+			children,
+			cancellButtonText = 'Отменить',
+			submitButtonText = 'Применить',
+			...props
+		} = this.props
+		const { showPopup, ...state } = this.state
 		return showPopup ? (
 			<React.Fragment>
 				<PopupBackground visible onClick={this.handleCancell}>
-					<Grid contsiner>
+					<Grid container className={styles.container}>
 						<Grid item xs={12}>
-							{React.createElement(children, props)}
+							{React.cloneElement(children, { ...props, ...state })}
 						</Grid>
-						<Grid item xs={12}>
+						<Grid item xs={12} className={styles.buttonContainer}>
 							<Button onClick={this.handleCancell} color="primary" variant="raised">
-								Отменить
+								{cancellButtonText}
 							</Button>
 							<Button color="primary" onClick={this.handleSubmit} type="submit">
-								Применить
+								{submitButtonText}
 							</Button>
 						</Grid>
 					</Grid>
