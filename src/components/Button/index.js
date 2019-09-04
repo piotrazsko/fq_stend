@@ -7,8 +7,8 @@ const Button = ({ children, onClick, ...props }) => (
 		variant="contained"
 		color="primary"
 		onClick={onClick}
-		{...props}
 		className={styles.button}
+		{...props}
 	>
 		{children}
 	</ButtonMaterial>
