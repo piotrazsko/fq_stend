@@ -10,12 +10,13 @@
 
 		.formStar {
 			background-color: white;
-			position: absolute;
+			position: relative;
+			align-items: center;
 			background-size: auto;
-			top: 41cm;
+			top: -22%;
 			background-position: center;
 			// top: 977px;git
-			right: 40%;
+			right: -42%;
 			border-radius: 50%;
 			width: 138px;
 			height: 138px;
@@ -24,24 +25,24 @@
 		}
 		.formStarsmall {
 			background-color: white;
-			position: absolute;
+			position: relative;
 			background-size: auto;
-			top: 41.3cm;
+			top: -65%;
 			background-position: center;
 			// top: 977px;git
-			right: 44%;
+			right: -44%;
 			border-radius: 50%;
 			width: 5px;
 			height: 5px;
 		}
 		.formStarxsmall {
 			background-color: white;
-			position: absolute;
+			position: relative;
 			background-size: auto;
-			top: 41.3cm;
+			top: -81%;
 			background-position: center;
 			// top: 977px;git
-			right: 41%;
+			right: -50%;
 			border-radius: 50%;
 			width: 5px;
 			height: 5px;
