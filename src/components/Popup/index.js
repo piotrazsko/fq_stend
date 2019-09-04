@@ -29,14 +29,24 @@ class Popup extends Component {
 			<React.Fragment>
 				<PopupBackground visible onClick={this.handleCancell}>
 					<Grid container className={styles.container}>
-						<Grid item xs={12}>
+						<Grid item className={styles.dataContainer} xs={12}>
 							{React.cloneElement(children, { ...props, ...state })}
 						</Grid>
 						<Grid item xs={12} className={styles.buttonContainer}>
-							<Button onClick={this.handleCancell} color="primary" variant="raised">
+							<Button
+								onClick={this.handleCancell}
+								className={styles.button}
+								color="primary"
+								variant="raised"
+							>
 								{cancellButtonText}
 							</Button>
-							<Button color="primary" onClick={this.handleSubmit} type="submit">
+							<Button
+								color="primary"
+								classes={{ root: styles.button }}
+								onClick={this.handleSubmit}
+								type="submit"
+							>
 								{submitButtonText}
 							</Button>
 						</Grid>
