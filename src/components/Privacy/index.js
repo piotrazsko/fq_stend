@@ -7,7 +7,6 @@ import styles from './style.module.scss'
 class Privacy extends Component {
   render() {
     return (
-      <div>
       <Popup><div>
       <p className ={styles.title}>Правила защиты информации о пользователях сервиса FeelQueen<br/>
 
@@ -133,7 +132,6 @@ class Privacy extends Component {
 </span>
       </div>
       </Popup>
-            </div>
           );
         }
       }

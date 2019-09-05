@@ -7,7 +7,6 @@ import styles from './style.module.scss'
 class Terms extends Component {
   render() {
     return (
-      <div>
       <Popup><div>
       <b>ПОЛЬЗОВАТЕЛЬСКОЕ СОГЛАШЕНИЕ<br/>
 Об использовании сервиса FeelQueen </b>
@@ -148,7 +147,6 @@ class Terms extends Component {
 <div className={styles.edition}>Редакция от 06 марта 2019 года</div>
 </div>
 </Popup>
-      </div>
     );
   }
 }
