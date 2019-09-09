@@ -1,11 +1,25 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import PopupBackground from '../PopupBackground'
 import { Grid } from '@material-ui/core'
 import Button from '../Button'
 import styles from './style.module.scss'
 
 class Popup extends Component {
+	static propTypes = {
+		onSubmit: PropTypes.func,
+		onCancel: PropTypes.func,
+		cancelButtonText: PropTypes.string,
+		submitButtonText: PropTypes.string,
+		children: PropTypes.element,
+	}
+	static defaultProps = {
+		cancelButtonText: 'Отменить',
+		submitButtonText: 'Применить',
+	}
+
 	state = { showPopup: true }
+
 	handleSubmit = () => {
 		const { onSubmit = () => {} } = this.props
 		onSubmit(this.state)
@@ -18,12 +32,12 @@ class Popup extends Component {
 	}
 	render() {
 		const {
-			closePop,
 			children,
-			cancellButtonText = 'Отменить',
+			cancelButtonText = 'Отменить',
 			submitButtonText = 'Применить',
 			...props
 		} = this.props
+		console.log(children)
 		const { showPopup, ...state } = this.state
 		return showPopup ? (
 			<React.Fragment>
@@ -39,7 +53,7 @@ class Popup extends Component {
 								color="primary"
 								variant="raised"
 							>
-								{cancellButtonText}
+								{cancelButtonText}
 							</Button>
 							<Button
 								color="primary"
