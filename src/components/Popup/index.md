@@ -1,3 +1,5 @@
 ```jsx
-<Popup>test text</Popup>
+<Popup>
+	<div>test text</div>
+</Popup>
 ```
