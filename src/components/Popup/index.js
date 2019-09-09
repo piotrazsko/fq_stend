@@ -31,13 +31,7 @@ class Popup extends Component {
 		this.setState({ showPopup: false })
 	}
 	render() {
-		const {
-			children,
-			cancelButtonText = 'Отменить',
-			submitButtonText = 'Применить',
-			...props
-		} = this.props
-		console.log(children)
+		const { children, cancelButtonText, submitButtonText, ...props } = this.props
 		const { showPopup, ...state } = this.state
 		return showPopup ? (
 			<React.Fragment>
@@ -57,7 +51,7 @@ class Popup extends Component {
 							</Button>
 							<Button
 								color="primary"
-								classes={{ root: styles.button }}
+								classes={{ root: styles.buttonSubmit }}
 								onClick={this.handleSubmit}
 								type="submit"
 							>
