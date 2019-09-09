@@ -1,28 +1,19 @@
 .title {
-  background-color: #ffffff;
-  color: #333333;
-  font-weight: 700;
+  color: #000000;
+  font-weight: 400;
   text-decoration: none;
   vertical-align: baseline;
-  font-size: 11pt;
+  font-size: 12pt;
   font-family: "Arial";
   font-style: normal;
-  line-height: 1.45;
-    orphans: 2;
-    widows: 2;
-    text-align: left;
-    margin-left: 40px;
+  margin-left: 15px;
 };
 .paragraph{
   color: #000000;
   font-size: 11pt;
   font-family: "Arial";
-  padding-top: 15pt;
-    padding-bottom: 0pt;
-    line-height: 1.45;
-    orphans: 2;
-    widows: 2;
-    text-align: left;
+  line-height: 1.15;
+  text-align: justify;
 };
 ol {
   list-style-type: none;
