@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styles from './styles.module.scss'
 import classes from 'classnames'
 
@@ -17,5 +18,12 @@ const Avatar = ({ imageUrl, className, onClick, children }) => (
 		{children}
 	</div>
 )
+
+Avatar.propTypes = {
+	imageUrl: PropTypes.string,
+	className: PropTypes.string,
+	onClick: PropTypes.func,
+	children:	PropTypes.element,
+}
 
 export default Avatar

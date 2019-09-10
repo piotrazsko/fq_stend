@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import ButtonMaterial from '@material-ui/core/Button'
 import styles from './styles.module.scss'
 
@@ -13,5 +14,10 @@ const Button = ({ children, onClick, ...props }) => (
 		{children}
 	</ButtonMaterial>
 )
+
+Button.propTypes = {
+	children: PropTypes.string,
+	onClick: PropTypes.func,
+}
 
 export default Button

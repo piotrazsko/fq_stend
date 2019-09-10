@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styles from './styles.module.scss'
 import Avatar from '../Avatar'
 import appStore from '../../static/images/stores/appStore.png'
@@ -20,6 +21,11 @@ const StoresBox = ({ onClickgoogle = () => {}, onClick }) => {
 			</Button>
 		</div>
 	)
+}
+
+StoresBox.propTypes = {
+	onClickgoogle: PropTypes.string,
+	onClick: PropTypes.func,
 }
 
 export default StoresBox
