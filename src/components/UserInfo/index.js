@@ -20,14 +20,14 @@ const UserInfo = ({
       className={[styles["userInfo__icon"], classNames.avatar].join(" ")}
     />
     <div className={styles["userInfo__text"]}>
-      <div 
+      <div
         className={[ styles["userInfo__user-status"], classNames.status].join(
           " "
         )}
       >
         {userStatus}
       </div>
-     
+
       <div
         className={[styles["userInfo__user-name"], classNames.name].join(" ")}
       >
@@ -71,7 +71,16 @@ UserInfo.propTypes = {
   lastName: PropTypes.string,
   rating: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   location: PropTypes.string,
-  user_status: PropTypes.string
+  user_status: PropTypes.string,
+  avatar: PropTypes.string,
+  classNames: PropTypes.shape({
+    container: PropTypes.string,
+    status: PropTypes.string,
+    name: PropTypes.string,
+    location: PropTypes.string,
+    rating: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    ratingText: PropTypes.string,
+  }),
 };
 
 export default UserInfo;

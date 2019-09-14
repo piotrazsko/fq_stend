@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styles from './style.module.scss'
 import Button from '@material-ui/core/Button'
 import TextField from '@material-ui/core/TextField'
@@ -72,5 +73,12 @@ class ReviewForm extends React.Component {
 		)
 	}
 }
+
+ReviewForm.propTypes = {
+	className: PropTypes.string,
+	onClose: PropTypes.func,
+	onClick: PropTypes.func,
+}
+
 
 export default ReviewForm
