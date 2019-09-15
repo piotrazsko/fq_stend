@@ -1,1 +1,0 @@
-{"version":3,"sources":["/home/serj/sites/stend/feelqueen_components/src/components/Button/styles.scss"],"names":[],"mappings":"AAAA,QACE,UAAY,CACZ,qBAAyB","file":"main.97b0d7ed.chunk.css","sourcesContent":[".button {\n  color: black;\n  background-color: #555555;\n}\n"]}
