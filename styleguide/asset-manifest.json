@@ -1,12 +1,18 @@
 {
   "files": {
-    "main.css": "/static/css/main.97b0d7ed.chunk.css",
-    "main.js": "/build/main.9df6771e.js",
+    "main.css": "/static/css/main.67a6103b.chunk.css",
+    "main.js": "/build/main.3732a021.js",
     "runtime~main.js": "/build/bundle.761e201c.js",
-    "build/2.8975e2e4.js": "/build/2.8975e2e4.js",
+    "build/2.2a7e335e.js": "/build/2.2a7e335e.js",
     "index.html": "/index.html",
-    "precache-manifest.d2fb6a9a7a1cefb335b51e94615768b9.js": "/precache-manifest.d2fb6a9a7a1cefb335b51e94615768b9.js",
+    "precache-manifest.177932af7351a0f02baaa9f7feb6609e.js": "/precache-manifest.177932af7351a0f02baaa9f7feb6609e.js",
     "service-worker.js": "/service-worker.js",
-    "static/css/main.97b0d7ed.chunk.css.map": "/static/css/main.97b0d7ed.chunk.css.map"
+    "static/css/main.67a6103b.chunk.css.map": "/static/css/main.67a6103b.chunk.css.map",
+    "static/media/appStore.png": "/static/media/appStore.097295b8.png",
+    "static/media/styles.module.scss": "/static/media/avatar_icon.3700bbdc.svg",
+    "static/media/emptyStar.svg": "/static/media/emptyStar.faf4540f.svg",
+    "static/media/fullStar.svg": "/static/media/fullStar.d09a9f04.svg",
+    "static/media/googlePlay.png": "/static/media/googlePlay.ad720b31.png",
+    "static/media/xsmallstar.svg": "/static/media/xsmallstar.d09a9f04.svg"
   }
 }
