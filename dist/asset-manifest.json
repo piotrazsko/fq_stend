@@ -2,10 +2,10 @@
   "files": {
     "main.css": "/static/css/main.8f3532a6.chunk.css",
     "main.js": "/build/main.5024bf8b.js",
-    "runtime~main.js": "/build/bundle.761e201c.js",
+    "runtime~main.js": "/build/bundle.0c1b0984.js",
     "build/2.666e418b.js": "/build/2.666e418b.js",
     "index.html": "/index.html",
-    "precache-manifest.3a5a31e410efc8e2967c1f8a4a62b991.js": "/precache-manifest.3a5a31e410efc8e2967c1f8a4a62b991.js",
+    "precache-manifest.4a2a1ffb39f7be1c15f0c9ed261cd6c4.js": "/precache-manifest.4a2a1ffb39f7be1c15f0c9ed261cd6c4.js",
     "service-worker.js": "/service-worker.js",
     "static/css/main.8f3532a6.chunk.css.map": "/static/css/main.8f3532a6.chunk.css.map",
     "static/media/appStore.png": "/static/media/appStore.097295b8.png",

@@ -1,0 +1,21 @@
+{
+	"presets": [
+		["@babel/preset-env", {
+			"useBuiltIns": "entry"
+		}],
+		"@babel/preset-react"
+	],
+	"plugins": [
+		"inline-react-svg",
+		"@babel/plugin-proposal-class-properties",
+		["import", { "libraryName": "antd", "libraryDirectory": "lib" }],
+		["lodash", { "id": ["lodash", "recompose"] }]
+	],
+	"env": {
+    "production": {
+      "plugins": [
+				"transform-react-remove-prop-types"
+      ]
+    }
+  }
+}
