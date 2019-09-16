@@ -2,7 +2,7 @@
 	"name": "feelqueen_components",
 	"version": "0.1.1",
 	"private": true,
-	"main": "dist/main.js",
+	"main": "dist/build/main.5024bf8b.js",
 	"dependencies": {
 		"@material-ui/core": "^4.0.0-rc.0",
 		"babel-loader": "^8.0.6",
