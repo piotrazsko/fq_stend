@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import PopupBackground from '../PopupBackground'
-import { Grid } from '@material-ui/core'
-import Button from '../Button'
-import styles from './style.module.scss'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import PopupBackground from '../PopupBackground';
+import { Grid } from '@material-ui/core';
+import Button from '../Button';
+import styles from './style.module.scss';
 
 class Popup extends Component {
 	static propTypes = {
@@ -12,33 +12,33 @@ class Popup extends Component {
 		cancelButtonText: PropTypes.string,
 		submitButtonText: PropTypes.string,
 		children: PropTypes.element,
-	}
+	};
 	static defaultProps = {
 		cancelButtonText: 'Отменить',
 		submitButtonText: 'Применить',
-	}
+	};
 
-	state = { showPopup: true }
+	state = { showPopup: true };
 
 	handleSubmit = () => {
-		const { onSubmit = () => {} } = this.props
-		onSubmit(this.state)
-		this.setState({ showPopup: false })
-	}
+		const { onSubmit = () => {} } = this.props;
+		onSubmit(this.state);
+		this.setState({ showPopup: false });
+	};
 	handleCancell = () => {
-		const { onCancel = () => {} } = this.props
-		onCancel()
-		this.setState({ showPopup: false })
-	}
+		const { onCancel = () => {} } = this.props;
+		onCancel();
+		this.setState({ showPopup: false });
+	};
 	render() {
 		const {
 			children,
 			cancelButtonText = 'Отменить',
 			submitButtonText = 'Применить',
 			...props
-		} = this.props
-		console.log(children)
-		const { showPopup, ...state } = this.state
+		} = this.props;
+		console.log(children);
+		const { showPopup, ...state } = this.state;
 		return showPopup ? (
 			<React.Fragment>
 				<PopupBackground visible onClick={this.handleCancell}>
@@ -49,7 +49,7 @@ class Popup extends Component {
 						<Grid item xs={12} className={styles.buttonContainer}>
 							<Button
 								onClick={this.handleCancell}
-								className={styles.button}
+								className={styles.buttonDefolt}
 								color="primary"
 								variant="raised"
 							>
@@ -57,7 +57,7 @@ class Popup extends Component {
 							</Button>
 							<Button
 								color="primary"
-								classes={{ root: styles.button }}
+								classes={{ root: styles.buttonSubmit }}
 								onClick={this.handleSubmit}
 								type="submit"
 							>
@@ -67,8 +67,8 @@ class Popup extends Component {
 					</Grid>
 				</PopupBackground>
 			</React.Fragment>
-		) : null
+		) : null;
 	}
 }
 
-export default Popup
+export default Popup;
