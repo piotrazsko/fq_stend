@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/static/css/main.79291154.chunk.css",
-    "main.js": "/build/main.df5d9aa5.js",
+    "main.css": "/static/css/main.8f3532a6.chunk.css",
+    "main.js": "/build/main.5024bf8b.js",
     "runtime~main.js": "/build/bundle.761e201c.js",
-    "build/2.b008fce9.js": "/build/2.b008fce9.js",
+    "build/2.666e418b.js": "/build/2.666e418b.js",
     "index.html": "/index.html",
-    "precache-manifest.3c2cd3521c68e179129f4bc5f22f2a50.js": "/precache-manifest.3c2cd3521c68e179129f4bc5f22f2a50.js",
+    "precache-manifest.3a5a31e410efc8e2967c1f8a4a62b991.js": "/precache-manifest.3a5a31e410efc8e2967c1f8a4a62b991.js",
     "service-worker.js": "/service-worker.js",
-    "static/css/main.79291154.chunk.css.map": "/static/css/main.79291154.chunk.css.map",
+    "static/css/main.8f3532a6.chunk.css.map": "/static/css/main.8f3532a6.chunk.css.map",
     "static/media/appStore.png": "/static/media/appStore.097295b8.png",
     "static/media/styles.module.scss": "/static/media/avatar_icon.3700bbdc.svg",
     "static/media/emptyStar.svg": "/static/media/emptyStar.faf4540f.svg",
