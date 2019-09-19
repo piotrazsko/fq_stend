@@ -23,6 +23,8 @@ var _bigstar = _interopRequireDefault(require("../../static/images/bigstar.png")
 
 var _invalidName = _interopRequireDefault(require("../../static/images/invalid-name.png"));
 
+var _xsmallstar = _interopRequireDefault(require("../../static/images/xsmallstar.svg"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -48,22 +50,6 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var imagexsmall = function imagexsmall(props) {
-  return _react.default.createElement("svg", props, _react.default.createElement("title", null, "ic_star_full"), _react.default.createElement("path", {
-    d: "M10.5 0L7.96 7.826H0l6.49 4.593L4.007 20l6.494-4.696L16.993 20l-2.486-7.58 6.491-4.594h-7.96z",
-    stroke: "#FF8900",
-    fill: "#FF8900",
-    fillRule: "evenodd"
-  }));
-};
-
-imagexsmall.defaultProps = {
-  width: "21",
-  height: "21",
-  viewBox: "0 0 21 21",
-  xmlns: "http://www.w3.org/2000/svg"
-};
 
 var ReviewForm =
 /*#__PURE__*/
@@ -135,7 +121,7 @@ function (_React$Component) {
         imageUrl: _invalidName.default,
         className: _styleModule.default.formStarsmall
       }), _react.default.createElement(_Avatar.default, {
-        imageUrl: imagexsmall,
+        imageUrl: _xsmallstar.default,
         className: _styleModule.default.formStarxsmall
       })), _react.default.createElement("div", {
         className: _styleModule.default.formInputs
