@@ -1,21 +1,20 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import PopupBackground from '../PopupBackground'
-import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
-import ButtonBase from '@material-ui/core/ButtonBase';
-import TextField from '@material-ui/core/TextField';
 import Input from '@material-ui/core/Input';
 import MaskedInput from 'react-text-mask';
-import image from "../../static/images/Group 3.svg";
 import InputLabel from '@material-ui/core/InputLabel';
+import image from "../../static/images/Group 3.svg";
 import styles from './style.module.scss'
 
 
 function TextMaskCustom(props) {
   const { inputRef, ...other } = props;
+TextMaskCustom.propTypes={
+  inputRef: PropTypes.func.isRequired,
+}
 
   return (
     <MaskedInput
@@ -30,7 +29,6 @@ function TextMaskCustom(props) {
 }
 
 export default function MobilePopup() {
-
 
     const [values, setValues] = React.useState({
      textmask: '(  )       ',
