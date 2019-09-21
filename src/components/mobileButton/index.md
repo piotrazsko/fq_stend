@@ -1,0 +1,3 @@
+```jsx
+<MobileButton text="Записаться" />
+```
