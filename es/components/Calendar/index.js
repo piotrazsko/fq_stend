@@ -108,9 +108,9 @@ function (_React$Component) {
     });
 
     _defineProperty(_assertThisInitialized(_this), "confirmDate", function () {
-      var onComfirm = _this.props.onComfirm;
+      var onConfirm = _this.props.onConfirm;
       var selectedDate = _this.state.selectedDate;
-      onComfirm(selectedDate);
+      onConfirm(selectedDate);
     });
 
     return _this;
@@ -168,7 +168,7 @@ function (_React$Component) {
 }(_react.default.Component);
 
 _defineProperty(Calendar, "defaultProps", {
-  onComfirm: function onComfirm(date) {
+  onConfirm: function onConfirm(date) {
     console.log(date);
   },
   onCancel: function onCancel() {},
@@ -181,7 +181,7 @@ _defineProperty(Calendar, "defaultProps", {
 });
 
 _defineProperty(Calendar, "propTypes", {
-  onComfirm: _propTypes.default.func,
+  onConfirm: _propTypes.default.func,
   onCancel: _propTypes.default.func,
   disabledDays: _propTypes.default.array,
   disabledTime: _propTypes.default.array,

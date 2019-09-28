@@ -17,7 +17,7 @@ class Calendar extends React.Component {
 	};
 
 	static defaultProps = {
-		onComfirm: date => {
+		onConfirm: date => {
 			console.log(date);
 		},
 		onCancel: () => {},
@@ -29,7 +29,7 @@ class Calendar extends React.Component {
 		afterHours: [],
 	};
 	static propTypes = {
-		onComfirm: PropTypes.func,
+		onConfirm: PropTypes.func,
 		onCancel: PropTypes.func,
 		disabledDays: PropTypes.array,
 		disabledTime: PropTypes.array,
@@ -77,9 +77,9 @@ class Calendar extends React.Component {
 		});
 	};
 	confirmDate = () => {
-		const { onComfirm } = this.props;
+		const { onConfirm } = this.props;
 		const { selectedDate } = this.state;
-		onComfirm(selectedDate);
+		onConfirm(selectedDate);
 	};
 
 	render() {
