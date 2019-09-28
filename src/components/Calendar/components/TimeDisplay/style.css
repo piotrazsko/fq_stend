@@ -1,0 +1,30 @@
+.time_grid {
+    margin: 20px;
+}
+
+.time_grid__item {
+    padding: 15px;
+    border-radius: 25px;
+    font-size: 12px;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    float: left;
+}
+
+.time_grid__item-disable {
+    color: grey;
+    cursor: not-allowed;
+}
+
+.time_grid__item-selected {
+    background: linear-gradient(#22c3ff, #1c72ff);
+    color:#fff;
+}
+
+.time_grid__item:hover {
+    background-color: rgba(200, 200, 200, 0.86);
+}
