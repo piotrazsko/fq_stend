@@ -17,6 +17,8 @@ var _fullStar = _interopRequireDefault(require("../../static/images/fullStar.svg
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+// console.log(fullStar);
+// console.log(emptyStar);
 var Rating = function Rating(_ref) {
   var rating = _ref.rating,
       className = _ref.className;
@@ -24,16 +26,8 @@ var Rating = function Rating(_ref) {
     initialRating: parseFloat(rating),
     readonly: true,
     fractions: 2,
-    emptySymbol: _react.default.createElement("img", {
-      className: className,
-      src: _emptyStar.default,
-      alt: "\u043F\u0443\u0441\u0442\u0430\u044F \u0437\u0432\u0435\u0437\u0434\u0430"
-    }),
-    fullSymbol: _react.default.createElement("img", {
-      className: className,
-      src: _fullStar.default,
-      alt: "\u0437\u0430\u043F\u043E\u043B\u043D\u0435\u043D\u043D\u0430\u044F \u0437\u0432\u0435\u0437\u0434\u0430"
-    })
+    emptySymbol: _emptyStar.default,
+    fullSymbol: _fullStar.default
   });
 };
 
