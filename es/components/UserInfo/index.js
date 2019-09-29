@@ -26,40 +26,40 @@ var UserInfo = function UserInfo(_ref) {
       avatar = _ref.avatar,
       classNames = _ref.classNames;
   return _react.default.createElement("div", {
-    className: [_stylesModule.default["userInfo__user"], classNames.container].join(" ")
+    className: [_stylesModule.default['userInfo__user'], classNames.container].join(' ')
   }, _react.default.createElement(_Avatar.default, {
     imageUrl: avatar,
-    className: [_stylesModule.default["userInfo__icon"], classNames.avatar].join(" ")
+    className: [_stylesModule.default['userInfo__icon'], classNames.avatar].join(' ')
   }), _react.default.createElement("div", {
-    className: _stylesModule.default["userInfo__text"]
-  }, _react.default.createElement("div", {
-    className: [_stylesModule.default["userInfo__user-status"], classNames.status].join(" ")
+    className: _stylesModule.default['userInfo__text']
+  }, userStatus && _react.default.createElement("div", {
+    className: [_stylesModule.default['userInfo__user-status'], classNames.status].join(' ')
   }, userStatus), _react.default.createElement("div", {
-    className: [_stylesModule.default["userInfo__user-name"], classNames.name].join(" ")
-  }, firstName + " " + lastName), _react.default.createElement("div", {
-    className: [_stylesModule.default["userInfo__user-name"], classNames.location].join(" ")
-  }, location), _react.default.createElement("div", {
-    className: [_stylesModule.default["userInfo__rating"], classNames.rating].join(" ")
+    className: [_stylesModule.default['userInfo__user-name'], classNames.name].join(' ')
+  }, firstName + ' ' + lastName), location && _react.default.createElement("div", {
+    className: [_stylesModule.default['userInfo__user-name'], classNames.location].join(' ')
+  }, location), rating && _react.default.createElement("div", {
+    className: [_stylesModule.default['userInfo__rating'], classNames.rating].join(' ')
   }, _react.default.createElement(_Rating.default, {
     rating: parseFloat(rating),
-    className: _stylesModule.default["userInfo__rating-star"]
+    className: _stylesModule.default['userInfo__rating-star']
   }), _react.default.createElement("span", {
-    className: _stylesModule.default["userInfo__rating-value"]
+    className: _stylesModule.default['userInfo__rating-value']
   }, rating))));
 };
 
 UserInfo.defaultProps = {
-  firstName: "",
-  lastName: "",
+  firstName: '',
+  lastName: '',
   rating: undefined,
-  location: "",
+  location: '',
   classNames: {
-    container: "",
-    status: "",
-    name: "",
-    location: "",
-    rating: "",
-    ratingText: ""
+    container: '',
+    status: '',
+    name: '',
+    location: '',
+    rating: '',
+    ratingText: ''
   }
 };
 UserInfo.propTypes = {
