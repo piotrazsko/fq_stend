@@ -1,40 +1,43 @@
 .userInfo__user {
-  display: flex;
-  justify-content: flex-start;
-  // align-items: center;
+	display: flex;
+	justify-content: flex-start;
+	// align-items: center;
 }
 
 .userInfo__icon {
-  --icon-size: 68.5px;
-  width: var(--icon-size);
-  height: var(--icon-size);
-  background-image: url(../../static/images/avatar_icon.svg);
-  background-repeat: no-repeat;
-  background-size: contain;
+	--icon-size: 68.5px;
+	width: var(--icon-size);
+	height: var(--icon-size);
+	background-image: url(../../static/images/avatar_icon.svg);
+	background-repeat: no-repeat;
+	background-size: contain;
 }
 
 .userInfo__text {
-  text-align: left;
-  margin-left: 40px;
+	text-align: left;
+	margin-left: 40px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
 }
 
 .userInfo__user-status {
-  font-family: Roboto;
-  font-size: 15px;
+	font-family: Roboto;
+	font-size: 15px;
 }
 
 .userInfo__user-name {
-   font-family: Roboto;
-   font-size: 17px;
-  font-weight: bold;
+	font-family: Roboto;
+	font-size: 17px;
+	font-weight: bold;
 }
 
 .userInfo__rating-value {
-  margin: 0 8px;
-  font-size: 13px;
+	margin: 0 8px;
+	font-size: 13px;
 }
 
 .userInfo__rating-star {
-  width: 12px;
-  height: 12px;
+	width: 12px;
+	height: 12px;
 }
