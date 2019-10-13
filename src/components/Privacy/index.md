@@ -1,3 +1,3 @@
 ```jsx
-<Privacy />
+<Privacy showPopup={false} />
 ```
