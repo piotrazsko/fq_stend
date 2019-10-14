@@ -49,7 +49,9 @@ function (_Component) {
   _createClass(Terms, [{
     key: "render",
     value: function render() {
-      return _react.default.createElement(_Popup.default, null, _react.default.createElement("div", null, _react.default.createElement("b", null, "\u041F\u041E\u041B\u042C\u0417\u041E\u0412\u0410\u0422\u0415\u041B\u042C\u0421\u041A\u041E\u0415 \u0421\u041E\u0413\u041B\u0410\u0428\u0415\u041D\u0418\u0415", _react.default.createElement("br", null), "\u041E\u0431 \u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u0438 \u0441\u0435\u0440\u0432\u0438\u0441\u0430 FeelQueen", ' '), _react.default.createElement("p", {
+      var _this$props$showPopup = this.props.showPopup,
+          showPopup = _this$props$showPopup === void 0 ? true : _this$props$showPopup;
+      return showPopup && _react.default.createElement(_Popup.default, null, _react.default.createElement("div", null, _react.default.createElement("b", null, "\u041F\u041E\u041B\u042C\u0417\u041E\u0412\u0410\u0422\u0415\u041B\u042C\u0421\u041A\u041E\u0415 \u0421\u041E\u0413\u041B\u0410\u0428\u0415\u041D\u0418\u0415", _react.default.createElement("br", null), "\u041E\u0431 \u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u0438 \u0441\u0435\u0440\u0432\u0438\u0441\u0430 FeelQueen", ' '), _react.default.createElement("p", {
         className: _styleModule.default.title
       }, "1. \u041E\u0411\u0429\u0418\u0415 \u041F\u041E\u041B\u041E\u0416\u0415\u041D\u0418\u042F"), _react.default.createElement("span", {
         className: _styleModule.default.paragraph
