@@ -107,8 +107,6 @@ function (_Component) {
           submitButtonText = _this$props$submitBut === void 0 ? 'Применить' : _this$props$submitBut,
           props = _objectWithoutProperties(_this$props, ["children", "cancelButtonText", "submitButtonText"]);
 
-      console.log(children);
-
       var _this$state = this.state,
           showPopup = _this$state.showPopup,
           state = _objectWithoutProperties(_this$state, ["showPopup"]);

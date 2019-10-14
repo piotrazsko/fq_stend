@@ -1,5 +1,5 @@
 ```jsx
-<Popup>
+<Popup showPopup={false}>
 	<div>test text</div>
 </Popup>
 ```
