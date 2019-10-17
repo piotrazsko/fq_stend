@@ -17,6 +17,10 @@ var _Dates = require("./utils/Dates");
 
 var _styleModule = _interopRequireDefault(require("./style.module.scss"));
 
+var _getAfterHoursTime = _interopRequireDefault(require("./utils/getAfterHoursTime"));
+
+var _getHoursFromEvents = _interopRequireDefault(require("./utils/getHoursFromEvents"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -138,7 +142,9 @@ function (_React$Component) {
 
       var props = _objectSpread({}, this.props);
 
-      var disabledTime = state.selectedDate ? props.disabledTime.concat(props.afterHours[state.selectedDate.getDay()]) : props.disabledTime;
+      var afterHours = (0, _getAfterHoursTime.default)(props.afterHours);
+      var bookedTime = (0, _getHoursFromEvents.default)(props.bookedTime);
+      var disabledTime = state.selectedDate ? props.disabledTime.concat(afterHours[state.selectedDate.getDay()]) : props.disabledTime;
       var timeProps = {
         onTimeClick: this.onTimeClickHandler,
         selectedTime: state.selectedTime,
@@ -149,7 +155,7 @@ function (_React$Component) {
         setDate: this.setDateHandler,
         confirmDate: this.confirmDate,
         onCancel: props.onCancel,
-        disabledTime: props.isDisabledBeforeCurrentTime ? disabledTime.concat((0, _Dates.getDisabledTimeBeforeCurrentTime)(state.selectedDate, props.bookedTime)) : disabledTime
+        disabledTime: props.isDisabledBeforeCurrentTime ? disabledTime.concat((0, _Dates.getDisabledTimeBeforeCurrentTime)(state.selectedDate, bookedTime)) : disabledTime
       };
       var dateProps = {
         months: _config.MONTHS,
