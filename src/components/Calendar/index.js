@@ -8,6 +8,9 @@ import {
 	getDisabledTimeBeforeCurrentTime,
 } from './utils/Dates';
 import style from './style.module.scss';
+import getAfterHoursTime from './utils/getAfterHoursTime';
+import getHoursFromEvents from './utils/getHoursFromEvents';
+
 class Calendar extends React.Component {
 	state = {
 		showTime: false,
@@ -87,8 +90,10 @@ class Calendar extends React.Component {
 			...this.state,
 		};
 		const props = { ...this.props };
+		const afterHours = getAfterHoursTime(props.afterHours);
+		const bookedTime = getHoursFromEvents(props.bookedTime);
 		let disabledTime = state.selectedDate
-			? props.disabledTime.concat(props.afterHours[state.selectedDate.getDay()])
+			? props.disabledTime.concat(afterHours[state.selectedDate.getDay()])
 			: props.disabledTime;
 		const timeProps = {
 			onTimeClick: this.onTimeClickHandler,
@@ -101,7 +106,7 @@ class Calendar extends React.Component {
 			confirmDate: this.confirmDate,
 			onCancel: props.onCancel,
 			disabledTime: props.isDisabledBeforeCurrentTime
-				? disabledTime.concat(getDisabledTimeBeforeCurrentTime(state.selectedDate, props.bookedTime))
+				? disabledTime.concat(getDisabledTimeBeforeCurrentTime(state.selectedDate, bookedTime))
 				: disabledTime,
 		};
 		const dateProps = {
