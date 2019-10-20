@@ -21,6 +21,10 @@ var _getAfterHoursTime = _interopRequireDefault(require("./utils/getAfterHoursTi
 
 var _getHoursFromEvents = _interopRequireDefault(require("./utils/getHoursFromEvents"));
 
+var _getDisabledTimeFromShedule = require("./utils/getDisabledTimeFromShedule");
+
+var _getDisabledDaysFromShedule = require("./utils/getDisabledDaysFromShedule");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -77,7 +81,7 @@ function (_React$Component) {
       showTime: false,
       selectedDate: new Date(),
       selectedTime: null,
-      disabledDays: []
+      currentMonth: new Date(new Date().setDate(1))
     });
 
     _defineProperty(_assertThisInitialized(_this), "onDayClickHandler", function (date) {
@@ -117,34 +121,26 @@ function (_React$Component) {
       onConfirm(selectedDate);
     });
 
+    _defineProperty(_assertThisInitialized(_this), "onMonthChange", function (ev) {
+      _this.setState({
+        currentMonth: ev
+      });
+    });
+
     return _this;
   }
 
   _createClass(Calendar, [{
-    key: "componentWillMount",
-    value: function componentWillMount() {
-      var props = _objectSpread({}, this.props);
-
-      var result = _objectSpread({}, this.state);
-
-      if (props.isDisabledBeforeToday) {
-        result.disabledDays = props.disabledDays.concat((0, _Dates.getDatesMounthBeforeToday)(new Date()));
-      } else {
-        result.disabledDays = props.disabledDays;
-      }
-
-      this.setState(result);
-    }
-  }, {
     key: "render",
     value: function render() {
       var state = _objectSpread({}, this.state);
 
       var props = _objectSpread({}, this.props);
 
-      var afterHours = (0, _getAfterHoursTime.default)(props.afterHours);
-      var bookedTime = (0, _getHoursFromEvents.default)(props.bookedTime);
-      var disabledTime = state.selectedDate ? props.disabledTime.concat(afterHours[state.selectedDate.getDay()]) : props.disabledTime;
+      var afterHours = (0, _getAfterHoursTime.default)(props.afterHours); // console.log(afterHours);
+
+      var bookedTime = [].concat(_toConsumableArray((0, _getHoursFromEvents.default)(props.bookedTime)), _toConsumableArray((0, _getDisabledTimeFromShedule.getDisabledTimeFromShefule)(props.workingTime, state.selectedDate)));
+      var disabledDays = props.isDisabledBeforeToday ? [].concat(_toConsumableArray(props.disabledDays), _toConsumableArray((0, _Dates.getDatesMounthBeforeToday)(new Date(), state.currentMonth)), _toConsumableArray((0, _getDisabledDaysFromShedule.getDisabledDaysFromShedule)(props.workingTime, state.currentMonth))) : props.disabledDays;
       var timeProps = {
         onTimeClick: this.onTimeClickHandler,
         selectedTime: state.selectedTime,
@@ -155,7 +151,7 @@ function (_React$Component) {
         setDate: this.setDateHandler,
         confirmDate: this.confirmDate,
         onCancel: props.onCancel,
-        disabledTime: props.isDisabledBeforeCurrentTime ? disabledTime.concat((0, _Dates.getDisabledTimeBeforeCurrentTime)(state.selectedDate, bookedTime)) : disabledTime
+        disabledTime: (0, _Dates.getDisabledTimeBeforeCurrentTime)(state.selectedDate, bookedTime)
       };
       var dateProps = {
         months: _config.MONTHS,
@@ -163,7 +159,8 @@ function (_React$Component) {
         weekdaysLong: _config.WEEKDAYS_LONG,
         weekdaysShort: _config.WEEKDAYS_SHORT,
         onDayClick: this.onDayClickHandler,
-        disabledDays: _toConsumableArray(state.disabledDays),
+        disabledDays: disabledDays,
+        onMonthChange: this.onMonthChange,
         className: _styleModule.default.datapicker
       };
       return state.showTime ? _react.default.createElement(_components.Time, timeProps) : _react.default.createElement(_components.Day, dateProps);

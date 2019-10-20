@@ -2,21 +2,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Day, Time } from './components';
 import { MONTHS, WEEKDAYS_LONG, WEEKDAYS_SHORT } from './config';
-import {
-	getDatesMounthBeforeToday,
-	getDisabledTimeForDay,
-	getDisabledTimeBeforeCurrentTime,
-} from './utils/Dates';
+import { getDatesMounthBeforeToday, getDisabledTimeBeforeCurrentTime } from './utils/Dates';
 import style from './style.module.scss';
 import getAfterHoursTime from './utils/getAfterHoursTime';
 import getHoursFromEvents from './utils/getHoursFromEvents';
+import { getDisabledTimeFromShefule } from './utils/getDisabledTimeFromShedule';
+import { getDisabledDaysFromShedule } from './utils/getDisabledDaysFromShedule';
 
 class Calendar extends React.Component {
 	state = {
 		showTime: false,
 		selectedDate: new Date(),
 		selectedTime: null,
-		disabledDays: [],
+		currentMonth: new Date(new Date().setDate(1)),
 	};
 
 	static defaultProps = {
@@ -42,17 +40,6 @@ class Calendar extends React.Component {
 		afterHours: PropTypes.array,
 		workingTime: PropTypes.array,
 	};
-
-	componentWillMount() {
-		const props = { ...this.props };
-		let result = { ...this.state };
-		if (props.isDisabledBeforeToday) {
-			result.disabledDays = props.disabledDays.concat(getDatesMounthBeforeToday(new Date()));
-		} else {
-			result.disabledDays = props.disabledDays;
-		}
-		this.setState(result);
-	}
 
 	onDayClickHandler = date => {
 		const { showTime } = this.state;
@@ -84,17 +71,28 @@ class Calendar extends React.Component {
 		const { selectedDate } = this.state;
 		onConfirm(selectedDate);
 	};
-
+	onMonthChange = ev => {
+		this.setState({ currentMonth: ev });
+	};
 	render() {
 		const state = {
 			...this.state,
 		};
 		const props = { ...this.props };
 		const afterHours = getAfterHoursTime(props.afterHours);
-		const bookedTime = getHoursFromEvents(props.bookedTime);
-		let disabledTime = state.selectedDate
-			? props.disabledTime.concat(afterHours[state.selectedDate.getDay()])
-			: props.disabledTime;
+		// console.log(afterHours);
+		const bookedTime = [
+			...getHoursFromEvents(props.bookedTime),
+			...getDisabledTimeFromShefule(props.workingTime, state.selectedDate),
+		];
+
+		const disabledDays = props.isDisabledBeforeToday
+			? [
+					...props.disabledDays,
+					...getDatesMounthBeforeToday(new Date(), state.currentMonth),
+					...getDisabledDaysFromShedule(props.workingTime, state.currentMonth),
+			  ]
+			: props.disabledDays;
 		const timeProps = {
 			onTimeClick: this.onTimeClickHandler,
 			selectedTime: state.selectedTime,
@@ -105,9 +103,7 @@ class Calendar extends React.Component {
 			setDate: this.setDateHandler,
 			confirmDate: this.confirmDate,
 			onCancel: props.onCancel,
-			disabledTime: props.isDisabledBeforeCurrentTime
-				? disabledTime.concat(getDisabledTimeBeforeCurrentTime(state.selectedDate, bookedTime))
-				: disabledTime,
+			disabledTime: getDisabledTimeBeforeCurrentTime(state.selectedDate, bookedTime),
 		};
 		const dateProps = {
 			months: MONTHS,
@@ -115,7 +111,8 @@ class Calendar extends React.Component {
 			weekdaysLong: WEEKDAYS_LONG,
 			weekdaysShort: WEEKDAYS_SHORT,
 			onDayClick: this.onDayClickHandler,
-			disabledDays: [...state.disabledDays],
+			disabledDays,
+			onMonthChange: this.onMonthChange,
 			className: style.datapicker,
 		};
 		return state.showTime ? <Time {...timeProps} /> : <Day {...dateProps} />;

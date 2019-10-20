@@ -8,15 +8,27 @@ exports.getDisabledTimeForDay = getDisabledTimeForDay;
 exports.getDisabledTimeBeforeCurrentTime = getDisabledTimeBeforeCurrentTime;
 exports.getFreeHours = getFreeHours;
 
-function getDatesMounthBeforeToday(today) {
+function getDatesMounthBeforeToday(today, currentMonth) {
   if (today instanceof Date) {
-    var day = today.getDate();
+    var days = function daysInThisMonth() {
+      var now = currentMonth;
+      return new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
+    }();
+
+    var day = currentMonth.getFullYear() === today.getFullYear() && currentMonth.getMonth() < today.getMonth() || currentMonth.getFullYear() < today.getFullYear() ? days : currentMonth.getFullYear() === today.getFullYear() && currentMonth.getMonth() === today.getMonth() ? today.getDate() : 0;
     var result = [];
 
-    for (var i = 1; i < day; i++) {
-      result.push(new Date(today.setDate(i)));
+    for (var i = 1; i <= day; i++) {
+      var _day = new Date(today.setDate(i));
+
+      _day.setMonth(currentMonth.getMonth());
+
+      _day.setYear(currentMonth.getFullYear());
+
+      result.push(_day);
     }
 
+    console.log(result);
     return result;
   } else {
     throw new Error('Type of  function arguments is wrong!');
