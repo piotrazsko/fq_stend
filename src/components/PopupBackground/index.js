@@ -1,34 +1,34 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import './style.css'
+import React from 'react';
+import PropTypes from 'prop-types';
+import './style.css';
 
-const CLASS_BACKGROUND = 'popup_background'
+const CLASS_BACKGROUND = 'popup_background';
 class PopupBackground extends React.Component {
 	constructor(props) {
-		super(props)
-		this.handleClick = this.handleClick.bind(this)
+		super(props);
+		this.handleClick = this.handleClick.bind(this);
 		this.state = {
 			showPopup: true,
-		}
+		};
 	}
 	static propTypes = {
 		onClick: PropTypes.func,
-	}
+	};
 	static defaultProps = {
 		onClick: () => {},
-	}
+	};
 	handleClick(event) {
 		if (event.target.classList.contains(CLASS_BACKGROUND)) {
+			const { onClick } = this.props;
+			onClick();
 			this.setState({
 				showPopup: false,
-			})
-			const { onClick } = this.props
-			onClick()
+			});
 		}
 	}
 
 	render() {
-		const { visible = false } = this.props
+		const { visible = false } = this.props;
 		return this.state.showPopup && visible ? (
 			<div
 				className={CLASS_BACKGROUND}
@@ -38,8 +38,8 @@ class PopupBackground extends React.Component {
 			>
 				<div className="popup_background_inbox">{this.props.children}</div>
 			</div>
-		) : null
+		) : null;
 	}
 }
 
-export default PopupBackground
+export default PopupBackground;
