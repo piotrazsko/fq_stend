@@ -21,7 +21,6 @@ export function getDatesMounthBeforeToday(today, currentMonth) {
 			day.setYear(currentMonth.getFullYear());
 			result.push(day);
 		}
-		console.log(result);
 		return result;
 	} else {
 		throw new Error('Type of  function arguments is wrong!');
