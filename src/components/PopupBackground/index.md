@@ -1,3 +1,3 @@
 ```jsx
-<PopupBackground>background for popups</PopupBackground>
+<PopupBackground onClick={alert}>background for popups</PopupBackground>
 ```

@@ -57,11 +57,11 @@ function (_React$Component) {
     key: "handleClick",
     value: function handleClick(event) {
       if (event.target.classList.contains(CLASS_BACKGROUND)) {
+        var onClick = this.props.onClick;
+        onClick();
         this.setState({
           showPopup: false
         });
-        var onClick = this.props.onClick;
-        onClick();
       }
     }
   }, {
