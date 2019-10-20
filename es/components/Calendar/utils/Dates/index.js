@@ -28,7 +28,6 @@ function getDatesMounthBeforeToday(today, currentMonth) {
       result.push(_day);
     }
 
-    console.log(result);
     return result;
   } else {
     throw new Error('Type of  function arguments is wrong!');

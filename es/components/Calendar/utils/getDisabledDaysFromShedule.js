@@ -16,8 +16,6 @@ function getDisabledDaysFromShedule(shedule, selectedDay) {
     return new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
   }();
 
-  console.log(days); // console.log(tempDay);
-
   for (var i = 1; i <= days; i++) {
     tempDay.setDate(i);
     var dayOfWeek = tempDay.getDay();
