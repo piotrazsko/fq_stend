@@ -1,7 +1,7 @@
 ```jsx
 <Calendar
 	bookedTime={[
-		{ date: '2019-10-23 7:00:00', duration: 120 },
+		{ date: '2019-10-25 7:30:00', duration: 150 },
 		{ date: '2019-10-19 20:00:00', duration: 120 },
 	]}
 	workingTime={{
@@ -35,7 +35,20 @@
 			17: 'white',
 			18: 'white',
 		},
-		fri: {},
+		fri: {
+			7: 'white',
+			8: 'white',
+			9: 'white',
+			10: 'white',
+			11: 'white',
+			12: 'white',
+			13: 'white',
+			14: 'white',
+			15: 'white',
+			16: 'white',
+			17: 'white',
+			18: 'white',
+		},
 		sat: {},
 		sun: {},
 	}}

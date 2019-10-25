@@ -4,7 +4,6 @@ import { Day, Time } from './components';
 import { MONTHS, WEEKDAYS_LONG, WEEKDAYS_SHORT } from './config';
 import { getDatesMounthBeforeToday, getDisabledTimeBeforeCurrentTime } from './utils/Dates';
 import style from './style.module.scss';
-import getAfterHoursTime from './utils/getAfterHoursTime';
 import getHoursFromEvents from './utils/getHoursFromEvents';
 import { getDisabledTimeFromShefule } from './utils/getDisabledTimeFromShedule';
 import { getDisabledDaysFromShedule } from './utils/getDisabledDaysFromShedule';
@@ -50,6 +49,7 @@ class Calendar extends React.Component {
 	};
 	onTimeClickHandler = time => {
 		let { selectedDate } = this.state;
+		alert(time);
 		selectedDate.setHours(time);
 		this.setState({
 			selectedTime: time,
@@ -79,13 +79,10 @@ class Calendar extends React.Component {
 			...this.state,
 		};
 		const props = { ...this.props };
-		const afterHours = getAfterHoursTime(props.afterHours);
-		// console.log(afterHours);
 		const bookedTime = [
 			...getHoursFromEvents(props.bookedTime),
 			...getDisabledTimeFromShefule(props.workingTime, state.selectedDate),
 		];
-
 		const disabledDays = props.isDisabledBeforeToday
 			? [
 					...props.disabledDays,

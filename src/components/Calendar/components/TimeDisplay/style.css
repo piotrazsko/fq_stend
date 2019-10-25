@@ -14,10 +14,12 @@
 	cursor: pointer;
 	float: left;
 	font-weight: bold;
+	background-color: #f0f8ff;
 }
 
 .time_grid__item-disable {
 	color: grey;
+	/* display: none; */
 	cursor: not-allowed;
 }
 
@@ -28,5 +30,5 @@
 
 .time_grid__item:hover {
 	/* background-color: rgba(200, 200, 200, 0.86); */
-	background-color: #f0f8ff;
+	/* background-color: #f0f8ff; */
 }
