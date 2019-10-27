@@ -15,7 +15,7 @@ export function getDatesMounthBeforeToday(today, currentMonth) {
 				: 0;
 		const result = [];
 
-		for (var i = 1; i <= day; i++) {
+		for (var i = 1; i < day; i++) {
 			const day = new Date(today.setDate(i));
 			day.setMonth(currentMonth.getMonth());
 			day.setYear(currentMonth.getFullYear());
@@ -35,7 +35,9 @@ export function getDisabledTimeForDay(disabledMoment = [new Date()], currentDate
 			disabledMoment[i].getMonth() === currentDate.getMonth() &&
 			disabledMoment[i].getYear() === currentDate.getYear()
 		) {
-			result.push(disabledMoment[i].getHours());
+			const time =
+				Math.round((disabledMoment[i].getHours() + disabledMoment[i].getMinutes() / 60) * 2) / 2;
+			result.push(time);
 		}
 	}
 	return result;
@@ -60,13 +62,13 @@ export function getDisabledTimeBeforeCurrentTime(checkedDate = new Date(), disab
 			currentDateObj.month === checkedDateObj.month &&
 			currentDateObj.year === checkedDateObj.year
 		) {
-			currentTime = currentTime.getHours();
+			currentTime = currentTime.getHours() * 2 + (currentTime.getMinutes() * 2) / 60;
 			for (let i = 0; i <= currentTime; i++) {
-				result.push(i);
+				result.push(i / 2);
 			}
 		} else if (currentTime.valueOf() > checkedDate.valueOf()) {
-			for (let i = 0; i < 24; i++) {
-				result.push(i);
+			for (let i = 0; i < 48; i++) {
+				result.push(i / 2);
 			}
 		}
 	}
