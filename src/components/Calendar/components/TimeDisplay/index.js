@@ -8,7 +8,6 @@ const SELECTED_CLASS_NAME = 'time_grid__item-selected';
 const TimeDisplay = props => {
 	const timeProps = (i, props) => {
 		const { disabledTime, selectedTime, onTimeClick } = props;
-		console.log(disabledTime);
 		const disabledArr = disabledTime.map(item => item * 2);
 		const disabled = disabledArr.indexOf(i) !== -1;
 		const selectedName = selectedTime === i ? SELECTED_CLASS_NAME : '';
@@ -38,7 +37,16 @@ const TimeDisplay = props => {
 		}
 		return arr;
 	};
-	return <div className="time_grid">{timesGrid()}</div>;
+	const times = timesGrid();
+	return (
+		<div className={times.length > 0 ? 'time_grid' : 'time_grid empty'}>
+			{times.length > 0 ? (
+				times
+			) : (
+				<div className={'emptyDay_shedule'}>Отсутствует свободное время</div>
+			)}
+		</div>
+	);
 };
 
 TimeDisplay.defaultProps = {

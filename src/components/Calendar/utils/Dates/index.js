@@ -15,7 +15,7 @@ export function getDatesMounthBeforeToday(today, currentMonth) {
 				: 0;
 		const result = [];
 
-		for (var i = 1; i <= day; i++) {
+		for (var i = 1; i < day; i++) {
 			const day = new Date(today.setDate(i));
 			day.setMonth(currentMonth.getMonth());
 			day.setYear(currentMonth.getFullYear());

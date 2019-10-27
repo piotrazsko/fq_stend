@@ -49,8 +49,9 @@ class Calendar extends React.Component {
 	};
 	onTimeClickHandler = time => {
 		let { selectedDate } = this.state;
-		alert(time);
-		selectedDate.setHours(time);
+		const ceil = Math.floor(time / 2);
+		selectedDate.setHours(ceil);
+		selectedDate.setMinutes((time / 2 - ceil) * 60);
 		this.setState({
 			selectedTime: time,
 			selectedDate: selectedDate,
