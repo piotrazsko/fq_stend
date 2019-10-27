@@ -84,11 +84,15 @@ class Calendar extends React.Component {
 			...getHoursFromEvents(props.bookedTime),
 			...getDisabledTimeFromShefule(props.workingTime, state.selectedDate),
 		];
+		const disabledTimeForToday = Array.from(
+			new Set(getDisabledTimeBeforeCurrentTime(new Date(), bookedTime))
+		);
 		const disabledDays = props.isDisabledBeforeToday
 			? [
 					...props.disabledDays,
 					...getDatesMounthBeforeToday(new Date(), state.currentMonth),
 					...getDisabledDaysFromShedule(props.workingTime, state.currentMonth),
+					...[disabledTimeForToday.length === 48 && new Date()],
 			  ]
 			: props.disabledDays;
 		const timeProps = {

@@ -17,8 +17,6 @@ var _Dates = require("./utils/Dates");
 
 var _styleModule = _interopRequireDefault(require("./style.module.scss"));
 
-var _getAfterHoursTime = _interopRequireDefault(require("./utils/getAfterHoursTime"));
-
 var _getHoursFromEvents = _interopRequireDefault(require("./utils/getHoursFromEvents"));
 
 var _getDisabledTimeFromShedule = require("./utils/getDisabledTimeFromShedule");
@@ -95,7 +93,9 @@ function (_React$Component) {
 
     _defineProperty(_assertThisInitialized(_this), "onTimeClickHandler", function (time) {
       var selectedDate = _this.state.selectedDate;
-      selectedDate.setHours(time);
+      var ceil = Math.floor(time / 2);
+      selectedDate.setHours(ceil);
+      selectedDate.setMinutes((time / 2 - ceil) * 60);
 
       _this.setState({
         selectedTime: time,
@@ -137,10 +137,9 @@ function (_React$Component) {
 
       var props = _objectSpread({}, this.props);
 
-      var afterHours = (0, _getAfterHoursTime.default)(props.afterHours); // console.log(afterHours);
-
       var bookedTime = [].concat(_toConsumableArray((0, _getHoursFromEvents.default)(props.bookedTime)), _toConsumableArray((0, _getDisabledTimeFromShedule.getDisabledTimeFromShefule)(props.workingTime, state.selectedDate)));
-      var disabledDays = props.isDisabledBeforeToday ? [].concat(_toConsumableArray(props.disabledDays), _toConsumableArray((0, _Dates.getDatesMounthBeforeToday)(new Date(), state.currentMonth)), _toConsumableArray((0, _getDisabledDaysFromShedule.getDisabledDaysFromShedule)(props.workingTime, state.currentMonth))) : props.disabledDays;
+      var disabledTimeForToday = Array.from(new Set((0, _Dates.getDisabledTimeBeforeCurrentTime)(new Date(), bookedTime)));
+      var disabledDays = props.isDisabledBeforeToday ? [].concat(_toConsumableArray(props.disabledDays), _toConsumableArray((0, _Dates.getDatesMounthBeforeToday)(new Date(), state.currentMonth)), _toConsumableArray((0, _getDisabledDaysFromShedule.getDisabledDaysFromShedule)(props.workingTime, state.currentMonth)), [disabledTimeForToday.length === 48 && new Date()]) : props.disabledDays;
       var timeProps = {
         onTimeClick: this.onTimeClickHandler,
         selectedTime: state.selectedTime,

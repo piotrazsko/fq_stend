@@ -24,9 +24,15 @@ function getDisabledTimeFromShefule(shedule, selectedDate) {
     return Object.keys(shedule[_config.WEEKDAYS_ENG_RUS[currentDay].eng]).indexOf(item.toString()) === -1;
   });
   var selectedDateISO = selectedDate.toISOString();
-  return disabledTime.map(function (item) {
+  var array = [].concat(_toConsumableArray(disabledTime), _toConsumableArray(disabledTime.map(function (item) {
+    return item + 0.5;
+  })));
+  return array.map(function (item) {
     var disabledTime = new Date(selectedDateISO);
-    disabledTime.setHours(item);
+    var ceil = Math.floor(item);
+    var part = item - ceil;
+    disabledTime.setHours(ceil);
+    disabledTime.setMinutes(part * 60);
     return disabledTime;
   });
 }

@@ -1,5 +1,14 @@
 .time_grid {
 	margin: 20px;
+	min-height: 250px;
+}
+.time_grid.empty {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.emptyDay_shedule {
+	display: inline-block;
 }
 
 .time_grid__item {
@@ -14,10 +23,12 @@
 	cursor: pointer;
 	float: left;
 	font-weight: bold;
+	background-color: rgb(232, 232, 232);
 }
 
 .time_grid__item-disable {
 	color: grey;
+	/* display: none; */
 	cursor: not-allowed;
 }
 
@@ -28,5 +39,5 @@
 
 .time_grid__item:hover {
 	/* background-color: rgba(200, 200, 200, 0.86); */
-	background-color: #f0f8ff;
+	/* background-color: #f0f8ff; */
 }

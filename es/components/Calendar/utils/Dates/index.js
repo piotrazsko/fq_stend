@@ -18,7 +18,7 @@ function getDatesMounthBeforeToday(today, currentMonth) {
     var day = currentMonth.getFullYear() === today.getFullYear() && currentMonth.getMonth() < today.getMonth() || currentMonth.getFullYear() < today.getFullYear() ? days : currentMonth.getFullYear() === today.getFullYear() && currentMonth.getMonth() === today.getMonth() ? today.getDate() : 0;
     var result = [];
 
-    for (var i = 1; i <= day; i++) {
+    for (var i = 1; i < day; i++) {
       var _day = new Date(today.setDate(i));
 
       _day.setMonth(currentMonth.getMonth());
@@ -41,7 +41,8 @@ function getDisabledTimeForDay() {
 
   for (var i = 0; i < disabledMoment.length; i++) {
     if (disabledMoment[i].getDate() === currentDate.getDate() && disabledMoment[i].getMonth() === currentDate.getMonth() && disabledMoment[i].getYear() === currentDate.getYear()) {
-      result.push(disabledMoment[i].getHours());
+      var time = Math.round((disabledMoment[i].getHours() + disabledMoment[i].getMinutes() / 60) * 2) / 2;
+      result.push(time);
     }
   }
 
@@ -67,14 +68,14 @@ function getDisabledTimeBeforeCurrentTime() {
     };
 
     if (currentDateObj.day === checkedDateObj.day && currentDateObj.month === checkedDateObj.month && currentDateObj.year === checkedDateObj.year) {
-      currentTime = currentTime.getHours();
+      currentTime = currentTime.getHours() * 2 + currentTime.getMinutes() * 2 / 60;
 
       for (var i = 0; i <= currentTime; i++) {
-        result.push(i);
+        result.push(i / 2);
       }
     } else if (currentTime.valueOf() > checkedDate.valueOf()) {
-      for (var _i = 0; _i < 24; _i++) {
-        result.push(_i);
+      for (var _i = 0; _i < 48; _i++) {
+        result.push(_i / 2);
       }
     }
   }
