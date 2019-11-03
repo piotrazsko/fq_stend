@@ -75,6 +75,9 @@ class Calendar extends React.Component {
 	onMonthChange = ev => {
 		this.setState({ currentMonth: ev });
 	};
+	onChangeDay = ev => {
+		this.setState({ selectedTime: null });
+	};
 	render() {
 		const state = {
 			...this.state,
@@ -106,6 +109,7 @@ class Calendar extends React.Component {
 			confirmDate: this.confirmDate,
 			onCancel: props.onCancel,
 			disabledTime: getDisabledTimeBeforeCurrentTime(state.selectedDate, bookedTime),
+			onChangeDay: this.onChangeDay,
 		};
 		const dateProps = {
 			months: MONTHS,

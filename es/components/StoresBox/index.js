@@ -35,9 +35,7 @@ var StoresBox = function StoresBox(_ref) {
     imageUrl: _appStore.default,
     className: _stylesModule.default.appStore
   })), _react.default.createElement(_Button.default, {
-    onClick: onClickgoogle,
-    target: "_blank",
-    href: "https://play.google.com/store"
+    onClick: onClickgoogle
   }, _react.default.createElement(_Avatar.default, {
     imageUrl: _googlePlay.default,
     className: _stylesModule.default.googlePlay
@@ -45,7 +43,7 @@ var StoresBox = function StoresBox(_ref) {
 };
 
 StoresBox.propTypes = {
-  onClickgoogle: _propTypes.default.string,
+  onClickgoogle: _propTypes.default.func,
   onClick: _propTypes.default.func
 };
 var _default = StoresBox;

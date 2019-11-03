@@ -31,7 +31,8 @@ var Time = function Time(_ref) {
       onCancel = _ref.onCancel,
       confirmDate = _ref.confirmDate,
       showCalendar = _ref.showCalendar,
-      setDate = _ref.setDate;
+      setDate = _ref.setDate,
+      onChangeDay = _ref.onChangeDay;
   var timeProps = {
     selectedTime: selectedTime,
     disabledTime: disabledTime,
@@ -41,11 +42,13 @@ var Time = function Time(_ref) {
   var getPrevDay = function getPrevDay() {
     var newDate = new Date(selectedDate.valueOf() - 1000 * 60 * 60 * 24);
     setDate(newDate);
+    onChangeDay();
   };
 
   var getNextDay = function getNextDay() {
     var newDate = new Date(selectedDate.valueOf() + 1000 * 60 * 60 * 24);
     setDate(newDate);
+    onChangeDay();
   };
 
   return _react.default.createElement("div", {
@@ -85,8 +88,12 @@ var Time = function Time(_ref) {
     tabIndex: "-1",
     onKeyDown: function onKeyDown() {}
   }, "\u041E\u0442\u043C\u0435\u043D\u0438\u0442\u044C"), _react.default.createElement("div", {
-    onClick: confirmDate,
-    className: "time_day__button time_day__button-confirm",
+    onClick: function onClick() {
+      if (selectedTime) {
+        confirmDate();
+      }
+    },
+    className: "time_day__button time_day__button-confirm  ".concat(selectedTime === null ? 'time_day__button-disabled' : ''),
     role: "button",
     tabIndex: "-1",
     onKeyDown: function onKeyDown() {}

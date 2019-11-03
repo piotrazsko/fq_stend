@@ -127,6 +127,12 @@ function (_React$Component) {
       });
     });
 
+    _defineProperty(_assertThisInitialized(_this), "onChangeDay", function (ev) {
+      _this.setState({
+        selectedTime: null
+      });
+    });
+
     return _this;
   }
 
@@ -150,7 +156,8 @@ function (_React$Component) {
         setDate: this.setDateHandler,
         confirmDate: this.confirmDate,
         onCancel: props.onCancel,
-        disabledTime: (0, _Dates.getDisabledTimeBeforeCurrentTime)(state.selectedDate, bookedTime)
+        disabledTime: (0, _Dates.getDisabledTimeBeforeCurrentTime)(state.selectedDate, bookedTime),
+        onChangeDay: this.onChangeDay
       };
       var dateProps = {
         months: _config.MONTHS,

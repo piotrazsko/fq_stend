@@ -57,6 +57,9 @@
 .time_day__button-cancel {
 	color: #000;
 }
+.time_day__button-disabled {
+	color: rgb(144, 144, 144);
+}
 
 .time_day_confirm-block {
 	justify-content: flex-end;
