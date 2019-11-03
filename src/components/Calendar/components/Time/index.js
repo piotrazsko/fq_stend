@@ -19,19 +19,23 @@ const Time = ({
 	confirmDate,
 	showCalendar,
 	setDate,
+	onChangeDay,
 }) => {
 	const timeProps = {
 		selectedTime: selectedTime,
 		disabledTime: disabledTime,
 		onTimeClick: onTimeClick,
 	};
+
 	const getPrevDay = () => {
 		const newDate = new Date(selectedDate.valueOf() - 1000 * 60 * 60 * 24);
 		setDate(newDate);
+		onChangeDay();
 	};
 	const getNextDay = () => {
 		const newDate = new Date(selectedDate.valueOf() + 1000 * 60 * 60 * 24);
 		setDate(newDate);
+		onChangeDay();
 	};
 	return (
 		<div className="timeContainer">
@@ -82,8 +86,14 @@ const Time = ({
 					Отменить
 				</div>
 				<div
-					onClick={confirmDate}
-					className="time_day__button time_day__button-confirm"
+					onClick={() => {
+						if (selectedTime) {
+							confirmDate();
+						}
+					}}
+					className={`time_day__button time_day__button-confirm  ${
+						selectedTime === null ? 'time_day__button-disabled' : ''
+					}`}
 					role="button"
 					tabIndex="-1"
 					onKeyDown={() => {}}
