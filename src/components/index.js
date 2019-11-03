@@ -13,3 +13,4 @@ export { default as StoresBox } from './StoresBox';
 export { default as Terms } from './Terms';
 export { default as UserInfo } from './UserInfo';
 export { default as Calendar } from './Calendar';
+export { default as PhoneInput } from './PhoneInput';
