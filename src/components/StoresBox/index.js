@@ -10,10 +10,10 @@ const StoresBox = ({ appStoreLink, googlePlayLink, target = '_blank' }) => {
 	return (
 		<div className={styles.container}>
 			<a href={appStoreLink} target={target} className={styles.link}>
-				<Avatar imageUrl={appStore} className={styles.appStore} />
+				<img className={styles.imageContainer} src={appStore} />
 			</a>
 			<a href={googlePlayLink} target={target} className={styles.link}>
-				<Avatar imageUrl={googlePlay} className={styles.googlePlay} />
+				<img className={styles.imageContainer} src={googlePlay} />
 			</a>
 		</div>
 	);
