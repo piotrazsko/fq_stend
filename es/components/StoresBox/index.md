@@ -1,3 +1,3 @@
 ```jsx
-<StoresBox />
+<StoresBox googlePlayLink="http://google.com" />
 ```

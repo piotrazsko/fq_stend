@@ -22,20 +22,23 @@ var _Button = _interopRequireDefault(require("@material-ui/core/Button"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var StoresBox = function StoresBox(_ref) {
-  var _ref$onClickgoogle = _ref.onClickgoogle,
-      onClickgoogle = _ref$onClickgoogle === void 0 ? function () {} : _ref$onClickgoogle,
-      onClick = _ref.onClick;
+  var appStoreLink = _ref.appStoreLink,
+      googlePlayLink = _ref.googlePlayLink,
+      _ref$target = _ref.target,
+      target = _ref$target === void 0 ? '_blank' : _ref$target;
   return _react.default.createElement("div", {
     className: _stylesModule.default.container
-  }, _react.default.createElement(_Button.default, {
-    onClick: function onClick() {
-      alert('Скоро в AppStore ');
-    }
+  }, _react.default.createElement("a", {
+    href: appStoreLink,
+    target: target,
+    className: _stylesModule.default.link
   }, _react.default.createElement(_Avatar.default, {
     imageUrl: _appStore.default,
     className: _stylesModule.default.appStore
-  })), _react.default.createElement(_Button.default, {
-    onClick: onClickgoogle
+  })), _react.default.createElement("a", {
+    href: googlePlayLink,
+    target: target,
+    className: _stylesModule.default.link
   }, _react.default.createElement(_Avatar.default, {
     imageUrl: _googlePlay.default,
     className: _stylesModule.default.googlePlay
@@ -43,8 +46,8 @@ var StoresBox = function StoresBox(_ref) {
 };
 
 StoresBox.propTypes = {
-  onClickgoogle: _propTypes.default.func,
-  onClick: _propTypes.default.func
+  appStoreLink: _propTypes.default.string,
+  googlePlayLink: _propTypes.default.string
 };
 var _default = StoresBox;
 exports.default = _default;
