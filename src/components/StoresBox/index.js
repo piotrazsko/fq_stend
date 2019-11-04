@@ -6,26 +6,22 @@ import appStore from '../../static/images/stores/appStore.png';
 import googlePlay from '../../static/images/stores/googlePlay.png';
 import Button from '@material-ui/core/Button';
 
-const StoresBox = ({ onClickgoogle = () => {}, onClick }) => {
+const StoresBox = ({ appStoreLink, googlePlayLink, target = '_blank' }) => {
 	return (
 		<div className={styles.container}>
-			<Button
-				onClick={() => {
-					alert('Скоро в AppStore ');
-				}}
-			>
+			<a href={appStoreLink} target={target} className={styles.link}>
 				<Avatar imageUrl={appStore} className={styles.appStore} />
-			</Button>
-			<Button onClick={onClickgoogle}>
+			</a>
+			<a href={googlePlayLink} target={target} className={styles.link}>
 				<Avatar imageUrl={googlePlay} className={styles.googlePlay} />
-			</Button>
+			</a>
 		</div>
 	);
 };
 
 StoresBox.propTypes = {
-	onClickgoogle: PropTypes.func,
-	onClick: PropTypes.func,
+	appStoreLink: PropTypes.string,
+	googlePlayLink: PropTypes.string,
 };
 
 export default StoresBox;
