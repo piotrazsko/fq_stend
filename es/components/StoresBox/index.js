@@ -32,16 +32,16 @@ var StoresBox = function StoresBox(_ref) {
     href: appStoreLink,
     target: target,
     className: _stylesModule.default.link
-  }, _react.default.createElement(_Avatar.default, {
-    imageUrl: _appStore.default,
-    className: _stylesModule.default.appStore
+  }, _react.default.createElement("img", {
+    className: _stylesModule.default.imageContainer,
+    src: _appStore.default
   })), _react.default.createElement("a", {
     href: googlePlayLink,
     target: target,
     className: _stylesModule.default.link
-  }, _react.default.createElement(_Avatar.default, {
-    imageUrl: _googlePlay.default,
-    className: _stylesModule.default.googlePlay
+  }, _react.default.createElement("img", {
+    className: _stylesModule.default.imageContainer,
+    src: _googlePlay.default
   })));
 };
 
