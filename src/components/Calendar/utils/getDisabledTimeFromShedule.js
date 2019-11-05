@@ -2,9 +2,9 @@ import { WEEKDAYS_ENG_RUS } from '../config.js';
 export function getDisabledTimeFromShefule(shedule, selectedDate) {
 	const currentDay = selectedDate.getDay();
 	const workingDay = [...Array(24).keys()];
-
+	const disabledDays = shedule[WEEKDAYS_ENG_RUS[currentDay].eng] || {};
 	const disabledTime = workingDay.filter(
-		item => Object.keys(shedule[WEEKDAYS_ENG_RUS[currentDay].eng]).indexOf(item.toString()) === -1
+		item => Object.keys(disabledDays).indexOf(item.toString()) === -1
 	);
 	const selectedDateISO = selectedDate.toISOString();
 

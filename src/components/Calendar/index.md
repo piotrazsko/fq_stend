@@ -6,7 +6,7 @@
 	]}
 	onConfirm={date => console.log(date)}
 	workingTime={{
-		mon: {},
+		mon: null,
 		tue: { 5: 'white' },
 		wed: {
 			7: 'white',

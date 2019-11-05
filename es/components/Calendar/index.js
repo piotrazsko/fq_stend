@@ -123,7 +123,8 @@ function (_React$Component) {
 
     _defineProperty(_assertThisInitialized(_this), "onMonthChange", function (ev) {
       _this.setState({
-        currentMonth: ev
+        currentMonth: ev,
+        selectedTime: null
       });
     });
 

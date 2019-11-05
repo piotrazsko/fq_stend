@@ -20,8 +20,9 @@ function getDisabledTimeFromShefule(shedule, selectedDate) {
 
   var workingDay = _toConsumableArray(Array(24).keys());
 
+  var disabledDays = shedule[_config.WEEKDAYS_ENG_RUS[currentDay].eng] || {};
   var disabledTime = workingDay.filter(function (item) {
-    return Object.keys(shedule[_config.WEEKDAYS_ENG_RUS[currentDay].eng]).indexOf(item.toString()) === -1;
+    return Object.keys(disabledDays).indexOf(item.toString()) === -1;
   });
   var selectedDateISO = selectedDate.toISOString();
   var array = [].concat(_toConsumableArray(disabledTime), _toConsumableArray(disabledTime.map(function (item) {
