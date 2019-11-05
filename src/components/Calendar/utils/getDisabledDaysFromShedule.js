@@ -1,4 +1,5 @@
 import { WEEKDAYS_ENG_RUS } from '../config';
+import get from 'lodash/get';
 
 export function getDisabledDaysFromShedule(shedule, selectedDay) {
 	const result = [];
@@ -10,7 +11,8 @@ export function getDisabledDaysFromShedule(shedule, selectedDay) {
 	for (var i = 1; i <= days; i++) {
 		tempDay.setDate(i);
 		const dayOfWeek = tempDay.getDay();
-		if (Object.keys(shedule[WEEKDAYS_ENG_RUS[dayOfWeek].eng]).length === 0) {
+		const disabledDays = shedule[WEEKDAYS_ENG_RUS[dayOfWeek].eng] || {};
+		if (Object.keys(disabledDays).length === 0) {
 			result.push(new Date(tempDay.toISOString()));
 		}
 	}
