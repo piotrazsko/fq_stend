@@ -1,45 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './style.css';
+import style from './style.module.scss';
 
 const CLASS_BACKGROUND = 'popup_background';
-class PopupBackground extends React.Component {
-	constructor(props) {
-		super(props);
-		this.handleClick = this.handleClick.bind(this);
-		this.state = {
-			showPopup: true,
-		};
-	}
-	static propTypes = {
-		onClick: PropTypes.func,
+const PopupBackground = ({ onClick, visible = false, children }) => {
+	const handleClick = event => {
+		onClick();
 	};
-	static defaultProps = {
-		onClick: () => {},
-	};
-	handleClick(event) {
-		if (event.target.classList.contains(CLASS_BACKGROUND)) {
-			const { onClick } = this.props;
-			onClick();
-			this.setState({
-				showPopup: false,
-			});
-		}
-	}
 
-	render() {
-		const { visible = false } = this.props;
-		return this.state.showPopup && visible ? (
-			<div
-				className={CLASS_BACKGROUND}
-				role="presentation"
-				onClick={this.handleClick}
-				onKeyDown={() => {}}
-			>
-				<div className="popup_background_inbox">{this.props.children}</div>
+	return visible ? (
+		<div
+			className={style[CLASS_BACKGROUND]}
+			role="presentation"
+			onClick={handleClick}
+			onKeyDown={() => {}}
+		>
+			<div className={style['popup_background_inbox']} onClick={ev => ev.stopPropagation()}>
+				{children}
 			</div>
-		) : null;
-	}
-}
+		</div>
+	) : null;
+};
+PopupBackground.propTypes = {
+	visible: PropTypes.bool,
+	onClick: PropTypes.func,
+};
 
 export default PopupBackground;

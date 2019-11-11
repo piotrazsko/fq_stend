@@ -75,7 +75,7 @@ class Calendar extends React.Component {
 	onMonthChange = ev => {
 		this.setState({ currentMonth: ev, selectedTime: null });
 	};
-	onChangeDay = ev => {
+	onChangeDay = () => {
 		this.setState({ selectedTime: null });
 	};
 	render() {
