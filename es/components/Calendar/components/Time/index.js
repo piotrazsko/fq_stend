@@ -1,25 +1,10 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-var _propTypes = _interopRequireDefault(require("prop-types"));
-
-var _CalendarToday = _interopRequireDefault(require("@material-ui/icons/CalendarToday"));
-
-var _ArrowLeft = _interopRequireDefault(require("@material-ui/icons/ArrowLeft"));
-
-var _ArrowRight = _interopRequireDefault(require("@material-ui/icons/ArrowRight"));
-
-var _TimeDisplay = _interopRequireDefault(require("../TimeDisplay"));
-
-require("./style.css");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+import React from 'react';
+import PropTypes from 'prop-types';
+import CalendarToday from '@material-ui/icons/CalendarToday';
+import ArrowLeft from '@material-ui/icons/ArrowLeft';
+import ArrowRight from '@material-ui/icons/ArrowRight';
+import TimeDisplay from '../TimeDisplay';
+import './style.css';
 
 var Time = function Time(_ref) {
   var selectedDate = _ref.selectedDate,
@@ -51,43 +36,43 @@ var Time = function Time(_ref) {
     onChangeDay();
   };
 
-  return _react.default.createElement("div", {
+  return React.createElement("div", {
     className: "timeContainer"
-  }, _react.default.createElement("div", {
+  }, React.createElement("div", {
     className: "time_day-block time_day-name"
-  }, _react.default.createElement("div", {
+  }, React.createElement("div", {
     className: "time_day-name__items time_day__weekday"
-  }, weekDays[selectedDate.getDay()]), _react.default.createElement("div", {
+  }, weekDays[selectedDate.getDay()]), React.createElement("div", {
     role: "button",
     tabIndex: "-1",
     onKeyDown: function onKeyDown() {},
     onClick: showCalendar,
     className: "time_day-name__items time_day__button-calendar"
-  }, _react.default.createElement(_CalendarToday.default, null))), _react.default.createElement("div", {
+  }, React.createElement(CalendarToday, null))), React.createElement("div", {
     className: "time_day-block time_day-slider"
-  }, _react.default.createElement("div", {
+  }, React.createElement("div", {
     className: "time_day__button",
     role: "button",
     tabIndex: "-1",
     onKeyDown: function onKeyDown() {},
     onClick: getPrevDay
-  }, _react.default.createElement(_ArrowLeft.default, null)), _react.default.createElement("div", {
+  }, React.createElement(ArrowLeft, null)), React.createElement("div", {
     className: "time_day__date"
-  }, "".concat(selectedDate.getDate(), " ").concat(month[selectedDate.getMonth()])), _react.default.createElement("div", {
+  }, "".concat(selectedDate.getDate(), " ").concat(month[selectedDate.getMonth()])), React.createElement("div", {
     className: "time_day__button",
     role: "button",
     tabIndex: "-1",
     onKeyDown: function onKeyDown() {},
     onClick: getNextDay
-  }, _react.default.createElement(_ArrowRight.default, null))), _react.default.createElement(_TimeDisplay.default, timeProps), _react.default.createElement("div", {
+  }, React.createElement(ArrowRight, null))), React.createElement(TimeDisplay, timeProps), React.createElement("div", {
     className: "time_day-block time_day_confirm-block"
-  }, _react.default.createElement("div", {
+  }, React.createElement("div", {
     onClick: onCancel,
     className: "time_day__button  time_day__button-cancel",
     role: "button",
     tabIndex: "-1",
     onKeyDown: function onKeyDown() {}
-  }, "\u041E\u0442\u043C\u0435\u043D\u0438\u0442\u044C"), _react.default.createElement("div", {
+  }, "\u041E\u0442\u043C\u0435\u043D\u0438\u0442\u044C"), React.createElement("div", {
     onClick: function onClick() {
       if (selectedTime) {
         confirmDate();
@@ -101,18 +86,17 @@ var Time = function Time(_ref) {
 };
 
 Time.propTypes = {
-  weekDays: _propTypes.default.array,
-  selectedTime: _propTypes.default.object,
-  disabledTime: _propTypes.default.object,
-  onTimeClick: _propTypes.default.func,
-  month: _propTypes.default.array,
-  onCancel: _propTypes.default.func,
-  confirmDate: _propTypes.default.func,
-  showCalendar: _propTypes.default.func,
-  setDate: _propTypes.default.func
+  weekDays: PropTypes.array,
+  selectedTime: PropTypes.object,
+  disabledTime: PropTypes.object,
+  onTimeClick: PropTypes.func,
+  month: PropTypes.array,
+  onCancel: PropTypes.func,
+  confirmDate: PropTypes.func,
+  showCalendar: PropTypes.func,
+  setDate: PropTypes.func
 };
 Time.defaultProps = {
   disabledTime: [0, 1, 2, 3, 4, 5, 6, 7, 21, 22, 23]
 };
-var _default = Time;
-exports.default = _default;
+export default Time;

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-const style = require('./style.module.scss');
+import style from './style.module.scss';
 
 const PopupBackground = ({ onClick, visible = false, children }) => {
 	const handleClick = event => {
