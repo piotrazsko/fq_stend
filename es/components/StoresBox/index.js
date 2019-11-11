@@ -1,6 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './styles.module.scss';
+var styles = {
+  "container": "styles-module_fq_container___m2A_R",
+  "appStore": "styles-module_fq_appStore___d0OZc",
+  "googlePlay": "styles-module_fq_googlePlay___2Lxtp",
+  "link": "styles-module_fq_link___2POHs",
+  "imageContainer": "styles-module_fq_imageContainer___1Gs7j"
+};
 import Avatar from '../Avatar';
 import appStore from '../../static/images/stores/appStore.png';
 import googlePlay from '../../static/images/stores/googlePlay.png';

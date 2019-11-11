@@ -35,7 +35,9 @@ import PropTypes from 'prop-types';
 import { Day, Time } from './components';
 import { MONTHS, WEEKDAYS_LONG, WEEKDAYS_SHORT } from './config';
 import { getDatesMounthBeforeToday, getDisabledTimeBeforeCurrentTime } from './utils/Dates';
-import style from './style.module.scss';
+var style = {
+  "datapicker": "style-module_fq_datapicker___1QWkp"
+};
 import getHoursFromEvents from './utils/getHoursFromEvents';
 import { getDisabledTimeFromShefule } from './utils/getDisabledTimeFromShedule';
 import { getDisabledDaysFromShedule } from './utils/getDisabledDaysFromShedule';

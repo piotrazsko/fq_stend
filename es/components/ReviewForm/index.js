@@ -24,7 +24,19 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './style.module.scss';
+var styles = {
+  "container": "style-module_fq_container___1mlCD",
+  "formTitle": "style-module_fq_formTitle___3Lu-o",
+  "formStar": "style-module_fq_formStar___3QCk-",
+  "formStarsmall": "style-module_fq_formStarsmall___1pRnn",
+  "formStarxsmall": "style-module_fq_formStarxsmall___7hFP5",
+  "formTitleText": "style-module_fq_formTitleText___3eO-0",
+  "formInputs": "style-module_fq_formInputs___YmMwd",
+  "inputRatingStar": "style-module_fq_inputRatingStar___1dNUH",
+  "TextField": "style-module_fq_TextField___qyMUy",
+  "formSubmit": "style-module_fq_formSubmit___3WQ_l",
+  "button": "style-module_fq_button___26BMt"
+};
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import InputRating from '../InputRating';

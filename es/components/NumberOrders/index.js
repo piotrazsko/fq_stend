@@ -1,6 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './style.module.scss';
+var styles = {
+  "container": "style-module_fq_container___3UmWF",
+  "baseblock": "style-module_fq_baseblock___3PR-Y",
+  "numberblock": "style-module_fq_numberblock___1dan-"
+};
 
 var NumberOrders = function NumberOrders(_ref) {
   var ordersValue = _ref.ordersValue,

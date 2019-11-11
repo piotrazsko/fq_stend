@@ -2,7 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Rating from '../Rating';
 import Avatar from '../Avatar';
-import styles from './styles.module.scss';
+var styles = {
+  "userInfo__user": "styles-module_fq_userInfo__user___2-qew",
+  "userInfo__icon": "styles-module_fq_userInfo__icon___3InyY",
+  "userInfo__text": "styles-module_fq_userInfo__text___3Iw2A",
+  "userInfo__user-status": "styles-module_fq_userInfo__user-status___1h-cX",
+  "userInfo__user-name": "styles-module_fq_userInfo__user-name___1G282",
+  "userInfo__rating-value": "styles-module_fq_userInfo__rating-value___3x1Nt",
+  "userInfo__rating-star": "styles-module_fq_userInfo__rating-star___1nox5"
+};
 
 var UserInfo = function UserInfo(_ref) {
   var firstName = _ref.firstName,

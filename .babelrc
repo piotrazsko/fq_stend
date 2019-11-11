@@ -11,6 +11,17 @@
 	],
 	"plugins": [
 		"@babel/plugin-proposal-class-properties",
+		[
+			"css-modules-transform",
+			{
+				"devMode": false,
+				"extensions": [".scss", ".less"],
+				"generateScopedName": "[name]_fq_[local]___[hash:base64:5]", // in case you don't want to use a function
+				"hashPrefix": "string",
+				"preprocessCss": "./preprocessor.config.js",
+				"extractCss": "./es/stylesheets/combined.css"
+			}
+		],
 		["lodash", { "id": ["lodash", "recompose"] }]
 	],
 	"env": {

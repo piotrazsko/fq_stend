@@ -17,7 +17,12 @@ import PropTypes from 'prop-types';
 import PopupBackground from '../PopupBackground';
 import { Grid } from '@material-ui/core';
 import Button from '../Button';
-import styles from './style.module.scss';
+var styles = {
+  "container": "style-module_fq_container___1KNAu",
+  "buttonContainer": "style-module_fq_buttonContainer___txOay",
+  "dataContainer": "style-module_fq_dataContainer___3LZ9C",
+  "button": "style-module_fq_button___2pPVp"
+};
 
 var Popup = function Popup(_ref) {
   var props = Object.assign({}, _ref);

@@ -18,7 +18,11 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 import React, { Component } from 'react';
 import Popup from '../Popup';
-import styles from './style.module.scss';
+var styles = {
+  "title": "style-module_fq_title___1sMx5",
+  "paragraph": "style-module_fq_paragraph___1ru_X",
+  "edition": "style-module_fq_edition___1bV8_"
+};
 
 var Terms =
 /*#__PURE__*/

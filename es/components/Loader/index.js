@@ -1,6 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './styles.module.scss';
+var styles = {
+  "container": "styles-module_fq_container___12YKF",
+  "loader": "styles-module_fq_loader___Ykl-m",
+  "loader-spin": "styles-module_fq_loader-spin___w87bx"
+};
 
 var Loader = function Loader(_ref) {
   var isLoading = _ref.isLoading;

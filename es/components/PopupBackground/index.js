@@ -1,6 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import style from './style.module.scss';
+var style = {
+  "popup_background": "style-module_fq_popup_background___1eN_y",
+  "popup_background_inbox": "style-module_fq_popup_background_inbox___1IsCJ"
+};
 
 var PopupBackground = function PopupBackground(_ref) {
   var onClick = _ref.onClick,

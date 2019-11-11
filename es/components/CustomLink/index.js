@@ -7,7 +7,10 @@ import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
-import styles from './style.module.scss';
+var styles = {
+  "link": "style-module_fq_link___X1Unw",
+  "underline": "style-module_fq_underline___YJlCo"
+};
 
 var CustomLink = function CustomLink(_ref) {
   var _props;
