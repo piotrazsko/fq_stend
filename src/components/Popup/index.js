@@ -5,69 +5,54 @@ import { Grid } from '@material-ui/core';
 import Button from '../Button';
 import styles from './style.module.scss';
 
-class Popup extends Component {
-	static propTypes = {
-		onSubmit: PropTypes.func,
-		onCancel: PropTypes.func,
-		cancelButtonText: PropTypes.string,
-		submitButtonText: PropTypes.string,
-		children: PropTypes.element,
+const Popup = ({ ...props }) => {
+	const { onSubmit, onCancel, cancelButtonText, submitButtonText, showPopup, children } = props;
+	const [showPopupState, setState] = React.useState(showPopup);
+	React.useEffect(() => {
+		setState(showPopup);
+	}, [showPopup]);
+	const [state, changeState] = React.useState({});
+	const handleSubmit = () => {
+		onSubmit(state);
+		setState(false);
 	};
-	static defaultProps = {
-		cancelButtonText: 'Отменить',
-		submitButtonText: 'Применить',
-	};
-
-	state = { showPopup: true };
-
-	handleSubmit = () => {
-		const { onSubmit = () => {} } = this.props;
-		onSubmit(this.state);
-		this.setState({ showPopup: false });
-	};
-	handleCancell = () => {
-		const { onCancel = () => {} } = this.props;
+	const handleCancell = () => {
 		onCancel();
-		this.setState({ showPopup: false });
+		setState(false);
 	};
-	render() {
-		const {
-			children,
-			cancelButtonText = 'Отменить',
-			submitButtonText = 'Применить',
-			...props
-		} = this.props;
-		const { showPopup, ...state } = this.state;
-		return showPopup ? (
-			<React.Fragment>
-				<PopupBackground visible onClick={this.handleCancell}>
-					<Grid container className={styles.container}>
-						<Grid item className={styles.dataContainer} xs={12}>
-							{React.cloneElement(children, { ...props, ...state })}
-						</Grid>
-						<Grid item xs={12} className={styles.buttonContainer}>
-							<Button
-								onClick={this.handleCancell}
-								className={styles.button}
-								color="primary"
-								variant="raised"
-							>
-								{cancelButtonText}
-							</Button>
-							<Button
-								color="primary"
-								classes={{ root: styles.button }}
-								onClick={this.handleSubmit}
-								type="submit"
-							>
-								{submitButtonText}
-							</Button>
-						</Grid>
-					</Grid>
-				</PopupBackground>
-			</React.Fragment>
-		) : null;
-	}
-}
+	return (
+		<PopupBackground visible={showPopupState} onClick={handleCancell}>
+			<Grid container className={styles.container}>
+				<Grid item className={styles.dataContainer} xs={12}>
+					{React.cloneElement(children, { ...props, ...state, changeState })}
+				</Grid>
+				<Grid item xs={12} className={styles.buttonContainer}>
+					<Button onClick={handleCancell} className={styles.button} color="primary" variant="raised">
+						{cancelButtonText}
+					</Button>
+					<Button color="primary" classes={{ root: styles.button }} onClick={handleSubmit} type="submit">
+						{submitButtonText}
+					</Button>
+				</Grid>
+			</Grid>
+		</PopupBackground>
+	);
+};
+
+Popup.propTypes = {
+	showPopup: PropTypes.bool,
+	onSubmit: PropTypes.func,
+	onCancel: PropTypes.func,
+	cancelButtonText: PropTypes.string,
+	submitButtonText: PropTypes.string,
+	children: PropTypes.element,
+};
+Popup.defaultProps = {
+	cancelButtonText: 'Отменить',
+	submitButtonText: 'Применить',
+	onSubmit: () => {},
+	onCancel: () => {},
+	showPopup: true,
+};
 
 export default Popup;
