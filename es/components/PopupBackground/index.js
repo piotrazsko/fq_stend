@@ -9,9 +9,9 @@ var _react = _interopRequireDefault(require("react"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _styleModule = _interopRequireDefault(require("./style.module.scss"));
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var style = require('./style.module.scss');
 
 var PopupBackground = function PopupBackground(_ref) {
   var onClick = _ref.onClick,
@@ -24,12 +24,12 @@ var PopupBackground = function PopupBackground(_ref) {
   };
 
   return visible ? _react.default.createElement("div", {
-    className: _styleModule.default.popup_background,
+    className: style.popup_background,
     role: "presentation",
     onClick: handleClick,
     onKeyDown: function onKeyDown() {}
   }, _react.default.createElement("div", {
-    className: _styleModule.default.popup_background_inbox,
+    className: style.popup_background_inbox,
     onClick: function onClick(ev) {
       return ev.stopPropagation();
     }
