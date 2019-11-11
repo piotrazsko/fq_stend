@@ -13,8 +13,6 @@ var _styleModule = _interopRequireDefault(require("./style.module.scss"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var CLASS_BACKGROUND = 'popup_background';
-
 var PopupBackground = function PopupBackground(_ref) {
   var onClick = _ref.onClick,
       _ref$visible = _ref.visible,
@@ -26,12 +24,12 @@ var PopupBackground = function PopupBackground(_ref) {
   };
 
   return visible ? _react.default.createElement("div", {
-    className: _styleModule.default[CLASS_BACKGROUND],
+    className: _styleModule.default.popup_background,
     role: "presentation",
     onClick: handleClick,
     onKeyDown: function onKeyDown() {}
   }, _react.default.createElement("div", {
-    className: _styleModule.default['popup_background_inbox'],
+    className: _styleModule.default.popup_background_inbox,
     onClick: function onClick(ev) {
       return ev.stopPropagation();
     }
@@ -40,7 +38,8 @@ var PopupBackground = function PopupBackground(_ref) {
 
 PopupBackground.propTypes = {
   visible: _propTypes.default.bool,
-  onClick: _propTypes.default.func
+  onClick: _propTypes.default.func,
+  children: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.element, _propTypes.default.array]).isRequired
 };
 var _default = PopupBackground;
 exports.default = _default;
