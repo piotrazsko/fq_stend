@@ -2,6 +2,8 @@
 var sass = require('node-sass');
 var path = require('path');
 
+// append data to file
+
 module.exports = function processSass(data, filename) {
 	console.log(data, filename);
 	var result;
@@ -9,5 +11,6 @@ module.exports = function processSass(data, filename) {
 		data: data,
 		file: filename,
 	}).css;
+	// addCss();
 	return result.toString('utf8');
 };
