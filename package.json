@@ -22,7 +22,7 @@
 	},
 	"scripts": {
 		"start": "cross-env NODE_ENV=development styleguidist server",
-		"build": "cross-env NODE_ENV=production styleguidist build && yarn dist",
+		"build": "cross-env NODE_ENV=production styleguidist build && yarn dist && node prepare.js",
 		"build:dev": "cross-env NODE_ENV=development styleguidist build",
 		"dist": "./node_modules/.bin/babel src/ -d es --copy-files",
 		"clean": "rimraf es",
