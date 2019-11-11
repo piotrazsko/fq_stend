@@ -1,11 +1,4 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = getHoursFromEvents;
-
-function getHoursFromEvents() {
+export default function getHoursFromEvents() {
   var events = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
   var result = [];
 

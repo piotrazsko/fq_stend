@@ -1,14 +1,4 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.getDatesMounthBeforeToday = getDatesMounthBeforeToday;
-exports.getDisabledTimeForDay = getDisabledTimeForDay;
-exports.getDisabledTimeBeforeCurrentTime = getDisabledTimeBeforeCurrentTime;
-exports.getFreeHours = getFreeHours;
-
-function getDatesMounthBeforeToday(today, currentMonth) {
+export function getDatesMounthBeforeToday(today, currentMonth) {
   if (today instanceof Date) {
     var days = function daysInThisMonth() {
       var now = currentMonth;
@@ -33,8 +23,7 @@ function getDatesMounthBeforeToday(today, currentMonth) {
     throw new Error('Type of  function arguments is wrong!');
   }
 }
-
-function getDisabledTimeForDay() {
+export function getDisabledTimeForDay() {
   var disabledMoment = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [new Date()];
   var currentDate = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : new Date();
   var result = [];
@@ -48,8 +37,7 @@ function getDisabledTimeForDay() {
 
   return result;
 }
-
-function getDisabledTimeBeforeCurrentTime() {
+export function getDisabledTimeBeforeCurrentTime() {
   var checkedDate = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : new Date();
   var disabledMoments = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
   var result = [];
@@ -83,5 +71,4 @@ function getDisabledTimeBeforeCurrentTime() {
   result = result.concat(getDisabledTimeForDay(disabledMoments, checkedDate));
   return result;
 }
-
-function getFreeHours() {}
+export function getFreeHours() {}

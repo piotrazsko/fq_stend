@@ -1,26 +1,3 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = PhoneInput;
-
-var _react = _interopRequireDefault(require("react"));
-
-var _propTypes = _interopRequireDefault(require("prop-types"));
-
-var _styles = require("@material-ui/core/styles");
-
-var _Input = _interopRequireDefault(require("@material-ui/core/Input"));
-
-var _InputLabel = _interopRequireDefault(require("@material-ui/core/InputLabel"));
-
-var _FormControl = _interopRequireDefault(require("@material-ui/core/FormControl"));
-
-var _textMask = _interopRequireDefault(require("./components/textMask"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -35,7 +12,14 @@ function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) ||
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
-var useStyles = (0, _styles.makeStyles)(function (theme) {
+import React from 'react';
+import PropTypes from 'prop-types';
+import { makeStyles } from '@material-ui/core/styles';
+import Input from '@material-ui/core/Input';
+import InputLabel from '@material-ui/core/InputLabel';
+import FormControl from '@material-ui/core/FormControl';
+import textMask from './components/textMask';
+var useStyles = makeStyles(function (theme) {
   return {
     container: {
       display: 'flex',
@@ -46,8 +30,7 @@ var useStyles = (0, _styles.makeStyles)(function (theme) {
     }
   };
 });
-
-function PhoneInput(_ref) {
+export default function PhoneInput(_ref) {
   var value = _ref.value,
       _ref$onChange = _ref.onChange,
       onChange = _ref$onChange === void 0 ? function () {} : _ref$onChange,
@@ -57,14 +40,14 @@ function PhoneInput(_ref) {
       label = _ref$label === void 0 ? '' : _ref$label;
   var classes = useStyles();
 
-  var _React$useState = _react.default.useState({
+  var _React$useState = React.useState({
     textmask: value
   }),
       _React$useState2 = _slicedToArray(_React$useState, 2),
       values = _React$useState2[0],
       setValues = _React$useState2[1];
 
-  _react.default.useEffect(function () {
+  React.useEffect(function () {
     setValues(_objectSpread({}, values, {
       textmask: value
     }));
@@ -106,25 +89,24 @@ function PhoneInput(_ref) {
     }, 50);
   };
 
-  return _react.default.createElement(_FormControl.default, {
+  return React.createElement(FormControl, {
     className: classes.formControl
-  }, _react.default.createElement(_InputLabel.default, {
+  }, React.createElement(InputLabel, {
     htmlFor: "formatted-text-mask-input"
-  }, label), _react.default.createElement(_Input.default, {
+  }, label), React.createElement(Input, {
     onFocus: onFocus,
     disabled: disabled,
     value: values.textmask,
     name: name,
     onChange: handleChange('textmask'),
     id: "formatted-text-mask-input",
-    inputComponent: _textMask.default
+    inputComponent: textMask
   }));
 }
-
 PhoneInput.propTypes = {
-  value: _propTypes.default.string,
-  onChange: _propTypes.default.func,
-  name: _propTypes.default.string,
-  disabled: _propTypes.default.bool,
-  label: _propTypes.default.string
+  value: PropTypes.string,
+  onChange: PropTypes.func,
+  name: PropTypes.string,
+  disabled: PropTypes.bool,
+  label: PropTypes.string
 };

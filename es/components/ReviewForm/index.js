@@ -1,32 +1,3 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-var _propTypes = _interopRequireDefault(require("prop-types"));
-
-var _styleModule = _interopRequireDefault(require("./style.module.scss"));
-
-var _Button = _interopRequireDefault(require("@material-ui/core/Button"));
-
-var _TextField = _interopRequireDefault(require("@material-ui/core/TextField"));
-
-var _InputRating = _interopRequireDefault(require("../InputRating"));
-
-var _Avatar = _interopRequireDefault(require("../Avatar"));
-
-var _bigstar = _interopRequireDefault(require("../../static/images/bigstar.png"));
-
-var _invalidName = _interopRequireDefault(require("../../static/images/invalid-name.png"));
-
-var _xsmallstar = _interopRequireDefault(require("../../static/images/xsmallstar.svg"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
@@ -50,6 +21,17 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+import React from 'react';
+import PropTypes from 'prop-types';
+import styles from './style.module.scss';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+import InputRating from '../InputRating';
+import Avatar from '../Avatar';
+import image from '../../static/images/bigstar.png';
+import imagesmall from '../../static/images/invalid-name.png';
+import imagexsmall from '../../static/images/xsmallstar.svg';
 
 var ReviewForm =
 /*#__PURE__*/
@@ -108,28 +90,28 @@ function (_React$Component) {
           onClose = _this$props$onClose === void 0 ? function () {} : _this$props$onClose,
           onClick = _this$props.onClick;
       var rating = this.state.rating;
-      return _react.default.createElement("div", {
-        className: _styleModule.default.container
-      }, _react.default.createElement("div", {
-        className: _styleModule.default.formTitle
-      }, _react.default.createElement("div", {
-        className: _styleModule.default.formTitleText
-      }, _react.default.createElement("span", null, "\u0412\u0441\u0435 \u043B\u0438 \u0432\u0430\u043C "), _react.default.createElement("span", null, "\u043F\u043E\u043D\u0440\u0430\u0432\u0438\u043B\u043E\u0441\u044C?")), _react.default.createElement(_Avatar.default, {
-        imageUrl: _bigstar.default,
-        className: _styleModule.default.formStar
-      }), _react.default.createElement(_Avatar.default, {
-        imageUrl: _invalidName.default,
-        className: _styleModule.default.formStarsmall
-      }), _react.default.createElement(_Avatar.default, {
-        imageUrl: _xsmallstar.default,
-        className: _styleModule.default.formStarxsmall
-      })), _react.default.createElement("div", {
-        className: _styleModule.default.formInputs
-      }, _react.default.createElement(_InputRating.default, {
-        className: _styleModule.default.inputRatingStar,
+      return React.createElement("div", {
+        className: styles.container
+      }, React.createElement("div", {
+        className: styles.formTitle
+      }, React.createElement("div", {
+        className: styles.formTitleText
+      }, React.createElement("span", null, "\u0412\u0441\u0435 \u043B\u0438 \u0432\u0430\u043C "), React.createElement("span", null, "\u043F\u043E\u043D\u0440\u0430\u0432\u0438\u043B\u043E\u0441\u044C?")), React.createElement(Avatar, {
+        imageUrl: image,
+        className: styles.formStar
+      }), React.createElement(Avatar, {
+        imageUrl: imagesmall,
+        className: styles.formStarsmall
+      }), React.createElement(Avatar, {
+        imageUrl: imagexsmall,
+        className: styles.formStarxsmall
+      })), React.createElement("div", {
+        className: styles.formInputs
+      }, React.createElement(InputRating, {
+        className: styles.inputRatingStar,
         rating: rating,
         onClick: this.onClickRating
-      }), _react.default.createElement(_TextField.default, {
+      }), React.createElement(TextField, {
         id: "standard-full-width",
         style: {
           margin: 8
@@ -139,31 +121,30 @@ function (_React$Component) {
         state: {
           value: ''
         },
-        className: _styleModule.default.TextField,
+        className: styles.TextField,
         onChange: this.onChangeText,
         InputLabelProps: {
           shrink: true
         }
-      })), _react.default.createElement("div", {
-        className: _styleModule.default.formSubmit
-      }, _react.default.createElement(_Button.default, {
+      })), React.createElement("div", {
+        className: styles.formSubmit
+      }, React.createElement(Button, {
         onClick: onClose
-      }, "\u041D\u0430\u043F\u043E\u043C\u043D\u0438\u0442\u044C \u043F\u043E\u0437\u0436\u0435"), _react.default.createElement(_Button.default, {
+      }, "\u041D\u0430\u043F\u043E\u043C\u043D\u0438\u0442\u044C \u043F\u043E\u0437\u0436\u0435"), React.createElement(Button, {
         onClick: this.onCkickSubmit,
         variant: "contained",
         color: "primary",
-        className: _styleModule.default.button
+        className: styles.button
       }, "\u041E\u0421\u0422\u0410\u0412\u0418\u0422\u042C \u041E\u0422\u0417\u042B\u0412")));
     }
   }]);
 
   return ReviewForm;
-}(_react.default.Component);
+}(React.Component);
 
 ReviewForm.propTypes = {
-  className: _propTypes.default.string,
-  onClose: _propTypes.default.func,
-  onClick: _propTypes.default.func
+  className: PropTypes.string,
+  onClose: PropTypes.func,
+  onClick: PropTypes.func
 };
-var _default = ReviewForm;
-exports.default = _default;
+export default ReviewForm;

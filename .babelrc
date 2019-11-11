@@ -3,7 +3,8 @@
 		[
 			"@babel/preset-env",
 			{
-				"useBuiltIns": "entry"
+				"useBuiltIns": "entry",
+				"modules": false
 			}
 		],
 		"@babel/preset-react"
@@ -16,6 +17,5 @@
 		"production": {
 			"plugins": ["transform-react-remove-prop-types"]
 		}
-	},
-	"exclude": ["*.scss"]
+	}
 }

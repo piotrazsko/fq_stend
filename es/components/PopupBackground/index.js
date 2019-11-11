@@ -1,17 +1,6 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-var _propTypes = _interopRequireDefault(require("prop-types"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var style = require('./style.module.scss');
+import React from 'react';
+import PropTypes from 'prop-types';
+import style from './style.module.scss';
 
 var PopupBackground = function PopupBackground(_ref) {
   var onClick = _ref.onClick,
@@ -23,12 +12,12 @@ var PopupBackground = function PopupBackground(_ref) {
     onClick();
   };
 
-  return visible ? _react.default.createElement("div", {
+  return visible ? React.createElement("div", {
     className: style.popup_background,
     role: "presentation",
     onClick: handleClick,
     onKeyDown: function onKeyDown() {}
-  }, _react.default.createElement("div", {
+  }, React.createElement("div", {
     className: style.popup_background_inbox,
     onClick: function onClick(ev) {
       return ev.stopPropagation();
@@ -37,9 +26,8 @@ var PopupBackground = function PopupBackground(_ref) {
 };
 
 PopupBackground.propTypes = {
-  visible: _propTypes.default.bool,
-  onClick: _propTypes.default.func,
-  children: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.element, _propTypes.default.array]).isRequired
+  visible: PropTypes.bool,
+  onClick: PropTypes.func,
+  children: PropTypes.oneOfType([PropTypes.string, PropTypes.element, PropTypes.array]).isRequired
 };
-var _default = PopupBackground;
-exports.default = _default;
+export default PopupBackground;
