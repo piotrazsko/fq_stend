@@ -9,87 +9,38 @@ var _react = _interopRequireDefault(require("react"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
-require("./style.css");
+var _styleModule = _interopRequireDefault(require("./style.module.scss"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 var CLASS_BACKGROUND = 'popup_background';
 
-var PopupBackground =
-/*#__PURE__*/
-function (_React$Component) {
-  _inherits(PopupBackground, _React$Component);
+var PopupBackground = function PopupBackground(_ref) {
+  var onClick = _ref.onClick,
+      _ref$visible = _ref.visible,
+      visible = _ref$visible === void 0 ? false : _ref$visible,
+      children = _ref.children;
 
-  function PopupBackground(props) {
-    var _this;
+  var handleClick = function handleClick(event) {
+    onClick();
+  };
 
-    _classCallCheck(this, PopupBackground);
-
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(PopupBackground).call(this, props));
-    _this.handleClick = _this.handleClick.bind(_assertThisInitialized(_this));
-    _this.state = {
-      showPopup: true
-    };
-    return _this;
-  }
-
-  _createClass(PopupBackground, [{
-    key: "handleClick",
-    value: function handleClick(event) {
-      if (event.target.classList.contains(CLASS_BACKGROUND)) {
-        var onClick = this.props.onClick;
-        onClick();
-        this.setState({
-          showPopup: false
-        });
-      }
+  return visible ? _react.default.createElement("div", {
+    className: _styleModule.default[CLASS_BACKGROUND],
+    role: "presentation",
+    onClick: handleClick,
+    onKeyDown: function onKeyDown() {}
+  }, _react.default.createElement("div", {
+    className: _styleModule.default['popup_background_inbox'],
+    onClick: function onClick(ev) {
+      return ev.stopPropagation();
     }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this$props$visible = this.props.visible,
-          visible = _this$props$visible === void 0 ? false : _this$props$visible;
-      return this.state.showPopup && visible ? _react.default.createElement("div", {
-        className: CLASS_BACKGROUND,
-        role: "presentation",
-        onClick: this.handleClick,
-        onKeyDown: function onKeyDown() {}
-      }, _react.default.createElement("div", {
-        className: "popup_background_inbox"
-      }, this.props.children)) : null;
-    }
-  }]);
+  }, children)) : null;
+};
 
-  return PopupBackground;
-}(_react.default.Component);
-
-_defineProperty(PopupBackground, "propTypes", {
+PopupBackground.propTypes = {
+  visible: _propTypes.default.bool,
   onClick: _propTypes.default.func
-});
-
-_defineProperty(PopupBackground, "defaultProps", {
-  onClick: function onClick() {}
-});
-
+};
 var _default = PopupBackground;
 exports.default = _default;
