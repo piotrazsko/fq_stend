@@ -128,7 +128,7 @@ function (_React$Component) {
       });
     });
 
-    _defineProperty(_assertThisInitialized(_this), "onChangeDay", function (ev) {
+    _defineProperty(_assertThisInitialized(_this), "onChangeDay", function () {
       _this.setState({
         selectedTime: null
       });
