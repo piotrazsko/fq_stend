@@ -1,6 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './styles.module.scss';
+var styles = {
+  "icon": "styles-module_fq_icon___1jf_B",
+  "iconDefault": "styles-module_fq_iconDefault____5OV8"
+};
 import classes from 'classnames';
 
 var Avatar = function Avatar(_ref) {

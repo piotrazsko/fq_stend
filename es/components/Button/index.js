@@ -7,7 +7,9 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
 import React from 'react';
 import PropTypes from 'prop-types';
 import ButtonMaterial from '@material-ui/core/Button';
-import styles from './styles.module.scss';
+var styles = {
+  "button": "styles-module_fq_button___2Po5M"
+};
 
 var Button = function Button(_ref) {
   var children = _ref.children,
