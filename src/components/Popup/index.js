@@ -6,7 +6,18 @@ import Button from '../Button';
 import styles from './style.module.scss';
 
 const Popup = ({ ...props }) => {
-	const { onSubmit, onCancel, cancelButtonText, submitButtonText, showPopup, children } = props;
+	const {
+		onSubmit,
+		onCancel,
+		cancelButtonText,
+		submitButtonText,
+		showPopup,
+		children,
+		className,
+		classes = {},
+		confirmButtonClasses = {},
+		cancelButtonClasses = {},
+	} = props;
 	const [showPopupState, setState] = React.useState(showPopup);
 	React.useEffect(() => {
 		setState(showPopup);
@@ -22,15 +33,26 @@ const Popup = ({ ...props }) => {
 	};
 	return (
 		<PopupBackground visible={showPopupState} onClick={handleCancell}>
-			<Grid container className={styles.container}>
-				<Grid item className={styles.dataContainer} xs={12}>
+			<Grid container className={[styles.container, className, classes.root].join(' ')}>
+				<Grid item className={[styles.dataContainer, classes.dataContainer].join(' ')} xs={12}>
 					{React.cloneElement(children, { ...props, ...state, changeState })}
 				</Grid>
-				<Grid item xs={12} className={styles.buttonContainer}>
-					<Button onClick={handleCancell} className={styles.button} color="primary" variant="raised">
+				<Grid item xs={12} className={[styles.buttonContainer, classes.buttonContainer].join(' ')}>
+					<Button
+						onClick={handleCancell}
+						classes={{ ...cancelButtonClasses }}
+						className={styles.button}
+						color="primary"
+						variant="raised"
+					>
 						{cancelButtonText}
 					</Button>
-					<Button color="primary" classes={{ root: styles.button }} onClick={handleSubmit} type="submit">
+					<Button
+						color="primary"
+						classes={{ root: styles.button, ...confirmButtonClasses }}
+						onClick={handleSubmit}
+						type="submit"
+					>
 						{submitButtonText}
 					</Button>
 				</Grid>
@@ -45,7 +67,15 @@ Popup.propTypes = {
 	onCancel: PropTypes.func,
 	cancelButtonText: PropTypes.string,
 	submitButtonText: PropTypes.string,
+	className: PropTypes.string,
 	children: PropTypes.element,
+	classes: PropTypes.shape({
+		root: PropTypes.string,
+		dataContainer: PropTypes.string,
+		buttonContainer: PropTypes.string,
+	}),
+	confirmButtonClasses: PropTypes.objectOf(PropTypes.string),
+	cancelButtonClasses: PropTypes.objectOf(PropTypes.string),
 };
 Popup.defaultProps = {
 	cancelButtonText: 'Отменить',
