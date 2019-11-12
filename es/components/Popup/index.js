@@ -31,7 +31,14 @@ var Popup = function Popup(_ref) {
       cancelButtonText = props.cancelButtonText,
       submitButtonText = props.submitButtonText,
       showPopup = props.showPopup,
-      children = props.children;
+      children = props.children,
+      className = props.className,
+      _props$classes = props.classes,
+      classes = _props$classes === void 0 ? {} : _props$classes,
+      _props$confirmButtonC = props.confirmButtonClasses,
+      confirmButtonClasses = _props$confirmButtonC === void 0 ? {} : _props$confirmButtonC,
+      _props$cancelButtonCl = props.cancelButtonClasses,
+      cancelButtonClasses = _props$cancelButtonCl === void 0 ? {} : _props$cancelButtonCl;
 
   var _React$useState = React.useState(showPopup),
       _React$useState2 = _slicedToArray(_React$useState, 2),
@@ -62,27 +69,28 @@ var Popup = function Popup(_ref) {
     onClick: handleCancell
   }, React.createElement(Grid, {
     container: true,
-    className: styles.container
+    className: [styles.container, className, classes.root].join(' ')
   }, React.createElement(Grid, {
     item: true,
-    className: styles.dataContainer,
+    className: [styles.dataContainer, classes.dataContainer].join(' '),
     xs: 12
   }, React.cloneElement(children, _objectSpread({}, props, {}, state, {
     changeState: changeState
   }))), React.createElement(Grid, {
     item: true,
     xs: 12,
-    className: styles.buttonContainer
+    className: [styles.buttonContainer, classes.buttonContainer].join(' ')
   }, React.createElement(Button, {
     onClick: handleCancell,
+    classes: _objectSpread({}, cancelButtonClasses),
     className: styles.button,
     color: "primary",
     variant: "raised"
   }, cancelButtonText), React.createElement(Button, {
     color: "primary",
-    classes: {
+    classes: _objectSpread({
       root: styles.button
-    },
+    }, confirmButtonClasses),
     onClick: handleSubmit,
     type: "submit"
   }, submitButtonText))));
@@ -94,7 +102,15 @@ Popup.propTypes = {
   onCancel: PropTypes.func,
   cancelButtonText: PropTypes.string,
   submitButtonText: PropTypes.string,
-  children: PropTypes.element
+  className: PropTypes.string,
+  children: PropTypes.element,
+  classes: PropTypes.shape({
+    root: PropTypes.string,
+    dataContainer: PropTypes.string,
+    buttonContainer: PropTypes.string
+  }),
+  confirmButtonClasses: PropTypes.objectOf(PropTypes.string),
+  cancelButtonClasses: PropTypes.objectOf(PropTypes.string)
 };
 Popup.defaultProps = {
   cancelButtonText: 'Отменить',
