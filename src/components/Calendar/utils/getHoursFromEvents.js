@@ -1,8 +1,9 @@
+import moment from 'moment';
 export default function getHoursFromEvents(events = []) {
 	let result = [];
 	for (let i = 0; i < events.length; i++) {
 		if ('date' in events[i] && 'duration' in events[i]) {
-			let time = new Date(events[i].date);
+			let time = new Date(moment(events[i].date));
 			let startHour = time.getHours() * 2 + (time.getMinutes() * 2) / 60;
 			let hours = Math.ceil((events[i].duration / 60) * 2);
 			for (let j = startHour; j < startHour + hours; j++) {
@@ -12,5 +13,6 @@ export default function getHoursFromEvents(events = []) {
 			}
 		}
 	}
+	console.log(result);
 	return result;
 }

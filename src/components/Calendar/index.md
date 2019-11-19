@@ -1,8 +1,8 @@
 ```jsx
 <Calendar
 	bookedTime={[
-		{ date: '2019-10-25 7:30:00', duration: 150 },
-		{ date: '2019-10-19 20:00:00', duration: 120 },
+		{ date: '2019-11-20 07:30:00', duration: 150 },
+		{ date: '2019-11-20 15:00:00', duration: 120 },
 	]}
 	onConfirm={date => console.log(date)}
 	workingTime={{

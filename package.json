@@ -8,6 +8,7 @@
 		"@material-ui/icons": "^4.4.3",
 		"babel-loader": "^8.0.6",
 		"classnames": "^2.2.6",
+		"moment": "^2.24.0",
 		"node-sass": "^4.12.0",
 		"prettier": "^1.18.2",
 		"react": "^16.8.6",
@@ -44,8 +45,7 @@
 		],
 		"development": [
 			"last 1 chrome version",
-			"last 1 firefox version",
-			"last 1 safari version"
+			"last 1 firefox version"
 		]
 	},
 	"devDependencies": {
