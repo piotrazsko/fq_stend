@@ -109,8 +109,8 @@ Popup.propTypes = {
     dataContainer: PropTypes.string,
     buttonContainer: PropTypes.string
   }),
-  confirmButtonClasses: PropTypes.objectOf(PropTypes.string),
-  cancelButtonClasses: PropTypes.objectOf(PropTypes.string)
+  confirmButtonClasses: PropTypes.objectOf(PropTypes.object),
+  cancelButtonClasses: PropTypes.objectOf(PropTypes.object)
 };
 Popup.defaultProps = {
   cancelButtonText: 'Отменить',

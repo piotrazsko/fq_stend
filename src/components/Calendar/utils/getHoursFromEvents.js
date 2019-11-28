@@ -13,6 +13,5 @@ export default function getHoursFromEvents(events = []) {
 			}
 		}
 	}
-	console.log(result);
 	return result;
 }
