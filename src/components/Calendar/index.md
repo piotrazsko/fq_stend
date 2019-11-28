@@ -9,7 +9,7 @@
 		mon: '{"12":"white","15":"white","18":"white"}',
 		tue: '{"8":"white"}',
 		wed: '{"12":"white","15":"white","18":"white"}',
-		thu: '{"14":"white","18":"white"}',
+		thu: null,
 		fri: '{"8":"white"}',
 		sat: '{"15":"white","18":"white"}',
 		sun: null,
@@ -18,9 +18,9 @@
 		{
 			id: 3147,
 			master_id: 20585,
-			date: '2019-12-25 00:00:00',
+			date: '2019-11-28 00:00:00',
 			time_disable: ['12', '15', '18'],
-			time_enable: [''],
+			time_enable: ['11', '19'],
 		},
 		{
 			id: 3148,

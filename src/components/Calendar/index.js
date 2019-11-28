@@ -86,26 +86,37 @@ class Calendar extends React.Component {
 			...this.state,
 		};
 		const props = { ...this.props };
-		const customDisabledTime = getCustomDisabledTime([...props.customTime], state.selectedDate);
-		const customEnabledTime = getCustomEnabledTime([...props.customTime], state.selectedDate);
-		const bookedTime = [
-			...getHoursFromEvents(props.bookedTime),
-			...customDisabledTime,
-			...getDisabledTimeFromShefule(props.workingTime, state.selectedDate).filter(
-				item => !customEnabledTime.find(i => i.toISOString() === item.toISOString())
+		const disabledTimeOfDay = ({ currentDay, bookedTime, customTime, workingTime }) => {
+			const customDisabledTime = getCustomDisabledTime([...customTime], currentDay);
+			const customEnabledTime = getCustomEnabledTime([...customTime], currentDay);
+			return [
+				...getHoursFromEvents(bookedTime),
+				...customDisabledTime,
+				...getDisabledTimeFromShefule(workingTime, currentDay).filter(
+					item => !customEnabledTime.find(i => i.toISOString() === item.toISOString())
+				),
+			].filter(item => item.toDateString() === currentDay.toDateString());
+		};
+		const bookedTime = disabledTimeOfDay({
+			currentDay: state.selectedDate,
+			bookedTime: props.bookedTime,
+			customTime: props.customTime,
+			workingTime: props.workingTime,
+		});
+		const disabledDays = [
+			...props.disabledDays,
+			...getDatesMounthBeforeToday(new Date(), state.currentMonth),
+			...getDisabledDaysFromShedule(props.workingTime, state.currentMonth).filter(
+				item =>
+					disabledTimeOfDay({
+						currentDay: item,
+						bookedTime: props.bookedTime,
+						customTime: props.customTime,
+						workingTime: props.workingTime,
+					}).length === 48
 			),
 		];
-		const disabledTimeForToday = Array.from(
-			new Set(getDisabledTimeBeforeCurrentTime(new Date(), bookedTime))
-		);
-		const disabledDays = props.isDisabledBeforeToday
-			? [
-					...props.disabledDays,
-					...getDatesMounthBeforeToday(new Date(), state.currentMonth),
-					...getDisabledDaysFromShedule(props.workingTime, state.currentMonth),
-					...[disabledTimeForToday.length === 48 && new Date()],
-			  ]
-			: props.disabledDays;
+
 		const timeProps = {
 			onTimeClick: this.onTimeClickHandler,
 			selectedTime: state.selectedTime,
