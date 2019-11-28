@@ -181,7 +181,8 @@ _defineProperty(Calendar, "defaultProps", {
   isDisabledBeforeToday: true,
   isDisabledBeforeCurrentTime: true,
   bookedTime: [],
-  afterHours: []
+  afterHours: [],
+  customTime: []
 });
 
 _defineProperty(Calendar, "propTypes", {
