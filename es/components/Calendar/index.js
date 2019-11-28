@@ -131,15 +131,36 @@ function (_React$Component) {
 
       var props = _objectSpread({}, this.props);
 
-      var customDisabledTime = getCustomDisabledTime(_toConsumableArray(props.customTime), state.selectedDate);
-      var customEnabledTime = getCustomEnabledTime(_toConsumableArray(props.customTime), state.selectedDate);
-      var bookedTime = [].concat(_toConsumableArray(getHoursFromEvents(props.bookedTime)), _toConsumableArray(customDisabledTime), _toConsumableArray(getDisabledTimeFromShefule(props.workingTime, state.selectedDate).filter(function (item) {
-        return !customEnabledTime.find(function (i) {
-          return i.toISOString() === item.toISOString();
+      var disabledTimeOfDay = function disabledTimeOfDay(_ref) {
+        var currentDay = _ref.currentDay,
+            bookedTime = _ref.bookedTime,
+            customTime = _ref.customTime,
+            workingTime = _ref.workingTime;
+        var customDisabledTime = getCustomDisabledTime(_toConsumableArray(customTime), currentDay);
+        var customEnabledTime = getCustomEnabledTime(_toConsumableArray(customTime), currentDay);
+        return [].concat(_toConsumableArray(getHoursFromEvents(bookedTime)), _toConsumableArray(customDisabledTime), _toConsumableArray(getDisabledTimeFromShefule(workingTime, currentDay).filter(function (item) {
+          return !customEnabledTime.find(function (i) {
+            return i.toISOString() === item.toISOString();
+          });
+        }))).filter(function (item) {
+          return item.toDateString() === currentDay.toDateString();
         });
+      };
+
+      var bookedTime = disabledTimeOfDay({
+        currentDay: state.selectedDate,
+        bookedTime: props.bookedTime,
+        customTime: props.customTime,
+        workingTime: props.workingTime
+      });
+      var disabledDays = [].concat(_toConsumableArray(props.disabledDays), _toConsumableArray(getDatesMounthBeforeToday(new Date(), state.currentMonth)), _toConsumableArray(getDisabledDaysFromShedule(props.workingTime, state.currentMonth).filter(function (item) {
+        return disabledTimeOfDay({
+          currentDay: item,
+          bookedTime: props.bookedTime,
+          customTime: props.customTime,
+          workingTime: props.workingTime
+        }).length === 48;
       })));
-      var disabledTimeForToday = Array.from(new Set(getDisabledTimeBeforeCurrentTime(new Date(), bookedTime)));
-      var disabledDays = props.isDisabledBeforeToday ? [].concat(_toConsumableArray(props.disabledDays), _toConsumableArray(getDatesMounthBeforeToday(new Date(), state.currentMonth)), _toConsumableArray(getDisabledDaysFromShedule(props.workingTime, state.currentMonth)), [disabledTimeForToday.length === 48 && new Date()]) : props.disabledDays;
       var timeProps = {
         onTimeClick: this.onTimeClickHandler,
         selectedTime: state.selectedTime,
