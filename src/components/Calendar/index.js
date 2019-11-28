@@ -63,6 +63,7 @@ class Calendar extends React.Component {
 	setDateHandler = date => {
 		this.setState({
 			selectedDate: date,
+			currentMonth: date,
 		});
 	};
 	showCalendar = () => {
@@ -89,11 +90,15 @@ class Calendar extends React.Component {
 		const disabledTimeOfDay = ({ currentDay, bookedTime, customTime, workingTime }) => {
 			const customDisabledTime = getCustomDisabledTime([...customTime], currentDay);
 			const customEnabledTime = getCustomEnabledTime([...customTime], currentDay);
+
 			return [
 				...getHoursFromEvents(bookedTime),
 				...customDisabledTime,
 				...getDisabledTimeFromShefule(workingTime, currentDay).filter(
-					item => !customEnabledTime.find(i => i.toISOString() === item.toISOString())
+					item =>
+						!customEnabledTime.find(i => {
+							return Math.floor(i.valueOf() / 100000) === Math.floor(item.valueOf() / 100000);
+						})
 				),
 			].filter(item => item.toDateString() === currentDay.toDateString());
 		};
@@ -113,7 +118,7 @@ class Calendar extends React.Component {
 						bookedTime: props.bookedTime,
 						customTime: props.customTime,
 						workingTime: props.workingTime,
-					}).length === 48
+					}).length >= 48
 			),
 		];
 
@@ -137,7 +142,7 @@ class Calendar extends React.Component {
 			weekdaysShort: WEEKDAYS_SHORT,
 			onDayClick: this.onDayClickHandler,
 			disabledDays,
-			month: timeProps.selectedDate,
+			month: state.currentMonth,
 			onMonthChange: this.onMonthChange,
 			className: style.datapicker,
 		};

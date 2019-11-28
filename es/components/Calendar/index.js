@@ -92,7 +92,8 @@ function (_React$Component) {
 
     _defineProperty(_assertThisInitialized(_this), "setDateHandler", function (date) {
       _this.setState({
-        selectedDate: date
+        selectedDate: date,
+        currentMonth: date
       });
     });
 
@@ -140,7 +141,7 @@ function (_React$Component) {
         var customEnabledTime = getCustomEnabledTime(_toConsumableArray(customTime), currentDay);
         return [].concat(_toConsumableArray(getHoursFromEvents(bookedTime)), _toConsumableArray(customDisabledTime), _toConsumableArray(getDisabledTimeFromShefule(workingTime, currentDay).filter(function (item) {
           return !customEnabledTime.find(function (i) {
-            return i.toISOString() === item.toISOString();
+            return Math.floor(i.valueOf() / 100000) === Math.floor(item.valueOf() / 100000);
           });
         }))).filter(function (item) {
           return item.toDateString() === currentDay.toDateString();
@@ -159,7 +160,7 @@ function (_React$Component) {
           bookedTime: props.bookedTime,
           customTime: props.customTime,
           workingTime: props.workingTime
-        }).length === 48;
+        }).length >= 48;
       })));
       var timeProps = {
         onTimeClick: this.onTimeClickHandler,
@@ -181,7 +182,7 @@ function (_React$Component) {
         weekdaysShort: WEEKDAYS_SHORT,
         onDayClick: this.onDayClickHandler,
         disabledDays: disabledDays,
-        month: timeProps.selectedDate,
+        month: state.currentMonth,
         onMonthChange: this.onMonthChange,
         className: style.datapicker
       };
