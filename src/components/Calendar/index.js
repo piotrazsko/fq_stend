@@ -1,3 +1,4 @@
+/* global Set */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Day, Time } from './components';
@@ -7,7 +8,7 @@ import style from './style.module.scss';
 import getHoursFromEvents from './utils/getHoursFromEvents';
 import { getDisabledTimeFromShefule } from './utils/getDisabledTimeFromShedule';
 import { getDisabledDaysFromShedule } from './utils/getDisabledDaysFromShedule';
-
+import { getCustomDisabledTime, getCustomEnabledTime } from './utils/customTime';
 class Calendar extends React.Component {
 	state = {
 		showTime: false,
@@ -38,6 +39,7 @@ class Calendar extends React.Component {
 		bookedTime: PropTypes.array,
 		afterHours: PropTypes.array,
 		workingTime: PropTypes.array,
+		customTime: PropTypes.array,
 	};
 
 	onDayClickHandler = date => {
@@ -83,9 +85,14 @@ class Calendar extends React.Component {
 			...this.state,
 		};
 		const props = { ...this.props };
+		const customDisabledTime = getCustomDisabledTime([...props.customTime], state.selectedDate);
+		const customEnabledTime = getCustomEnabledTime([...props.customTime], state.selectedDate);
 		const bookedTime = [
 			...getHoursFromEvents(props.bookedTime),
-			...getDisabledTimeFromShefule(props.workingTime, state.selectedDate),
+			...customDisabledTime,
+			...getDisabledTimeFromShefule(props.workingTime, state.selectedDate).filter(
+				item => !customEnabledTime.find(i => i.toISOString() === item.toISOString())
+			),
 		];
 		const disabledTimeForToday = Array.from(
 			new Set(getDisabledTimeBeforeCurrentTime(new Date(), bookedTime))
@@ -118,6 +125,7 @@ class Calendar extends React.Component {
 			weekdaysShort: WEEKDAYS_SHORT,
 			onDayClick: this.onDayClickHandler,
 			disabledDays,
+			month: timeProps.selectedDate,
 			onMonthChange: this.onMonthChange,
 			className: style.datapicker,
 		};

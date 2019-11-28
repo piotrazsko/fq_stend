@@ -30,6 +30,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+/* global Set */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Day, Time } from './components';
@@ -41,6 +42,7 @@ var style = {
 import getHoursFromEvents from './utils/getHoursFromEvents';
 import { getDisabledTimeFromShefule } from './utils/getDisabledTimeFromShedule';
 import { getDisabledDaysFromShedule } from './utils/getDisabledDaysFromShedule';
+import { getCustomDisabledTime, getCustomEnabledTime } from './utils/customTime';
 
 var Calendar =
 /*#__PURE__*/
@@ -129,7 +131,13 @@ function (_React$Component) {
 
       var props = _objectSpread({}, this.props);
 
-      var bookedTime = [].concat(_toConsumableArray(getHoursFromEvents(props.bookedTime)), _toConsumableArray(getDisabledTimeFromShefule(props.workingTime, state.selectedDate)));
+      var customDisabledTime = getCustomDisabledTime(_toConsumableArray(props.customTime), state.selectedDate);
+      var customEnabledTime = getCustomEnabledTime(_toConsumableArray(props.customTime), state.selectedDate);
+      var bookedTime = [].concat(_toConsumableArray(getHoursFromEvents(props.bookedTime)), _toConsumableArray(customDisabledTime), _toConsumableArray(getDisabledTimeFromShefule(props.workingTime, state.selectedDate).filter(function (item) {
+        return !customEnabledTime.find(function (i) {
+          return i.toISOString() === item.toISOString();
+        });
+      })));
       var disabledTimeForToday = Array.from(new Set(getDisabledTimeBeforeCurrentTime(new Date(), bookedTime)));
       var disabledDays = props.isDisabledBeforeToday ? [].concat(_toConsumableArray(props.disabledDays), _toConsumableArray(getDatesMounthBeforeToday(new Date(), state.currentMonth)), _toConsumableArray(getDisabledDaysFromShedule(props.workingTime, state.currentMonth)), [disabledTimeForToday.length === 48 && new Date()]) : props.disabledDays;
       var timeProps = {
@@ -152,6 +160,7 @@ function (_React$Component) {
         weekdaysShort: WEEKDAYS_SHORT,
         onDayClick: this.onDayClickHandler,
         disabledDays: disabledDays,
+        month: timeProps.selectedDate,
         onMonthChange: this.onMonthChange,
         className: style.datapicker
       };
@@ -184,7 +193,8 @@ _defineProperty(Calendar, "propTypes", {
   isDisabledBeforeCurrentTime: PropTypes.bool,
   bookedTime: PropTypes.array,
   afterHours: PropTypes.array,
-  workingTime: PropTypes.array
+  workingTime: PropTypes.array,
+  customTime: PropTypes.array
 });
 
 export default Calendar;
