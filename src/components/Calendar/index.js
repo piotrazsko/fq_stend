@@ -28,6 +28,7 @@ class Calendar extends React.Component {
 		isDisabledBeforeCurrentTime: true,
 		bookedTime: [],
 		afterHours: [],
+		customTime: [],
 	};
 	static propTypes = {
 		onConfirm: PropTypes.func,
