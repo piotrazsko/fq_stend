@@ -139,12 +139,22 @@ function (_React$Component) {
             workingTime = _ref.workingTime;
         var customDisabledTime = getCustomDisabledTime(_toConsumableArray(customTime), currentDay);
         var customEnabledTime = getCustomEnabledTime(_toConsumableArray(customTime), currentDay);
-        return [].concat(_toConsumableArray(getHoursFromEvents(bookedTime)), _toConsumableArray(customDisabledTime), _toConsumableArray(getDisabledTimeFromShefule(workingTime, currentDay).filter(function (item) {
+        var res = [].concat(_toConsumableArray(getHoursFromEvents(bookedTime)), _toConsumableArray(customDisabledTime), _toConsumableArray(getDisabledTimeFromShefule(workingTime, currentDay).filter(function (item) {
           return !customEnabledTime.find(function (i) {
             return Math.floor(i.valueOf() / 100000) === Math.floor(item.valueOf() / 100000);
           });
         }))).filter(function (item) {
           return item.toDateString() === currentDay.toDateString();
+        }).map(function (item) {
+          item.setMilliseconds(0);
+          item.setSeconds(0);
+          return item;
+        });
+        var set = Array.from(new Set(res.map(function (item) {
+          return item.toISOString();
+        })));
+        return set.map(function (item) {
+          return new Date(item);
         });
       };
 

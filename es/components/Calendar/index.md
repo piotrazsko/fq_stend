@@ -36,8 +36,8 @@
 			id: 121,
 			master_id: 608,
 			date: '2019-11-30 00:00:00',
-			time_disable: [''],
-			time_enable: ['12', '13'],
+			time_disable: ['19'],
+			time_enable: ['20'],
 		},
 		{ id: 134, master_id: 608, date: '2019-11-29 00:00:00', time_disable: [''], time_enable: [''] },
 		{

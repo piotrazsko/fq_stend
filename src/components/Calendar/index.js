@@ -90,8 +90,7 @@ class Calendar extends React.Component {
 		const disabledTimeOfDay = ({ currentDay, bookedTime, customTime, workingTime }) => {
 			const customDisabledTime = getCustomDisabledTime([...customTime], currentDay);
 			const customEnabledTime = getCustomEnabledTime([...customTime], currentDay);
-
-			return [
+			const res = [
 				...getHoursFromEvents(bookedTime),
 				...customDisabledTime,
 				...getDisabledTimeFromShefule(workingTime, currentDay).filter(
@@ -100,7 +99,15 @@ class Calendar extends React.Component {
 							return Math.floor(i.valueOf() / 100000) === Math.floor(item.valueOf() / 100000);
 						})
 				),
-			].filter(item => item.toDateString() === currentDay.toDateString());
+			]
+				.filter(item => item.toDateString() === currentDay.toDateString())
+				.map(item => {
+					item.setMilliseconds(0);
+					item.setSeconds(0);
+					return item;
+				});
+			const set = Array.from(new Set(res.map(item => item.toISOString())));
+			return set.map(item => new Date(item));
 		};
 		const bookedTime = disabledTimeOfDay({
 			currentDay: state.selectedDate,
