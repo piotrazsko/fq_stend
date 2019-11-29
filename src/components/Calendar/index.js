@@ -7,7 +7,7 @@ import { getDatesMounthBeforeToday, getDisabledTimeBeforeCurrentTime } from './u
 import style from './style.module.scss';
 import getHoursFromEvents from './utils/getHoursFromEvents';
 import { getDisabledTimeFromShefule } from './utils/getDisabledTimeFromShedule';
-import { getDisabledDaysFromShedule } from './utils/getDisabledDaysFromShedule';
+import { getFullMounthDaysList } from './utils/getFullMounthDaysList';
 import { getCustomDisabledTime, getCustomEnabledTime } from './utils/customTime';
 class Calendar extends React.Component {
 	state = {
@@ -118,7 +118,7 @@ class Calendar extends React.Component {
 		const disabledDays = [
 			...props.disabledDays,
 			...getDatesMounthBeforeToday(new Date(), state.currentMonth),
-			...getDisabledDaysFromShedule(props.workingTime, state.currentMonth).filter(
+			...getFullMounthDaysList(state.currentMonth).filter(
 				item =>
 					disabledTimeOfDay({
 						currentDay: item,
