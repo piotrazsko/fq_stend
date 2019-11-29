@@ -21,7 +21,7 @@
 		thu:
 			'{"10":"white","11":"white","12":"white","13":"white","14":"white","15":"white","16":"white","17":"white","18":"white"}',
 		fri: null,
-		sat: null,
+		sat: { '20': 'white', '18': 'white' },
 		sun: null,
 	}}
 	customTime={[
@@ -36,8 +36,8 @@
 			id: 121,
 			master_id: 608,
 			date: '2019-11-30 00:00:00',
-			time_disable: ['19'],
-			time_enable: ['20'],
+			time_disable: ['20'],
+			time_enable: [''],
 		},
 		{ id: 134, master_id: 608, date: '2019-11-29 00:00:00', time_disable: [''], time_enable: [''] },
 		{

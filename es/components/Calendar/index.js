@@ -41,7 +41,7 @@ var style = {
 };
 import getHoursFromEvents from './utils/getHoursFromEvents';
 import { getDisabledTimeFromShefule } from './utils/getDisabledTimeFromShedule';
-import { getDisabledDaysFromShedule } from './utils/getDisabledDaysFromShedule';
+import { getFullMounthDaysList } from './utils/getFullMounthDaysList';
 import { getCustomDisabledTime, getCustomEnabledTime } from './utils/customTime';
 
 var Calendar =
@@ -164,7 +164,7 @@ function (_React$Component) {
         customTime: props.customTime,
         workingTime: props.workingTime
       });
-      var disabledDays = [].concat(_toConsumableArray(props.disabledDays), _toConsumableArray(getDatesMounthBeforeToday(new Date(), state.currentMonth)), _toConsumableArray(getDisabledDaysFromShedule(props.workingTime, state.currentMonth).filter(function (item) {
+      var disabledDays = [].concat(_toConsumableArray(props.disabledDays), _toConsumableArray(getDatesMounthBeforeToday(new Date(), state.currentMonth)), _toConsumableArray(getFullMounthDaysList(state.currentMonth).filter(function (item) {
         return disabledTimeOfDay({
           currentDay: item,
           bookedTime: props.bookedTime,

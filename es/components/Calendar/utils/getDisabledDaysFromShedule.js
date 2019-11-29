@@ -1,6 +1,6 @@
 import { WEEKDAYS_ENG_RUS } from '../config';
 import get from 'lodash/get';
-export function getDisabledDaysFromShedule(shedule, selectedDay) {
+export function getFullMounthDaysList(shedule, selectedDay) {
   var result = [];
   var tempDay = new Date(selectedDay.toISOString());
 
