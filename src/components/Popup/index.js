@@ -14,6 +14,10 @@ const Popup = ({ ...props }) => {
 		showPopup,
 		children,
 		className,
+		disableSubmit = false,
+		disableCancel = false,
+		showSubmit,
+		showCancel,
 		classes = {},
 		confirmButtonClasses = {},
 		cancelButtonClasses = {},
@@ -43,6 +47,7 @@ const Popup = ({ ...props }) => {
 						classes={{ ...cancelButtonClasses }}
 						className={styles.button}
 						color="primary"
+						disabled={disableCancel}
 						variant="raised"
 					>
 						{cancelButtonText}
@@ -51,6 +56,7 @@ const Popup = ({ ...props }) => {
 						color="primary"
 						classes={{ root: styles.button, ...confirmButtonClasses }}
 						onClick={handleSubmit}
+						disabled={disableSubmit}
 						type="submit"
 					>
 						{submitButtonText}
@@ -76,6 +82,10 @@ Popup.propTypes = {
 	}),
 	confirmButtonClasses: PropTypes.objectOf(PropTypes.object),
 	cancelButtonClasses: PropTypes.objectOf(PropTypes.object),
+	disableSubmit: PropTypes.bool,
+	disableCancel: PropTypes.bool,
+	showSubmit: PropTypes.bool,
+	showCancel: PropTypes.bool,
 };
 Popup.defaultProps = {
 	cancelButtonText: 'Отменить',
@@ -83,6 +93,10 @@ Popup.defaultProps = {
 	onSubmit: () => {},
 	onCancel: () => {},
 	showPopup: true,
+	disableSubmit: false,
+	disableCancel: false,
+	showSubmit: true,
+	showCancel: true,
 };
 
 export default Popup;
