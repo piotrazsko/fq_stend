@@ -33,6 +33,12 @@ var Popup = function Popup(_ref) {
       showPopup = props.showPopup,
       children = props.children,
       className = props.className,
+      _props$disableSubmit = props.disableSubmit,
+      disableSubmit = _props$disableSubmit === void 0 ? false : _props$disableSubmit,
+      _props$disableCancel = props.disableCancel,
+      disableCancel = _props$disableCancel === void 0 ? false : _props$disableCancel,
+      showSubmit = props.showSubmit,
+      showCancel = props.showCancel,
       _props$classes = props.classes,
       classes = _props$classes === void 0 ? {} : _props$classes,
       _props$confirmButtonC = props.confirmButtonClasses,
@@ -85,6 +91,7 @@ var Popup = function Popup(_ref) {
     classes: _objectSpread({}, cancelButtonClasses),
     className: styles.button,
     color: "primary",
+    disabled: disableCancel,
     variant: "raised"
   }, cancelButtonText), React.createElement(Button, {
     color: "primary",
@@ -92,6 +99,7 @@ var Popup = function Popup(_ref) {
       root: styles.button
     }, confirmButtonClasses),
     onClick: handleSubmit,
+    disabled: disableSubmit,
     type: "submit"
   }, submitButtonText))));
 };
@@ -110,13 +118,21 @@ Popup.propTypes = {
     buttonContainer: PropTypes.string
   }),
   confirmButtonClasses: PropTypes.objectOf(PropTypes.object),
-  cancelButtonClasses: PropTypes.objectOf(PropTypes.object)
+  cancelButtonClasses: PropTypes.objectOf(PropTypes.object),
+  disableSubmit: PropTypes.bool,
+  disableCancel: PropTypes.bool,
+  showSubmit: PropTypes.bool,
+  showCancel: PropTypes.bool
 };
 Popup.defaultProps = {
   cancelButtonText: 'Отменить',
   submitButtonText: 'Применить',
   onSubmit: function onSubmit() {},
   onCancel: function onCancel() {},
-  showPopup: true
+  showPopup: true,
+  disableSubmit: false,
+  disableCancel: false,
+  showSubmit: true,
+  showCancel: true
 };
 export default Popup;
