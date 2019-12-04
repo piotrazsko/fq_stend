@@ -24,20 +24,20 @@ var UserInfo = function UserInfo(_ref) {
     className: [styles['userInfo__user'], classNames.container].join(' ')
   }, React.createElement(Avatar, {
     imageUrl: avatar,
-    className: [styles['userInfo__icon'], classNames.avatar].join(' ')
+    className: [styles['userInfo__icon'], classNames.avatar || ''].join(' ')
   }), React.createElement("div", {
     className: styles['userInfo__text']
   }, userStatus && React.createElement("div", {
-    className: [styles['userInfo__user-status'], classNames.status].join(' ')
+    className: [styles['userInfo__user-status'], classNames.status || ''].join(' ')
   }, userStatus), React.createElement("div", {
-    className: [styles['userInfo__user-name'], classNames.name].join(' ')
+    className: [styles['userInfo__user-name'], classNames.name || ''].join(' ')
   }, firstName + ' ' + lastName), location && React.createElement("div", {
-    className: [styles['userInfo__user-name'], classNames.location].join(' ')
+    className: [styles['userInfo__user-name'], classNames.location || ''].join(' ')
   }, location), rating && React.createElement("div", {
     className: [styles['userInfo__rating'], classNames.rating].join(' ')
   }, React.createElement(Rating, {
     rating: parseFloat(rating),
-    className: styles['userInfo__rating-star']
+    className: [styles['userInfo__rating-star'], classNames.ratingStars || ''].join(' ')
   }), React.createElement("span", {
     className: styles['userInfo__rating-value']
   }, rating))));
@@ -62,15 +62,17 @@ UserInfo.propTypes = {
   lastName: PropTypes.string,
   rating: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   location: PropTypes.string,
-  user_status: PropTypes.string,
+  userStatus: PropTypes.string,
   avatar: PropTypes.string,
   classNames: PropTypes.shape({
     container: PropTypes.string,
+    avatar: PropTypes.string,
     status: PropTypes.string,
     name: PropTypes.string,
     location: PropTypes.string,
     rating: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    ratingText: PropTypes.string
+    ratingText: PropTypes.string,
+    ratingStars: PropTypes.string
   })
 };
 export default UserInfo;
