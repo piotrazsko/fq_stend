@@ -19,10 +19,12 @@ var UserInfo = function UserInfo(_ref) {
       location = _ref.location,
       userStatus = _ref.userStatus,
       avatar = _ref.avatar,
-      classNames = _ref.classNames;
+      classNames = _ref.classNames,
+      avatarOnClick = _ref.avatarOnClick;
   return React.createElement("div", {
     className: [styles['userInfo__user'], classNames.container].join(' ')
   }, React.createElement(Avatar, {
+    onClick: avatarOnClick,
     imageUrl: avatar,
     className: [styles['userInfo__icon'], classNames.avatar || ''].join(' ')
   }), React.createElement("div", {
@@ -60,6 +62,7 @@ UserInfo.defaultProps = {
 UserInfo.propTypes = {
   firstName: PropTypes.string,
   lastName: PropTypes.string,
+  avatarOnClick: PropTypes.func,
   rating: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   location: PropTypes.string,
   userStatus: PropTypes.string,
