@@ -5,9 +5,19 @@ import Rating from '../Rating';
 import Avatar from '../Avatar';
 import styles from './styles.module.scss';
 
-const UserInfo = ({ firstName, lastName, rating, location, userStatus, avatar, classNames }) => (
+const UserInfo = ({
+	firstName,
+	lastName,
+	rating,
+	location,
+	userStatus,
+	avatar,
+	classNames,
+	avatarOnClick,
+}) => (
 	<div className={[styles['userInfo__user'], classNames.container].join(' ')}>
 		<Avatar
+			onClick={avatarOnClick}
 			imageUrl={avatar}
 			className={[styles['userInfo__icon'], classNames.avatar || ''].join(' ')}
 		/>
@@ -57,6 +67,7 @@ UserInfo.defaultProps = {
 UserInfo.propTypes = {
 	firstName: PropTypes.string,
 	lastName: PropTypes.string,
+	avatarOnClick: PropTypes.func,
 	rating: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 	location: PropTypes.string,
 	userStatus: PropTypes.string,
