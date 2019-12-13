@@ -13,9 +13,9 @@ import PropTypes from 'prop-types';
 import PopupBackground from '../../PopupBackground';
 import Button from '../PopupButton';
 var style = {
-  "container": "style-module_fq_container___20QjS",
-  "icon": "style-module_fq_icon___21rv_",
-  "button": "style-module_fq_button___2uDFP"
+  "container": "style-module_fq_container___1I18N",
+  "icon": "style-module_fq_icon___185Zz",
+  "button": "style-module_fq_button___2Bn-o"
 };
 
 var PopupCore = function PopupCore(_ref) {

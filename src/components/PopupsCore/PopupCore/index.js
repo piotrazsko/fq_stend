@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import PopupBackground from '../../PopupBackground';
 import Button from '../PopupButton';
-import style from './style.module.scss';
+import style from '../style.module.scss';
 
 const PopupCore = ({
 	showPopup = true,
