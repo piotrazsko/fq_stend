@@ -97,26 +97,6 @@
     font-weight: 500; }
 /*  imported from style.module.scss  */
 
-.style-module_fq_container___1KNAu {
-  min-width: 300px;
-  padding: 20px 25px;
-  max-height: 75vh;
-  max-width: 75vw; }
-  .style-module_fq_container___1KNAu .style-module_fq_buttonContainer___txOay {
-    padding-top: 25px;
-    display: flex;
-    justify-content: flex-end; }
-  .style-module_fq_container___1KNAu .style-module_fq_dataContainer___3LZ9C {
-    overflow: auto;
-    min-width: 300px;
-    padding: 20px 25px;
-    max-height: calc(75vh - 125px);
-    max-width: 75vw; }
-  .style-module_fq_container___1KNAu .style-module_fq_button___2pPVp {
-    margin-left: 20px;
-    font-size: 0.8em; }
-/*  imported from style.module.scss  */
-
 .style-module_fq_popup_background___1eN_y {
   position: fixed;
   width: 100vw;
@@ -145,6 +125,54 @@
     display: flex;
     flex-direction: column;
     justify-content: center; } }
+/*  imported from style.module.scss  */
+
+.style-module_fq_alert___1NaQF {
+  margin: 30px 40px;
+  font-family: Roboto; }
+/*  imported from style.module.scss  */
+
+.style-module_fq_confirm___3gmlr {
+  margin: 30px 40px;
+  font-family: Roboto; }
+/*  imported from style.module.scss  */
+
+.style-module_fq_container___x2YMF {
+  min-width: 300px;
+  padding: 20px 25px;
+  max-height: 75vh;
+  max-width: 75vw; }
+  .style-module_fq_container___x2YMF .style-module_fq_buttonContainer___2r9Fb {
+    padding-top: 25px;
+    display: flex;
+    justify-content: flex-end; }
+  .style-module_fq_container___x2YMF .style-module_fq_dataContainer___Kr87O {
+    overflow: auto;
+    min-width: 300px;
+    padding: 20px 25px;
+    max-height: calc(75vh - 125px);
+    max-width: 75vw; }
+  .style-module_fq_container___x2YMF .style-module_fq_button___3jab_ {
+    margin-left: 20px;
+    font-size: 0.8em; }
+/*  imported from style.module.scss  */
+
+.style-module_fq_container___1bSFI {
+  max-width: 90vw;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+
+.style-module_fq_icon___10j9M {
+  background-image: url("../../../static/images/Group 3.svg");
+  height: 80px;
+  width: 80px;
+  background-size: contain;
+  margin: auto; }
+
+.style-module_fq_button___37cyN {
+  margin: 0 15px !important; }
 /*  imported from style.module.scss  */
 
 .style-module_fq_title___2d2YD {

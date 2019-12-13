@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import PopupBackground from '../PopupBackground';
 import { Grid } from '@material-ui/core';
-import Button from '../Button';
+import PopupBackground from '../../PopupBackground';
+import Button from '../../Button';
 import styles from './style.module.scss';
 
 const Popup = ({ ...props }) => {
