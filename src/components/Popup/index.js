@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Grid } from '@material-ui/core';
-import PopupBackground from '../../PopupBackground';
-import Button from '../../Button';
+import PopupBackground from '../PopupBackground';
+import Button from '../Button';
 import styles from './style.module.scss';
 
 const Popup = ({ ...props }) => {
@@ -16,8 +16,6 @@ const Popup = ({ ...props }) => {
 		className,
 		disableSubmit = false,
 		disableCancel = false,
-		showSubmit,
-		showCancel,
 		classes = {},
 		confirmButtonClasses = {},
 		cancelButtonClasses = {},

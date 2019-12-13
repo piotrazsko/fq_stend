@@ -17,7 +17,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 import React, { Component } from 'react';
-import Popup from '../Popups/Popup';
+import Popup from '../Popup';
 var styles = {
   "title": "style-module_fq_title___2d2YD",
   "paragraph": "style-module_fq_paragraph___3VMXi"

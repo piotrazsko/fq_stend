@@ -12,10 +12,10 @@ function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) ||
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import PopupBackground from '../PopupBackground';
 import { Grid } from '@material-ui/core';
+import PopupBackground from '../PopupBackground';
 import Button from '../Button';
 var styles = {
   "container": "style-module_fq_container___1KNAu",
@@ -37,8 +37,6 @@ var Popup = function Popup(_ref) {
       disableSubmit = _props$disableSubmit === void 0 ? false : _props$disableSubmit,
       _props$disableCancel = props.disableCancel,
       disableCancel = _props$disableCancel === void 0 ? false : _props$disableCancel,
-      showSubmit = props.showSubmit,
-      showCancel = props.showCancel,
       _props$classes = props.classes,
       classes = _props$classes === void 0 ? {} : _props$classes,
       _props$confirmButtonC = props.confirmButtonClasses,

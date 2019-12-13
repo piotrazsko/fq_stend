@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Popup from '../Popups/Popup';
+import Popup from '../Popup';
 
 import styles from './style.module.scss';
 

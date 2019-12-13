@@ -1,12 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import PopupCore from '../PopupCore';
+import { PopupCore } from '../PopupsCore';
 
 import style from './style.module.scss';
-const AlertPopup = ({
+const ConfirmPopup = ({
 	type,
 	onClick = () => {},
+	onCancel = () => {},
 	textConfirm = 'OK',
+	textCancel = 'Cancel',
 	show = false,
 	message = '',
 	showForce = false,
@@ -22,29 +24,31 @@ const AlertPopup = ({
 					}
 				}}
 				textConfirm={textConfirm}
-				textCancel=""
+				textCancel={textCancel}
 				type="button"
 				onClose={() => {
-					if (typeof onClick === 'function') {
-						onClick();
+					if (typeof onCancel === 'function') {
+						onCancel();
 					}
 				}}
+				cancellButtonProps={{ variant: 'outlined' }}
 			>
-				<div className={style.alert}>{message}</div>
+				<div className={style.confirm}>{message}</div>
 			</PopupCore>
 		)
 	);
 };
 
-AlertPopup.propTypes = {
+ConfirmPopup.propTypes = {
 	type: PropTypes.string,
 	confirmAction: PropTypes.func,
 	titleText: PropTypes.string,
 	show: PropTypes.bool,
 	message: PropTypes.element,
-	hideAlert: PropTypes.func,
+	hideConfirm: PropTypes.func,
 	textConfirm: PropTypes.string,
 	showForce: PropTypes.bool,
+	textCancel: PropTypes.string,
 };
 
-export default AlertPopup;
+export default ConfirmPopup;
