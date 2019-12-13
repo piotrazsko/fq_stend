@@ -1,5 +1,5 @@
 module.exports = {
-	components: 'src/components/**/index.js',
+	components: 'src/components/*/index.js',
 	styleguideDir: 'dist',
 	template: {
 		head: {
