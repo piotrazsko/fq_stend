@@ -1,3 +1,8 @@
+/*  imported from style.module.scss  */
+
+.style-module_fq_alert___2u1n1 {
+  margin: 30px 40px;
+  font-family: Roboto; }
 /*  imported from styles.module.scss  */
 
 .styles-module_fq_icon___1jf_B {
@@ -22,6 +27,11 @@
 /*  imported from style.module.scss  */
 
 .style-module_fq_datapicker___1QWkp {
+  font-family: Roboto; }
+/*  imported from style.module.scss  */
+
+.style-module_fq_confirm___2_NRm {
+  margin: 30px 40px;
   font-family: Roboto; }
 /*  imported from style.module.scss  */
 
@@ -97,6 +107,26 @@
     font-weight: 500; }
 /*  imported from style.module.scss  */
 
+.style-module_fq_container___1KNAu {
+  min-width: 300px;
+  padding: 20px 25px;
+  max-height: 75vh;
+  max-width: 75vw; }
+  .style-module_fq_container___1KNAu .style-module_fq_buttonContainer___txOay {
+    padding-top: 25px;
+    display: flex;
+    justify-content: flex-end; }
+  .style-module_fq_container___1KNAu .style-module_fq_dataContainer___3LZ9C {
+    overflow: auto;
+    min-width: 300px;
+    padding: 20px 25px;
+    max-height: calc(75vh - 125px);
+    max-width: 75vw; }
+  .style-module_fq_container___1KNAu .style-module_fq_button___2pPVp {
+    margin-left: 20px;
+    font-size: 0.8em; }
+/*  imported from style.module.scss  */
+
 .style-module_fq_popup_background___1eN_y {
   position: fixed;
   width: 100vw;
@@ -127,51 +157,21 @@
     justify-content: center; } }
 /*  imported from style.module.scss  */
 
-.style-module_fq_alert___1NaQF {
-  margin: 30px 40px;
-  font-family: Roboto; }
-/*  imported from style.module.scss  */
-
-.style-module_fq_confirm___3gmlr {
-  margin: 30px 40px;
-  font-family: Roboto; }
-/*  imported from style.module.scss  */
-
-.style-module_fq_container___x2YMF {
-  min-width: 300px;
-  padding: 20px 25px;
-  max-height: 75vh;
-  max-width: 75vw; }
-  .style-module_fq_container___x2YMF .style-module_fq_buttonContainer___2r9Fb {
-    padding-top: 25px;
-    display: flex;
-    justify-content: flex-end; }
-  .style-module_fq_container___x2YMF .style-module_fq_dataContainer___Kr87O {
-    overflow: auto;
-    min-width: 300px;
-    padding: 20px 25px;
-    max-height: calc(75vh - 125px);
-    max-width: 75vw; }
-  .style-module_fq_container___x2YMF .style-module_fq_button___3jab_ {
-    margin-left: 20px;
-    font-size: 0.8em; }
-/*  imported from style.module.scss  */
-
-.style-module_fq_container___1bSFI {
+.style-module_fq_container___20QjS {
   max-width: 90vw;
   padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center; }
 
-.style-module_fq_icon___10j9M {
-  background-image: url("../../../static/images/Group 3.svg");
+.style-module_fq_icon___21rv_ {
+  background-image: url("../../../static/images/Group3.svg");
   height: 80px;
   width: 80px;
   background-size: contain;
   margin: auto; }
 
-.style-module_fq_button___37cyN {
+.style-module_fq_button___2uDFP {
   margin: 0 15px !important; }
 /*  imported from style.module.scss  */
 
