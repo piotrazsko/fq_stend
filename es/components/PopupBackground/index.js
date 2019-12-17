@@ -12,7 +12,7 @@ var PopupBackground = function PopupBackground(_ref) {
       children = _ref.children;
 
   var handleClick = function handleClick(event) {
-    onClick();
+    onClick(event);
   };
 
   return visible ? React.createElement("div", {

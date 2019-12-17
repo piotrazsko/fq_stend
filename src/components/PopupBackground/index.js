@@ -4,7 +4,7 @@ import style from './style.module.scss';
 
 const PopupBackground = ({ onClick, visible = false, children }) => {
 	const handleClick = event => {
-		onClick();
+		onClick(event);
 	};
 
 	return visible ? (
