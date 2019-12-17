@@ -25,17 +25,17 @@ var ConfirmPopup = function ConfirmPopup(_ref) {
   return show && React.createElement(PopupCore, {
     showForce: showForce,
     colorConfirm: type === 'danger' ? 'secondary' : 'primary',
-    onClick: function onClick() {
+    onClick: function onClick(ev) {
       if (typeof _onClick === 'function') {
-        _onClick();
+        _onClick(ev);
       }
     },
     textConfirm: textConfirm,
     textCancel: textCancel,
     type: "button",
-    onClose: function onClose() {
+    onClose: function onClose(ev) {
       if (typeof onCancel === 'function') {
-        onCancel();
+        onCancel(ev);
       }
     },
     cancellButtonProps: {

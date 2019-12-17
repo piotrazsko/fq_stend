@@ -18,17 +18,17 @@ const ConfirmPopup = ({
 			<PopupCore
 				showForce={showForce}
 				colorConfirm={type === 'danger' ? 'secondary' : 'primary'}
-				onClick={() => {
+				onClick={ev => {
 					if (typeof onClick === 'function') {
-						onClick();
+						onClick(ev);
 					}
 				}}
 				textConfirm={textConfirm}
 				textCancel={textCancel}
 				type="button"
-				onClose={() => {
+				onClose={ev => {
 					if (typeof onCancel === 'function') {
-						onCancel();
+						onCancel(ev);
 					}
 				}}
 				cancellButtonProps={{ variant: 'outlined' }}
