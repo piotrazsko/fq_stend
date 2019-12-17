@@ -26,7 +26,7 @@ const ConfirmPopup = ({
 				textConfirm={textConfirm}
 				textCancel={textCancel}
 				type="button"
-				onClose={ev => {
+				onCancel={ev => {
 					if (typeof onCancel === 'function') {
 						onCancel(ev);
 					}

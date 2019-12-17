@@ -34,7 +34,7 @@ var PopupCore = function PopupCore(_ref) {
       _ref$textCancel = _ref.textCancel,
       textCancel = _ref$textCancel === void 0 ? 'Cancel' : _ref$textCancel,
       onClick = _ref.onClick,
-      onClose = _ref.onClose,
+      onCancel = _ref.onCancel,
       _ref$typeConfirm = _ref.typeConfirm,
       typeConfirm = _ref$typeConfirm === void 0 ? 'button' : _ref$typeConfirm,
       _ref$typeCancel = _ref.typeCancel,
@@ -56,7 +56,7 @@ var PopupCore = function PopupCore(_ref) {
   }, [showPopup]);
 
   var closeHandler = function closeHandler(ev) {
-    onClose(ev);
+    onCancel(ev);
 
     if (!showForce) {
       switchPopup(!popup);
@@ -80,8 +80,8 @@ var PopupCore = function PopupCore(_ref) {
     className: style.icon
   }), React.createElement("div", null, children), React.createElement("div", null, Boolean(textCancel.length) && React.createElement(Button, _extends({
     className: style.button,
-    color: colorCancel,
-    onClick: closeHandler || color,
+    color: colorCancel || color,
+    onClick: closeHandler,
     type: typeCancel || type,
     text: textCancel
   }, cancellButtonProps)), Boolean(textConfirm.length) && React.createElement(Button, _extends({

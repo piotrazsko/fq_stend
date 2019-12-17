@@ -1,3 +1,3 @@
 ```jsx
-<ConfirmPopup show message={<div>Удалить пользователя?</div>} type="danger" />
+<ConfirmPopup onCancel={alert} show message={<div>Удалить пользователя?</div>} type="danger" />
 ```

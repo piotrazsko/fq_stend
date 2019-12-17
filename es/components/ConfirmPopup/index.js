@@ -10,7 +10,7 @@ var ConfirmPopup = function ConfirmPopup(_ref) {
       _ref$onClick = _ref.onClick,
       _onClick = _ref$onClick === void 0 ? function () {} : _ref$onClick,
       _ref$onCancel = _ref.onCancel,
-      onCancel = _ref$onCancel === void 0 ? function () {} : _ref$onCancel,
+      _onCancel = _ref$onCancel === void 0 ? function () {} : _ref$onCancel,
       _ref$textConfirm = _ref.textConfirm,
       textConfirm = _ref$textConfirm === void 0 ? 'OK' : _ref$textConfirm,
       _ref$textCancel = _ref.textCancel,
@@ -33,9 +33,9 @@ var ConfirmPopup = function ConfirmPopup(_ref) {
     textConfirm: textConfirm,
     textCancel: textCancel,
     type: "button",
-    onClose: function onClose(ev) {
-      if (typeof onCancel === 'function') {
-        onCancel(ev);
+    onCancel: function onCancel(ev) {
+      if (typeof _onCancel === 'function') {
+        _onCancel(ev);
       }
     },
     cancellButtonProps: {
