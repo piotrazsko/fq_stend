@@ -21,21 +21,21 @@ const PopupCore = ({
 	confirmButtonProps = {},
 	showForce = false,
 }) => {
-	const [popup, switchPopup] = React.useState(showPopup);
+	const [popup, switchPopup] = React.useState(showPopup || showForce);
 	React.useEffect(() => {
 		switchPopup(showPopup);
 	}, [showPopup]);
-	const closeHandler = () => {
-		onClose();
+	const closeHandler = ev => {
+		onClose(ev);
 		if (!showForce) {
 			switchPopup(!popup);
 		}
 	};
-	const confirmHandler = () => {
+	const confirmHandler = ev => {
 		if (!showForce) {
 			switchPopup(!popup);
 		}
-		onClick();
+		onClick(ev);
 	};
 	return (
 		popup && (
