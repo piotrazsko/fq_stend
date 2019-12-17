@@ -16,17 +16,17 @@ const AlertPopup = ({
 			<PopupCore
 				showForce={showForce}
 				colorConfirm={type === 'danger' ? 'secondary' : 'primary'}
-				onClick={() => {
+				onClick={ev => {
 					if (typeof onClick === 'function') {
-						onClick();
+						onClick(ev);
 					}
 				}}
 				textConfirm={textConfirm}
 				textCancel=""
 				type="button"
-				onClose={() => {
+				onClose={ev => {
 					if (typeof onClick === 'function') {
-						onClick();
+						onClick(ev);
 					}
 				}}
 			>

@@ -21,17 +21,17 @@ var AlertPopup = function AlertPopup(_ref) {
   return show && React.createElement(PopupCore, {
     showForce: showForce,
     colorConfirm: type === 'danger' ? 'secondary' : 'primary',
-    onClick: function onClick() {
+    onClick: function onClick(ev) {
       if (typeof _onClick === 'function') {
-        _onClick();
+        _onClick(ev);
       }
     },
     textConfirm: textConfirm,
     textCancel: "",
     type: "button",
-    onClose: function onClose() {
+    onClose: function onClose(ev) {
       if (typeof _onClick === 'function') {
-        _onClick();
+        _onClick(ev);
       }
     }
   }, React.createElement("div", {
