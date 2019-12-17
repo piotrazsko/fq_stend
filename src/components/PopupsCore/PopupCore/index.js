@@ -14,7 +14,7 @@ const PopupCore = ({
 	textConfirm = 'Ok',
 	textCancel = 'Cancel',
 	onClick,
-	onClose,
+	onCancel,
 	typeConfirm = 'button',
 	typeCancel = 'button',
 	cancellButtonProps = {},
@@ -26,7 +26,7 @@ const PopupCore = ({
 		switchPopup(showPopup);
 	}, [showPopup]);
 	const closeHandler = ev => {
-		onClose(ev);
+		onCancel(ev);
 		if (!showForce) {
 			switchPopup(!popup);
 		}
@@ -47,8 +47,8 @@ const PopupCore = ({
 						{Boolean(textCancel.length) && (
 							<Button
 								className={style.button}
-								color={colorCancel}
-								onClick={closeHandler || color}
+								color={colorCancel || color}
+								onClick={closeHandler}
 								type={typeCancel || type}
 								text={textCancel}
 								{...cancellButtonProps}
@@ -76,7 +76,7 @@ PopupCore.propTypes = {
 	textConfirm: PropTypes.string,
 	textCancel: PropTypes.string,
 	onClick: PropTypes.func.isRequired,
-	onClose: PropTypes.func.isRequired,
+	onCancel: PropTypes.func.isRequired,
 	typeConfirm: PropTypes.string,
 	typeCancel: PropTypes.string,
 	colorConfirm: PropTypes.string,
