@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import PopupBackground from '../../PopupBackground';
-import Button from '../PopupButton';
+import Button from '../../Button';
 import style from '../style.module.scss';
 
 const PopupCore = ({
@@ -22,14 +22,16 @@ const PopupCore = ({
 	showForce = false,
 }) => {
 	const [popup, switchPopup] = React.useState(showPopup || showForce);
+
 	React.useEffect(() => {
 		switchPopup(showPopup);
 	}, [showPopup]);
+
 	const closeHandler = ev => {
-		onCancel(ev);
 		if (!showForce) {
 			switchPopup(!popup);
 		}
+		onCancel(ev);
 	};
 	const confirmHandler = ev => {
 		if (!showForce) {

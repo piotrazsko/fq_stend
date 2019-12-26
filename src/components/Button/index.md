@@ -1,3 +1,5 @@
 ```jsx
-<Button onClick={() => alert('dfsdf')}>Click me!</Button>
+<Button color="primary" onClick={() => alert('dfsdf')}>
+	Click me!
+</Button>
 ```
