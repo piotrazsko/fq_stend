@@ -11,7 +11,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 import React from 'react';
 import PropTypes from 'prop-types';
 import PopupBackground from '../../PopupBackground';
-import Button from '../PopupButton';
+import Button from '../../Button';
 var style = {
   "container": "style-module_fq_container___1I18N",
   "icon": "style-module_fq_icon___185Zz",
@@ -56,11 +56,11 @@ var PopupCore = function PopupCore(_ref) {
   }, [showPopup]);
 
   var closeHandler = function closeHandler(ev) {
-    onCancel(ev);
-
     if (!showForce) {
       switchPopup(!popup);
     }
+
+    onCancel(ev);
   };
 
   var confirmHandler = function confirmHandler(ev) {
@@ -98,7 +98,7 @@ PopupCore.propTypes = {
   textConfirm: PropTypes.string,
   textCancel: PropTypes.string,
   onClick: PropTypes.func.isRequired,
-  onClose: PropTypes.func.isRequired,
+  onCancel: PropTypes.func.isRequired,
   typeConfirm: PropTypes.string,
   typeCancel: PropTypes.string,
   colorConfirm: PropTypes.string,
