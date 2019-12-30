@@ -14,6 +14,7 @@ const UserInfo = ({
 	avatar,
 	classNames,
 	avatarOnClick,
+	children,
 }) => (
 	<div className={[styles['userInfo__user'], classNames.container].join(' ')}>
 		<Avatar
@@ -21,7 +22,7 @@ const UserInfo = ({
 			imageUrl={avatar}
 			className={[styles['userInfo__icon'], classNames.avatar || ''].join(' ')}
 		/>
-		<div className={styles['userInfo__text']}>
+		<div className={[styles['userInfo__text'], classNames.textBlock || '']}>
 			{userStatus && (
 				<div className={[styles['userInfo__user-status'], classNames.status || ''].join(' ')}>
 					{userStatus}
@@ -47,6 +48,7 @@ const UserInfo = ({
 					<span className={styles['userInfo__rating-value']}>{rating}</span>
 				</div>
 			)}
+			{children}
 		</div>
 	</div>
 );
@@ -74,6 +76,7 @@ UserInfo.propTypes = {
 	avatar: PropTypes.string,
 	classNames: PropTypes.shape({
 		container: PropTypes.string,
+		textBlock: PropTypes.string,
 		avatar: PropTypes.string,
 		status: PropTypes.string,
 		name: PropTypes.string,
@@ -82,6 +85,7 @@ UserInfo.propTypes = {
 		ratingText: PropTypes.string,
 		ratingStars: PropTypes.string,
 	}),
+	children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]).isRequired,
 };
 
 export default UserInfo;
