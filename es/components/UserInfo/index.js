@@ -20,7 +20,8 @@ var UserInfo = function UserInfo(_ref) {
       userStatus = _ref.userStatus,
       avatar = _ref.avatar,
       classNames = _ref.classNames,
-      avatarOnClick = _ref.avatarOnClick;
+      avatarOnClick = _ref.avatarOnClick,
+      children = _ref.children;
   return React.createElement("div", {
     className: [styles['userInfo__user'], classNames.container].join(' ')
   }, React.createElement(Avatar, {
@@ -28,7 +29,7 @@ var UserInfo = function UserInfo(_ref) {
     imageUrl: avatar,
     className: [styles['userInfo__icon'], classNames.avatar || ''].join(' ')
   }), React.createElement("div", {
-    className: styles['userInfo__text']
+    className: [styles['userInfo__text'], classNames.textBlock || ''].join(' ')
   }, userStatus && React.createElement("div", {
     className: [styles['userInfo__user-status'], classNames.status || ''].join(' ')
   }, userStatus), React.createElement("div", {
@@ -42,7 +43,7 @@ var UserInfo = function UserInfo(_ref) {
     className: [styles['userInfo__rating-star'], classNames.ratingStars || ''].join(' ')
   }), React.createElement("span", {
     className: styles['userInfo__rating-value']
-  }, rating))));
+  }, rating)), children));
 };
 
 UserInfo.defaultProps = {
@@ -69,6 +70,7 @@ UserInfo.propTypes = {
   avatar: PropTypes.string,
   classNames: PropTypes.shape({
     container: PropTypes.string,
+    textBlock: PropTypes.string,
     avatar: PropTypes.string,
     status: PropTypes.string,
     name: PropTypes.string,
@@ -76,6 +78,7 @@ UserInfo.propTypes = {
     rating: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     ratingText: PropTypes.string,
     ratingStars: PropTypes.string
-  })
+  }),
+  children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]).isRequired
 };
 export default UserInfo;

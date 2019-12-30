@@ -22,7 +22,7 @@ const UserInfo = ({
 			imageUrl={avatar}
 			className={[styles['userInfo__icon'], classNames.avatar || ''].join(' ')}
 		/>
-		<div className={[styles['userInfo__text'], classNames.textBlock || '']}>
+		<div className={[styles['userInfo__text'], classNames.textBlock || ''].join(' ')}>
 			{userStatus && (
 				<div className={[styles['userInfo__user-status'], classNames.status || ''].join(' ')}>
 					{userStatus}
