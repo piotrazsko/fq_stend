@@ -14,7 +14,7 @@ const PopupCore = ({
 	textConfirm = 'Ok',
 	textCancel = 'Cancel',
 	onClick,
-	onCancel,
+	onCancel = () => {},
 	typeConfirm = 'button',
 	typeCancel = 'button',
 	cancellButtonProps = {},

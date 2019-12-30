@@ -25,7 +25,14 @@ const useStyles = makeStyles(() => ({
 	},
 }));
 
-const Button = ({ text = 'test', type = false, color = 'primary', classesExt, ...rest }) => {
+const Button = ({
+	text = 'test',
+	type = false,
+	color = 'primary',
+	classesExt,
+	children,
+	...rest
+}) => {
 	const classes = useStyles();
 	return type === 'fab' ? (
 		<Fab
@@ -40,7 +47,7 @@ const Button = ({ text = 'test', type = false, color = 'primary', classesExt, ..
 			aria-label="edit"
 			{...rest}
 		>
-			{text}
+			{children || text}
 		</Fab>
 	) : (
 		<ButtonMat
@@ -56,7 +63,7 @@ const Button = ({ text = 'test', type = false, color = 'primary', classesExt, ..
 			aria-label="edit"
 			{...rest}
 		>
-			{text}
+			{children || text}
 		</ButtonMat>
 	);
 };
