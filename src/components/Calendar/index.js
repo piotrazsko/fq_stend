@@ -13,7 +13,7 @@ import { getCustomDisabledTime, getCustomEnabledTime } from './utils/customTime'
 class Calendar extends React.Component {
 	state = {
 		showTime: this.props.defaultShowDay,
-		selectedDate: new Date(),
+		selectedDate: this.props.initialDate,
 		selectedTime: null,
 		currentMonth: new Date(new Date().setDate(1)),
 	};
@@ -22,6 +22,7 @@ class Calendar extends React.Component {
 		onConfirm: date => {
 			console.log(date);
 		},
+		initialDate: new Date(),
 		defaultShowDay: false,
 		autoConfirm: false,
 		onCancel: () => {},
@@ -156,6 +157,7 @@ class Calendar extends React.Component {
 	}
 }
 Calendar.propTypes = {
+	initialDate: PropTypes.object,
 	autoConfirm: PropTypes.bool,
 	defaultShowDay: PropTypes.bool,
 	onConfirm: PropTypes.func,
