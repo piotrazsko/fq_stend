@@ -64,7 +64,7 @@ function (_React$Component) {
 
     _defineProperty(_assertThisInitialized(_this), "state", {
       showTime: _this.props.defaultShowDay,
-      selectedDate: new Date(),
+      selectedDate: _this.props.initialDate,
       selectedTime: null,
       currentMonth: new Date(new Date().setDate(1))
     });
@@ -212,6 +212,7 @@ _defineProperty(Calendar, "defaultProps", {
   onConfirm: function onConfirm(date) {
     console.log(date);
   },
+  initialDate: new Date(),
   defaultShowDay: false,
   autoConfirm: false,
   onCancel: function onCancel() {},
@@ -225,6 +226,7 @@ _defineProperty(Calendar, "defaultProps", {
 });
 
 Calendar.propTypes = {
+  initialDate: PropTypes.object,
   autoConfirm: PropTypes.bool,
   defaultShowDay: PropTypes.bool,
   onConfirm: PropTypes.func,
