@@ -9,9 +9,10 @@ import getHoursFromEvents from './utils/getHoursFromEvents';
 import { getDisabledTimeFromShefule } from './utils/getDisabledTimeFromShedule';
 import { getFullMounthDaysList } from './utils/getFullMounthDaysList';
 import { getCustomDisabledTime, getCustomEnabledTime } from './utils/customTime';
+
 class Calendar extends React.Component {
 	state = {
-		showTime: false,
+		showTime: this.props.defaultShowDay,
 		selectedDate: new Date(),
 		selectedTime: null,
 		currentMonth: new Date(new Date().setDate(1)),
@@ -21,6 +22,8 @@ class Calendar extends React.Component {
 		onConfirm: date => {
 			console.log(date);
 		},
+		defaultShowDay: false,
+		autoConfirm: false,
 		onCancel: () => {},
 		disabledDays: [],
 		disabledTime: [],
@@ -29,18 +32,6 @@ class Calendar extends React.Component {
 		bookedTime: [],
 		afterHours: [],
 		customTime: [],
-	};
-	static propTypes = {
-		onConfirm: PropTypes.func,
-		onCancel: PropTypes.func,
-		disabledDays: PropTypes.array,
-		disabledTime: PropTypes.array,
-		isDisabledBeforeToday: PropTypes.bool,
-		isDisabledBeforeCurrentTime: PropTypes.bool,
-		bookedTime: PropTypes.array,
-		afterHours: PropTypes.array,
-		workingTime: PropTypes.array,
-		customTime: PropTypes.array,
 	};
 
 	onDayClickHandler = date => {
@@ -52,13 +43,21 @@ class Calendar extends React.Component {
 	};
 	onTimeClickHandler = time => {
 		let { selectedDate } = this.state;
+		const { autoConfirm } = this.props;
 		const ceil = Math.floor(time / 2);
 		selectedDate.setHours(ceil);
 		selectedDate.setMinutes((time / 2 - ceil) * 60);
-		this.setState({
-			selectedTime: time,
-			selectedDate: selectedDate,
-		});
+		this.setState(
+			{
+				selectedTime: time,
+				selectedDate: selectedDate,
+			},
+			() => {
+				if (autoConfirm) {
+					this.confirmDate();
+				}
+			}
+		);
 	};
 	setDateHandler = date => {
 		this.setState({
@@ -156,5 +155,18 @@ class Calendar extends React.Component {
 		return state.showTime ? <Time {...timeProps} /> : <Day {...dateProps} />;
 	}
 }
-
+Calendar.propTypes = {
+	autoConfirm: PropTypes.bool,
+	defaultShowDay: PropTypes.bool,
+	onConfirm: PropTypes.func,
+	onCancel: PropTypes.func,
+	disabledDays: PropTypes.array,
+	disabledTime: PropTypes.array,
+	isDisabledBeforeToday: PropTypes.bool,
+	isDisabledBeforeCurrentTime: PropTypes.bool,
+	bookedTime: PropTypes.array,
+	afterHours: PropTypes.array,
+	workingTime: PropTypes.array,
+	customTime: PropTypes.array,
+};
 export default Calendar;

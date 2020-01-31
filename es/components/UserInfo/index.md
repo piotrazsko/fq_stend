@@ -1,10 +1,12 @@
 ```jsx
 <UserInfo
-  firstName="Петя"
-  lastName="Петров"
-  rating={5}
-  location="г.Минск"
-  userStatus="Мастер"
-  avatar="https://randomuser.me/api/portraits/men/99.jpg"
-/>
+	firstName="Петя"
+	lastName="Петров"
+	rating={5}
+	location="г.Минск"
+	userStatus="Мастер"
+	avatar="https://randomuser.me/api/portraits/men/99.jpg"
+>
+	test
+</UserInfo>
 ```

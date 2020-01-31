@@ -47,7 +47,8 @@ var Button = function Button(_ref) {
       color = _ref$color === void 0 ? 'primary' : _ref$color,
       classesExt = _ref.classesExt,
       children = _ref.children,
-      rest = _objectWithoutProperties(_ref, ["text", "type", "color", "classesExt", "children"]);
+      fontSize = _ref.fontSize,
+      rest = _objectWithoutProperties(_ref, ["text", "type", "color", "classesExt", "children", "fontSize"]);
 
   var classes = useStyles();
   return type === 'fab' ? React.createElement(Fab, _extends({
@@ -58,6 +59,9 @@ var Button = function Button(_ref) {
       primary: classes.primary,
       disabled: classes.disabled
     }, classesExt),
+    style: {
+      fontSize: fontSize
+    },
     "aria-label": "edit"
   }, rest), children || text) : React.createElement(ButtonMat, _extends({
     color: color,
@@ -68,15 +72,20 @@ var Button = function Button(_ref) {
       outlinedPrimary: classes.outlinedPrimary,
       disabled: classes.disabled
     }, classesExt),
+    style: {
+      fontSize: fontSize
+    },
     "aria-label": "edit"
   }, rest), children || text);
 };
 
 Button.propTypes = {
+  children: PropTypes.any,
   text: PropTypes.string,
   className: PropTypes.string,
   type: PropTypes.string,
   color: PropTypes.string,
-  classesExt: PropTypes.object
+  classesExt: PropTypes.object,
+  fontSize: PropTypes.number
 };
 export default Button;

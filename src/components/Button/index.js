@@ -31,6 +31,7 @@ const Button = ({
 	color = 'primary',
 	classesExt,
 	children,
+	fontSize,
 	...rest
 }) => {
 	const classes = useStyles();
@@ -44,6 +45,7 @@ const Button = ({
 				disabled: classes.disabled,
 				...classesExt,
 			}}
+			style={{ fontSize: fontSize }}
 			aria-label="edit"
 			{...rest}
 		>
@@ -60,6 +62,7 @@ const Button = ({
 				disabled: classes.disabled,
 				...classesExt,
 			}}
+			style={{ fontSize: fontSize }}
 			aria-label="edit"
 			{...rest}
 		>
@@ -69,11 +72,13 @@ const Button = ({
 };
 
 Button.propTypes = {
+	children: PropTypes.any,
 	text: PropTypes.string,
 	className: PropTypes.string,
 	type: PropTypes.string,
 	color: PropTypes.string,
 	classesExt: PropTypes.object,
+	fontSize: PropTypes.number,
 };
 
 export default Button;

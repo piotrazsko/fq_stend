@@ -63,7 +63,7 @@ function (_React$Component) {
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Calendar)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
     _defineProperty(_assertThisInitialized(_this), "state", {
-      showTime: false,
+      showTime: _this.props.defaultShowDay,
       selectedDate: new Date(),
       selectedTime: null,
       currentMonth: new Date(new Date().setDate(1))
@@ -80,6 +80,7 @@ function (_React$Component) {
 
     _defineProperty(_assertThisInitialized(_this), "onTimeClickHandler", function (time) {
       var selectedDate = _this.state.selectedDate;
+      var autoConfirm = _this.props.autoConfirm;
       var ceil = Math.floor(time / 2);
       selectedDate.setHours(ceil);
       selectedDate.setMinutes((time / 2 - ceil) * 60);
@@ -87,6 +88,10 @@ function (_React$Component) {
       _this.setState({
         selectedTime: time,
         selectedDate: selectedDate
+      }, function () {
+        if (autoConfirm) {
+          _this.confirmDate();
+        }
       });
     });
 
@@ -207,6 +212,8 @@ _defineProperty(Calendar, "defaultProps", {
   onConfirm: function onConfirm(date) {
     console.log(date);
   },
+  defaultShowDay: false,
+  autoConfirm: false,
   onCancel: function onCancel() {},
   disabledDays: [],
   disabledTime: [],
@@ -217,7 +224,9 @@ _defineProperty(Calendar, "defaultProps", {
   customTime: []
 });
 
-_defineProperty(Calendar, "propTypes", {
+Calendar.propTypes = {
+  autoConfirm: PropTypes.bool,
+  defaultShowDay: PropTypes.bool,
   onConfirm: PropTypes.func,
   onCancel: PropTypes.func,
   disabledDays: PropTypes.array,
@@ -228,6 +237,5 @@ _defineProperty(Calendar, "propTypes", {
   afterHours: PropTypes.array,
   workingTime: PropTypes.array,
   customTime: PropTypes.array
-});
-
+};
 export default Calendar;
