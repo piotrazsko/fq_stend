@@ -1,5 +1,6 @@
 ```jsx
 <Calendar
+	defaultShowDay
 	bookedTime={[
 		{ date: '2019-12-03 09:00:00', duration: 75 },
 		{ date: '2019-12-05 13:30:00', duration: 75 },
