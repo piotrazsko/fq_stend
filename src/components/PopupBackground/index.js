@@ -11,7 +11,10 @@ const PopupBackground = ({ onClick, visible = false, children }) => {
 		<div
 			className={style.popup_background}
 			role="presentation"
-			onClick={handleClick}
+			onClick={ev => {
+				handleClick(ev);
+				ev.stopPropagation();
+			}}
 			onKeyDown={() => {}}
 		>
 			<div className={style.popup_background_inbox} onClick={ev => ev.stopPropagation()}>

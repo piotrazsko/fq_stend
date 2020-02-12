@@ -10,7 +10,7 @@ export { default as ConfirmPopup } from './ConfirmPopup';
 export { default as PopupBackground } from './PopupBackground';
 export { default as Privacy } from './Privacy';
 export { default as Rating } from './Rating';
-export { default as ReviewForm } from './ReviewForm';
+export { default as FeedbackFormMobile } from './FeedbackFormMobile';
 export { default as StoresBox } from './StoresBox';
 export { default as Terms } from './Terms';
 export { default as UserInfo } from './UserInfo';
