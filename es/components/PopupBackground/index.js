@@ -18,7 +18,10 @@ var PopupBackground = function PopupBackground(_ref) {
   return visible ? React.createElement("div", {
     className: style.popup_background,
     role: "presentation",
-    onClick: handleClick,
+    onClick: function onClick(ev) {
+      handleClick(ev);
+      ev.stopPropagation();
+    },
     onKeyDown: function onKeyDown() {}
   }, React.createElement("div", {
     className: style.popup_background_inbox,

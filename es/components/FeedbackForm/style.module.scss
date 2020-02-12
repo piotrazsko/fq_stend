@@ -1,0 +1,43 @@
+.circle {
+	background-image: linear-gradient(to top, #22c3ff, #1c72ff);
+	height: 50%;
+	margin: -20px;
+	height: 200px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	border-radius: 0 0 200px 200px;
+	.star {
+		// margin-top: auto;
+		height: 50px;
+		width: 50px;
+		border-radius: 50%;
+		background-color: white;
+	}
+	.title {
+		font-size: 1.47em;
+		font-weight: bold;
+		color: white;
+		text-align: center;
+		font-family: Roboto;
+	}
+}
+.content {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 15px;
+	width: 400px;
+
+	.ratingContainer {
+		margin: 15px;
+	}
+	.inputContainer {
+		min-width: 317px;
+		.input {
+			text-align: center !important;
+			font-size: 1.2em;
+		}
+	}
+}

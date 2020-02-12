@@ -1,21 +1,20 @@
 {
   "files": {
-    "main.css": "/static/css/main.9a0c4806.chunk.css",
-    "main.js": "/build/main.41da3304.js",
+    "main.css": "/static/css/main.55ee60dd.chunk.css",
+    "main.js": "/build/main.83b65e3a.js",
     "runtime~main.js": "/build/bundle.016cd79a.js",
     "static/css/2.c6231af7.chunk.css": "/static/css/2.c6231af7.chunk.css",
-    "build/2.e466b8d9.js": "/build/2.e466b8d9.js",
+    "build/2.5aed2953.js": "/build/2.5aed2953.js",
     "index.html": "/index.html",
-    "precache-manifest.7c38e4166fb522d56f5e67aa0357d0a2.js": "/precache-manifest.7c38e4166fb522d56f5e67aa0357d0a2.js",
+    "precache-manifest.af9231a958b39ba64c20b430c1061014.js": "/precache-manifest.af9231a958b39ba64c20b430c1061014.js",
     "service-worker.js": "/service-worker.js",
     "static/css/2.c6231af7.chunk.css.map": "/static/css/2.c6231af7.chunk.css.map",
-    "static/css/main.9a0c4806.chunk.css.map": "/static/css/main.9a0c4806.chunk.css.map",
+    "static/css/main.55ee60dd.chunk.css.map": "/static/css/main.55ee60dd.chunk.css.map",
     "static/media/style.module.scss": "/static/media/Group3.70e8e1d0.svg",
     "static/media/appStore.png": "/static/media/appStore.097295b8.png",
     "static/media/styles.module.scss": "/static/media/avatar_icon.3700bbdc.svg",
     "static/media/emptyStar.svg": "/static/media/emptyStar.faf4540f.svg",
     "static/media/fullStar.svg": "/static/media/fullStar.d09a9f04.svg",
-    "static/media/googlePlay.png": "/static/media/googlePlay.ad720b31.png",
-    "static/media/xsmallstar.svg": "/static/media/xsmallstar.d09a9f04.svg"
+    "static/media/googlePlay.png": "/static/media/googlePlay.ad720b31.png"
   }
 }
