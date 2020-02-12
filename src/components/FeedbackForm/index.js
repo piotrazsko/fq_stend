@@ -40,8 +40,11 @@ const FeedbackForm = ({
 			cancellButtonProps={{ variant: 'outlined' }}
 			{...popupCoreProps}
 		>
-			<div className={styles.content}>
+			<div className={styles.circle}>
 				<div className={styles.title}>Все ли вам понравилось?</div>
+				<div className={styles.star}></div>
+			</div>
+			<div className={styles.content}>
 				<div className={styles.ratingContainer}>
 					<InputRating
 						rating={rating}

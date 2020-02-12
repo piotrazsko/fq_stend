@@ -14,8 +14,10 @@ import { PopupCore } from '../PopupsCore';
 import InputRating from '../InputRating';
 import { TextField } from '@material-ui/core';
 var styles = {
-  "content": "style-module_fq_content___1Le95",
+  "circle": "style-module_fq_circle___3yxPj",
+  "star": "style-module_fq_star___2ucJX",
   "title": "style-module_fq_title___B6DKA",
+  "content": "style-module_fq_content___1Le95",
   "ratingContainer": "style-module_fq_ratingContainer___1ya1N",
   "inputContainer": "style-module_fq_inputContainer___3oiiF",
   "input": "style-module_fq_input___2-ZSO"
@@ -77,10 +79,14 @@ var FeedbackForm = function FeedbackForm(_ref) {
       variant: 'outlined'
     }
   }, popupCoreProps), React.createElement("div", {
-    className: styles.content
+    className: styles.circle
   }, React.createElement("div", {
     className: styles.title
   }, "\u0412\u0441\u0435 \u043B\u0438 \u0432\u0430\u043C \u043F\u043E\u043D\u0440\u0430\u0432\u0438\u043B\u043E\u0441\u044C?"), React.createElement("div", {
+    className: styles.star
+  })), React.createElement("div", {
+    className: styles.content
+  }, React.createElement("div", {
     className: styles.ratingContainer
   }, React.createElement(InputRating, _extends({
     rating: rating,
