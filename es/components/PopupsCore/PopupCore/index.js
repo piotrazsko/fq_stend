@@ -19,7 +19,9 @@ var style = {
 };
 
 var PopupCore = function PopupCore(_ref) {
-  var _ref$showPopup = _ref.showPopup,
+  var _ref$showIcon = _ref.showIcon,
+      showIcon = _ref$showIcon === void 0 ? true : _ref$showIcon,
+      _ref$showPopup = _ref.showPopup,
       showPopup = _ref$showPopup === void 0 ? true : _ref$showPopup,
       _ref$colorConfirm = _ref.colorConfirm,
       colorConfirm = _ref$colorConfirm === void 0 ? 'primary' : _ref$colorConfirm,
@@ -45,7 +47,13 @@ var PopupCore = function PopupCore(_ref) {
       _ref$confirmButtonPro = _ref.confirmButtonProps,
       confirmButtonProps = _ref$confirmButtonPro === void 0 ? {} : _ref$confirmButtonPro,
       _ref$showForce = _ref.showForce,
-      showForce = _ref$showForce === void 0 ? false : _ref$showForce;
+      showForce = _ref$showForce === void 0 ? false : _ref$showForce,
+      _ref$classes = _ref.classes,
+      classes = _ref$classes === void 0 ? {
+    buttonsContainer: '',
+    container: '',
+    childrenContainer: ''
+  } : _ref$classes;
 
   var _React$useState = React.useState(showPopup || showForce),
       _React$useState2 = _slicedToArray(_React$useState, 2),
@@ -76,10 +84,14 @@ var PopupCore = function PopupCore(_ref) {
     onClick: closeHandler,
     visible: true
   }, React.createElement("div", {
-    className: style.container
-  }, React.createElement("div", {
+    className: [style.container, classes.container].join(' ')
+  }, showIcon && React.createElement("div", {
     className: style.icon
-  }), React.createElement("div", null, children), React.createElement("div", null, Boolean(textCancel.length) && React.createElement(Button, _extends({
+  }), React.createElement("div", {
+    className: classes.childrenContainer
+  }, children), React.createElement("div", {
+    className: classes.buttonsContainer
+  }, Boolean(textCancel.length) && React.createElement(Button, _extends({
     className: style.button,
     color: colorCancel || color,
     onClick: closeHandler,
@@ -105,6 +117,12 @@ PopupCore.propTypes = {
   colorConfirm: PropTypes.string,
   colorCancel: PropTypes.string,
   type: PropTypes.string,
-  showForce: PropTypes.bool
+  showForce: PropTypes.bool,
+  showIcon: PropTypes.bool,
+  classes: PropTypes.shape({
+    buttonsContainer: PropTypes.string,
+    container: PropTypes.string,
+    childrenContainer: PropTypes.string
+  })
 };
 export default PopupCore;
