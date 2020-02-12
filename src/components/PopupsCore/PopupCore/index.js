@@ -5,6 +5,7 @@ import Button from '../../Button';
 import style from '../style.module.scss';
 
 const PopupCore = ({
+	showIcon = true,
 	showPopup = true,
 	colorConfirm = 'primary',
 	colorCancel = 'primary',
@@ -20,6 +21,11 @@ const PopupCore = ({
 	cancellButtonProps = {},
 	confirmButtonProps = {},
 	showForce = false,
+	classes = {
+		buttonsContainer: '',
+		container: '',
+		childrenContainer: '',
+	},
 }) => {
 	const [popup, switchPopup] = React.useState(showPopup || showForce);
 
@@ -42,10 +48,10 @@ const PopupCore = ({
 	return (
 		popup && (
 			<PopupBackground onClick={closeHandler} visible>
-				<div className={style.container}>
-					<div className={style.icon} />
-					<div>{children}</div>
-					<div>
+				<div className={[style.container, classes.container].join(' ')}>
+					{showIcon && <div className={style.icon} />}
+					<div className={classes.childrenContainer}>{children}</div>
+					<div className={classes.buttonsContainer}>
 						{Boolean(textCancel.length) && (
 							<Button
 								className={style.button}
@@ -85,5 +91,11 @@ PopupCore.propTypes = {
 	colorCancel: PropTypes.string,
 	type: PropTypes.string,
 	showForce: PropTypes.bool,
+	showIcon: PropTypes.bool,
+	classes: PropTypes.shape({
+		buttonsContainer: PropTypes.string,
+		container: PropTypes.string,
+		childrenContainer: PropTypes.string,
+	}),
 };
 export default PopupCore;

@@ -1,0 +1,21 @@
+.content {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 15px;
+	font-family: Roboto;
+	.title {
+		font-size: 1.2em;
+		font-weight: bold;
+	}
+	.ratingContainer {
+		margin: 15px;
+	}
+	.inputContainer {
+		min-width: 317px;
+		.input {
+			text-align: center !important;
+			font-size: 1.2em;
+		}
+	}
+}
