@@ -12,6 +12,9 @@ const FeedbackFormMobile = ({
 	textCancel = 'Позже',
 	show = false,
 	showForce = false,
+	popupCoreProps = {},
+	ratingProps = {},
+	inputProps = {},
 }) => {
 	const [message, setMessage] = React.useState('');
 	const [rating, setRating] = React.useState(5);
@@ -20,7 +23,7 @@ const FeedbackFormMobile = ({
 			showForce={showForce}
 			showPopup={show}
 			colorConfirm={type === 'danger' ? 'secondary' : 'primary'}
-			onClick={ev => {
+			onClick={() => {
 				if (typeof onClick === 'function') {
 					onClick({ message, rating });
 				}
@@ -34,6 +37,7 @@ const FeedbackFormMobile = ({
 				}
 			}}
 			cancellButtonProps={{ variant: 'outlined' }}
+			{...popupCoreProps}
 		>
 			<div className={styles.content}>
 				<div className={styles.title}>Все ли вам понравилось?</div>
@@ -43,6 +47,7 @@ const FeedbackFormMobile = ({
 						onClick={ev => {
 							setRating(ev);
 						}}
+						{...ratingProps}
 					/>
 				</div>
 				<div className={styles.inputContainer}>
@@ -57,6 +62,7 @@ const FeedbackFormMobile = ({
 						onChange={ev => {
 							setMessage(ev.target.value);
 						}}
+						{...inputProps}
 					/>
 				</div>
 			</div>
@@ -72,6 +78,9 @@ FeedbackFormMobile.propTypes = {
 	textCancel: PropTypes.string,
 	show: PropTypes.bool,
 	showForce: PropTypes.bool,
+	popupCoreProps: PropTypes.object,
+	ratingProps: PropTypes.object,
+	inputProps: PropTypes.object,
 };
 
 export default FeedbackFormMobile;
