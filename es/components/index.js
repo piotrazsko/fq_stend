@@ -18,3 +18,4 @@ export { default as Terms } from './Terms';
 export { default as UserInfo } from './UserInfo';
 export { default as Calendar } from './Calendar';
 export { default as PhoneInput } from './PhoneInput';
+export { default as PopupCore } from './PopupsCore';
