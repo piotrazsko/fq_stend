@@ -9,7 +9,8 @@ var PopupBackground = function PopupBackground(_ref) {
   var onClick = _ref.onClick,
       _ref$visible = _ref.visible,
       visible = _ref$visible === void 0 ? false : _ref$visible,
-      children = _ref.children;
+      children = _ref.children,
+      onScroll = _ref.onScroll;
 
   var handleClick = function handleClick(event) {
     onClick(event);
@@ -21,8 +22,7 @@ var PopupBackground = function PopupBackground(_ref) {
     onClick: function onClick(ev) {
       handleClick(ev);
       ev.stopPropagation();
-    },
-    onKeyDown: function onKeyDown() {}
+    }
   }, React.createElement("div", {
     className: style.popup_background_inbox,
     onClick: function onClick(ev) {
