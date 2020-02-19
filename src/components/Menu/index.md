@@ -1,7 +1,7 @@
 ```jsx
 <div>test</div>
 <Menu
-	defaultShow
+	visible
 	menuItems={[
 		{
 			title: 'test',
@@ -13,5 +13,6 @@
 		},
 	]}
 	onClick={console.log}
+	onClose = {alert}
 />
 ```

@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Popover from '../Popover';
 import style from './style.module.scss';
-const Menu = ({ menuItems = [], visible, showForce = false, anchorEl = null, ...props }) => {
+const Menu = ({ menuItems = [], ...props }) => {
 	return (
-		<Popover {...props} anchorEl={anchorEl} visible={visible} showForce={showForce}>
+		<Popover {...props}>
 			{menuItems.map((item, index) => (
 				<div
 					className={style.item}
