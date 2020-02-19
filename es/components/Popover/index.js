@@ -38,8 +38,8 @@ var positionPopover = function positionPopover(el) {
 var Popover = function Popover(_ref) {
   var children = _ref.children,
       anchorEl = _ref.anchorEl,
-      _ref$defaultShow = _ref.defaultShow,
-      defaultShow = _ref$defaultShow === void 0 ? false : _ref$defaultShow,
+      _ref$visible = _ref.visible,
+      visible = _ref$visible === void 0 ? false : _ref$visible,
       _ref$showForce = _ref.showForce,
       showForce = _ref$showForce === void 0 ? false : _ref$showForce,
       _ref$onClose = _ref.onClose,
@@ -49,11 +49,14 @@ var Popover = function Popover(_ref) {
     positionPopover(inputEl.current, anchorEl);
   });
 
-  var _useState = useState(defaultShow),
+  var _useState = useState(visible),
       _useState2 = _slicedToArray(_useState, 2),
       show = _useState2[0],
       switchShow = _useState2[1];
 
+  useEffect(function () {
+    switchShow(show);
+  }, [visible]);
   return (show || showForce) && React.createElement("div", {
     className: style.positionContainer,
     style: anchorEl && {
@@ -75,7 +78,7 @@ var Popover = function Popover(_ref) {
 Popover.propTypes = {
   children: PropTypes.any,
   showForce: PropTypes.bool,
-  defaultShow: PropTypes.bool,
+  visible: PropTypes.bool,
   onClose: PropTypes.func
 };
 export default Popover;
