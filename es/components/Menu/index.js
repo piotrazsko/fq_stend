@@ -8,9 +8,12 @@ var style = {
 var Menu = function Menu(_ref) {
   var _ref$menuItems = _ref.menuItems,
       menuItems = _ref$menuItems === void 0 ? [] : _ref$menuItems,
-      defaultShow = _ref.defaultShow;
+      defaultShow = _ref.defaultShow,
+      _ref$showForce = _ref.showForce,
+      showForce = _ref$showForce === void 0 ? false : _ref$showForce;
   return React.createElement(Popover, {
-    defaultShow: defaultShow
+    defaultShow: defaultShow,
+    showForce: showForce
   }, menuItems.map(function (item, index) {
     return React.createElement("div", {
       className: style.item,
@@ -29,7 +32,8 @@ Menu.propTypes = {
     title: PropTypes.string,
     onClick: PropTypes.func
   })).isRequired,
-  defaultShow: PropTypes.bool // : PropTypes.
+  defaultShow: PropTypes.bool,
+  showForce: PropTypes.bool // : PropTypes.
 
 };
 export default Menu;
