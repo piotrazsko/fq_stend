@@ -55,8 +55,13 @@ var Popover = function Popover(_ref) {
       switchShow = _useState2[1];
 
   useEffect(function () {
-    switchShow(show);
+    switchShow(visible);
   }, [visible]);
+  useEffect(function () {
+    if (!show) {
+      onClose();
+    }
+  }, [show]);
   return (show || showForce) && React.createElement("div", {
     className: style.positionContainer,
     style: anchorEl && {
@@ -67,7 +72,6 @@ var Popover = function Popover(_ref) {
     onClick: function onClick(ev) {
       ev.nativeEvent.stopPropagation();
       ev.nativeEvent.preventDefault();
-      onClose(ev);
       switchShow(!show);
     },
     ref: inputEl,

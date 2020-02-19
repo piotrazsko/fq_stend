@@ -33,8 +33,14 @@ const Popover = ({
 	});
 	const [show, switchShow] = useState(visible);
 	useEffect(() => {
-		switchShow(show);
+		switchShow(visible);
 	}, [visible]);
+
+	useEffect(() => {
+		if (!show) {
+			onClose();
+		}
+	}, [show]);
 	return (
 		(show || showForce) && (
 			<div
@@ -45,7 +51,6 @@ const Popover = ({
 					onClick={ev => {
 						ev.nativeEvent.stopPropagation();
 						ev.nativeEvent.preventDefault();
-						onClose(ev);
 						switchShow(!show);
 					}}
 					ref={inputEl}
