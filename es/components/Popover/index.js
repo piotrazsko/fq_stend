@@ -37,6 +37,7 @@ var positionPopover = function positionPopover(el) {
 
 var Popover = function Popover(_ref) {
   var children = _ref.children,
+      anchorEl = _ref.anchorEl,
       _ref$defaultShow = _ref.defaultShow,
       defaultShow = _ref$defaultShow === void 0 ? false : _ref$defaultShow,
       _ref$showForce = _ref.showForce,
@@ -45,26 +46,21 @@ var Popover = function Popover(_ref) {
       onClose = _ref$onClose === void 0 ? function () {} : _ref$onClose;
   var inputEl = useRef(null);
   useEffect(function () {
-    positionPopover(inputEl.current);
+    positionPopover(inputEl.current, anchorEl);
   });
 
   var _useState = useState(defaultShow),
       _useState2 = _slicedToArray(_useState, 2),
       show = _useState2[0],
-      switchShow = _useState2[1]; // const listener = ev => {
-  // 	if (ev.target) {
-  // 		document.body.removeEventListener('click', listener);
-  // 		switchShow(!show);
-  // 	}
-  // };
-  // useEffect(() => {
-  // 	document.body.removeEventListener('click', listener);
-  // 	document.body.addEventListener('click', listener);
-  // }, []);
+      switchShow = _useState2[1];
 
-
+  var position = anchorEl && anchorEl.getBoundingClientRect();
   return (show || showForce) && React.createElement("div", {
-    className: style.positionContainer
+    className: style.positionContainer,
+    style: position ? {
+      top: position.top,
+      left: position.left
+    } : undefined
   }, React.createElement("div", {
     onClick: function onClick(ev) {
       ev.nativeEvent.stopPropagation();
