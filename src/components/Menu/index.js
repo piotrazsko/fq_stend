@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Popover from '../Popover';
 import style from './style.module.scss';
-const Menu = ({ menuItems = [], defaultShow }) => {
+const Menu = ({ menuItems = [], defaultShow, showForce = false }) => {
 	return (
-		<Popover defaultShow={defaultShow}>
+		<Popover defaultShow={defaultShow} showForce={showForce}>
 			{menuItems.map((item, index) => (
 				<div
 					className={style.item}
@@ -30,6 +30,7 @@ Menu.propTypes = {
 		})
 	).isRequired,
 	defaultShow: PropTypes.bool,
+	showForce: PropTypes.bool,
 	// : PropTypes.
 };
 
