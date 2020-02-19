@@ -32,12 +32,11 @@ const Popover = ({
 		positionPopover(inputEl.current, anchorEl);
 	});
 	const [show, switchShow] = useState(defaultShow);
-	const position = anchorEl && anchorEl.getBoundingClientRect();
 	return (
 		(show || showForce) && (
 			<div
 				className={style.positionContainer}
-				style={position ? { top: position.top, left: position.left } : undefined}
+				style={anchorEl && { top: anchorEl.offsetTop, left: anchorEl.offsetLeft }}
 			>
 				<div
 					onClick={ev => {

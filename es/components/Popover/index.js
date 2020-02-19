@@ -54,13 +54,12 @@ var Popover = function Popover(_ref) {
       show = _useState2[0],
       switchShow = _useState2[1];
 
-  var position = anchorEl && anchorEl.getBoundingClientRect();
   return (show || showForce) && React.createElement("div", {
     className: style.positionContainer,
-    style: position ? {
-      top: position.top,
-      left: position.left
-    } : undefined
+    style: anchorEl && {
+      top: anchorEl.offsetTop,
+      left: anchorEl.offsetLeft
+    }
   }, React.createElement("div", {
     onClick: function onClick(ev) {
       ev.nativeEvent.stopPropagation();
