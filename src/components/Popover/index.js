@@ -23,7 +23,7 @@ const positionPopover = el => {
 const Popover = ({
 	children,
 	anchorEl,
-	defaultShow = false,
+	visible = false,
 	showForce = false,
 	onClose = () => {},
 }) => {
@@ -31,7 +31,10 @@ const Popover = ({
 	useEffect(() => {
 		positionPopover(inputEl.current, anchorEl);
 	});
-	const [show, switchShow] = useState(defaultShow);
+	const [show, switchShow] = useState(visible);
+	useEffect(() => {
+		switchShow(show);
+	}, [visible]);
 	return (
 		(show || showForce) && (
 			<div
@@ -58,7 +61,7 @@ const Popover = ({
 Popover.propTypes = {
 	children: PropTypes.any,
 	showForce: PropTypes.bool,
-	defaultShow: PropTypes.bool,
+	visible: PropTypes.bool,
 	onClose: PropTypes.func,
 };
 
