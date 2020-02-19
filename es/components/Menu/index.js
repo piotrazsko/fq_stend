@@ -10,8 +10,11 @@ var Menu = function Menu(_ref) {
       menuItems = _ref$menuItems === void 0 ? [] : _ref$menuItems,
       defaultShow = _ref.defaultShow,
       _ref$showForce = _ref.showForce,
-      showForce = _ref$showForce === void 0 ? false : _ref$showForce;
+      showForce = _ref$showForce === void 0 ? false : _ref$showForce,
+      _ref$anchorEl = _ref.anchorEl,
+      anchorEl = _ref$anchorEl === void 0 ? null : _ref$anchorEl;
   return React.createElement(Popover, {
+    anchorEl: anchorEl,
     defaultShow: defaultShow,
     showForce: showForce
   }, menuItems.map(function (item, index) {
@@ -33,7 +36,8 @@ Menu.propTypes = {
     onClick: PropTypes.func
   })).isRequired,
   defaultShow: PropTypes.bool,
-  showForce: PropTypes.bool // : PropTypes.
+  showForce: PropTypes.bool,
+  anchorEl: PropTypes.any // : PropTypes.
 
 };
 export default Menu;

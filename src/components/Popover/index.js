@@ -20,25 +20,25 @@ const positionPopover = el => {
 	}
 };
 
-const Popover = ({ children, defaultShow = false, showForce = false, onClose = () => {} }) => {
+const Popover = ({
+	children,
+	anchorEl,
+	defaultShow = false,
+	showForce = false,
+	onClose = () => {},
+}) => {
 	const inputEl = useRef(null);
 	useEffect(() => {
-		positionPopover(inputEl.current);
+		positionPopover(inputEl.current, anchorEl);
 	});
 	const [show, switchShow] = useState(defaultShow);
-	// const listener = ev => {
-	// 	if (ev.target) {
-	// 		document.body.removeEventListener('click', listener);
-	// 		switchShow(!show);
-	// 	}
-	// };
-	// useEffect(() => {
-	// 	document.body.removeEventListener('click', listener);
-	// 	document.body.addEventListener('click', listener);
-	// }, []);
+	const position = anchorEl && anchorEl.getBoundingClientRect();
 	return (
 		(show || showForce) && (
-			<div className={style.positionContainer}>
+			<div
+				className={style.positionContainer}
+				style={position ? { top: position.top, left: position.left } : undefined}
+			>
 				<div
 					onClick={ev => {
 						ev.nativeEvent.stopPropagation();
