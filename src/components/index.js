@@ -19,4 +19,4 @@ export { default as Calendar } from './Calendar';
 export { default as PhoneInput } from './PhoneInput';
 export { PopupCore } from './PopupsCore';
 export { default as Popover } from './Popover';
-// export { default as Menu } from './Menu';
+export { default as Menu } from './Menu';
