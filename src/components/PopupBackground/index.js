@@ -2,11 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import style from './style.module.scss';
 
-const PopupBackground = ({ onClick, visible = false, children }) => {
+const PopupBackground = ({ onClick, visible = false, children, onScroll }) => {
 	const handleClick = event => {
 		onClick(event);
 	};
-
 	return visible ? (
 		<div
 			className={style.popup_background}
@@ -15,7 +14,6 @@ const PopupBackground = ({ onClick, visible = false, children }) => {
 				handleClick(ev);
 				ev.stopPropagation();
 			}}
-			onKeyDown={() => {}}
 		>
 			<div className={style.popup_background_inbox} onClick={ev => ev.stopPropagation()}>
 				{children}

@@ -1,3 +1,5 @@
 ```jsx
-<PopupBackground onClick={alert}>background for popups</PopupBackground>
+<PopupBackground onClick={console.log}>
+	background for popups <input />
+</PopupBackground>
 ```

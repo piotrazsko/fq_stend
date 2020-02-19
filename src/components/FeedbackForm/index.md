@@ -1,3 +1,3 @@
 ```jsx
-<FeedbackForm show onClose={prompt} onClick={console.log} />
+<FeedbackForm onClose={prompt} onClick={console.log} />
 ```
