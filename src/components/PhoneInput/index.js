@@ -15,7 +15,14 @@ const useStyles = makeStyles(theme => ({
 	},
 }));
 
-export default function PhoneInput({ value, onChange = () => {}, name, disabled, label = '' }) {
+export default function PhoneInput({
+	value,
+	onChange = () => {},
+	name,
+	disabled,
+	label = '',
+	classNames = {},
+}) {
 	const classes = useStyles();
 	const [values, setValues] = React.useState({
 		textmask: value,
@@ -60,9 +67,10 @@ export default function PhoneInput({ value, onChange = () => {}, name, disabled,
 		}, 50);
 	};
 	return (
-		<FormControl className={classes.formControl}>
+		<FormControl className={[classes.formControl, classNames.root].join(' ')}>
 			<InputLabel htmlFor="formatted-text-mask-input">{label}</InputLabel>
 			<Input
+				className={classNames.input}
 				onFocus={onFocus}
 				disabled={disabled}
 				value={values.textmask}
@@ -80,4 +88,8 @@ PhoneInput.propTypes = {
 	name: PropTypes.string,
 	disabled: PropTypes.bool,
 	label: PropTypes.string,
+	classNames: PropTypes.shape({
+		root: PropTypes.string,
+		input: PropTypes.string,
+	}),
 };

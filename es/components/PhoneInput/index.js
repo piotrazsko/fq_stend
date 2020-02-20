@@ -37,7 +37,9 @@ export default function PhoneInput(_ref) {
       name = _ref.name,
       disabled = _ref.disabled,
       _ref$label = _ref.label,
-      label = _ref$label === void 0 ? '' : _ref$label;
+      label = _ref$label === void 0 ? '' : _ref$label,
+      _ref$classNames = _ref.classNames,
+      classNames = _ref$classNames === void 0 ? {} : _ref$classNames;
   var classes = useStyles();
 
   var _React$useState = React.useState({
@@ -90,10 +92,11 @@ export default function PhoneInput(_ref) {
   };
 
   return React.createElement(FormControl, {
-    className: classes.formControl
+    className: [classes.formControl, classNames.root].join(' ')
   }, React.createElement(InputLabel, {
     htmlFor: "formatted-text-mask-input"
   }, label), React.createElement(Input, {
+    className: classNames.input,
     onFocus: onFocus,
     disabled: disabled,
     value: values.textmask,
@@ -108,5 +111,9 @@ PhoneInput.propTypes = {
   onChange: PropTypes.func,
   name: PropTypes.string,
   disabled: PropTypes.bool,
-  label: PropTypes.string
+  label: PropTypes.string,
+  classNames: PropTypes.shape({
+    root: PropTypes.string,
+    input: PropTypes.string
+  })
 };
