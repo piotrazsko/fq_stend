@@ -13,6 +13,6 @@
 		},
 	]}
 	onClick={console.log}
-	onClose = {alert}
+	onClose = {console.log}
 />
 ```

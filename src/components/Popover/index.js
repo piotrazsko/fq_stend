@@ -36,11 +36,13 @@ const Popover = ({
 		switchShow(visible);
 	}, [visible]);
 
+	// BUG:  showd after mount
 	useEffect(() => {
 		if (!show) {
 			onClose();
 		}
 	}, [show]);
+
 	return (
 		(show || showForce) && (
 			<div
@@ -58,6 +60,12 @@ const Popover = ({
 				>
 					{children}
 				</div>
+				<div
+					className={style.background}
+					onClick={() => {
+						switchShow(!show);
+					}}
+				></div>
 			</div>
 		)
 	);
