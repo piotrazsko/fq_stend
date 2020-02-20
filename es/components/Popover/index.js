@@ -10,7 +10,8 @@ import React, { useRef, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 var style = {
   "container": "style-module_fq_container___2pgq-",
-  "positionContainer": "style-module_fq_positionContainer___3rdF0"
+  "positionContainer": "style-module_fq_positionContainer___3rdF0",
+  "background": "style-module_fq_background___3Lefb"
 };
 
 var positionPopover = function positionPopover(el) {
@@ -56,7 +57,8 @@ var Popover = function Popover(_ref) {
 
   useEffect(function () {
     switchShow(visible);
-  }, [visible]);
+  }, [visible]); // BUG:  showd after mount
+
   useEffect(function () {
     if (!show) {
       onClose();
@@ -76,7 +78,12 @@ var Popover = function Popover(_ref) {
     },
     ref: inputEl,
     className: style.container
-  }, children));
+  }, children), React.createElement("div", {
+    className: style.background,
+    onClick: function onClick() {
+      switchShow(!show);
+    }
+  }));
 };
 
 Popover.propTypes = {
