@@ -180,6 +180,18 @@
     font-weight: 500; }
 /*  imported from style.module.scss  */
 
+.style-module_fq_commonContainer___t49P3 *::before {
+  content: '' !important; }
+
+.style-module_fq_container___vC_4B {
+  border-top: none !important;
+  border-left: none !important;
+  border-radius: 0 !important;
+  border-right: none !important; }
+  .style-module_fq_container___vC_4B:focus {
+    box-shadow: none !important; }
+/*  imported from style.module.scss  */
+
 .style-module_fq_container___2pgq- {
   box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12);
   outline: 0;
