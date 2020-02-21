@@ -189,6 +189,7 @@
   border-radius: 0 !important;
   border-right: none !important;
   font-family: Roboto !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.42) !important;
   width: auto !important;
   padding: 6px 14px 6px 58px !important;
   min-width: 250px; }
