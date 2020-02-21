@@ -187,7 +187,15 @@
   border-top: none !important;
   border-left: none !important;
   border-radius: 0 !important;
-  border-right: none !important; }
+  border-right: none !important;
+  font-family: Roboto !important;
+  width: auto !important;
+  padding: 6px 14px 6px 58px !important;
+  min-width: 250px; }
+  .style-module_fq_container___vC_4B:hover {
+    border-bottom: 2px solid rgba(0, 0, 0, 0.87) !important; }
+  .style-module_fq_container___vC_4B:focus {
+    border-bottom: 2px solid #3f51b5 !important; }
   .style-module_fq_container___vC_4B:focus {
     box-shadow: none !important; }
 /*  imported from style.module.scss  */
