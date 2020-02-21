@@ -2,22 +2,13 @@ import React from 'react';
 import MaskedInput from 'react-text-mask';
 import PropTypes from 'prop-types';
 function TextMask(props) {
-    const { inputRef, ...other } = props;
+	const { inputRef, countryCode, ...other } = props;
 
-    return (
-        <MaskedInput
-            {...other}
-            ref={ref => {
-                inputRef(ref ? ref.inputElement : null);
-            }}
-            mask={['(', /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, '-', /\d/, /\d/]}
-            placeholderChar={'\u2000'}
-            showMask
-        />
-    );
+	return <input />;
 }
 
 TextMask.propTypes = {
-    inputRef: PropTypes.func.isRequired,
+	inputRef: PropTypes.func.isRequired,
+	countryCode: PropTypes.string.isRequired,
 };
 export default TextMask;
