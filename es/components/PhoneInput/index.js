@@ -16,6 +16,8 @@ var style = {
 import 'react-phone-input-2/lib/material.css';
 export default function PhoneInput(_ref) {
   var value = _ref.value,
+      _ref$onlyNumbers = _ref.onlyNumbers,
+      onlyNumbers = _ref$onlyNumbers === void 0 ? true : _ref$onlyNumbers,
       _ref$onChange = _ref.onChange,
       onChange = _ref$onChange === void 0 ? function () {} : _ref$onChange,
       name = _ref.name,
@@ -38,7 +40,7 @@ export default function PhoneInput(_ref) {
     setPhone(value);
   }, [value]);
   React.useEffect(function () {
-    onChange(phone);
+    onChange(onlyNumbers ? phone.replace(/\D/g, '') : phone);
   }, [phone]);
   return React.createElement(PhoneInputDefault, {
     containerClass: ['react-tel-input', style.commonContainer, classNames.root].join(' '),
@@ -57,6 +59,7 @@ export default function PhoneInput(_ref) {
   });
 }
 PhoneInput.propTypes = {
+  onlyNumbers: PropTypes.bool,
   value: PropTypes.string,
   countryCode: PropTypes.string.isRequired,
   onChange: PropTypes.func,

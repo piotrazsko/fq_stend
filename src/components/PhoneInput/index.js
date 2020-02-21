@@ -6,6 +6,7 @@ import 'react-phone-input-2/lib/material.css';
 
 export default function PhoneInput({
 	value,
+	onlyNumbers = true,
 	onChange = () => {},
 	name,
 	disabled,
@@ -14,11 +15,12 @@ export default function PhoneInput({
 	classNames = { root: '' },
 }) {
 	const [phone, setPhone] = React.useState(value);
+
 	React.useEffect(() => {
 		setPhone(value);
 	}, [value]);
 	React.useEffect(() => {
-		onChange(phone);
+		onChange(onlyNumbers ? phone.replace(/\D/g, '') : phone);
 	}, [phone]);
 
 	return (
@@ -38,6 +40,7 @@ export default function PhoneInput({
 	);
 }
 PhoneInput.propTypes = {
+	onlyNumbers: PropTypes.bool,
 	value: PropTypes.string,
 	countryCode: PropTypes.string.isRequired,
 	onChange: PropTypes.func,

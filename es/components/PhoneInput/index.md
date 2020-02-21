@@ -1,3 +1,3 @@
 ```jsx
-<PhoneInput countryCode="by" />
+<PhoneInput countryCode="by" value="375256666666" />
 ```
