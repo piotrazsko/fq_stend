@@ -32,6 +32,7 @@ const Button = ({
 	classesExt,
 	children,
 	fontSize,
+	typeButton,
 	...rest
 }) => {
 	const classes = useStyles();
@@ -39,6 +40,7 @@ const Button = ({
 		<Fab
 			color={color}
 			variant="extended"
+			type={typeButton}
 			classes={{
 				root: classes.root,
 				primary: classes.primary,
@@ -53,6 +55,7 @@ const Button = ({
 		</Fab>
 	) : (
 		<ButtonMat
+			type={typeButton}
 			color={color}
 			variant="contained"
 			classes={{
@@ -79,6 +82,7 @@ Button.propTypes = {
 	color: PropTypes.string,
 	classesExt: PropTypes.object,
 	fontSize: PropTypes.number,
+	typeButton: PropTypes.string,
 };
 
 export default Button;
