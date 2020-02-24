@@ -20,7 +20,9 @@ export default function PhoneInput({
 		setPhone(value);
 	}, [value]);
 	React.useEffect(() => {
-		onChange(onlyNumbers ? phone.replace(/\D/g, '') : phone);
+		if (phone) {
+			onChange(onlyNumbers ? phone.replace(/\D/g, '') : phone);
+		}
 	}, [phone]);
 
 	return (

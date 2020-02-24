@@ -40,7 +40,9 @@ export default function PhoneInput(_ref) {
     setPhone(value);
   }, [value]);
   React.useEffect(function () {
-    onChange(onlyNumbers ? phone.replace(/\D/g, '') : phone);
+    if (phone) {
+      onChange(onlyNumbers ? phone.replace(/\D/g, '') : phone);
+    }
   }, [phone]);
   return React.createElement(PhoneInputDefault, {
     containerClass: ['react-tel-input', style.commonContainer, classNames.root].join(' '),

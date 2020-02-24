@@ -1,7 +1,7 @@
 ```jsx
 <div>test</div>
 <Menu
-	visible
+	visible={false}
 	menuItems={[
 		{
 			title: 'test',
