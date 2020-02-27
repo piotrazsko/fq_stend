@@ -55,7 +55,7 @@ var PopupCore = function PopupCore(_ref) {
     childrenContainer: ''
   } : _ref$classes;
 
-  var _React$useState = React.useState(showPopup || showForce),
+  var _React$useState = React.useState(showPopup),
       _React$useState2 = _slicedToArray(_React$useState, 2),
       popup = _React$useState2[0],
       switchPopup = _React$useState2[1];
@@ -65,22 +65,16 @@ var PopupCore = function PopupCore(_ref) {
   }, [showPopup]);
 
   var closeHandler = function closeHandler(ev) {
-    if (!showForce) {
-      switchPopup(!popup);
-    }
-
+    switchPopup(!popup);
     onCancel(ev);
   };
 
   var confirmHandler = function confirmHandler(ev) {
-    if (!showForce) {
-      switchPopup(!popup);
-    }
-
+    switchPopup(!popup);
     onClick(ev);
   };
 
-  return popup && React.createElement(PopupBackground, {
+  return (popup || showForce) && React.createElement(PopupBackground, {
     onClick: closeHandler,
     visible: true
   }, React.createElement("div", {
