@@ -1,3 +1,3 @@
 ```jsx
-<AlertPopup type="danger" message={'TEST MESSAGE'} />
+<AlertPopup show type="danger" message={'TEST MESSAGE'} />
 ```
