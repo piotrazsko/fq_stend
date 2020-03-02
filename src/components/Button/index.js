@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Fab, Button as ButtonMat } from '@material-ui/core';
+import { Fab, Button as ButtonMat, IconButton } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(() => ({
@@ -33,45 +33,69 @@ const Button = ({
 	children,
 	fontSize,
 	typeButton,
+	variant = '',
 	...rest
 }) => {
 	const classes = useStyles();
-	return type === 'fab' ? (
-		<Fab
-			color={color}
-			variant="extended"
-			type={typeButton}
-			classes={{
-				root: classes.root,
-				primary: classes.primary,
-				disabled: classes.disabled,
-				...classesExt,
-			}}
-			style={{ fontSize: fontSize }}
-			aria-label="edit"
-			{...rest}
-		>
-			{children || text}
-		</Fab>
-	) : (
-		<ButtonMat
-			type={typeButton}
-			color={color}
-			variant="contained"
-			classes={{
-				root: classes.root,
-				containedPrimary: classes.primary,
-				outlinedPrimary: classes.outlinedPrimary,
-				disabled: classes.disabled,
-				...classesExt,
-			}}
-			style={{ fontSize: fontSize }}
-			aria-label="edit"
-			{...rest}
-		>
-			{children || text}
-		</ButtonMat>
-	);
+	switch (type) {
+		case 'icon':
+			return (
+				<IconButton
+					color={color}
+					type={typeButton}
+					classes={{
+						primary: classes.primary,
+						disabled: classes.disabled,
+						...classesExt,
+					}}
+					variant={variant}
+					style={{ fontSize: fontSize }}
+					aria-label="edit"
+					{...rest}
+				>
+					{children || text}
+				</IconButton>
+			);
+		case 'fab':
+			return (
+				<Fab
+					color={color}
+					variant={variant || 'extended'}
+					type={typeButton}
+					classes={{
+						root: variant !== 'round' ? classes.root : '',
+						primary: classes.primary,
+						disabled: classes.disabled,
+						...classesExt,
+					}}
+					style={{ fontSize: fontSize }}
+					aria-label="edit"
+					{...rest}
+				>
+					{children || text}
+				</Fab>
+			);
+		default:
+			return (
+				<ButtonMat
+					type={typeButton}
+					color={color}
+					variant={variant || 'contained'}
+					classes={{
+						root: classes.root,
+						containedPrimary: classes.primary,
+						outlinedPrimary: classes.outlinedPrimary,
+						disabled: classes.disabled,
+						...classesExt,
+					}}
+					style={{ fontSize: fontSize }}
+					aria-label="edit"
+					{...rest}
+				>
+					{children || text}
+				</ButtonMat>
+			);
+	}
 };
 
 Button.propTypes = {

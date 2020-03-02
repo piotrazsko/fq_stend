@@ -12,7 +12,7 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Fab, Button as ButtonMat } from '@material-ui/core';
+import { Fab, Button as ButtonMat, IconButton } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 var useStyles = makeStyles(function () {
   return {
@@ -49,37 +49,61 @@ var Button = function Button(_ref) {
       children = _ref.children,
       fontSize = _ref.fontSize,
       typeButton = _ref.typeButton,
-      rest = _objectWithoutProperties(_ref, ["text", "type", "color", "classesExt", "children", "fontSize", "typeButton"]);
+      _ref$variant = _ref.variant,
+      variant = _ref$variant === void 0 ? '' : _ref$variant,
+      rest = _objectWithoutProperties(_ref, ["text", "type", "color", "classesExt", "children", "fontSize", "typeButton", "variant"]);
 
   var classes = useStyles();
-  return type === 'fab' ? React.createElement(Fab, _extends({
-    color: color,
-    variant: "extended",
-    type: typeButton,
-    classes: _objectSpread({
-      root: classes.root,
-      primary: classes.primary,
-      disabled: classes.disabled
-    }, classesExt),
-    style: {
-      fontSize: fontSize
-    },
-    "aria-label": "edit"
-  }, rest), children || text) : React.createElement(ButtonMat, _extends({
-    type: typeButton,
-    color: color,
-    variant: "contained",
-    classes: _objectSpread({
-      root: classes.root,
-      containedPrimary: classes.primary,
-      outlinedPrimary: classes.outlinedPrimary,
-      disabled: classes.disabled
-    }, classesExt),
-    style: {
-      fontSize: fontSize
-    },
-    "aria-label": "edit"
-  }, rest), children || text);
+
+  switch (type) {
+    case 'icon':
+      return React.createElement(IconButton, _extends({
+        color: color,
+        type: typeButton,
+        classes: _objectSpread({
+          primary: classes.primary,
+          disabled: classes.disabled
+        }, classesExt),
+        variant: variant,
+        style: {
+          fontSize: fontSize
+        },
+        "aria-label": "edit"
+      }, rest), children || text);
+
+    case 'fab':
+      return React.createElement(Fab, _extends({
+        color: color,
+        variant: variant || 'extended',
+        type: typeButton,
+        classes: _objectSpread({
+          root: variant !== 'round' ? classes.root : '',
+          primary: classes.primary,
+          disabled: classes.disabled
+        }, classesExt),
+        style: {
+          fontSize: fontSize
+        },
+        "aria-label": "edit"
+      }, rest), children || text);
+
+    default:
+      return React.createElement(ButtonMat, _extends({
+        type: typeButton,
+        color: color,
+        variant: variant || 'contained',
+        classes: _objectSpread({
+          root: classes.root,
+          containedPrimary: classes.primary,
+          outlinedPrimary: classes.outlinedPrimary,
+          disabled: classes.disabled
+        }, classesExt),
+        style: {
+          fontSize: fontSize
+        },
+        "aria-label": "edit"
+      }, rest), children || text);
+  }
 };
 
 Button.propTypes = {

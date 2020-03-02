@@ -27,26 +27,22 @@ const PopupCore = ({
 		childrenContainer: '',
 	},
 }) => {
-	const [popup, switchPopup] = React.useState(showPopup || showForce);
+	const [popup, switchPopup] = React.useState(showPopup);
 
 	React.useEffect(() => {
 		switchPopup(showPopup);
 	}, [showPopup]);
 
 	const closeHandler = ev => {
-		if (!showForce) {
-			switchPopup(!popup);
-		}
+		switchPopup(!popup);
 		onCancel(ev);
 	};
 	const confirmHandler = ev => {
-		if (!showForce) {
-			switchPopup(!popup);
-		}
+		switchPopup(!popup);
 		onClick(ev);
 	};
 	return (
-		popup && (
+		(popup || showForce) && (
 			<PopupBackground onClick={closeHandler} visible>
 				<div className={[style.container, classes.container].join(' ')}>
 					{showIcon && <div className={style.icon} />}

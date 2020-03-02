@@ -10,39 +10,39 @@ const AlertPopup = ({
 	show = false,
 	message = '',
 	showForce = false,
+	confirmButtonProps = {},
 }) => {
 	return (
-		show && (
-			<PopupCore
-				showForce={showForce}
-				colorConfirm={type === 'danger' ? 'secondary' : 'primary'}
-				onClick={ev => {
-					if (typeof onClick === 'function') {
-						onClick(ev);
-					}
-				}}
-				textConfirm={textConfirm}
-				textCancel=""
-				type="button"
-				onClose={ev => {
-					if (typeof onClick === 'function') {
-						onClick(ev);
-					}
-				}}
-			>
-				<div className={style.alert}>{message}</div>
-			</PopupCore>
-		)
+		<PopupCore
+			showPopup={show}
+			showForce={showForce}
+			colorConfirm={type === 'danger' ? 'secondary' : 'primary'}
+			onClick={ev => {
+				if (typeof onClick === 'function') {
+					onClick(ev);
+				}
+			}}
+			textConfirm={textConfirm}
+			textCancel=""
+			type="button"
+			confirmButtonProps={{ ...confirmButtonProps }}
+			onClose={ev => {
+				if (typeof onClick === 'function') {
+					onClick(ev);
+				}
+			}}
+		>
+			<div className={style.alert}>{message}</div>
+		</PopupCore>
 	);
 };
 
 AlertPopup.propTypes = {
-	type: PropTypes.string,
-	confirmAction: PropTypes.func,
-	titleText: PropTypes.string,
+	confirmButtonProps: PropTypes.object,
+	type: PropTypes.oneOf(['danger', undefined]),
 	show: PropTypes.bool,
+	onClick: PropTypes.func,
 	message: PropTypes.element,
-	hideAlert: PropTypes.func,
 	textConfirm: PropTypes.string,
 	showForce: PropTypes.bool,
 };
