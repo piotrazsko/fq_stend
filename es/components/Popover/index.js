@@ -78,7 +78,7 @@ var Popover = function Popover(_ref) {
     },
     ref: inputEl,
     className: style.container
-  }, children), React.createElement("div", {
+  }, children), React.createElement("divb", {
     className: style.background,
     onClick: function onClick() {
       switchShow(!show);
