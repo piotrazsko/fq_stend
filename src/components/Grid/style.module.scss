@@ -1,0 +1,21 @@
+.gridContainer {
+	display: grid;
+	grid-column-gap: 0px;
+	grid-row-gap: 0px;
+}
+.cell {
+	min-height: 20px;
+	min-width: 100px;
+	border: 1px solid grey;
+	&:hover {
+		background: rgb(230, 230, 230);
+	}
+}
+.selected {
+	border-radius: 3px;
+	background-color: #1e8cff;
+}
+.hovered {
+	background: rgb(230, 230, 230);
+	border: 1px solid black;
+}
