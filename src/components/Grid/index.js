@@ -104,7 +104,8 @@ const Grid = ({
 						{...cellProps}
 					>
 						{isSelected ? isSelected.children : ''}
-						{cellProps.children && React.cloneElement(cellProps.children, { row, col })}
+						{cellProps.children &&
+							React.cloneElement(cellProps.children, { row, col, isSelected: Boolean(isSelected) })}
 					</div>
 				);
 			})}

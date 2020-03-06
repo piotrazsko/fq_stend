@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Grid from '../Grid';
+import Cell from './Cell';
 import style from './style.module.scss';
 
 const WorkingTimeSelect = ({ cellProps }) => {
@@ -23,13 +24,13 @@ const WorkingTimeSelect = ({ cellProps }) => {
 	return (
 		<div>
 			<Grid
-				cols={9}
-				rows={24}
+				cols={8}
+				rows={25}
 				selectFromCol={1}
-				selectToCol={Infinity}
-				selectFromRow={0}
-				selectToRow={Infinity}
-				cellProps={{ ...cellProps }}
+				selectToCol={7}
+				selectFromRow={1}
+				selectToRow={24}
+				cellProps={{ children: <Cell /> }}
 				selected={selectedTime}
 				onSelect={onSelect}
 			/>
@@ -42,3 +43,17 @@ WorkingTimeSelect.propTypes = {
 };
 
 export default WorkingTimeSelect;
+
+function word() {
+	let kol = 0;
+	let massivGlasnih = ['а', 'о', 'и', 'е', 'э', 'ы', 'у', 'ю', 'я'];
+	let stroka = prompt('введите строку:');
+	for (var i = 0; i < stroka.length; i++)
+		for (var j = 0; j < massivGlasnih.length; j++)
+			if (stroka[i] === massivGlasnih[j]) {
+				++kol;
+				break;
+			}
+	return kol ? kol : 'в вашем слове нет гласных букв';
+}
+word();
