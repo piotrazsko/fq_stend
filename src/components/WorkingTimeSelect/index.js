@@ -24,12 +24,16 @@ const WorkingTimeSelect = ({ cellProps }) => {
 	return (
 		<div>
 			<Grid
+				className={style.gridContainer}
 				cols={8}
 				rows={25}
 				selectFromCol={1}
 				selectToCol={7}
 				selectFromRow={1}
 				selectToRow={24}
+				setRowStyle={row => {
+					return row === 0 ? style.firstRow : '';
+				}}
 				cellProps={{ children: <Cell /> }}
 				selected={selectedTime}
 				onSelect={onSelect}
@@ -43,17 +47,3 @@ WorkingTimeSelect.propTypes = {
 };
 
 export default WorkingTimeSelect;
-
-function word() {
-	let kol = 0;
-	let massivGlasnih = ['а', 'о', 'и', 'е', 'э', 'ы', 'у', 'ю', 'я'];
-	let stroka = prompt('введите строку:');
-	for (var i = 0; i < stroka.length; i++)
-		for (var j = 0; j < massivGlasnih.length; j++)
-			if (stroka[i] === massivGlasnih[j]) {
-				++kol;
-				break;
-			}
-	return kol ? kol : 'в вашем слове нет гласных букв';
-}
-word();

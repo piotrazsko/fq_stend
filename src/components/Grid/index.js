@@ -31,6 +31,10 @@ const Grid = ({
 	selectToCol = Infinity,
 	selectFromRow = 0,
 	selectToRow = Infinity,
+	className = '',
+	setColStyle = () => '',
+	setRowStyle = () => '',
+	setCellStyle = () => '',
 }) => {
 	const divs = rows * cols;
 	const arr = Array(divs).fill(1);
@@ -67,7 +71,7 @@ const Grid = ({
 	return (
 		<div
 			onPointerLeave={onMouseLeave}
-			className={style.gridContainer}
+			className={[style.gridContainer, className].join(' ')}
 			style={{
 				'grid-template-columns': `repeat(${cols}, 1fr)`,
 				'grid-template-rows': `repeat(${rows}, 1fr)`,
@@ -96,6 +100,9 @@ const Grid = ({
 							isSelected ? style.selected : '',
 							isHovered ? style.hovered : '',
 							item.className || '',
+							setColStyle(col),
+							setRowStyle(row),
+							setCellStyle({ row, col }),
 						].join(' ')}
 						col={col}
 						row={row}
@@ -125,11 +132,14 @@ Grid.propTypes = {
 			props: PropTypes.object,
 		})
 	),
+	setColStyle: PropTypes.func,
+	setRowStyle: PropTypes.func,
+	setCellStyle: PropTypes.func,
 	selectFromCol: PropTypes.number,
 	selectToCol: PropTypes.number,
 	selectFromRow: PropTypes.number,
 	selectToRow: PropTypes.number,
-
+	className: PropTypes.string,
 	cellProps: PropTypes.object,
 	children: PropTypes.any,
 	onSelect: PropTypes.func,

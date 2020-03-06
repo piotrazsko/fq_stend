@@ -4,13 +4,17 @@
 	color: #373737;
 	max-width: 50px;
 	user-select: none;
+	// grid-column-start: first-row;
+	display: flex;
+	align-items: center;
 }
 .cellDay {
 	font-family: Roboto;
 	font-size: 18px;
 	color: #000000;
 	user-select: none;
-	position: fixed;
+	// margin: 9px;
+	// grid-row-start: first;
 }
 .selectedCell {
 	color: #fff;
@@ -22,4 +26,11 @@
 	align-items: center;
 	height: 100%;
 	font-family: Roboto;
+}
+.gridContainer {
+	// grid-template-rows: [first] 40px !important;
+	// grid-template-columns: [first-row] 30px !important;
+}
+.firstRow {
+	background-color: red;
 }
