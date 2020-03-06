@@ -1,20 +1,37 @@
+.title {
+	font-family: Roboto;
+	font-size: 18px;
+	margin-left: 40px;
+}
+.resultContainer {
+	min-height: 70px;
+}
 .cellTime {
 	font-family: HelveticaNeue;
 	font-size: 8px;
 	color: #373737;
 	max-width: 50px;
 	user-select: none;
-	// grid-column-start: first-row;
+	height: 100%;
 	display: flex;
 	align-items: center;
+	justify-content: center;
+	width: 100%;
 }
 .cellDay {
 	font-family: Roboto;
 	font-size: 18px;
 	color: #000000;
 	user-select: none;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	padding: 5px;
+	width: 100%;
+
 	// margin: 9px;
-	// grid-row-start: first;
+	//
 }
 .selectedCell {
 	color: #fff;
@@ -28,9 +45,15 @@
 	font-family: Roboto;
 }
 .gridContainer {
-	// grid-template-rows: [first] 40px !important;
-	// grid-template-columns: [first-row] 30px !important;
+	grid-template-rows: [first] 40px !important;
+	grid-template-columns: [first-row] 40px !important;
 }
 .firstRow {
-	background-color: red;
+	grid-row-start: first !important;
+}
+.firstColumn {
+	grid-column-end: first-row !important;
+	min-width: 40px;
+	display: flex;
+	align-items: center;
 }

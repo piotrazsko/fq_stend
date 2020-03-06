@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Grid from '../Grid';
 import Cell from './Cell';
+import Days from './Days';
 import style from './style.module.scss';
 
 const WorkingTimeSelect = ({ cellProps }) => {
@@ -23,6 +24,10 @@ const WorkingTimeSelect = ({ cellProps }) => {
 	};
 	return (
 		<div>
+			<div className={style.title}>Установите подходящее для вас время</div>
+			<div className={style.resultContainer}>
+				<Days selectedTime={selectedTime} />
+			</div>
 			<Grid
 				className={style.gridContainer}
 				cols={8}
@@ -33,6 +38,9 @@ const WorkingTimeSelect = ({ cellProps }) => {
 				selectToRow={24}
 				setRowStyle={row => {
 					return row === 0 ? style.firstRow : '';
+				}}
+				setColStyle={col => {
+					return col === 0 ? style.firstColumn : '';
 				}}
 				cellProps={{ children: <Cell /> }}
 				selected={selectedTime}

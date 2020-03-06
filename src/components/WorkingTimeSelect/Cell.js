@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { MONTHS, WEEKDAYS_LONG, WEEKDAYS_SHORT } from '../../helpers/calendar.js';
 import style from './style.module.scss';
 const Cell = ({ row, col, isSelected }) => {
-	console.log(row, col, isSelected);
 	switch (true) {
 		case isSelected:
 			return <div className={style.selectedCell}>{row}:00 Время выбрано</div>;
