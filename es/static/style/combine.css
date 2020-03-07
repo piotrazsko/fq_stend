@@ -90,6 +90,36 @@
     .style-module_fq_content___Avf_5 .style-module_fq_inputContainer___2SWTP .style-module_fq_input___2S9_k {
       text-align: center !important;
       font-size: 1.2em; }
+/*  imported from style.module.scss  */
+
+.style-module_fq_gridContainer___2eraD {
+  display: grid;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px; }
+
+.style-module_fq_cell___3gC2k {
+  min-height: 20px;
+  min-width: 140px;
+  border: 1px solid #eeedee;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+  @media screen and (max-width: 959px) {
+    .style-module_fq_cell___3gC2k {
+      min-width: 60px; } }
+  .style-module_fq_cell___3gC2k:hover {
+    background: #e6e6e6; }
+
+.style-module_fq_selected___15phj {
+  border-radius: 3px;
+  background-color: #1e8cff; }
+  .style-module_fq_selected___15phj:hover {
+    background: rgba(31, 140, 255, 0.77); }
+
+.style-module_fq_hovered___1DUi6 {
+  background: #e6e6e6 !important;
+  border: 1px solid #b8b8b8; }
 /*  imported from styles.module.scss  */
 
 .styles-module_fq_container___12YKF {
@@ -235,17 +265,16 @@
   min-width: 300px;
   padding: 20px 25px;
   max-height: 75vh;
-  max-width: 75vw; }
+  max-width: 80vw; }
   .style-module_fq_container___1KNAu .style-module_fq_buttonContainer___txOay {
     padding-top: 25px;
     display: flex;
     justify-content: flex-end; }
   .style-module_fq_container___1KNAu .style-module_fq_dataContainer___3LZ9C {
     overflow: auto;
-    min-width: 300px;
     padding: 20px 25px;
     max-height: calc(75vh - 125px);
-    max-width: 75vw; }
+    max-width: 80vw; }
   .style-module_fq_container___1KNAu .style-module_fq_button___2pPVp {
     margin-left: 20px;
     font-size: 0.8em; }
@@ -410,3 +439,105 @@ ol {
 .styles-module_fq_userInfo__rating-star___1nox5 {
   width: 12px;
   height: 12px; }
+/*  imported from style.module.scss  */
+
+.style-module_fq_title___tFfDD {
+  font-family: Roboto;
+  font-size: 18px;
+  margin-left: 40px; }
+
+.style-module_fq_resultContainer___10tCz {
+  margin-left: 40px;
+  min-height: 70px;
+  display: flex;
+  flex-wrap: wrap; }
+
+.style-module_fq_cellTime___1tycP {
+  font-family: HelveticaNeue;
+  font-size: 8px;
+  color: #373737;
+  max-width: 50px;
+  user-select: none;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%; }
+
+.style-module_fq_cellDay___37LA4 {
+  font-family: Roboto;
+  font-size: 16px;
+  color: #000000;
+  user-select: none;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px;
+  width: 100%; }
+
+.style-module_fq_menuItem___1wNiM {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+  min-width: 100px; }
+
+.style-module_fq_selectedCell___KT0hk {
+  color: #fff;
+  user-select: none;
+  font-size: 11px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  font-family: Roboto; }
+
+.style-module_fq_gridContainer___2HoLV {
+  grid-template-rows: [first] 40px !important;
+  grid-template-columns: [first-row] 30px !important;
+  margin-top: 5px; }
+
+.style-module_fq_firstRow___3qcYX {
+  grid-row-start: first !important;
+  background-color: #f8f8f8; }
+
+.style-module_fq_firstColumn___1KiEl {
+  grid-column-end: first-row !important;
+  min-width: 30px;
+  display: flex;
+  align-items: center;
+  border-top: none !important;
+  border-bottom: none !important; }
+/*  imported from style.module.scss  */
+
+.style-module_fq_circle___sTmOM {
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  color: #fff;
+  border-radius: 50%;
+  background-image: linear-gradient(to top, #22c3ff, #1c72ff);
+  font-family: Helvetica;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 10.9px; }
+
+.style-module_fq_timeTag___36bYN {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 15.7px;
+  background-color: #f8f8f8;
+  height: 32px;
+  margin: 10px 15px 3px 0; }
+  .style-module_fq_timeTag___36bYN .style-module_fq_time___2Nuis {
+    height: 32px;
+    font-family: HelveticaNeue;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px;
+    font-size: 12px; }
