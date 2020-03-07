@@ -33,18 +33,23 @@ var style = {
 
 var WorkingTimeSelect = function WorkingTimeSelect(_ref) {
   var _ref$onChange = _ref.onChange,
-      onChange = _ref$onChange === void 0 ? function (data) {
-    console.log(data);
-  } : _ref$onChange,
+      onChange = _ref$onChange === void 0 ? function () {} : _ref$onChange,
       _ref$workingTime = _ref.workingTime,
       workingTime = _ref$workingTime === void 0 ? [] : _ref$workingTime,
       _ref$isMobile = _ref.isMobile,
       isMobile = _ref$isMobile === void 0 ? false : _ref$isMobile;
 
-  var _React$useState = React.useState(workingTime),
+  var _React$useState = React.useState(_toConsumableArray(workingTime)),
       _React$useState2 = _slicedToArray(_React$useState, 2),
       selectedTime = _React$useState2[0],
       selectTime = _React$useState2[1];
+
+  React.useEffect(function () {
+    onChange(_toConsumableArray(selectedTime));
+  }, [selectedTime]);
+  React.useEffect(function () {
+    selectTime(_toConsumableArray(workingTime));
+  }, [workingTime]);
 
   var onSelect = function onSelect(selected) {
     if (selectedTime.find(function (item) {
@@ -66,10 +71,6 @@ var WorkingTimeSelect = function WorkingTimeSelect(_ref) {
     })));
   };
 
-  React.useEffect(function () {
-    onChange(_toConsumableArray(selectedTime));
-  }, [selectedTime]);
-  React.useEffect(function () {}, [workingTime]);
   return React.createElement("div", null, React.createElement("div", {
     className: style.title
   }, "\u0423\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u0435 \u043F\u043E\u0434\u0445\u043E\u0434\u044F\u0449\u0435\u0435 \u0434\u043B\u044F \u0432\u0430\u0441 \u0432\u0440\u0435\u043C\u044F"), React.createElement("div", {
@@ -109,5 +110,8 @@ WorkingTimeSelect.propTypes = {
     row: PropTypes.number
   })),
   isMobile: PropTypes.bool
+};
+WorkingTimeSelect.defaultProps = {
+  workingTime: []
 };
 export default WorkingTimeSelect;
