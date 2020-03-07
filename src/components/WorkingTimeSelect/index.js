@@ -5,14 +5,15 @@ import Cell from './Cell';
 import Days from './Days';
 import style from './style.module.scss';
 
-const WorkingTimeSelect = ({
-	onChange = data => {
-		console.log(data);
-	},
-	workingTime = [],
-	isMobile = false,
-}) => {
-	const [selectedTime, selectTime] = React.useState(workingTime);
+const WorkingTimeSelect = ({ onChange = () => {}, workingTime = [], isMobile = false }) => {
+	const [selectedTime, selectTime] = React.useState([...workingTime]);
+	React.useEffect(() => {
+		onChange([...selectedTime]);
+	}, [selectedTime]);
+	React.useEffect(() => {
+		selectTime([...workingTime]);
+	}, [workingTime]);
+
 	const onSelect = selected => {
 		if (
 			selectedTime.find(item => {
@@ -31,10 +32,7 @@ const WorkingTimeSelect = ({
 	const onClear = col => {
 		selectTime([...[...selectedTime].filter(item => item.col !== col)]);
 	};
-	React.useEffect(() => {
-		onChange([...selectedTime]);
-	}, [selectedTime]);
-	React.useEffect(() => {}, [workingTime]);
+
 	return (
 		<div>
 			<div className={style.title}>Установите подходящее для вас время</div>
@@ -68,6 +66,9 @@ WorkingTimeSelect.propTypes = {
 	onChange: PropTypes.func,
 	workingTime: PropTypes.arrayOf(PropTypes.shape({ col: PropTypes.number, row: PropTypes.number })),
 	isMobile: PropTypes.bool,
+};
+WorkingTimeSelect.defaultProps = {
+	workingTime: [],
 };
 
 export default WorkingTimeSelect;

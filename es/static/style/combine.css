@@ -264,7 +264,7 @@
 .style-module_fq_container___1KNAu {
   min-width: 300px;
   padding: 20px 25px;
-  max-height: 75vh;
+  max-height: 80vh;
   max-width: 80vw; }
   .style-module_fq_container___1KNAu .style-module_fq_buttonContainer___txOay {
     padding-top: 25px;
@@ -273,7 +273,7 @@
   .style-module_fq_container___1KNAu .style-module_fq_dataContainer___3LZ9C {
     overflow: auto;
     padding: 20px 25px;
-    max-height: calc(75vh - 125px);
+    max-height: calc(80vh - 125px);
     max-width: 80vw; }
   .style-module_fq_container___1KNAu .style-module_fq_button___2pPVp {
     margin-left: 20px;
