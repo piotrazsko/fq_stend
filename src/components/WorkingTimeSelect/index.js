@@ -5,8 +5,14 @@ import Cell from './Cell';
 import Days from './Days';
 import style from './style.module.scss';
 
-const WorkingTimeSelect = ({ cellProps }) => {
-	const [selectedTime, selectTime] = React.useState([]);
+const WorkingTimeSelect = ({
+	onChange = data => {
+		console.log(data);
+	},
+	workingTime = [],
+	isMobile = false,
+}) => {
+	const [selectedTime, selectTime] = React.useState(workingTime);
 	const onSelect = selected => {
 		if (
 			selectedTime.find(item => {
@@ -22,6 +28,13 @@ const WorkingTimeSelect = ({ cellProps }) => {
 			selectTime([...selectedTime, ...selected]);
 		}
 	};
+	const onClear = col => {
+		selectTime([...[...selectedTime].filter(item => item.col !== col)]);
+	};
+	React.useEffect(() => {
+		onChange([...selectedTime]);
+	}, [selectedTime]);
+	React.useEffect(() => {}, [workingTime]);
 	return (
 		<div>
 			<div className={style.title}>Установите подходящее для вас время</div>
@@ -29,6 +42,7 @@ const WorkingTimeSelect = ({ cellProps }) => {
 				<Days selectedTime={selectedTime} />
 			</div>
 			<Grid
+				isMobile={isMobile}
 				className={style.gridContainer}
 				cols={8}
 				rows={25}
@@ -42,7 +56,7 @@ const WorkingTimeSelect = ({ cellProps }) => {
 				setColStyle={col => {
 					return col === 0 ? style.firstColumn : '';
 				}}
-				cellProps={{ children: <Cell /> }}
+				cellProps={{ children: <Cell onClear={onClear} isMobile={isMobile} /> }}
 				selected={selectedTime}
 				onSelect={onSelect}
 			/>
@@ -51,7 +65,9 @@ const WorkingTimeSelect = ({ cellProps }) => {
 };
 
 WorkingTimeSelect.propTypes = {
-	// : PropTypes.
+	onChange: PropTypes.func,
+	workingTime: PropTypes.arrayOf(PropTypes.shape({ col: PropTypes.number, row: PropTypes.number })),
+	isMobile: PropTypes.bool,
 };
 
 export default WorkingTimeSelect;
