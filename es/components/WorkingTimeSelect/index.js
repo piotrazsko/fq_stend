@@ -48,7 +48,13 @@ var WorkingTimeSelect = function WorkingTimeSelect(_ref) {
     onChange(_toConsumableArray(selectedTime));
   }, [selectedTime]);
   React.useEffect(function () {
-    selectTime(_toConsumableArray(workingTime));
+    if (workingTime.length !== selectedTime.length || !workingTime.every(function (item) {
+      return selectedTime.find(function (i) {
+        return i.col == item.col && i.row == item.row;
+      });
+    })) {
+      selectTime(_toConsumableArray(workingTime));
+    }
   }, [workingTime]);
 
   var onSelect = function onSelect(selected) {
