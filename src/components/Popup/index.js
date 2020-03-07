@@ -19,6 +19,7 @@ const Popup = ({ ...props }) => {
 		classes = {},
 		confirmButtonClasses = {},
 		cancelButtonClasses = {},
+		showForce = false,
 	} = props;
 	const [showPopupState, setState] = React.useState(showPopup);
 	React.useEffect(() => {
@@ -34,7 +35,7 @@ const Popup = ({ ...props }) => {
 		setState(false);
 	};
 	return (
-		<PopupBackground visible={showPopupState} onClick={handleCancell}>
+		<PopupBackground visible={showPopupState || showForce} onClick={handleCancell}>
 			<Grid container className={[styles.container, className, classes.root].join(' ')}>
 				<Grid item className={[styles.dataContainer, classes.dataContainer].join(' ')} xs={12}>
 					{React.cloneElement(children, { ...props, ...state, changeState })}
@@ -84,6 +85,7 @@ Popup.propTypes = {
 	disableCancel: PropTypes.bool,
 	showSubmit: PropTypes.bool,
 	showCancel: PropTypes.bool,
+	showForce: PropTypes.bool,
 };
 Popup.defaultProps = {
 	cancelButtonText: 'Отменить',
@@ -95,6 +97,7 @@ Popup.defaultProps = {
 	disableCancel: false,
 	showSubmit: true,
 	showCancel: true,
+	showForce: false,
 };
 
 export default Popup;

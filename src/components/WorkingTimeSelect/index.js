@@ -11,7 +11,12 @@ const WorkingTimeSelect = ({ onChange = () => {}, workingTime = [], isMobile = f
 		onChange([...selectedTime]);
 	}, [selectedTime]);
 	React.useEffect(() => {
-		selectTime([...workingTime]);
+		if (
+			workingTime.length !== selectedTime.length ||
+			!workingTime.every(item => selectedTime.find(i => i.col == item.col && i.row == item.row))
+		) {
+			selectTime([...workingTime]);
+		}
 	}, [workingTime]);
 
 	const onSelect = selected => {

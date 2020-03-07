@@ -42,7 +42,9 @@ var Popup = function Popup(_ref) {
       _props$confirmButtonC = props.confirmButtonClasses,
       confirmButtonClasses = _props$confirmButtonC === void 0 ? {} : _props$confirmButtonC,
       _props$cancelButtonCl = props.cancelButtonClasses,
-      cancelButtonClasses = _props$cancelButtonCl === void 0 ? {} : _props$cancelButtonCl;
+      cancelButtonClasses = _props$cancelButtonCl === void 0 ? {} : _props$cancelButtonCl,
+      _props$showForce = props.showForce,
+      showForce = _props$showForce === void 0 ? false : _props$showForce;
 
   var _React$useState = React.useState(showPopup),
       _React$useState2 = _slicedToArray(_React$useState, 2),
@@ -69,7 +71,7 @@ var Popup = function Popup(_ref) {
   };
 
   return React.createElement(PopupBackground, {
-    visible: showPopupState,
+    visible: showPopupState || showForce,
     onClick: handleCancell
   }, React.createElement(Grid, {
     container: true,
@@ -120,7 +122,8 @@ Popup.propTypes = {
   disableSubmit: PropTypes.bool,
   disableCancel: PropTypes.bool,
   showSubmit: PropTypes.bool,
-  showCancel: PropTypes.bool
+  showCancel: PropTypes.bool,
+  showForce: PropTypes.bool
 };
 Popup.defaultProps = {
   cancelButtonText: 'Отменить',
@@ -131,6 +134,7 @@ Popup.defaultProps = {
   disableSubmit: false,
   disableCancel: false,
   showSubmit: true,
-  showCancel: true
+  showCancel: true,
+  showForce: false
 };
 export default Popup;
