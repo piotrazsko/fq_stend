@@ -19,6 +19,7 @@ import PropTypes from 'prop-types';
 import Grid from '../Grid';
 import Cell from './Cell';
 import Days from './Days';
+import { preppareDataforWorkTime, recoveryDataForWorkTime } from '../../helpers/calendar';
 var style = {
   "title": "style-module_fq_title___tFfDD",
   "resultContainer": "style-module_fq_resultContainer___10tCz",
@@ -37,15 +38,17 @@ var WorkingTimeSelect = function WorkingTimeSelect(_ref) {
       _ref$workingTime = _ref.workingTime,
       workingTime = _ref$workingTime === void 0 ? [] : _ref$workingTime,
       _ref$isMobile = _ref.isMobile,
-      isMobile = _ref$isMobile === void 0 ? false : _ref$isMobile;
+      isMobile = _ref$isMobile === void 0 ? false : _ref$isMobile,
+      _ref$usePreparing = _ref.usePreparing,
+      usePreparing = _ref$usePreparing === void 0 ? true : _ref$usePreparing;
 
-  var _React$useState = React.useState(_toConsumableArray(workingTime)),
+  var _React$useState = React.useState(_toConsumableArray(usePreparing ? recoveryDataForWorkTime(workingTime) : workingTime)),
       _React$useState2 = _slicedToArray(_React$useState, 2),
       selectedTime = _React$useState2[0],
       selectTime = _React$useState2[1];
 
   React.useEffect(function () {
-    onChange(_toConsumableArray(selectedTime));
+    onChange(_toConsumableArray(usePreparing ? preppareDataforWorkTime(selectedTime) : selectedTime));
   }, [selectedTime]);
   React.useEffect(function () {
     if (workingTime.length !== selectedTime.length || !workingTime.every(function (item) {
@@ -53,7 +56,7 @@ var WorkingTimeSelect = function WorkingTimeSelect(_ref) {
         return i.col == item.col && i.row == item.row;
       });
     })) {
-      selectTime(_toConsumableArray(workingTime));
+      selectTime(_toConsumableArray(usePreparing ? recoveryDataForWorkTime(workingTime) : workingTime));
     }
   }, [workingTime]);
 
@@ -115,7 +118,8 @@ WorkingTimeSelect.propTypes = {
     col: PropTypes.number,
     row: PropTypes.number
   })),
-  isMobile: PropTypes.bool
+  isMobile: PropTypes.bool,
+  usePreparing: PropTypes.bool
 };
 WorkingTimeSelect.defaultProps = {
   workingTime: []
