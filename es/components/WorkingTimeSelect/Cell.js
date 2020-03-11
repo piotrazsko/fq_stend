@@ -32,9 +32,7 @@ var Cell = function Cell(_ref) {
       isSelected = _ref.isSelected,
       isMobile = _ref.isMobile,
       _ref$onClear = _ref.onClear,
-      onClear = _ref$onClear === void 0 ? function (col) {
-    console.log(col);
-  } : _ref$onClear;
+      onClear = _ref$onClear === void 0 ? function (col) {} : _ref$onClear;
 
   var _React$useState = React.useState(null),
       _React$useState2 = _slicedToArray(_React$useState, 2),
