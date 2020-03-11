@@ -8,15 +8,7 @@ import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 
 import { WEEKDAYS_LONG, WEEKDAYS_SHORT } from '../../helpers/calendar.js';
 import style from './style.module.scss';
-const Cell = ({
-	row,
-	col,
-	isSelected,
-	isMobile,
-	onClear = col => {
-		console.log(col);
-	},
-}) => {
+const Cell = ({ row, col, isSelected, isMobile, onClear = col => {} }) => {
 	const [anchorEl, setAnchorEl] = React.useState(null);
 	const handleClick = event => {
 		setAnchorEl(event.currentTarget);
