@@ -54,7 +54,7 @@ AlertPopup.propTypes = {
   type: PropTypes.oneOf(['danger', undefined]),
   show: PropTypes.bool,
   onClick: PropTypes.func,
-  message: PropTypes.element,
+  message: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
   textConfirm: PropTypes.string,
   showForce: PropTypes.bool
 };
