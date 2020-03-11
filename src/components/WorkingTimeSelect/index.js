@@ -3,27 +3,19 @@ import PropTypes from 'prop-types';
 import Grid from '../Grid';
 import Cell from './Cell';
 import Days from './Days';
-import { preppareDataforWorkTime, recoveryDataForWorkTime } from '../../helpers/calendar';
 import style from './style.module.scss';
 
-const WorkingTimeSelect = ({
-	onChange = () => {},
-	workingTime = [],
-	isMobile = false,
-	usePreparing = true,
-}) => {
-	const [selectedTime, selectTime] = React.useState([
-		...(usePreparing ? recoveryDataForWorkTime(workingTime) : workingTime),
-	]);
+const WorkingTimeSelect = ({ onChange = () => {}, workingTime = [], isMobile = false }) => {
+	const [selectedTime, selectTime] = React.useState([...workingTime]);
 	React.useEffect(() => {
-		onChange([...(usePreparing ? preppareDataforWorkTime(selectedTime) : selectedTime)]);
+		onChange([...selectedTime]);
 	}, [selectedTime]);
 	React.useEffect(() => {
 		if (
 			workingTime.length !== selectedTime.length ||
 			!workingTime.every(item => selectedTime.find(i => i.col == item.col && i.row == item.row))
 		) {
-			selectTime([...(usePreparing ? recoveryDataForWorkTime(workingTime) : workingTime)]);
+			selectTime([...workingTime]);
 		}
 	}, [workingTime]);
 
@@ -79,7 +71,6 @@ WorkingTimeSelect.propTypes = {
 	onChange: PropTypes.func,
 	workingTime: PropTypes.arrayOf(PropTypes.shape({ col: PropTypes.number, row: PropTypes.number })),
 	isMobile: PropTypes.bool,
-	usePreparing: PropTypes.bool,
 };
 WorkingTimeSelect.defaultProps = {
 	workingTime: [],
