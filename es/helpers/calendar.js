@@ -74,66 +74,64 @@ export var DAYS_OF_WEEK = [{
   value: 'sun'
 }];
 export var preppareDataforWorkTime = function preppareDataforWorkTime(data) {
-  var res = [];
+  var res = {
+    mon: {},
+    tue: {},
+    wed: {},
+    thu: {},
+    fri: {},
+    sat: {},
+    sun: {}
+  };
 
-  if (_typeof(data) === 'object') {
-    Object.keys(data).forEach(function (i) {
-      var day = Object.keys(typeof data[i] === 'string' ? JSON.parse(data[i]) : data[i]);
-      day.forEach(function (item) {
-        var key = 1;
-
-        switch (i) {
-          case 'sun':
-            {
-              key = 1;
-              break;
-            }
-
-          case 'mon':
-            {
-              key = 2;
-              break;
-            }
-
-          case 'tue':
-            {
-              key = 3;
-              break;
-            }
-
-          case 'wed':
-            {
-              key = 4;
-              break;
-            }
-
-          case 'thu':
-            {
-              key = 5;
-              break;
-            }
-
-          case 'fri':
-            {
-              key = 6;
-              break;
-            }
-
-          case 'sat':
-            {
-              key = 7;
-              break;
-            }
-
-          default:
+  if (Array.isArray(data)) {
+    data.forEach(function (i) {
+      switch (i.col) {
+        case 1:
+          {
+            res.sun[i.row] = 'white';
             break;
-        }
+          }
 
-        res = [].concat(_toConsumableArray(res), [{
-          col: key,
-          row: parseInt(item)
-        }]);
-      });
+        case 2:
+          {
+            res.mon[i.row] = 'white';
+            break;
+          }
+
+        case 3:
+          {
+            res.tue[i.row] = 'white';
+            break;
+          }
+
+        case 4:
+          {
+            res.wed[i.row] = 'white';
+            break;
+          }
+
+        case 5:
+          {
+            res.thu[i.row] = 'white';
+            break;
+          }
+
+        case 6:
+          {
+            res.fri[i.row] = 'white';
+            break;
+          }
+
+        case 7:
+          {
+            res.sat[i.row] = 'white';
+            break;
+          }
+
+        default:
+          break;
+      }
     });
   }
 
