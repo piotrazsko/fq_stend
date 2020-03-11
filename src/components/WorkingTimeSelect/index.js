@@ -16,14 +16,31 @@ const WorkingTimeSelect = ({
 		...(usePreparing ? recoveryDataForWorkTime(workingTime) : workingTime),
 	]);
 	React.useEffect(() => {
-		onChange([...(usePreparing ? preppareDataforWorkTime(selectedTime) : selectedTime)]);
+		if (usePreparing) {
+			onChange(preppareDataforWorkTime(selectedTime));
+		} else {
+			onChange([...selectedTime]);
+		}
 	}, [selectedTime]);
+
 	React.useEffect(() => {
-		if (
-			workingTime.length !== selectedTime.length ||
-			!workingTime.every(item => selectedTime.find(i => i.col == item.col && i.row == item.row))
-		) {
-			selectTime([...(usePreparing ? recoveryDataForWorkTime(workingTime) : workingTime)]);
+		if (usePreparing) {
+			const workingTimePrepared = recoveryDataForWorkTime(workingTime);
+			if (
+				workingTimePrepared.length !== selectedTime.length ||
+				!workingTimePrepared.every(item =>
+					selectedTime.find(i => i.col == item.col && i.row == item.row)
+				)
+			) {
+				selectTime([...workingTimePrepared]);
+			}
+		} else {
+			if (
+				workingTime.length !== selectedTime.length ||
+				!workingTime.every(item => selectedTime.find(i => i.col == item.col && i.row == item.row))
+			) {
+				selectTime([...workingTime]);
+			}
 		}
 	}, [workingTime]);
 
