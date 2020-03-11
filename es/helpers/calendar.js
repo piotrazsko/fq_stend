@@ -9,6 +9,16 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
 export var MONTHS = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'];
 export var WEEKDAYS_LONG = ['Воскресение', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'];
 export var WEEKDAYS_SHORT = ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'];
@@ -63,11 +73,137 @@ export var DAYS_OF_WEEK = [{
   shortLabel: 'Вс',
   value: 'sun'
 }];
-export var prepareCalendarToWeekDaysView = function prepareCalendarToWeekDaysView(data) {
-  console.log(data);
+export var preppareDataforWorkTime = function preppareDataforWorkTime(data) {
+  var res = [];
+
+  if (_typeof(data) === 'object') {
+    Object.keys(data).forEach(function (i) {
+      var day = Object.keys(typeof data[i] === 'string' ? JSON.parse(data[i]) : data[i]);
+      day.forEach(function (item) {
+        var key = 1;
+
+        switch (i) {
+          case 'sun':
+            {
+              key = 1;
+              break;
+            }
+
+          case 'mon':
+            {
+              key = 2;
+              break;
+            }
+
+          case 'tue':
+            {
+              key = 3;
+              break;
+            }
+
+          case 'wed':
+            {
+              key = 4;
+              break;
+            }
+
+          case 'thu':
+            {
+              key = 5;
+              break;
+            }
+
+          case 'fri':
+            {
+              key = 6;
+              break;
+            }
+
+          case 'sat':
+            {
+              key = 7;
+              break;
+            }
+
+          default:
+            break;
+        }
+
+        res = [].concat(_toConsumableArray(res), [{
+          col: key,
+          row: parseInt(item)
+        }]);
+      });
+    });
+  }
+
+  return res;
 };
-export var prepareCalendarToWorkingView = function prepareCalendarToWorkingView(data) {
-  console.log(data);
+export var recoveryDataForWorkTime = function recoveryDataForWorkTime(data) {
+  var res = [];
+
+  if (_typeof(data) === 'object') {
+    Object.keys(data).forEach(function (i) {
+      var day = Object.keys(typeof data[i] === 'string' ? JSON.parse(data[i]) : data[i]);
+      day.forEach(function (item) {
+        var key = 1;
+
+        switch (i) {
+          case 'sun':
+            {
+              key = 1;
+              break;
+            }
+
+          case 'mon':
+            {
+              key = 2;
+              break;
+            }
+
+          case 'tue':
+            {
+              key = 3;
+              break;
+            }
+
+          case 'wed':
+            {
+              key = 4;
+              break;
+            }
+
+          case 'thu':
+            {
+              key = 5;
+              break;
+            }
+
+          case 'fri':
+            {
+              key = 6;
+              break;
+            }
+
+          case 'sat':
+            {
+              key = 7;
+              break;
+            }
+
+          default:
+            break;
+        }
+
+        res = [].concat(_toConsumableArray(res), [{
+          col: key,
+          row: parseInt(item)
+        }]);
+      });
+    });
+  }
+
+  return res;
 };
 export var formatHours = function formatHours(hour) {
   return "".concat(hour.toString().length < 2 ? "0".concat(hour) : hour, ":00");

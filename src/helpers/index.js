@@ -1,1 +1,1 @@
-export * as calendar from './calendar.js';
+export * from './calendar.js';
