@@ -48,15 +48,31 @@ var WorkingTimeSelect = function WorkingTimeSelect(_ref) {
       selectTime = _React$useState2[1];
 
   React.useEffect(function () {
-    onChange(_toConsumableArray(usePreparing ? preppareDataforWorkTime(selectedTime) : selectedTime));
+    if (usePreparing) {
+      onChange(preppareDataforWorkTime(selectedTime));
+    } else {
+      onChange(_toConsumableArray(selectedTime));
+    }
   }, [selectedTime]);
   React.useEffect(function () {
-    if (workingTime.length !== selectedTime.length || !workingTime.every(function (item) {
-      return selectedTime.find(function (i) {
-        return i.col == item.col && i.row == item.row;
-      });
-    })) {
-      selectTime(_toConsumableArray(usePreparing ? recoveryDataForWorkTime(workingTime) : workingTime));
+    if (usePreparing) {
+      var workingTimePrepared = recoveryDataForWorkTime(workingTime);
+
+      if (workingTimePrepared.length !== selectedTime.length || !workingTimePrepared.every(function (item) {
+        return selectedTime.find(function (i) {
+          return i.col == item.col && i.row == item.row;
+        });
+      })) {
+        selectTime(_toConsumableArray(workingTimePrepared));
+      }
+    } else {
+      if (workingTime.length !== selectedTime.length || !workingTime.every(function (item) {
+        return selectedTime.find(function (i) {
+          return i.col == item.col && i.row == item.row;
+        });
+      })) {
+        selectTime(_toConsumableArray(workingTime));
+      }
     }
   }, [workingTime]);
 
