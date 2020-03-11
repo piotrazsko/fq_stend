@@ -1,3 +1,4 @@
+export * from '../helpers';
 export { default as Avatar } from './Avatar';
 export { default as Button } from './Button';
 export { default as CustomLink } from './CustomLink';
@@ -22,4 +23,3 @@ export { default as Popover } from './Popover';
 export { default as Menu } from './Menu';
 export { default as Grid } from './Grid';
 export { default as WorkingTimeSelect } from './WorkingTimeSelect';
-export * as helpers from '../helpers';
