@@ -80,7 +80,7 @@ PopupCore.propTypes = {
 	textConfirm: PropTypes.string,
 	textCancel: PropTypes.string,
 	onClick: PropTypes.func.isRequired,
-	onCancel: PropTypes.func.isRequired,
+	onCancel: PropTypes.func,
 	typeConfirm: PropTypes.string,
 	typeCancel: PropTypes.string,
 	colorConfirm: PropTypes.string,

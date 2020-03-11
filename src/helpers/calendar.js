@@ -124,7 +124,9 @@ export const recoveryDataForWorkTime = data => {
 	let res = [];
 	if (typeof data === 'object') {
 		Object.keys(data).forEach(i => {
-			const day = Object.keys(typeof data[i] === 'string' ? JSON.parse(data[i]) : data[i]);
+			const day = data[i]
+				? Object.keys(typeof data[i] === 'string' ? JSON.parse(data[i]) : data[i])
+				: [];
 			day.forEach(item => {
 				let key = 1;
 				switch (i) {
