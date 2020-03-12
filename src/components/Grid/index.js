@@ -32,6 +32,7 @@ const Grid = ({
 	selectFromRow = 0,
 	selectToRow = Infinity,
 	className = '',
+	cellClassName = '',
 	setColStyle = () => '',
 	setRowStyle = () => '',
 	setCellStyle = () => '',
@@ -83,6 +84,10 @@ const Grid = ({
 				const row = Math.floor(index / cols);
 				const isSelected = selected.find(item => item.col == col && item.row == row);
 				const isHovered = mouseEnterCell.find(item => item.col == col && item.row == row);
+				const Child =
+					cellProps.children && typeof cellProps.children == 'function'
+						? ({ col, row }) => <cellProps.children col={col} row={row} />
+						: '';
 				return (
 					<div
 						onMouseDown={() => {
@@ -99,10 +104,10 @@ const Grid = ({
 							style.cell,
 							isSelected ? style.selected : '',
 							isHovered ? style.hovered : '',
-							item.className || '',
 							setColStyle(col),
 							setRowStyle(row),
 							setCellStyle({ row, col }),
+							cellClassName,
 						].join(' ')}
 						col={col}
 						row={row}
@@ -112,7 +117,11 @@ const Grid = ({
 					>
 						{isSelected ? isSelected.children : ''}
 						{cellProps.children &&
-							React.cloneElement(cellProps.children, { row, col, isSelected: Boolean(isSelected) })}
+							(typeof cellProps.children == 'function' ? (
+								<Child col={col} row={row} />
+							) : (
+								React.cloneElement(cellProps.children, { row, col, isSelected: Boolean(isSelected) })
+							))}
 					</div>
 				);
 			})}
@@ -139,6 +148,7 @@ Grid.propTypes = {
 	selectToCol: PropTypes.number,
 	selectFromRow: PropTypes.number,
 	selectToRow: PropTypes.number,
+	cellClassName: PropTypes.string,
 	className: PropTypes.string,
 	cellProps: PropTypes.object,
 	children: PropTypes.any,
