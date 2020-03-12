@@ -53,6 +53,8 @@ var Grid = function Grid(_ref) {
       selectToRow = _ref$selectToRow === void 0 ? Infinity : _ref$selectToRow,
       _ref$className = _ref.className,
       className = _ref$className === void 0 ? '' : _ref$className,
+      _ref$cellClassName = _ref.cellClassName,
+      cellClassName = _ref$cellClassName === void 0 ? '' : _ref$cellClassName,
       _ref$setColStyle = _ref.setColStyle,
       setColStyle = _ref$setColStyle === void 0 ? function () {
     return '';
@@ -119,6 +121,14 @@ var Grid = function Grid(_ref) {
     var isHovered = mouseEnterCell.find(function (item) {
       return item.col == col && item.row == row;
     });
+    var Child = cellProps.children && typeof cellProps.children == 'function' ? function (_ref2) {
+      var col = _ref2.col,
+          row = _ref2.row;
+      return React.createElement(cellProps.children, {
+        col: col,
+        row: row
+      });
+    } : '';
     return React.createElement("div", _extends({
       onMouseDown: function onMouseDown() {
         _onMouseDown({
@@ -141,18 +151,21 @@ var Grid = function Grid(_ref) {
       style: {
         'grid-area': "".concat(row + 1, " / ").concat(col + 1, " / ").concat(row + 2, " / ").concat(col + 2)
       },
-      className: [style.cell, isSelected ? style.selected : '', isHovered ? style.hovered : '', item.className || '', setColStyle(col), setRowStyle(row), setCellStyle({
+      className: [style.cell, isSelected ? style.selected : '', isHovered ? style.hovered : '', setColStyle(col), setRowStyle(row), setCellStyle({
         row: row,
         col: col
-      })].join(' '),
+      }), cellClassName].join(' '),
       col: col,
       row: row,
       key: key
-    }, item.props ? item.props : {}, cellProps), isSelected ? isSelected.children : '', cellProps.children && React.cloneElement(cellProps.children, {
+    }, item.props ? item.props : {}, cellProps), isSelected ? isSelected.children : '', cellProps.children && (typeof cellProps.children == 'function' ? React.createElement(Child, {
+      col: col,
+      row: row
+    }) : React.cloneElement(cellProps.children, {
       row: row,
       col: col,
       isSelected: Boolean(isSelected)
-    }));
+    })));
   }), children);
 };
 
@@ -172,6 +185,7 @@ Grid.propTypes = {
   selectToCol: PropTypes.number,
   selectFromRow: PropTypes.number,
   selectToRow: PropTypes.number,
+  cellClassName: PropTypes.string,
   className: PropTypes.string,
   cellProps: PropTypes.object,
   children: PropTypes.any,
