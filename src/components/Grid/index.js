@@ -24,7 +24,7 @@ const Grid = ({
 	rows,
 	cols,
 	cellProps = {},
-	selected = [{ col: 0, row: 0, children: 'wrerw', props: {} }, { col: 5, row: 4 }],
+	selected = [],
 	onSelect = () => {},
 	children = '',
 	selectFromCol = 0,

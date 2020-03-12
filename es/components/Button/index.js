@@ -51,7 +51,8 @@ var Button = function Button(_ref) {
       typeButton = _ref.typeButton,
       _ref$variant = _ref.variant,
       variant = _ref$variant === void 0 ? '' : _ref$variant,
-      rest = _objectWithoutProperties(_ref, ["text", "type", "color", "classesExt", "children", "fontSize", "typeButton", "variant"]);
+      style = _ref.style,
+      rest = _objectWithoutProperties(_ref, ["text", "type", "color", "classesExt", "children", "fontSize", "typeButton", "variant", "style"]);
 
   var classes = useStyles();
 
@@ -65,9 +66,9 @@ var Button = function Button(_ref) {
           disabled: classes.disabled
         }, classesExt),
         variant: variant,
-        style: {
+        style: _objectSpread({
           fontSize: fontSize
-        },
+        }, style),
         "aria-label": "edit"
       }, rest), children || text);
 
@@ -108,11 +109,13 @@ var Button = function Button(_ref) {
 
 Button.propTypes = {
   children: PropTypes.any,
+  variant: PropTypes.string,
   text: PropTypes.string,
   className: PropTypes.string,
   type: PropTypes.string,
   color: PropTypes.string,
   classesExt: PropTypes.object,
+  style: PropTypes.object,
   fontSize: PropTypes.number,
   typeButton: PropTypes.string
 };

@@ -34,6 +34,7 @@ const Button = ({
 	fontSize,
 	typeButton,
 	variant = '',
+	style,
 	...rest
 }) => {
 	const classes = useStyles();
@@ -49,7 +50,7 @@ const Button = ({
 						...classesExt,
 					}}
 					variant={variant}
-					style={{ fontSize: fontSize }}
+					style={{ fontSize: fontSize, ...style }}
 					aria-label="edit"
 					{...rest}
 				>
@@ -100,11 +101,13 @@ const Button = ({
 
 Button.propTypes = {
 	children: PropTypes.any,
+	variant: PropTypes.string,
 	text: PropTypes.string,
 	className: PropTypes.string,
 	type: PropTypes.string,
 	color: PropTypes.string,
 	classesExt: PropTypes.object,
+	style: PropTypes.object,
 	fontSize: PropTypes.number,
 	typeButton: PropTypes.string,
 };

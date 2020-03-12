@@ -38,15 +38,7 @@ var Grid = function Grid(_ref) {
       _ref$cellProps = _ref.cellProps,
       cellProps = _ref$cellProps === void 0 ? {} : _ref$cellProps,
       _ref$selected = _ref.selected,
-      selected = _ref$selected === void 0 ? [{
-    col: 0,
-    row: 0,
-    children: 'wrerw',
-    props: {}
-  }, {
-    col: 5,
-    row: 4
-  }] : _ref$selected,
+      selected = _ref$selected === void 0 ? [] : _ref$selected,
       _ref$onSelect = _ref.onSelect,
       onSelect = _ref$onSelect === void 0 ? function () {} : _ref$onSelect,
       _ref$children = _ref.children,
