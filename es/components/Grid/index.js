@@ -34,6 +34,8 @@ var parseArr = function parseArr(start, end) {
 
 var Grid = function Grid(_ref) {
   var rows = _ref.rows,
+      _ref$verticalSize = _ref.verticalSize,
+      verticalSize = _ref$verticalSize === void 0 ? 1 : _ref$verticalSize,
       cols = _ref.cols,
       _ref$cellProps = _ref.cellProps,
       cellProps = _ref$cellProps === void 0 ? {} : _ref$cellProps,
@@ -109,7 +111,7 @@ var Grid = function Grid(_ref) {
     className: [style.gridContainer, className].join(' '),
     style: {
       'grid-template-columns': "repeat(".concat(cols, ", 1fr)"),
-      'grid-template-rows': "repeat(".concat(rows, ", 1fr)")
+      'grid-template-rows': "repeat(".concat(rows * verticalSize, ", 1fr)")
     }
   }, arr.map(function (item, index) {
     var key = "col_".concat(index);
@@ -149,7 +151,7 @@ var Grid = function Grid(_ref) {
         });
       },
       style: {
-        'grid-area': "".concat(row + 1, " / ").concat(col + 1, " / ").concat(row + 2, " / ").concat(col + 2)
+        'grid-area': "".concat(row * verticalSize + 1, " / ").concat(col + 1, " / ").concat(row * verticalSize + 1 + verticalSize, " / ").concat(col + 2)
       },
       className: [style.cell, isSelected ? style.selected : '', isHovered ? style.hovered : '', setColStyle(col), setRowStyle(row), setCellStyle({
         row: row,
@@ -178,6 +180,7 @@ Grid.propTypes = {
     children: PropTypes.any,
     props: PropTypes.object
   })),
+  verticalSize: PropTypes.number,
   setColStyle: PropTypes.func,
   setRowStyle: PropTypes.func,
   setCellStyle: PropTypes.func,
