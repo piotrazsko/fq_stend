@@ -22,6 +22,7 @@ const parseArr = (start, end) => {
 
 const Grid = ({
 	rows,
+	verticalSize = 1,
 	cols,
 	cellProps = {},
 	selected = [],
@@ -75,7 +76,7 @@ const Grid = ({
 			className={[style.gridContainer, className].join(' ')}
 			style={{
 				'grid-template-columns': `repeat(${cols}, 1fr)`,
-				'grid-template-rows': `repeat(${rows}, 1fr)`,
+				'grid-template-rows': `repeat(${rows * verticalSize}, 1fr)`,
 			}}
 		>
 			{arr.map((item, index) => {
@@ -98,7 +99,9 @@ const Grid = ({
 						}}
 						onMouseEnter={() => onMouseEnter({ col, row })}
 						style={{
-							'grid-area': `${row + 1} / ${col + 1} / ${row + 2} / ${col + 2}`,
+							'grid-area': `${row * verticalSize + 1} / ${col + 1} / ${row * verticalSize +
+								1 +
+								verticalSize} / ${col + 2}`,
 						}}
 						className={[
 							style.cell,
@@ -141,6 +144,7 @@ Grid.propTypes = {
 			props: PropTypes.object,
 		})
 	),
+	verticalSize: PropTypes.number,
 	setColStyle: PropTypes.func,
 	setRowStyle: PropTypes.func,
 	setCellStyle: PropTypes.func,
