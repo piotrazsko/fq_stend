@@ -142,7 +142,7 @@ export var recoveryDataForWorkTime = function recoveryDataForWorkTime(data) {
 
   if (_typeof(data) === 'object') {
     Object.keys(data).forEach(function (i) {
-      var day = data[i] ? Object.keys(typeof data[i] === 'string' ? JSON.parse(data[i]) : data[i]) : [];
+      var day = _typeof(data[i]) === ('object' || 'string') ? Object.keys(typeof data[i] === 'string' ? JSON.parse(data[i]) : data[i]) : [];
       day.forEach(function (item) {
         var key = 1;
 
