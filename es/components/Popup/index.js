@@ -57,13 +57,8 @@ var Popup = function Popup(_ref) {
     setState(showPopup);
   }, [showPopup]);
 
-  var _React$useState3 = React.useState({}),
-      _React$useState4 = _slicedToArray(_React$useState3, 2),
-      state = _React$useState4[0],
-      changeState = _React$useState4[1];
-
   var handleSubmit = function handleSubmit() {
-    onSubmit(state);
+    onSubmit();
     setState(false);
   };
 
@@ -83,9 +78,7 @@ var Popup = function Popup(_ref) {
     item: true,
     className: [styles.dataContainer, classes.dataContainer].join(' '),
     xs: 12
-  }, React.cloneElement(children, _objectSpread({}, props, {}, state, {
-    changeState: changeState
-  }))), React.createElement(Grid, {
+  }, children), React.createElement(Grid, {
     item: true,
     xs: 12,
     className: [styles.buttonContainer, classes.buttonContainer].join(' ')
