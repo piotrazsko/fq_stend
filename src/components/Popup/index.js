@@ -26,9 +26,8 @@ const Popup = ({ ...props }) => {
 	React.useEffect(() => {
 		setState(showPopup);
 	}, [showPopup]);
-	const [state, changeState] = React.useState({});
 	const handleSubmit = () => {
-		onSubmit(state);
+		onSubmit();
 		setState(false);
 	};
 	const handleCancell = () => {
@@ -43,7 +42,7 @@ const Popup = ({ ...props }) => {
 				style={{ ...style }}
 			>
 				<Grid item className={[styles.dataContainer, classes.dataContainer].join(' ')} xs={12}>
-					{React.cloneElement(children, { ...props, ...state, changeState })}
+					{children}
 				</Grid>
 				<Grid item xs={12} className={[styles.buttonContainer, classes.buttonContainer].join(' ')}>
 					<Button
