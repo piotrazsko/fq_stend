@@ -44,7 +44,9 @@ var Popup = function Popup(_ref) {
       _props$cancelButtonCl = props.cancelButtonClasses,
       cancelButtonClasses = _props$cancelButtonCl === void 0 ? {} : _props$cancelButtonCl,
       _props$showForce = props.showForce,
-      showForce = _props$showForce === void 0 ? false : _props$showForce;
+      showForce = _props$showForce === void 0 ? false : _props$showForce,
+      _props$style = props.style,
+      style = _props$style === void 0 ? {} : _props$style;
 
   var _React$useState = React.useState(showPopup),
       _React$useState2 = _slicedToArray(_React$useState, 2),
@@ -75,7 +77,8 @@ var Popup = function Popup(_ref) {
     onClick: handleCancell
   }, React.createElement(Grid, {
     container: true,
-    className: [styles.container, className, classes.root].join(' ')
+    className: [styles.container, className, classes.root].join(' '),
+    style: _objectSpread({}, style)
   }, React.createElement(Grid, {
     item: true,
     className: [styles.dataContainer, classes.dataContainer].join(' '),
@@ -123,7 +126,8 @@ Popup.propTypes = {
   disableCancel: PropTypes.bool,
   showSubmit: PropTypes.bool,
   showCancel: PropTypes.bool,
-  showForce: PropTypes.bool
+  showForce: PropTypes.bool,
+  style: PropTypes.object
 };
 Popup.defaultProps = {
   cancelButtonText: 'Отменить',
