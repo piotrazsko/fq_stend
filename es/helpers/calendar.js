@@ -137,12 +137,21 @@ export var preppareDataforWorkTime = function preppareDataforWorkTime(data) {
 
   return res;
 };
-export var recoveryDataForWorkTime = function recoveryDataForWorkTime(data) {
+export var recoveryDataForWorkTime = function recoveryDataForWorkTime() {
+  var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
+    mon: '{"2":"white","3":"white","4":"white","5":"white","6":"white","7":"white","8":"white","9":"white","10":"white","11":"white","12":"white","13":"white","14":"white"}',
+    tue: '{}',
+    wed: '{}',
+    thu: '{}',
+    fri: '{}',
+    sat: '{}',
+    sun: '{"2":"white","3":"white","4":"white","5":"white","6":"white","7":"white","8":"white","9":"white","10":"white","11":"white","12":"white","13":"white","14":"white"}'
+  };
   var res = [];
 
   if (_typeof(data) === 'object') {
     Object.keys(data).forEach(function (i) {
-      var day = _typeof(data[i]) === ('object' || 'string') ? Object.keys(typeof data[i] === 'string' ? JSON.parse(data[i]) : data[i]) : [];
+      var day = typeof data[i] === 'string' || _typeof(data[i]) === 'object' ? Object.keys(typeof data[i] === 'string' ? JSON.parse(data[i]) : data[i]) : [];
       day.forEach(function (item) {
         var key = 1;
 

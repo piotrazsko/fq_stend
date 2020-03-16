@@ -120,12 +120,24 @@ export const preppareDataforWorkTime = data => {
 	}
 	return res;
 };
-export const recoveryDataForWorkTime = data => {
+export const recoveryDataForWorkTime = (
+	data = {
+		mon:
+			'{"2":"white","3":"white","4":"white","5":"white","6":"white","7":"white","8":"white","9":"white","10":"white","11":"white","12":"white","13":"white","14":"white"}',
+		tue: '{}',
+		wed: '{}',
+		thu: '{}',
+		fri: '{}',
+		sat: '{}',
+		sun:
+			'{"2":"white","3":"white","4":"white","5":"white","6":"white","7":"white","8":"white","9":"white","10":"white","11":"white","12":"white","13":"white","14":"white"}',
+	}
+) => {
 	let res = [];
 	if (typeof data === 'object') {
 		Object.keys(data).forEach(i => {
 			const day =
-				typeof data[i] === ('object' || 'string')
+				typeof data[i] === 'string' || typeof data[i] === 'object'
 					? Object.keys(typeof data[i] === 'string' ? JSON.parse(data[i]) : data[i])
 					: [];
 			day.forEach(item => {
