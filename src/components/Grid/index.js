@@ -37,6 +37,8 @@ const Grid = ({
 	setColStyle = () => '',
 	setRowStyle = () => '',
 	setCellStyle = () => '',
+	rowSize = '1fr',
+	colSize = '1fr',
 }) => {
 	const divs = rows * cols;
 	const arr = Array(divs).fill(1);
@@ -75,8 +77,8 @@ const Grid = ({
 			onPointerLeave={onMouseLeave}
 			className={[style.gridContainer, className].join(' ')}
 			style={{
-				'grid-template-columns': `repeat(${cols}, 1fr)`,
-				'grid-template-rows': `repeat(${rows * verticalSize}, 1fr)`,
+				'grid-template-columns': `repeat(${cols}, ${colSize})`,
+				'grid-template-rows': `repeat(${rows * verticalSize}, ${rowSize})`,
 			}}
 		>
 			{arr.map((item, index) => {
@@ -157,6 +159,8 @@ Grid.propTypes = {
 	cellProps: PropTypes.object,
 	children: PropTypes.any,
 	onSelect: PropTypes.func,
+	rowSize: PropTypes.string,
+	colSize: PropTypes.string,
 };
 
 export default Grid;

@@ -68,7 +68,11 @@ var Grid = function Grid(_ref) {
       _ref$setCellStyle = _ref.setCellStyle,
       setCellStyle = _ref$setCellStyle === void 0 ? function () {
     return '';
-  } : _ref$setCellStyle;
+  } : _ref$setCellStyle,
+      _ref$rowSize = _ref.rowSize,
+      rowSize = _ref$rowSize === void 0 ? '1fr' : _ref$rowSize,
+      _ref$colSize = _ref.colSize,
+      colSize = _ref$colSize === void 0 ? '1fr' : _ref$colSize;
   var divs = rows * cols;
   var arr = Array(divs).fill(1);
 
@@ -110,8 +114,8 @@ var Grid = function Grid(_ref) {
     onPointerLeave: onMouseLeave,
     className: [style.gridContainer, className].join(' '),
     style: {
-      'grid-template-columns': "repeat(".concat(cols, ", 1fr)"),
-      'grid-template-rows': "repeat(".concat(rows * verticalSize, ", 1fr)")
+      'grid-template-columns': "repeat(".concat(cols, ", ").concat(colSize, ")"),
+      'grid-template-rows': "repeat(".concat(rows * verticalSize, ", ").concat(rowSize, ")")
     }
   }, arr.map(function (item, index) {
     var key = "col_".concat(index);
