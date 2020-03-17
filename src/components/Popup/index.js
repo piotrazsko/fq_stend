@@ -19,6 +19,8 @@ const Popup = ({ ...props }) => {
 		classes = {},
 		confirmButtonClasses = {},
 		cancelButtonClasses = {},
+		confirmButtonProps = {},
+		cancelButtonProps = {},
 		showForce = false,
 		style = {},
 	} = props;
@@ -52,6 +54,7 @@ const Popup = ({ ...props }) => {
 						color="primary"
 						disabled={disableCancel}
 						variant="raised"
+						{...cancelButtonProps}
 					>
 						{cancelButtonText}
 					</Button>
@@ -61,6 +64,7 @@ const Popup = ({ ...props }) => {
 						onClick={handleSubmit}
 						disabled={disableSubmit}
 						type="submit"
+						{...confirmButtonProps}
 					>
 						{submitButtonText}
 					</Button>
@@ -91,6 +95,8 @@ Popup.propTypes = {
 	showCancel: PropTypes.bool,
 	showForce: PropTypes.bool,
 	style: PropTypes.object,
+	confirmButtonProps: PropTypes.object,
+	cancelButtonProps: PropTypes.object,
 };
 Popup.defaultProps = {
 	cancelButtonText: 'Отменить',
@@ -103,6 +109,8 @@ Popup.defaultProps = {
 	showSubmit: true,
 	showCancel: true,
 	showForce: false,
+	confirmButtonProps: {},
+	cancelButtonProps: {},
 };
 
 export default Popup;
