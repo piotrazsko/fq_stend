@@ -23,6 +23,7 @@ const Popup = ({ ...props }) => {
 		cancelButtonProps = {},
 		showForce = false,
 		style = {},
+		childrenContainerClassName = '',
 	} = props;
 	const [showPopupState, setState] = React.useState(showPopup);
 	React.useEffect(() => {
@@ -43,7 +44,11 @@ const Popup = ({ ...props }) => {
 				className={[styles.container, className, classes.root].join(' ')}
 				style={{ ...style }}
 			>
-				<Grid item className={[styles.dataContainer, classes.dataContainer].join(' ')} xs={12}>
+				<Grid
+					item
+					className={[styles.dataContainer, classes.dataContainer, childrenContainerClassName].join(' ')}
+					xs={12}
+				>
 					{children}
 				</Grid>
 				<Grid item xs={12} className={[styles.buttonContainer, classes.buttonContainer].join(' ')}>
@@ -97,6 +102,7 @@ Popup.propTypes = {
 	style: PropTypes.object,
 	confirmButtonProps: PropTypes.object,
 	cancelButtonProps: PropTypes.object,
+	childrenContainerClassName: PropTypes.string,
 };
 Popup.defaultProps = {
 	cancelButtonText: 'Отменить',

@@ -52,7 +52,9 @@ var Popup = function Popup(_ref) {
       _props$showForce = props.showForce,
       showForce = _props$showForce === void 0 ? false : _props$showForce,
       _props$style = props.style,
-      style = _props$style === void 0 ? {} : _props$style;
+      style = _props$style === void 0 ? {} : _props$style,
+      _props$childrenContai = props.childrenContainerClassName,
+      childrenContainerClassName = _props$childrenContai === void 0 ? '' : _props$childrenContai;
 
   var _React$useState = React.useState(showPopup),
       _React$useState2 = _slicedToArray(_React$useState, 2),
@@ -82,7 +84,7 @@ var Popup = function Popup(_ref) {
     style: _objectSpread({}, style)
   }, React.createElement(Grid, {
     item: true,
-    className: [styles.dataContainer, classes.dataContainer].join(' '),
+    className: [styles.dataContainer, classes.dataContainer, childrenContainerClassName].join(' '),
     xs: 12
   }, children), React.createElement(Grid, {
     item: true,
@@ -128,7 +130,8 @@ Popup.propTypes = {
   showForce: PropTypes.bool,
   style: PropTypes.object,
   confirmButtonProps: PropTypes.object,
-  cancelButtonProps: PropTypes.object
+  cancelButtonProps: PropTypes.object,
+  childrenContainerClassName: PropTypes.string
 };
 Popup.defaultProps = {
   cancelButtonText: 'Отменить',
