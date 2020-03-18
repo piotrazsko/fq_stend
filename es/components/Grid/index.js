@@ -196,6 +196,8 @@ Grid.propTypes = {
   className: PropTypes.string,
   cellProps: PropTypes.object,
   children: PropTypes.any,
-  onSelect: PropTypes.func
+  onSelect: PropTypes.func,
+  rowSize: PropTypes.string,
+  colSize: PropTypes.string
 };
 export default Grid;
