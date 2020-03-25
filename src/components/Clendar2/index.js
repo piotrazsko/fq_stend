@@ -1,20 +1,61 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { preppareDataforworkingTime, recoveryDataForworkingTime } from '../../helpers/calendar';
-import { workingTimePrepare } from './utils';
+// import { preppareDataforworkingTime, recoveryDataForworkingTime } from '../../helpers/calendar';
+import { workingTimePrepare, getWorkingPeriods, getDataForSelectedDate } from './utils';
+import DayPicker from 'react-day-picker';
+import Day from './components/Day';
+import style from './style.module.scss';
+
 const Calendar = ({
-	defaultShowDay,
+	defaultShowDay = false,
 	autoConfirm,
+	interval = 15,
 	bookedTime,
 	onConfirm,
 	workingTime,
 	customTime,
-	selectedDay,
+	curentDay: curentDayDefault = new Date(),
+	selectedDate: selectedTimeProps = new Date(),
 }) => {
-	const [curentDay, setCurentDay] = React.useState(selectedDay);
-	workingTimePrepare({ workingTime, curentDay });
+	const [curentDay, setCurentDay] = React.useState(curentDayDefault);
+	const [selectedDate, selectTime] = React.useState(selectedTimeProps);
 
-	return <div></div>;
+	const [showTime, setShowTime] = React.useState(defaultShowDay);
+
+	// const
+	// console.log(bookedTime, workingTime, customTime);
+	React.useEffect(() => {
+		selectTime(selectedTimeProps);
+	}, [selectedTimeProps]);
+	const selectedDayData = getDataForSelectedDate({
+		workingTime,
+		customTime,
+		bookedTime,
+		selectedDate,
+	});
+	console.time('start');
+	console.log(
+		workingTimePrepare({
+			...selectedDayData,
+			interval: 30,
+		})
+	);
+	console.timeEnd('start');
+
+	return (
+		<div>
+			{showTime ? (
+				<Day
+					curentDay={curentDay}
+					setCurentDay={setCurentDay}
+					setShowTime={setShowTime}
+					selectedDate={selectedDate}
+				/>
+			) : (
+				<DayPicker />
+			)}
+		</div>
+	);
 };
 
 Calendar.propTypes = {

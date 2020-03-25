@@ -11,6 +11,7 @@ const WorkingTimeSelect = ({
 	workingTime = [],
 	isMobile = false,
 	usePreparing = true,
+	selectedTimeText = '',
 }) => {
 	const [selectedTime, selectTime] = React.useState([
 		...(usePreparing ? recoveryDataForWorkTime(workingTime) : workingTime),
@@ -84,7 +85,9 @@ const WorkingTimeSelect = ({
 				setColStyle={col => {
 					return col === 0 ? style.firstColumn : '';
 				}}
-				cellProps={{ children: <Cell onClear={onClear} isMobile={isMobile} /> }}
+				cellProps={{
+					children: <Cell selectedTimeText={selectedTimeText} onClear={onClear} isMobile={isMobile} />,
+				}}
 				selected={selectedTime}
 				onSelect={onSelect}
 			/>
@@ -97,6 +100,7 @@ WorkingTimeSelect.propTypes = {
 	workingTime: PropTypes.arrayOf(PropTypes.shape({ col: PropTypes.number, row: PropTypes.number })),
 	isMobile: PropTypes.bool,
 	usePreparing: PropTypes.bool,
+	selectedTimeText: PropTypes.string,
 };
 WorkingTimeSelect.defaultProps = {
 	workingTime: [],
