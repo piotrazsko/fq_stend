@@ -18,7 +18,8 @@
 		thu:
 			'{"10":"white","11":"white","12":"white","13":"white","14":"white","15":"white","16":"white","17":"white","18":"white"}',
 		fri: null,
-		sat: { '20': 'white', '18': 'white' },
+		sat:
+			'{"10":"white","11":"white","12":"white","13":"white","14":"white","15":"white","16":"white","17":"white","18":"white"}',
 		sun: null,
 	}}
 	customTime={[

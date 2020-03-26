@@ -4,6 +4,7 @@ import { WEEKDAYS_LONG, MONTHS } from '../../utils/config';
 import CalendarToday from '@material-ui/icons/CalendarToday';
 import ArrowLeft from '@material-ui/icons/ArrowLeft';
 import ArrowRight from '@material-ui/icons/ArrowRight';
+import { IconButton } from '@material-ui/core';
 import './style.scss';
 
 const Day = ({
@@ -14,9 +15,21 @@ const Day = ({
 	selectedDate,
 	setShowTime,
 	onCancel,
-	onConfirm,
+	disableBeforeCurentTime = true,
+	onConfirm = () => {},
 	autoConfirm = true,
 }) => {
+	const workingTimeActualFiltered = disableBeforeCurentTime
+		? (() => {
+				const today = new Date();
+				const minutes =
+					curentDay.getFullYear() === today.getFullYear() &&
+					curentDay.getMonth() === today.getMonth() &&
+					curentDay.getDate() === today.getDate() &&
+					today.getHours() * 60 + today.getMinutes();
+				return workingTimeActual.filter(i => i.start > minutes);
+		  })()
+		: workingTimeActual;
 	const getPrevDay = () => {
 		const newDate = new Date(curentDay.valueOf() - 1000 * 60 * 60 * 24);
 		setCurentDay(newDate);
@@ -31,6 +44,7 @@ const Day = ({
 		day.setHours(item.hour);
 		day.setSeconds(0);
 		selectDate(day);
+		onConfirm(day);
 	};
 	const checkSelected = item => {
 		return (
@@ -58,17 +72,20 @@ const Day = ({
 				</div>
 			</div>
 			<div className="time_day-block time_day-slider">
-				<div
+				<IconButton
+					size="small"
 					className="time_day__button"
 					role="button"
 					tabIndex="-1"
+					disabled={disableBeforeCurentTime && curentDay < new Date()}
 					onKeyDown={() => {}}
 					onClick={getPrevDay}
 				>
 					<ArrowLeft />
-				</div>
+				</IconButton>
 				<div className="time_day__date">{`${curentDay.getDate()} ${MONTHS[curentDay.getMonth()]}`}</div>
-				<div
+				<IconButton
+					size="small"
 					className="time_day__button"
 					role="button"
 					tabIndex="-1"
@@ -76,11 +93,11 @@ const Day = ({
 					onClick={getNextDay}
 				>
 					<ArrowRight />
-				</div>
+				</IconButton>
 			</div>
-			<div className={workingTimeActual.length > 0 ? 'time_grid' : 'time_grid empty'}>
-				{workingTimeActual.length > 0 ? (
-					workingTimeActual.map(item => {
+			<div className={workingTimeActualFiltered.length > 0 ? 'time_grid' : 'time_grid empty'}>
+				{workingTimeActualFiltered.length > 0 ? (
+					workingTimeActualFiltered.map(item => {
 						let minutes = item.minutes.toString();
 						minutes = minutes.length == 1 ? `0${minutes}` : minutes;
 						return (

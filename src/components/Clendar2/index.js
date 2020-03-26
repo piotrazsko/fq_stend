@@ -23,8 +23,6 @@ const Calendar = ({
 
 	const [showTime, setShowTime] = React.useState(defaultShowDay);
 
-	// const
-	// console.log(bookedTime, workingTime, customTime);
 	React.useEffect(() => {
 		selectDate(selectedTimeProps);
 	}, [selectedTimeProps]);
@@ -32,22 +30,19 @@ const Calendar = ({
 		workingTime,
 		customTime,
 		bookedTime,
-		selectedDate,
+		selectedDate: curentDay,
 	});
-	console.log(curentDay);
-	console.time('start');
 
 	const workingTimeActual = workingTimePrepare({
 		...selectedDayData,
 		interval: 20,
 	});
-	console.timeEnd('start');
-
 	return (
 		<div>
 			{showTime ? (
 				<Day
 					workingTimeActual={workingTimeActual}
+					disableBeforeCurentTime
 					curentDay={curentDay}
 					setCurentDay={setCurentDay}
 					selectDate={selectDate}
@@ -55,7 +50,13 @@ const Calendar = ({
 					setShowTime={() => setShowTime(!showTime)}
 				/>
 			) : (
-				<Month />
+				<Month
+					disableBeforeCurentTime
+					workingTimeActual={workingTimeActual}
+					curentDay={curentDay}
+					setCurentDay={setCurentDay}
+					setShowTime={() => setShowTime(!showTime)}
+				/>
 			)}
 		</div>
 	);
