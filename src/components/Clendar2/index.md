@@ -1,7 +1,7 @@
 ```jsx
 <Calendar
 	defaultShowDay
-	autoConfirm
+	onConfirm={console.log}
 	bookedTime={[
 		{ date: '2020-03-26 9:00:00', duration: 30 },
 		{ date: '2020-03-26 10:30:00', duration: 60 },

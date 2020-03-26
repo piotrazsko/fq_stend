@@ -44,7 +44,9 @@ const Day = ({
 		day.setHours(item.hour);
 		day.setSeconds(0);
 		selectDate(day);
-		onConfirm(day);
+		if (autoConfirm) {
+			onConfirm(day);
+		}
 	};
 	const checkSelected = item => {
 		return (
@@ -128,7 +130,7 @@ const Day = ({
 					<div
 						onClick={() => {
 							if (selectedDate) {
-								onConfirm();
+								onConfirm(selectedDate);
 							}
 						}}
 						className={`time_day__button time_day__button-confirm  ${
@@ -156,6 +158,7 @@ Day.propTypes = {
 	onCancel: PropTypes.func.isRequired,
 	onConfirm: PropTypes.func.isRequired,
 	autoConfirm: PropTypes.bool,
+	disableBeforeCurentTime: PropTypes.bool,
 };
 
 export default Day;

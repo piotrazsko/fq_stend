@@ -45,7 +45,11 @@ const Calendar = ({
 					disableBeforeCurentTime
 					curentDay={curentDay}
 					setCurentDay={setCurentDay}
-					selectDate={selectDate}
+					autoConfirm={autoConfirm}
+					selectDate={date => {
+						selectDate(date);
+					}}
+					onConfirm={onConfirm}
 					selectedDate={selectedDate}
 					setShowTime={() => setShowTime(!showTime)}
 				/>
