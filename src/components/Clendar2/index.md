@@ -3,9 +3,9 @@
 	defaultShowDay
 	autoConfirm
 	bookedTime={[
-		{ date: '2020-03-25 9:00:00', duration: 30 },
-		{ date: '2020-03-25 10:30:00', duration: 60 },
-		{ date: '2020-03-25 18:30:00', duration: 75 },
+		{ date: '2020-03-26 9:00:00', duration: 30 },
+		{ date: '2020-03-26 10:30:00', duration: 60 },
+		{ date: '2020-03-26 18:30:00', duration: 75 },
 	]}
 	onConfirm={date => console.log(date)}
 	workingTime={{
@@ -25,14 +25,14 @@
 		{
 			id: 120,
 			master_id: 608,
-			date: '2020-03-25 00:00:00',
+			date: '2020-03-26 00:00:00',
 			time_disable: ['16', '17'],
 			time_enable: ['15', '23'],
 		},
 		{
 			id: 121,
 			master_id: 608,
-			date: '2020-03-25 00:00:00',
+			date: '2020-03-26 00:00:00',
 			time_disable: ['20'],
 			time_enable: ['7', '8'],
 		},

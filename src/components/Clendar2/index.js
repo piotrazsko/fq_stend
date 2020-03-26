@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 // import { preppareDataforworkingTime, recoveryDataForworkingTime } from '../../helpers/calendar';
-import { workingTimePrepare, getWorkingPeriods, getDataForSelectedDate } from './utils';
-import DayPicker from 'react-day-picker';
+import { workingTimePrepare, getDataForSelectedDate } from './utils';
 import Day from './components/Day';
-import style from './style.module.scss';
+import Month from './components/Month';
+// import style from './style.module.scss';
 
+const today = new Date();
 const Calendar = ({
 	defaultShowDay = false,
 	autoConfirm,
@@ -14,18 +15,18 @@ const Calendar = ({
 	onConfirm,
 	workingTime,
 	customTime,
-	curentDay: curentDayDefault = new Date(),
-	selectedDate: selectedTimeProps = new Date(),
+	curentDay: curentDayDefault = today,
+	selectedDate: selectedTimeProps = today,
 }) => {
 	const [curentDay, setCurentDay] = React.useState(curentDayDefault);
-	const [selectedDate, selectTime] = React.useState(selectedTimeProps);
+	const [selectedDate, selectDate] = React.useState(selectedTimeProps);
 
 	const [showTime, setShowTime] = React.useState(defaultShowDay);
 
 	// const
 	// console.log(bookedTime, workingTime, customTime);
 	React.useEffect(() => {
-		selectTime(selectedTimeProps);
+		selectDate(selectedTimeProps);
 	}, [selectedTimeProps]);
 	const selectedDayData = getDataForSelectedDate({
 		workingTime,
@@ -33,26 +34,28 @@ const Calendar = ({
 		bookedTime,
 		selectedDate,
 	});
+	console.log(curentDay);
 	console.time('start');
-	console.log(
-		workingTimePrepare({
-			...selectedDayData,
-			interval: 30,
-		})
-	);
+
+	const workingTimeActual = workingTimePrepare({
+		...selectedDayData,
+		interval: 20,
+	});
 	console.timeEnd('start');
 
 	return (
 		<div>
 			{showTime ? (
 				<Day
+					workingTimeActual={workingTimeActual}
 					curentDay={curentDay}
 					setCurentDay={setCurentDay}
-					setShowTime={setShowTime}
+					selectDate={selectDate}
 					selectedDate={selectedDate}
+					setShowTime={() => setShowTime(!showTime)}
 				/>
 			) : (
-				<DayPicker />
+				<Month />
 			)}
 		</div>
 	);
