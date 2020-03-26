@@ -10,7 +10,8 @@ const today = new Date();
 const Calendar = ({
 	defaultShowDay = false,
 	autoConfirm,
-	interval = 15,
+	interval = 150,
+	workingTimeIntervals,
 	bookedTime,
 	onConfirm,
 	workingTime,
@@ -27,15 +28,14 @@ const Calendar = ({
 		selectDate(selectedTimeProps);
 	}, [selectedTimeProps]);
 	const selectedDayData = getDataForSelectedDate({
-		workingTime,
+		workingTime: workingTimeIntervals || workingTime,
 		customTime,
 		bookedTime,
 		selectedDate: curentDay,
 	});
-
 	const workingTimeActual = workingTimePrepare({
 		...selectedDayData,
-		interval: 20,
+		interval: 55,
 	});
 	return (
 		<div>
@@ -71,8 +71,12 @@ Calendar.propTypes = {
 	autoConfirm: PropTypes.bool,
 	bookedTime: PropTypes.array,
 	onConfirm: PropTypes.func.isRequired,
-	workingTime: PropTypes.object.isRequired,
+	workingTime: PropTypes.object,
+	workingTimeIntervals: PropTypes.array.isRequired,
 	customTime: PropTypes.array,
+	interval: PropTypes.number,
+	curentDay: PropTypes.instanceOf(Date),
+	selectedDate: PropTypes.instanceOf(Date),
 };
 Calendar.defaultProps = {
 	selectedDay: new Date(),

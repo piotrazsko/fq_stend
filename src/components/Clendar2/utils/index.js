@@ -3,8 +3,8 @@ import {
 	getPermanentWorkingPeriods,
 	getCustomTimePeriods,
 	getBookedTimePeriods,
-} from './periodsPrepare';
-export { getDataForSelectedDate } from './curentDayPrepare';
+} from './periodsPrepare.v2.js';
+export { getDataForSelectedDate } from './curentDayPrepare.v2.js';
 export const workingTimePrepare = ({
 	workingTimeDay,
 	customTimeDay,
@@ -14,6 +14,7 @@ export const workingTimePrepare = ({
 	const permanentWorkingIntervals = getPermanentWorkingPeriods({ workingTimeDay, interval });
 	const customTimePeriods = getCustomTimePeriods({ customTimeDay, interval });
 	const bookedTimePeriods = getBookedTimePeriods({ bookedTimeDay, interval });
+	console.log(customTimePeriods, customTimeDay);
 	const enabledTime = Array.from(
 		new Set([...permanentWorkingIntervals, ...customTimePeriods.enabled])
 	)

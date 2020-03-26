@@ -44,19 +44,20 @@ export const getDataForSelectedDate = ({
 		});
 	};
 	const customTimeDay = () => {
-		return customTime.reduce((accum, item) => {
-			const itemDate = new Date(item.date);
-
-			if (
-				itemDate.getFullYear() === year &&
-				itemDate.getMonth() === month &&
-				itemDate.getDate() === date
-			) {
-				accum.enabled = [...(accum.enabled || []), ...item.time_enable].filter(item => item);
-				accum.disabled = [...(accum.disabled || []), ...item.time_disable].filter(item => item);
-			}
-			return accum;
-		}, {});
+		return {
+			enabled: customTime.enabled.filter(item => {
+				const itemDate = new Date(item.start);
+				return (
+					itemDate.getFullYear() === year && itemDate.getMonth() === month && itemDate.getDate() === date
+				);
+			}),
+			disabled: customTime.disabled.filter(item => {
+				const itemDate = new Date(item.start);
+				return (
+					itemDate.getFullYear() === year && itemDate.getMonth() === month && itemDate.getDate() === date
+				);
+			}),
+		};
 	};
 	return {
 		workingTimeDay: workingTimeDay(),
