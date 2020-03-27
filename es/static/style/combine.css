@@ -20,6 +20,103 @@
   width: 50px; }
 /*  imported from style.module.scss  */
 
+.style-module_fq_cell___3Cojs {
+  min-width: 10px !important; }
+
+.style-module_fq_timeContainer___1Eaoa {
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px;
+  font-size: 15px;
+  font-family: Roboto; }
+
+.style-module_fq_time_day-name___3Aze6 {
+  display: flex;
+  justify-content: space-between; }
+
+.style-module_fq_time_day-name__items___183Ks {
+  margin: 0 10px 10px; }
+
+.style-module_fq_time_day__weekday___1vtrg {
+  font-size: 1.3em; }
+
+.style-module_fq_time_day-slider___1SXSH {
+  color: #b6b6b6;
+  align-items: center; }
+
+.style-module_fq_time_day__button-calendar___1FlOL {
+  color: #b6b6b6;
+  width: 20px;
+  height: 20px;
+  cursor: pointer; }
+
+.style-module_fq_time_day__date___1mYSw {
+  margin-right: auto;
+  color: #000; }
+
+.style-module_fq_time_day-block___l3_iz {
+  display: flex;
+  justify-content: space-between; }
+
+.style-module_fq_time_day__button___2T1Ps {
+  outline: none;
+  margin: 0 10px;
+  cursor: pointer;
+  text-transform: uppercase; }
+
+/* .time_day__button:hover {
+    color: #1f9bff
+} */
+.style-module_fq_time_day__button-confirm___3MutT {
+  color: #1f9bff; }
+
+.style-module_fq_time_day__button-cancel___2L6_J {
+  color: #000; }
+
+.style-module_fq_time_day__button-disabled___3nUrX {
+  color: #909090; }
+
+.style-module_fq_time_day_confirm-block___2T-hA {
+  justify-content: flex-end;
+  margin-bottom: 10px; }
+
+.style-module_fq_time_grid__item___1gKKx {
+  padding: 15px;
+  border-radius: 25px;
+  font-size: 14px;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  float: left;
+  font-weight: bold;
+  background-color: #e8e8e8; }
+
+.style-module_fq_time_grid__item-selected___UEejs {
+  background: #4a90e2;
+  color: #fff; }
+
+.style-module_fq_time_grid___3zixG {
+  margin: 20px;
+  min-height: 250px; }
+
+.style-module_fq_empty___3HaKR {
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.style-module_fq_emptyDay_shedule___CSOAb {
+  display: inline-block; }
+
+.style-module_fq_time_grid__item-disable___2oJ7l {
+  color: grey;
+  cursor: not-allowed; }
+/*  imported from style.module.scss  */
+
 .style-module_fq_datapicker___1IAIn {
   font-family: Roboto; }
 /*  imported from style.module.scss  */

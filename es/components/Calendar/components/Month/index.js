@@ -5,6 +5,7 @@ import { WEEKDAYS_LONG, MONTHS, WEEKDAYS_SHORT } from '../../utils/config';
 var style = {
   "datapicker": "style-module_fq_datapicker___1IAIn"
 };
+import 'react-day-picker/lib/style.css';
 var yeaterday = new Date().setDate(new Date().getDate() - 1);
 
 var Month = function Month(_ref) {

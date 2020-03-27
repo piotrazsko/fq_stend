@@ -87,3 +87,20 @@
 	background: #4a90e2;
 	color: #fff;
 }
+.time_grid {
+	margin: 20px;
+	min-height: 250px;
+}
+.empty {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.emptyDay_shedule {
+	display: inline-block;
+}
+
+.time_grid__item-disable {
+	color: grey;
+	cursor: not-allowed;
+}
