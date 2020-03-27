@@ -8,11 +8,11 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
 var reduceIntervals = function reduceIntervals(arr, interval) {
   return arr.reduce(function (acc, item) {
-    var startTimeArr = item.start.match(/^..:..:../gm) ? item.start.split(':') : function () {
+    var startTimeArr = item.start.match(/^..:..:../gm) || item.start.match(/^..:../gm) ? item.start.split(':') : function () {
       var time = new Date(item.start);
       return [time.getHours().toString(), time.getMinutes().toString()];
     }();
-    var endTimeArr = item.end.match(/^..:..:../gm) ? item.end.split(':') : function () {
+    var endTimeArr = item.end.match(/^..:..:../gm) || item.end.match(/^..:../gm) ? item.end.split(':') : function () {
       var time = new Date(item.end);
       var hours = time.getHours();
       return [hours === 0 ? 24 : hours, time.getMinutes().toString()];
