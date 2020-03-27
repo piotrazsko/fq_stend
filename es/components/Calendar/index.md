@@ -1,54 +1,64 @@
 ```jsx
-<Calendar
-	defaultShowDay
-	autoConfirm
-	bookedTime={[
-		{ date: '2019-12-03 09:00:00', duration: 75 },
-		{ date: '2019-12-05 13:30:00', duration: 75 },
-		{ date: '2020-03-13 18:30:00', duration: 75 },
-		{ date: '2019-12-06 16:00:00', duration: 75 },
-		{ date: '2020-04-17 18:30:00', duration: 75 },
-		{ date: '2019-12-02 16:00:00', duration: 75 },
-		{ date: '2019-11-28 18:30:00', duration: 75 },
-		{ date: '2019-12-02 10:30:00', duration: 30 },
-	]}
-	onConfirm={date => console.log(date)}
-	workingTime={{
-		mon:
-			'{"10":"white","11":"white","12":"white","13":"white","14":"white","15":"white","16":"white","17":"white","18":"white"}',
-		tue:
-			'{"10":"white","11":"white","12":"white","13":"white","14":"white","15":"white","16":"white","17":"white","18":"white"}',
-		wed:
-			'{"10":"white","11":"white","12":"white","13":"white","14":"white","15":"white","16":"white","17":"white","18":"white"}',
-		thu:
-			'{"10":"white","11":"white","12":"white","13":"white","14":"white","15":"white","16":"white","17":"white","18":"white"}',
-		fri: null,
-		sat: { '20': 'white', '18': 'white' },
-		sun: null,
-	}}
-	customTime={[
-		{
-			id: 120,
-			master_id: 608,
-			date: '2019-11-28 00:00:00',
-			time_disable: ['16', '17'],
-			time_enable: ['15'],
-		},
-		{
-			id: 121,
-			master_id: 608,
-			date: '2019-11-30 00:00:00',
-			time_disable: ['20'],
-			time_enable: [''],
-		},
-		{ id: 134, master_id: 608, date: '2019-11-29 00:00:00', time_disable: [''], time_enable: [''] },
-		{
-			id: 135,
-			master_id: 608,
-			date: '2019-12-01 00:00:00',
-			time_disable: [''],
-			time_enable: ['12', '13'],
-		},
-	]}
-/>
+const [x, setX] = React.useState(20);
+<div>
+	<select value={x} onChange={ev => setX(ev.target.value)}>
+		<option value="20">20</option>
+		<option value="60">60</option>
+		<option value="120">120</option>
+	</select>
+	<Calendar
+		interval={x}
+		defaultShowDay
+		onConfirm={console.log}
+		bookedTime={[
+			{ date: '2019-12-03 09:00:00', duration: 75 },
+			{ date: '2019-12-05 13:30:00', duration: 75 },
+			{ date: '2020-03-13 18:30:00', duration: 75 },
+			{ date: '2019-12-06 16:00:00', duration: 75 },
+			{ date: '2020-04-17 18:30:00', duration: 75 },
+			{ date: '2019-12-02 16:00:00', duration: 75 },
+			{ date: '2019-11-28 18:30:00', duration: 75 },
+			{ date: '2019-12-02 10:30:00', duration: 30 },
+		]}
+		onConfirm={date => console.log(date)}
+		workingTimeIntervals={{
+			mon: [
+				{ start: '02:00:00', end: '07:00:00' },
+				{ start: '08:00:00', end: '09:00:00' },
+				{ start: '10:00:00', end: '15:00:00' },
+			],
+			tue: [{ start: '04:00:00', end: '08:00:00' }, { start: '10:00:00', end: '14:00:00' }],
+			wed: [{ start: '04:00:00', end: '08:00:00' }, { start: '09:00:00', end: '14:00:00' }],
+			thu: [{ start: '04:00:00', end: '10:00:00' }],
+			fri: [{ start: '04:00:00', end: '14:00:00' }],
+			sat: [{ start: '04:00:00', end: '14:00:00' }],
+		}}
+		customTime={{
+			enabled: [
+				{
+					start: '2020-03-26 18:40:00',
+					end: '2020-03-26 19:00:00',
+				},
+				{
+					start: '2020-03-26 19:20:00',
+					end: '2020-03-26 24:00:00',
+				},
+				{
+					start: '2020-03-31 10:20:00',
+					end: '2020-03-31 18:00:00',
+				},
+			],
+			disabled: [
+				{
+					start: '2020-03-25 05:00:00',
+					end: '2020-03-27 10:00:00',
+				},
+				{
+					start: '2020-03-27 10:20:00',
+					end: '2020-03-27 18:00:00',
+				},
+			],
+		}}
+	/>
+</div>;
 ```
