@@ -35,7 +35,8 @@ var Calendar = function Calendar(_ref) {
       _ref$curentDay = _ref.curentDay,
       curentDayDefault = _ref$curentDay === void 0 ? today : _ref$curentDay,
       _ref$selectedDate = _ref.selectedDate,
-      selectedTimeProps = _ref$selectedDate === void 0 ? today : _ref$selectedDate;
+      selectedTimeProps = _ref$selectedDate === void 0 ? today : _ref$selectedDate,
+      classNames = _ref.classNames;
 
   var _React$useState = React.useState(curentDayDefault),
       _React$useState2 = _slicedToArray(_React$useState, 2),
@@ -64,7 +65,9 @@ var Calendar = function Calendar(_ref) {
   var workingTimeActual = workingTimePrepare(_objectSpread({}, selectedDayData, {
     interval: interval
   }));
-  return React.createElement("div", null, showTime ? React.createElement(Day, {
+  return React.createElement("div", {
+    className: classNames.container || ''
+  }, showTime ? React.createElement(Day, {
     workingTimeActual: workingTimeActual,
     disableBeforeCurentTime: true,
     curentDay: curentDay,
@@ -98,9 +101,15 @@ Calendar.propTypes = {
   customTime: PropTypes.array,
   interval: PropTypes.number,
   curentDay: PropTypes.instanceOf(Date),
-  selectedDate: PropTypes.instanceOf(Date)
+  selectedDate: PropTypes.instanceOf(Date),
+  classNames: PropTypes.shape({
+    container: PropTypes.string
+  })
 };
 Calendar.defaultProps = {
-  selectedDay: new Date()
+  selectedDay: new Date(),
+  classNames: {
+    conatainer: ''
+  }
 };
 export default Calendar;

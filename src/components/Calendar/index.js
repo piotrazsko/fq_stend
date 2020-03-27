@@ -17,6 +17,7 @@ const Calendar = ({
 	interval = 20,
 	curentDay: curentDayDefault = today,
 	selectedDate: selectedTimeProps = today,
+	classNames,
 }) => {
 	const [curentDay, setCurentDay] = React.useState(curentDayDefault);
 	const [selectedDate, selectDate] = React.useState(selectedTimeProps);
@@ -37,7 +38,7 @@ const Calendar = ({
 		interval,
 	});
 	return (
-		<div>
+		<div className={classNames.container || ''}>
 			{showTime ? (
 				<Day
 					workingTimeActual={workingTimeActual}
@@ -75,8 +76,12 @@ Calendar.propTypes = {
 	interval: PropTypes.number,
 	curentDay: PropTypes.instanceOf(Date),
 	selectedDate: PropTypes.instanceOf(Date),
+	classNames: PropTypes.shape({
+		container: PropTypes.string,
+	}),
 };
 Calendar.defaultProps = {
 	selectedDay: new Date(),
+	classNames: { conatainer: '' },
 };
 export default Calendar;
