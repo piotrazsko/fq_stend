@@ -40,7 +40,9 @@ var WorkingTimeSelect = function WorkingTimeSelect(_ref) {
       _ref$isMobile = _ref.isMobile,
       isMobile = _ref$isMobile === void 0 ? false : _ref$isMobile,
       _ref$usePreparing = _ref.usePreparing,
-      usePreparing = _ref$usePreparing === void 0 ? true : _ref$usePreparing;
+      usePreparing = _ref$usePreparing === void 0 ? true : _ref$usePreparing,
+      _ref$selectedTimeText = _ref.selectedTimeText,
+      selectedTimeText = _ref$selectedTimeText === void 0 ? '' : _ref$selectedTimeText;
 
   var _React$useState = React.useState(_toConsumableArray(usePreparing ? recoveryDataForWorkTime(workingTime) : workingTime)),
       _React$useState2 = _slicedToArray(_React$useState, 2),
@@ -119,6 +121,7 @@ var WorkingTimeSelect = function WorkingTimeSelect(_ref) {
     },
     cellProps: {
       children: React.createElement(Cell, {
+        selectedTimeText: selectedTimeText,
         onClear: onClear,
         isMobile: isMobile
       })
@@ -135,7 +138,8 @@ WorkingTimeSelect.propTypes = {
     row: PropTypes.number
   })),
   isMobile: PropTypes.bool,
-  usePreparing: PropTypes.bool
+  usePreparing: PropTypes.bool,
+  selectedTimeText: PropTypes.string
 };
 WorkingTimeSelect.defaultProps = {
   workingTime: []

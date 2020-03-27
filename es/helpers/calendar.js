@@ -149,7 +149,7 @@ export var recoveryDataForWorkTime = function recoveryDataForWorkTime() {
   };
   var res = [];
 
-  if (_typeof(data) === 'object') {
+  if (_typeof(data) === 'object' && data !== null) {
     Object.keys(data).forEach(function (i) {
       var day = data[i] !== null && (typeof data[i] === 'string' || _typeof(data[i]) === 'object') ? Object.keys(typeof data[i] === 'string' ? JSON.parse(data[i]) : data[i]) : [];
       day.forEach(function (item) {

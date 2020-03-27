@@ -8,7 +8,14 @@ import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 
 import { WEEKDAYS_LONG, WEEKDAYS_SHORT } from '../../helpers/calendar.js';
 import style from './style.module.scss';
-const Cell = ({ row, col, isSelected, isMobile, onClear = col => {} }) => {
+const Cell = ({
+	row,
+	col,
+	isSelected,
+	isMobile,
+	onClear = () => {},
+	selectedTimeText = 'Рабочее время',
+}) => {
 	const [anchorEl, setAnchorEl] = React.useState(null);
 	const handleClick = event => {
 		setAnchorEl(event.currentTarget);
@@ -21,10 +28,15 @@ const Cell = ({ row, col, isSelected, isMobile, onClear = col => {} }) => {
 		handleClose();
 	};
 	switch (true) {
-		case isSelected:
-			return (
-				<div className={style.selectedCell}>{isMobile ? `${row}:00` : `${row}:00 Время выбрано`}</div>
-			);
+		case isSelected: {
+			const child =
+				typeof selectedTimeText == 'string'
+					? isMobile
+						? `${row}:00`
+						: `${row}:00 Время выбрано`
+					: selectedTimeText;
+			return <div className={style.selectedCell}>{child}</div>;
+		}
 		case col === 0 && row > 0:
 			return <div className={style.cellTime}>{row}:00</div>;
 		case col > 0 && row === 0:
@@ -63,6 +75,7 @@ Cell.propTypes = {
 	isSelected: PropTypes.bool,
 	onClear: PropTypes.func,
 	isMobile: PropTypes.bool,
+	selectedTimeText: PropTypes.string,
 };
 
 export default Cell;

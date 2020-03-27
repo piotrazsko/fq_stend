@@ -132,7 +132,7 @@ export const recoveryDataForWorkTime = (
 	}
 ) => {
 	let res = [];
-	if (typeof data === 'object') {
+	if (typeof data === 'object' && data !== null) {
 		Object.keys(data).forEach(i => {
 			const day =
 				data[i] !== null && (typeof data[i] === 'string' || typeof data[i] === 'object')

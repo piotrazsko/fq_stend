@@ -21,9 +21,9 @@ const parseArr = (start, end) => {
 };
 
 const Grid = ({
-	rows,
+	rows = 5,
 	verticalSize = 1,
-	cols,
+	cols = 5,
 	cellProps = {},
 	selected = [],
 	onSelect = () => {},
