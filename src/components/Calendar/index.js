@@ -70,7 +70,7 @@ Calendar.propTypes = {
 	autoConfirm: PropTypes.bool,
 	bookedTime: PropTypes.array,
 	onConfirm: PropTypes.func.isRequired,
-	workingTimeIntervals: PropTypes.array.isRequired,
+	workingTimeIntervals: PropTypes.object.isRequired,
 	customTime: PropTypes.array,
 	interval: PropTypes.number,
 	curentDay: PropTypes.instanceOf(Date),
