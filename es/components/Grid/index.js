@@ -33,10 +33,12 @@ var parseArr = function parseArr(start, end) {
 };
 
 var Grid = function Grid(_ref) {
-  var rows = _ref.rows,
+  var _ref$rows = _ref.rows,
+      rows = _ref$rows === void 0 ? 5 : _ref$rows,
       _ref$verticalSize = _ref.verticalSize,
       verticalSize = _ref$verticalSize === void 0 ? 1 : _ref$verticalSize,
-      cols = _ref.cols,
+      _ref$cols = _ref.cols,
+      cols = _ref$cols === void 0 ? 5 : _ref$cols,
       _ref$cellProps = _ref.cellProps,
       cellProps = _ref$cellProps === void 0 ? {} : _ref$cellProps,
       _ref$selected = _ref.selected,

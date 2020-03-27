@@ -32,7 +32,9 @@ var Cell = function Cell(_ref) {
       isSelected = _ref.isSelected,
       isMobile = _ref.isMobile,
       _ref$onClear = _ref.onClear,
-      onClear = _ref$onClear === void 0 ? function (col) {} : _ref$onClear;
+      onClear = _ref$onClear === void 0 ? function () {} : _ref$onClear,
+      _ref$selectedTimeText = _ref.selectedTimeText,
+      selectedTimeText = _ref$selectedTimeText === void 0 ? 'Рабочее время' : _ref$selectedTimeText;
 
   var _React$useState = React.useState(null),
       _React$useState2 = _slicedToArray(_React$useState, 2),
@@ -54,9 +56,12 @@ var Cell = function Cell(_ref) {
 
   switch (true) {
     case isSelected:
-      return React.createElement("div", {
-        className: style.selectedCell
-      }, isMobile ? "".concat(row, ":00") : "".concat(row, ":00 \u0412\u0440\u0435\u043C\u044F \u0432\u044B\u0431\u0440\u0430\u043D\u043E"));
+      {
+        var child = typeof selectedTimeText == 'string' ? isMobile ? "".concat(row, ":00") : "".concat(row, ":00 \u0412\u0440\u0435\u043C\u044F \u0432\u044B\u0431\u0440\u0430\u043D\u043E") : selectedTimeText;
+        return React.createElement("div", {
+          className: style.selectedCell
+        }, child);
+      }
 
     case col === 0 && row > 0:
       return React.createElement("div", {
@@ -101,6 +106,7 @@ Cell.propTypes = {
   col: PropTypes.number,
   isSelected: PropTypes.bool,
   onClear: PropTypes.func,
-  isMobile: PropTypes.bool
+  isMobile: PropTypes.bool,
+  selectedTimeText: PropTypes.string
 };
 export default Cell;

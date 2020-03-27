@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import DayPicker from 'react-day-picker';
 import { WEEKDAYS_LONG, MONTHS, WEEKDAYS_SHORT } from '../../utils/config';
 var style = {
-  "datapicker": "style-module_fq_datapicker___3Uidm"
+  "datapicker": "style-module_fq_datapicker___1BKfQ"
 };
 var yeaterday = new Date().setDate(new Date().getDate() - 1);
 
