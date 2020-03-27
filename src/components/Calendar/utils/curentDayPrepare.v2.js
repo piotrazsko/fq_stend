@@ -45,14 +45,16 @@ export const getDataForSelectedDate = ({
 		});
 	};
 	const customTimeDay = () => {
+		const enabled = get(customTime, 'enabled', []) || [];
+		const disabled = get(customTime, 'enabled', []) || [];
 		return {
-			enabled: get(customTime, 'enabled', []).filter(item => {
+			enabled: enabled.filter(item => {
 				const itemDate = new Date(item.start);
 				return (
 					itemDate.getFullYear() === year && itemDate.getMonth() === month && itemDate.getDate() === date
 				);
 			}),
-			disabled: get(customTime, 'disabled', []).filter(item => {
+			disabled: disabled.filter(item => {
 				const itemDate = new Date(item.start);
 				return (
 					itemDate.getFullYear() === year && itemDate.getMonth() === month && itemDate.getDate() === date

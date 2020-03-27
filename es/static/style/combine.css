@@ -25,6 +25,7 @@
 
 .style-module_fq_timeContainer___1Eaoa {
   max-width: 300px;
+  min-width: 260px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

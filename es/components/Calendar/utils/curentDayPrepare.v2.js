@@ -42,12 +42,14 @@ export var getDataForSelectedDate = function getDataForSelectedDate(_ref) {
   };
 
   var customTimeDay = function customTimeDay() {
+    var enabled = get(customTime, 'enabled', []) || [];
+    var disabled = get(customTime, 'enabled', []) || [];
     return {
-      enabled: get(customTime, 'enabled', []).filter(function (item) {
+      enabled: enabled.filter(function (item) {
         var itemDate = new Date(item.start);
         return itemDate.getFullYear() === year && itemDate.getMonth() === month && itemDate.getDate() === date;
       }),
-      disabled: get(customTime, 'disabled', []).filter(function (item) {
+      disabled: disabled.filter(function (item) {
         var itemDate = new Date(item.start);
         return itemDate.getFullYear() === year && itemDate.getMonth() === month && itemDate.getDate() === date;
       })
