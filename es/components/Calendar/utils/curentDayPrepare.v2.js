@@ -1,4 +1,5 @@
 import { WEEKDAYS_ENG_RUS } from './config.js';
+import get from 'lodash/get';
 /**
  * [getDataForSelectedDate  get data for curent day for form shedule]
  *
@@ -19,7 +20,8 @@ import { WEEKDAYS_ENG_RUS } from './config.js';
 export var getDataForSelectedDate = function getDataForSelectedDate(_ref) {
   var workingTime = _ref.workingTime,
       customTime = _ref.customTime,
-      bookedTime = _ref.bookedTime,
+      _ref$bookedTime = _ref.bookedTime,
+      bookedTime = _ref$bookedTime === void 0 ? [] : _ref$bookedTime,
       selectedDate = _ref.selectedDate,
       _ref$weekDaysArr = _ref.weekDaysArr,
       weekDaysArr = _ref$weekDaysArr === void 0 ? WEEKDAYS_ENG_RUS : _ref$weekDaysArr;
@@ -28,7 +30,7 @@ export var getDataForSelectedDate = function getDataForSelectedDate(_ref) {
   var date = selectedDate.getDate();
 
   var workingTimeDay = function workingTimeDay() {
-    var nonPreparedDay = workingTime[weekDaysArr[selectedDate.getDay()].eng];
+    var nonPreparedDay = workingTime && workingTime[weekDaysArr[selectedDate.getDay()].eng];
     return nonPreparedDay ? typeof nonPreparedDay === 'string' ? JSON.parse(nonPreparedDay) : nonPreparedDay : {};
   };
 
@@ -41,11 +43,11 @@ export var getDataForSelectedDate = function getDataForSelectedDate(_ref) {
 
   var customTimeDay = function customTimeDay() {
     return {
-      enabled: customTime.enabled.filter(function (item) {
+      enabled: get(customTime, 'enabled', []).filter(function (item) {
         var itemDate = new Date(item.start);
         return itemDate.getFullYear() === year && itemDate.getMonth() === month && itemDate.getDate() === date;
       }),
-      disabled: customTime.disabled.filter(function (item) {
+      disabled: get(customTime, 'disabled', []).filter(function (item) {
         var itemDate = new Date(item.start);
         return itemDate.getFullYear() === year && itemDate.getMonth() === month && itemDate.getDate() === date;
       })

@@ -13,7 +13,7 @@ const Calendar = ({
 	workingTimeIntervals,
 	bookedTime,
 	onConfirm,
-	customTime,
+	customTime = {},
 	interval = 20,
 	curentDay: curentDayDefault = today,
 	selectedDate: selectedTimeProps = today,
