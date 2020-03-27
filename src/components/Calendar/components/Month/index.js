@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import DayPicker from 'react-day-picker';
 import { WEEKDAYS_LONG, MONTHS, WEEKDAYS_SHORT } from '../../utils/config';
 import style from './style.module.scss';
+import 'react-day-picker/lib/style.css';
 const yeaterday = new Date().setDate(new Date().getDate() - 1);
 const Month = ({ curentDay, setCurentDay, setShowTime, disableBeforeCurentTime }) => {
 	const disabledDays = disableBeforeCurentTime

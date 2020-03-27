@@ -5,7 +5,7 @@ import CalendarToday from '@material-ui/icons/CalendarToday';
 import ArrowLeft from '@material-ui/icons/ArrowLeft';
 import ArrowRight from '@material-ui/icons/ArrowRight';
 import { IconButton } from '@material-ui/core';
-import './style.scss';
+import style from './style.module.scss';
 
 const Day = ({
 	workingTimeActual,
@@ -58,9 +58,9 @@ const Day = ({
 		);
 	};
 	return (
-		<div className="timeContainer">
-			<div className="time_day-block time_day-name">
-				<div className="time_day-name__items time_day__weekday">
+		<div className={style['timeContainer']}>
+			<div className={[style['time_day-block'], style['time_day-name']].join(' ')}>
+				<div className={[style['time_day-name__items'], style[' time_day__weekday']].join(' ')}>
 					{WEEKDAYS_LONG[curentDay.getDay()]}
 				</div>
 				<div
@@ -68,15 +68,15 @@ const Day = ({
 					tabIndex="-1"
 					onKeyDown={() => {}}
 					onClick={setShowTime}
-					className="time_day-name__items time_day__button-calendar"
+					className={[style['time_day-name__items'], style['time_day__button-calendar']].join(' ')}
 				>
 					<CalendarToday />
 				</div>
 			</div>
-			<div className="time_day-block time_day-slider">
+			<div className={[style['time_day-block'], style['time_day-slider']].join(' ')}>
 				<IconButton
 					size="small"
-					className="time_day__button"
+					className={style['time_day__button']}
 					role="button"
 					tabIndex="-1"
 					disabled={disableBeforeCurentTime && curentDay < new Date()}
@@ -85,10 +85,12 @@ const Day = ({
 				>
 					<ArrowLeft />
 				</IconButton>
-				<div className="time_day__date">{`${curentDay.getDate()} ${MONTHS[curentDay.getMonth()]}`}</div>
+				<div className={style['time_day__date']}>{`${curentDay.getDate()} ${
+					MONTHS[curentDay.getMonth()]
+				}`}</div>
 				<IconButton
 					size="small"
-					className="time_day__button"
+					className={style['time_day__button']}
 					role="button"
 					tabIndex="-1"
 					onKeyDown={() => {}}
@@ -97,7 +99,12 @@ const Day = ({
 					<ArrowRight />
 				</IconButton>
 			</div>
-			<div className={workingTimeActualFiltered.length > 0 ? 'time_grid' : 'time_grid empty'}>
+			<div
+				className={[
+					style['time_grid'],
+					workingTimeActualFiltered.length === 0 ? style['empty'] : '',
+				].join(' ')}
+			>
 				{workingTimeActualFiltered.length > 0 ? (
 					workingTimeActualFiltered.map(item => {
 						let minutes = item.minutes.toString();
@@ -105,22 +112,23 @@ const Day = ({
 						return (
 							<div
 								onClick={() => onClickDay(item)}
-								className={['time_grid__item', checkSelected(item) ? 'time_grid__item-selected' : ''].join(
-									' '
-								)}
+								className={[
+									style['time_grid__item'],
+									checkSelected(item) ? style['time_grid__item-selected'] : '',
+								].join(' ')}
 								key={item.start + '_index'}
 							>{`${item.hour}:${minutes}`}</div>
 						);
 					})
 				) : (
-					<div className={'emptyDay_shedule'}>Отсутствует свободное время</div>
+					<div className={style['emptyDay_shedule']}>Отсутствует свободное время</div>
 				)}
 			</div>
 			{!autoConfirm && (
-				<div className="time_day-block time_day_confirm-block">
+				<div className={[style['time_day-block'], style['time_day_confirm-block']].join(' ')}>
 					<div
 						onClick={onCancel}
-						className="time_day__button  time_day__button-cancel"
+						className={[style['time_day__button'], style['time_day__button-cancel']].join(' ')}
 						role="button"
 						tabIndex="-1"
 						onKeyDown={() => {}}
@@ -133,9 +141,11 @@ const Day = ({
 								onConfirm(selectedDate);
 							}
 						}}
-						className={`time_day__button time_day__button-confirm  ${
-							selectedDate === null ? 'time_day__button-disabled' : ''
-						}`}
+						className={[
+							style[`time_day__button`],
+							style[`time_day__button-confirm`],
+							selectedDate === null ? style['time_day__button-disabled'] : '',
+						].join(' ')}
 						role="button"
 						tabIndex="-1"
 						onKeyDown={() => {}}
