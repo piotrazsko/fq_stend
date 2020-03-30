@@ -45,6 +45,10 @@ export var WEEKDAYS_ENG_RUS = [{
   rus: 'Сб'
 }];
 export var DAYS_OF_WEEK = [{
+  label: 'Воскресенье',
+  shortLabel: 'Вс',
+  value: 'sun'
+}, {
   label: 'Понедельник',
   shortLabel: 'Пн',
   value: 'mon'
@@ -68,10 +72,6 @@ export var DAYS_OF_WEEK = [{
   label: 'Суббота',
   shortLabel: 'Сб',
   value: 'sat'
-}, {
-  label: 'Воскресенье',
-  shortLabel: 'Вс',
-  value: 'sun'
 }];
 export var preppareDataforWorkTime = function preppareDataforWorkTime(data) {
   var res = {
@@ -212,12 +212,15 @@ export var recoveryDataForWorkTime = function recoveryDataForWorkTime() {
 
   return res;
 };
-export var formatHours = function formatHours(hour) {
-  return "".concat(hour.toString().length < 2 ? "0".concat(hour) : hour, ":00");
+export var formatHours = function formatHours(row, interval, startTime) {
+  var hour = Math.floor((startTime + interval * (row - 1)) / 60);
+  hour = hour >= 24 ? hour - 24 : hour;
+  var minutes = ((startTime + interval * (row - 1)) % 60).toString();
+  return "".concat(hour.toString().length < 2 ? "0".concat(hour) : hour, ":").concat(minutes.length === 1 ? '0' + minutes : minutes);
 };
-export var getWorkPeriodsOfDay = function getWorkPeriodsOfDay(dayData) {
-  var periods = _reduce(dayData, function (memo, hour) {
-    var formatedHours = _parseInt(hour);
+export var getObjectOfPeriods = function getObjectOfPeriods(dayData, interval, startTime) {
+  return _reduce(dayData, function (memo, row) {
+    var formatedHours = _parseInt(row);
 
     var prevPeriodIndex = _findIndex(memo, {
       to: formatedHours
@@ -236,9 +239,12 @@ export var getWorkPeriodsOfDay = function getWorkPeriodsOfDay(dayData) {
 
     return memo;
   }, []);
+};
+export var getWorkPeriodsOfDay = function getWorkPeriodsOfDay(dayData, interval, startTime) {
+  var periods = getObjectOfPeriods(dayData, interval, startTime);
 
   var formatedPeriods = _map(periods, function (period) {
-    return "".concat(formatHours(period.from), " - ").concat(formatHours(period.to));
+    return "".concat(formatHours(period.from, interval, startTime), " - ").concat(formatHours(period.to, interval, startTime));
   });
 
   return formatedPeriods.join(' / ');

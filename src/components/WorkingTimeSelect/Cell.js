@@ -9,6 +9,9 @@ import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import { WEEKDAYS_LONG, WEEKDAYS_SHORT } from '../../helpers/calendar.js';
 import style from './style.module.scss';
 const Cell = ({
+	startTime,
+	startWeekDay = 0,
+	interval,
 	row,
 	col,
 	isSelected,
@@ -29,20 +32,30 @@ const Cell = ({
 	};
 	switch (true) {
 		case isSelected: {
+			const time = startTime + (row - 1) * interval;
+			const minutes = (time % 60).toString();
 			const child =
 				typeof selectedTimeText == 'string'
 					? isMobile
-						? `${row}:00`
-						: `${row}:00 Время выбрано`
+						? `${Math.floor(time / 60)}:${minutes.length === 1 ? '0' + minutes : minutes}`
+						: `${Math.floor(time / 60)}:${minutes.length === 1 ? '0' + minutes : minutes} Время выбрано`
 					: selectedTimeText;
 			return <div className={style.selectedCell}>{child}</div>;
 		}
-		case col === 0 && row > 0:
-			return <div className={style.cellTime}>{row}:00</div>;
-		case col > 0 && row === 0:
+		case col === 0 && row > 0: {
+			const time = startTime + (row - 1) * interval;
+			const minutes = (time % 60).toString();
+			return (
+				<div className={style.cellTime}>{`${Math.floor(time / 60)}:${
+					minutes.length === 1 ? '0' + minutes : minutes
+				}`}</div>
+			);
+		}
+		case col > 0 && row === 0: {
+			const dayOfWeek = (col - 1 + startWeekDay) % 7;
 			return (
 				<div className={style.cellDay}>
-					<div>{isMobile ? WEEKDAYS_SHORT[col - 1] : WEEKDAYS_LONG[col - 1]}</div>
+					<div>{isMobile ? WEEKDAYS_SHORT[dayOfWeek] : WEEKDAYS_LONG[dayOfWeek]}</div>
 					<div>
 						<IconButton size="small" onClick={handleClick}>
 							<MoreVertIcon style={{ fontSize: 15 }} />
@@ -63,6 +76,7 @@ const Cell = ({
 					</div>
 				</div>
 			);
+		}
 
 		default:
 			return <div />;
@@ -76,6 +90,10 @@ Cell.propTypes = {
 	onClear: PropTypes.func,
 	isMobile: PropTypes.bool,
 	selectedTimeText: PropTypes.string,
+	startTime: PropTypes.number,
+	endTime: PropTypes.number,
+	interval: PropTypes.number,
+	startWeekDay: PropTypes.number,
 };
 
 export default Cell;

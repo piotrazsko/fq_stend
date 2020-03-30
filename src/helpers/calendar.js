@@ -35,6 +35,11 @@ export const WEEKDAYS_ENG_RUS = [
 
 export const DAYS_OF_WEEK = [
 	{
+		label: 'Воскресенье',
+		shortLabel: 'Вс',
+		value: 'sun',
+	},
+	{
 		label: 'Понедельник',
 		shortLabel: 'Пн',
 		value: 'mon',
@@ -63,11 +68,6 @@ export const DAYS_OF_WEEK = [
 		label: 'Суббота',
 		shortLabel: 'Сб',
 		value: 'sat',
-	},
-	{
-		label: 'Воскресенье',
-		shortLabel: 'Вс',
-		value: 'sun',
 	},
 ];
 
@@ -180,13 +180,19 @@ export const recoveryDataForWorkTime = (
 	return res;
 };
 
-export const formatHours = hour => `${hour.toString().length < 2 ? `0${hour}` : hour}:00`;
-
-export const getWorkPeriodsOfDay = dayData => {
-	const periods = _.reduce(
+export const formatHours = (row, interval, startTime) => {
+	let hour = Math.floor((startTime + interval * (row - 1)) / 60);
+	hour = hour >= 24 ? hour - 24 : hour;
+	const minutes = ((startTime + interval * (row - 1)) % 60).toString();
+	return `${hour.toString().length < 2 ? `0${hour}` : hour}:${
+		minutes.length === 1 ? '0' + minutes : minutes
+	}`;
+};
+export const getObjectOfPeriods = (dayData, interval, startTime) => {
+	return _.reduce(
 		dayData,
-		(memo, hour) => {
-			const formatedHours = _.parseInt(hour);
+		(memo, row) => {
+			const formatedHours = _.parseInt(row);
 			const prevPeriodIndex = _.findIndex(memo, { to: formatedHours });
 
 			if (prevPeriodIndex > -1) {
@@ -204,9 +210,18 @@ export const getWorkPeriodsOfDay = dayData => {
 		},
 		[]
 	);
+};
+
+export const getWorkPeriodsOfDay = (dayData, interval, startTime) => {
+	const periods = getObjectOfPeriods(dayData, interval, startTime);
 	const formatedPeriods = _.map(
 		periods,
-		period => `${formatHours(period.from)} - ${formatHours(period.to)}`
+		period =>
+			`${formatHours(period.from, interval, startTime)} - ${formatHours(
+				period.to,
+				interval,
+				startTime
+			)}`
 	);
 
 	return formatedPeriods.join(' / ');

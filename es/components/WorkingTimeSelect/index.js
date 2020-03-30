@@ -19,7 +19,7 @@ import PropTypes from 'prop-types';
 import Grid from '../Grid';
 import Cell from './Cell';
 import Days from './Days';
-import { preppareDataforWorkTime, recoveryDataForWorkTime } from '../../helpers/calendar';
+import { prepareWorkingTimeIntervals, recoveryWorkingTimeIntervals } from './utils';
 var style = {
   "title": "style-module_fq_title___tFfDD",
   "resultContainer": "style-module_fq_resultContainer___10tCz",
@@ -35,30 +35,49 @@ var style = {
 var WorkingTimeSelect = function WorkingTimeSelect(_ref) {
   var _ref$onChange = _ref.onChange,
       onChange = _ref$onChange === void 0 ? function () {} : _ref$onChange,
-      _ref$workingTime = _ref.workingTime,
-      workingTime = _ref$workingTime === void 0 ? [] : _ref$workingTime,
+      workingTimeIntervals = _ref.workingTimeIntervals,
       _ref$isMobile = _ref.isMobile,
       isMobile = _ref$isMobile === void 0 ? false : _ref$isMobile,
+      workingTime = _ref.workingTime,
       _ref$usePreparing = _ref.usePreparing,
       usePreparing = _ref$usePreparing === void 0 ? true : _ref$usePreparing,
       _ref$selectedTimeText = _ref.selectedTimeText,
-      selectedTimeText = _ref$selectedTimeText === void 0 ? '' : _ref$selectedTimeText;
+      selectedTimeText = _ref$selectedTimeText === void 0 ? '' : _ref$selectedTimeText,
+      startTime = _ref.startTime,
+      endTime = _ref.endTime,
+      interval = _ref.interval,
+      startWeekDay = _ref.startWeekDay;
 
-  var _React$useState = React.useState(_toConsumableArray(usePreparing ? recoveryDataForWorkTime(workingTime) : workingTime)),
+  var _React$useState = React.useState(_toConsumableArray(usePreparing ? recoveryWorkingTimeIntervals({
+    data: workingTimeIntervals,
+    startTime: startTime,
+    interval: interval,
+    startWeekDay: startWeekDay
+  }) : workingTime)),
       _React$useState2 = _slicedToArray(_React$useState, 2),
       selectedTime = _React$useState2[0],
       selectTime = _React$useState2[1];
 
   React.useEffect(function () {
     if (usePreparing) {
-      onChange(preppareDataforWorkTime(selectedTime));
+      onChange(prepareWorkingTimeIntervals({
+        data: selectedTime,
+        startTime: startTime,
+        interval: interval,
+        startWeekDay: startWeekDay
+      }));
     } else {
       onChange(_toConsumableArray(selectedTime));
     }
   }, [selectedTime]);
   React.useEffect(function () {
     if (usePreparing) {
-      var workingTimePrepared = recoveryDataForWorkTime(workingTime);
+      var workingTimePrepared = recoveryWorkingTimeIntervals({
+        data: workingTimeIntervals,
+        startTime: startTime,
+        interval: interval,
+        startWeekDay: startWeekDay
+      });
 
       if (workingTimePrepared.length !== selectedTime.length || !workingTimePrepared.every(function (item) {
         return selectedTime.find(function (i) {
@@ -103,16 +122,19 @@ var WorkingTimeSelect = function WorkingTimeSelect(_ref) {
   }, "\u0423\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u0435 \u043F\u043E\u0434\u0445\u043E\u0434\u044F\u0449\u0435\u0435 \u0434\u043B\u044F \u0432\u0430\u0441 \u0432\u0440\u0435\u043C\u044F"), React.createElement("div", {
     className: style.resultContainer
   }, React.createElement(Days, {
-    selectedTime: selectedTime
+    startWeekDay: startWeekDay,
+    selectedTime: selectedTime,
+    startTime: startTime,
+    interval: interval
   })), React.createElement(Grid, {
     isMobile: isMobile,
     className: style.gridContainer,
     cols: 8,
-    rows: 25,
+    rows: Math.ceil((endTime - startTime) / interval + 1),
     selectFromCol: 1,
     selectToCol: 7,
     selectFromRow: 1,
-    selectToRow: 24,
+    selectToRow: Math.ceil((endTime - startTime) / interval + 1),
     setRowStyle: function setRowStyle(row) {
       return row === 0 ? style.firstRow : '';
     },
@@ -121,6 +143,10 @@ var WorkingTimeSelect = function WorkingTimeSelect(_ref) {
     },
     cellProps: {
       children: React.createElement(Cell, {
+        startTime: startTime,
+        startWeekDay: startWeekDay,
+        endTime: endTime,
+        interval: interval,
         selectedTimeText: selectedTimeText,
         onClear: onClear,
         isMobile: isMobile
@@ -139,9 +165,20 @@ WorkingTimeSelect.propTypes = {
   })),
   isMobile: PropTypes.bool,
   usePreparing: PropTypes.bool,
-  selectedTimeText: PropTypes.string
+  selectedTimeText: PropTypes.string,
+  startTime: PropTypes.number,
+  endTime: PropTypes.number,
+  startWeekDay: PropTypes.number,
+  interval: PropTypes.number,
+  workingTimeIntervals: PropTypes.object
 };
 WorkingTimeSelect.defaultProps = {
-  workingTime: []
+  workingTime: [],
+  startTime: 300,
+  endTime: 1440,
+  interval: 60,
+  startWeekDay: 1,
+  //utc day of week
+  workingTimeIntervals: {}
 };
 export default WorkingTimeSelect;
