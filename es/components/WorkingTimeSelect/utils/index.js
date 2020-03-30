@@ -49,8 +49,7 @@ export var prepareWorkingTimeIntervals = function prepareWorkingTimeIntervals(_r
       };
     });
   });
-  console.log(res);
-  return [];
+  return res;
 };
 export var recoveryWorkingTimeIntervals = function recoveryWorkingTimeIntervals(_ref2) {
   var _ref2$data = _ref2.data,
