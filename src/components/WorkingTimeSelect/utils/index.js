@@ -28,9 +28,7 @@ export const prepareWorkingTimeIntervals = ({ data, startWeekDay, interval, star
 			};
 		});
 	});
-	console.log(res);
-
-	return [];
+	return res;
 };
 export const recoveryWorkingTimeIntervals = ({
 	data = {
