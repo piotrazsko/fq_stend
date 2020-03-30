@@ -16,7 +16,10 @@ var style = {
 };
 
 var Days = function Days(_ref) {
-  var selectedTime = _ref.selectedTime;
+  var selectedTime = _ref.selectedTime,
+      interval = _ref.interval,
+      startTime = _ref.startTime,
+      startWeekDay = _ref.startWeekDay;
   var days = selectedTime.reduce(function (accumulator, item) {
     accumulator[item.col - 1] = accumulator[item.col - 1] ? [].concat(_toConsumableArray(accumulator[item.col - 1]), [item.row]) : [item.row];
     return accumulator;
@@ -30,13 +33,16 @@ var Days = function Days(_ref) {
       className: style.timeTag
     }, React.createElement("div", {
       className: style.circle
-    }, WEEKDAYS_SHORT[index]), ' ', React.createElement("div", {
+    }, WEEKDAYS_SHORT[(index + startWeekDay) % 7]), React.createElement("div", {
       className: style.time
-    }, getWorkPeriodsOfDay(sorted))) : '';
+    }, getWorkPeriodsOfDay(sorted, interval, startTime))) : '';
   }));
 };
 
 Days.propTypes = {
-  selectedTime: PropTypes.array
+  selectedTime: PropTypes.array,
+  interval: PropTypes.number,
+  startTime: PropTypes.number,
+  startWeekDay: PropTypes.number
 };
 export default Days;

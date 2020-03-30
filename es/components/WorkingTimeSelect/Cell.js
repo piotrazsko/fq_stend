@@ -27,7 +27,11 @@ var style = {
 };
 
 var Cell = function Cell(_ref) {
-  var row = _ref.row,
+  var startTime = _ref.startTime,
+      _ref$startWeekDay = _ref.startWeekDay,
+      startWeekDay = _ref$startWeekDay === void 0 ? 0 : _ref$startWeekDay,
+      interval = _ref.interval,
+      row = _ref.row,
       col = _ref.col,
       isSelected = _ref.isSelected,
       isMobile = _ref.isMobile,
@@ -57,44 +61,55 @@ var Cell = function Cell(_ref) {
   switch (true) {
     case isSelected:
       {
-        var child = typeof selectedTimeText == 'string' ? isMobile ? "".concat(row, ":00") : "".concat(row, ":00 \u0412\u0440\u0435\u043C\u044F \u0432\u044B\u0431\u0440\u0430\u043D\u043E") : selectedTimeText;
+        var time = startTime + (row - 1) * interval;
+        var minutes = (time % 60).toString();
+        var child = typeof selectedTimeText == 'string' ? isMobile ? "".concat(Math.floor(time / 60), ":").concat(minutes.length === 1 ? '0' + minutes : minutes) : "".concat(Math.floor(time / 60), ":").concat(minutes.length === 1 ? '0' + minutes : minutes, " \u0412\u0440\u0435\u043C\u044F \u0432\u044B\u0431\u0440\u0430\u043D\u043E") : selectedTimeText;
         return React.createElement("div", {
           className: style.selectedCell
         }, child);
       }
 
     case col === 0 && row > 0:
-      return React.createElement("div", {
-        className: style.cellTime
-      }, row, ":00");
+      {
+        var _time = startTime + (row - 1) * interval;
+
+        var _minutes = (_time % 60).toString();
+
+        return React.createElement("div", {
+          className: style.cellTime
+        }, "".concat(Math.floor(_time / 60), ":").concat(_minutes.length === 1 ? '0' + _minutes : _minutes));
+      }
 
     case col > 0 && row === 0:
-      return React.createElement("div", {
-        className: style.cellDay
-      }, React.createElement("div", null, isMobile ? WEEKDAYS_SHORT[col - 1] : WEEKDAYS_LONG[col - 1]), React.createElement("div", null, React.createElement(IconButton, {
-        size: "small",
-        onClick: handleClick
-      }, React.createElement(MoreVertIcon, {
-        style: {
-          fontSize: 15
-        }
-      })), React.createElement(Menu, {
-        id: "simple-menu",
-        anchorEl: anchorEl,
-        keepMounted: true,
-        open: Boolean(anchorEl),
-        onClose: handleClose
-      }, React.createElement(MenuItem, {
-        onClick: function onClick() {
-          return onMenuClick(col);
-        }
-      }, React.createElement("div", {
-        className: style.menuItem
-      }, React.createElement(DeleteForeverIcon, {
-        style: {
-          fontSize: 18
-        }
-      }), " \u041E\u0447\u0438\u0441\u0442\u0438\u0442\u044C")))));
+      {
+        var dayOfWeek = (col - 1 + startWeekDay) % 7;
+        return React.createElement("div", {
+          className: style.cellDay
+        }, React.createElement("div", null, isMobile ? WEEKDAYS_SHORT[dayOfWeek] : WEEKDAYS_LONG[dayOfWeek]), React.createElement("div", null, React.createElement(IconButton, {
+          size: "small",
+          onClick: handleClick
+        }, React.createElement(MoreVertIcon, {
+          style: {
+            fontSize: 15
+          }
+        })), React.createElement(Menu, {
+          id: "simple-menu",
+          anchorEl: anchorEl,
+          keepMounted: true,
+          open: Boolean(anchorEl),
+          onClose: handleClose
+        }, React.createElement(MenuItem, {
+          onClick: function onClick() {
+            return onMenuClick(col);
+          }
+        }, React.createElement("div", {
+          className: style.menuItem
+        }, React.createElement(DeleteForeverIcon, {
+          style: {
+            fontSize: 18
+          }
+        }), " \u041E\u0447\u0438\u0441\u0442\u0438\u0442\u044C")))));
+      }
 
     default:
       return React.createElement("div", null);
@@ -107,6 +122,10 @@ Cell.propTypes = {
   isSelected: PropTypes.bool,
   onClear: PropTypes.func,
   isMobile: PropTypes.bool,
-  selectedTimeText: PropTypes.string
+  selectedTimeText: PropTypes.string,
+  startTime: PropTypes.number,
+  endTime: PropTypes.number,
+  interval: PropTypes.number,
+  startWeekDay: PropTypes.number
 };
 export default Cell;
