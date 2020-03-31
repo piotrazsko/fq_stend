@@ -11,7 +11,6 @@ const WorkingTimeSelect = ({
 	workingTimeIntervals,
 	isMobile = false,
 	workingTime,
-	usePreparing = true,
 	selectedTimeText = '',
 	startTime,
 	endTime,
@@ -19,47 +18,44 @@ const WorkingTimeSelect = ({
 	startWeekDay,
 }) => {
 	const [selectedTime, selectTime] = React.useState([
-		...(usePreparing
-			? recoveryWorkingTimeIntervals({
-					data: workingTimeIntervals,
-					startTime,
-					interval,
-					startWeekDay,
-			  })
-			: workingTime),
+		...recoveryWorkingTimeIntervals({
+			data: workingTimeIntervals,
+			startTime,
+			interval,
+			startWeekDay,
+		}),
 	]);
 	React.useEffect(() => {
-		if (usePreparing) {
-			onChange(prepareWorkingTimeIntervals({ data: selectedTime, startTime, interval, startWeekDay }));
-		} else {
-			onChange([...selectedTime]);
-		}
+		onChange(prepareWorkingTimeIntervals({ data: selectedTime, startTime, interval, startWeekDay }));
 	}, [selectedTime]);
+
 	React.useEffect(() => {
-		if (usePreparing) {
-			const workingTimePrepared = recoveryWorkingTimeIntervals({
-				data: workingTimeIntervals,
-				startTime,
-				interval,
-				startWeekDay,
-			});
-			if (
-				workingTimePrepared.length !== selectedTime.length ||
-				!workingTimePrepared.every(item =>
-					selectedTime.find(i => i.col == item.col && i.row == item.row)
-				)
-			) {
-				selectTime([...workingTimePrepared]);
-			}
-		} else {
-			if (
-				workingTime.length !== selectedTime.length ||
-				!workingTime.every(item => selectedTime.find(i => i.col == item.col && i.row == item.row))
-			) {
-				selectTime([...workingTime]);
-			}
+		const workingTimePrepared = recoveryWorkingTimeIntervals({
+			data: workingTimeIntervals,
+			startTime,
+			interval,
+			startWeekDay,
+		});
+		if (
+			workingTimePrepared.length !== selectedTime.length ||
+			!workingTimePrepared.every(item =>
+				selectedTime.find(i => i.col == item.col && i.row == item.row)
+			)
+		) {
+			selectTime([...workingTimePrepared]);
 		}
 	}, [workingTime]);
+
+	// TODO:  we can get bugs
+	React.useEffect(() => {
+		const workingTimePrepared = recoveryWorkingTimeIntervals({
+			data: workingTimeIntervals,
+			startTime,
+			interval,
+			startWeekDay,
+		});
+		selectTime([...workingTimePrepared]);
+	}, [interval]);
 
 	const onSelect = selected => {
 		if (
@@ -82,6 +78,15 @@ const WorkingTimeSelect = ({
 
 	return (
 		<div>
+			<div className={style.title}>Выберите рабочий интервал</div>
+			<div className={style.resultContainer}>
+				<Days
+					startWeekDay={startWeekDay}
+					selectedTime={selectedTime}
+					startTime={startTime}
+					interval={interval}
+				/>
+			</div>
 			<div className={style.title}>Установите подходящее для вас время</div>
 			<div className={style.resultContainer}>
 				<Days
@@ -130,7 +135,6 @@ WorkingTimeSelect.propTypes = {
 	onChange: PropTypes.func,
 	workingTime: PropTypes.arrayOf(PropTypes.shape({ col: PropTypes.number, row: PropTypes.number })),
 	isMobile: PropTypes.bool,
-	usePreparing: PropTypes.bool,
 	selectedTimeText: PropTypes.string,
 	startTime: PropTypes.number,
 	endTime: PropTypes.number,
