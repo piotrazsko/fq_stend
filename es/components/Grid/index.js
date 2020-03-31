@@ -102,8 +102,7 @@ var Grid = function Grid(_ref) {
     }
   };
 
-  var onMouseLeave = function onMouseLeave() {
-    setMouseDown(null);
+  var onMouseLeave = function onMouseLeave() {// setMouseDown(null);
   };
 
   var _onMouseEnter = function onMouseEnter(cell) {
