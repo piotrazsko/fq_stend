@@ -3,8 +3,9 @@ WorkingTimeSelect example:
 ```js
 <WorkingTimeSelect
 	onChange={data => {
-		console.log(data);
+		//		console.log(data);
 	}}
+	interval={30}
 	startTime={0}
 	workingTimeIntervals={{
 		mon: [

@@ -65,7 +65,7 @@ const Grid = ({
 		}
 	};
 	const onMouseLeave = () => {
-		setMouseDown(null);
+		// setMouseDown(null);
 	};
 	const onMouseEnter = cell => {
 		if (mouseDownCell) {
