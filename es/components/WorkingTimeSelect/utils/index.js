@@ -8,6 +8,7 @@ function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.
 
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 
+/*global  Set*/
 import { DAYS_OF_WEEK, getObjectOfPeriods } from '../../../helpers/calendar';
 
 var strPrepare = function strPrepare(min) {
@@ -34,10 +35,12 @@ export var prepareWorkingTimeIntervals = function prepareWorkingTimeIntervals(_r
     sun: []
   };
   DAYS_OF_WEEK.forEach(function (item, i) {
-    var rows = sortedData.filter(function (item) {
+    var rows = Array.from(new Set(data.filter(function (item) {
       return item.col === i;
     }).map(function (item) {
       return item.row;
+    }))).sort(function (a, b) {
+      return a - b;
     });
     var fromTo = getObjectOfPeriods(_toConsumableArray(rows), interval, startTime);
     res[item.value] = fromTo.map(function (item) {

@@ -5,6 +5,7 @@ WorkingTimeSelect example:
 	onChange={data => {
 		console.log(data);
 	}}
+	startTime={0}
 	workingTimeIntervals={{
 		mon: [
 			{ start: '02:00:00', end: '07:00:00' },

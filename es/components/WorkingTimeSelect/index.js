@@ -39,8 +39,6 @@ var WorkingTimeSelect = function WorkingTimeSelect(_ref) {
       _ref$isMobile = _ref.isMobile,
       isMobile = _ref$isMobile === void 0 ? false : _ref$isMobile,
       workingTime = _ref.workingTime,
-      _ref$usePreparing = _ref.usePreparing,
-      usePreparing = _ref$usePreparing === void 0 ? true : _ref$usePreparing,
       _ref$selectedTimeText = _ref.selectedTimeText,
       selectedTimeText = _ref$selectedTimeText === void 0 ? '' : _ref$selectedTimeText,
       startTime = _ref.startTime,
@@ -48,54 +46,50 @@ var WorkingTimeSelect = function WorkingTimeSelect(_ref) {
       interval = _ref.interval,
       startWeekDay = _ref.startWeekDay;
 
-  var _React$useState = React.useState(_toConsumableArray(usePreparing ? recoveryWorkingTimeIntervals({
+  var _React$useState = React.useState(_toConsumableArray(recoveryWorkingTimeIntervals({
     data: workingTimeIntervals,
     startTime: startTime,
     interval: interval,
     startWeekDay: startWeekDay
-  }) : workingTime)),
+  }))),
       _React$useState2 = _slicedToArray(_React$useState, 2),
       selectedTime = _React$useState2[0],
       selectTime = _React$useState2[1];
 
   React.useEffect(function () {
-    if (usePreparing) {
-      onChange(prepareWorkingTimeIntervals({
-        data: selectedTime,
-        startTime: startTime,
-        interval: interval,
-        startWeekDay: startWeekDay
-      }));
-    } else {
-      onChange(_toConsumableArray(selectedTime));
-    }
+    onChange(prepareWorkingTimeIntervals({
+      data: selectedTime,
+      startTime: startTime,
+      interval: interval,
+      startWeekDay: startWeekDay
+    }));
   }, [selectedTime]);
   React.useEffect(function () {
-    if (usePreparing) {
-      var workingTimePrepared = recoveryWorkingTimeIntervals({
-        data: workingTimeIntervals,
-        startTime: startTime,
-        interval: interval,
-        startWeekDay: startWeekDay
-      });
+    var workingTimePrepared = recoveryWorkingTimeIntervals({
+      data: workingTimeIntervals,
+      startTime: startTime,
+      interval: interval,
+      startWeekDay: startWeekDay
+    });
 
-      if (workingTimePrepared.length !== selectedTime.length || !workingTimePrepared.every(function (item) {
-        return selectedTime.find(function (i) {
-          return i.col == item.col && i.row == item.row;
-        });
-      })) {
-        selectTime(_toConsumableArray(workingTimePrepared));
-      }
-    } else {
-      if (workingTime.length !== selectedTime.length || !workingTime.every(function (item) {
-        return selectedTime.find(function (i) {
-          return i.col == item.col && i.row == item.row;
-        });
-      })) {
-        selectTime(_toConsumableArray(workingTime));
-      }
+    if (workingTimePrepared.length !== selectedTime.length || !workingTimePrepared.every(function (item) {
+      return selectedTime.find(function (i) {
+        return i.col == item.col && i.row == item.row;
+      });
+    })) {
+      selectTime(_toConsumableArray(workingTimePrepared));
     }
-  }, [workingTime]);
+  }, [workingTime]); // TODO:  we can get bugs
+
+  React.useEffect(function () {
+    var workingTimePrepared = recoveryWorkingTimeIntervals({
+      data: workingTimeIntervals,
+      startTime: startTime,
+      interval: interval,
+      startWeekDay: startWeekDay
+    });
+    selectTime(_toConsumableArray(workingTimePrepared));
+  }, [interval]);
 
   var onSelect = function onSelect(selected) {
     if (selectedTime.find(function (item) {
@@ -118,6 +112,15 @@ var WorkingTimeSelect = function WorkingTimeSelect(_ref) {
   };
 
   return React.createElement("div", null, React.createElement("div", {
+    className: style.title
+  }, "\u0412\u044B\u0431\u0435\u0440\u0438\u0442\u0435 \u0440\u0430\u0431\u043E\u0447\u0438\u0439 \u0438\u043D\u0442\u0435\u0440\u0432\u0430\u043B"), React.createElement("div", {
+    className: style.resultContainer
+  }, React.createElement(Days, {
+    startWeekDay: startWeekDay,
+    selectedTime: selectedTime,
+    startTime: startTime,
+    interval: interval
+  })), React.createElement("div", {
     className: style.title
   }, "\u0423\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u0435 \u043F\u043E\u0434\u0445\u043E\u0434\u044F\u0449\u0435\u0435 \u0434\u043B\u044F \u0432\u0430\u0441 \u0432\u0440\u0435\u043C\u044F"), React.createElement("div", {
     className: style.resultContainer
@@ -164,7 +167,6 @@ WorkingTimeSelect.propTypes = {
     row: PropTypes.number
   })),
   isMobile: PropTypes.bool,
-  usePreparing: PropTypes.bool,
   selectedTimeText: PropTypes.string,
   startTime: PropTypes.number,
   endTime: PropTypes.number,

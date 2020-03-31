@@ -1,3 +1,4 @@
+/*global  Set*/
 import { DAYS_OF_WEEK, getObjectOfPeriods } from '../../../helpers/calendar';
 const strPrepare = min => {
 	const hours = Math.floor(min / 60).toString();
@@ -16,7 +17,10 @@ export const prepareWorkingTimeIntervals = ({ data, startWeekDay, interval, star
 		sun: [],
 	};
 	DAYS_OF_WEEK.forEach((item, i) => {
-		const rows = sortedData.filter(item => item.col === i).map(item => item.row);
+		const rows = Array.from(new Set(data.filter(item => item.col === i).map(item => item.row))).sort(
+			(a, b) => a - b
+		);
+
 		const fromTo = getObjectOfPeriods([...rows], interval, startTime);
 
 		res[item.value] = fromTo.map(item => {
