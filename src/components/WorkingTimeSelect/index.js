@@ -78,15 +78,6 @@ const WorkingTimeSelect = ({
 
 	return (
 		<div>
-			<div className={style.title}>Выберите рабочий интервал</div>
-			<div className={style.resultContainer}>
-				<Days
-					startWeekDay={startWeekDay}
-					selectedTime={selectedTime}
-					startTime={startTime}
-					interval={interval}
-				/>
-			</div>
 			<div className={style.title}>Установите подходящее для вас время</div>
 			<div className={style.resultContainer}>
 				<Days
