@@ -1,12 +1,37 @@
 /*global  Set*/
 import { DAYS_OF_WEEK, getObjectOfPeriods } from '../../../helpers/calendar';
+import {
+	getPermanentWorkingPeriods,
+	getCustomTimePeriods,
+	getBookedTimePeriods,
+} from '../../../helpers/periodsPrepare.v2.js';
+export { getDataForSelectedDate } from '../../../helpers/curentDayPrepare.v2.js';
+
 const strPrepare = min => {
 	const hours = Math.floor(min / 60).toString();
 	const mins = (min % 60).toString();
 	return `${hours.length == 1 ? '0' + hours : hours}:${mins.length == 1 ? '0' + mins : mins}`;
 };
-export const prepareWorkingTimeIntervals = ({ data, startWeekDay, interval, startTime }) => {
-	const sortedData = data.sort((a, b) => a.col - b.col);
+export const workingTimePrepare = ({
+	workingTimeDay,
+	customTimeDay,
+	bookedTimeDay,
+	interval = 15,
+	curentDay,
+}) => {
+	const permanentWorkingIntervals = getPermanentWorkingPeriods({ workingTimeDay, interval });
+	const customTimePeriods = getCustomTimePeriods({ customTimeDay, interval });
+	const bookedTimePeriods = getBookedTimePeriods({ bookedTimeDay, interval });
+	return {
+		interval,
+		curentDay,
+		permanentWorkingIntervals,
+		customTimePeriods,
+		bookedTimePeriods,
+	};
+};
+
+export const prepareWorkingTimeIntervals = ({ data, interval, startTime }) => {
 	const res = {
 		mon: [],
 		tue: [],
@@ -34,6 +59,7 @@ export const prepareWorkingTimeIntervals = ({ data, startWeekDay, interval, star
 	});
 	return res;
 };
+
 export const recoveryWorkingTimeIntervals = ({
 	data = {
 		mon: [],

@@ -8,6 +8,7 @@ import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 
 import { WEEKDAYS_LONG, WEEKDAYS_SHORT } from '../../helpers/calendar.js';
 import style from './style.module.scss';
+const DAY_MS = 60 * 1000 * 60 * 24;
 const Cell = ({
 	startTime,
 	startWeekDay = 0,
@@ -16,8 +17,10 @@ const Cell = ({
 	col,
 	isSelected,
 	isMobile,
+	curentDay,
+	customTimeSelectedCell = [],
 	onClear = () => {},
-	selectedTimeText = 'Рабочее время',
+	selectedTimeText = '',
 }) => {
 	const [anchorEl, setAnchorEl] = React.useState(null);
 	const handleClick = event => {
@@ -30,7 +33,30 @@ const Cell = ({
 		onClear(col);
 		handleClose();
 	};
+	const startWeekDay_ms = curentDay.valueOf() - curentDay.getDay() * DAY_MS + startWeekDay * DAY_MS;
+	const endWeekDay_ms =
+		curentDay.valueOf() - curentDay.getDay() * DAY_MS + startWeekDay * DAY_MS + 7 * DAY_MS;
 	switch (true) {
+		case Boolean(
+			customTimeSelectedCell.find(i => {
+				return (
+					i.col == col && i.row == row && i.curentDay >= startWeekDay_ms && i.curentDay < endWeekDay_ms
+				);
+			})
+		): {
+			const time = startTime + (row - 1) * interval;
+
+			const minutes = (time % 60).toString();
+			const child =
+				typeof selectedTimeText == 'string'
+					? isMobile
+						? `${Math.floor(time / 60)}:${minutes.length === 1 ? '0' + minutes : minutes}`
+						: `${Math.floor(time / 60)}:${minutes.length === 1 ? '0' + minutes : minutes} Время выбрано`
+					: selectedTimeText;
+			return (
+				<div className={isSelected ? style.cellCustomDayDisabled : style.cellCustomDay}>{child}</div>
+			);
+		}
 		case isSelected: {
 			const time = startTime + (row - 1) * interval;
 			const minutes = (time % 60).toString();
@@ -53,9 +79,15 @@ const Cell = ({
 		}
 		case col > 0 && row === 0: {
 			const dayOfWeek = (col - 1 + startWeekDay) % 7;
+			const date = new Date(curentDay);
+			date.setDate(curentDay.getDate() - curentDay.getDay() + ((col - 1) % 7) + startWeekDay);
 			return (
 				<div className={style.cellDay}>
-					<div>{isMobile ? WEEKDAYS_SHORT[dayOfWeek] : WEEKDAYS_LONG[dayOfWeek]}</div>
+					<div>
+						{isMobile
+							? `${date.getDate()} ${WEEKDAYS_SHORT[dayOfWeek]}`
+							: `${date.getDate()} ${WEEKDAYS_LONG[dayOfWeek]}`}
+					</div>
 					<div>
 						<IconButton size="small" onClick={handleClick}>
 							<MoreVertIcon style={{ fontSize: 15 }} />
@@ -91,8 +123,13 @@ Cell.propTypes = {
 	isMobile: PropTypes.bool,
 	selectedTimeText: PropTypes.string,
 	startTime: PropTypes.number,
-	endTime: PropTypes.number,
+	curentDay: PropTypes.instanceOf(Date),
 	interval: PropTypes.number,
+	customTimeSelectedCell: PropTypes.shape({
+		col: PropTypes.number,
+		row: PropTypes.number,
+		curentDay: PropTypes.number,
+	}),
 	startWeekDay: PropTypes.number,
 };
 

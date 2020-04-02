@@ -31,7 +31,7 @@ const Calendar = ({
 		workingTime: workingTimeIntervals,
 		customTime,
 		bookedTime,
-		selectedDate: curentDay,
+		curentDay: curentDay,
 	});
 	const workingTimeActual = workingTimePrepare({
 		...selectedDayData,

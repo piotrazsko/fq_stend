@@ -3,8 +3,8 @@ import {
 	getPermanentWorkingPeriods,
 	getCustomTimePeriods,
 	getBookedTimePeriods,
-} from './periodsPrepare.v2.js';
-export { getDataForSelectedDate } from './curentDayPrepare.v2.js';
+} from '../../../helpers/periodsPrepare.v2.js';
+export { getDataForSelectedDate } from '../../../helpers/curentDayPrepare.v2.js';
 export const workingTimePrepare = ({
 	workingTimeDay,
 	customTimeDay,

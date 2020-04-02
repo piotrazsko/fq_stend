@@ -3,97 +3,109 @@ import PropTypes from 'prop-types';
 import Grid from '../Grid';
 import Cell from './Cell';
 import Days from './Days';
-import { workingTimePrepare, getDataForSelectedDate } from '../Calendar/utils';
 
-import { prepareWorkingTimeIntervals, recoveryWorkingTimeIntervals } from './utils';
+import {
+	prepareWorkingTimeIntervals,
+	recoveryWorkingTimeIntervals,
+	workingTimePrepare,
+	getDataForSelectedDate,
+} from './utils';
 import style from './style.module.scss';
+
 const today = new Date();
+today.setHours(0);
+today.setMinutes(0);
+today.setSeconds(0);
+const DAY_MS = 60 * 1000 * 60 * 24;
+
+const weekPrepare = ({
+	workingTimeIntervals,
+	customTimeIntervals,
+	bookedTime,
+	curentDay,
+	interval,
+	startWeekDay,
+}) => {
+	const arr = new Array(7);
+	return arr.fill(1).map((item, index) => {
+		const day = new Date(curentDay);
+		return workingTimePrepare({
+			...getDataForSelectedDate({
+				workingTime: workingTimeIntervals,
+				customTime: customTimeIntervals,
+				bookedTime: bookedTime,
+				curentDay: new Date(day.valueOf() - (day.getDay() - index - startWeekDay) * DAY_MS),
+				interval,
+			}),
+		});
+	});
+};
 
 const CustomWorkingTimeSelect = ({
 	onChange = () => {},
 	workingTimeIntervals,
-	customTimeIntevals,
+	customTimeIntervals,
 	bookedTime,
 	isMobile = false,
-	workingTime,
 	selectedTimeText = '',
 	startTime,
 	endTime,
 	interval,
 	startWeekDay,
-	curentDay: curentDayDefault = today,
+	curentDay: curentDayDefault,
 }) => {
-	const [curentDay, setCurentDay] = React.useState(curentDayDefault);
-
-	const [selectedTime, selectTime] = React.useState([
+	const selectedTime = [
 		...recoveryWorkingTimeIntervals({
 			data: workingTimeIntervals,
 			startTime,
 			interval,
 			startWeekDay,
 		}),
-	]);
-	React.useEffect(() => {
-		onChange(prepareWorkingTimeIntervals({ data: selectedTime, startTime, interval, startWeekDay }));
-	}, [selectedTime]);
+	];
+	const [curentDay, setCurentDay] = React.useState(curentDayDefault);
+	const [selectedCell, setSelected] = React.useState([]);
 
-	React.useEffect(() => {
-		const workingTimePrepared = recoveryWorkingTimeIntervals({
-			data: workingTimeIntervals,
-			startTime,
+	const [workingTimeActual, setActualWorkingTime] = React.useState(
+		weekPrepare({
+			workingTimeIntervals,
+			customTimeIntervals,
+			bookedTime,
+			curentDay,
 			interval,
 			startWeekDay,
-		});
-		if (
-			workingTimePrepared.length !== selectedTime.length ||
-			!workingTimePrepared.every(item =>
-				selectedTime.find(i => i.col == item.col && i.row == item.row)
-			)
-		) {
-			selectTime([...workingTimePrepared]);
-		}
-	}, [workingTime]);
-
-	// TODO:  we can get bugs
+		})
+	);
 	React.useEffect(() => {
-		const workingTimePrepared = recoveryWorkingTimeIntervals({
-			data: workingTimeIntervals,
-			startTime,
-			interval,
-			startWeekDay,
-		});
-		selectTime([...workingTimePrepared]);
-	}, [interval]);
-
+		setActualWorkingTime(
+			weekPrepare({
+				workingTimeIntervals,
+				customTimeIntervals,
+				bookedTime,
+				curentDay,
+				interval,
+				startWeekDay,
+			})
+		);
+	}, [curentDay]);
 	const onSelect = selected => {
-		// if (
-		// 	selectedTime.find(item => {
-		// 		return selected.length > 0 && item.col === selected[0].col && item.row === selected[0].row;
-		// 	})
-		// ) {
-		// 	selectTime([
-		// 		...selectedTime.filter(item => {
-		// 			return !selected.find(i => item.col == i.col && item.row == i.row);
-		// 		}),
-		// 	]);
-		// } else {
-		// 	selectTime([...selectedTime, ...selected]);
-		// }
+		console.log(workingTimeActual);
+		const filtered = selectedCell.filter(item => {
+			return !selected.find(i => i.col === item.col && i.row === item.row);
+		});
+
+		setSelected(
+			filtered.length !== selectedCell.length
+				? [...filtered]
+				: [...selectedCell, ...selected.map(item => ({ ...item, curentDay: curentDay.valueOf() }))]
+		);
 	};
-	const onClear = col => {
-		selectTime([...[...selectedTime].filter(item => item.col !== col)]);
-	};
+	const onClear = col => {};
 
 	return (
 		<div>
 			<div className={style.title}>Установите подходящее для вас время</div>
 			<div className={style.resultContainer}>
-				<Days
-					startWeekDay={startWeekDay}
-					selectedTime={selectedTime}
-					startTime={startTime}
-					interval={interval}
-				/>
+				<Days startWeekDay={startWeekDay} curentDay={curentDay} setCurentDay={setCurentDay} />
 			</div>
 			<Grid
 				isMobile={isMobile}
@@ -120,6 +132,8 @@ const CustomWorkingTimeSelect = ({
 							selectedTimeText={selectedTimeText}
 							onClear={onClear}
 							isMobile={isMobile}
+							curentDay={curentDay}
+							customTimeSelectedCell={selectedCell}
 						/>
 					),
 				}}
@@ -132,7 +146,6 @@ const CustomWorkingTimeSelect = ({
 
 CustomWorkingTimeSelect.propTypes = {
 	onChange: PropTypes.func,
-	workingTime: PropTypes.arrayOf(PropTypes.shape({ col: PropTypes.number, row: PropTypes.number })),
 	isMobile: PropTypes.bool,
 	selectedTimeText: PropTypes.string,
 	startTime: PropTypes.number,
@@ -148,6 +161,7 @@ CustomWorkingTimeSelect.defaultProps = {
 	interval: 60,
 	startWeekDay: 1, //utc day of week
 	workingTimeIntervals: {},
+	curentDay: today,
 };
 
 export default CustomWorkingTimeSelect;

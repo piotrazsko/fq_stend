@@ -68,3 +68,26 @@
 	border-top: none !important;
 	border-bottom: none !important;
 }
+@mixin styleCell {
+	border-radius: 5px;
+	height: 100%;
+	width: 100%;
+	color: #000;
+	font-size: 11px;
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-family: Roboto;
+	user-select: none;
+}
+
+.cellCustomDay {
+	background-color: rgb(255, 190, 37);
+	@include styleCell;
+}
+.cellCustomDayDisabled {
+	@include styleCell;
+	background-color: rgb(217, 217, 217);
+	color: #888;
+}

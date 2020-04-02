@@ -10,7 +10,6 @@ const WorkingTimeSelect = ({
 	onChange = () => {},
 	workingTimeIntervals,
 	isMobile = false,
-	workingTime,
 	selectedTimeText = '',
 	startTime,
 	endTime,
@@ -44,7 +43,7 @@ const WorkingTimeSelect = ({
 		) {
 			selectTime([...workingTimePrepared]);
 		}
-	}, [workingTime]);
+	}, [workingTimeIntervals]);
 
 	// TODO:  we can get bugs
 	React.useEffect(() => {
@@ -124,7 +123,6 @@ const WorkingTimeSelect = ({
 
 WorkingTimeSelect.propTypes = {
 	onChange: PropTypes.func,
-	workingTime: PropTypes.arrayOf(PropTypes.shape({ col: PropTypes.number, row: PropTypes.number })),
 	isMobile: PropTypes.bool,
 	selectedTimeText: PropTypes.string,
 	startTime: PropTypes.number,
