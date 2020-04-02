@@ -80,6 +80,7 @@
 	align-items: center;
 	font-family: Roboto;
 	user-select: none;
+	min-height: 20px;
 }
 
 .cellCustomDay {
@@ -88,6 +89,12 @@
 }
 .cellCustomDayDisabled {
 	@include styleCell;
-	background-color: rgb(217, 217, 217);
-	color: #888;
+	background-color: #9a9898;
+	color: #676767;
+}
+.reservedTime {
+	@include styleCell;
+	background-color: rgb(255, 68, 68);
+	color: #fff;
+	cursor: not-allowed;
 }

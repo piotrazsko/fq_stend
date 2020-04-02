@@ -5,10 +5,10 @@ import Cell from './Cell';
 import Days from './Days';
 
 import {
-	prepareWorkingTimeIntervals,
 	recoveryWorkingTimeIntervals,
 	workingTimePrepare,
 	getDataForSelectedDate,
+	getBookingTime,
 } from './utils';
 import style from './style.module.scss';
 
@@ -29,6 +29,13 @@ const weekPrepare = ({
 	const arr = new Array(7);
 	return arr.fill(1).map((item, index) => {
 		const day = new Date(curentDay);
+		const x = getDataForSelectedDate({
+			workingTime: workingTimeIntervals,
+			customTime: customTimeIntervals,
+			bookedTime: bookedTime,
+			curentDay: new Date(day.valueOf() - (day.getDay() - index - startWeekDay) * DAY_MS),
+			interval,
+		});
 		return workingTimePrepare({
 			...getDataForSelectedDate({
 				workingTime: workingTimeIntervals,
@@ -64,7 +71,6 @@ const CustomWorkingTimeSelect = ({
 	];
 	const [curentDay, setCurentDay] = React.useState(curentDayDefault);
 	const [selectedCell, setSelected] = React.useState([]);
-
 	const [workingTimeActual, setActualWorkingTime] = React.useState(
 		weekPrepare({
 			workingTimeIntervals,
@@ -75,6 +81,12 @@ const CustomWorkingTimeSelect = ({
 			startWeekDay,
 		})
 	);
+	const bookedTimePrepared = getBookingTime({
+		interval,
+		startTime,
+		startWeekDay,
+		bookedTime: workingTimeActual.map(i => i.bookedTimePeriods),
+	});
 	React.useEffect(() => {
 		setActualWorkingTime(
 			weekPrepare({
@@ -86,9 +98,8 @@ const CustomWorkingTimeSelect = ({
 				startWeekDay,
 			})
 		);
-	}, [curentDay]);
+	}, [curentDay, startWeekDay, customTimeIntervals]);
 	const onSelect = selected => {
-		console.log(workingTimeActual);
 		const filtered = selectedCell.filter(item => {
 			return !selected.find(i => i.col === item.col && i.row === item.row);
 		});
@@ -96,11 +107,24 @@ const CustomWorkingTimeSelect = ({
 		setSelected(
 			filtered.length !== selectedCell.length
 				? [...filtered]
-				: [...selectedCell, ...selected.map(item => ({ ...item, curentDay: curentDay.valueOf() }))]
+				: [
+						...selectedCell,
+						...selected
+							.filter(item => {
+								return !bookedTimePrepared.find(i => i.col === item.col && i.row === item.row);
+							})
+							.map(item => ({
+								...item,
+								curentDay: curentDay.valueOf(),
+								disabled: Boolean(selectedTime.find(i => i.col == item.col && item.row == i.row)),
+							})),
+				  ]
 		);
 	};
-	const onClear = col => {};
-
+	const onClear = col => {
+		// BUG:  need change algorithm for clean/ now cleaned for all dated in this column
+		setSelected([...selectedCell.filter(i => i.col !== col)]);
+	};
 	return (
 		<div>
 			<div className={style.title}>Установите подходящее для вас время</div>
@@ -134,6 +158,7 @@ const CustomWorkingTimeSelect = ({
 							isMobile={isMobile}
 							curentDay={curentDay}
 							customTimeSelectedCell={selectedCell}
+							bookedTime={bookedTimePrepared}
 						/>
 					),
 				}}

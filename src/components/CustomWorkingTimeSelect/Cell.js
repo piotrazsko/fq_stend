@@ -6,7 +6,7 @@ import { IconButton } from '@material-ui/core';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 
-import { WEEKDAYS_LONG, WEEKDAYS_SHORT } from '../../helpers/calendar.js';
+import { WEEKDAYS_LONG, WEEKDAYS_SHORT } from '../../helpers/calendar';
 import style from './style.module.scss';
 const DAY_MS = 60 * 1000 * 60 * 24;
 const Cell = ({
@@ -21,6 +21,7 @@ const Cell = ({
 	customTimeSelectedCell = [],
 	onClear = () => {},
 	selectedTimeText = '',
+	bookedTime,
 }) => {
 	const [anchorEl, setAnchorEl] = React.useState(null);
 	const handleClick = event => {
@@ -37,6 +38,8 @@ const Cell = ({
 	const endWeekDay_ms =
 		curentDay.valueOf() - curentDay.getDay() * DAY_MS + startWeekDay * DAY_MS + 7 * DAY_MS;
 	switch (true) {
+		case Boolean(bookedTime.find(i => i.col == col && i.row == row)):
+			return <div className={style.reservedTime}>Запись</div>;
 		case Boolean(
 			customTimeSelectedCell.find(i => {
 				return (
@@ -130,6 +133,7 @@ Cell.propTypes = {
 		row: PropTypes.number,
 		curentDay: PropTypes.number,
 	}),
+	bookedTime: PropTypes.array,
 	startWeekDay: PropTypes.number,
 };
 

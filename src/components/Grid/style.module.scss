@@ -18,6 +18,7 @@
 	&:hover {
 		background: rgb(230, 230, 230);
 	}
+	user-select: none;
 }
 .selected {
 	border-radius: 5px;
@@ -30,4 +31,7 @@
 .hovered {
 	background: rgb(230, 230, 230) !important;
 	border: 1px solid rgb(184, 184, 184);
+	& > * {
+		background: rgb(230, 230, 230) !important;
+	}
 }
