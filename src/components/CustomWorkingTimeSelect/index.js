@@ -75,13 +75,13 @@ const CustomWorkingTimeSelect = ({
             startWeekDay,
         })
     );
+    console.log(workingTimeActual);
     const bookedTimePrepared = getBookingTime({
         interval,
         startTime,
         startWeekDay,
         bookedTime: workingTimeActual.map(i => i.bookedTimePeriods),
     });
-
     React.useEffect(() => {
         setSelected([]);
     }, [startWeekDay, interval]);

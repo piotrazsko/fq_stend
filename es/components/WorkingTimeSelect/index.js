@@ -38,7 +38,6 @@ var WorkingTimeSelect = function WorkingTimeSelect(_ref) {
       workingTimeIntervals = _ref.workingTimeIntervals,
       _ref$isMobile = _ref.isMobile,
       isMobile = _ref$isMobile === void 0 ? false : _ref$isMobile,
-      workingTime = _ref.workingTime,
       _ref$selectedTimeText = _ref.selectedTimeText,
       selectedTimeText = _ref$selectedTimeText === void 0 ? '' : _ref$selectedTimeText,
       startTime = _ref.startTime,
@@ -79,7 +78,7 @@ var WorkingTimeSelect = function WorkingTimeSelect(_ref) {
     })) {
       selectTime(_toConsumableArray(workingTimePrepared));
     }
-  }, [workingTime]); // TODO:  we can get bugs
+  }, [workingTimeIntervals]); // TODO:  we can get bugs
 
   React.useEffect(function () {
     var workingTimePrepared = recoveryWorkingTimeIntervals({
@@ -153,10 +152,6 @@ var WorkingTimeSelect = function WorkingTimeSelect(_ref) {
 
 WorkingTimeSelect.propTypes = {
   onChange: PropTypes.func,
-  workingTime: PropTypes.arrayOf(PropTypes.shape({
-    col: PropTypes.number,
-    row: PropTypes.number
-  })),
   isMobile: PropTypes.bool,
   selectedTimeText: PropTypes.string,
   startTime: PropTypes.number,

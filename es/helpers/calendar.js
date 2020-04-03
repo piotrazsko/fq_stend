@@ -19,6 +19,8 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
+import moment from 'moment';
+var DAY_MS = 60 * 1000 * 60 * 24;
 export var MONTHS = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'];
 export var WEEKDAYS_LONG = ['Воскресение', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'];
 export var WEEKDAYS_SHORT = ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'];
@@ -248,4 +250,146 @@ export var getWorkPeriodsOfDay = function getWorkPeriodsOfDay(dayData, interval,
   });
 
   return formatedPeriods.join(' / ');
+};
+
+var strPrepare = function strPrepare(min) {
+  var hours = Math.floor(min / 60).toString();
+  var mins = (min % 60).toString();
+  return "".concat(hours.length == 1 ? '0' + hours : hours, ":").concat(mins.length == 1 ? '0' + mins : mins);
+};
+
+export var prepareWorkingTimeIntervals = function prepareWorkingTimeIntervals(_ref) {
+  var data = _ref.data,
+      interval = _ref.interval,
+      startTime = _ref.startTime;
+  var res = {
+    mon: [],
+    tue: [],
+    wed: [],
+    thu: [],
+    fri: [],
+    sat: [],
+    sun: []
+  };
+  DAYS_OF_WEEK.forEach(function (item, i) {
+    var rows = Array.from(new Set(data.filter(function (item) {
+      return item.col === i;
+    }).map(function (item) {
+      return item.row;
+    }))).sort(function (a, b) {
+      return a - b;
+    });
+    var fromTo = getObjectOfPeriods(_toConsumableArray(rows), interval, startTime);
+    res[item.value] = fromTo.map(function (item) {
+      var start = (item.from - 1) * interval + startTime;
+      var end = (item.to - 1) * interval + startTime;
+      return {
+        start: "".concat(strPrepare(start)),
+        end: "".concat(strPrepare(end))
+      };
+    });
+  });
+  return res;
+};
+export var prepareCustomTimeIntervals = function prepareCustomTimeIntervals(_ref2) {
+  var data = _ref2.data,
+      interval = _ref2.interval,
+      startTime = _ref2.startTime,
+      startWeekDay = _ref2.startWeekDay;
+  var dataWithPreparedDate = data.map(function (item) {
+    var date = new Date(item.curentDay);
+    var dayOfWeek = date.getDay();
+    var curentDayCol = dayOfWeek + 1 - startWeekDay;
+    return _objectSpread({}, item, {
+      curentDay: new Date(item.curentDay - (curentDayCol - item.col) * DAY_MS)
+    });
+  }).sort(function (a, b) {
+    return a.curentDay.valueOf() - b.curentDay.valueOf();
+  });
+  var enabled = dataWithPreparedDate.filter(function (item) {
+    return !item.disabled;
+  });
+  var disabled = dataWithPreparedDate.filter(function (item) {
+    return item.disabled;
+  });
+  var res = {
+    enabled: [],
+    disabled: []
+  };
+
+  var getPeriods = function getPeriods(data, interval, startTime) {
+    var map = new Map();
+    var res = [];
+    data.forEach(function (item) {
+      var arr = map.get(item.curentDay.valueOf());
+      map.set(item.curentDay.valueOf(), [].concat(_toConsumableArray(Array.isArray(arr) ? arr : []), [item]));
+    });
+    map.forEach(function (item, index) {
+      getObjectOfPeriods(item.map(function (i) {
+        return i.row - 1;
+      }).sort(function (a, b) {
+        return a - b;
+      })).forEach(function (i) {
+        var day = new Date(index);
+        var start = "".concat(moment(day).format('YYYY-MM-DD'), " ").concat(strPrepare(i.from * interval + startTime));
+        var end = "".concat(moment(day).format('YYYY-MM-DD'), " ").concat(strPrepare(i.to * interval + startTime));
+        res.push({
+          start: start,
+          end: end
+        });
+      });
+    });
+    return res;
+  };
+
+  res.enabled = getPeriods(enabled, interval, startTime);
+  res.disabled = getPeriods(disabled, interval, startTime);
+  return res;
+};
+export var recoveryWorkingTimeIntervals = function recoveryWorkingTimeIntervals(_ref3) {
+  var _ref3$data = _ref3.data,
+      data = _ref3$data === void 0 ? {
+    mon: [],
+    tue: [],
+    wed: [],
+    thu: [],
+    fri: [],
+    sat: [],
+    sun: []
+  } : _ref3$data,
+      interval = _ref3.interval,
+      _ref3$startTime = _ref3.startTime,
+      startTime = _ref3$startTime === void 0 ? 0 : _ref3$startTime,
+      _ref3$startWeekDay = _ref3.startWeekDay,
+      startWeekDay = _ref3$startWeekDay === void 0 ? 0 : _ref3$startWeekDay;
+  var res = [];
+
+  if (_typeof(data) === 'object' && data !== null) {
+    var _loop = function _loop(index) {
+      var day = data[DAYS_OF_WEEK[(index + startWeekDay) % 7].value] || [];
+      var arr = day.reduce(function (acc, item) {
+        var start = item.start.split(':');
+        var end = item.end.split(':');
+        var startWorkingTime = start[0] * 60 + parseInt(start[1]);
+        var endWorkingTime = end[0] * 60 + parseInt(end[1]);
+
+        for (var j = Math.floor(startWorkingTime / interval); j < Math.floor(endWorkingTime / interval); j++) {
+          var col = index % 7 + 1;
+          acc = [].concat(_toConsumableArray(acc), [{
+            col: col,
+            row: j + 1 - Math.floor(startTime / interval) || 1
+          }]);
+        }
+
+        return acc;
+      }, []);
+      res = [].concat(_toConsumableArray(res), _toConsumableArray(arr));
+    };
+
+    for (var index = startWeekDay; index < DAYS_OF_WEEK.length + startWeekDay; index++) {
+      _loop(index);
+    }
+  }
+
+  return res;
 };
