@@ -9,6 +9,7 @@
 	@media screen and (max-width: $isMobile) {
 		min-width: 60px;
 	}
+	min-width: 60px;
 	border: 1px solid #eeedee;
 	background-color: #fff;
 	display: flex;
@@ -17,10 +18,12 @@
 	&:hover {
 		background: rgb(230, 230, 230);
 	}
+	user-select: none;
 }
 .selected {
 	border-radius: 5px;
 	background-color: #1e8cff;
+	box-sizing: border-box;
 	&:hover {
 		background: rgba(#1f8cff, 0.77);
 	}
@@ -28,4 +31,7 @@
 .hovered {
 	background: rgb(230, 230, 230) !important;
 	border: 1px solid rgb(184, 184, 184);
+	& > * {
+		background: rgb(230, 230, 230) !important;
+	}
 }

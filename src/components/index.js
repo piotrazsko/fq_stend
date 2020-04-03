@@ -23,3 +23,4 @@ export { default as Popover } from './Popover';
 export { default as Menu } from './Menu';
 export { default as Grid } from './Grid';
 export { default as WorkingTimeSelect } from './WorkingTimeSelect';
+export { default as CustomWorkingTimeSelect } from './CustomWorkingTimeSelect';

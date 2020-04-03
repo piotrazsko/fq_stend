@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { WEEKDAYS_LONG, MONTHS } from '../../utils/config';
+import { WEEKDAYS_LONG, MONTHS } from '../../../../helpers/config';
 import CalendarToday from '@material-ui/icons/CalendarToday';
 import ArrowLeft from '@material-ui/icons/ArrowLeft';
 import ArrowRight from '@material-ui/icons/ArrowRight';

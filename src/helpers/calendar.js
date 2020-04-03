@@ -1,228 +1,347 @@
+/*global  Set, Map*/
 import _ from 'lodash';
+import moment from 'moment';
+const DAY_MS = 60 * 1000 * 60 * 24;
 export const MONTHS = [
-	'Январь',
-	'Февраль',
-	'Март',
-	'Апрель',
-	'Май',
-	'Июнь',
-	'Июль',
-	'Август',
-	'Сентябрь',
-	'Октябрь',
-	'Ноябрь',
-	'Декабрь',
+    'Январь',
+    'Февраль',
+    'Март',
+    'Апрель',
+    'Май',
+    'Июнь',
+    'Июль',
+    'Август',
+    'Сентябрь',
+    'Октябрь',
+    'Ноябрь',
+    'Декабрь',
 ];
 export const WEEKDAYS_LONG = [
-	'Воскресение',
-	'Понедельник',
-	'Вторник',
-	'Среда',
-	'Четверг',
-	'Пятница',
-	'Суббота',
+    'Воскресение',
+    'Понедельник',
+    'Вторник',
+    'Среда',
+    'Четверг',
+    'Пятница',
+    'Суббота',
 ];
 export const WEEKDAYS_SHORT = ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'];
 export const WEEKDAYS_ENG_RUS = [
-	{ rus: 'Вс', eng: 'sun' },
-	{ eng: 'mon', rus: 'Пн' },
-	{ eng: 'tue', rus: 'Вт' },
-	{ eng: 'wed', rus: 'Ср' },
-	{ eng: 'thu', rus: 'Чт' },
-	{ eng: 'fri', rus: 'Пт' },
-	{ eng: 'sat', rus: 'Сб' },
+    { rus: 'Вс', eng: 'sun' },
+    { eng: 'mon', rus: 'Пн' },
+    { eng: 'tue', rus: 'Вт' },
+    { eng: 'wed', rus: 'Ср' },
+    { eng: 'thu', rus: 'Чт' },
+    { eng: 'fri', rus: 'Пт' },
+    { eng: 'sat', rus: 'Сб' },
 ];
 
 export const DAYS_OF_WEEK = [
-	{
-		label: 'Воскресенье',
-		shortLabel: 'Вс',
-		value: 'sun',
-	},
-	{
-		label: 'Понедельник',
-		shortLabel: 'Пн',
-		value: 'mon',
-	},
-	{
-		label: 'Вторник',
-		shortLabel: 'Вт',
-		value: 'tue',
-	},
-	{
-		label: 'Среда',
-		shortLabel: 'Ср',
-		value: 'wed',
-	},
-	{
-		label: 'Четверг',
-		shortLabel: 'Чт',
-		value: 'thu',
-	},
-	{
-		label: 'Пятница',
-		shortLabel: 'Пт',
-		value: 'fri',
-	},
-	{
-		label: 'Суббота',
-		shortLabel: 'Сб',
-		value: 'sat',
-	},
+    {
+        label: 'Воскресенье',
+        shortLabel: 'Вс',
+        value: 'sun',
+    },
+    {
+        label: 'Понедельник',
+        shortLabel: 'Пн',
+        value: 'mon',
+    },
+    {
+        label: 'Вторник',
+        shortLabel: 'Вт',
+        value: 'tue',
+    },
+    {
+        label: 'Среда',
+        shortLabel: 'Ср',
+        value: 'wed',
+    },
+    {
+        label: 'Четверг',
+        shortLabel: 'Чт',
+        value: 'thu',
+    },
+    {
+        label: 'Пятница',
+        shortLabel: 'Пт',
+        value: 'fri',
+    },
+    {
+        label: 'Суббота',
+        shortLabel: 'Сб',
+        value: 'sat',
+    },
 ];
 
 export const preppareDataforWorkTime = data => {
-	const res = {
-		mon: {},
-		tue: {},
-		wed: {},
-		thu: {},
-		fri: {},
-		sat: {},
-		sun: {},
-	};
-	if (Array.isArray(data)) {
-		data.forEach(i => {
-			switch (i.col) {
-				case 1: {
-					res.sun[i.row] = 'white';
-					break;
-				}
-				case 2: {
-					res.mon[i.row] = 'white';
-					break;
-				}
-				case 3: {
-					res.tue[i.row] = 'white';
-					break;
-				}
-				case 4: {
-					res.wed[i.row] = 'white';
-					break;
-				}
-				case 5: {
-					res.thu[i.row] = 'white';
-					break;
-				}
-				case 6: {
-					res.fri[i.row] = 'white';
-					break;
-				}
-				case 7: {
-					res.sat[i.row] = 'white';
-					break;
-				}
+    const res = {
+        mon: {},
+        tue: {},
+        wed: {},
+        thu: {},
+        fri: {},
+        sat: {},
+        sun: {},
+    };
+    if (Array.isArray(data)) {
+        data.forEach(i => {
+            switch (i.col) {
+                case 1: {
+                    res.sun[i.row] = 'white';
+                    break;
+                }
+                case 2: {
+                    res.mon[i.row] = 'white';
+                    break;
+                }
+                case 3: {
+                    res.tue[i.row] = 'white';
+                    break;
+                }
+                case 4: {
+                    res.wed[i.row] = 'white';
+                    break;
+                }
+                case 5: {
+                    res.thu[i.row] = 'white';
+                    break;
+                }
+                case 6: {
+                    res.fri[i.row] = 'white';
+                    break;
+                }
+                case 7: {
+                    res.sat[i.row] = 'white';
+                    break;
+                }
 
-				default:
-					break;
-			}
-		});
-	}
-	return res;
+                default:
+                    break;
+            }
+        });
+    }
+    return res;
 };
 export const recoveryDataForWorkTime = (
-	data = {
-		mon: '{}',
-		tue: '{}',
-		wed: '{}',
-		thu: '{}',
-		fri: '{}',
-		sat: '{}',
-		sun: '{}',
-	}
+    data = {
+        mon: '{}',
+        tue: '{}',
+        wed: '{}',
+        thu: '{}',
+        fri: '{}',
+        sat: '{}',
+        sun: '{}',
+    }
 ) => {
-	let res = [];
-	if (typeof data === 'object' && data !== null) {
-		Object.keys(data).forEach(i => {
-			const day =
-				data[i] !== null && (typeof data[i] === 'string' || typeof data[i] === 'object')
-					? Object.keys(typeof data[i] === 'string' ? JSON.parse(data[i]) : data[i])
-					: [];
-			day.forEach(item => {
-				let key = 1;
-				switch (i) {
-					case 'sun': {
-						key = 1;
-						break;
-					}
-					case 'mon': {
-						key = 2;
-						break;
-					}
-					case 'tue': {
-						key = 3;
-						break;
-					}
-					case 'wed': {
-						key = 4;
-						break;
-					}
-					case 'thu': {
-						key = 5;
-						break;
-					}
-					case 'fri': {
-						key = 6;
-						break;
-					}
-					case 'sat': {
-						key = 7;
-						break;
-					}
+    let res = [];
+    if (typeof data === 'object' && data !== null) {
+        Object.keys(data).forEach(i => {
+            const day =
+                data[i] !== null && (typeof data[i] === 'string' || typeof data[i] === 'object')
+                    ? Object.keys(typeof data[i] === 'string' ? JSON.parse(data[i]) : data[i])
+                    : [];
+            day.forEach(item => {
+                let key = 1;
+                switch (i) {
+                    case 'sun': {
+                        key = 1;
+                        break;
+                    }
+                    case 'mon': {
+                        key = 2;
+                        break;
+                    }
+                    case 'tue': {
+                        key = 3;
+                        break;
+                    }
+                    case 'wed': {
+                        key = 4;
+                        break;
+                    }
+                    case 'thu': {
+                        key = 5;
+                        break;
+                    }
+                    case 'fri': {
+                        key = 6;
+                        break;
+                    }
+                    case 'sat': {
+                        key = 7;
+                        break;
+                    }
 
-					default:
-						break;
-				}
-				res = [...res, { col: key, row: parseInt(item) }];
-			});
-		});
-	}
-	return res;
+                    default:
+                        break;
+                }
+                res = [...res, { col: key, row: parseInt(item) }];
+            });
+        });
+    }
+    return res;
 };
 
 export const formatHours = (row, interval, startTime) => {
-	let hour = Math.floor((startTime + interval * (row - 1)) / 60);
-	hour = hour >= 24 ? hour - 24 : hour;
-	const minutes = ((startTime + interval * (row - 1)) % 60).toString();
-	return `${hour.toString().length < 2 ? `0${hour}` : hour}:${
-		minutes.length === 1 ? '0' + minutes : minutes
-	}`;
+    let hour = Math.floor((startTime + interval * (row - 1)) / 60);
+    hour = hour >= 24 ? hour - 24 : hour;
+    const minutes = ((startTime + interval * (row - 1)) % 60).toString();
+    return `${hour.toString().length < 2 ? `0${hour}` : hour}:${
+        minutes.length === 1 ? '0' + minutes : minutes
+    }`;
 };
 export const getObjectOfPeriods = (dayData, interval, startTime) => {
-	return _.reduce(
-		dayData,
-		(memo, row) => {
-			const formatedHours = _.parseInt(row);
-			const prevPeriodIndex = _.findIndex(memo, { to: formatedHours });
+    return _.reduce(
+        dayData,
+        (memo, row) => {
+            const formatedHours = _.parseInt(row);
+            const prevPeriodIndex = _.findIndex(memo, { to: formatedHours });
 
-			if (prevPeriodIndex > -1) {
-				memo[prevPeriodIndex] = {
-					...memo[prevPeriodIndex],
-					to: formatedHours + 1,
-				};
-			} else {
-				memo.push({
-					from: formatedHours,
-					to: formatedHours + 1,
-				});
-			}
-			return memo;
-		},
-		[]
-	);
+            if (prevPeriodIndex > -1) {
+                memo[prevPeriodIndex] = {
+                    ...memo[prevPeriodIndex],
+                    to: formatedHours + 1,
+                };
+            } else {
+                memo.push({
+                    from: formatedHours,
+                    to: formatedHours + 1,
+                });
+            }
+            return memo;
+        },
+        []
+    );
 };
 
 export const getWorkPeriodsOfDay = (dayData, interval, startTime) => {
-	const periods = getObjectOfPeriods(dayData, interval, startTime);
-	const formatedPeriods = _.map(
-		periods,
-		period =>
-			`${formatHours(period.from, interval, startTime)} - ${formatHours(
-				period.to,
-				interval,
-				startTime
-			)}`
-	);
+    const periods = getObjectOfPeriods(dayData, interval, startTime);
+    const formatedPeriods = _.map(
+        periods,
+        period =>
+            `${formatHours(period.from, interval, startTime)} - ${formatHours(
+                period.to,
+                interval,
+                startTime
+            )}`
+    );
 
-	return formatedPeriods.join(' / ');
+    return formatedPeriods.join(' / ');
+};
+
+const strPrepare = min => {
+    const hours = Math.floor(min / 60).toString();
+    const mins = (min % 60).toString();
+    return `${hours.length == 1 ? '0' + hours : hours}:${mins.length == 1 ? '0' + mins : mins}`;
+};
+
+export const prepareWorkingTimeIntervals = ({ data, interval, startTime }) => {
+    const res = {
+        mon: [],
+        tue: [],
+        wed: [],
+        thu: [],
+        fri: [],
+        sat: [],
+        sun: [],
+    };
+    DAYS_OF_WEEK.forEach((item, i) => {
+        const rows = Array.from(
+            new Set(data.filter(item => item.col === i).map(item => item.row))
+        ).sort((a, b) => a - b);
+        const fromTo = getObjectOfPeriods([...rows], interval, startTime);
+        res[item.value] = fromTo.map(item => {
+            const start = (item.from - 1) * interval + startTime;
+            const end = (item.to - 1) * interval + startTime;
+            return {
+                start: `${strPrepare(start)}`,
+                end: `${strPrepare(end)}`,
+            };
+        });
+    });
+    return res;
+};
+
+export const prepareCustomTimeIntervals = ({ data, interval, startTime, startWeekDay }) => {
+    const dataWithPreparedDate = data
+        .map(item => {
+            const date = new Date(item.curentDay);
+            const dayOfWeek = date.getDay();
+            const curentDayCol = dayOfWeek + 1 - startWeekDay;
+            return {
+                ...item,
+                curentDay: new Date(item.curentDay - (curentDayCol - item.col) * DAY_MS),
+            };
+        })
+        .sort((a, b) => a.curentDay.valueOf() - b.curentDay.valueOf());
+    const enabled = dataWithPreparedDate.filter(item => !item.disabled);
+    const disabled = dataWithPreparedDate.filter(item => item.disabled);
+    const res = { enabled: [], disabled: [] };
+    const getPeriods = (data, interval, startTime) => {
+        const map = new Map();
+        const res = [];
+        data.forEach(item => {
+            const arr = map.get(item.curentDay.valueOf());
+            map.set(item.curentDay.valueOf(), [...(Array.isArray(arr) ? arr : []), item]);
+        });
+        map.forEach((item, index) => {
+            getObjectOfPeriods(item.map(i => i.row - 1).sort((a, b) => a - b)).forEach(i => {
+                const day = new Date(index);
+                const start = `${moment(day).format('YYYY-MM-DD')} ${strPrepare(
+                    i.from * interval + startTime
+                )}`;
+                const end = `${moment(day).format('YYYY-MM-DD')} ${strPrepare(
+                    i.to * interval + startTime
+                )}`;
+                res.push({ start, end });
+            });
+        });
+        return res;
+    };
+    res.enabled = getPeriods(enabled, interval, startTime);
+    res.disabled = getPeriods(disabled, interval, startTime);
+    return res;
+};
+
+export const recoveryWorkingTimeIntervals = ({
+    data = {
+        mon: [],
+        tue: [],
+        wed: [],
+        thu: [],
+        fri: [],
+        sat: [],
+        sun: [],
+    },
+    interval,
+    startTime = 0,
+    startWeekDay = 0,
+}) => {
+    let res = [];
+    if (typeof data === 'object' && data !== null) {
+        for (let index = startWeekDay; index < DAYS_OF_WEEK.length + startWeekDay; index++) {
+            const day = data[DAYS_OF_WEEK[(index + startWeekDay) % 7].value] || [];
+            const arr = day.reduce((acc, item) => {
+                const start = item.start.split(':');
+                const end = item.end.split(':');
+                const startWorkingTime = start[0] * 60 + parseInt(start[1]);
+                const endWorkingTime = end[0] * 60 + parseInt(end[1]);
+                for (
+                    let j = Math.floor(startWorkingTime / interval);
+                    j < Math.floor(endWorkingTime / interval);
+                    j++
+                ) {
+                    const col = (index % 7) + 1;
+                    acc = [
+                        ...acc,
+                        { col: col, row: j + 1 - Math.floor(startTime / interval) || 1 },
+                    ];
+                }
+                return acc;
+            }, []);
+            res = [...res, ...arr];
+        }
+    }
+    return res;
 };

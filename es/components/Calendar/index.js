@@ -60,7 +60,7 @@ var Calendar = function Calendar(_ref) {
     workingTime: workingTimeIntervals,
     customTime: customTime,
     bookedTime: bookedTime,
-    selectedDate: curentDay
+    curentDay: curentDay
   });
   var workingTimeActual = workingTimePrepare(_objectSpread({}, selectedDayData, {
     interval: interval

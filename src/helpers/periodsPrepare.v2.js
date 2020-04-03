@@ -43,7 +43,8 @@ export const getBookedTimePeriods = ({ bookedTimeDay, interval = 60 }) => {
 		const date = new Date(item.date);
 		const startTime = date.getHours() * 60 + date.getMinutes();
 		const externalItervals = Math.floor(item.duration / interval);
-		for (var i = 0; i < externalItervals; i++) {
+		// TODO:  need check it for calnedar
+		for (let i = 0; i <= externalItervals; i++) {
 			acc = [...acc, startTime + i * interval];
 		}
 		return [...acc];
