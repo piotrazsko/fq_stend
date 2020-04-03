@@ -88,6 +88,9 @@ const CustomWorkingTimeSelect = ({
 		bookedTime: workingTimeActual.map(i => i.bookedTimePeriods),
 	});
 	React.useEffect(() => {
+		setSelected([]);
+	}, [startWeekDay]);
+	React.useEffect(() => {
 		setActualWorkingTime(
 			weekPrepare({
 				workingTimeIntervals,
@@ -99,6 +102,7 @@ const CustomWorkingTimeSelect = ({
 			})
 		);
 	}, [curentDay, startWeekDay, customTimeIntervals]);
+
 	const onSelect = selected => {
 		const filtered = selectedCell.filter(item => {
 			return !selected.find(i => i.col === item.col && i.row === item.row);
@@ -125,6 +129,7 @@ const CustomWorkingTimeSelect = ({
 		// BUG:  need change algorithm for clean/ now cleaned for all dated in this column
 		setSelected([...selectedCell.filter(i => i.col !== col)]);
 	};
+	console.log(selectedCell);
 	return (
 		<div>
 			<div className={style.title}>Установите подходящее для вас время</div>
