@@ -6,15 +6,16 @@ function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.
 
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 
-/*global  Set*/
 import { getPermanentWorkingPeriods, getCustomTimePeriods, getBookedTimePeriods } from '../../../helpers/periodsPrepare.v2.js';
 export { getDataForSelectedDate } from '../../../helpers/curentDayPrepare.v2.js';
+export { prepareWorkingTimeIntervals, recoveryWorkingTimeIntervals, prepareCustomTimeIntervals } from '../../../helpers/calendar';
 export var workingTimePrepare = function workingTimePrepare(_ref) {
   var workingTimeDay = _ref.workingTimeDay,
       customTimeDay = _ref.customTimeDay,
       bookedTimeDay = _ref.bookedTimeDay,
       _ref$interval = _ref.interval,
-      interval = _ref$interval === void 0 ? 15 : _ref$interval;
+      interval = _ref$interval === void 0 ? 15 : _ref$interval,
+      curentDay = _ref.curentDay;
   var permanentWorkingIntervals = getPermanentWorkingPeriods({
     workingTimeDay: workingTimeDay,
     interval: interval
@@ -27,29 +28,28 @@ export var workingTimePrepare = function workingTimePrepare(_ref) {
     bookedTimeDay: bookedTimeDay,
     interval: interval
   });
-  var enabledTime = Array.from(new Set([].concat(_toConsumableArray(permanentWorkingIntervals), _toConsumableArray(customTimePeriods.enabled)))).sort(function (a, b) {
-    return a - b;
-  }).map(function (item) {
-    return {
-      start: item,
-      end: item + interval,
-      hour: Math.floor(item / 60),
-      minutes: item % 60
-    };
-  });
-  var disabledTime = Array.from(new Set([].concat(_toConsumableArray(bookedTimePeriods), _toConsumableArray(customTimePeriods.disabled)))).sort(function (a, b) {
-    return a - b;
-  }).map(function (item) {
-    return {
-      start: item,
-      end: item + interval,
-      hour: Math.floor(item / 60),
-      minutes: item % 60
-    };
-  });
-  return enabledTime.filter(function (item) {
-    return !disabledTime.find(function (disabledItem) {
-      return item.start <= disabledItem.start && item.end > disabledItem.start && item.end <= disabledItem.end || item.start >= disabledItem.start && item.start < disabledItem.end && item.end >= disabledItem.end;
+  return {
+    interval: interval,
+    curentDay: curentDay,
+    permanentWorkingIntervals: permanentWorkingIntervals,
+    customTimePeriods: customTimePeriods,
+    bookedTimePeriods: bookedTimePeriods
+  };
+};
+export var getBookingTime = function getBookingTime(_ref2) {
+  var startWeekDay = _ref2.startWeekDay,
+      bookedTime = _ref2.bookedTime,
+      interval = _ref2.interval,
+      startTime = _ref2.startTime;
+  return bookedTime.reduce(function (acc, item, index) {
+    item.forEach(function (i) {
+      var row = Math.ceil((i - startTime) / interval) + 1;
+      var col = index % 7 + 1;
+      acc = [].concat(_toConsumableArray(acc), [{
+        col: col,
+        row: row
+      }]);
     });
-  });
+    return acc;
+  }, []);
 };
