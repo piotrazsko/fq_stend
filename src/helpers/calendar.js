@@ -234,7 +234,13 @@ const strPrepare = min => {
 	return `${hours.length == 1 ? '0' + hours : hours}:${mins.length == 1 ? '0' + mins : mins}`;
 };
 
-export const prepareWorkingTimeIntervals = ({ data, interval, startTime }) => {
+export const prepareWorkingTimeIntervals = ({
+	startWeekDay = 1,
+	startCol = 1,
+	data,
+	interval,
+	startTime,
+}) => {
 	const res = {
 		mon: [],
 		tue: [],
@@ -244,10 +250,13 @@ export const prepareWorkingTimeIntervals = ({ data, interval, startTime }) => {
 		sat: [],
 		sun: [],
 	};
-	DAYS_OF_WEEK.forEach((item, i) => {
-		const rows = Array.from(new Set(data.filter(item => item.col === i).map(item => item.row))).sort(
-			(a, b) => a - b
-		);
+	DAYS_OF_WEEK.forEach((day, index) => {
+		const i = (index + 7 - startWeekDay) % 7;
+		const item = DAYS_OF_WEEK[index];
+		const col = i + startCol;
+		const rows = Array.from(
+			new Set(data.filter(item => item.col === col).map(item => item.row))
+		).sort((a, b) => a - b);
 
 		const fromTo = getObjectOfPeriods([...rows], interval, startTime);
 
