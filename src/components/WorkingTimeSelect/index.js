@@ -7,7 +7,6 @@ import { prepareWorkingTimeIntervals, recoveryWorkingTimeIntervals } from './uti
 import style from './style.module.scss';
 
 const WorkingTimeSelect = ({
-	onChange = () => {},
 	workingTimeIntervals,
 	isMobile = false,
 	selectedTimeText = '',
@@ -15,6 +14,7 @@ const WorkingTimeSelect = ({
 	endTime,
 	interval,
 	startWeekDay,
+	onChange,
 }) => {
 	const [selectedTime, selectTime] = React.useState([
 		...recoveryWorkingTimeIntervals({
@@ -43,7 +43,7 @@ const WorkingTimeSelect = ({
 		) {
 			selectTime([...workingTimePrepared]);
 		}
-	}, [workingTimeIntervals]);
+	}, [workingTimeIntervals, startWeekDay]);
 
 	// TODO:  we can get bugs
 	React.useEffect(() => {
