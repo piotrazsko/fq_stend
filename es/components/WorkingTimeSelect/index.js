@@ -33,9 +33,7 @@ var style = {
 };
 
 var WorkingTimeSelect = function WorkingTimeSelect(_ref) {
-  var _ref$onChange = _ref.onChange,
-      onChange = _ref$onChange === void 0 ? function () {} : _ref$onChange,
-      workingTimeIntervals = _ref.workingTimeIntervals,
+  var workingTimeIntervals = _ref.workingTimeIntervals,
       _ref$isMobile = _ref.isMobile,
       isMobile = _ref$isMobile === void 0 ? false : _ref$isMobile,
       _ref$selectedTimeText = _ref.selectedTimeText,
@@ -43,7 +41,8 @@ var WorkingTimeSelect = function WorkingTimeSelect(_ref) {
       startTime = _ref.startTime,
       endTime = _ref.endTime,
       interval = _ref.interval,
-      startWeekDay = _ref.startWeekDay;
+      startWeekDay = _ref.startWeekDay,
+      onChange = _ref.onChange;
 
   var _React$useState = React.useState(_toConsumableArray(recoveryWorkingTimeIntervals({
     data: workingTimeIntervals,
@@ -78,7 +77,7 @@ var WorkingTimeSelect = function WorkingTimeSelect(_ref) {
     })) {
       selectTime(_toConsumableArray(workingTimePrepared));
     }
-  }, [workingTimeIntervals]); // TODO:  we can get bugs
+  }, [workingTimeIntervals, startWeekDay]); // TODO:  we can get bugs
 
   React.useEffect(function () {
     var workingTimePrepared = recoveryWorkingTimeIntervals({

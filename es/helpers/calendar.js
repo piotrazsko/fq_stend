@@ -259,7 +259,11 @@ var strPrepare = function strPrepare(min) {
 };
 
 export var prepareWorkingTimeIntervals = function prepareWorkingTimeIntervals(_ref) {
-  var data = _ref.data,
+  var _ref$startWeekDay = _ref.startWeekDay,
+      startWeekDay = _ref$startWeekDay === void 0 ? 1 : _ref$startWeekDay,
+      _ref$startCol = _ref.startCol,
+      startCol = _ref$startCol === void 0 ? 1 : _ref$startCol,
+      data = _ref.data,
       interval = _ref.interval,
       startTime = _ref.startTime;
   var res = {
@@ -271,9 +275,12 @@ export var prepareWorkingTimeIntervals = function prepareWorkingTimeIntervals(_r
     sat: [],
     sun: []
   };
-  DAYS_OF_WEEK.forEach(function (item, i) {
+  DAYS_OF_WEEK.forEach(function (day, index) {
+    var i = (index + 7 - startWeekDay) % 7;
+    var item = DAYS_OF_WEEK[index];
+    var col = i + startCol;
     var rows = Array.from(new Set(data.filter(function (item) {
-      return item.col === i;
+      return item.col === col;
     }).map(function (item) {
       return item.row;
     }))).sort(function (a, b) {
@@ -291,11 +298,58 @@ export var prepareWorkingTimeIntervals = function prepareWorkingTimeIntervals(_r
   });
   return res;
 };
-export var prepareCustomTimeIntervals = function prepareCustomTimeIntervals(_ref2) {
-  var data = _ref2.data,
+export var recoveryWorkingTimeIntervals = function recoveryWorkingTimeIntervals(_ref2) {
+  var _ref2$data = _ref2.data,
+      data = _ref2$data === void 0 ? {
+    mon: [],
+    tue: [],
+    wed: [],
+    thu: [],
+    fri: [],
+    sat: [],
+    sun: []
+  } : _ref2$data,
       interval = _ref2.interval,
-      startTime = _ref2.startTime,
-      startWeekDay = _ref2.startWeekDay;
+      _ref2$startTime = _ref2.startTime,
+      startTime = _ref2$startTime === void 0 ? 0 : _ref2$startTime,
+      _ref2$startWeekDay = _ref2.startWeekDay,
+      startWeekDay = _ref2$startWeekDay === void 0 ? 0 : _ref2$startWeekDay;
+  var res = [];
+
+  if (_typeof(data) === 'object' && data !== null) {
+    var _loop = function _loop(index) {
+      var day = data[DAYS_OF_WEEK[(index + startWeekDay) % 7].value] || [];
+      var arr = day.reduce(function (acc, item) {
+        var start = item.start.split(':');
+        var end = item.end.split(':');
+        var startWorkingTime = start[0] * 60 + parseInt(start[1]);
+        var endWorkingTime = end[0] * 60 + parseInt(end[1]);
+
+        for (var j = Math.floor(startWorkingTime / interval); j < Math.floor(endWorkingTime / interval); j++) {
+          var col = index % 7 + 1;
+          acc = [].concat(_toConsumableArray(acc), [{
+            col: col,
+            row: j + 1 - Math.floor(startTime / interval) || 1
+          }]);
+        }
+
+        return acc;
+      }, []);
+      res = [].concat(_toConsumableArray(res), _toConsumableArray(arr));
+    };
+
+    for (var index = startWeekDay; index < DAYS_OF_WEEK.length + startWeekDay; index++) {
+      _loop(index);
+    }
+  }
+
+  return res;
+};
+export var prepareCustomTimeIntervals = function prepareCustomTimeIntervals(_ref3) {
+  var data = _ref3.data,
+      interval = _ref3.interval,
+      startTime = _ref3.startTime,
+      startWeekDay = _ref3.startWeekDay;
   var dataWithPreparedDate = data.map(function (item) {
     var date = new Date(item.curentDay);
     var dayOfWeek = date.getDay();
@@ -344,52 +398,5 @@ export var prepareCustomTimeIntervals = function prepareCustomTimeIntervals(_ref
 
   res.enabled = getPeriods(enabled, interval, startTime);
   res.disabled = getPeriods(disabled, interval, startTime);
-  return res;
-};
-export var recoveryWorkingTimeIntervals = function recoveryWorkingTimeIntervals(_ref3) {
-  var _ref3$data = _ref3.data,
-      data = _ref3$data === void 0 ? {
-    mon: [],
-    tue: [],
-    wed: [],
-    thu: [],
-    fri: [],
-    sat: [],
-    sun: []
-  } : _ref3$data,
-      interval = _ref3.interval,
-      _ref3$startTime = _ref3.startTime,
-      startTime = _ref3$startTime === void 0 ? 0 : _ref3$startTime,
-      _ref3$startWeekDay = _ref3.startWeekDay,
-      startWeekDay = _ref3$startWeekDay === void 0 ? 0 : _ref3$startWeekDay;
-  var res = [];
-
-  if (_typeof(data) === 'object' && data !== null) {
-    var _loop = function _loop(index) {
-      var day = data[DAYS_OF_WEEK[(index + startWeekDay) % 7].value] || [];
-      var arr = day.reduce(function (acc, item) {
-        var start = item.start.split(':');
-        var end = item.end.split(':');
-        var startWorkingTime = start[0] * 60 + parseInt(start[1]);
-        var endWorkingTime = end[0] * 60 + parseInt(end[1]);
-
-        for (var j = Math.floor(startWorkingTime / interval); j < Math.floor(endWorkingTime / interval); j++) {
-          var col = index % 7 + 1;
-          acc = [].concat(_toConsumableArray(acc), [{
-            col: col,
-            row: j + 1 - Math.floor(startTime / interval) || 1
-          }]);
-        }
-
-        return acc;
-      }, []);
-      res = [].concat(_toConsumableArray(res), _toConsumableArray(arr));
-    };
-
-    for (var index = startWeekDay; index < DAYS_OF_WEEK.length + startWeekDay; index++) {
-      _loop(index);
-    }
-  }
-
   return res;
 };
