@@ -128,7 +128,8 @@ export var getArrayOfstrDatesByColRow = function getArrayOfstrDatesByColRow(_ref
   return res;
 };
 export var convertColRowToCustomTime = function convertColRowToCustomTime(_ref6) {
-  var data = _ref6.data,
+  var _ref6$data = _ref6.data,
+      data = _ref6$data === void 0 ? [] : _ref6$data,
       interval = _ref6.interval,
       startTime = _ref6.startTime,
       startWeekDay = _ref6.startWeekDay,
@@ -167,7 +168,9 @@ export var convertCustomTimeToColRowObj = function convertCustomTimeToColRowObj(
       startCol = _ref7$startCol === void 0 ? 1 : _ref7$startCol,
       customTimeIntervals = _ref7.customTimeIntervals;
 
-  var resPrepare = function resPrepare(arr, callback) {
+  var resPrepare = function resPrepare() {
+    var arr = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+    var callback = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : function () {};
     return arr.reduce(function (acc, item) {
       var start = new Date(item.start);
       var startHour = start.getHours();
