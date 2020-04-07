@@ -345,7 +345,7 @@ export var recoveryWorkingTimeIntervals = function recoveryWorkingTimeIntervals(
 
   return res;
 };
-export var prepareCustomTimeIntervals = function prepareCustomTimeIntervals(_ref3) {
+export var convertColRowToCustomTime = function convertColRowToCustomTime(_ref3) {
   var data = _ref3.data,
       interval = _ref3.interval,
       startTime = _ref3.startTime,

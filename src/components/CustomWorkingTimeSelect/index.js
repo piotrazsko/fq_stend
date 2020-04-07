@@ -8,9 +8,10 @@ import {
     recoveryWorkingTimeIntervals,
     workingTimePrepare,
     getDataForSelectedDate,
-    prepareCustomTimeIntervals,
-    recoveryCustomTimeIntarvals,
+    convertColRowToCustomTime,
+    convertCustomTimeToColRowObj,
     getBookingTime,
+    getArrayOfstrDatesByColRow,
 } from './utils';
 import style from './style.module.scss';
 
@@ -108,7 +109,7 @@ const CustomWorkingTimeSelect = ({
     const [curentDay, setCurentDay] = React.useState(curentDayDefault);
 
     const [selectedCell, setSelectedCell] = React.useState([
-        ...recoveryCustomTimeIntarvals({
+        ...convertCustomTimeToColRowObj({
             interval,
             startTime,
             startWeekDay,
@@ -131,7 +132,7 @@ const CustomWorkingTimeSelect = ({
 
     React.useEffect(() => {
         onChange(
-            prepareCustomTimeIntervals({
+            convertColRowToCustomTime({
                 data: selectedCell,
                 interval,
                 startTime,
@@ -143,7 +144,7 @@ const CustomWorkingTimeSelect = ({
 
     React.useEffect(() => {
         setSelectedCell([
-            ...recoveryCustomTimeIntarvals({
+            ...convertCustomTimeToColRowObj({
                 interval,
                 startTime,
                 startWeekDay,
@@ -169,26 +170,27 @@ const CustomWorkingTimeSelect = ({
                     curentDay.valueOf() < startWeekDayMS + 7 * DAY_MS
             );
         });
-        setSelectedCell(
-            filtered.length !== selectedCell.length
-                ? [...filtered]
-                : [
-                      ...selectedCell,
-                      ...selected
-                          .filter(item => {
-                              return !bookedTimePrepared.find(
-                                  i => i.col === item.col && i.row === item.row
-                              );
-                          })
-                          .map(item => ({
-                              ...item,
-                              curentDay: curentDay.valueOf(),
-                              disabled: Boolean(
-                                  workingTime.find(i => i.col == item.col && item.row == i.row)
-                              ),
-                          })),
-                  ]
-        );
+        if (filtered.length !== selectedCell.length) {
+            setSelectedCell([...filtered]);
+        } else {
+            const cells = [
+                ...selectedCell,
+                ...selected
+                    .filter(item => {
+                        return !bookedTimePrepared.find(
+                            i => i.col === item.col && i.row === item.row
+                        );
+                    })
+                    .map(item => ({
+                        ...item,
+                        curentDay: curentDay.valueOf(),
+                        disabled: Boolean(
+                            workingTime.find(i => i.col == item.col && item.row == i.row)
+                        ),
+                    })),
+            ];
+            setSelectedCell(disableSelectBeforeNow ? cells : cells);
+        }
     };
     const onClear = col => {
         // BUG:  need change algorithm for clean/ now cleaned for all dated in this column

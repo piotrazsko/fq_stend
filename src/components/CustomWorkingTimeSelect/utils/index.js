@@ -45,10 +45,23 @@ export const getBookingTime = ({ bookedTime, interval, startTime }) => {
     }, []);
 };
 
-export const getPeriodsByColRow = (data, interval, startTime) => {
+export const addRealDate = (data, startWeekDay) =>
+    data
+        .map(item => {
+            const date = new Date(item.curentDay);
+            const dayOfWeek = date.getDay();
+            const curentDayCol = dayOfWeek + 1 - startWeekDay;
+            return {
+                ...item,
+                curentDay: new Date(item.curentDay - (curentDayCol - item.col) * DAY_MS),
+            };
+        })
+        .sort((a, b) => a.curentDay.valueOf() - b.curentDay.valueOf());
+
+export const getArrayOfstrDatesByColRow = ({ data, interval, startTime, startWeekDay }) => {
     const map = new Map();
     const res = [];
-    data.forEach(item => {
+    addRealDate(data, startWeekDay).forEach(item => {
         const arr = map.get(item.curentDay.valueOf());
         map.set(item.curentDay.valueOf(), [...(Array.isArray(arr) ? arr : []), item]);
     });
@@ -67,38 +80,32 @@ export const getPeriodsByColRow = (data, interval, startTime) => {
     return res;
 };
 
-export const prepareCustomTimeIntervals = ({
+export const convertColRowToCustomTime = ({
     data,
     interval,
     startTime,
     startWeekDay,
     disableSelectBeforeNow = true,
 }) => {
-    const dataWithPreparedDate = data
-        .map(item => {
-            const date = new Date(item.curentDay);
-            const dayOfWeek = date.getDay();
-            const curentDayCol = dayOfWeek + 1 - startWeekDay;
-            return {
-                ...item,
-                curentDay: new Date(item.curentDay - (curentDayCol - item.col) * DAY_MS),
-            };
-        })
-        .sort((a, b) => a.curentDay.valueOf() - b.curentDay.valueOf());
-    const enabled = dataWithPreparedDate.filter(item => !item.disabled);
-    const disabled = dataWithPreparedDate.filter(item => item.disabled);
-    const res = { enabled: [], disabled: [] };
-
-    res.enabled = getPeriodsByColRow(enabled, interval, startTime).filter(
-        item => !disableSelectBeforeNow || new Date(item.start) > new Date()
-    );
-    res.disabled = getPeriodsByColRow(disabled, interval, startTime).filter(
-        item => !disableSelectBeforeNow || new Date(item.start) > new Date()
-    );
-    return res;
+    const enabled = data.filter(item => !item.disabled);
+    const disabled = data.filter(item => item.disabled);
+    return {
+        enabled: getArrayOfstrDatesByColRow({
+            data: enabled,
+            interval,
+            startTime,
+            startWeekDay,
+        }).filter(item => !disableSelectBeforeNow || new Date(item.start) > new Date()),
+        disabled: getArrayOfstrDatesByColRow({
+            data: disabled,
+            interval,
+            startTime,
+            startWeekDay,
+        }).filter(item => !disableSelectBeforeNow || new Date(item.start) > new Date()),
+    };
 };
 
-export const recoveryCustomTimeIntarvals = ({
+export const convertCustomTimeToColRowObj = ({
     interval,
     startTime,
     startWeekDay,

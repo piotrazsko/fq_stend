@@ -8,7 +8,7 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
 import { getPermanentWorkingPeriods, getCustomTimePeriods, getBookedTimePeriods } from '../../../helpers/periodsPrepare.v2.js';
 export { getDataForSelectedDate } from '../../../helpers/curentDayPrepare.v2.js';
-export { prepareWorkingTimeIntervals, recoveryWorkingTimeIntervals, prepareCustomTimeIntervals } from '../../../helpers/calendar';
+export { prepareWorkingTimeIntervals, recoveryWorkingTimeIntervals, convertColRowToCustomTime } from '../../../helpers/calendar';
 export var workingTimePrepare = function workingTimePrepare(_ref) {
   var workingTimeDay = _ref.workingTimeDay,
       customTimeDay = _ref.customTimeDay,

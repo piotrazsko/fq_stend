@@ -25,7 +25,7 @@ import PropTypes from 'prop-types';
 import Grid from '../Grid';
 import Cell from './Cell';
 import Days from './Days';
-import { recoveryWorkingTimeIntervals, workingTimePrepare, getDataForSelectedDate, prepareCustomTimeIntervals, getBookingTime } from './utils';
+import { recoveryWorkingTimeIntervals, workingTimePrepare, getDataForSelectedDate, convertColRowToCustomTime, getBookingTime } from './utils';
 var style = {
   "title": "style-module_fq_title___1dUq-",
   "resultContainer": "style-module_fq_resultContainer___in4He",
@@ -124,7 +124,7 @@ var CustomWorkingTimeSelect = function CustomWorkingTimeSelect(_ref2) {
     setSelected([]);
   }, [startWeekDay, interval]);
   React.useEffect(function () {
-    onChange(prepareCustomTimeIntervals({
+    onChange(convertColRowToCustomTime({
       data: selectedCell,
       interval: interval,
       startTime: startTime,
