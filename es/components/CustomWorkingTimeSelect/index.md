@@ -3,6 +3,28 @@ CustomWorkingTimeSelect example:
 ```js
 const [x, setX] = React.useState(2);
 const [y, setY] = React.useState(60);
+const [z, setZ] = React.useState({
+    enabled: [
+        {
+            start: '2020-04-08 22:00:00',
+            end: '2020-04-08 24:00:00',
+        },
+        {
+            start: '2020-04-10 22:00:00',
+            end: '2020-04-10 23:00:00',
+        },
+    ],
+    disabled: [
+        {
+            start: '2020-04-10 05:00:00',
+            end: '2020-04-10 10:00:00',
+        },
+        {
+            start: '2020-04-13 05:20:00',
+            end: '2020-04-13 6:00:00',
+        },
+    ],
+});
 <div>
     <select value={x} onChange={ev => setX(ev.target.value)}>
         <option value={0}>0</option>
@@ -16,12 +38,12 @@ const [y, setY] = React.useState(60);
     </select>
     <CustomWorkingTimeSelect
         onChange={data => {
-            console.log(data);
+            setZ(data);
         }}
         isMobile
         startWeekDay={parseInt(x)}
         interval={y}
-        startTime={0}
+        startTime={300}
         workingTimeIntervals={{
             mon: [{ start: '02:00:00', end: '07:30:00' }],
             tue: [{ start: '04:00:00', end: '08:00:00' }, { start: '10:00:00', end: '14:00:00' }],
@@ -41,28 +63,7 @@ const [y, setY] = React.useState(60);
             { date: '2020-04-14 19:30:00', duration: 75 },
             { date: '2020-04-09 10:30:00', duration: 30 },
         ]}
-        customTimeIntervals={{
-            enabled: [
-                {
-                    start: '2020-04-08 22:00:00',
-                    end: '2020-04-08 24:00:00',
-                },
-                {
-                    start: '2020-04-10 22:00:00',
-                    end: '2020-04-10 23:00:00',
-                },
-            ],
-            disabled: [
-                {
-                    start: '2020-04-10 05:00:00',
-                    end: '2020-04-10 10:00:00',
-                },
-                {
-                    start: '2020-04-13 05:20:00',
-                    end: '2020-04-13 6:00:00',
-                },
-            ],
-        }}
+        customTimeIntervals={z}
     />
 </div>;
 ```

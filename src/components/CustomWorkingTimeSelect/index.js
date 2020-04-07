@@ -151,7 +151,7 @@ const CustomWorkingTimeSelect = ({
                 customTimeIntervals,
             }),
         ]);
-    }, [startWeekDay, interval, customTimeIntervals]);
+    }, [startWeekDay, interval]);
 
     const onSelect = selected => {
         const filtered = selectedCell.filter(item => {
@@ -283,6 +283,7 @@ CustomWorkingTimeSelect.defaultProps = {
     startWeekDay: 1, //utc day of week
     workingTimeIntervals: {},
     curentDay: today,
+    customTimeIntervals: {},
 };
 
 export default CustomWorkingTimeSelect;

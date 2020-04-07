@@ -179,7 +179,7 @@ var CustomWorkingTimeSelect = function CustomWorkingTimeSelect(_ref3) {
       startWeekDay: startWeekDay,
       customTimeIntervals: customTimeIntervals
     })));
-  }, [startWeekDay, interval, customTimeIntervals]);
+  }, [startWeekDay, interval]);
 
   var onSelect = function onSelect(selected) {
     var filtered = selectedCell.filter(function (item) {
@@ -300,6 +300,7 @@ CustomWorkingTimeSelect.defaultProps = {
   startWeekDay: 1,
   //utc day of week
   workingTimeIntervals: {},
-  curentDay: today
+  curentDay: today,
+  customTimeIntervals: {}
 };
 export default CustomWorkingTimeSelect;

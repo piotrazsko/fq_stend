@@ -61,15 +61,14 @@
     background-color: #f8f8f8;
 }
 .firstColumn {
-    grid-column-end: first-row !important;
     min-width: 30px;
     display: flex;
     align-items: center;
     border-top: none !important;
     border-bottom: none !important;
+    max-width: 30px;
 }
 .lastColumn {
-    // grid-column-end: last-row !important;
     min-width: 30px;
     max-width: 30px;
     display: flex;

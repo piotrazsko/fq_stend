@@ -96,7 +96,7 @@ export const getArrayOfstrDatesByColRow = ({ data, interval, startTime, startWee
 };
 
 export const convertColRowToCustomTime = ({
-    data,
+    data = [],
     interval,
     startTime,
     startWeekDay,
@@ -131,7 +131,7 @@ export const convertCustomTimeToColRowObj = ({
     startCol = 1,
     customTimeIntervals,
 }) => {
-    const resPrepare = (arr, callback) => {
+    const resPrepare = (arr = [], callback = () => {}) => {
         return arr.reduce((acc, item) => {
             const start = new Date(item.start);
             const startHour = start.getHours();

@@ -102,6 +102,7 @@ const Cell = ({
         case col === 8 && row == 0: {
             return (
                 <IconButton
+                    size="small"
                     onClick={() => {
                         setCurentDay(new Date(curentDay.valueOf() + 7 * DAY_MS));
                     }}
@@ -118,6 +119,7 @@ const Cell = ({
         case col === 0 && row == 0: {
             return (
                 <IconButton
+                    size="small"
                     onClick={() => {
                         setCurentDay(new Date(curentDay.valueOf() - 7 * DAY_MS));
                     }}

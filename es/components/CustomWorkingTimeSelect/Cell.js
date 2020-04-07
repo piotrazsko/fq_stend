@@ -119,6 +119,7 @@ var Cell = function Cell(_ref) {
     case col === 8 && row == 0:
       {
         return React.createElement(IconButton, {
+          size: "small",
           onClick: function onClick() {
             setCurentDay(new Date(curentDay.valueOf() + 7 * DAY_MS));
           }
@@ -133,6 +134,7 @@ var Cell = function Cell(_ref) {
     case col === 0 && row == 0:
       {
         return React.createElement(IconButton, {
+          size: "small",
           onClick: function onClick() {
             setCurentDay(new Date(curentDay.valueOf() - 7 * DAY_MS));
           }
