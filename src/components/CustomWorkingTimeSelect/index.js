@@ -9,6 +9,7 @@ import {
     workingTimePrepare,
     getDataForSelectedDate,
     prepareCustomTimeIntervals,
+    recoveryCustomTimeIntarvals,
     getBookingTime,
 } from './utils';
 import style from './style.module.scss';
@@ -55,6 +56,7 @@ const CustomWorkingTimeSelect = ({
     startWeekDay,
     curentDay: curentDayDefault,
 }) => {
+    //use d for show working time
     const selectedTime = [
         ...recoveryWorkingTimeIntervals({
             data: workingTimeIntervals,
@@ -64,7 +66,14 @@ const CustomWorkingTimeSelect = ({
         }),
     ];
     const [curentDay, setCurentDay] = React.useState(curentDayDefault);
-    const [selectedCell, setSelected] = React.useState([]);
+    const [selectedCell, setSelected] = React.useState([
+        ...recoveryCustomTimeIntarvals({
+            interval,
+            startTime,
+            startWeekDay,
+            customTimeIntervals,
+        }),
+    ]);
     const [workingTimeActual, setActualWorkingTime] = React.useState(
         weekPrepare({
             workingTimeIntervals,
@@ -75,7 +84,6 @@ const CustomWorkingTimeSelect = ({
             startWeekDay,
         })
     );
-    console.log(workingTimeActual);
     const bookedTimePrepared = getBookingTime({
         interval,
         startTime,
@@ -103,17 +111,34 @@ const CustomWorkingTimeSelect = ({
             })
         );
     }, [curentDay, startWeekDay, interval, customTimeIntervals]);
+    React.useEffect(() => {
+        setSelected([
+            ...recoveryCustomTimeIntarvals({
+                interval,
+                startTime,
+                startWeekDay,
+                customTimeIntervals,
+            }),
+        ]);
+    }, [startWeekDay, interval, customTimeIntervals]);
 
     const onSelect = selected => {
         const filtered = selectedCell.filter(item => {
+            const day = new Date(item.curentDay);
+            day.setDate(day.getDate() - day.getDay() + startWeekDay);
+            day.setHours(0);
+            day.setMinutes(0);
+            day.setSeconds(0);
+            day.setMilliseconds(0);
+            const startWeekDayMS = day.valueOf();
             return !selected.find(
                 i =>
                     i.col === item.col &&
                     i.row === item.row &&
-                    curentDay.valueOf() === item.curentDay
+                    curentDay.valueOf() >= startWeekDayMS &&
+                    curentDay.valueOf() < startWeekDayMS + 7 * DAY_MS
             );
         });
-
         setSelected(
             filtered.length !== selectedCell.length
                 ? [...filtered]
@@ -196,6 +221,9 @@ CustomWorkingTimeSelect.propTypes = {
     startWeekDay: PropTypes.number,
     interval: PropTypes.number,
     workingTimeIntervals: PropTypes.object,
+    customTimeIntervals: PropTypes.object,
+    bookedTime: PropTypes.array,
+    curentDay: PropTypes.instanceOf(Date),
 };
 CustomWorkingTimeSelect.defaultProps = {
     workingTime: [],
