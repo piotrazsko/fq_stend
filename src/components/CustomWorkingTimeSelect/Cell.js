@@ -85,7 +85,7 @@ const Cell = ({
                     : selectedTimeText;
             return <div className={style.selectedCell}>{child}</div>;
         }
-        case col === 0 && row > 0: {
+        case (col === 0 && row > 0) || (col === 8 && row > 0): {
             const time = startTime + (row - 1) * interval;
             const minutes = (time % 60).toString();
             return (
