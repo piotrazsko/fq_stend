@@ -11,7 +11,7 @@ import {
     convertColRowToCustomTime,
     convertCustomTimeToColRowObj,
     getBookingTime,
-    getArrayOfstrDatesByColRow,
+    getRealDateByColRowObj,
 } from './utils';
 import style from './style.module.scss';
 
@@ -92,7 +92,7 @@ const CustomWorkingTimeSelect = ({
     selectedTimeText = '',
     startTime,
     endTime,
-    disableSelectBeforeNow = false,
+    disableSelectBeforeDate = new Date(),
     interval,
     startWeekDay,
     curentDay: curentDayDefault,
@@ -137,7 +137,7 @@ const CustomWorkingTimeSelect = ({
                 interval,
                 startTime,
                 startWeekDay,
-                disableSelectBeforeNow,
+                disableSelectBeforeDate,
             })
         );
     }, [selectedCell]);
@@ -189,7 +189,16 @@ const CustomWorkingTimeSelect = ({
                         ),
                     })),
             ];
-            setSelectedCell(disableSelectBeforeNow ? cells : cells);
+
+            setSelectedCell(
+                disableSelectBeforeDate
+                    ? cells.filter(
+                          item =>
+                              disableSelectBeforeDate <
+                              getRealDateByColRowObj({ item, startWeekDay, interval, startTime })
+                      )
+                    : cells
+            );
         }
     };
     const onClear = col => {
@@ -256,7 +265,7 @@ CustomWorkingTimeSelect.propTypes = {
     customTimeIntervals: PropTypes.object,
     bookedTime: PropTypes.array,
     curentDay: PropTypes.instanceOf(Date),
-    disableSelectBeforeNow: PropTypes.bool,
+    disableSelectBeforeDate: PropTypes.instanceOf(Date),
 };
 CustomWorkingTimeSelect.defaultProps = {
     workingTime: [],
