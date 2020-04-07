@@ -1,11 +1,3 @@
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
-
-function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
@@ -20,12 +12,20 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import Grid from '../Grid';
 import Cell from './Cell';
 import Days from './Days';
-import { recoveryWorkingTimeIntervals, workingTimePrepare, getDataForSelectedDate, convertColRowToCustomTime, getBookingTime } from './utils';
+import { recoveryWorkingTimeIntervals, workingTimePrepare, getDataForSelectedDate, convertColRowToCustomTime, convertCustomTimeToColRowObj, getBookingTime, getRealDateByColRowObj } from './utils';
 var style = {
   "title": "style-module_fq_title___1dUq-",
   "resultContainer": "style-module_fq_resultContainer___in4He",
@@ -36,6 +36,7 @@ var style = {
   "gridContainer": "style-module_fq_gridContainer___1tkST",
   "firstRow": "style-module_fq_firstRow___lFQL8",
   "firstColumn": "style-module_fq_firstColumn___2NXDm",
+  "lastColumn": "style-module_fq_lastColumn___crCtl",
   "cellCustomDay": "style-module_fq_cellCustomDay___2YUDD",
   "cellCustomDayDisabled": "style-module_fq_cellCustomDayDisabled___2lO-G",
   "reservedTime": "style-module_fq_reservedTime___2amMA"
@@ -46,13 +47,54 @@ today.setMinutes(0);
 today.setSeconds(0);
 var DAY_MS = 60 * 1000 * 60 * 24;
 
-var weekPrepare = function weekPrepare(_ref) {
+var useBookedTimeHook = function useBookedTimeHook(_ref) {
   var workingTimeIntervals = _ref.workingTimeIntervals,
       customTimeIntervals = _ref.customTimeIntervals,
       bookedTime = _ref.bookedTime,
       curentDay = _ref.curentDay,
       interval = _ref.interval,
-      startWeekDay = _ref.startWeekDay;
+      startWeekDay = _ref.startWeekDay,
+      startTime = _ref.startTime;
+
+  var _React$useState = React.useState(weekPrepare({
+    workingTimeIntervals: workingTimeIntervals,
+    customTimeIntervals: customTimeIntervals,
+    bookedTime: bookedTime,
+    curentDay: curentDay,
+    interval: interval,
+    startWeekDay: startWeekDay
+  })),
+      _React$useState2 = _slicedToArray(_React$useState, 2),
+      workingTimeActual = _React$useState2[0],
+      setActualWorkingTime = _React$useState2[1];
+
+  React.useEffect(function () {
+    setActualWorkingTime(weekPrepare({
+      workingTimeIntervals: workingTimeIntervals,
+      customTimeIntervals: customTimeIntervals,
+      bookedTime: bookedTime,
+      curentDay: curentDay,
+      interval: interval,
+      startWeekDay: startWeekDay
+    }));
+  }, [curentDay, bookedTime, startWeekDay, interval, customTimeIntervals, workingTimeIntervals]);
+  return getBookingTime({
+    interval: interval,
+    startTime: startTime,
+    startWeekDay: startWeekDay,
+    bookedTime: workingTimeActual.map(function (i) {
+      return i.bookedTimePeriods;
+    })
+  });
+};
+
+var weekPrepare = function weekPrepare(_ref2) {
+  var workingTimeIntervals = _ref2.workingTimeIntervals,
+      customTimeIntervals = _ref2.customTimeIntervals,
+      bookedTime = _ref2.bookedTime,
+      curentDay = _ref2.curentDay,
+      interval = _ref2.interval,
+      startWeekDay = _ref2.startWeekDay;
   var arr = new Array(7);
   return arr.fill(1).map(function (item, index) {
     var day = new Date(curentDay);
@@ -66,112 +108,127 @@ var weekPrepare = function weekPrepare(_ref) {
   });
 };
 
-var CustomWorkingTimeSelect = function CustomWorkingTimeSelect(_ref2) {
-  var _ref2$onChange = _ref2.onChange,
-      onChange = _ref2$onChange === void 0 ? function () {} : _ref2$onChange,
-      workingTimeIntervals = _ref2.workingTimeIntervals,
-      customTimeIntervals = _ref2.customTimeIntervals,
-      bookedTime = _ref2.bookedTime,
-      _ref2$isMobile = _ref2.isMobile,
-      isMobile = _ref2$isMobile === void 0 ? false : _ref2$isMobile,
-      _ref2$selectedTimeTex = _ref2.selectedTimeText,
-      selectedTimeText = _ref2$selectedTimeTex === void 0 ? '' : _ref2$selectedTimeTex,
-      startTime = _ref2.startTime,
-      endTime = _ref2.endTime,
-      interval = _ref2.interval,
-      startWeekDay = _ref2.startWeekDay,
-      curentDayDefault = _ref2.curentDay;
+var CustomWorkingTimeSelect = function CustomWorkingTimeSelect(_ref3) {
+  var _ref3$onChange = _ref3.onChange,
+      onChange = _ref3$onChange === void 0 ? function () {} : _ref3$onChange,
+      workingTimeIntervals = _ref3.workingTimeIntervals,
+      customTimeIntervals = _ref3.customTimeIntervals,
+      bookedTime = _ref3.bookedTime,
+      _ref3$isMobile = _ref3.isMobile,
+      isMobile = _ref3$isMobile === void 0 ? false : _ref3$isMobile,
+      _ref3$selectedTimeTex = _ref3.selectedTimeText,
+      selectedTimeText = _ref3$selectedTimeTex === void 0 ? '' : _ref3$selectedTimeTex,
+      startTime = _ref3.startTime,
+      endTime = _ref3.endTime,
+      _ref3$disableSelectBe = _ref3.disableSelectBeforeDate,
+      disableSelectBeforeDate = _ref3$disableSelectBe === void 0 ? new Date() : _ref3$disableSelectBe,
+      interval = _ref3.interval,
+      startWeekDay = _ref3.startWeekDay,
+      curentDayDefault = _ref3.curentDay;
 
-  var selectedTime = _toConsumableArray(recoveryWorkingTimeIntervals({
+  //used for show working time
+  var _React$useState3 = React.useState(_toConsumableArray(recoveryWorkingTimeIntervals({
     data: workingTimeIntervals,
     startTime: startTime,
     interval: interval,
     startWeekDay: startWeekDay
-  }));
+  }))),
+      _React$useState4 = _slicedToArray(_React$useState3, 1),
+      workingTime = _React$useState4[0];
 
-  var _React$useState = React.useState(curentDayDefault),
-      _React$useState2 = _slicedToArray(_React$useState, 2),
-      curentDay = _React$useState2[0],
-      setCurentDay = _React$useState2[1];
+  var _React$useState5 = React.useState(curentDayDefault),
+      _React$useState6 = _slicedToArray(_React$useState5, 2),
+      curentDay = _React$useState6[0],
+      setCurentDay = _React$useState6[1];
 
-  var _React$useState3 = React.useState([]),
-      _React$useState4 = _slicedToArray(_React$useState3, 2),
-      selectedCell = _React$useState4[0],
-      setSelected = _React$useState4[1];
+  var _React$useState7 = React.useState(_toConsumableArray(convertCustomTimeToColRowObj({
+    interval: interval,
+    startTime: startTime,
+    startWeekDay: startWeekDay,
+    customTimeIntervals: customTimeIntervals
+  }))),
+      _React$useState8 = _slicedToArray(_React$useState7, 2),
+      selectedCell = _React$useState8[0],
+      setSelectedCell = _React$useState8[1];
 
-  var _React$useState5 = React.useState(weekPrepare({
+  var bookedTimePrepared = useBookedTimeHook({
     workingTimeIntervals: workingTimeIntervals,
     customTimeIntervals: customTimeIntervals,
     bookedTime: bookedTime,
     curentDay: curentDay,
     interval: interval,
-    startWeekDay: startWeekDay
-  })),
-      _React$useState6 = _slicedToArray(_React$useState5, 2),
-      workingTimeActual = _React$useState6[0],
-      setActualWorkingTime = _React$useState6[1];
-
-  console.log(workingTimeActual);
-  var bookedTimePrepared = getBookingTime({
-    interval: interval,
-    startTime: startTime,
     startWeekDay: startWeekDay,
-    bookedTime: workingTimeActual.map(function (i) {
-      return i.bookedTimePeriods;
-    })
+    startTime: startTime
   });
   React.useEffect(function () {
-    setSelected([]);
+    setSelectedCell([]);
   }, [startWeekDay, interval]);
   React.useEffect(function () {
     onChange(convertColRowToCustomTime({
       data: selectedCell,
       interval: interval,
       startTime: startTime,
-      startWeekDay: startWeekDay
+      startWeekDay: startWeekDay,
+      disableSelectBeforeDate: disableSelectBeforeDate
     }));
   }, [selectedCell]);
   React.useEffect(function () {
-    setActualWorkingTime(weekPrepare({
-      workingTimeIntervals: workingTimeIntervals,
-      customTimeIntervals: customTimeIntervals,
-      bookedTime: bookedTime,
-      curentDay: curentDay,
+    setSelectedCell(_toConsumableArray(convertCustomTimeToColRowObj({
       interval: interval,
-      startWeekDay: startWeekDay
-    }));
-  }, [curentDay, startWeekDay, interval, customTimeIntervals]);
+      startTime: startTime,
+      startWeekDay: startWeekDay,
+      customTimeIntervals: customTimeIntervals
+    })));
+  }, [startWeekDay, interval, customTimeIntervals]);
 
   var onSelect = function onSelect(selected) {
     var filtered = selectedCell.filter(function (item) {
+      var day = new Date(item.curentDay);
+      day.setDate(day.getDate() - day.getDay() + startWeekDay);
+      day.setHours(0);
+      day.setMinutes(0);
+      day.setSeconds(0);
+      day.setMilliseconds(0);
+      var startWeekDayMS = day.valueOf();
       return !selected.find(function (i) {
-        return i.col === item.col && i.row === item.row && curentDay.valueOf() === item.curentDay;
+        return i.col === item.col && i.row === item.row && curentDay.valueOf() >= startWeekDayMS && curentDay.valueOf() < startWeekDayMS + 7 * DAY_MS;
       });
     });
-    setSelected(filtered.length !== selectedCell.length ? _toConsumableArray(filtered) : [].concat(_toConsumableArray(selectedCell), _toConsumableArray(selected.filter(function (item) {
-      return !bookedTimePrepared.find(function (i) {
-        return i.col === item.col && i.row === item.row;
-      });
-    }).map(function (item) {
-      return _objectSpread({}, item, {
-        curentDay: curentDay.valueOf(),
-        disabled: Boolean(selectedTime.find(function (i) {
-          return i.col == item.col && item.row == i.row;
-        }))
-      });
-    }))));
+
+    if (filtered.length !== selectedCell.length) {
+      setSelectedCell(_toConsumableArray(filtered));
+    } else {
+      var cells = [].concat(_toConsumableArray(selectedCell), _toConsumableArray(selected.filter(function (item) {
+        return !bookedTimePrepared.find(function (i) {
+          return i.col === item.col && i.row === item.row;
+        });
+      }).map(function (item) {
+        return _objectSpread({}, item, {
+          curentDay: curentDay.valueOf(),
+          disabled: Boolean(workingTime.find(function (i) {
+            return i.col == item.col && item.row == i.row;
+          }))
+        });
+      })));
+      setSelectedCell(disableSelectBeforeDate ? cells.filter(function (item) {
+        return disableSelectBeforeDate < getRealDateByColRowObj({
+          item: item,
+          startWeekDay: startWeekDay,
+          interval: interval,
+          startTime: startTime
+        });
+      }) : cells);
+    }
   };
 
   var onClear = function onClear(col) {
     // BUG:  need change algorithm for clean/ now cleaned for all dated in this column
-    setSelected(_toConsumableArray(selectedCell.filter(function (i) {
+    setSelectedCell(_toConsumableArray(selectedCell.filter(function (i) {
       return i.col !== col;
     })));
   };
 
   return React.createElement("div", null, React.createElement("div", {
-    className: style.title
-  }, "\u0423\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u0435 \u043F\u043E\u0434\u0445\u043E\u0434\u044F\u0449\u0435\u0435 \u0434\u043B\u044F \u0432\u0430\u0441 \u0432\u0440\u0435\u043C\u044F"), React.createElement("div", {
     className: style.resultContainer
   }, React.createElement(Days, {
     startWeekDay: startWeekDay,
@@ -180,7 +237,7 @@ var CustomWorkingTimeSelect = function CustomWorkingTimeSelect(_ref2) {
   })), React.createElement(Grid, {
     isMobile: isMobile,
     className: style.gridContainer,
-    cols: 8,
+    cols: 9,
     rows: Math.ceil((endTime - startTime) / interval + 1),
     selectFromCol: 1,
     selectToCol: 7,
@@ -190,10 +247,20 @@ var CustomWorkingTimeSelect = function CustomWorkingTimeSelect(_ref2) {
       return row === 0 ? style.firstRow : '';
     },
     setColStyle: function setColStyle(col) {
-      return col === 0 ? style.firstColumn : '';
+      switch (col) {
+        case 0:
+          return style.firstColumn;
+
+        case 8:
+          return style.lastColumn;
+
+        default:
+          return '';
+      }
     },
     cellProps: {
       children: React.createElement(Cell, {
+        setCurentDay: setCurentDay,
         startTime: startTime,
         startWeekDay: startWeekDay,
         endTime: endTime,
@@ -206,7 +273,7 @@ var CustomWorkingTimeSelect = function CustomWorkingTimeSelect(_ref2) {
         bookedTime: bookedTimePrepared
       })
     },
-    selected: selectedTime,
+    selected: workingTime,
     onSelect: onSelect
   }));
 };
@@ -219,7 +286,11 @@ CustomWorkingTimeSelect.propTypes = {
   endTime: PropTypes.number,
   startWeekDay: PropTypes.number,
   interval: PropTypes.number,
-  workingTimeIntervals: PropTypes.object
+  workingTimeIntervals: PropTypes.object,
+  customTimeIntervals: PropTypes.object,
+  bookedTime: PropTypes.array,
+  curentDay: PropTypes.instanceOf(Date),
+  disableSelectBeforeDate: PropTypes.instanceOf(Date)
 };
 CustomWorkingTimeSelect.defaultProps = {
   workingTime: [],

@@ -21,7 +21,7 @@ const [y, setY] = React.useState(60);
         isMobile
         startWeekDay={parseInt(x)}
         interval={y}
-        startTime={300}
+        startTime={0}
         workingTimeIntervals={{
             mon: [{ start: '02:00:00', end: '07:30:00' }],
             tue: [{ start: '04:00:00', end: '08:00:00' }, { start: '10:00:00', end: '14:00:00' }],

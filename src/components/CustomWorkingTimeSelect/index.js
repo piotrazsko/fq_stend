@@ -207,7 +207,6 @@ const CustomWorkingTimeSelect = ({
     };
     return (
         <div>
-            <div className={style.title}>Установите подходящее для вас время</div>
             <div className={style.resultContainer}>
                 <Days
                     startWeekDay={startWeekDay}
@@ -215,6 +214,7 @@ const CustomWorkingTimeSelect = ({
                     setCurentDay={setCurentDay}
                 />
             </div>
+
             <Grid
                 isMobile={isMobile}
                 className={style.gridContainer}
@@ -228,11 +228,19 @@ const CustomWorkingTimeSelect = ({
                     return row === 0 ? style.firstRow : '';
                 }}
                 setColStyle={col => {
-                    return col === 0 ? style.firstColumn : '';
+                    switch (col) {
+                        case 0:
+                            return style.firstColumn;
+                        case 8:
+                            return style.lastColumn;
+                        default:
+                            return '';
+                    }
                 }}
                 cellProps={{
                     children: (
                         <Cell
+                            setCurentDay={setCurentDay}
                             startTime={startTime}
                             startWeekDay={startWeekDay}
                             endTime={endTime}

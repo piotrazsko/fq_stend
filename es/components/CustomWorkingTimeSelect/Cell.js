@@ -13,6 +13,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import { IconButton } from '@material-ui/core';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
+import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import { WEEKDAYS_LONG, WEEKDAYS_SHORT } from '../../helpers/calendar';
 var style = {
   "title": "style-module_fq_title___1dUq-",
@@ -24,6 +25,7 @@ var style = {
   "gridContainer": "style-module_fq_gridContainer___1tkST",
   "firstRow": "style-module_fq_firstRow___lFQL8",
   "firstColumn": "style-module_fq_firstColumn___2NXDm",
+  "lastColumn": "style-module_fq_lastColumn___crCtl",
   "cellCustomDay": "style-module_fq_cellCustomDay___2YUDD",
   "cellCustomDayDisabled": "style-module_fq_cellCustomDayDisabled___2lO-G",
   "reservedTime": "style-module_fq_reservedTime___2amMA"
@@ -46,7 +48,8 @@ var Cell = function Cell(_ref) {
       onClear = _ref$onClear === void 0 ? function () {} : _ref$onClear,
       _ref$selectedTimeText = _ref.selectedTimeText,
       selectedTimeText = _ref$selectedTimeText === void 0 ? '' : _ref$selectedTimeText,
-      bookedTime = _ref.bookedTime;
+      bookedTime = _ref.bookedTime,
+      setCurentDay = _ref.setCurentDay;
 
   var _React$useState = React.useState(null),
       _React$useState2 = _slicedToArray(_React$useState, 2),
@@ -102,7 +105,7 @@ var Cell = function Cell(_ref) {
         }, _child);
       }
 
-    case col === 0 && row > 0:
+    case col === 0 && row > 0 || col === 8 && row > 0:
       {
         var _time2 = startTime + (row - 1) * interval;
 
@@ -113,7 +116,36 @@ var Cell = function Cell(_ref) {
         }, "".concat(Math.floor(_time2 / 60), ":").concat(_minutes2.length === 1 ? '0' + _minutes2 : _minutes2));
       }
 
-    case col > 0 && row === 0:
+    case col === 8 && row == 0:
+      {
+        return React.createElement(IconButton, {
+          onClick: function onClick() {
+            setCurentDay(new Date(curentDay.valueOf() + 7 * DAY_MS));
+          }
+        }, React.createElement(ArrowForwardIosIcon, {
+          style: {
+            fontSize: 20
+          },
+          htmlColor: "#000"
+        }));
+      }
+
+    case col === 0 && row == 0:
+      {
+        return React.createElement(IconButton, {
+          onClick: function onClick() {
+            setCurentDay(new Date(curentDay.valueOf() - 7 * DAY_MS));
+          }
+        }, React.createElement(ArrowForwardIosIcon, {
+          htmlColor: "#000",
+          style: {
+            transform: 'rotate(180deg)',
+            fontSize: 20
+          }
+        }));
+      }
+
+    case col > 0 && row === 0 && col < 8:
       {
         var dayOfWeek = (col - 1 + startWeekDay) % 7;
         var date = new Date(curentDay);
@@ -167,6 +199,7 @@ Cell.propTypes = {
     curentDay: PropTypes.number
   }),
   bookedTime: PropTypes.array,
-  startWeekDay: PropTypes.number
+  startWeekDay: PropTypes.number,
+  setCurentDay: PropTypes.func.isRequired
 };
 export default Cell;
