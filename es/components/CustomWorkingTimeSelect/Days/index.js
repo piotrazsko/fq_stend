@@ -1,17 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import moment from 'moment';
-import get from 'lodash/get';
-import { WEEKDAYS_SHORT, MONTHS, WEEKDAYS_ENG_RUS, getWorkPeriodsOfDay } from '../../../helpers/calendar';
-var style = {
-  "dateContainer": "style-module_fq_dateContainer___2sn37",
-  "weekDay": "style-module_fq_weekDay___2M2c4",
-  "monthDay": "style-module_fq_monthDay___39Knp",
-  "beforToday": "style-module_fq_beforToday___UkYxx",
-  "firstLastColumn": "style-module_fq_firstLastColumn___Edz_B"
-};
-import { Paper, IconButton, Button } from '@material-ui/core';
+import { MONTHS } from '../../../helpers/calendar';
+import { IconButton } from '@material-ui/core';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
+var style = {
+  "monthTitle": "style-module_fq_monthTitle___12gCN",
+  "month": "style-module_fq_month___1y-pd",
+  "year": "style-module_fq_year___1Q8No",
+  "buttons": "style-module_fq_buttons___1jN5f"
+};
 var DAY_MS = 60 * 1000 * 60 * 24;
 
 var getPrevMonth = function getPrevMonth(curentDay) {
@@ -28,8 +25,7 @@ var getNextMonth = function getNextMonth(curentDay) {
 
 var Days = function Days(_ref) {
   var curentDay = _ref.curentDay,
-      setCurentDay = _ref.setCurentDay,
-      changeCurentDay = _ref.changeCurentDay;
+      setCurentDay = _ref.setCurentDay;
   var firstDayMs = curentDay.valueOf() - curentDay.getDay() * DAY_MS;
   return React.createElement(React.Fragment, null, React.createElement("div", {
     className: style.monthTitle
@@ -60,32 +56,11 @@ var Days = function Days(_ref) {
       fontSize: 18
     },
     htmlColor: "#000"
-  })), React.createElement(IconButton, {
-    onClick: function onClick() {
-      setCurentDay(new Date(curentDay.valueOf() - 7 * DAY_MS));
-    }
-  }, React.createElement(ArrowForwardIosIcon, {
-    htmlColor: "#000",
-    style: {
-      transform: 'rotate(180deg)',
-      fontSize: 20
-    }
-  })), "WEEK", React.createElement(IconButton, {
-    onClick: function onClick() {
-      setCurentDay(new Date(curentDay.valueOf() + 7 * DAY_MS));
-    }
-  }, React.createElement(ArrowForwardIosIcon, {
-    style: {
-      fontSize: 20
-    },
-    htmlColor: "#000"
   })))));
 };
 
 Days.propTypes = {
-  selectedTime: PropTypes.array,
-  interval: PropTypes.number,
-  startTime: PropTypes.number,
-  startWeekDay: PropTypes.number
+  curentDay: PropTypes.instanceOf(Date),
+  setCurentDay: PropTypes.func.isRequired
 };
 export default Days;

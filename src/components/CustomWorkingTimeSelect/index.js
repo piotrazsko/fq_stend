@@ -8,8 +8,10 @@ import {
     recoveryWorkingTimeIntervals,
     workingTimePrepare,
     getDataForSelectedDate,
-    prepareCustomTimeIntervals,
+    convertColRowToCustomTime,
+    convertCustomTimeToColRowObj,
     getBookingTime,
+    getRealDateByColRowObj,
 } from './utils';
 import style from './style.module.scss';
 
@@ -18,6 +20,45 @@ today.setHours(0);
 today.setMinutes(0);
 today.setSeconds(0);
 const DAY_MS = 60 * 1000 * 60 * 24;
+
+const useBookedTimeHook = ({
+    workingTimeIntervals,
+    customTimeIntervals,
+    bookedTime,
+    curentDay,
+    interval,
+    startWeekDay,
+    startTime,
+}) => {
+    const [workingTimeActual, setActualWorkingTime] = React.useState(
+        weekPrepare({
+            workingTimeIntervals,
+            customTimeIntervals,
+            bookedTime,
+            curentDay,
+            interval,
+            startWeekDay,
+        })
+    );
+    React.useEffect(() => {
+        setActualWorkingTime(
+            weekPrepare({
+                workingTimeIntervals,
+                customTimeIntervals,
+                bookedTime,
+                curentDay,
+                interval,
+                startWeekDay,
+            })
+        );
+    }, [curentDay, bookedTime, startWeekDay, interval, customTimeIntervals, workingTimeIntervals]);
+    return getBookingTime({
+        interval,
+        startTime,
+        startWeekDay,
+        bookedTime: workingTimeActual.map(i => i.bookedTimePeriods),
+    });
+};
 
 const weekPrepare = ({
     workingTimeIntervals,
@@ -51,97 +92,121 @@ const CustomWorkingTimeSelect = ({
     selectedTimeText = '',
     startTime,
     endTime,
+    disableSelectBeforeDate = new Date(),
     interval,
     startWeekDay,
     curentDay: curentDayDefault,
 }) => {
-    const selectedTime = [
+    //used for show working time
+    const [workingTime] = React.useState([
         ...recoveryWorkingTimeIntervals({
             data: workingTimeIntervals,
             startTime,
             interval,
             startWeekDay,
         }),
-    ];
+    ]);
     const [curentDay, setCurentDay] = React.useState(curentDayDefault);
-    const [selectedCell, setSelected] = React.useState([]);
-    const [workingTimeActual, setActualWorkingTime] = React.useState(
-        weekPrepare({
-            workingTimeIntervals,
-            customTimeIntervals,
-            bookedTime,
-            curentDay,
+
+    const [selectedCell, setSelectedCell] = React.useState([
+        ...convertCustomTimeToColRowObj({
             interval,
+            startTime,
             startWeekDay,
-        })
-    );
-    console.log(workingTimeActual);
-    const bookedTimePrepared = getBookingTime({
+            customTimeIntervals,
+        }),
+    ]);
+
+    const bookedTimePrepared = useBookedTimeHook({
+        workingTimeIntervals,
+        customTimeIntervals,
+        bookedTime,
+        curentDay,
         interval,
-        startTime,
         startWeekDay,
-        bookedTime: workingTimeActual.map(i => i.bookedTimePeriods),
+        startTime,
     });
     React.useEffect(() => {
-        setSelected([]);
+        setSelectedCell([]);
     }, [startWeekDay, interval]);
+
     React.useEffect(() => {
         onChange(
-            prepareCustomTimeIntervals({ data: selectedCell, interval, startTime, startWeekDay })
+            convertColRowToCustomTime({
+                data: selectedCell,
+                interval,
+                startTime,
+                startWeekDay,
+                disableSelectBeforeDate,
+            })
         );
     }, [selectedCell]);
 
     React.useEffect(() => {
-        setActualWorkingTime(
-            weekPrepare({
-                workingTimeIntervals,
-                customTimeIntervals,
-                bookedTime,
-                curentDay,
+        setSelectedCell([
+            ...convertCustomTimeToColRowObj({
                 interval,
+                startTime,
                 startWeekDay,
-            })
-        );
-    }, [curentDay, startWeekDay, interval, customTimeIntervals]);
+                customTimeIntervals,
+            }),
+        ]);
+    }, [startWeekDay, interval, customTimeIntervals]);
 
     const onSelect = selected => {
         const filtered = selectedCell.filter(item => {
+            const day = new Date(item.curentDay);
+            day.setDate(day.getDate() - day.getDay() + startWeekDay);
+            day.setHours(0);
+            day.setMinutes(0);
+            day.setSeconds(0);
+            day.setMilliseconds(0);
+            const startWeekDayMS = day.valueOf();
             return !selected.find(
                 i =>
                     i.col === item.col &&
                     i.row === item.row &&
-                    curentDay.valueOf() === item.curentDay
+                    curentDay.valueOf() >= startWeekDayMS &&
+                    curentDay.valueOf() < startWeekDayMS + 7 * DAY_MS
             );
         });
+        if (filtered.length !== selectedCell.length) {
+            setSelectedCell([...filtered]);
+        } else {
+            const cells = [
+                ...selectedCell,
+                ...selected
+                    .filter(item => {
+                        return !bookedTimePrepared.find(
+                            i => i.col === item.col && i.row === item.row
+                        );
+                    })
+                    .map(item => ({
+                        ...item,
+                        curentDay: curentDay.valueOf(),
+                        disabled: Boolean(
+                            workingTime.find(i => i.col == item.col && item.row == i.row)
+                        ),
+                    })),
+            ];
 
-        setSelected(
-            filtered.length !== selectedCell.length
-                ? [...filtered]
-                : [
-                      ...selectedCell,
-                      ...selected
-                          .filter(item => {
-                              return !bookedTimePrepared.find(
-                                  i => i.col === item.col && i.row === item.row
-                              );
-                          })
-                          .map(item => ({
-                              ...item,
-                              curentDay: curentDay.valueOf(),
-                              disabled: Boolean(
-                                  selectedTime.find(i => i.col == item.col && item.row == i.row)
-                              ),
-                          })),
-                  ]
-        );
+            setSelectedCell(
+                disableSelectBeforeDate
+                    ? cells.filter(
+                          item =>
+                              disableSelectBeforeDate <
+                              getRealDateByColRowObj({ item, startWeekDay, interval, startTime })
+                      )
+                    : cells
+            );
+        }
     };
     const onClear = col => {
         // BUG:  need change algorithm for clean/ now cleaned for all dated in this column
-        setSelected([...selectedCell.filter(i => i.col !== col)]);
+        setSelectedCell([...selectedCell.filter(i => i.col !== col)]);
     };
     return (
         <div>
-            <div className={style.title}>Установите подходящее для вас время</div>
             <div className={style.resultContainer}>
                 <Days
                     startWeekDay={startWeekDay}
@@ -149,10 +214,11 @@ const CustomWorkingTimeSelect = ({
                     setCurentDay={setCurentDay}
                 />
             </div>
+
             <Grid
                 isMobile={isMobile}
                 className={style.gridContainer}
-                cols={8}
+                cols={9}
                 rows={Math.ceil((endTime - startTime) / interval + 1)}
                 selectFromCol={1}
                 selectToCol={7}
@@ -162,11 +228,19 @@ const CustomWorkingTimeSelect = ({
                     return row === 0 ? style.firstRow : '';
                 }}
                 setColStyle={col => {
-                    return col === 0 ? style.firstColumn : '';
+                    switch (col) {
+                        case 0:
+                            return style.firstColumn;
+                        case 8:
+                            return style.lastColumn;
+                        default:
+                            return '';
+                    }
                 }}
                 cellProps={{
                     children: (
                         <Cell
+                            setCurentDay={setCurentDay}
                             startTime={startTime}
                             startWeekDay={startWeekDay}
                             endTime={endTime}
@@ -180,7 +254,7 @@ const CustomWorkingTimeSelect = ({
                         />
                     ),
                 }}
-                selected={selectedTime}
+                selected={workingTime}
                 onSelect={onSelect}
             />
         </div>
@@ -196,6 +270,10 @@ CustomWorkingTimeSelect.propTypes = {
     startWeekDay: PropTypes.number,
     interval: PropTypes.number,
     workingTimeIntervals: PropTypes.object,
+    customTimeIntervals: PropTypes.object,
+    bookedTime: PropTypes.array,
+    curentDay: PropTypes.instanceOf(Date),
+    disableSelectBeforeDate: PropTypes.instanceOf(Date),
 };
 CustomWorkingTimeSelect.defaultProps = {
     workingTime: [],

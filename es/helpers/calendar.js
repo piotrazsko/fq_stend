@@ -220,7 +220,7 @@ export var formatHours = function formatHours(row, interval, startTime) {
   var minutes = ((startTime + interval * (row - 1)) % 60).toString();
   return "".concat(hour.toString().length < 2 ? "0".concat(hour) : hour, ":").concat(minutes.length === 1 ? '0' + minutes : minutes);
 };
-export var getObjectOfPeriods = function getObjectOfPeriods(dayData, interval, startTime) {
+export var getObjectOfPeriods = function getObjectOfPeriods(dayData) {
   return _reduce(dayData, function (memo, row) {
     var formatedHours = _parseInt(row);
 
@@ -251,13 +251,11 @@ export var getWorkPeriodsOfDay = function getWorkPeriodsOfDay(dayData, interval,
 
   return formatedPeriods.join(' / ');
 };
-
-var strPrepare = function strPrepare(min) {
+export var strPrepare = function strPrepare(min) {
   var hours = Math.floor(min / 60).toString();
   var mins = (min % 60).toString();
   return "".concat(hours.length == 1 ? '0' + hours : hours, ":").concat(mins.length == 1 ? '0' + mins : mins);
 };
-
 export var prepareWorkingTimeIntervals = function prepareWorkingTimeIntervals(_ref) {
   var _ref$startWeekDay = _ref.startWeekDay,
       startWeekDay = _ref$startWeekDay === void 0 ? 1 : _ref$startWeekDay,
@@ -343,60 +341,5 @@ export var recoveryWorkingTimeIntervals = function recoveryWorkingTimeIntervals(
     }
   }
 
-  return res;
-};
-export var prepareCustomTimeIntervals = function prepareCustomTimeIntervals(_ref3) {
-  var data = _ref3.data,
-      interval = _ref3.interval,
-      startTime = _ref3.startTime,
-      startWeekDay = _ref3.startWeekDay;
-  var dataWithPreparedDate = data.map(function (item) {
-    var date = new Date(item.curentDay);
-    var dayOfWeek = date.getDay();
-    var curentDayCol = dayOfWeek + 1 - startWeekDay;
-    return _objectSpread({}, item, {
-      curentDay: new Date(item.curentDay - (curentDayCol - item.col) * DAY_MS)
-    });
-  }).sort(function (a, b) {
-    return a.curentDay.valueOf() - b.curentDay.valueOf();
-  });
-  var enabled = dataWithPreparedDate.filter(function (item) {
-    return !item.disabled;
-  });
-  var disabled = dataWithPreparedDate.filter(function (item) {
-    return item.disabled;
-  });
-  var res = {
-    enabled: [],
-    disabled: []
-  };
-
-  var getPeriods = function getPeriods(data, interval, startTime) {
-    var map = new Map();
-    var res = [];
-    data.forEach(function (item) {
-      var arr = map.get(item.curentDay.valueOf());
-      map.set(item.curentDay.valueOf(), [].concat(_toConsumableArray(Array.isArray(arr) ? arr : []), [item]));
-    });
-    map.forEach(function (item, index) {
-      getObjectOfPeriods(item.map(function (i) {
-        return i.row - 1;
-      }).sort(function (a, b) {
-        return a - b;
-      })).forEach(function (i) {
-        var day = new Date(index);
-        var start = "".concat(moment(day).format('YYYY-MM-DD'), " ").concat(strPrepare(i.from * interval + startTime));
-        var end = "".concat(moment(day).format('YYYY-MM-DD'), " ").concat(strPrepare(i.to * interval + startTime));
-        res.push({
-          start: start,
-          end: end
-        });
-      });
-    });
-    return res;
-  };
-
-  res.enabled = getPeriods(enabled, interval, startTime);
-  res.disabled = getPeriods(disabled, interval, startTime);
   return res;
 };

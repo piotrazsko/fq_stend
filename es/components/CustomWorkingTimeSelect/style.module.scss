@@ -1,100 +1,110 @@
 .title {
-	font-family: Roboto;
-	font-size: 18px;
-	margin-left: 40px;
+    font-family: Roboto;
+    font-size: 18px;
+    margin-left: 40px;
 }
 .resultContainer {
-	margin-left: 40px;
-	min-height: 70px;
-	display: flex;
-	flex-wrap: wrap;
+    margin-left: 40px;
+    min-height: 70px;
+    display: flex;
+    flex-wrap: wrap;
 }
 .cellTime {
-	font-family: Helvetica Neue;
-	font-size: 8px;
-	color: #373737;
-	max-width: 50px;
-	user-select: none;
-	height: 100%;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	width: 100%;
+    font-family: Helvetica Neue;
+    font-size: 8px;
+    color: #373737;
+    max-width: 50px;
+    user-select: none;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
 }
 .cellDay {
-	font-family: Roboto;
-	font-size: 16px;
-	color: #000000;
-	user-select: none;
-	height: 100%;
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	padding: 5px;
-	width: 100%;
+    font-family: Roboto;
+    font-size: 16px;
+    color: #000000;
+    user-select: none;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px;
+    width: 100%;
 }
 .menuItem {
-	display: flex;
-	align-items: center;
-	width: 100%;
-	justify-content: space-between;
-	min-width: 100px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+    min-width: 100px;
 }
 .selectedCell {
-	color: #fff;
-	user-select: none;
-	font-size: 11px;
-	text-align: center;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: 100%;
-	font-family: Roboto;
+    color: #fff;
+    user-select: none;
+    font-size: 11px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    font-family: Roboto;
 }
 .gridContainer {
-	grid-template-rows: [first] 40px !important;
-	grid-template-columns: [first-row] 30px !important;
-	margin-top: 5px;
+    grid-template-rows: [first] 40px !important;
+    grid-template-columns: [first-row] 30px !important;
+    margin-top: 5px;
 }
 .firstRow {
-	grid-row-start: first !important;
-	background-color: #f8f8f8;
+    grid-row-start: first !important;
+    background-color: #f8f8f8;
 }
 .firstColumn {
-	grid-column-end: first-row !important;
-	min-width: 30px;
-	display: flex;
-	align-items: center;
-	border-top: none !important;
-	border-bottom: none !important;
+    grid-column-end: first-row !important;
+    min-width: 30px;
+    display: flex;
+    align-items: center;
+    border-top: none !important;
+    border-bottom: none !important;
 }
+.lastColumn {
+    // grid-column-end: last-row !important;
+    min-width: 30px;
+    max-width: 30px;
+    display: flex;
+    align-items: center;
+    border-top: none !important;
+    border-bottom: none !important;
+}
+
 @mixin styleCell {
-	border-radius: 5px;
-	height: 100%;
-	width: 100%;
-	color: #000;
-	font-size: 11px;
-	text-align: center;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	font-family: Roboto;
-	user-select: none;
-	min-height: 20px;
+    border-radius: 5px;
+    height: 100%;
+    width: 100%;
+    color: #000;
+    font-size: 11px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Roboto;
+    user-select: none;
+    min-height: 20px;
 }
 
 .cellCustomDay {
-	background-color: rgb(255, 190, 37);
-	@include styleCell;
+    background-color: rgb(255, 190, 37);
+    @include styleCell;
 }
 .cellCustomDayDisabled {
-	@include styleCell;
-	background-color: #9a9898;
-	color: #676767;
+    @include styleCell;
+    background-color: #9a9898;
+    color: #676767;
 }
 .reservedTime {
-	@include styleCell;
-	background-color: rgb(255, 68, 68);
-	color: #fff;
-	cursor: not-allowed;
+    @include styleCell;
+    background-color: rgb(255, 68, 68);
+    color: #fff;
+    cursor: not-allowed;
 }
