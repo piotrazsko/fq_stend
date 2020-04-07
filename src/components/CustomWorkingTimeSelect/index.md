@@ -40,7 +40,6 @@ const [z, setZ] = React.useState({
         onChange={data => {
             setZ(data);
         }}
-        isMobile
         startWeekDay={parseInt(x)}
         interval={y}
         startTime={300}

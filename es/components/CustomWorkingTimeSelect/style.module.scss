@@ -61,16 +61,16 @@
     background-color: #f8f8f8;
 }
 .firstColumn {
-    min-width: 30px;
     display: flex;
     align-items: center;
     border-top: none !important;
     border-bottom: none !important;
-    max-width: 30px;
+    max-width: 30px !important;
+    min-width: 30px !important;
 }
 .lastColumn {
-    min-width: 30px;
-    max-width: 30px;
+    min-width: 30px !important;
+    max-width: 30px !important;
     display: flex;
     align-items: center;
     border-top: none !important;
