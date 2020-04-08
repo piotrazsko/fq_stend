@@ -171,7 +171,7 @@ export var convertCustomTimeToColRowObj = function convertCustomTimeToColRowObj(
   var resPrepare = function resPrepare() {
     var arr = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
     var callback = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : function () {};
-    return arr.reduce(function (acc, item) {
+    return !Array.isArray(arr) ? [] : arr.reduce(function (acc, item) {
       var start = new Date(item.start);
       var startHour = start.getHours();
       var startMinutes = start.getMinutes();

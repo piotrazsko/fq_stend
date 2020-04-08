@@ -4,16 +4,7 @@ CustomWorkingTimeSelect example:
 const [x, setX] = React.useState(2);
 const [y, setY] = React.useState(60);
 const [z, setZ] = React.useState({
-    enabled: [
-        {
-            start: '2020-04-08 22:00:00',
-            end: '2020-04-08 24:00:00',
-        },
-        {
-            start: '2020-04-10 22:00:00',
-            end: '2020-04-10 23:00:00',
-        },
-    ],
+    enabled: null,
     disabled: [
         {
             start: '2020-04-10 05:00:00',
