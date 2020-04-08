@@ -132,27 +132,31 @@ export const convertCustomTimeToColRowObj = ({
     customTimeIntervals,
 }) => {
     const resPrepare = (arr = [], callback = () => {}) => {
-        return arr.reduce((acc, item) => {
-            const start = new Date(item.start);
-            const startHour = start.getHours();
-            const startMinutes = start.getMinutes();
-            const day = start.getDay();
-            const duration = (new Date(item.end).valueOf() - start.valueOf()) / (1000 * 60);
-            return [
-                ...acc,
-                ...new Array(Math.ceil(duration / interval)).fill('1').map((item, index) => {
-                    return {
-                        curentDay: start.valueOf(),
-                        col: ((day - startWeekDay + 7) % 7) + startCol,
-                        disabled: callback(),
-                        row:
-                            Math.floor((startHour * 60 + startMinutes - startTime) / interval) +
-                            index +
-                            1,
-                    };
-                }),
-            ];
-        }, []);
+        return !Array.isArray(arr)
+            ? []
+            : arr.reduce((acc, item) => {
+                  const start = new Date(item.start);
+                  const startHour = start.getHours();
+                  const startMinutes = start.getMinutes();
+                  const day = start.getDay();
+                  const duration = (new Date(item.end).valueOf() - start.valueOf()) / (1000 * 60);
+                  return [
+                      ...acc,
+                      ...new Array(Math.ceil(duration / interval)).fill('1').map((item, index) => {
+                          return {
+                              curentDay: start.valueOf(),
+                              col: ((day - startWeekDay + 7) % 7) + startCol,
+                              disabled: callback(),
+                              row:
+                                  Math.floor(
+                                      (startHour * 60 + startMinutes - startTime) / interval
+                                  ) +
+                                  index +
+                                  1,
+                          };
+                      }),
+                  ];
+              }, []);
     };
 
     return [
