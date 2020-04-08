@@ -36,10 +36,6 @@ const Cell = ({
         onClear(col);
         handleClose();
     };
-    const startWeekDay_ms =
-        curentDay.valueOf() - curentDay.getDay() * DAY_MS + startWeekDay * DAY_MS;
-    const endWeekDay_ms =
-        curentDay.valueOf() - curentDay.getDay() * DAY_MS + startWeekDay * DAY_MS + 7 * DAY_MS;
     switch (true) {
         case Boolean(bookedTime.find(i => i.col == col && i.row == row)):
             return <div className={style.reservedTime}>Запись</div>;
@@ -47,10 +43,7 @@ const Cell = ({
         case Boolean(
             customTimeSelectedCell.find(i => {
                 return (
-                    i.col == col &&
-                    i.row == row &&
-                    i.curentDay >= startWeekDay_ms &&
-                    i.curentDay < endWeekDay_ms
+                    i.col == col && i.row == row && i.startWeekDay.valueOf() === curentDay.valueOf()
                 );
             })
         ): {

@@ -63,6 +63,32 @@ export const getRealDateByColRowObj = ({
             (!onlyDate ? 1000 * 60 * (startTime + (item.row - rowOffset) * interval) : 0)
     );
 };
+export const getFirstWeekDayByDate = ({ date: inputDate, startWeekDay }) => {
+    const date = new Date(inputDate);
+    const dayOfWeek = date.getDay();
+    date.setHours(0);
+    date.setMinutes(0);
+    date.setSeconds(0);
+    date.setMilliseconds(0);
+    const diff = dayOfWeek - startWeekDay;
+    return new Date(date.valueOf() - (diff >= 0 ? diff : diff + 7) * DAY_MS);
+};
+export const getRealDateByColRow = ({
+    col,
+    row,
+    interval,
+    startTime,
+    rowOffset = 1,
+    colOffset = 1,
+    firstWeekDayDate,
+}) => {
+    const date =
+        firstWeekDayDate.valueOf() +
+        (col - colOffset) * DAY_MS +
+        interval * 1000 * 60 * (row - rowOffset) +
+        startTime * 60 * 1000;
+    return new Date(date);
+};
 
 export const addRealDate = ({ data, interval, startTime, startWeekDay }) =>
     data
@@ -89,7 +115,6 @@ export const getArrayOfstrDatesByColRow = ({ data, interval, startTime, startWee
         const arr = map.get(item.curentDate.valueOf());
         map.set(item.curentDate.valueOf(), [...(Array.isArray(arr) ? arr : []), item]);
     });
-    console.log(map);
     map.forEach((item, index) => {
         getObjectOfPeriods(item.map(i => i.row - 1).sort((a, b) => a - b)).forEach(i => {
             const day = new Date(index);
@@ -138,7 +163,8 @@ export const convertCustomTimeToColRowObj = ({
     interval,
     startTime,
     startWeekDay,
-    startCol = 1,
+    colOffset = 1,
+    rowOffset = 1,
     customTimeIntervals,
 }) => {
     const resPrepare = (arr = [], callback = () => {}) => {
@@ -154,15 +180,16 @@ export const convertCustomTimeToColRowObj = ({
                       ...acc,
                       ...new Array(Math.ceil(duration / interval)).fill('1').map((item, index) => {
                           return {
-                              curentDay: start.valueOf(),
-                              col: ((day - startWeekDay + 7) % 7) + startCol,
+                              itemTime: start,
+                              startWeekDay: getFirstWeekDayByDate({ date: start, startWeekDay }),
+                              col: ((day - startWeekDay + 7) % 7) + colOffset,
                               disabled: callback(),
                               row:
                                   Math.floor(
                                       (startHour * 60 + startMinutes - startTime) / interval
                                   ) +
                                   index +
-                                  1,
+                                  rowOffset,
                           };
                       }),
                   ];
