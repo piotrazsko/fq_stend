@@ -83,7 +83,7 @@ export var addRealDate = function addRealDate(_ref4) {
       startWeekDay = _ref4.startWeekDay;
   return data.map(function (item) {
     return _objectSpread({}, item, {
-      curentDayReal: getRealDateByColRowObj({
+      curentDate: getRealDateByColRowObj({
         item: item,
         interval: interval,
         startTime: startTime,
@@ -91,7 +91,7 @@ export var addRealDate = function addRealDate(_ref4) {
       })
     });
   }).sort(function (a, b) {
-    return a.curentDayReal.valueOf() - b.curentDayReal.valueOf();
+    return a.curentDate.valueOf() - b.curentDate.valueOf();
   });
 };
 export var getArrayOfstrDatesByColRow = function getArrayOfstrDatesByColRow(_ref5) {
@@ -107,8 +107,8 @@ export var getArrayOfstrDatesByColRow = function getArrayOfstrDatesByColRow(_ref
     startTime: startTime,
     startWeekDay: startWeekDay
   }).forEach(function (item) {
-    var arr = map.get(item.curentDayReal.valueOf());
-    map.set(item.curentDayReal.valueOf(), [].concat(_toConsumableArray(Array.isArray(arr) ? arr : []), [item]));
+    var arr = map.get(item.curentDate.valueOf());
+    map.set(item.curentDate.valueOf(), [].concat(_toConsumableArray(Array.isArray(arr) ? arr : []), [item]));
   });
   map.forEach(function (item, index) {
     getObjectOfPeriods(item.map(function (i) {

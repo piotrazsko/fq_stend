@@ -126,9 +126,6 @@ const CustomWorkingTimeSelect = ({
         startWeekDay,
         startTime,
     });
-    React.useEffect(() => {
-        setSelectedCell([]);
-    }, [startWeekDay, interval]);
 
     React.useEffect(() => {
         onChange(
@@ -151,7 +148,7 @@ const CustomWorkingTimeSelect = ({
                 customTimeIntervals,
             }),
         ]);
-    }, [startWeekDay, interval]);
+    }, [interval, startWeekDay]);
 
     const onSelect = selected => {
         const filtered = selectedCell.filter(item => {

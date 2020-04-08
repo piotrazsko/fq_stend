@@ -52,6 +52,7 @@ export const getRealDateByColRowObj = ({
     startWeekDay,
     rowOffset = 1,
     colOffset = 1,
+    onlyDate = true,
 }) => {
     const date = new Date(item.curentDay);
     const dayOfWeek = date.getDay();
@@ -59,7 +60,7 @@ export const getRealDateByColRowObj = ({
     return new Date(
         item.curentDay -
             (curentDayCol - item.col) * DAY_MS +
-            1000 * 60 * (startTime + (item.row - rowOffset) * interval)
+            (!onlyDate ? 1000 * 60 * (startTime + (item.row - rowOffset) * interval) : 0)
     );
 };
 
@@ -68,18 +69,27 @@ export const addRealDate = ({ data, interval, startTime, startWeekDay }) =>
         .map(item => {
             return {
                 ...item,
-                curentDayReal: getRealDateByColRowObj({ item, interval, startTime, startWeekDay }),
+                curentDate: getRealDateByColRowObj({ item, interval, startTime, startWeekDay }),
+                curentTimeReal: getRealDateByColRowObj({
+                    item,
+                    interval,
+                    startTime,
+                    startWeekDay,
+                    onlyDate: false,
+                }),
             };
         })
-        .sort((a, b) => a.curentDayReal.valueOf() - b.curentDayReal.valueOf());
+        .sort((a, b) => a.curentDate.valueOf() - b.curentDate.valueOf());
 
 export const getArrayOfstrDatesByColRow = ({ data, interval, startTime, startWeekDay }) => {
     const map = new Map();
     const res = [];
+
     addRealDate({ data, interval, startTime, startWeekDay }).forEach(item => {
-        const arr = map.get(item.curentDayReal.valueOf());
-        map.set(item.curentDayReal.valueOf(), [...(Array.isArray(arr) ? arr : []), item]);
+        const arr = map.get(item.curentDate.valueOf());
+        map.set(item.curentDate.valueOf(), [...(Array.isArray(arr) ? arr : []), item]);
     });
+    console.log(map);
     map.forEach((item, index) => {
         getObjectOfPeriods(item.map(i => i.row - 1).sort((a, b) => a - b)).forEach(i => {
             const day = new Date(index);

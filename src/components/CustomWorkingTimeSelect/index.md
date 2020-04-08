@@ -10,10 +10,6 @@ const [z, setZ] = React.useState({
             start: '2020-04-10 05:00:00',
             end: '2020-04-10 10:00:00',
         },
-        {
-            start: '2020-04-13 05:20:00',
-            end: '2020-04-13 6:00:00',
-        },
     ],
 });
 <div>
@@ -29,6 +25,7 @@ const [z, setZ] = React.useState({
     </select>
     <CustomWorkingTimeSelect
         onChange={data => {
+            console.log(data);
             setZ(data);
         }}
         startWeekDay={parseInt(x)}
