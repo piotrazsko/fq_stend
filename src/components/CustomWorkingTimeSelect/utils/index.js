@@ -52,6 +52,7 @@ export const getRealDateByColRowObj = ({
     startWeekDay,
     rowOffset = 1,
     colOffset = 1,
+    onlyDate = true,
 }) => {
     const date = new Date(item.curentDay);
     const dayOfWeek = date.getDay();
@@ -59,8 +60,34 @@ export const getRealDateByColRowObj = ({
     return new Date(
         item.curentDay -
             (curentDayCol - item.col) * DAY_MS +
-            1000 * 60 * (startTime + (item.row - rowOffset) * interval)
+            (!onlyDate ? 1000 * 60 * (startTime + (item.row - rowOffset) * interval) : 0)
     );
+};
+export const getFirstWeekDayByDate = ({ date: inputDate, startWeekDay }) => {
+    const date = new Date(inputDate);
+    const dayOfWeek = date.getDay();
+    date.setHours(0);
+    date.setMinutes(0);
+    date.setSeconds(0);
+    date.setMilliseconds(0);
+    const diff = dayOfWeek - startWeekDay;
+    return new Date(date.valueOf() - (diff >= 0 ? diff : diff + 7) * DAY_MS);
+};
+export const getRealDateByColRow = ({
+    col,
+    row,
+    interval,
+    startTime,
+    rowOffset = 1,
+    colOffset = 1,
+    firstWeekDayDate,
+}) => {
+    const date =
+        firstWeekDayDate.valueOf() +
+        (col - colOffset) * DAY_MS +
+        interval * 1000 * 60 * (row - rowOffset) +
+        startTime * 60 * 1000;
+    return new Date(date);
 };
 
 export const addRealDate = ({ data, interval, startTime, startWeekDay }) =>
@@ -68,17 +95,25 @@ export const addRealDate = ({ data, interval, startTime, startWeekDay }) =>
         .map(item => {
             return {
                 ...item,
-                curentDayReal: getRealDateByColRowObj({ item, interval, startTime, startWeekDay }),
+                curentDate: getRealDateByColRowObj({ item, interval, startTime, startWeekDay }),
+                curentTimeReal: getRealDateByColRowObj({
+                    item,
+                    interval,
+                    startTime,
+                    startWeekDay,
+                    onlyDate: false,
+                }),
             };
         })
-        .sort((a, b) => a.curentDayReal.valueOf() - b.curentDayReal.valueOf());
+        .sort((a, b) => a.curentDate.valueOf() - b.curentDate.valueOf());
 
 export const getArrayOfstrDatesByColRow = ({ data, interval, startTime, startWeekDay }) => {
     const map = new Map();
     const res = [];
-    addRealDate({ data, interval, startTime, startWeekDay }).forEach(item => {
-        const arr = map.get(item.curentDayReal.valueOf());
-        map.set(item.curentDayReal.valueOf(), [...(Array.isArray(arr) ? arr : []), item]);
+
+    data.forEach(item => {
+        const arr = map.get(item.itemTime.toDateString());
+        map.set(item.itemTime.toDateString(), [...(Array.isArray(arr) ? arr : []), item]);
     });
     map.forEach((item, index) => {
         getObjectOfPeriods(item.map(i => i.row - 1).sort((a, b) => a - b)).forEach(i => {
@@ -95,13 +130,7 @@ export const getArrayOfstrDatesByColRow = ({ data, interval, startTime, startWee
     return res;
 };
 
-export const convertColRowToCustomTime = ({
-    data = [],
-    interval,
-    startTime,
-    startWeekDay,
-    disableSelectBeforeDate = new Date(),
-}) => {
+export const convertColRowToCustomTime = ({ data = [], interval, startTime, startWeekDay }) => {
     const enabled = data.filter(item => !item.disabled);
     const disabled = data.filter(item => item.disabled);
     return {
@@ -110,17 +139,13 @@ export const convertColRowToCustomTime = ({
             interval,
             startTime,
             startWeekDay,
-        }).filter(
-            item => !disableSelectBeforeDate || new Date(item.start) > disableSelectBeforeDate
-        ),
+        }),
         disabled: getArrayOfstrDatesByColRow({
             data: disabled,
             interval,
             startTime,
             startWeekDay,
-        }).filter(
-            item => !disableSelectBeforeDate || new Date(item.start) > disableSelectBeforeDate
-        ),
+        }),
     };
 };
 
@@ -128,7 +153,8 @@ export const convertCustomTimeToColRowObj = ({
     interval,
     startTime,
     startWeekDay,
-    startCol = 1,
+    colOffset = 1,
+    rowOffset = 1,
     customTimeIntervals,
 }) => {
     const resPrepare = (arr = [], callback = () => {}) => {
@@ -144,15 +170,16 @@ export const convertCustomTimeToColRowObj = ({
                       ...acc,
                       ...new Array(Math.ceil(duration / interval)).fill('1').map((item, index) => {
                           return {
-                              curentDay: start.valueOf(),
-                              col: ((day - startWeekDay + 7) % 7) + startCol,
+                              itemTime: start,
+                              startWeekDay: getFirstWeekDayByDate({ date: start, startWeekDay }),
+                              col: ((day - startWeekDay + 7) % 7) + colOffset,
                               disabled: callback(),
                               row:
                                   Math.floor(
                                       (startHour * 60 + startMinutes - startTime) / interval
                                   ) +
                                   index +
-                                  1,
+                                  rowOffset,
                           };
                       }),
                   ];

@@ -11,7 +11,9 @@ import {
     convertColRowToCustomTime,
     convertCustomTimeToColRowObj,
     getBookingTime,
-    getRealDateByColRowObj,
+    // getRealDateByColRowObj,
+    getRealDateByColRow,
+    getFirstWeekDayByDate,
 } from './utils';
 import style from './style.module.scss';
 
@@ -106,16 +108,52 @@ const CustomWorkingTimeSelect = ({
             startWeekDay,
         }),
     ]);
-    const [curentDay, setCurentDay] = React.useState(curentDayDefault);
+
+    const [curentDay, setCurentDay] = React.useState(
+        getFirstWeekDayByDate({ date: curentDayDefault, startWeekDay })
+    );
+    React.useEffect(() => {
+        const newCurentDay = getFirstWeekDayByDate({ date: curentDayDefault, startWeekDay });
+        setCurentDay(newCurentDay);
+    }, [startWeekDay]);
 
     const [selectedCell, setSelectedCell] = React.useState([
         ...convertCustomTimeToColRowObj({
             interval,
             startTime,
             startWeekDay,
+            colOffset: 1,
+            rowOffset: 1,
             customTimeIntervals,
         }),
     ]);
+    // React.useEffect(() => {
+    //     const json = JSON.stringify(
+    //         convertCustomTimeToColRowObj({
+    //             interval,
+    //             startTime,
+    //             startWeekDay,
+    //             colOffset: 1,
+    //             rowOffset: 1,
+    //             customTimeIntervals,
+    //         })
+    //     );
+    //     if (json !== JSON.stringify(selectedCell)) {
+    //         console.log(json);
+    //     }
+    // }, [customTimeIntervals]);
+    React.useEffect(() => {
+        setSelectedCell([
+            ...convertCustomTimeToColRowObj({
+                interval,
+                startTime,
+                startWeekDay,
+                colOffset: 1,
+                rowOffset: 1,
+                customTimeIntervals,
+            }),
+        ]);
+    }, [interval, startWeekDay]);
 
     const bookedTimePrepared = useBookedTimeHook({
         workingTimeIntervals,
@@ -126,9 +164,6 @@ const CustomWorkingTimeSelect = ({
         startWeekDay,
         startTime,
     });
-    React.useEffect(() => {
-        setSelectedCell([]);
-    }, [startWeekDay, interval]);
 
     React.useEffect(() => {
         onChange(
@@ -137,31 +172,13 @@ const CustomWorkingTimeSelect = ({
                 interval,
                 startTime,
                 startWeekDay,
-                disableSelectBeforeDate,
             })
         );
     }, [selectedCell]);
 
-    React.useEffect(() => {
-        setSelectedCell([
-            ...convertCustomTimeToColRowObj({
-                interval,
-                startTime,
-                startWeekDay,
-                customTimeIntervals,
-            }),
-        ]);
-    }, [startWeekDay, interval]);
-
     const onSelect = selected => {
         const filtered = selectedCell.filter(item => {
-            const day = new Date(item.curentDay);
-            day.setDate(day.getDate() - day.getDay() + startWeekDay);
-            day.setHours(0);
-            day.setMinutes(0);
-            day.setSeconds(0);
-            day.setMilliseconds(0);
-            const startWeekDayMS = day.valueOf();
+            const startWeekDayMS = item.startWeekDay.valueOf();
             return !selected.find(
                 i =>
                     i.col === item.col &&
@@ -183,20 +200,24 @@ const CustomWorkingTimeSelect = ({
                     })
                     .map(item => ({
                         ...item,
-                        curentDay: curentDay.valueOf(),
+                        startWeekDay: curentDay,
+                        itemTime: getRealDateByColRow({
+                            col: item.col,
+                            row: item.row,
+                            interval,
+                            startTime,
+                            rowOffset: 1,
+                            colOffset: 1,
+                            firstWeekDayDate: curentDay,
+                        }),
                         disabled: Boolean(
                             workingTime.find(i => i.col == item.col && item.row == i.row)
                         ),
                     })),
             ];
-
             setSelectedCell(
                 disableSelectBeforeDate
-                    ? cells.filter(
-                          item =>
-                              disableSelectBeforeDate <
-                              getRealDateByColRowObj({ item, startWeekDay, interval, startTime })
-                      )
+                    ? cells.filter(i => i.itemTime > disableSelectBeforeDate)
                     : cells
             );
         }

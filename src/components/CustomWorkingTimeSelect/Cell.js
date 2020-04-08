@@ -36,24 +36,14 @@ const Cell = ({
         onClear(col);
         handleClose();
     };
-    const startWeekDay_ms =
-        curentDay.valueOf() - curentDay.getDay() * DAY_MS + startWeekDay * DAY_MS;
-    const endWeekDay_ms =
-        curentDay.valueOf() - curentDay.getDay() * DAY_MS + startWeekDay * DAY_MS + 7 * DAY_MS;
+    const cell = customTimeSelectedCell.find(i => {
+        return i.col == col && i.row == row && i.startWeekDay.valueOf() === curentDay.valueOf();
+    });
     switch (true) {
         case Boolean(bookedTime.find(i => i.col == col && i.row == row)):
             return <div className={style.reservedTime}>Запись</div>;
 
-        case Boolean(
-            customTimeSelectedCell.find(i => {
-                return (
-                    i.col == col &&
-                    i.row == row &&
-                    i.curentDay >= startWeekDay_ms &&
-                    i.curentDay < endWeekDay_ms
-                );
-            })
-        ): {
+        case Boolean(cell): {
             const time = startTime + (row - 1) * interval;
 
             const minutes = (time % 60).toString();
@@ -68,7 +58,10 @@ const Cell = ({
                           } Время выбрано`
                     : selectedTimeText;
             return (
-                <div className={isSelected ? style.cellCustomDayDisabled : style.cellCustomDay}>
+                <div
+                    date={cell.itemTime.toISOString()}
+                    className={isSelected ? style.cellCustomDayDisabled : style.cellCustomDay}
+                >
                     {child}
                 </div>
             );
