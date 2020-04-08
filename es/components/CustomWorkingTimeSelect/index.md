@@ -4,15 +4,24 @@ CustomWorkingTimeSelect example:
 const [x, setX] = React.useState(2);
 const [y, setY] = React.useState(60);
 const [z, setZ] = React.useState({
-    enabled: null,
+    enabled: [
+        {
+            start: '2020-04-11 16:00:00',
+            end: '2020-04-11 22:00:00',
+        },
+        {
+            start: '2020-04-12 14:00:00',
+            end: '2020-04-12 22:00:00',
+        },
+        {
+            start: '2020-04-13 14:00:00',
+            end: '2020-04-13 22:00:00',
+        },
+    ],
     disabled: [
         {
             start: '2020-04-10 05:00:00',
             end: '2020-04-10 10:00:00',
-        },
-        {
-            start: '2020-04-13 05:20:00',
-            end: '2020-04-13 6:00:00',
         },
     ],
 });
@@ -21,6 +30,10 @@ const [z, setZ] = React.useState({
         <option value={0}>0</option>
         <option value={1}>1</option>
         <option value={2}>2</option>
+        <option value={3}>3</option>
+        <option value={4}>4</option>
+        <option value={5}>5</option>
+        <option value={6}>6</option>
     </select>
     <select value={y} onChange={ev => setY(ev.target.value)}>
         <option value={20}>20</option>
@@ -29,6 +42,7 @@ const [z, setZ] = React.useState({
     </select>
     <CustomWorkingTimeSelect
         onChange={data => {
+            console.log(data);
             setZ(data);
         }}
         startWeekDay={parseInt(x)}

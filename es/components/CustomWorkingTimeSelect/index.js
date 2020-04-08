@@ -25,7 +25,8 @@ import PropTypes from 'prop-types';
 import Grid from '../Grid';
 import Cell from './Cell';
 import Days from './Days';
-import { recoveryWorkingTimeIntervals, workingTimePrepare, getDataForSelectedDate, convertColRowToCustomTime, convertCustomTimeToColRowObj, getBookingTime, getRealDateByColRowObj } from './utils';
+import { recoveryWorkingTimeIntervals, workingTimePrepare, getDataForSelectedDate, convertColRowToCustomTime, convertCustomTimeToColRowObj, getBookingTime // getRealDateByColRowObj,
+, getRealDateByColRow, getFirstWeekDayByDate } from './utils';
 var style = {
   "title": "style-module_fq_title___1dUq-",
   "resultContainer": "style-module_fq_resultContainer___in4He",
@@ -136,21 +137,59 @@ var CustomWorkingTimeSelect = function CustomWorkingTimeSelect(_ref3) {
       _React$useState4 = _slicedToArray(_React$useState3, 1),
       workingTime = _React$useState4[0];
 
-  var _React$useState5 = React.useState(curentDayDefault),
+  var _React$useState5 = React.useState(getFirstWeekDayByDate({
+    date: curentDayDefault,
+    startWeekDay: startWeekDay
+  })),
       _React$useState6 = _slicedToArray(_React$useState5, 2),
       curentDay = _React$useState6[0],
       setCurentDay = _React$useState6[1];
+
+  React.useEffect(function () {
+    var newCurentDay = getFirstWeekDayByDate({
+      date: curentDayDefault,
+      startWeekDay: startWeekDay
+    });
+    setCurentDay(newCurentDay);
+  }, [startWeekDay]);
 
   var _React$useState7 = React.useState(_toConsumableArray(convertCustomTimeToColRowObj({
     interval: interval,
     startTime: startTime,
     startWeekDay: startWeekDay,
+    colOffset: 1,
+    rowOffset: 1,
     customTimeIntervals: customTimeIntervals
   }))),
       _React$useState8 = _slicedToArray(_React$useState7, 2),
       selectedCell = _React$useState8[0],
-      setSelectedCell = _React$useState8[1];
+      setSelectedCell = _React$useState8[1]; // React.useEffect(() => {
+  //     const json = JSON.stringify(
+  //         convertCustomTimeToColRowObj({
+  //             interval,
+  //             startTime,
+  //             startWeekDay,
+  //             colOffset: 1,
+  //             rowOffset: 1,
+  //             customTimeIntervals,
+  //         })
+  //     );
+  //     if (json !== JSON.stringify(selectedCell)) {
+  //         console.log(json);
+  //     }
+  // }, [customTimeIntervals]);
 
+
+  React.useEffect(function () {
+    setSelectedCell(_toConsumableArray(convertCustomTimeToColRowObj({
+      interval: interval,
+      startTime: startTime,
+      startWeekDay: startWeekDay,
+      colOffset: 1,
+      rowOffset: 1,
+      customTimeIntervals: customTimeIntervals
+    })));
+  }, [interval, startWeekDay]);
   var bookedTimePrepared = useBookedTimeHook({
     workingTimeIntervals: workingTimeIntervals,
     customTimeIntervals: customTimeIntervals,
@@ -161,35 +200,17 @@ var CustomWorkingTimeSelect = function CustomWorkingTimeSelect(_ref3) {
     startTime: startTime
   });
   React.useEffect(function () {
-    setSelectedCell([]);
-  }, [startWeekDay, interval]);
-  React.useEffect(function () {
     onChange(convertColRowToCustomTime({
       data: selectedCell,
       interval: interval,
       startTime: startTime,
-      startWeekDay: startWeekDay,
-      disableSelectBeforeDate: disableSelectBeforeDate
+      startWeekDay: startWeekDay
     }));
   }, [selectedCell]);
-  React.useEffect(function () {
-    setSelectedCell(_toConsumableArray(convertCustomTimeToColRowObj({
-      interval: interval,
-      startTime: startTime,
-      startWeekDay: startWeekDay,
-      customTimeIntervals: customTimeIntervals
-    })));
-  }, [startWeekDay, interval]);
 
   var onSelect = function onSelect(selected) {
     var filtered = selectedCell.filter(function (item) {
-      var day = new Date(item.curentDay);
-      day.setDate(day.getDate() - day.getDay() + startWeekDay);
-      day.setHours(0);
-      day.setMinutes(0);
-      day.setSeconds(0);
-      day.setMilliseconds(0);
-      var startWeekDayMS = day.valueOf();
+      var startWeekDayMS = item.startWeekDay.valueOf();
       return !selected.find(function (i) {
         return i.col === item.col && i.row === item.row && curentDay.valueOf() >= startWeekDayMS && curentDay.valueOf() < startWeekDayMS + 7 * DAY_MS;
       });
@@ -204,19 +225,23 @@ var CustomWorkingTimeSelect = function CustomWorkingTimeSelect(_ref3) {
         });
       }).map(function (item) {
         return _objectSpread({}, item, {
-          curentDay: curentDay.valueOf(),
+          startWeekDay: curentDay,
+          itemTime: getRealDateByColRow({
+            col: item.col,
+            row: item.row,
+            interval: interval,
+            startTime: startTime,
+            rowOffset: 1,
+            colOffset: 1,
+            firstWeekDayDate: curentDay
+          }),
           disabled: Boolean(workingTime.find(function (i) {
             return i.col == item.col && item.row == i.row;
           }))
         });
       })));
-      setSelectedCell(disableSelectBeforeDate ? cells.filter(function (item) {
-        return disableSelectBeforeDate < getRealDateByColRowObj({
-          item: item,
-          startWeekDay: startWeekDay,
-          interval: interval,
-          startTime: startTime
-        });
+      setSelectedCell(disableSelectBeforeDate ? cells.filter(function (i) {
+        return i.itemTime > disableSelectBeforeDate;
       }) : cells);
     }
   };

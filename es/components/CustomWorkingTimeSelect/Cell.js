@@ -69,8 +69,9 @@ var Cell = function Cell(_ref) {
     handleClose();
   };
 
-  var startWeekDay_ms = curentDay.valueOf() - curentDay.getDay() * DAY_MS + startWeekDay * DAY_MS;
-  var endWeekDay_ms = curentDay.valueOf() - curentDay.getDay() * DAY_MS + startWeekDay * DAY_MS + 7 * DAY_MS;
+  var cell = customTimeSelectedCell.find(function (i) {
+    return i.col == col && i.row == row && i.startWeekDay.valueOf() === curentDay.valueOf();
+  });
 
   switch (true) {
     case Boolean(bookedTime.find(function (i) {
@@ -80,14 +81,13 @@ var Cell = function Cell(_ref) {
         className: style.reservedTime
       }, "\u0417\u0430\u043F\u0438\u0441\u044C");
 
-    case Boolean(customTimeSelectedCell.find(function (i) {
-      return i.col == col && i.row == row && i.curentDay >= startWeekDay_ms && i.curentDay < endWeekDay_ms;
-    })):
+    case Boolean(cell):
       {
         var time = startTime + (row - 1) * interval;
         var minutes = (time % 60).toString();
         var child = typeof selectedTimeText == 'string' ? isMobile ? "".concat(Math.floor(time / 60), ":").concat(minutes.length === 1 ? '0' + minutes : minutes) : "".concat(Math.floor(time / 60), ":").concat(minutes.length === 1 ? '0' + minutes : minutes, " \u0412\u0440\u0435\u043C\u044F \u0432\u044B\u0431\u0440\u0430\u043D\u043E") : selectedTimeText;
         return React.createElement("div", {
+          date: cell.itemTime.toISOString(),
           className: isSelected ? style.cellCustomDayDisabled : style.cellCustomDay
         }, child);
       }

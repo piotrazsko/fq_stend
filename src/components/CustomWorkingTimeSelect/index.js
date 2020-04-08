@@ -127,21 +127,21 @@ const CustomWorkingTimeSelect = ({
             customTimeIntervals,
         }),
     ]);
-    React.useEffect(() => {
-        const json = JSON.stringify(
-            convertCustomTimeToColRowObj({
-                interval,
-                startTime,
-                startWeekDay,
-                colOffset: 1,
-                rowOffset: 1,
-                customTimeIntervals,
-            })
-        );
-        if (json !== JSON.stringify(selectedCell)) {
-            console.log(json);
-        }
-    }, [customTimeIntervals]);
+    // React.useEffect(() => {
+    //     const json = JSON.stringify(
+    //         convertCustomTimeToColRowObj({
+    //             interval,
+    //             startTime,
+    //             startWeekDay,
+    //             colOffset: 1,
+    //             rowOffset: 1,
+    //             customTimeIntervals,
+    //         })
+    //     );
+    //     if (json !== JSON.stringify(selectedCell)) {
+    //         console.log(json);
+    //     }
+    // }, [customTimeIntervals]);
     React.useEffect(() => {
         setSelectedCell([
             ...convertCustomTimeToColRowObj({
@@ -166,15 +166,14 @@ const CustomWorkingTimeSelect = ({
     });
 
     React.useEffect(() => {
-        // onChange(
-        //     convertColRowToCustomTime({
-        //         data: selectedCell,
-        //         interval,
-        //         startTime,
-        //         startWeekDay,
-        //         disableSelectBeforeDate,
-        //     })
-        // );
+        onChange(
+            convertColRowToCustomTime({
+                data: selectedCell,
+                interval,
+                startTime,
+                startWeekDay,
+            })
+        );
     }, [selectedCell]);
 
     const onSelect = selected => {

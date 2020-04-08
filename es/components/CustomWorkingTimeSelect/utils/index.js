@@ -70,17 +70,44 @@ export var getRealDateByColRowObj = function getRealDateByColRowObj(_ref3) {
       _ref3$rowOffset = _ref3.rowOffset,
       rowOffset = _ref3$rowOffset === void 0 ? 1 : _ref3$rowOffset,
       _ref3$colOffset = _ref3.colOffset,
-      colOffset = _ref3$colOffset === void 0 ? 1 : _ref3$colOffset;
+      colOffset = _ref3$colOffset === void 0 ? 1 : _ref3$colOffset,
+      _ref3$onlyDate = _ref3.onlyDate,
+      onlyDate = _ref3$onlyDate === void 0 ? true : _ref3$onlyDate;
   var date = new Date(item.curentDay);
   var dayOfWeek = date.getDay();
   var curentDayCol = dayOfWeek + colOffset - startWeekDay;
-  return new Date(item.curentDay - (curentDayCol - item.col) * DAY_MS + 1000 * 60 * (startTime + (item.row - rowOffset) * interval));
+  return new Date(item.curentDay - (curentDayCol - item.col) * DAY_MS + (!onlyDate ? 1000 * 60 * (startTime + (item.row - rowOffset) * interval) : 0));
 };
-export var addRealDate = function addRealDate(_ref4) {
-  var data = _ref4.data,
-      interval = _ref4.interval,
-      startTime = _ref4.startTime,
+export var getFirstWeekDayByDate = function getFirstWeekDayByDate(_ref4) {
+  var inputDate = _ref4.date,
       startWeekDay = _ref4.startWeekDay;
+  var date = new Date(inputDate);
+  var dayOfWeek = date.getDay();
+  date.setHours(0);
+  date.setMinutes(0);
+  date.setSeconds(0);
+  date.setMilliseconds(0);
+  var diff = dayOfWeek - startWeekDay;
+  return new Date(date.valueOf() - (diff >= 0 ? diff : diff + 7) * DAY_MS);
+};
+export var getRealDateByColRow = function getRealDateByColRow(_ref5) {
+  var col = _ref5.col,
+      row = _ref5.row,
+      interval = _ref5.interval,
+      startTime = _ref5.startTime,
+      _ref5$rowOffset = _ref5.rowOffset,
+      rowOffset = _ref5$rowOffset === void 0 ? 1 : _ref5$rowOffset,
+      _ref5$colOffset = _ref5.colOffset,
+      colOffset = _ref5$colOffset === void 0 ? 1 : _ref5$colOffset,
+      firstWeekDayDate = _ref5.firstWeekDayDate;
+  var date = firstWeekDayDate.valueOf() + (col - colOffset) * DAY_MS + interval * 1000 * 60 * (row - rowOffset) + startTime * 60 * 1000;
+  return new Date(date);
+};
+export var addRealDate = function addRealDate(_ref6) {
+  var data = _ref6.data,
+      interval = _ref6.interval,
+      startTime = _ref6.startTime,
+      startWeekDay = _ref6.startWeekDay;
   return data.map(function (item) {
     return _objectSpread({}, item, {
       curentDate: getRealDateByColRowObj({
@@ -88,27 +115,29 @@ export var addRealDate = function addRealDate(_ref4) {
         interval: interval,
         startTime: startTime,
         startWeekDay: startWeekDay
+      }),
+      curentTimeReal: getRealDateByColRowObj({
+        item: item,
+        interval: interval,
+        startTime: startTime,
+        startWeekDay: startWeekDay,
+        onlyDate: false
       })
     });
   }).sort(function (a, b) {
     return a.curentDate.valueOf() - b.curentDate.valueOf();
   });
 };
-export var getArrayOfstrDatesByColRow = function getArrayOfstrDatesByColRow(_ref5) {
-  var data = _ref5.data,
-      interval = _ref5.interval,
-      startTime = _ref5.startTime,
-      startWeekDay = _ref5.startWeekDay;
+export var getArrayOfstrDatesByColRow = function getArrayOfstrDatesByColRow(_ref7) {
+  var data = _ref7.data,
+      interval = _ref7.interval,
+      startTime = _ref7.startTime,
+      startWeekDay = _ref7.startWeekDay;
   var map = new Map();
   var res = [];
-  addRealDate({
-    data: data,
-    interval: interval,
-    startTime: startTime,
-    startWeekDay: startWeekDay
-  }).forEach(function (item) {
-    var arr = map.get(item.curentDate.valueOf());
-    map.set(item.curentDate.valueOf(), [].concat(_toConsumableArray(Array.isArray(arr) ? arr : []), [item]));
+  data.forEach(function (item) {
+    var arr = map.get(item.itemTime.toDateString());
+    map.set(item.itemTime.toDateString(), [].concat(_toConsumableArray(Array.isArray(arr) ? arr : []), [item]));
   });
   map.forEach(function (item, index) {
     getObjectOfPeriods(item.map(function (i) {
@@ -127,14 +156,12 @@ export var getArrayOfstrDatesByColRow = function getArrayOfstrDatesByColRow(_ref
   });
   return res;
 };
-export var convertColRowToCustomTime = function convertColRowToCustomTime(_ref6) {
-  var _ref6$data = _ref6.data,
-      data = _ref6$data === void 0 ? [] : _ref6$data,
-      interval = _ref6.interval,
-      startTime = _ref6.startTime,
-      startWeekDay = _ref6.startWeekDay,
-      _ref6$disableSelectBe = _ref6.disableSelectBeforeDate,
-      disableSelectBeforeDate = _ref6$disableSelectBe === void 0 ? new Date() : _ref6$disableSelectBe;
+export var convertColRowToCustomTime = function convertColRowToCustomTime(_ref8) {
+  var _ref8$data = _ref8.data,
+      data = _ref8$data === void 0 ? [] : _ref8$data,
+      interval = _ref8.interval,
+      startTime = _ref8.startTime,
+      startWeekDay = _ref8.startWeekDay;
   var enabled = data.filter(function (item) {
     return !item.disabled;
   });
@@ -147,26 +174,24 @@ export var convertColRowToCustomTime = function convertColRowToCustomTime(_ref6)
       interval: interval,
       startTime: startTime,
       startWeekDay: startWeekDay
-    }).filter(function (item) {
-      return !disableSelectBeforeDate || new Date(item.start) > disableSelectBeforeDate;
     }),
     disabled: getArrayOfstrDatesByColRow({
       data: disabled,
       interval: interval,
       startTime: startTime,
       startWeekDay: startWeekDay
-    }).filter(function (item) {
-      return !disableSelectBeforeDate || new Date(item.start) > disableSelectBeforeDate;
     })
   };
 };
-export var convertCustomTimeToColRowObj = function convertCustomTimeToColRowObj(_ref7) {
-  var interval = _ref7.interval,
-      startTime = _ref7.startTime,
-      startWeekDay = _ref7.startWeekDay,
-      _ref7$startCol = _ref7.startCol,
-      startCol = _ref7$startCol === void 0 ? 1 : _ref7$startCol,
-      customTimeIntervals = _ref7.customTimeIntervals;
+export var convertCustomTimeToColRowObj = function convertCustomTimeToColRowObj(_ref9) {
+  var interval = _ref9.interval,
+      startTime = _ref9.startTime,
+      startWeekDay = _ref9.startWeekDay,
+      _ref9$colOffset = _ref9.colOffset,
+      colOffset = _ref9$colOffset === void 0 ? 1 : _ref9$colOffset,
+      _ref9$rowOffset = _ref9.rowOffset,
+      rowOffset = _ref9$rowOffset === void 0 ? 1 : _ref9$rowOffset,
+      customTimeIntervals = _ref9.customTimeIntervals;
 
   var resPrepare = function resPrepare() {
     var arr = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
@@ -179,10 +204,14 @@ export var convertCustomTimeToColRowObj = function convertCustomTimeToColRowObj(
       var duration = (new Date(item.end).valueOf() - start.valueOf()) / (1000 * 60);
       return [].concat(_toConsumableArray(acc), _toConsumableArray(new Array(Math.ceil(duration / interval)).fill('1').map(function (item, index) {
         return {
-          curentDay: start.valueOf(),
-          col: (day - startWeekDay + 7) % 7 + startCol,
+          itemTime: start,
+          startWeekDay: getFirstWeekDayByDate({
+            date: start,
+            startWeekDay: startWeekDay
+          }),
+          col: (day - startWeekDay + 7) % 7 + colOffset,
           disabled: callback(),
-          row: Math.floor((startHour * 60 + startMinutes - startTime) / interval) + index + 1
+          row: Math.floor((startHour * 60 + startMinutes - startTime) / interval) + index + rowOffset
         };
       })));
     }, []);

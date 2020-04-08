@@ -111,9 +111,9 @@ export const getArrayOfstrDatesByColRow = ({ data, interval, startTime, startWee
     const map = new Map();
     const res = [];
 
-    addRealDate({ data, interval, startTime, startWeekDay }).forEach(item => {
-        const arr = map.get(item.curentDate.valueOf());
-        map.set(item.curentDate.valueOf(), [...(Array.isArray(arr) ? arr : []), item]);
+    data.forEach(item => {
+        const arr = map.get(item.itemTime.toDateString());
+        map.set(item.itemTime.toDateString(), [...(Array.isArray(arr) ? arr : []), item]);
     });
     map.forEach((item, index) => {
         getObjectOfPeriods(item.map(i => i.row - 1).sort((a, b) => a - b)).forEach(i => {
@@ -130,13 +130,7 @@ export const getArrayOfstrDatesByColRow = ({ data, interval, startTime, startWee
     return res;
 };
 
-export const convertColRowToCustomTime = ({
-    data = [],
-    interval,
-    startTime,
-    startWeekDay,
-    disableSelectBeforeDate = new Date(),
-}) => {
+export const convertColRowToCustomTime = ({ data = [], interval, startTime, startWeekDay }) => {
     const enabled = data.filter(item => !item.disabled);
     const disabled = data.filter(item => item.disabled);
     return {
@@ -145,17 +139,13 @@ export const convertColRowToCustomTime = ({
             interval,
             startTime,
             startWeekDay,
-        }).filter(
-            item => !disableSelectBeforeDate || new Date(item.start) > disableSelectBeforeDate
-        ),
+        }),
         disabled: getArrayOfstrDatesByColRow({
             data: disabled,
             interval,
             startTime,
             startWeekDay,
-        }).filter(
-            item => !disableSelectBeforeDate || new Date(item.start) > disableSelectBeforeDate
-        ),
+        }),
     };
 };
 
