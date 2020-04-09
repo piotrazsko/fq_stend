@@ -98,9 +98,10 @@ const CustomWorkingTimeSelect = ({
     interval,
     startWeekDay,
     curentDay: curentDayDefault,
+    filterOutSuspensionIntervals = true,
 }) => {
     //used for show working time
-    const [workingTime] = React.useState([
+    const [workingTime, setWorkingTime] = React.useState([
         ...recoveryWorkingTimeIntervals({
             data: workingTimeIntervals,
             startTime,
@@ -108,6 +109,16 @@ const CustomWorkingTimeSelect = ({
             startWeekDay,
         }),
     ]);
+    React.useEffect(() => {
+        setWorkingTime([
+            ...recoveryWorkingTimeIntervals({
+                data: workingTimeIntervals,
+                startTime,
+                interval,
+                startWeekDay,
+            }),
+        ]);
+    }, [interval, startWeekDay]);
 
     const [curentDay, setCurentDay] = React.useState(
         getFirstWeekDayByDate({ date: curentDayDefault, startWeekDay })
@@ -125,23 +136,16 @@ const CustomWorkingTimeSelect = ({
             colOffset: 1,
             rowOffset: 1,
             customTimeIntervals,
+        }).filter(item => {
+            if (filterOutSuspensionIntervals) {
+                const cell = workingTime.find(i => i.col == item.col && i.row == item.row);
+                const needRemove = (cell && item.enabled) || (!cell && item.disabled);
+                return !needRemove;
+            }
+
+            return true;
         }),
     ]);
-    // React.useEffect(() => {
-    //     const json = JSON.stringify(
-    //         convertCustomTimeToColRowObj({
-    //             interval,
-    //             startTime,
-    //             startWeekDay,
-    //             colOffset: 1,
-    //             rowOffset: 1,
-    //             customTimeIntervals,
-    //         })
-    //     );
-    //     if (json !== JSON.stringify(selectedCell)) {
-    //         console.log(json);
-    //     }
-    // }, [customTimeIntervals]);
     React.useEffect(() => {
         setSelectedCell([
             ...convertCustomTimeToColRowObj({
@@ -151,6 +155,14 @@ const CustomWorkingTimeSelect = ({
                 colOffset: 1,
                 rowOffset: 1,
                 customTimeIntervals,
+            }).filter(item => {
+                if (filterOutSuspensionIntervals) {
+                    const cell = workingTime.find(i => i.col == item.col && i.row == item.row);
+                    const needRemove = (cell && item.enabled) || (!cell && item.disabled);
+                    return !needRemove;
+                }
+
+                return true;
             }),
         ]);
     }, [interval, startWeekDay]);

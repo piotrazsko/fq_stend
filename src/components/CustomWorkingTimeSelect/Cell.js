@@ -57,9 +57,7 @@ const Cell = ({
                               minutes.length === 1 ? '0' + minutes : minutes
                           } Время выбрано`
                     : selectedTimeText;
-            return cell.disabled && !isSelected ? (
-                <div disabled />
-            ) : (
+            return (
                 <div
                     date={cell.itemTime.toISOString()}
                     className={isSelected ? style.cellCustomDayDisabled : style.cellCustomDay}

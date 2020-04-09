@@ -125,7 +125,9 @@ var CustomWorkingTimeSelect = function CustomWorkingTimeSelect(_ref3) {
       disableSelectBeforeDate = _ref3$disableSelectBe === void 0 ? new Date() : _ref3$disableSelectBe,
       interval = _ref3.interval,
       startWeekDay = _ref3.startWeekDay,
-      curentDayDefault = _ref3.curentDay;
+      curentDayDefault = _ref3.curentDay,
+      _ref3$filterOutSuspen = _ref3.filterOutSuspensionIntervals,
+      filterOutSuspensionIntervals = _ref3$filterOutSuspen === void 0 ? true : _ref3$filterOutSuspen;
 
   //used for show working time
   var _React$useState3 = React.useState(_toConsumableArray(recoveryWorkingTimeIntervals({
@@ -134,8 +136,18 @@ var CustomWorkingTimeSelect = function CustomWorkingTimeSelect(_ref3) {
     interval: interval,
     startWeekDay: startWeekDay
   }))),
-      _React$useState4 = _slicedToArray(_React$useState3, 1),
-      workingTime = _React$useState4[0];
+      _React$useState4 = _slicedToArray(_React$useState3, 2),
+      workingTime = _React$useState4[0],
+      setWorkingTime = _React$useState4[1];
+
+  React.useEffect(function () {
+    setWorkingTime(_toConsumableArray(recoveryWorkingTimeIntervals({
+      data: workingTimeIntervals,
+      startTime: startTime,
+      interval: interval,
+      startWeekDay: startWeekDay
+    })));
+  }, [interval, startWeekDay]);
 
   var _React$useState5 = React.useState(getFirstWeekDayByDate({
     date: curentDayDefault,
@@ -160,25 +172,20 @@ var CustomWorkingTimeSelect = function CustomWorkingTimeSelect(_ref3) {
     colOffset: 1,
     rowOffset: 1,
     customTimeIntervals: customTimeIntervals
+  }).filter(function (item) {
+    if (filterOutSuspensionIntervals) {
+      var cell = workingTime.find(function (i) {
+        return i.col == item.col && i.row == item.row;
+      });
+      var needRemove = cell && item.enabled || !cell && item.disabled;
+      return !needRemove;
+    }
+
+    return true;
   }))),
       _React$useState8 = _slicedToArray(_React$useState7, 2),
       selectedCell = _React$useState8[0],
-      setSelectedCell = _React$useState8[1]; // React.useEffect(() => {
-  //     const json = JSON.stringify(
-  //         convertCustomTimeToColRowObj({
-  //             interval,
-  //             startTime,
-  //             startWeekDay,
-  //             colOffset: 1,
-  //             rowOffset: 1,
-  //             customTimeIntervals,
-  //         })
-  //     );
-  //     if (json !== JSON.stringify(selectedCell)) {
-  //         console.log(json);
-  //     }
-  // }, [customTimeIntervals]);
-
+      setSelectedCell = _React$useState8[1];
 
   React.useEffect(function () {
     setSelectedCell(_toConsumableArray(convertCustomTimeToColRowObj({
@@ -188,6 +195,16 @@ var CustomWorkingTimeSelect = function CustomWorkingTimeSelect(_ref3) {
       colOffset: 1,
       rowOffset: 1,
       customTimeIntervals: customTimeIntervals
+    }).filter(function (item) {
+      if (filterOutSuspensionIntervals) {
+        var cell = workingTime.find(function (i) {
+          return i.col == item.col && i.row == item.row;
+        });
+        var needRemove = cell && item.enabled || !cell && item.disabled;
+        return !needRemove;
+      }
+
+      return true;
     })));
   }, [interval, startWeekDay]);
   var bookedTimePrepared = useBookedTimeHook({
