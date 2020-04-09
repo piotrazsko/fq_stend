@@ -86,7 +86,9 @@ var Cell = function Cell(_ref) {
         var time = startTime + (row - 1) * interval;
         var minutes = (time % 60).toString();
         var child = typeof selectedTimeText == 'string' ? isMobile ? "".concat(Math.floor(time / 60), ":").concat(minutes.length === 1 ? '0' + minutes : minutes) : "".concat(Math.floor(time / 60), ":").concat(minutes.length === 1 ? '0' + minutes : minutes, " \u0412\u0440\u0435\u043C\u044F \u0432\u044B\u0431\u0440\u0430\u043D\u043E") : selectedTimeText;
-        return React.createElement("div", {
+        return cell.disabled && !isSelected ? React.createElement("div", {
+          disabled: true
+        }) : React.createElement("div", {
           date: cell.itemTime.toISOString(),
           className: isSelected ? style.cellCustomDayDisabled : style.cellCustomDay
         }, child);

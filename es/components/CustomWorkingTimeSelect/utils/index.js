@@ -132,7 +132,8 @@ export var getArrayOfstrDatesByColRow = function getArrayOfstrDatesByColRow(_ref
   var data = _ref7.data,
       interval = _ref7.interval,
       startTime = _ref7.startTime,
-      startWeekDay = _ref7.startWeekDay;
+      _ref7$rowOffset = _ref7.rowOffset,
+      rowOffset = _ref7$rowOffset === void 0 ? 1 : _ref7$rowOffset;
   var map = new Map();
   var res = [];
   data.forEach(function (item) {
@@ -141,7 +142,7 @@ export var getArrayOfstrDatesByColRow = function getArrayOfstrDatesByColRow(_ref
   });
   map.forEach(function (item, index) {
     getObjectOfPeriods(item.map(function (i) {
-      return i.row - 1;
+      return i.row - rowOffset;
     }).sort(function (a, b) {
       return a - b;
     })).forEach(function (i) {

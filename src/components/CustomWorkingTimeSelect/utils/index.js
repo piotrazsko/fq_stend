@@ -107,16 +107,15 @@ export const addRealDate = ({ data, interval, startTime, startWeekDay }) =>
         })
         .sort((a, b) => a.curentDate.valueOf() - b.curentDate.valueOf());
 
-export const getArrayOfstrDatesByColRow = ({ data, interval, startTime, startWeekDay }) => {
+export const getArrayOfstrDatesByColRow = ({ data, interval, startTime, rowOffset = 1 }) => {
     const map = new Map();
     const res = [];
-
     data.forEach(item => {
         const arr = map.get(item.itemTime.toDateString());
         map.set(item.itemTime.toDateString(), [...(Array.isArray(arr) ? arr : []), item]);
     });
     map.forEach((item, index) => {
-        getObjectOfPeriods(item.map(i => i.row - 1).sort((a, b) => a - b)).forEach(i => {
+        getObjectOfPeriods(item.map(i => i.row - rowOffset).sort((a, b) => a - b)).forEach(i => {
             const day = new Date(index);
             const start = `${moment(day).format('YYYY-MM-DD')} ${strPrepare(
                 i.from * interval + startTime
