@@ -687,6 +687,9 @@ ol {
   height: 12px; }
 /*  imported from style.module.scss  */
 
+.style-module_fq_container___1dmNn {
+  font-family: Helvetica Neue, Helvatica, Roboto; }
+
 .style-module_fq_title___tFfDD {
   font-family: Roboto;
   font-size: 18px;
@@ -694,7 +697,6 @@ ol {
 
 .style-module_fq_resultContainer___10tCz {
   margin-left: 40px;
-  min-height: 70px;
   display: flex;
   flex-wrap: wrap; }
 
@@ -738,7 +740,7 @@ ol {
   justify-content: center;
   align-items: center;
   height: 100%;
-  font-family: Roboto; }
+  font-family: Helvetica Neue, Roboto; }
 
 .style-module_fq_gridContainer___2HoLV {
   grid-template-rows: [first] 40px !important;
@@ -769,7 +771,7 @@ ol {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 10.9px; }
+  font-size: 11px; }
 
 .style-module_fq_timeTag___36bYN {
   display: flex;

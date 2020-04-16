@@ -7,137 +7,142 @@ import { prepareWorkingTimeIntervals, recoveryWorkingTimeIntervals } from './uti
 import style from './style.module.scss';
 
 const WorkingTimeSelect = ({
-	workingTimeIntervals,
-	isMobile = false,
-	selectedTimeText = '',
-	startTime,
-	endTime,
-	interval,
-	startWeekDay,
-	onChange,
+    workingTimeIntervals,
+    isMobile = false,
+    selectedTimeText = '',
+    startTime,
+    endTime,
+    interval,
+    startWeekDay,
+    onChange,
 }) => {
-	const [selectedTime, selectTime] = React.useState([
-		...recoveryWorkingTimeIntervals({
-			data: workingTimeIntervals,
-			startTime,
-			interval,
-			startWeekDay,
-		}),
-	]);
-	React.useEffect(() => {
-		onChange(prepareWorkingTimeIntervals({ data: selectedTime, startTime, interval, startWeekDay }));
-	}, [selectedTime]);
+    const [selectedTime, selectTime] = React.useState([
+        ...recoveryWorkingTimeIntervals({
+            data: workingTimeIntervals,
+            startTime,
+            interval,
+            startWeekDay,
+        }),
+    ]);
+    React.useEffect(() => {
+        onChange(
+            prepareWorkingTimeIntervals({ data: selectedTime, startTime, interval, startWeekDay })
+        );
+    }, [selectedTime]);
 
-	React.useEffect(() => {
-		const workingTimePrepared = recoveryWorkingTimeIntervals({
-			data: workingTimeIntervals,
-			startTime,
-			interval,
-			startWeekDay,
-		});
-		if (
-			workingTimePrepared.length !== selectedTime.length ||
-			!workingTimePrepared.every(item =>
-				selectedTime.find(i => i.col == item.col && i.row == item.row)
-			)
-		) {
-			selectTime([...workingTimePrepared]);
-		}
-	}, [workingTimeIntervals, startWeekDay]);
+    React.useEffect(() => {
+        const workingTimePrepared = recoveryWorkingTimeIntervals({
+            data: workingTimeIntervals,
+            startTime,
+            interval,
+            startWeekDay,
+        });
+        if (
+            workingTimePrepared.length !== selectedTime.length ||
+            !workingTimePrepared.every(item =>
+                selectedTime.find(i => i.col == item.col && i.row == item.row)
+            )
+        ) {
+            selectTime([...workingTimePrepared]);
+        }
+    }, [workingTimeIntervals, startWeekDay]);
 
-	// TODO:  we can get bugs
-	React.useEffect(() => {
-		const workingTimePrepared = recoveryWorkingTimeIntervals({
-			data: workingTimeIntervals,
-			startTime,
-			interval,
-			startWeekDay,
-		});
-		selectTime([...workingTimePrepared]);
-	}, [interval]);
+    // TODO:  we can get bugs
+    React.useEffect(() => {
+        const workingTimePrepared = recoveryWorkingTimeIntervals({
+            data: workingTimeIntervals,
+            startTime,
+            interval,
+            startWeekDay,
+        });
+        selectTime([...workingTimePrepared]);
+    }, [interval]);
 
-	const onSelect = selected => {
-		if (
-			selectedTime.find(item => {
-				return selected.length > 0 && item.col === selected[0].col && item.row === selected[0].row;
-			})
-		) {
-			selectTime([
-				...selectedTime.filter(item => {
-					return !selected.find(i => item.col == i.col && item.row == i.row);
-				}),
-			]);
-		} else {
-			selectTime([...selectedTime, ...selected]);
-		}
-	};
-	const onClear = col => {
-		selectTime([...[...selectedTime].filter(item => item.col !== col)]);
-	};
+    const onSelect = selected => {
+        if (
+            selectedTime.find(item => {
+                return (
+                    selected.length > 0 &&
+                    item.col === selected[0].col &&
+                    item.row === selected[0].row
+                );
+            })
+        ) {
+            selectTime([
+                ...selectedTime.filter(item => {
+                    return !selected.find(i => item.col == i.col && item.row == i.row);
+                }),
+            ]);
+        } else {
+            selectTime([...selectedTime, ...selected]);
+        }
+    };
+    const onClear = col => {
+        selectTime([...[...selectedTime].filter(item => item.col !== col)]);
+    };
 
-	return (
-		<div>
-			<div className={style.title}>Установите подходящее для вас время</div>
-			<div className={style.resultContainer}>
-				<Days
-					startWeekDay={startWeekDay}
-					selectedTime={selectedTime}
-					startTime={startTime}
-					interval={interval}
-				/>
-			</div>
-			<Grid
-				isMobile={isMobile}
-				className={style.gridContainer}
-				cols={8}
-				rows={Math.ceil((endTime - startTime) / interval + 1)}
-				selectFromCol={1}
-				selectToCol={7}
-				selectFromRow={1}
-				selectToRow={Math.ceil((endTime - startTime) / interval + 1)}
-				setRowStyle={row => {
-					return row === 0 ? style.firstRow : '';
-				}}
-				setColStyle={col => {
-					return col === 0 ? style.firstColumn : '';
-				}}
-				cellProps={{
-					children: (
-						<Cell
-							startTime={startTime}
-							startWeekDay={startWeekDay}
-							endTime={endTime}
-							interval={interval}
-							selectedTimeText={selectedTimeText}
-							onClear={onClear}
-							isMobile={isMobile}
-						/>
-					),
-				}}
-				selected={selectedTime}
-				onSelect={onSelect}
-			/>
-		</div>
-	);
+    return (
+        <div className={style.container}>
+            <div className={style.resultContainer}>
+                <Days
+                    startWeekDay={startWeekDay}
+                    selectedTime={selectedTime}
+                    startTime={startTime}
+                    interval={interval}
+                />
+            </div>
+            <Grid
+                isMobile={isMobile}
+                className={style.gridContainer}
+                cols={8}
+                rows={Math.ceil((endTime - startTime) / interval + 1)}
+                selectFromCol={1}
+                selectToCol={7}
+                selectFromRow={1}
+                selectToRow={Math.ceil((endTime - startTime) / interval + 1)}
+                setRowStyle={row => {
+                    return row === 0 ? style.firstRow : '';
+                }}
+                setColStyle={col => {
+                    return col === 0 ? style.firstColumn : '';
+                }}
+                cellProps={{
+                    children: (
+                        <Cell
+                            startTime={startTime}
+                            startWeekDay={startWeekDay}
+                            endTime={endTime}
+                            interval={interval}
+                            selectedTimeText={selectedTimeText}
+                            onClear={onClear}
+                            isMobile={isMobile}
+                        />
+                    ),
+                }}
+                selected={selectedTime}
+                onSelect={onSelect}
+            />
+        </div>
+    );
 };
 
 WorkingTimeSelect.propTypes = {
-	onChange: PropTypes.func,
-	isMobile: PropTypes.bool,
-	selectedTimeText: PropTypes.string,
-	startTime: PropTypes.number,
-	endTime: PropTypes.number,
-	startWeekDay: PropTypes.number,
-	interval: PropTypes.number,
-	workingTimeIntervals: PropTypes.object,
+    onChange: PropTypes.func,
+    isMobile: PropTypes.bool,
+    selectedTimeText: PropTypes.string,
+    startTime: PropTypes.number,
+    endTime: PropTypes.number,
+    startWeekDay: PropTypes.number,
+    interval: PropTypes.number,
+    workingTimeIntervals: PropTypes.object,
 };
 WorkingTimeSelect.defaultProps = {
-	workingTime: [],
-	startTime: 300,
-	endTime: 1440,
-	interval: 60,
-	startWeekDay: 1, //utc day of week
-	workingTimeIntervals: {},
+    workingTime: [],
+    startTime: 300,
+    endTime: 1440,
+    interval: 60,
+    startWeekDay: 1, //utc day of week
+    workingTimeIntervals: {},
 };
 
 export default WorkingTimeSelect;
