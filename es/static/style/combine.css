@@ -526,7 +526,6 @@
     display: flex;
     justify-content: center;
     max-height: calc(80vh - 125px);
-    min-height: 400px;
     max-width: 80vw; }
   .style-module_fq_container___1KNAu .style-module_fq_button___2pPVp {
     margin-left: 20px;

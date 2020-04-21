@@ -4,9 +4,9 @@ import style from './style.module.scss';
 
 const Background = ({ onClick, children }) => {
     React.useEffect(() => {
-        document.body.style.overflow = 'hidden';
+        document.body.style.overflowY = 'hidden';
         return () => {
-            document.body.style.overflow = 'auto';
+            document.body.style.overflowY = 'auto';
         };
     }, []);
     const handleClick = event => {
