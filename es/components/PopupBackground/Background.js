@@ -9,9 +9,9 @@ var Background = function Background(_ref) {
   var onClick = _ref.onClick,
       children = _ref.children;
   React.useEffect(function () {
-    document.body.style.overflow = 'hidden';
+    document.body.style.overflowY = 'hidden';
     return function () {
-      document.body.style.overflow = 'auto';
+      document.body.style.overflowY = 'auto';
     };
   }, []);
 
