@@ -87,9 +87,11 @@ var Popup = function Popup(_ref) {
     style: _objectSpread({}, style)
   }, React.createElement(Grid, {
     item: true,
-    className: [styles.dataContainer, classes.dataContainer, childrenContainerClassName].join(' '),
+    className: [styles.dataContainer, classes.dataContainer].join(' '),
     xs: 12
-  }, children), React.createElement(Grid, {
+  }, React.createElement("div", {
+    className: childrenContainerClassName
+  }, children)), React.createElement(Grid, {
     item: true,
     xs: 12,
     className: [styles.buttonContainer, classes.buttonContainer].join(' ')
