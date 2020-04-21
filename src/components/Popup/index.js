@@ -49,10 +49,14 @@ const Popup = ({ ...props }) => {
             >
                 <Grid
                     item
-                    className={[styles.dataContainer, classes.dataContainer].join(' ')}
+                    className={[
+                        styles.dataContainer,
+                        classes.dataContainer,
+                        childrenContainerClassName,
+                    ].join(' ')}
                     xs={12}
                 >
-                    <div className={childrenContainerClassName}>{children}</div>
+                    {children}
                 </Grid>
                 <Grid
                     item

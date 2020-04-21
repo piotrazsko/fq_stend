@@ -15,7 +15,7 @@ $maxWidth: 80vw;
     .dataContainer {
         overflow: auto;
         // min-width: 300px;
-        // padding: 20px 25px;
+        padding: 20px 25px;
         max-height: calc(80vh - 125px);
         max-width: $maxWidth;
     }
