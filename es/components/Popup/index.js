@@ -54,7 +54,9 @@ var Popup = function Popup(_ref) {
       _props$style = props.style,
       style = _props$style === void 0 ? {} : _props$style,
       _props$childrenContai = props.childrenContainerClassName,
-      childrenContainerClassName = _props$childrenContai === void 0 ? '' : _props$childrenContai;
+      childrenContainerClassName = _props$childrenContai === void 0 ? '' : _props$childrenContai,
+      showSubmit = props.showSubmit,
+      showCancel = props.showCancel;
 
   var _React$useState = React.useState(showPopup),
       _React$useState2 = _slicedToArray(_React$useState, 2),
@@ -80,6 +82,7 @@ var Popup = function Popup(_ref) {
     onClick: handleCancell
   }, React.createElement(Grid, {
     container: true,
+    direction: "column",
     className: [styles.container, className, classes.root].join(' '),
     style: _objectSpread({}, style)
   }, React.createElement(Grid, {
@@ -90,14 +93,14 @@ var Popup = function Popup(_ref) {
     item: true,
     xs: 12,
     className: [styles.buttonContainer, classes.buttonContainer].join(' ')
-  }, React.createElement(Button, _extends({
+  }, showCancel && React.createElement(Button, _extends({
     onClick: handleCancell,
     classes: _objectSpread({}, cancelButtonClasses),
     className: styles.button,
     color: "primary",
     disabled: disableCancel,
     variant: "raised"
-  }, cancelButtonProps), cancelButtonText), React.createElement(Button, _extends({
+  }, cancelButtonProps), cancelButtonText), showSubmit && React.createElement(Button, _extends({
     color: "primary",
     classes: _objectSpread({
       root: styles.button

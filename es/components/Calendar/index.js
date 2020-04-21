@@ -17,17 +17,21 @@ import PropTypes from 'prop-types'; // import { preppareDataforworkingTime, reco
 
 import { workingTimePrepare, getDataForSelectedDate } from './utils';
 import Day from './components/Day';
-import Month from './components/Month'; // import style from './style.module.scss';
-
+import Month from './components/Month';
+var style = {
+  "container": "style-module_fq_container___ohkyl"
+};
 var today = new Date();
 
 var Calendar = function Calendar(_ref) {
   var _ref$defaultShowDay = _ref.defaultShowDay,
       defaultShowDay = _ref$defaultShowDay === void 0 ? false : _ref$defaultShowDay,
-      autoConfirm = _ref.autoConfirm,
       workingTimeIntervals = _ref.workingTimeIntervals,
       bookedTime = _ref.bookedTime,
-      onConfirm = _ref.onConfirm,
+      _ref$onConfirm = _ref.onConfirm,
+      onConfirm = _ref$onConfirm === void 0 ? function () {} : _ref$onConfirm,
+      _ref$onCancel = _ref.onCancel,
+      onCancel = _ref$onCancel === void 0 ? function () {} : _ref$onCancel,
       _ref$customTime = _ref.customTime,
       customTime = _ref$customTime === void 0 ? {} : _ref$customTime,
       _ref$interval = _ref.interval,
@@ -66,16 +70,16 @@ var Calendar = function Calendar(_ref) {
     interval: interval
   }));
   return React.createElement("div", {
-    className: classNames.container || ''
+    className: [style.container, classNames.container || ''].join(' ')
   }, showTime ? React.createElement(Day, {
     workingTimeActual: workingTimeActual,
     disableBeforeCurentTime: true,
     curentDay: curentDay,
     setCurentDay: setCurentDay,
-    autoConfirm: autoConfirm,
     selectDate: function selectDate(date) {
       _selectDate(date);
     },
+    onCancel: onCancel,
     onConfirm: onConfirm,
     selectedDate: selectedDate,
     setShowTime: function setShowTime() {
@@ -94,7 +98,6 @@ var Calendar = function Calendar(_ref) {
 
 Calendar.propTypes = {
   defaultShowDay: PropTypes.bool,
-  autoConfirm: PropTypes.bool,
   bookedTime: PropTypes.array,
   onConfirm: PropTypes.func.isRequired,
   workingTimeIntervals: PropTypes.object.isRequired,
@@ -104,7 +107,8 @@ Calendar.propTypes = {
   selectedDate: PropTypes.instanceOf(Date),
   classNames: PropTypes.shape({
     container: PropTypes.string
-  })
+  }),
+  onCancel: PropTypes.func
 };
 Calendar.defaultProps = {
   selectedDay: new Date(),

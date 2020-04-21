@@ -24,8 +24,7 @@
   min-width: 10px !important; }
 
 .style-module_fq_timeContainer___1Eaoa {
-  max-width: 300px;
-  min-width: 260px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -98,7 +97,7 @@
   background-color: #e8e8e8; }
 
 .style-module_fq_time_grid__item-selected___UEejs {
-  background: #4a90e2;
+  background: #3196ff;
   color: #fff; }
 
 .style-module_fq_time_grid___3zixG {
@@ -120,6 +119,13 @@
 
 .style-module_fq_datapicker___1IAIn {
   font-family: Roboto; }
+/*  imported from style.module.scss  */
+
+.style-module_fq_container___ohkyl {
+  width: 25vw;
+  min-width: 320px;
+  display: flex;
+  justify-content: center; }
 /*  imported from style.module.scss  */
 
 .style-module_fq_confirm___2_NRm {
@@ -510,7 +516,6 @@
 .style-module_fq_container___1KNAu {
   min-width: 300px;
   padding: 20px 25px;
-  max-height: 80vh;
   max-width: 80vw; }
   .style-module_fq_container___1KNAu .style-module_fq_buttonContainer___txOay {
     padding-top: 25px;
@@ -518,8 +523,10 @@
     justify-content: flex-end; }
   .style-module_fq_container___1KNAu .style-module_fq_dataContainer___3LZ9C {
     overflow: auto;
-    padding: 20px 25px;
+    display: flex;
+    justify-content: center;
     max-height: calc(80vh - 125px);
+    min-height: 400px;
     max-width: 80vw; }
   .style-module_fq_container___1KNAu .style-module_fq_button___2pPVp {
     margin-left: 20px;
@@ -528,8 +535,10 @@
 
 .style-module_fq_popup_background___1eN_y {
   position: fixed;
-  width: 100vw;
-  height: 100vh;
+  min-width: 100vw;
+  width: 100%;
+  min-height: 100vh;
+  height: 100%;
   background-color: rgba(75, 75, 75, 0.7);
   z-index: 100;
   top: 0;

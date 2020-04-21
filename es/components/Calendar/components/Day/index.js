@@ -35,7 +35,6 @@ var Day = function Day(_ref) {
       selectDate = _ref.selectDate,
       selectedDate = _ref.selectedDate,
       setShowTime = _ref.setShowTime,
-      onCancel = _ref.onCancel,
       _ref$disableBeforeCur = _ref.disableBeforeCurentTime,
       disableBeforeCurentTime = _ref$disableBeforeCur === void 0 ? true : _ref$disableBeforeCur,
       _ref$onConfirm = _ref.onConfirm,
@@ -121,25 +120,7 @@ var Day = function Day(_ref) {
     }, "".concat(item.hour, ":").concat(minutes));
   }) : React.createElement("div", {
     className: style['emptyDay_shedule']
-  }, "\u041E\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0443\u0435\u0442 \u0441\u0432\u043E\u0431\u043E\u0434\u043D\u043E\u0435 \u0432\u0440\u0435\u043C\u044F")), !autoConfirm && React.createElement("div", {
-    className: [style['time_day-block'], style['time_day_confirm-block']].join(' ')
-  }, React.createElement("div", {
-    onClick: onCancel,
-    className: [style['time_day__button'], style['time_day__button-cancel']].join(' '),
-    role: "button",
-    tabIndex: "-1",
-    onKeyDown: function onKeyDown() {}
-  }, "\u041E\u0442\u043C\u0435\u043D\u0438\u0442\u044C"), React.createElement("div", {
-    onClick: function onClick() {
-      if (selectedDate) {
-        onConfirm(selectedDate);
-      }
-    },
-    className: [style["time_day__button"], style["time_day__button-confirm"], selectedDate === null ? style['time_day__button-disabled'] : ''].join(' '),
-    role: "button",
-    tabIndex: "-1",
-    onKeyDown: function onKeyDown() {}
-  }, "\u041F\u0440\u0438\u043C\u0435\u043D\u0438\u0442\u044C")));
+  }, "\u041E\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0443\u0435\u0442 \u0441\u0432\u043E\u0431\u043E\u0434\u043D\u043E\u0435 \u0432\u0440\u0435\u043C\u044F")));
 };
 
 Day.propTypes = {
@@ -149,7 +130,6 @@ Day.propTypes = {
   selectDate: PropTypes.func.isRequired,
   selectedDate: PropTypes.object,
   setShowTime: PropTypes.func.isRequired,
-  onCancel: PropTypes.func.isRequired,
   onConfirm: PropTypes.func.isRequired,
   autoConfirm: PropTypes.bool,
   disableBeforeCurentTime: PropTypes.bool
