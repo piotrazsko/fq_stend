@@ -3,9 +3,8 @@ $maxHeiht: 80vh;
 .container {
     min-width: 300px;
     padding: 20px 25px;
-    max-height: 80vh;
+    // max-height: 90vh;
     max-width: $maxWidth;
-    flex-direction: column;
 
     .buttonContainer {
         padding-top: 25px;
@@ -17,6 +16,7 @@ $maxHeiht: 80vh;
         display: flex;
         justify-content: center;
         max-height: calc(80vh - 125px);
+        min-height: 400px;
         max-width: $maxWidth;
     }
     .button {

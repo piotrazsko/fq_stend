@@ -43,6 +43,7 @@ const Popup = ({ ...props }) => {
         <PopupBackground visible={showPopupState || showForce} onClick={handleCancell}>
             <Grid
                 container
+                direction="column"
                 className={[styles.container, className, classes.root].join(' ')}
                 style={{ ...style }}
             >

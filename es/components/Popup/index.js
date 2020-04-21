@@ -82,6 +82,7 @@ var Popup = function Popup(_ref) {
     onClick: handleCancell
   }, React.createElement(Grid, {
     container: true,
+    direction: "column",
     className: [styles.container, className, classes.root].join(' '),
     style: _objectSpread({}, style)
   }, React.createElement(Grid, {
