@@ -141,7 +141,6 @@ Day.propTypes = {
     selectDate: PropTypes.func.isRequired,
     selectedDate: PropTypes.object,
     setShowTime: PropTypes.func.isRequired,
-    onCancel: PropTypes.func.isRequired,
     onConfirm: PropTypes.func.isRequired,
     autoConfirm: PropTypes.bool,
     disableBeforeCurentTime: PropTypes.bool,

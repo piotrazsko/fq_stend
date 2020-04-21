@@ -7,7 +7,7 @@ const [x, setX] = React.useState(20);
         <option value="60">60</option>
         <option value="120">120</option>
     </select>
-    <Popup showPopup showSubmit={false} showCancel={false}>
+    <Popup showPopup>
         <Calendar
             interval={x}
             defaultShowDay

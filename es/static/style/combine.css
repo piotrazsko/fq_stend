@@ -97,7 +97,7 @@
   background-color: #e8e8e8; }
 
 .style-module_fq_time_grid__item-selected___UEejs {
-  background: #4a90e2;
+  background: #3196ff;
   color: #fff; }
 
 .style-module_fq_time_grid___3zixG {
@@ -517,14 +517,16 @@
   min-width: 300px;
   padding: 20px 25px;
   max-height: 80vh;
-  max-width: 80vw; }
+  max-width: 80vw;
+  flex-direction: column; }
   .style-module_fq_container___1KNAu .style-module_fq_buttonContainer___txOay {
     padding-top: 25px;
     display: flex;
     justify-content: flex-end; }
   .style-module_fq_container___1KNAu .style-module_fq_dataContainer___3LZ9C {
     overflow: auto;
-    padding: 20px 25px;
+    display: flex;
+    justify-content: center;
     max-height: calc(80vh - 125px);
     max-width: 80vw; }
   .style-module_fq_container___1KNAu .style-module_fq_button___2pPVp {

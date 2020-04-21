@@ -9,7 +9,6 @@ import style from './style.module.scss';
 const today = new Date();
 const Calendar = ({
     defaultShowDay = false,
-    autoConfirm,
     workingTimeIntervals,
     bookedTime,
     onConfirm = () => {},
@@ -46,7 +45,6 @@ const Calendar = ({
                     disableBeforeCurentTime
                     curentDay={curentDay}
                     setCurentDay={setCurentDay}
-                    autoConfirm={autoConfirm}
                     selectDate={date => {
                         selectDate(date);
                     }}
@@ -70,7 +68,6 @@ const Calendar = ({
 
 Calendar.propTypes = {
     defaultShowDay: PropTypes.bool,
-    autoConfirm: PropTypes.bool,
     bookedTime: PropTypes.array,
     onConfirm: PropTypes.func.isRequired,
     workingTimeIntervals: PropTypes.object.isRequired,

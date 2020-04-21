@@ -26,7 +26,6 @@ var today = new Date();
 var Calendar = function Calendar(_ref) {
   var _ref$defaultShowDay = _ref.defaultShowDay,
       defaultShowDay = _ref$defaultShowDay === void 0 ? false : _ref$defaultShowDay,
-      autoConfirm = _ref.autoConfirm,
       workingTimeIntervals = _ref.workingTimeIntervals,
       bookedTime = _ref.bookedTime,
       _ref$onConfirm = _ref.onConfirm,
@@ -77,7 +76,6 @@ var Calendar = function Calendar(_ref) {
     disableBeforeCurentTime: true,
     curentDay: curentDay,
     setCurentDay: setCurentDay,
-    autoConfirm: autoConfirm,
     selectDate: function selectDate(date) {
       _selectDate(date);
     },
@@ -100,7 +98,6 @@ var Calendar = function Calendar(_ref) {
 
 Calendar.propTypes = {
   defaultShowDay: PropTypes.bool,
-  autoConfirm: PropTypes.bool,
   bookedTime: PropTypes.array,
   onConfirm: PropTypes.func.isRequired,
   workingTimeIntervals: PropTypes.object.isRequired,
