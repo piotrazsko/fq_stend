@@ -27,7 +27,10 @@ var Calendar = function Calendar(_ref) {
       autoConfirm = _ref.autoConfirm,
       workingTimeIntervals = _ref.workingTimeIntervals,
       bookedTime = _ref.bookedTime,
-      onConfirm = _ref.onConfirm,
+      _ref$onConfirm = _ref.onConfirm,
+      onConfirm = _ref$onConfirm === void 0 ? function () {} : _ref$onConfirm,
+      _ref$onCancel = _ref.onCancel,
+      onCancel = _ref$onCancel === void 0 ? function () {} : _ref$onCancel,
       _ref$customTime = _ref.customTime,
       customTime = _ref$customTime === void 0 ? {} : _ref$customTime,
       _ref$interval = _ref.interval,
@@ -76,6 +79,7 @@ var Calendar = function Calendar(_ref) {
     selectDate: function selectDate(date) {
       _selectDate(date);
     },
+    onCancel: onCancel,
     onConfirm: onConfirm,
     selectedDate: selectedDate,
     setShowTime: function setShowTime() {
@@ -104,7 +108,8 @@ Calendar.propTypes = {
   selectedDate: PropTypes.instanceOf(Date),
   classNames: PropTypes.shape({
     container: PropTypes.string
-  })
+  }),
+  onCancel: PropTypes.func
 };
 Calendar.defaultProps = {
   selectedDay: new Date(),
