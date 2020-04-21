@@ -1,15 +1,24 @@
 {
   "files": {
+<<<<<<< HEAD
     "main.css": "/static/css/main.b35d87c0.chunk.css",
     "main.js": "/build/main.50b2604f.js",
+=======
+    "main.css": "/static/css/main.dc39bbe6.chunk.css",
+    "main.js": "/build/main.8d28054a.js",
+>>>>>>> af1a0b2060577f96aa7317a88ffab24c0768b742
     "runtime~main.js": "/build/bundle.016cd79a.js",
     "static/css/2.09f171b6.chunk.css": "/static/css/2.09f171b6.chunk.css",
-    "build/2.01c1ba53.js": "/build/2.01c1ba53.js",
+    "build/2.35050322.js": "/build/2.35050322.js",
     "index.html": "/index.html",
+<<<<<<< HEAD
     "precache-manifest.a7967ce8f5585c618de1fc2b15bb0167.js": "/precache-manifest.a7967ce8f5585c618de1fc2b15bb0167.js",
+=======
+    "precache-manifest.7996efc62c77c95880f3501c32af201e.js": "/precache-manifest.7996efc62c77c95880f3501c32af201e.js",
+>>>>>>> af1a0b2060577f96aa7317a88ffab24c0768b742
     "service-worker.js": "/service-worker.js",
     "static/css/2.09f171b6.chunk.css.map": "/static/css/2.09f171b6.chunk.css.map",
-    "static/css/main.b35d87c0.chunk.css.map": "/static/css/main.b35d87c0.chunk.css.map",
+    "static/css/main.dc39bbe6.chunk.css.map": "/static/css/main.dc39bbe6.chunk.css.map",
     "static/media/style.module.scss": "/static/media/Group3.70e8e1d0.svg",
     "static/media/appStore.png": "/static/media/appStore.097295b8.png",
     "static/media/styles.module.scss": "/static/media/avatar_icon.3700bbdc.svg",

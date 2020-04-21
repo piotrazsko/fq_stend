@@ -21,6 +21,7 @@ import Cell from './Cell';
 import Days from './Days';
 import { prepareWorkingTimeIntervals, recoveryWorkingTimeIntervals } from './utils';
 var style = {
+  "container": "style-module_fq_container___1dmNn",
   "title": "style-module_fq_title___tFfDD",
   "resultContainer": "style-module_fq_resultContainer___10tCz",
   "cellTime": "style-module_fq_cellTime___1tycP",
@@ -109,9 +110,9 @@ var WorkingTimeSelect = function WorkingTimeSelect(_ref) {
     })));
   };
 
-  return React.createElement("div", null, React.createElement("div", {
-    className: style.title
-  }, "\u0423\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u0435 \u043F\u043E\u0434\u0445\u043E\u0434\u044F\u0449\u0435\u0435 \u0434\u043B\u044F \u0432\u0430\u0441 \u0432\u0440\u0435\u043C\u044F"), React.createElement("div", {
+  return React.createElement("div", {
+    className: style.container
+  }, React.createElement("div", {
     className: style.resultContainer
   }, React.createElement(Days, {
     startWeekDay: startWeekDay,
