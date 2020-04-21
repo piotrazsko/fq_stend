@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import DayPicker from 'react-day-picker';
-import { WEEKDAYS_LONG, MONTHS, WEEKDAYS_SHORT } from '../../../../helpers/config';
+import { MONTHS, WEEKDAYS_SHORT } from '../../../../helpers/config';
 var style = {
   "datapicker": "style-module_fq_datapicker___1IAIn"
 };

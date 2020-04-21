@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { workingTimePrepare, getDataForSelectedDate } from './utils';
 import Day from './components/Day';
 import Month from './components/Month';
-// import style from './style.module.scss';
+import style from './style.module.scss';
 
 const today = new Date();
 const Calendar = ({
@@ -39,7 +39,7 @@ const Calendar = ({
         interval,
     });
     return (
-        <div className={classNames.container || ''}>
+        <div className={[style.container, classNames.container || ''].join(' ')}>
             {showTime ? (
                 <Day
                     workingTimeActual={workingTimeActual}

@@ -17,8 +17,10 @@ import PropTypes from 'prop-types'; // import { preppareDataforworkingTime, reco
 
 import { workingTimePrepare, getDataForSelectedDate } from './utils';
 import Day from './components/Day';
-import Month from './components/Month'; // import style from './style.module.scss';
-
+import Month from './components/Month';
+var style = {
+  "container": "style-module_fq_container___ohkyl"
+};
 var today = new Date();
 
 var Calendar = function Calendar(_ref) {
@@ -69,7 +71,7 @@ var Calendar = function Calendar(_ref) {
     interval: interval
   }));
   return React.createElement("div", {
-    className: classNames.container || ''
+    className: [style.container, classNames.container || ''].join(' ')
   }, showTime ? React.createElement(Day, {
     workingTimeActual: workingTimeActual,
     disableBeforeCurentTime: true,

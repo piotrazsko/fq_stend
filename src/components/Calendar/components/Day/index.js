@@ -14,7 +14,6 @@ const Day = ({
     selectDate,
     selectedDate,
     setShowTime,
-    onCancel,
     disableBeforeCurentTime = true,
     onConfirm = () => {},
     autoConfirm = true,
@@ -131,41 +130,6 @@ const Day = ({
                     <div className={style['emptyDay_shedule']}>Отсутствует свободное время</div>
                 )}
             </div>
-            {!autoConfirm && (
-                <div
-                    className={[style['time_day-block'], style['time_day_confirm-block']].join(' ')}
-                >
-                    <div
-                        onClick={onCancel}
-                        className={[
-                            style['time_day__button'],
-                            style['time_day__button-cancel'],
-                        ].join(' ')}
-                        role="button"
-                        tabIndex="-1"
-                        onKeyDown={() => {}}
-                    >
-                        Отменить
-                    </div>
-                    <div
-                        onClick={() => {
-                            if (selectedDate) {
-                                onConfirm(selectedDate);
-                            }
-                        }}
-                        className={[
-                            style[`time_day__button`],
-                            style[`time_day__button-confirm`],
-                            selectedDate === null ? style['time_day__button-disabled'] : '',
-                        ].join(' ')}
-                        role="button"
-                        tabIndex="-1"
-                        onKeyDown={() => {}}
-                    >
-                        Применить
-                    </div>
-                </div>
-            )}
         </div>
     );
 };
