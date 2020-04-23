@@ -1,6 +1,6 @@
 import { WEEKDAYS_ENG_RUS } from './config.js';
 import get from 'lodash/get';
-
+import moment from 'moment';
 /**
  * [getDataForSelectedDate  get data for curent day for form shedule]
  *
@@ -19,55 +19,61 @@ import get from 'lodash/get';
  */
 
 export const getDataForSelectedDate = ({
-	workingTime,
-	customTime,
-	bookedTime = [],
-	curentDay,
-	weekDaysArr = WEEKDAYS_ENG_RUS,
-	interval = 60,
+    workingTime,
+    customTime,
+    bookedTime = [],
+    curentDay,
+    weekDaysArr = WEEKDAYS_ENG_RUS,
+    interval = 60,
 }) => {
-	const year = curentDay.getFullYear();
-	const month = curentDay.getMonth();
-	const date = curentDay.getDate();
-	const workingTimeDay = () => {
-		const nonPreparedDay = workingTime && workingTime[weekDaysArr[curentDay.getDay()].eng];
-		return nonPreparedDay
-			? typeof nonPreparedDay === 'string'
-				? JSON.parse(nonPreparedDay)
-				: nonPreparedDay
-			: {};
-	};
-	const bookedTimeDay = () => {
-		return bookedTime.filter(item => {
-			const itemDate = new Date(item.date);
-			return (
-				itemDate.getFullYear() === year && itemDate.getMonth() === month && itemDate.getDate() === date
-			);
-		});
-	};
-	const customTimeDay = () => {
-		const enabled = get(customTime, 'enabled', []) || [];
-		const disabled = get(customTime, 'disabled', []) || [];
-		return {
-			enabled: enabled.filter(item => {
-				const itemDate = new Date(item.start);
-				return (
-					itemDate.getFullYear() === year && itemDate.getMonth() === month && itemDate.getDate() === date
-				);
-			}),
-			disabled: disabled.filter(item => {
-				const itemDate = new Date(item.start);
-				return (
-					itemDate.getFullYear() === year && itemDate.getMonth() === month && itemDate.getDate() === date
-				);
-			}),
-		};
-	};
-	return {
-		workingTimeDay: workingTimeDay(),
-		customTimeDay: customTimeDay(),
-		bookedTimeDay: bookedTimeDay(),
-		curentDay: curentDay,
-		interval,
-	};
+    const year = curentDay.getFullYear();
+    const month = curentDay.getMonth();
+    const date = curentDay.getDate();
+    const workingTimeDay = () => {
+        const nonPreparedDay = workingTime && workingTime[weekDaysArr[curentDay.getDay()].eng];
+        return nonPreparedDay
+            ? typeof nonPreparedDay === 'string'
+                ? JSON.parse(nonPreparedDay)
+                : nonPreparedDay
+            : {};
+    };
+    const bookedTimeDay = () => {
+        return bookedTime.filter(item => {
+            const itemDate = new Date(moment(item.date).toDate());
+            return (
+                itemDate.getFullYear() === year &&
+                itemDate.getMonth() === month &&
+                itemDate.getDate() === date
+            );
+        });
+    };
+    const customTimeDay = () => {
+        const enabled = get(customTime, 'enabled', []) || [];
+        const disabled = get(customTime, 'disabled', []) || [];
+        return {
+            enabled: enabled.filter(item => {
+                const itemDate = new Date(moment(item.start).toDate());
+                return (
+                    itemDate.getFullYear() === year &&
+                    itemDate.getMonth() === month &&
+                    itemDate.getDate() === date
+                );
+            }),
+            disabled: disabled.filter(item => {
+                const itemDate = new Date(moment(item.start).toDate());
+                return (
+                    itemDate.getFullYear() === year &&
+                    itemDate.getMonth() === month &&
+                    itemDate.getDate() === date
+                );
+            }),
+        };
+    };
+    return {
+        workingTimeDay: workingTimeDay(),
+        customTimeDay: customTimeDay(),
+        bookedTimeDay: bookedTimeDay(),
+        curentDay: curentDay,
+        interval,
+    };
 };

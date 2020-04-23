@@ -6,14 +6,16 @@ function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.
 
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 
+import moment from 'moment';
+
 var reduceIntervals = function reduceIntervals(arr, interval) {
   return arr.reduce(function (acc, item) {
     var startTimeArr = item.start.match(/^..:..:../gm) || item.start.match(/^..:../gm) ? item.start.split(':') : function () {
-      var time = new Date(item.start);
+      var time = new Date(moment(item.start).toDate());
       return [time.getHours().toString(), time.getMinutes().toString()];
     }();
     var endTimeArr = item.end.match(/^..:..:../gm) || item.end.match(/^..:../gm) ? item.end.split(':') : function () {
-      var time = new Date(item.end);
+      var time = new Date(moment(item.end).toDate());
       var hours = time.getHours();
       return [hours === 0 ? 24 : hours, time.getMinutes().toString()];
     }();
@@ -49,7 +51,7 @@ export var getBookedTimePeriods = function getBookedTimePeriods(_ref3) {
       _ref3$interval = _ref3.interval,
       interval = _ref3$interval === void 0 ? 60 : _ref3$interval;
   return bookedTimeDay.reduce(function (acc, item) {
-    var date = new Date(item.date);
+    var date = new Date(moment(item.date).toDate());
     var startTime = date.getHours() * 60 + date.getMinutes();
     var externalItervals = Math.floor(item.duration / interval); // TODO:  need check it for calnedar
 

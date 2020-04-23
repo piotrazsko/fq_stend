@@ -160,11 +160,13 @@ export const convertCustomTimeToColRowObj = ({
         return !Array.isArray(arr)
             ? []
             : arr.reduce((acc, item) => {
-                  const start = new Date(item.start);
+                  const start = new Date(moment(item.start).toDate());
                   const startHour = start.getHours();
                   const startMinutes = start.getMinutes();
                   const day = start.getDay();
-                  const duration = (new Date(item.end).valueOf() - start.valueOf()) / (1000 * 60);
+                  const duration =
+                      (new Date(moment(item.end).toDate()).valueOf() - start.valueOf()) /
+                      (1000 * 60);
                   return [
                       ...acc,
                       ...new Array(Math.ceil(duration / interval)).fill('1').map((item, index) => {
