@@ -198,11 +198,11 @@ export var convertCustomTimeToColRowObj = function convertCustomTimeToColRowObj(
     var arr = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
     var callback = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : function () {};
     return !Array.isArray(arr) ? [] : arr.reduce(function (acc, item) {
-      var start = new Date(item.start);
+      var start = new Date(moment(item.start).toDate());
       var startHour = start.getHours();
       var startMinutes = start.getMinutes();
       var day = start.getDay();
-      var duration = (new Date(item.end).valueOf() - start.valueOf()) / (1000 * 60);
+      var duration = (new Date(moment(item.end).toDate()).valueOf() - start.valueOf()) / (1000 * 60);
       return [].concat(_toConsumableArray(acc), _toConsumableArray(new Array(Math.ceil(duration / interval)).fill('1').map(function (item, index) {
         return {
           itemTime: start,

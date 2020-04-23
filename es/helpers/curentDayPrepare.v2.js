@@ -1,5 +1,6 @@
 import { WEEKDAYS_ENG_RUS } from './config.js';
 import get from 'lodash/get';
+import moment from 'moment';
 /**
  * [getDataForSelectedDate  get data for curent day for form shedule]
  *
@@ -38,7 +39,7 @@ export var getDataForSelectedDate = function getDataForSelectedDate(_ref) {
 
   var bookedTimeDay = function bookedTimeDay() {
     return bookedTime.filter(function (item) {
-      var itemDate = new Date(item.date);
+      var itemDate = new Date(moment(item.date).toDate());
       return itemDate.getFullYear() === year && itemDate.getMonth() === month && itemDate.getDate() === date;
     });
   };
@@ -48,11 +49,11 @@ export var getDataForSelectedDate = function getDataForSelectedDate(_ref) {
     var disabled = get(customTime, 'disabled', []) || [];
     return {
       enabled: enabled.filter(function (item) {
-        var itemDate = new Date(item.start);
+        var itemDate = new Date(moment(item.start).toDate());
         return itemDate.getFullYear() === year && itemDate.getMonth() === month && itemDate.getDate() === date;
       }),
       disabled: disabled.filter(function (item) {
-        var itemDate = new Date(item.start);
+        var itemDate = new Date(moment(item.start).toDate());
         return itemDate.getFullYear() === year && itemDate.getMonth() === month && itemDate.getDate() === date;
       })
     };
