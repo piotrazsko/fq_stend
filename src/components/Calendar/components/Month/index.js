@@ -4,7 +4,12 @@ import DayPicker from 'react-day-picker';
 import { MONTHS, WEEKDAYS_SHORT } from '../../../../helpers/config';
 import style from './style.module.scss';
 import 'react-day-picker/lib/style.css';
-const yesterday = new Date().setDate(new Date().getDate() - 1);
+const yesterday = new Date();
+yesterday.setDate(new Date().getDate() - 1);
+yesterday.setHours(12);
+yesterday.setMinutes(0);
+yesterday.setSeconds(0);
+yesterday.setMilliseconds(0);
 const Month = ({
     curentDay,
     setCurentDay,
@@ -14,7 +19,7 @@ const Month = ({
 }) => {
     const disabledDays = disableBeforeCurentTime
         ? date => {
-              return date < yesterday || disabledDaysFunction(date).length == 0;
+              return date <= yesterday || disabledDaysFunction(date).length == 0;
           }
         : [];
     return (
@@ -23,9 +28,11 @@ const Month = ({
                 const day = new Date(curentDay);
                 day.setMonth(month.getMonth());
             }}
-            onDayClick={day => {
-                setCurentDay(day);
-                setShowTime();
+            onDayClick={(day, modifiers) => {
+                if (!modifiers.disabled) {
+                    setCurentDay(day);
+                    setShowTime();
+                }
             }}
             disabledDays={disabledDays}
             locale="ru"
