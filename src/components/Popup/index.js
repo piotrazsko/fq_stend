@@ -66,11 +66,11 @@ const Popup = ({ ...props }) => {
                     {showCancel && (
                         <Button
                             onClick={handleCancell}
-                            classes={{ ...cancelButtonClasses }}
                             className={styles.button}
-                            color="primary"
+                            color="default"
                             disabled={disableCancel}
-                            variant="raised"
+                            variant="text"
+                            fontSize={'0.8rem'}
                             {...cancelButtonProps}
                         >
                             {cancelButtonText}
@@ -79,10 +79,10 @@ const Popup = ({ ...props }) => {
                     {showSubmit && (
                         <Button
                             color="primary"
-                            classes={{ root: styles.button, ...confirmButtonClasses }}
                             onClick={handleSubmit}
                             disabled={disableSubmit}
                             type="submit"
+                            fontSize={'0.8rem'}
                             {...confirmButtonProps}
                         >
                             {submitButtonText}
