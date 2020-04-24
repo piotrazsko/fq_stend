@@ -26,9 +26,10 @@ const Day = ({
                   curentDay.getMonth() === today.getMonth() &&
                   curentDay.getDate() === today.getDate() &&
                   today.getHours() * 60 + today.getMinutes();
-              return workingTimeActual.filter(i => i.start > minutes);
+              return minutes ? workingTimeActual.filter(i => i.start > minutes) : workingTimeActual;
           })()
         : workingTimeActual;
+
     const getPrevDay = () => {
         const newDate = new Date(curentDay.valueOf() - 1000 * 60 * 60 * 24);
         setCurentDay(newDate);

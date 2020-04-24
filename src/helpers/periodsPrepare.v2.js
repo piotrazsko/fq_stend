@@ -2,27 +2,27 @@ import moment from 'moment';
 const reduceIntervals = (arr, interval) => {
     return arr.reduce((acc, item) => {
         const startTimeArr =
-            item.start.match(/^..:..:../gm) || item.start.match(/^..:../gm)
+            item.start.match(/^.*:..:../gm) || item.start.match(/^.*:../gm)
                 ? item.start.split(':')
                 : (() => {
                       const time = new Date(moment(item.start).toDate());
                       return [time.getHours().toString(), time.getMinutes().toString()];
                   })();
         const endTimeArr =
-            item.end.match(/^..:..:../gm) || item.end.match(/^..:../gm)
+            item.end.match(/^.*:..:../gm) || item.end.match(/^.*:../gm)
                 ? item.end.split(':')
                 : (() => {
                       const time = new Date(moment(item.end).toDate());
                       const hours = time.getHours();
-                      return [hours === 0 ? 24 : hours, time.getMinutes().toString()];
+                      return [hours, time.getMinutes().toString()];
                   })();
+        endTimeArr[0] = endTimeArr[0] == 0 ? '24' : endTimeArr[0];
         const startTime = startTimeArr[0] * 60 + parseInt(startTimeArr[1]);
         const endTime = endTimeArr[0] * 60 + parseInt(endTimeArr[1]);
         const externalItervals = Math.floor((endTime - startTime) / interval);
-        for (var i = 0; i < externalItervals; i++) {
+        for (let i = 0; i < externalItervals; i++) {
             acc = [...acc, startTime + i * interval];
         }
-
         return acc;
     }, []);
 };
