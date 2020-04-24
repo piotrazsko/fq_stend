@@ -24,11 +24,7 @@ const [x, setX] = React.useState(20);
             ]}
             onConfirm={date => console.log(date)}
             workingTimeIntervals={{
-                mon: [
-                    { start: '02:00:00', end: '07:00:00' },
-                    { start: '08:00:00', end: '09:00:00' },
-                    { start: '10:00:00', end: '15:00:00' },
-                ],
+                mon: [{ start: '0:00:00', end: '00:00:00' }],
                 tue: [
                     { start: '04:00:00', end: '08:00:00' },
                     { start: '10:00:00', end: '14:00:00' },
@@ -37,7 +33,7 @@ const [x, setX] = React.useState(20);
                     { start: '04:00:00', end: '08:00:00' },
                     { start: '09:00:00', end: '14:00:00' },
                 ],
-                thu: [{ start: '04:00:00', end: '24:00:00' }],
+                thu: [{ start: '00:00:00', end: '0:00:00' }],
                 fri: [{ start: '04:00', end: '14:00' }],
                 sat: [{ start: '04:00', end: '14:00' }],
             }}

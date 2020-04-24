@@ -33,15 +33,39 @@ const Calendar = ({
         bookedTime,
         curentDay: curentDay,
     });
+
     const workingTimeActual = workingTimePrepare({
         ...selectedDayData,
         interval,
     });
+    const getActualIntervalsByDay = ({
+        day,
+        workingTimeIntervals,
+        customTime,
+        bookedTime,
+        interval,
+    }) => {
+        return workingTimePrepare({
+            ...getDataForSelectedDate({
+                workingTime: workingTimeIntervals,
+                customTime,
+                bookedTime,
+                curentDay: day,
+            }),
+            interval,
+        });
+    };
     return (
         <div className={[style.container, classNames.container || ''].join(' ')}>
             {showTime ? (
                 <Day
-                    workingTimeActual={workingTimeActual}
+                    workingTimeActual={getActualIntervalsByDay({
+                        day: curentDay,
+                        workingTimeIntervals,
+                        customTime,
+                        bookedTime,
+                        interval,
+                    })}
                     disableBeforeCurentTime
                     curentDay={curentDay}
                     setCurentDay={setCurentDay}
@@ -59,6 +83,15 @@ const Calendar = ({
                     workingTimeActual={workingTimeActual}
                     curentDay={curentDay}
                     setCurentDay={setCurentDay}
+                    disabledDays={day => {
+                        return getActualIntervalsByDay({
+                            day: day,
+                            workingTimeIntervals,
+                            customTime,
+                            bookedTime,
+                            interval,
+                        });
+                    }}
                     setShowTime={() => setShowTime(!showTime)}
                 />
             )}

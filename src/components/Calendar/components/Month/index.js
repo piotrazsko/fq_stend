@@ -4,11 +4,22 @@ import DayPicker from 'react-day-picker';
 import { MONTHS, WEEKDAYS_SHORT } from '../../../../helpers/config';
 import style from './style.module.scss';
 import 'react-day-picker/lib/style.css';
-const yeaterday = new Date().setDate(new Date().getDate() - 1);
-const Month = ({ curentDay, setCurentDay, setShowTime, disableBeforeCurentTime }) => {
+const yesterday = new Date();
+yesterday.setDate(new Date().getDate() - 1);
+yesterday.setHours(12);
+yesterday.setMinutes(0);
+yesterday.setSeconds(0);
+yesterday.setMilliseconds(0);
+const Month = ({
+    curentDay,
+    setCurentDay,
+    setShowTime,
+    disableBeforeCurentTime = true,
+    disabledDays: disabledDaysFunction,
+}) => {
     const disabledDays = disableBeforeCurentTime
         ? date => {
-              return date < yeaterday;
+              return date <= yesterday || disabledDaysFunction(date).length == 0;
           }
         : [];
     return (
@@ -17,9 +28,11 @@ const Month = ({ curentDay, setCurentDay, setShowTime, disableBeforeCurentTime }
                 const day = new Date(curentDay);
                 day.setMonth(month.getMonth());
             }}
-            onDayClick={day => {
-                setCurentDay(day);
-                setShowTime();
+            onDayClick={(day, modifiers) => {
+                if (!modifiers.disabled) {
+                    setCurentDay(day);
+                    setShowTime();
+                }
             }}
             disabledDays={disabledDays}
             locale="ru"
@@ -37,6 +50,7 @@ Month.propTypes = {
     setCurentDay: PropTypes.func.isRequired,
     setShowTime: PropTypes.func.isRequired,
     disableBeforeCurentTime: PropTypes.bool,
+    disabledDays: PropTypes.func,
 };
 
 export default Month;
