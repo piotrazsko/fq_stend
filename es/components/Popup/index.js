@@ -22,8 +22,7 @@ import Button from '../Button';
 var styles = {
   "container": "style-module_fq_container___1KNAu",
   "buttonContainer": "style-module_fq_buttonContainer___txOay",
-  "dataContainer": "style-module_fq_dataContainer___3LZ9C",
-  "button": "style-module_fq_button___2pPVp"
+  "dataContainer": "style-module_fq_dataContainer___3LZ9C"
 };
 
 var Popup = function Popup(_ref) {
@@ -95,19 +94,17 @@ var Popup = function Popup(_ref) {
     className: [styles.buttonContainer, classes.buttonContainer].join(' ')
   }, showCancel && React.createElement(Button, _extends({
     onClick: handleCancell,
-    classes: _objectSpread({}, cancelButtonClasses),
     className: styles.button,
-    color: "primary",
+    color: "default",
     disabled: disableCancel,
-    variant: "raised"
+    variant: "text",
+    fontSize: '0.8rem'
   }, cancelButtonProps), cancelButtonText), showSubmit && React.createElement(Button, _extends({
     color: "primary",
-    classes: _objectSpread({
-      root: styles.button
-    }, confirmButtonClasses),
     onClick: handleSubmit,
     disabled: disableSubmit,
-    type: "submit"
+    type: "submit",
+    fontSize: '0.8rem'
   }, confirmButtonProps), submitButtonText))));
 };
 

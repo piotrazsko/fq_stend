@@ -69,10 +69,33 @@ var Calendar = function Calendar(_ref) {
   var workingTimeActual = workingTimePrepare(_objectSpread({}, selectedDayData, {
     interval: interval
   }));
+
+  var getActualIntervalsByDay = function getActualIntervalsByDay(_ref2) {
+    var day = _ref2.day,
+        workingTimeIntervals = _ref2.workingTimeIntervals,
+        customTime = _ref2.customTime,
+        bookedTime = _ref2.bookedTime,
+        interval = _ref2.interval;
+    return workingTimePrepare(_objectSpread({}, getDataForSelectedDate({
+      workingTime: workingTimeIntervals,
+      customTime: customTime,
+      bookedTime: bookedTime,
+      curentDay: day
+    }), {
+      interval: interval
+    }));
+  };
+
   return React.createElement("div", {
     className: [style.container, classNames.container || ''].join(' ')
   }, showTime ? React.createElement(Day, {
-    workingTimeActual: workingTimeActual,
+    workingTimeActual: getActualIntervalsByDay({
+      day: curentDay,
+      workingTimeIntervals: workingTimeIntervals,
+      customTime: customTime,
+      bookedTime: bookedTime,
+      interval: interval
+    }),
     disableBeforeCurentTime: true,
     curentDay: curentDay,
     setCurentDay: setCurentDay,
@@ -90,6 +113,15 @@ var Calendar = function Calendar(_ref) {
     workingTimeActual: workingTimeActual,
     curentDay: curentDay,
     setCurentDay: setCurentDay,
+    disabledDays: function disabledDays(day) {
+      return getActualIntervalsByDay({
+        day: day,
+        workingTimeIntervals: workingTimeIntervals,
+        customTime: customTime,
+        bookedTime: bookedTime,
+        interval: interval
+      });
+    },
     setShowTime: function setShowTime() {
       return _setShowTime(!showTime);
     }

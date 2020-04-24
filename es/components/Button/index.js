@@ -13,30 +13,33 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Fab, Button as ButtonMat, IconButton } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-var useStyles = makeStyles(function () {
-  return {
-    primary: {
-      'background-color': '#1c7cff',
-      color: 'white'
-    },
-    root: {
-      'font-weight': 'bold',
-      'font-size': '16px',
-      'padding-left': '20px',
-      'padding-right': '20px',
-      'min-width': 120,
-      margin: '0 5px'
-    },
-    disabled: {
-      'background-color': 'rgba(0, 0, 0, 0.12)'
-    },
-    outlinedPrimary: {
-      color: '#1c7cff',
-      'border-color': '#1c7cff'
-    }
-  };
-});
+import { makeStyles } from '@material-ui/core/styles'; // const useStyles = makeStyles(theme => {
+//     console.log(theme);
+//     return {
+//         primary: {
+//             'background-color': '#1c7cff',
+//             color: 'white',
+//             '&:hover': {
+//                 'background-color': '#549cff',
+//             },
+//         },
+//         root: {
+//             'font-weight': 'bold',
+//             'font-size': '16px',
+//             'padding-left': '20px',
+//             'padding-right': '20px',
+//             'min-width': 120,
+//             margin: '0 5px',
+//         },
+//         disabled: {
+//             'background-color': 'rgba(0, 0, 0, 0.12)',
+//         },
+//         outlinedPrimary: {
+//             color: '#1c7cff',
+//             'border-color': '#1c7cff',
+//         },
+//     };
+// });
 
 var Button = function Button(_ref) {
   var _ref$text = _ref.text,
@@ -45,26 +48,20 @@ var Button = function Button(_ref) {
       type = _ref$type === void 0 ? false : _ref$type,
       _ref$color = _ref.color,
       color = _ref$color === void 0 ? 'primary' : _ref$color,
-      classesExt = _ref.classesExt,
       children = _ref.children,
       fontSize = _ref.fontSize,
       typeButton = _ref.typeButton,
       _ref$variant = _ref.variant,
       variant = _ref$variant === void 0 ? '' : _ref$variant,
       style = _ref.style,
-      rest = _objectWithoutProperties(_ref, ["text", "type", "color", "classesExt", "children", "fontSize", "typeButton", "variant", "style"]);
+      rest = _objectWithoutProperties(_ref, ["text", "type", "color", "children", "fontSize", "typeButton", "variant", "style"]);
 
-  var classes = useStyles();
-
+  // const classes = useStyles();
   switch (type) {
     case 'icon':
       return React.createElement(IconButton, _extends({
         color: color,
         type: typeButton,
-        classes: _objectSpread({
-          primary: classes.primary,
-          disabled: classes.disabled
-        }, classesExt),
         variant: variant,
         style: _objectSpread({
           fontSize: fontSize
@@ -77,14 +74,9 @@ var Button = function Button(_ref) {
         color: color,
         variant: variant || 'extended',
         type: typeButton,
-        classes: _objectSpread({
-          root: variant !== 'round' ? classes.root : '',
-          primary: classes.primary,
-          disabled: classes.disabled
-        }, classesExt),
-        style: {
+        style: _objectSpread({
           fontSize: fontSize
-        },
+        }, style),
         "aria-label": "edit"
       }, rest), children || text);
 
@@ -93,15 +85,9 @@ var Button = function Button(_ref) {
         type: typeButton,
         color: color,
         variant: variant || 'contained',
-        classes: _objectSpread({
-          root: classes.root,
-          containedPrimary: classes.primary,
-          outlinedPrimary: classes.outlinedPrimary,
-          disabled: classes.disabled
-        }, classesExt),
-        style: {
+        style: _objectSpread({
           fontSize: fontSize
-        },
+        }, style),
         "aria-label": "edit"
       }, rest), children || text);
   }

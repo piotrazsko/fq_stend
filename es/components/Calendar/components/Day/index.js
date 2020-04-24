@@ -44,9 +44,9 @@ var Day = function Day(_ref) {
   var workingTimeActualFiltered = disableBeforeCurentTime ? function () {
     var today = new Date();
     var minutes = curentDay.getFullYear() === today.getFullYear() && curentDay.getMonth() === today.getMonth() && curentDay.getDate() === today.getDate() && today.getHours() * 60 + today.getMinutes();
-    return workingTimeActual.filter(function (i) {
+    return minutes ? workingTimeActual.filter(function (i) {
       return i.start > minutes;
-    });
+    }) : workingTimeActual;
   }() : workingTimeActual;
 
   var getPrevDay = function getPrevDay() {

@@ -35,7 +35,6 @@ const Button = ({
     text = 'test',
     type = false,
     color = 'primary',
-    classesExt,
     children,
     fontSize,
     typeButton,
@@ -64,7 +63,7 @@ const Button = ({
                     color={color}
                     variant={variant || 'extended'}
                     type={typeButton}
-                    style={{ fontSize: fontSize }}
+                    style={{ fontSize: fontSize, ...style }}
                     aria-label="edit"
                     {...rest}
                 >
@@ -77,7 +76,7 @@ const Button = ({
                     type={typeButton}
                     color={color}
                     variant={variant || 'contained'}
-                    style={{ fontSize: fontSize }}
+                    style={{ fontSize: fontSize, ...style }}
                     aria-label="edit"
                     {...rest}
                 >

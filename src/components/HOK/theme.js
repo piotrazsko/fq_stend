@@ -4,7 +4,7 @@ export const theme = createMuiTheme({
     overrides: {
         MuiButton: {
             primary: {
-                'background-color': '#1c7cff',
+                'background-color': '#4688f1',
                 color: 'white',
                 '&:hover': {
                     'background-color': '#549cff',
@@ -22,11 +22,11 @@ export const theme = createMuiTheme({
                 'background-color': 'rgba(0, 0, 0, 0.12)',
             },
             outlinedPrimary: {
-                color: '#1c7cff',
-                'border-color': '#1c7cff',
+                color: '#4688f1',
+                'border-color': '#4688f1',
             },
             containedPrimary: {
-                'background-color': '#1c7cff',
+                'background-color': '#4688f1',
                 color: 'white',
                 '&:hover': {
                     'background-color': '#549cff !important',
