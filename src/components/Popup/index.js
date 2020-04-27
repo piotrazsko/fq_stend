@@ -17,8 +17,6 @@ const Popup = ({ ...props }) => {
         disableSubmit = false,
         disableCancel = false,
         classes = {},
-        confirmButtonClasses = {},
-        cancelButtonClasses = {},
         confirmButtonProps = {},
         cancelButtonProps = {},
         showForce = false,

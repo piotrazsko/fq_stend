@@ -1,6 +1,18 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 
 export const theme = createMuiTheme({
+    palette: {
+        // secondary: {
+        //     main: orange[500],
+        // },
+        primary: {
+            main: '#4688f1',
+            // dark: '#2f97ff',
+            // light: '#6da8e3',
+        },
+        contrastThreshold: 3,
+        tonalOffset: -0.2,
+    },
     overrides: {
         MuiButton: {
             primary: {
