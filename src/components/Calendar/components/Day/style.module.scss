@@ -18,10 +18,11 @@
 
 .time_day-name__items {
     margin: 0 10px 10px;
+    font-size: 20px;
 }
 
 .time_day__weekday {
-    font-size: 1.3em;
+    font-size: 1.4em;
 }
 .time_day-slider {
     color: rgb(182, 182, 182);
@@ -37,6 +38,7 @@
 .time_day__date {
     margin-right: auto;
     color: #000;
+    font-size: 16px;
 }
 
 .time_day-block {
@@ -75,6 +77,7 @@
     font-size: 14px;
     width: 20px;
     height: 20px;
+    margin: 0 8px 8px 0;
     display: flex;
     justify-content: center;
     align-items: center;
