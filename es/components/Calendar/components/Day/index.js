@@ -20,9 +20,9 @@ var style = {
   "time_day__button-cancel": "style-module_fq_time_day__button-cancel___2L6_J",
   "time_day__button-disabled": "style-module_fq_time_day__button-disabled___3nUrX",
   "time_day_confirm-block": "style-module_fq_time_day_confirm-block___2T-hA",
+  "time_grid": "style-module_fq_time_grid___3zixG",
   "time_grid__item": "style-module_fq_time_grid__item___1gKKx",
   "time_grid__item-selected": "style-module_fq_time_grid__item-selected___UEejs",
-  "time_grid": "style-module_fq_time_grid___3zixG",
   "empty": "style-module_fq_empty___3HaKR",
   "emptyDay_shedule": "style-module_fq_emptyDay_shedule___CSOAb",
   "time_grid__item-disable": "style-module_fq_time_grid__item-disable___2oJ7l"
@@ -77,7 +77,7 @@ var Day = function Day(_ref) {
 
   return React.createElement("div", {
     className: style['timeContainer']
-  }, React.createElement("div", {
+  }, React.createElement("div", null, React.createElement("div", {
     className: [style['time_day-block'], style['time_day-name']].join(' ')
   }, React.createElement("div", {
     className: [style['time_day-name__items'], style[' time_day__weekday']].join(' ')
@@ -106,7 +106,7 @@ var Day = function Day(_ref) {
     tabIndex: "-1",
     onKeyDown: function onKeyDown() {},
     onClick: getNextDay
-  }, React.createElement(ArrowRight, null))), React.createElement("div", {
+  }, React.createElement(ArrowRight, null)))), React.createElement("div", {
     className: [style['time_grid'], workingTimeActualFiltered.length === 0 ? style['empty'] : ''].join(' ')
   }, workingTimeActualFiltered.length > 0 ? workingTimeActualFiltered.map(function (item) {
     var minutes = item.minutes.toString();

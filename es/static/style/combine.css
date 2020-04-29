@@ -27,10 +27,11 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  padding: 10px;
   font-size: 15px;
-  font-family: Roboto; }
+  font-family: Roboto;
+  width: 20vw;
+  min-width: 320px;
+  min-height: 320px; }
 
 .style-module_fq_time_day-name___3Aze6 {
   display: flex;
@@ -84,6 +85,11 @@
   justify-content: flex-end;
   margin-bottom: 10px; }
 
+.style-module_fq_time_grid___3zixG {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 100%; }
+
 .style-module_fq_time_grid__item___1gKKx {
   padding: 15px;
   border-radius: 25px;
@@ -103,10 +109,6 @@
   background: #3196ff;
   color: #fff; }
 
-.style-module_fq_time_grid___3zixG {
-  margin: 20px;
-  min-height: 250px; }
-
 .style-module_fq_empty___3HaKR {
   display: flex;
   justify-content: center;
@@ -125,8 +127,6 @@
 /*  imported from style.module.scss  */
 
 .style-module_fq_container___ohkyl {
-  width: 25vw;
-  min-width: 320px;
   display: flex;
   justify-content: center; }
 /*  imported from style.module.scss  */

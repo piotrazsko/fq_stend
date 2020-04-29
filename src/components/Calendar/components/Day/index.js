@@ -59,52 +59,55 @@ const Day = ({
     };
     return (
         <div className={style['timeContainer']}>
-            <div className={[style['time_day-block'], style['time_day-name']].join(' ')}>
-                <div
-                    className={[style['time_day-name__items'], style[' time_day__weekday']].join(
-                        ' '
-                    )}
-                >
-                    {WEEKDAYS_LONG[curentDay.getDay()]}
+            <div>
+                <div className={[style['time_day-block'], style['time_day-name']].join(' ')}>
+                    <div
+                        className={[
+                            style['time_day-name__items'],
+                            style[' time_day__weekday'],
+                        ].join(' ')}
+                    >
+                        {WEEKDAYS_LONG[curentDay.getDay()]}
+                    </div>
+                    <div
+                        role="button"
+                        tabIndex="-1"
+                        onKeyDown={() => {}}
+                        onClick={setShowTime}
+                        className={[
+                            style['time_day-name__items'],
+                            style['time_day__button-calendar'],
+                        ].join(' ')}
+                    >
+                        <CalendarToday />
+                    </div>
                 </div>
-                <div
-                    role="button"
-                    tabIndex="-1"
-                    onKeyDown={() => {}}
-                    onClick={setShowTime}
-                    className={[
-                        style['time_day-name__items'],
-                        style['time_day__button-calendar'],
-                    ].join(' ')}
-                >
-                    <CalendarToday />
+                <div className={[style['time_day-block'], style['time_day-slider']].join(' ')}>
+                    <IconButton
+                        size="small"
+                        className={style['time_day__button']}
+                        role="button"
+                        tabIndex="-1"
+                        disabled={disableBeforeCurentTime && curentDay < new Date()}
+                        onKeyDown={() => {}}
+                        onClick={getPrevDay}
+                    >
+                        <ArrowLeft />
+                    </IconButton>
+                    <div className={style['time_day__date']}>{`${curentDay.getDate()} ${
+                        MONTHS[curentDay.getMonth()]
+                    }`}</div>
+                    <IconButton
+                        size="small"
+                        className={style['time_day__button']}
+                        role="button"
+                        tabIndex="-1"
+                        onKeyDown={() => {}}
+                        onClick={getNextDay}
+                    >
+                        <ArrowRight />
+                    </IconButton>
                 </div>
-            </div>
-            <div className={[style['time_day-block'], style['time_day-slider']].join(' ')}>
-                <IconButton
-                    size="small"
-                    className={style['time_day__button']}
-                    role="button"
-                    tabIndex="-1"
-                    disabled={disableBeforeCurentTime && curentDay < new Date()}
-                    onKeyDown={() => {}}
-                    onClick={getPrevDay}
-                >
-                    <ArrowLeft />
-                </IconButton>
-                <div className={style['time_day__date']}>{`${curentDay.getDate()} ${
-                    MONTHS[curentDay.getMonth()]
-                }`}</div>
-                <IconButton
-                    size="small"
-                    className={style['time_day__button']}
-                    role="button"
-                    tabIndex="-1"
-                    onKeyDown={() => {}}
-                    onClick={getNextDay}
-                >
-                    <ArrowRight />
-                </IconButton>
             </div>
             <div
                 className={[
