@@ -1,5 +1,5 @@
 .container {
-    font-family: Helvetica Neue, Helvatica, Roboto;
+    font-family: Roboto, Helvatica, Roboto;
 }
 .title {
     font-family: Roboto;
@@ -13,7 +13,7 @@
     flex-wrap: wrap;
 }
 .cellTime {
-    font-family: Helvetica Neue;
+    font-family: Roboto;
     font-size: 8px;
     color: #373737;
     max-width: 50px;
@@ -52,7 +52,7 @@
     justify-content: center;
     align-items: center;
     height: 100%;
-    font-family: Helvetica Neue, Roboto;
+    font-family: Roboto, Roboto;
 }
 .gridContainer {
     grid-template-rows: [first] 40px !important;
