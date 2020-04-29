@@ -124,6 +124,11 @@
 
 .style-module_fq_datapicker___1IAIn {
   font-family: Roboto; }
+  .style-module_fq_datapicker___1IAIn .DayPicker-Day--selected {
+    width: 23px;
+    height: 23px;
+    line-height: 1;
+    text-align: center; }
 /*  imported from style.module.scss  */
 
 .style-module_fq_container___ohkyl {

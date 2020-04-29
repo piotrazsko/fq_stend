@@ -22,6 +22,7 @@ const Month = ({
               return date <= yesterday || disabledDaysFunction(date).length == 0;
           }
         : [];
+
     return (
         <DayPicker
             onMonthChange={month => {
