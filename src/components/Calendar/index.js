@@ -6,6 +6,24 @@ import Day from './components/Day';
 import Month from './components/Month';
 import style from './style.module.scss';
 
+const getActualIntervalsByDay = ({
+    day,
+    workingTimeIntervals,
+    customTime,
+    bookedTime,
+    interval,
+}) => {
+    return workingTimePrepare({
+        ...getDataForSelectedDate({
+            workingTime: workingTimeIntervals,
+            customTime,
+            bookedTime,
+            curentDay: day,
+        }),
+        interval,
+    });
+};
+
 const today = new Date();
 const Calendar = ({
     defaultShowDay = false,
@@ -38,23 +56,7 @@ const Calendar = ({
         ...selectedDayData,
         interval,
     });
-    const getActualIntervalsByDay = ({
-        day,
-        workingTimeIntervals,
-        customTime,
-        bookedTime,
-        interval,
-    }) => {
-        return workingTimePrepare({
-            ...getDataForSelectedDate({
-                workingTime: workingTimeIntervals,
-                customTime,
-                bookedTime,
-                curentDay: day,
-            }),
-            interval,
-        });
-    };
+
     return (
         <div className={[style.container, classNames.container || ''].join(' ')}>
             {showTime ? (
@@ -98,6 +100,8 @@ const Calendar = ({
         </div>
     );
 };
+
+Calendar.getActualIntervals = getActualIntervalsByDay;
 
 Calendar.propTypes = {
     defaultShowDay: PropTypes.bool,
