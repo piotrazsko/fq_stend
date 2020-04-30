@@ -21,6 +21,7 @@ var style = {
   "time_day__button-disabled": "style-module_fq_time_day__button-disabled___3nUrX",
   "time_day_confirm-block": "style-module_fq_time_day_confirm-block___2T-hA",
   "time_grid": "style-module_fq_time_grid___3zixG",
+  "itemContainer": "style-module_fq_itemContainer___2M0bF",
   "time_grid__item": "style-module_fq_time_grid__item___1gKKx",
   "time_grid__item-selected": "style-module_fq_time_grid__item-selected___UEejs",
   "empty": "style-module_fq_empty___3HaKR",
@@ -112,12 +113,14 @@ var Day = function Day(_ref) {
     var minutes = item.minutes.toString();
     minutes = minutes.length == 1 ? "0".concat(minutes) : minutes;
     return React.createElement("div", {
+      className: style.itemContainer,
+      key: item.start + '_index'
+    }, React.createElement("div", {
       onClick: function onClick() {
         return onClickDay(item);
       },
-      className: [style['time_grid__item'], checkSelected(item) ? style['time_grid__item-selected'] : ''].join(' '),
-      key: item.start + '_index'
-    }, "".concat(item.hour, ":").concat(minutes));
+      className: [style['time_grid__item'], checkSelected(item) ? style['time_grid__item-selected'] : ''].join(' ')
+    }, "".concat(item.hour, ":").concat(minutes)));
   }) : React.createElement("div", {
     className: style['emptyDay_shedule']
   }, "\u041E\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0443\u0435\u0442 \u0441\u0432\u043E\u0431\u043E\u0434\u043D\u043E\u0435 \u0432\u0440\u0435\u043C\u044F")));
