@@ -12,7 +12,6 @@ export const workingTimePrepare = ({
     interval = 15,
 }) => {
     const permanentWorkingIntervals = getPermanentWorkingPeriods({ workingTimeDay, interval });
-
     const customTimePeriods = getCustomTimePeriods({ customTimeDay, interval });
     const bookedTimePeriods = getBookedTimePeriods({ bookedTimeDay, interval });
     const enabledTime = Array.from(
