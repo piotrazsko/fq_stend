@@ -30,7 +30,7 @@
   font-size: 15px;
   font-family: Roboto;
   width: 20vw;
-  min-width: 320px;
+  min-width: 260px;
   min-height: 320px; }
 
 .style-module_fq_time_day-name___3Aze6 {
@@ -118,7 +118,8 @@
 .style-module_fq_empty___3HaKR {
   display: flex;
   justify-content: center;
-  align-items: center; }
+  align-items: center;
+  margin: auto; }
 
 .style-module_fq_emptyDay_shedule___CSOAb {
   display: inline-block; }
