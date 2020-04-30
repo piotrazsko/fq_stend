@@ -13,33 +13,6 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Fab, Button as ButtonMat, IconButton } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles'; // const useStyles = makeStyles(theme => {
-//     console.log(theme);
-//     return {
-//         primary: {
-//             'background-color': '#1c7cff',
-//             color: 'white',
-//             '&:hover': {
-//                 'background-color': '#549cff',
-//             },
-//         },
-//         root: {
-//             'font-weight': 'bold',
-//             'font-size': '16px',
-//             'padding-left': '20px',
-//             'padding-right': '20px',
-//             'min-width': 120,
-//             margin: '0 5px',
-//         },
-//         disabled: {
-//             'background-color': 'rgba(0, 0, 0, 0.12)',
-//         },
-//         outlinedPrimary: {
-//             color: '#1c7cff',
-//             'border-color': '#1c7cff',
-//         },
-//     };
-// });
 
 var Button = function Button(_ref) {
   var _ref$text = _ref.text,
@@ -54,9 +27,9 @@ var Button = function Button(_ref) {
       _ref$variant = _ref.variant,
       variant = _ref$variant === void 0 ? '' : _ref$variant,
       style = _ref.style,
-      rest = _objectWithoutProperties(_ref, ["text", "type", "color", "children", "fontSize", "typeButton", "variant", "style"]);
+      minWidth = _ref.minWidth,
+      rest = _objectWithoutProperties(_ref, ["text", "type", "color", "children", "fontSize", "typeButton", "variant", "style", "minWidth"]);
 
-  // const classes = useStyles();
   switch (type) {
     case 'icon':
       return React.createElement(IconButton, _extends({
@@ -64,7 +37,8 @@ var Button = function Button(_ref) {
         type: typeButton,
         variant: variant,
         style: _objectSpread({
-          fontSize: fontSize
+          fontSize: fontSize,
+          minWidth: minWidth
         }, style),
         "aria-label": "edit"
       }, rest), children || text);
@@ -75,7 +49,8 @@ var Button = function Button(_ref) {
         variant: variant || 'extended',
         type: typeButton,
         style: _objectSpread({
-          fontSize: fontSize
+          fontSize: fontSize,
+          minWidth: minWidth
         }, style),
         "aria-label": "edit"
       }, rest), children || text);
@@ -86,7 +61,8 @@ var Button = function Button(_ref) {
         color: color,
         variant: variant || 'contained',
         style: _objectSpread({
-          fontSize: fontSize
+          fontSize: fontSize,
+          minWidth: minWidth
         }, style),
         "aria-label": "edit"
       }, rest), children || text);
@@ -103,6 +79,7 @@ Button.propTypes = {
   classesExt: PropTypes.object,
   style: PropTypes.object,
   fontSize: PropTypes.number,
-  typeButton: PropTypes.string
+  typeButton: PropTypes.string,
+  minWidth: PropTypes.number
 };
 export default Button;

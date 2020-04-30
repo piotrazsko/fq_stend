@@ -120,14 +120,17 @@ const Day = ({
                         let minutes = item.minutes.toString();
                         minutes = minutes.length == 1 ? `0${minutes}` : minutes;
                         return (
-                            <div
-                                onClick={() => onClickDay(item)}
-                                className={[
-                                    style['time_grid__item'],
-                                    checkSelected(item) ? style['time_grid__item-selected'] : '',
-                                ].join(' ')}
-                                key={item.start + '_index'}
-                            >{`${item.hour}:${minutes}`}</div>
+                            <div className={style.itemContainer} key={item.start + '_index'}>
+                                <div
+                                    onClick={() => onClickDay(item)}
+                                    className={[
+                                        style['time_grid__item'],
+                                        checkSelected(item)
+                                            ? style['time_grid__item-selected']
+                                            : '',
+                                    ].join(' ')}
+                                >{`${item.hour}:${minutes}`}</div>
+                            </div>
                         );
                     })
                 ) : (
