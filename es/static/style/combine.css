@@ -682,7 +682,8 @@ ol {
   min-height: var(--icon-size);
   background-image: url(../../static/images/avatar_icon.svg);
   background-repeat: no-repeat;
-  background-size: contain; }
+  background-size: contain;
+  cursor: pointer; }
 
 .styles-module_fq_userInfo__text___3Iw2A {
   text-align: left;
@@ -698,7 +699,8 @@ ol {
 .styles-module_fq_userInfo__user-name___1G282 {
   font-family: Roboto;
   font-size: 17px;
-  font-weight: bold; }
+  font-weight: bold;
+  cursor: pointer; }
 
 .styles-module_fq_userInfo__rating-value___3x1Nt {
   margin: 0 8px;
