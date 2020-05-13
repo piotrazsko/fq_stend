@@ -6,14 +6,20 @@ var PopupBackground = function PopupBackground(_ref) {
   var onClick = _ref.onClick,
       _ref$visible = _ref.visible,
       visible = _ref$visible === void 0 ? false : _ref$visible,
-      children = _ref.children;
+      className = _ref.className,
+      children = _ref.children,
+      childrenClassName = _ref.childrenClassName;
   return visible ? React.createElement(Background, {
-    onClick: onClick
+    onClick: onClick,
+    className: className,
+    childrenClassName: childrenClassName
   }, children) : null;
 };
 
 PopupBackground.propTypes = {
   visible: PropTypes.bool,
+  className: PropTypes.string,
+  childrenClassName: PropTypes.string,
   onClick: PropTypes.func,
   children: PropTypes.oneOfType([PropTypes.string, PropTypes.element, PropTypes.array]).isRequired
 };

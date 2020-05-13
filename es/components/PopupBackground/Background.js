@@ -7,7 +7,11 @@ var style = {
 
 var Background = function Background(_ref) {
   var onClick = _ref.onClick,
-      children = _ref.children;
+      children = _ref.children,
+      _ref$childrenClassNam = _ref.childrenClassName,
+      childrenClassName = _ref$childrenClassNam === void 0 ? '' : _ref$childrenClassNam,
+      _ref$className = _ref.className,
+      className = _ref$className === void 0 ? '' : _ref$className;
   React.useEffect(function () {
     document.body.style.overflowY = 'hidden';
     return function () {
@@ -20,14 +24,14 @@ var Background = function Background(_ref) {
   };
 
   return React.createElement("div", {
-    className: style.popup_background,
+    className: [style.popup_background, className].join(' '),
     role: "presentation",
     onClick: function onClick(ev) {
       handleClick(ev);
       ev.stopPropagation();
     }
   }, React.createElement("div", {
-    className: style.popup_background_inbox,
+    className: [style.popup_background_inbox, childrenClassName].join(' '),
     onClick: function onClick(ev) {
       return ev.stopPropagation();
     }
@@ -36,6 +40,7 @@ var Background = function Background(_ref) {
 
 Background.propTypes = {
   onClick: PropTypes.func,
+  childrenClassName: PropTypes.string,
   children: PropTypes.oneOfType([PropTypes.string, PropTypes.element, PropTypes.array]).isRequired
 };
 export default Background;
