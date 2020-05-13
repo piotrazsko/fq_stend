@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import style from './style.module.scss';
 
-const Background = ({ onClick, children }) => {
+const Background = ({ onClick, children, childrenClassName = '', className = '' }) => {
     React.useEffect(() => {
         document.body.style.overflowY = 'hidden';
         return () => {
@@ -14,14 +14,17 @@ const Background = ({ onClick, children }) => {
     };
     return (
         <div
-            className={style.popup_background}
+            className={[style.popup_background, className].join(' ')}
             role="presentation"
             onClick={ev => {
                 handleClick(ev);
                 ev.stopPropagation();
             }}
         >
-            <div className={style.popup_background_inbox} onClick={ev => ev.stopPropagation()}>
+            <div
+                className={[style.popup_background_inbox, childrenClassName].join(' ')}
+                onClick={ev => ev.stopPropagation()}
+            >
                 {children}
             </div>
         </div>
@@ -30,6 +33,7 @@ const Background = ({ onClick, children }) => {
 
 Background.propTypes = {
     onClick: PropTypes.func,
+    childrenClassName: PropTypes.string,
     children: PropTypes.oneOfType([PropTypes.string, PropTypes.element, PropTypes.array])
         .isRequired,
 };
