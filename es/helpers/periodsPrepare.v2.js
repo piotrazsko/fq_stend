@@ -54,12 +54,13 @@ export var getBookedTimePeriods = function getBookedTimePeriods(_ref3) {
   return bookedTimeDay.reduce(function (acc, item) {
     var date = new Date(moment(item.date).toDate());
     var startTime = date.getHours() * 60 + date.getMinutes();
-    var externalItervals = Math.floor(item.duration / interval); // TODO:  need check it for calnedar
+    var endTime = startTime + item.duration; // TODO:  need check it for calnedar
 
-    for (var i = 0; i <= externalItervals; i++) {
-      acc = [].concat(_toConsumableArray(acc), [startTime + i * interval]);
+    for (var i = startTime; i < endTime; i = i + interval) {
+      acc = [].concat(_toConsumableArray(acc), [i]);
     }
 
+    console.log(acc, endTime);
     return _toConsumableArray(acc);
   }, []);
 };

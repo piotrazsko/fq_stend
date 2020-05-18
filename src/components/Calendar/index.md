@@ -12,7 +12,7 @@ const [x, setX] = React.useState(20);
             interval={x}
             defaultShowDay
             onConfirm={console.log}
-            bookedTime={[{ date: '2020-05-18 10:30:00', duration: 30 }]}
+            bookedTime={[{ date: '2020-05-18 10:00:00', duration: 60 }]}
             onConfirm={date => console.log(date)}
             workingTimeIntervals={{
                 mon: [{ start: '5:00:00', end: '12:00:00' }],
@@ -31,7 +31,7 @@ const [x, setX] = React.useState(20);
                 ],
                 disabled: [
                     {
-                        start: '2020-05-18 11:40:00',
+                        start: '2020-05-18 12:00:00',
                         end: '2020-05-18 15:20:00',
                     },
                 ],

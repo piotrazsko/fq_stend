@@ -41,11 +41,12 @@ export const getBookedTimePeriods = ({ bookedTimeDay, interval = 60 }) => {
     return bookedTimeDay.reduce((acc, item) => {
         const date = new Date(moment(item.date).toDate());
         const startTime = date.getHours() * 60 + date.getMinutes();
-        const externalItervals = Math.floor(item.duration / interval);
+        const endTime = startTime + item.duration;
         // TODO:  need check it for calnedar
-        for (let i = 0; i <= externalItervals; i++) {
-            acc = [...acc, startTime + i * interval];
+        for (let i = startTime; i < endTime; i = i + interval) {
+            acc = [...acc, i];
         }
+        console.log(acc, endTime);
         return [...acc];
     }, []);
 };
