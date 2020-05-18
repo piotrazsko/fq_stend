@@ -40,6 +40,7 @@ export var getDataForSelectedDate = function getDataForSelectedDate(_ref) {
   var bookedTimeDay = function bookedTimeDay() {
     return bookedTime.filter(function (item) {
       var itemDate = new Date(moment(item.date).toDate());
+      console.log(itemDate.getFullYear() === year);
       return itemDate.getFullYear() === year && itemDate.getMonth() === month && itemDate.getDate() === date;
     });
   };

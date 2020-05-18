@@ -40,6 +40,7 @@ var Background = function Background(_ref) {
 
 Background.propTypes = {
   onClick: PropTypes.func,
+  className: PropTypes.string,
   childrenClassName: PropTypes.string,
   children: PropTypes.oneOfType([PropTypes.string, PropTypes.element, PropTypes.array]).isRequired
 };

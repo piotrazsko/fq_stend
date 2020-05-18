@@ -5,6 +5,7 @@ import {
     getBookedTimePeriods,
 } from '../../../helpers/periodsPrepare.v2.js';
 export { getDataForSelectedDate } from '../../../helpers/curentDayPrepare.v2.js';
+
 export const workingTimePrepare = ({
     workingTimeDay,
     customTimeDay,
