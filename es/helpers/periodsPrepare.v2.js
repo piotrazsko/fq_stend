@@ -10,14 +10,14 @@ import moment from 'moment';
 
 var reduceIntervals = function reduceIntervals(arr, interval) {
   return arr.reduce(function (acc, item) {
-    var startTimeArr = item.start.match(/^.*:..:../gm) || item.start.match(/^.*:../gm) ? item.start.split(':') : function () {
+    var startTimeArr = item.start.match(/^.{1,2}:..:../gm) ? item.start.split(':') : function () {
       var time = new Date(moment(item.start).toDate());
       return [time.getHours().toString(), time.getMinutes().toString()];
     }();
-    var endTimeArr = item.end.match(/^.*:..:../gm) || item.end.match(/^.*:../gm) ? item.end.split(':') : function () {
+    var endTimeArr = item.end.match(/^.{1,2}:..:../gm) ? item.end.split(':') : function () {
       var time = new Date(moment(item.end).toDate());
       var hours = time.getHours();
-      return [hours, time.getMinutes().toString()];
+      return [hours.toString(), time.getMinutes().toString()];
     }();
     endTimeArr[0] = endTimeArr[0] == 0 ? '24' : endTimeArr[0];
     var startTime = startTimeArr[0] * 60 + parseInt(startTimeArr[1]);

@@ -13,8 +13,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 import React from 'react';
-import PropTypes from 'prop-types'; // import { preppareDataforworkingTime, recoveryDataForworkingTime } from '../../helpers/calendar';
-
+import PropTypes from 'prop-types';
 import { workingTimePrepare, getDataForSelectedDate } from './utils';
 import Day from './components/Day';
 import Month from './components/Month';
@@ -77,25 +76,17 @@ var Calendar = function Calendar(_ref2) {
   React.useEffect(function () {
     _selectDate(selectedTimeProps);
   }, [selectedTimeProps]);
-  var selectedDayData = getDataForSelectedDate({
-    workingTime: workingTimeIntervals,
+  var curentDayIntervals = getActualIntervalsByDay({
+    day: curentDay,
+    workingTimeIntervals: workingTimeIntervals,
     customTime: customTime,
     bookedTime: bookedTime,
-    curentDay: curentDay
-  });
-  var workingTimeActual = workingTimePrepare(_objectSpread({}, selectedDayData, {
     interval: interval
-  }));
+  });
   return React.createElement("div", {
     className: [style.container, classNames.container || ''].join(' ')
   }, showTime ? React.createElement(Day, {
-    workingTimeActual: getActualIntervalsByDay({
-      day: curentDay,
-      workingTimeIntervals: workingTimeIntervals,
-      customTime: customTime,
-      bookedTime: bookedTime,
-      interval: interval
-    }),
+    workingTimeActual: curentDayIntervals,
     disableBeforeCurentTime: true,
     curentDay: curentDay,
     setCurentDay: setCurentDay,
@@ -110,7 +101,7 @@ var Calendar = function Calendar(_ref2) {
     }
   }) : React.createElement(Month, {
     disableBeforeCurentTime: true,
-    workingTimeActual: workingTimeActual,
+    workingTimeActual: curentDayIntervals,
     curentDay: curentDay,
     setCurentDay: setCurentDay,
     disabledDays: function disabledDays(day) {

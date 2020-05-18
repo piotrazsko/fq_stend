@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import { preppareDataforworkingTime, recoveryDataForworkingTime } from '../../helpers/calendar';
 import { workingTimePrepare, getDataForSelectedDate } from './utils';
 import Day from './components/Day';
 import Month from './components/Month';
@@ -45,29 +44,19 @@ const Calendar = ({
     React.useEffect(() => {
         selectDate(selectedTimeProps);
     }, [selectedTimeProps]);
-    const selectedDayData = getDataForSelectedDate({
-        workingTime: workingTimeIntervals,
+
+    const curentDayIntervals = getActualIntervalsByDay({
+        day: curentDay,
+        workingTimeIntervals,
         customTime,
         bookedTime,
-        curentDay: curentDay,
-    });
-
-    const workingTimeActual = workingTimePrepare({
-        ...selectedDayData,
         interval,
     });
-
     return (
         <div className={[style.container, classNames.container || ''].join(' ')}>
             {showTime ? (
                 <Day
-                    workingTimeActual={getActualIntervalsByDay({
-                        day: curentDay,
-                        workingTimeIntervals,
-                        customTime,
-                        bookedTime,
-                        interval,
-                    })}
+                    workingTimeActual={curentDayIntervals}
                     disableBeforeCurentTime
                     curentDay={curentDay}
                     setCurentDay={setCurentDay}
@@ -82,7 +71,7 @@ const Calendar = ({
             ) : (
                 <Month
                     disableBeforeCurentTime
-                    workingTimeActual={workingTimeActual}
+                    workingTimeActual={curentDayIntervals}
                     curentDay={curentDay}
                     setCurentDay={setCurentDay}
                     disabledDays={day => {

@@ -1,21 +1,19 @@
 import moment from 'moment';
 const reduceIntervals = (arr, interval) => {
     return arr.reduce((acc, item) => {
-        const startTimeArr =
-            item.start.match(/^.*:..:../gm) || item.start.match(/^.*:../gm)
-                ? item.start.split(':')
-                : (() => {
-                      const time = new Date(moment(item.start).toDate());
-                      return [time.getHours().toString(), time.getMinutes().toString()];
-                  })();
-        const endTimeArr =
-            item.end.match(/^.*:..:../gm) || item.end.match(/^.*:../gm)
-                ? item.end.split(':')
-                : (() => {
-                      const time = new Date(moment(item.end).toDate());
-                      const hours = time.getHours();
-                      return [hours, time.getMinutes().toString()];
-                  })();
+        const startTimeArr = item.start.match(/^.{1,2}:..:../gm)
+            ? item.start.split(':')
+            : (() => {
+                  const time = new Date(moment(item.start).toDate());
+                  return [time.getHours().toString(), time.getMinutes().toString()];
+              })();
+        const endTimeArr = item.end.match(/^.{1,2}:..:../gm)
+            ? item.end.split(':')
+            : (() => {
+                  const time = new Date(moment(item.end).toDate());
+                  const hours = time.getHours();
+                  return [hours.toString(), time.getMinutes().toString()];
+              })();
         endTimeArr[0] = endTimeArr[0] == 0 ? '24' : endTimeArr[0];
         const startTime = startTimeArr[0] * 60 + parseInt(startTimeArr[1]);
         const endTime = endTimeArr[0] * 60 + parseInt(endTimeArr[1]);

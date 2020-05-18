@@ -33,6 +33,7 @@ const Background = ({ onClick, children, childrenClassName = '', className = '' 
 
 Background.propTypes = {
     onClick: PropTypes.func,
+    className: PropTypes.string,
     childrenClassName: PropTypes.string,
     children: PropTypes.oneOfType([PropTypes.string, PropTypes.element, PropTypes.array])
         .isRequired,

@@ -1,4 +1,4 @@
-CustomWorkingTimeSelect example:
+<!-- CustomWorkingTimeSelect example:
 
 ```js
 const [x, setX] = React.useState(2);
@@ -70,4 +70,4 @@ const [z, setZ] = React.useState({
         customTimeIntervals={z}
     />
 </div>;
-```
+``` -->
