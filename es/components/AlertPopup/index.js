@@ -24,9 +24,11 @@ var AlertPopup = function AlertPopup(_ref) {
       _ref$showForce = _ref.showForce,
       showForce = _ref$showForce === void 0 ? false : _ref$showForce,
       _ref$confirmButtonPro = _ref.confirmButtonProps,
-      confirmButtonProps = _ref$confirmButtonPro === void 0 ? {} : _ref$confirmButtonPro;
+      confirmButtonProps = _ref$confirmButtonPro === void 0 ? {} : _ref$confirmButtonPro,
+      maxWidth = _ref.maxWidth;
 
   return React.createElement(PopupCore, {
+    maxWidth: maxWidth,
     showPopup: show,
     showForce: showForce,
     colorConfirm: type === 'danger' ? 'secondary' : 'primary',
@@ -56,6 +58,7 @@ AlertPopup.propTypes = {
   onClick: PropTypes.func,
   message: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
   textConfirm: PropTypes.string,
-  showForce: PropTypes.bool
+  showForce: PropTypes.bool,
+  maxWidth: PropTypes.string
 };
 export default AlertPopup;

@@ -4,47 +4,50 @@ import { PopupCore } from '../PopupsCore';
 
 import style from './style.module.scss';
 const AlertPopup = ({
-	type,
-	onClick = () => {},
-	textConfirm = 'OK',
-	show = false,
-	message = '',
-	showForce = false,
-	confirmButtonProps = {},
+    type,
+    onClick = () => {},
+    textConfirm = 'OK',
+    show = false,
+    message = '',
+    showForce = false,
+    confirmButtonProps = {},
+    maxWidth,
 }) => {
-	return (
-		<PopupCore
-			showPopup={show}
-			showForce={showForce}
-			colorConfirm={type === 'danger' ? 'secondary' : 'primary'}
-			onClick={ev => {
-				if (typeof onClick === 'function') {
-					onClick(ev);
-				}
-			}}
-			textConfirm={textConfirm}
-			textCancel=""
-			type="button"
-			confirmButtonProps={{ ...confirmButtonProps }}
-			onClose={ev => {
-				if (typeof onClick === 'function') {
-					onClick(ev);
-				}
-			}}
-		>
-			<div className={style.alert}>{message}</div>
-		</PopupCore>
-	);
+    return (
+        <PopupCore
+            maxWidth={maxWidth}
+            showPopup={show}
+            showForce={showForce}
+            colorConfirm={type === 'danger' ? 'secondary' : 'primary'}
+            onClick={ev => {
+                if (typeof onClick === 'function') {
+                    onClick(ev);
+                }
+            }}
+            textConfirm={textConfirm}
+            textCancel=""
+            type="button"
+            confirmButtonProps={{ ...confirmButtonProps }}
+            onClose={ev => {
+                if (typeof onClick === 'function') {
+                    onClick(ev);
+                }
+            }}
+        >
+            <div className={style.alert}>{message}</div>
+        </PopupCore>
+    );
 };
 
 AlertPopup.propTypes = {
-	confirmButtonProps: PropTypes.object,
-	type: PropTypes.oneOf(['danger', undefined]),
-	show: PropTypes.bool,
-	onClick: PropTypes.func,
-	message: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
-	textConfirm: PropTypes.string,
-	showForce: PropTypes.bool,
+    confirmButtonProps: PropTypes.object,
+    type: PropTypes.oneOf(['danger', undefined]),
+    show: PropTypes.bool,
+    onClick: PropTypes.func,
+    message: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+    textConfirm: PropTypes.string,
+    showForce: PropTypes.bool,
+    maxWidth: PropTypes.string,
 };
 
 export default AlertPopup;

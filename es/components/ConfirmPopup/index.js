@@ -30,9 +30,11 @@ var ConfirmPopup = function ConfirmPopup(_ref) {
       _ref$cancellButtonPro = _ref.cancellButtonProps,
       cancellButtonProps = _ref$cancellButtonPro === void 0 ? {} : _ref$cancellButtonPro,
       _ref$confirmButtonPro = _ref.confirmButtonProps,
-      confirmButtonProps = _ref$confirmButtonPro === void 0 ? {} : _ref$confirmButtonPro;
+      confirmButtonProps = _ref$confirmButtonPro === void 0 ? {} : _ref$confirmButtonPro,
+      maxWidth = _ref.maxWidth;
 
   return React.createElement(PopupCore, {
+    maxWidth: maxWidth,
     showForce: showForce,
     showPopup: show,
     colorConfirm: type === 'danger' ? 'secondary' : 'primary',
@@ -60,6 +62,7 @@ var ConfirmPopup = function ConfirmPopup(_ref) {
 
 ConfirmPopup.propTypes = {
   type: PropTypes.oneOf(['danger', undefined]),
+  maxWidth: PropTypes.string,
   onClick: PropTypes.func,
   onCancel: PropTypes.func,
   show: PropTypes.bool,
