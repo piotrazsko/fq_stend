@@ -48,6 +48,8 @@ var PopupCore = function PopupCore(_ref) {
       confirmButtonProps = _ref$confirmButtonPro === void 0 ? {} : _ref$confirmButtonPro,
       _ref$showForce = _ref.showForce,
       showForce = _ref$showForce === void 0 ? false : _ref$showForce,
+      _ref$maxWidth = _ref.maxWidth,
+      maxWidth = _ref$maxWidth === void 0 ? false : _ref$maxWidth,
       _ref$classes = _ref.classes,
       classes = _ref$classes === void 0 ? {
     buttonsContainer: '',
@@ -78,6 +80,9 @@ var PopupCore = function PopupCore(_ref) {
     onClick: closeHandler,
     visible: true
   }, React.createElement("div", {
+    style: maxWidth ? {
+      maxWidth: maxWidth
+    } : {},
     className: [style.container, classes.container].join(' ')
   }, showIcon && React.createElement("div", {
     className: style.icon
