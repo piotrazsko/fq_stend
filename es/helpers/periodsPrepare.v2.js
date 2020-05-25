@@ -10,11 +10,11 @@ import moment from 'moment';
 
 var reduceIntervals = function reduceIntervals(arr, interval) {
   return arr.reduce(function (acc, item) {
-    var startTimeArr = item.start.match(/^.{1,2}:..:../gm) ? item.start.split(':') : function () {
+    var startTimeArr = item.start.match(/^.{1,2}:..($|:..)/gm) ? item.start.split(':') : function () {
       var time = new Date(moment(item.start).toDate());
       return [time.getHours().toString(), time.getMinutes().toString()];
     }();
-    var endTimeArr = item.end.match(/^.{1,2}:..:../gm) ? item.end.split(':') : function () {
+    var endTimeArr = item.end.match(/^.{1,2}:..($|:..)/gm) ? item.end.split(':') : function () {
       var time = new Date(moment(item.end).toDate());
       var hours = time.getHours();
       return [hours.toString(), time.getMinutes().toString()];
@@ -60,7 +60,6 @@ export var getBookedTimePeriods = function getBookedTimePeriods(_ref3) {
       acc = [].concat(_toConsumableArray(acc), [i]);
     }
 
-    console.log(acc, endTime);
     return _toConsumableArray(acc);
   }, []);
 };

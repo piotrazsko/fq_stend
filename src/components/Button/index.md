@@ -30,5 +30,14 @@ import AddIcon from '@material-ui/icons/Add';
     <Button variant="contained" color="secondary" fontSize={22} onClick={() => alert('dfsdf')}>
         Click me!
     </Button>
+    <Button
+        variant="contained"
+        color="primary"
+        type="icon"
+        fontSize={22}
+        onClick={() => alert('dfsdf')}
+    >
+        <AddIcon />
+    </Button>
 </div>;
 ```
