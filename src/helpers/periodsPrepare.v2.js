@@ -1,13 +1,13 @@
 import moment from 'moment';
 const reduceIntervals = (arr, interval) => {
     return arr.reduce((acc, item) => {
-        const startTimeArr = item.start.match(/^.{1,2}:..:../gm)
+        const startTimeArr = item.start.match(/^.{1,2}:..($|:..)/gm)
             ? item.start.split(':')
             : (() => {
                   const time = new Date(moment(item.start).toDate());
                   return [time.getHours().toString(), time.getMinutes().toString()];
               })();
-        const endTimeArr = item.end.match(/^.{1,2}:..:../gm)
+        const endTimeArr = item.end.match(/^.{1,2}:..($|:..)/gm)
             ? item.end.split(':')
             : (() => {
                   const time = new Date(moment(item.end).toDate());
@@ -46,7 +46,6 @@ export const getBookedTimePeriods = ({ bookedTimeDay, interval = 60 }) => {
         for (let i = startTime; i < endTime; i = i + interval) {
             acc = [...acc, i];
         }
-        console.log(acc, endTime);
         return [...acc];
     }, []);
 };
