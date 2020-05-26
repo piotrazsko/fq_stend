@@ -5,7 +5,6 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
 import React from 'react';
 import PropTypes from 'prop-types';
 import Popover from '../Popover';
-import Icon from '@material-ui/core/Icon';
 var style = {
   "item": "style-module_fq_item___r9VHj"
 };
@@ -24,7 +23,7 @@ var Menu = function Menu(_ref) {
         ev.nativeEvent.preventDefault();
       },
       key: item.name + index
-    }, item.icon && React.createElement(Icon, null, item.icon), " ", item.name);
+    }, item.name);
   }));
 };
 

@@ -8,8 +8,7 @@ var style = {
 
 var positionPopover = function positionPopover(el, container) {
   if (el) {
-    var position = el.getBoundingClientRect();
-    var screenSize = window.screen;
+    var position = el.getBoundingClientRect(); // window.outerHeight
 
     if (position.left < 0) {
       container.style.left = 0;
@@ -19,13 +18,9 @@ var positionPopover = function positionPopover(el, container) {
       container.style.top = 0;
     }
 
-    if (position.right > screenSize.width) {
-      container.style.left = screenSize.width - (position.width + 15) + 'px';
-    } // console.log(position, screenSize);
-    // if (position.bottom) {
-    //     el.scrollIntoView();
-    // }
-
+    if (position.right > window.outerWidth) {
+      container.style.left = window.outerWidth - (position.width + 15) + 'px';
+    }
   }
 };
 

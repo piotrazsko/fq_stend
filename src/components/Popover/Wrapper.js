@@ -5,21 +5,16 @@ import style from './style.module.scss';
 const positionPopover = (el, container) => {
     if (el) {
         const position = el.getBoundingClientRect();
-        const screenSize = window.screen;
-
+        // window.outerHeight
         if (position.left < 0) {
             container.style.left = 0;
         }
         if (position.top < 0) {
             container.style.top = 0;
         }
-        if (position.right > screenSize.width) {
-            container.style.left = screenSize.width - (position.width + 15) + 'px';
+        if (position.right > window.outerWidth) {
+            container.style.left = window.outerWidth - (position.width + 15) + 'px';
         }
-        // console.log(position, screenSize);
-        // if (position.bottom) {
-        //     el.scrollIntoView();
-        // }
     }
 };
 const Wrapper = ({ children, anchorEl, onClick }) => {

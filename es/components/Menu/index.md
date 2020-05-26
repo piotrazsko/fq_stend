@@ -5,7 +5,9 @@ const handleClick = event => {
     setAnchorEl(event.currentTarget);
 };
 <React.Fragment>
-    <div onClick={handleClick}>test</div>
+    <div onClick={handleClick} style={{ position: 'absolute', right: 0 }}>
+        test
+    </div>
     <Menu
         visible={Boolean(anchorEl)}
         anchorEl={anchorEl}
