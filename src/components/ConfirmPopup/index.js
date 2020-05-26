@@ -15,10 +15,13 @@ const ConfirmPopup = ({
     cancellButtonProps = {},
     confirmButtonProps = {},
     maxWidth,
+    showIcon,
+    classNames = { textContainer: '' },
 }) => {
     return (
         <PopupCore
             maxWidth={maxWidth}
+            showIcon={showIcon}
             showForce={showForce}
             showPopup={show}
             colorConfirm={type === 'danger' ? 'secondary' : 'primary'}
@@ -38,7 +41,9 @@ const ConfirmPopup = ({
             cancellButtonProps={{ variant: 'outlined', ...cancellButtonProps }}
             confirmButtonProps={{ ...confirmButtonProps }}
         >
-            <div className={style.confirm}>{message}</div>
+            <div className={[style.confirm, classNames.textContainer || ''].join(' ')}>
+                {message}
+            </div>
         </PopupCore>
     );
 };
@@ -55,6 +60,10 @@ ConfirmPopup.propTypes = {
     textCancel: PropTypes.string,
     confirmButtonProps: PropTypes.object,
     cancellButtonProps: PropTypes.object,
+    showIcon: PropTypes.bool,
+    classNames: PropTypes.shape({
+        textContainer: PropTypes.string,
+    }),
 };
 
 export default ConfirmPopup;

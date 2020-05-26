@@ -12,10 +12,13 @@ const AlertPopup = ({
     showForce = false,
     confirmButtonProps = {},
     maxWidth,
+    showIcon,
+    classNames = { textContainer: '' },
 }) => {
     return (
         <PopupCore
             maxWidth={maxWidth}
+            showIcon={showIcon}
             showPopup={show}
             showForce={showForce}
             colorConfirm={type === 'danger' ? 'secondary' : 'primary'}
@@ -34,7 +37,7 @@ const AlertPopup = ({
                 }
             }}
         >
-            <div className={style.alert}>{message}</div>
+            <div className={[style.alert, classNames.textContainer || ''].join(' ')}>{message}</div>
         </PopupCore>
     );
 };
@@ -48,6 +51,10 @@ AlertPopup.propTypes = {
     textConfirm: PropTypes.string,
     showForce: PropTypes.bool,
     maxWidth: PropTypes.string,
+    showIcon: PropTypes.bool,
+    classNames: PropTypes.shape({
+        textContainer: PropTypes.string,
+    }),
 };
 
 export default AlertPopup;

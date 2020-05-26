@@ -31,10 +31,16 @@ var ConfirmPopup = function ConfirmPopup(_ref) {
       cancellButtonProps = _ref$cancellButtonPro === void 0 ? {} : _ref$cancellButtonPro,
       _ref$confirmButtonPro = _ref.confirmButtonProps,
       confirmButtonProps = _ref$confirmButtonPro === void 0 ? {} : _ref$confirmButtonPro,
-      maxWidth = _ref.maxWidth;
+      maxWidth = _ref.maxWidth,
+      showIcon = _ref.showIcon,
+      _ref$classNames = _ref.classNames,
+      classNames = _ref$classNames === void 0 ? {
+    textContainer: ''
+  } : _ref$classNames;
 
   return React.createElement(PopupCore, {
     maxWidth: maxWidth,
+    showIcon: showIcon,
     showForce: showForce,
     showPopup: show,
     colorConfirm: type === 'danger' ? 'secondary' : 'primary',
@@ -56,7 +62,7 @@ var ConfirmPopup = function ConfirmPopup(_ref) {
     }, cancellButtonProps),
     confirmButtonProps: _objectSpread({}, confirmButtonProps)
   }, React.createElement("div", {
-    className: style.confirm
+    className: [style.confirm, classNames.textContainer || ''].join(' ')
   }, message));
 };
 
@@ -71,6 +77,10 @@ ConfirmPopup.propTypes = {
   showForce: PropTypes.bool,
   textCancel: PropTypes.string,
   confirmButtonProps: PropTypes.object,
-  cancellButtonProps: PropTypes.object
+  cancellButtonProps: PropTypes.object,
+  showIcon: PropTypes.bool,
+  classNames: PropTypes.shape({
+    textContainer: PropTypes.string
+  })
 };
 export default ConfirmPopup;
