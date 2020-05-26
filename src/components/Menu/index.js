@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Popover from '../Popover';
-import Icon from '@material-ui/core/Icon';
 import style from './style.module.scss';
 const Menu = ({ menuItems = [], ...props }) => {
     return (
@@ -16,7 +15,7 @@ const Menu = ({ menuItems = [], ...props }) => {
                     }}
                     key={item.name + index}
                 >
-                    {item.icon && <Icon>{item.icon}</Icon>} {item.name}
+                    {item.name}
                 </div>
             ))}
         </Popover>
