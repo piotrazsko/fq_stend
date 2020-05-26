@@ -14,7 +14,7 @@ const Menu = ({ menuItems = [], ...props }) => {
                         ev.nativeEvent.stopPropagation();
                         ev.nativeEvent.preventDefault();
                     }}
-                    key={item.title + index}
+                    key={item.name + index}
                 >
                     {item.icon && <Icon>{item.icon}</Icon>} {item.name}
                 </div>
