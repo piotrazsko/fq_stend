@@ -25,10 +25,16 @@ var AlertPopup = function AlertPopup(_ref) {
       showForce = _ref$showForce === void 0 ? false : _ref$showForce,
       _ref$confirmButtonPro = _ref.confirmButtonProps,
       confirmButtonProps = _ref$confirmButtonPro === void 0 ? {} : _ref$confirmButtonPro,
-      maxWidth = _ref.maxWidth;
+      maxWidth = _ref.maxWidth,
+      showIcon = _ref.showIcon,
+      _ref$classNames = _ref.classNames,
+      classNames = _ref$classNames === void 0 ? {
+    textContainer: ''
+  } : _ref$classNames;
 
   return React.createElement(PopupCore, {
     maxWidth: maxWidth,
+    showIcon: showIcon,
     showPopup: show,
     showForce: showForce,
     colorConfirm: type === 'danger' ? 'secondary' : 'primary',
@@ -47,7 +53,7 @@ var AlertPopup = function AlertPopup(_ref) {
       }
     }
   }, React.createElement("div", {
-    className: style.alert
+    className: [style.alert, classNames.textContainer || ''].join(' ')
   }, message));
 };
 
@@ -59,6 +65,10 @@ AlertPopup.propTypes = {
   message: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
   textConfirm: PropTypes.string,
   showForce: PropTypes.bool,
-  maxWidth: PropTypes.string
+  maxWidth: PropTypes.string,
+  showIcon: PropTypes.bool,
+  classNames: PropTypes.shape({
+    textContainer: PropTypes.string
+  })
 };
 export default AlertPopup;
