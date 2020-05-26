@@ -5,6 +5,7 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
 import React from 'react';
 import PropTypes from 'prop-types';
 import Popover from '../Popover';
+import Icon from '@material-ui/core/Icon';
 var style = {
   "item": "style-module_fq_item___r9VHj"
 };
@@ -18,12 +19,12 @@ var Menu = function Menu(_ref) {
     return React.createElement("div", {
       className: style.item,
       onClick: function onClick(ev) {
-        item.clickHandler(ev);
+        item.handler(ev);
         ev.nativeEvent.stopPropagation();
         ev.nativeEvent.preventDefault();
       },
       key: item.title + index
-    }, item.title);
+    }, item.icon && React.createElement(Icon, null, item.icon), " ", item.name);
   }));
 };
 

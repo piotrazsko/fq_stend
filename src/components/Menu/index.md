@@ -1,18 +1,24 @@
-```jsx
-<div>test</div>
-<Menu
-	visible={false}
-	menuItems={[
-		{
-			title: 'test',
-			clickHandler: console.log,
-		},
-		{
-			title: 'test',
-			clickHandler: console.log,
-		},
-	]}
-	onClick={console.log}
-	onClose = {console.log}
-/>
+```js
+const [anchorEl, setAnchorEl] = React.useState(null);
+const handleClick = event => {
+    setAnchorEl(event.currentTarget);
+};
+<React.Fragment>
+    <div onClick={handleClick}>test</div>
+    <Menu
+        visible={Boolean(anchorEl)}
+        menuItems={[
+            {
+                name: 'test',
+                handler: console.log,
+            },
+            {
+                name: 'test5',
+                handler: console.log,
+            },
+        ]}
+        onClick={() => setAnchorEl(null)}
+        onClose={() => setAnchorEl(null)}
+    ></Menu>
+</React.Fragment>;
 ```
