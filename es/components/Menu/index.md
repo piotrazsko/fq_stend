@@ -1,12 +1,14 @@
 ```js
 const [anchorEl, setAnchorEl] = React.useState(null);
 const handleClick = event => {
+    console.log(event.currentTarget);
     setAnchorEl(event.currentTarget);
 };
 <React.Fragment>
     <div onClick={handleClick}>test</div>
     <Menu
         visible={Boolean(anchorEl)}
+        anchorEl={anchorEl}
         menuItems={[
             {
                 name: 'test',

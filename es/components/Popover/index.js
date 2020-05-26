@@ -13,28 +13,7 @@ var style = {
   "positionContainer": "style-module_fq_positionContainer___3rdF0",
   "background": "style-module_fq_background___3Lefb"
 };
-
-var positionPopover = function positionPopover(el) {
-  if (el) {
-    var position = el.getBoundingClientRect();
-
-    if (position.left < 0) {
-      el.style.left -= position.left;
-    }
-
-    if (position.top < 0) {
-      el.style.top -= position.top;
-    }
-
-    if (position.right < 0) {
-      el.style.right -= position.right;
-    }
-
-    if (position.bottom < 0) {
-      el.style.bottom -= position.bottom;
-    }
-  }
-};
+import Wrapper from './Wrapper';
 
 var Popover = function Popover(_ref) {
   var children = _ref.children,
@@ -45,10 +24,6 @@ var Popover = function Popover(_ref) {
       showForce = _ref$showForce === void 0 ? false : _ref$showForce,
       _ref$onClose = _ref.onClose,
       onClose = _ref$onClose === void 0 ? function () {} : _ref$onClose;
-  var inputEl = useRef(null);
-  useEffect(function () {
-    positionPopover(inputEl.current, anchorEl);
-  });
 
   var _useState = useState(visible),
       _useState2 = _slicedToArray(_useState, 2),
@@ -64,26 +39,12 @@ var Popover = function Popover(_ref) {
       onClose();
     }
   }, [show]);
-  return (show || showForce) && React.createElement("div", {
-    className: style.positionContainer,
-    style: anchorEl && {
-      top: anchorEl.offsetTop,
-      left: anchorEl.offsetLeft
-    }
-  }, React.createElement("div", {
-    onClick: function onClick(ev) {
-      ev.nativeEvent.stopPropagation();
-      ev.nativeEvent.preventDefault();
-      switchShow(!show);
-    },
-    ref: inputEl,
-    className: style.container
-  }, children), React.createElement("divb", {
-    className: style.background,
+  return (show || showForce) && React.createElement(Wrapper, {
+    anchorEl: anchorEl,
     onClick: function onClick() {
       switchShow(!show);
     }
-  }));
+  }, children);
 };
 
 Popover.propTypes = {

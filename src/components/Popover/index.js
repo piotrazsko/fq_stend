@@ -1,81 +1,46 @@
 import React, { useRef, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import style from './style.module.scss';
-
-const positionPopover = el => {
-	if (el) {
-		const position = el.getBoundingClientRect();
-		if (position.left < 0) {
-			el.style.left -= position.left;
-		}
-		if (position.top < 0) {
-			el.style.top -= position.top;
-		}
-		if (position.right < 0) {
-			el.style.right -= position.right;
-		}
-		if (position.bottom < 0) {
-			el.style.bottom -= position.bottom;
-		}
-	}
-};
+import Wrapper from './Wrapper';
 
 const Popover = ({
-	children,
-	anchorEl,
-	visible = false,
-	showForce = false,
-	onClose = () => {},
+    children,
+    anchorEl,
+    visible = false,
+    showForce = false,
+    onClose = () => {},
 }) => {
-	const inputEl = useRef(null);
-	useEffect(() => {
-		positionPopover(inputEl.current, anchorEl);
-	});
-	const [show, switchShow] = useState(visible);
-	useEffect(() => {
-		switchShow(visible);
-	}, [visible]);
+    const [show, switchShow] = useState(visible);
+    useEffect(() => {
+        switchShow(visible);
+    }, [visible]);
 
-	// BUG:  showd after mount
-	useEffect(() => {
-		if (!show) {
-			onClose();
-		}
-	}, [show]);
+    // BUG:  showd after mount
+    useEffect(() => {
+        if (!show) {
+            onClose();
+        }
+    }, [show]);
 
-	return (
-		(show || showForce) && (
-			<div
-				className={style.positionContainer}
-				style={anchorEl && { top: anchorEl.offsetTop, left: anchorEl.offsetLeft }}
-			>
-				<div
-					onClick={ev => {
-						ev.nativeEvent.stopPropagation();
-						ev.nativeEvent.preventDefault();
-						switchShow(!show);
-					}}
-					ref={inputEl}
-					className={style.container}
-				>
-					{children}
-				</div>
-				<divb
-					className={style.background}
-					onClick={() => {
-						switchShow(!show);
-					}}
-				/>
-			</div>
-		)
-	);
+    return (
+        (show || showForce) && (
+            <Wrapper
+                anchorEl={anchorEl}
+                onClick={() => {
+                    switchShow(!show);
+                }}
+            >
+                {children}
+            </Wrapper>
+        )
+    );
 };
 
 Popover.propTypes = {
-	children: PropTypes.any,
-	showForce: PropTypes.bool,
-	visible: PropTypes.bool,
-	onClose: PropTypes.func,
+    children: PropTypes.any,
+    showForce: PropTypes.bool,
+    visible: PropTypes.bool,
+    onClose: PropTypes.func,
 };
 
 export default Popover;
