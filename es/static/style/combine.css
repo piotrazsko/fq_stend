@@ -596,27 +596,6 @@
     .style-module_fq_button___2Bn-o {
       font-size: 10px !important;
       margin: 0 5px !important; } }
-/*  imported from style.module.scss  */
-
-.style-module_fq_title___2d2YD {
-  color: #000000;
-  font-weight: 400;
-  text-decoration: none;
-  vertical-align: baseline;
-  font-size: 12pt;
-  font-family: "Arial";
-  font-style: normal;
-  margin-left: 15px; }
-
-.style-module_fq_paragraph___3VMXi {
-  color: #000000;
-  font-size: 11pt;
-  font-family: "Arial";
-  line-height: 1.15;
-  text-align: justify; }
-
-ol {
-  list-style-type: none; }
 /*  imported from styles.module.scss  */
 
 .styles-module_fq_container___m2A_R {
@@ -638,36 +617,6 @@ ol {
   .styles-module_fq_container___m2A_R .styles-module_fq_imageContainer___1Gs7j {
     width: 100%;
     height: auto; }
-/*  imported from style.module.scss  */
-
-.style-module_fq_title___1sMx5 {
-  color: #000000;
-  font-weight: 400;
-  text-decoration: none;
-  vertical-align: baseline;
-  font-size: 12pt;
-  font-family: "Arial";
-  font-style: normal;
-  margin-left: 15px; }
-
-.style-module_fq_paragraph___1ru_X {
-  color: #000000;
-  font-size: 11pt;
-  font-family: "Arial";
-  line-height: 1.15;
-  text-align: justify; }
-
-ol {
-  list-style-type: none; }
-
-.style-module_fq_edition___1bV8_ {
-  color: #000000;
-  font-weight: 400;
-  text-decoration: none;
-  vertical-align: baseline;
-  font-family: "Arial";
-  font-style: normal;
-  text-align: right; }
 /*  imported from styles.module.scss  */
 
 .styles-module_fq_userInfo__user___2-qew {
