@@ -10,7 +10,6 @@ export { default as Popup } from './Popup';
 export { default as AlertPopup } from './AlertPopup';
 export { default as ConfirmPopup } from './ConfirmPopup';
 export { default as PopupBackground } from './PopupBackground';
-export { default as Privacy } from './Privacy';
 export { default as Rating } from './Rating';
 export { default as FeedbackFormMobile } from './FeedbackFormMobile';
 export { default as FeedbackForm } from './FeedbackForm';
