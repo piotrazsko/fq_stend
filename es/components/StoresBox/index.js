@@ -20,7 +20,8 @@ var StoresBox = function StoresBox(_ref) {
   }, React.createElement("a", {
     href: appStoreLink,
     target: target,
-    className: styles.link
+    className: styles.link,
+    rel: target == '_blank' ? 'noopener noreferrer' : undefined
   }, React.createElement("img", {
     className: styles.imageContainer,
     alt: "app_store",
@@ -28,7 +29,8 @@ var StoresBox = function StoresBox(_ref) {
   })), React.createElement("a", {
     href: googlePlayLink,
     target: target,
-    className: styles.link
+    className: styles.link,
+    rel: target == '_blank' ? 'noopener noreferrer' : undefined
   }, React.createElement("img", {
     className: styles.imageContainer,
     alt: "google_play",
