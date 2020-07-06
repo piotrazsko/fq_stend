@@ -7,10 +7,20 @@ import googlePlay from '../../static/images/stores/googlePlay.png';
 const StoresBox = ({ appStoreLink, googlePlayLink, target = '_blank' }) => {
     return (
         <div className={styles.container}>
-            <a href={appStoreLink} target={target} className={styles.link}>
+            <a
+                href={appStoreLink}
+                target={target}
+                className={styles.link}
+                rel={target == '_blank' ? 'noopener noreferrer' : undefined}
+            >
                 <img className={styles.imageContainer} alt="app_store" src={appStore} />
             </a>
-            <a href={googlePlayLink} target={target} className={styles.link}>
+            <a
+                href={googlePlayLink}
+                target={target}
+                className={styles.link}
+                rel={target == '_blank' ? 'noopener noreferrer' : undefined}
+            >
                 <img className={styles.imageContainer} alt="google_play" src={googlePlay} />
             </a>
         </div>

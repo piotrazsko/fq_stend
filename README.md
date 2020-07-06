@@ -9,3 +9,5 @@ npm start or yarn start
 before commit and push you need use command:
 
 npm build or yarn build
+
+and open http://localhost:6060
