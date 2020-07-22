@@ -128,7 +128,8 @@ Popup.propTypes = {
   style: PropTypes.object,
   confirmButtonProps: PropTypes.object,
   cancelButtonProps: PropTypes.object,
-  childrenContainerClassName: PropTypes.string
+  childrenContainerClassName: PropTypes.string,
+  popupBackgroundsProps: PropTypes.object
 };
 Popup.defaultProps = {
   cancelButtonText: 'Отменить',
