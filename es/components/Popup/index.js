@@ -51,7 +51,8 @@ var Popup = function Popup(_ref) {
       _props$childrenContai = props.childrenContainerClassName,
       childrenContainerClassName = _props$childrenContai === void 0 ? '' : _props$childrenContai,
       showSubmit = props.showSubmit,
-      showCancel = props.showCancel;
+      showCancel = props.showCancel,
+      popupBackgroundsProps = props.popupBackgroundsProps;
 
   var _React$useState = React.useState(showPopup),
       _React$useState2 = _slicedToArray(_React$useState, 2),
@@ -72,10 +73,10 @@ var Popup = function Popup(_ref) {
     setState(false);
   };
 
-  return React.createElement(PopupBackground, {
+  return React.createElement(PopupBackground, _extends({
     visible: showPopupState || showForce,
     onClick: handleCancell
-  }, React.createElement(Grid, {
+  }, popupBackgroundsProps), React.createElement(Grid, {
     container: true,
     direction: "column",
     className: [styles.container, className, classes.root].join(' '),
