@@ -24,6 +24,7 @@ const Popup = ({ ...props }) => {
         childrenContainerClassName = '',
         showSubmit,
         showCancel,
+        popupBackgroundsProps,
     } = props;
     const [showPopupState, setState] = React.useState(showPopup);
     React.useEffect(() => {
@@ -38,7 +39,11 @@ const Popup = ({ ...props }) => {
         setState(false);
     };
     return (
-        <PopupBackground visible={showPopupState || showForce} onClick={handleCancell}>
+        <PopupBackground
+            visible={showPopupState || showForce}
+            onClick={handleCancell}
+            {...popupBackgroundsProps}
+        >
             <Grid
                 container
                 direction="column"
@@ -116,6 +121,7 @@ Popup.propTypes = {
     confirmButtonProps: PropTypes.object,
     cancelButtonProps: PropTypes.object,
     childrenContainerClassName: PropTypes.string,
+    popupBackgroundsProps: PropTypes.object,
 };
 Popup.defaultProps = {
     cancelButtonText: 'Отменить',
