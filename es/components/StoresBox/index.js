@@ -15,23 +15,23 @@ var StoresBox = function StoresBox(_ref) {
       googlePlayLink = _ref.googlePlayLink,
       _ref$target = _ref.target,
       target = _ref$target === void 0 ? '_blank' : _ref$target;
-  return React.createElement("div", {
+  return /*#__PURE__*/React.createElement("div", {
     className: styles.container
-  }, React.createElement("a", {
+  }, /*#__PURE__*/React.createElement("a", {
     href: appStoreLink,
     target: target,
     className: styles.link,
     rel: target == '_blank' ? 'noopener noreferrer' : undefined
-  }, React.createElement("img", {
+  }, /*#__PURE__*/React.createElement("img", {
     className: styles.imageContainer,
     alt: "app_store",
     src: appStore
-  })), React.createElement("a", {
+  })), /*#__PURE__*/React.createElement("a", {
     href: googlePlayLink,
     target: target,
     className: styles.link,
     rel: target == '_blank' ? 'noopener noreferrer' : undefined
-  }, React.createElement("img", {
+  }, /*#__PURE__*/React.createElement("img", {
     className: styles.imageContainer,
     alt: "google_play",
     src: googlePlay

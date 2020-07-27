@@ -7,7 +7,7 @@ var FQ_Style = function FQ_Style(_ref) {
   var children = _ref.children,
       _ref$theme = _ref.theme,
       theme = _ref$theme === void 0 ? defaultTheme : _ref$theme;
-  return React.createElement(ThemeProvider, {
+  return /*#__PURE__*/React.createElement(ThemeProvider, {
     theme: theme
   }, children);
 };

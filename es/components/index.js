@@ -1,4 +1,4 @@
-// import "../static/style/combine.css"
+import "../static/style/combine.css"
 export * from '../helpers';
 export { default as Avatar } from './Avatar';
 export { default as Button } from './Button';

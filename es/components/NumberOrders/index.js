@@ -9,11 +9,11 @@ var styles = {
 var NumberOrders = function NumberOrders(_ref) {
   var ordersValue = _ref.ordersValue,
       text = _ref.text;
-  return React.createElement("div", {
+  return /*#__PURE__*/React.createElement("div", {
     className: styles.container
-  }, React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("div", {
     className: styles.baseblock
-  }, text), React.createElement("div", {
+  }, text), /*#__PURE__*/React.createElement("div", {
     className: styles.numberblock
   }, ordersValue));
 };
