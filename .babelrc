@@ -9,6 +9,7 @@
         "@babel/preset-react"
     ],
     "plugins": [
+        "inline-react-svg",
         "@babel/plugin-proposal-class-properties",
         [
             "css-modules-transform",
