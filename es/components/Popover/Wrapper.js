@@ -33,14 +33,14 @@ var Wrapper = function Wrapper(_ref) {
   React.useEffect(function () {
     positionPopover(inputEl.current, container.current);
   }, []);
-  return React.createElement("div", {
+  return /*#__PURE__*/React.createElement("div", {
     className: style.positionContainer,
     style: anchorEl && {
       top: anchorEl.offsetTop,
       left: anchorEl.offsetLeft
     },
     ref: container
-  }, React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("div", {
     onClick: function onClick(ev) {
       ev.nativeEvent.stopPropagation();
       ev.nativeEvent.preventDefault();
@@ -49,7 +49,7 @@ var Wrapper = function Wrapper(_ref) {
     },
     ref: inputEl,
     className: style.container
-  }, children), React.createElement("div", {
+  }, children), /*#__PURE__*/React.createElement("div", {
     className: style.background,
     onClick: function onClick() {
       _onClick();

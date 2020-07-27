@@ -14,8 +14,8 @@ var Menu = function Menu(_ref) {
       menuItems = _ref$menuItems === void 0 ? [] : _ref$menuItems,
       props = _objectWithoutProperties(_ref, ["menuItems"]);
 
-  return React.createElement(Popover, props, menuItems.map(function (item, index) {
-    return React.createElement("div", {
+  return /*#__PURE__*/React.createElement(Popover, props, menuItems.map(function (item, index) {
+    return /*#__PURE__*/React.createElement("div", {
       className: style.item,
       onClick: function onClick(ev) {
         item.handler(ev);

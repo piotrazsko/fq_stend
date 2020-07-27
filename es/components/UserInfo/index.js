@@ -23,27 +23,27 @@ var UserInfo = function UserInfo(_ref) {
       avatarOnClick = _ref.avatarOnClick,
       nameOnClick = _ref.nameOnClick,
       children = _ref.children;
-  return React.createElement("div", {
+  return /*#__PURE__*/React.createElement("div", {
     className: [styles['userInfo__user'], classNames.container].join(' ')
-  }, React.createElement(Avatar, {
+  }, /*#__PURE__*/React.createElement(Avatar, {
     onClick: avatarOnClick,
     imageUrl: avatar,
     className: [styles['userInfo__icon'], classNames.avatar || ''].join(' ')
-  }), React.createElement("div", {
+  }), /*#__PURE__*/React.createElement("div", {
     className: [styles['userInfo__text'], classNames.textBlock || ''].join(' ')
-  }, userStatus && React.createElement("div", {
+  }, userStatus && /*#__PURE__*/React.createElement("div", {
     className: [styles['userInfo__user-status'], classNames.status || ''].join(' ')
-  }, userStatus), React.createElement("div", {
+  }, userStatus), /*#__PURE__*/React.createElement("div", {
     onClick: nameOnClick,
     className: [styles['userInfo__user-name'], classNames.name || ''].join(' ')
-  }, firstName + ' ' + lastName), location && React.createElement("div", {
+  }, firstName + ' ' + lastName), location && /*#__PURE__*/React.createElement("div", {
     className: [styles['userInfo__user-name'], classNames.location || ''].join(' ')
-  }, location), rating && React.createElement("div", {
+  }, location), rating && /*#__PURE__*/React.createElement("div", {
     className: [styles['userInfo__rating'], classNames.rating].join(' ')
-  }, React.createElement(Rating, {
+  }, /*#__PURE__*/React.createElement(Rating, {
     rating: parseFloat(rating),
     className: [styles['userInfo__rating-star'], classNames.ratingStars || ''].join(' ')
-  }), React.createElement("span", {
+  }), /*#__PURE__*/React.createElement("span", {
     className: styles['userInfo__rating-value']
   }, rating)), children));
 };

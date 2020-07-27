@@ -11,7 +11,7 @@ var Avatar = function Avatar(_ref) {
       className = _ref.className,
       onClick = _ref.onClick,
       children = _ref.children;
-  return React.createElement("div", {
+  return /*#__PURE__*/React.createElement("div", {
     onClick: onClick,
     style: imageUrl ? {
       backgroundImage: "url(".concat(imageUrl, ")")

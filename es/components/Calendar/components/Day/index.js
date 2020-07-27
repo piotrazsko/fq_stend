@@ -76,21 +76,21 @@ var Day = function Day(_ref) {
     return curentDay.getFullYear() === selectedDate.getFullYear() && curentDay.getMonth() === selectedDate.getMonth() && curentDay.getDate() === selectedDate.getDate() && item.hour === selectedDate.getHours() && item.minutes === selectedDate.getMinutes();
   };
 
-  return React.createElement("div", {
+  return /*#__PURE__*/React.createElement("div", {
     className: style['timeContainer']
-  }, React.createElement("div", null, React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
     className: [style['time_day-block'], style['time_day-name']].join(' ')
-  }, React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("div", {
     className: [style['time_day-name__items'], style[' time_day__weekday']].join(' ')
-  }, WEEKDAYS_LONG[curentDay.getDay()]), React.createElement("div", {
+  }, WEEKDAYS_LONG[curentDay.getDay()]), /*#__PURE__*/React.createElement("div", {
     role: "button",
     tabIndex: "-1",
     onKeyDown: function onKeyDown() {},
     onClick: setShowTime,
     className: [style['time_day-name__items'], style['time_day__button-calendar']].join(' ')
-  }, React.createElement(CalendarToday, null))), React.createElement("div", {
+  }, /*#__PURE__*/React.createElement(CalendarToday, null))), /*#__PURE__*/React.createElement("div", {
     className: [style['time_day-block'], style['time_day-slider']].join(' ')
-  }, React.createElement(IconButton, {
+  }, /*#__PURE__*/React.createElement(IconButton, {
     size: "small",
     className: style['time_day__button'],
     role: "button",
@@ -98,30 +98,30 @@ var Day = function Day(_ref) {
     disabled: disableBeforeCurentTime && curentDay < new Date(),
     onKeyDown: function onKeyDown() {},
     onClick: getPrevDay
-  }, React.createElement(ArrowLeft, null)), React.createElement("div", {
+  }, /*#__PURE__*/React.createElement(ArrowLeft, null)), /*#__PURE__*/React.createElement("div", {
     className: style['time_day__date']
-  }, "".concat(curentDay.getDate(), " ").concat(MONTHS[curentDay.getMonth()])), React.createElement(IconButton, {
+  }, "".concat(curentDay.getDate(), " ").concat(MONTHS[curentDay.getMonth()])), /*#__PURE__*/React.createElement(IconButton, {
     size: "small",
     className: style['time_day__button'],
     role: "button",
     tabIndex: "-1",
     onKeyDown: function onKeyDown() {},
     onClick: getNextDay
-  }, React.createElement(ArrowRight, null)))), React.createElement("div", {
+  }, /*#__PURE__*/React.createElement(ArrowRight, null)))), /*#__PURE__*/React.createElement("div", {
     className: [style['time_grid'], workingTimeActualFiltered.length === 0 ? style['empty'] : ''].join(' ')
   }, workingTimeActualFiltered.length > 0 ? workingTimeActualFiltered.map(function (item) {
     var minutes = item.minutes.toString();
     minutes = minutes.length == 1 ? "0".concat(minutes) : minutes;
-    return React.createElement("div", {
+    return /*#__PURE__*/React.createElement("div", {
       className: style.itemContainer,
       key: item.start + '_index'
-    }, React.createElement("div", {
+    }, /*#__PURE__*/React.createElement("div", {
       onClick: function onClick() {
         return onClickDay(item);
       },
       className: [style['time_grid__item'], checkSelected(item) ? style['time_grid__item-selected'] : ''].join(' ')
     }, "".concat(item.hour, ":").concat(minutes)));
-  }) : React.createElement("div", {
+  }) : /*#__PURE__*/React.createElement("div", {
     className: style['emptyDay_shedule']
   }, "\u041E\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0443\u0435\u0442 \u0441\u0432\u043E\u0431\u043E\u0434\u043D\u043E\u0435 \u0432\u0440\u0435\u043C\u044F")));
 };
