@@ -1,3 +1,22 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
+var _PopupsCore = require("../PopupsCore");
+
+var _InputRating = _interopRequireDefault(require("../InputRating"));
+
+var _core = require("@material-ui/core");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
@@ -12,11 +31,6 @@ function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
-import React from 'react';
-import PropTypes from 'prop-types';
-import { PopupCore } from '../PopupsCore';
-import InputRating from '../InputRating';
-import { TextField } from '@material-ui/core';
 var styles = {
   "circle": "style-module_fq_circle___3yxPj",
   "star": "style-module_fq_star___2ucJX",
@@ -48,17 +62,17 @@ var FeedbackForm = function FeedbackForm(_ref) {
       _ref$inputProps = _ref.inputProps,
       inputProps = _ref$inputProps === void 0 ? {} : _ref$inputProps;
 
-  var _React$useState = React.useState(''),
+  var _React$useState = _react.default.useState(''),
       _React$useState2 = _slicedToArray(_React$useState, 2),
       message = _React$useState2[0],
       setMessage = _React$useState2[1];
 
-  var _React$useState3 = React.useState(5),
+  var _React$useState3 = _react.default.useState(5),
       _React$useState4 = _slicedToArray(_React$useState3, 2),
       rating = _React$useState4[0],
       setRating = _React$useState4[1];
 
-  return /*#__PURE__*/React.createElement(PopupCore, _extends({
+  return /*#__PURE__*/_react.default.createElement(_PopupsCore.PopupCore, _extends({
     showIcon: false,
     showForce: showForce,
     showPopup: show,
@@ -82,24 +96,24 @@ var FeedbackForm = function FeedbackForm(_ref) {
     cancellButtonProps: {
       variant: 'outlined'
     }
-  }, popupCoreProps), /*#__PURE__*/React.createElement("div", {
+  }, popupCoreProps), /*#__PURE__*/_react.default.createElement("div", {
     className: styles.circle
-  }, /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/_react.default.createElement("div", {
     className: styles.title
-  }, "\u0412\u0441\u0435 \u043B\u0438 \u0432\u0430\u043C \u043F\u043E\u043D\u0440\u0430\u0432\u0438\u043B\u043E\u0441\u044C?"), /*#__PURE__*/React.createElement("div", {
+  }, "\u0412\u0441\u0435 \u043B\u0438 \u0432\u0430\u043C \u043F\u043E\u043D\u0440\u0430\u0432\u0438\u043B\u043E\u0441\u044C?"), /*#__PURE__*/_react.default.createElement("div", {
     className: styles.star
-  })), /*#__PURE__*/React.createElement("div", {
+  })), /*#__PURE__*/_react.default.createElement("div", {
     className: styles.content
-  }, /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/_react.default.createElement("div", {
     className: styles.ratingContainer
-  }, /*#__PURE__*/React.createElement(InputRating, _extends({
+  }, /*#__PURE__*/_react.default.createElement(_InputRating.default, _extends({
     rating: rating,
     onClick: function onClick(ev) {
       setRating(ev);
     }
-  }, ratingProps))), /*#__PURE__*/React.createElement("div", {
+  }, ratingProps))), /*#__PURE__*/_react.default.createElement("div", {
     className: styles.inputContainer
-  }, /*#__PURE__*/React.createElement(TextField, _extends({
+  }, /*#__PURE__*/_react.default.createElement(_core.TextField, _extends({
     margin: "none",
     inputProps: {
       className: styles.input
@@ -116,15 +130,16 @@ var FeedbackForm = function FeedbackForm(_ref) {
 };
 
 FeedbackForm.propTypes = {
-  type: PropTypes.string,
-  onClick: PropTypes.func,
-  onCancel: PropTypes.func,
-  textConfirm: PropTypes.string,
-  textCancel: PropTypes.string,
-  show: PropTypes.bool,
-  showForce: PropTypes.bool,
-  popupCoreProps: PropTypes.object,
-  ratingProps: PropTypes.object,
-  inputProps: PropTypes.object
+  type: _propTypes.default.string,
+  onClick: _propTypes.default.func,
+  onCancel: _propTypes.default.func,
+  textConfirm: _propTypes.default.string,
+  textCancel: _propTypes.default.string,
+  show: _propTypes.default.bool,
+  showForce: _propTypes.default.bool,
+  popupCoreProps: _propTypes.default.object,
+  ratingProps: _propTypes.default.object,
+  inputProps: _propTypes.default.object
 };
-export default FeedbackForm;
+var _default = FeedbackForm;
+exports.default = _default;

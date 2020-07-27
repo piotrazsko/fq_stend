@@ -1,5 +1,16 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 var style = {
   "container": "style-module_fq_container___2pgq-",
   "positionContainer": "style-module_fq_positionContainer___3rdF0",
@@ -28,19 +39,23 @@ var Wrapper = function Wrapper(_ref) {
   var children = _ref.children,
       anchorEl = _ref.anchorEl,
       _onClick = _ref.onClick;
-  var inputEl = React.useRef(null);
-  var container = React.useRef(null);
-  React.useEffect(function () {
+
+  var inputEl = _react.default.useRef(null);
+
+  var container = _react.default.useRef(null);
+
+  _react.default.useEffect(function () {
     positionPopover(inputEl.current, container.current);
   }, []);
-  return /*#__PURE__*/React.createElement("div", {
+
+  return /*#__PURE__*/_react.default.createElement("div", {
     className: style.positionContainer,
     style: anchorEl && {
       top: anchorEl.offsetTop,
       left: anchorEl.offsetLeft
     },
     ref: container
-  }, /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/_react.default.createElement("div", {
     onClick: function onClick(ev) {
       ev.nativeEvent.stopPropagation();
       ev.nativeEvent.preventDefault();
@@ -49,7 +64,7 @@ var Wrapper = function Wrapper(_ref) {
     },
     ref: inputEl,
     className: style.container
-  }, children), /*#__PURE__*/React.createElement("div", {
+  }, children), /*#__PURE__*/_react.default.createElement("div", {
     className: style.background,
     onClick: function onClick() {
       _onClick();
@@ -58,8 +73,9 @@ var Wrapper = function Wrapper(_ref) {
 };
 
 Wrapper.propTypes = {
-  children: PropTypes.any,
-  anchorEl: PropTypes.any,
-  onClick: PropTypes.func
+  children: _propTypes.default.any,
+  anchorEl: _propTypes.default.any,
+  onClick: _propTypes.default.func
 };
-export default Wrapper;
+var _default = Wrapper;
+exports.default = _default;

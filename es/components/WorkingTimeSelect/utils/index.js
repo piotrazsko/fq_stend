@@ -1,3 +1,19 @@
-/*global  Set*/
-import { DAYS_OF_WEEK, getObjectOfPeriods } from '../../../helpers/calendar';
-export { prepareWorkingTimeIntervals, recoveryWorkingTimeIntervals } from '../../../helpers/calendar';
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+Object.defineProperty(exports, "prepareWorkingTimeIntervals", {
+  enumerable: true,
+  get: function get() {
+    return _calendar.prepareWorkingTimeIntervals;
+  }
+});
+Object.defineProperty(exports, "recoveryWorkingTimeIntervals", {
+  enumerable: true,
+  get: function get() {
+    return _calendar.recoveryWorkingTimeIntervals;
+  }
+});
+
+var _calendar = require("../../../helpers/calendar");

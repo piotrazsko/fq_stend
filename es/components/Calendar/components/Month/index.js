@@ -1,11 +1,25 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import DayPicker from 'react-day-picker';
-import { MONTHS, WEEKDAYS_SHORT } from '../../../../helpers/config';
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
+var _reactDayPicker = _interopRequireDefault(require("react-day-picker"));
+
+var _config = require("../../../../helpers/config");
+
+require("react-day-picker/lib/style.css");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 var style = {
   "datapicker": "style-module_fq_datapicker___1IAIn"
 };
-import 'react-day-picker/lib/style.css';
 var yesterday = new Date();
 yesterday.setDate(new Date().getDate() - 1);
 yesterday.setHours(12);
@@ -23,7 +37,7 @@ var Month = function Month(_ref) {
   var disabledDays = disableBeforeCurentTime ? function (date) {
     return date <= yesterday || disabledDaysFunction(date).length == 0;
   } : [];
-  return /*#__PURE__*/React.createElement(DayPicker, {
+  return /*#__PURE__*/_react.default.createElement(_reactDayPicker.default, {
     onMonthChange: function onMonthChange(month) {
       var day = new Date(curentDay);
       day.setMonth(month.getMonth());
@@ -39,16 +53,17 @@ var Month = function Month(_ref) {
     firstDayOfWeek: 1,
     selectedDays: [curentDay],
     className: style.datapicker,
-    weekdaysShort: WEEKDAYS_SHORT,
-    months: MONTHS
+    weekdaysShort: _config.WEEKDAYS_SHORT,
+    months: _config.MONTHS
   });
 };
 
 Month.propTypes = {
-  curentDay: PropTypes.object.isRequired,
-  setCurentDay: PropTypes.func.isRequired,
-  setShowTime: PropTypes.func.isRequired,
-  disableBeforeCurentTime: PropTypes.bool,
-  disabledDays: PropTypes.func
+  curentDay: _propTypes.default.object.isRequired,
+  setCurentDay: _propTypes.default.func.isRequired,
+  setShowTime: _propTypes.default.func.isRequired,
+  disableBeforeCurentTime: _propTypes.default.bool,
+  disabledDays: _propTypes.default.func
 };
-export default Month;
+var _default = Month;
+exports.default = _default;

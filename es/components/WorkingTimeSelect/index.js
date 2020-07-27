@@ -1,3 +1,24 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
+var _Grid = _interopRequireDefault(require("../Grid"));
+
+var _Cell = _interopRequireDefault(require("./Cell"));
+
+var _Days = _interopRequireDefault(require("./Days"));
+
+var _utils = require("./utils");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -18,12 +39,6 @@ function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
-import React from 'react';
-import PropTypes from 'prop-types';
-import Grid from '../Grid';
-import Cell from './Cell';
-import Days from './Days';
-import { prepareWorkingTimeIntervals, recoveryWorkingTimeIntervals } from './utils';
 var style = {
   "container": "style-module_fq_container___1dmNn",
   "title": "style-module_fq_title___tFfDD",
@@ -49,7 +64,7 @@ var WorkingTimeSelect = function WorkingTimeSelect(_ref) {
       startWeekDay = _ref.startWeekDay,
       onChange = _ref.onChange;
 
-  var _React$useState = React.useState(_toConsumableArray(recoveryWorkingTimeIntervals({
+  var _React$useState = _react.default.useState(_toConsumableArray((0, _utils.recoveryWorkingTimeIntervals)({
     data: workingTimeIntervals,
     startTime: startTime,
     interval: interval,
@@ -59,16 +74,17 @@ var WorkingTimeSelect = function WorkingTimeSelect(_ref) {
       selectedTime = _React$useState2[0],
       selectTime = _React$useState2[1];
 
-  React.useEffect(function () {
-    onChange(prepareWorkingTimeIntervals({
+  _react.default.useEffect(function () {
+    onChange((0, _utils.prepareWorkingTimeIntervals)({
       data: selectedTime,
       startTime: startTime,
       interval: interval,
       startWeekDay: startWeekDay
     }));
   }, [selectedTime]);
-  React.useEffect(function () {
-    var workingTimePrepared = recoveryWorkingTimeIntervals({
+
+  _react.default.useEffect(function () {
+    var workingTimePrepared = (0, _utils.recoveryWorkingTimeIntervals)({
       data: workingTimeIntervals,
       startTime: startTime,
       interval: interval,
@@ -84,8 +100,9 @@ var WorkingTimeSelect = function WorkingTimeSelect(_ref) {
     }
   }, [workingTimeIntervals, startWeekDay]); // TODO:  we can get bugs
 
-  React.useEffect(function () {
-    var workingTimePrepared = recoveryWorkingTimeIntervals({
+
+  _react.default.useEffect(function () {
+    var workingTimePrepared = (0, _utils.recoveryWorkingTimeIntervals)({
       data: workingTimeIntervals,
       startTime: startTime,
       interval: interval,
@@ -114,16 +131,16 @@ var WorkingTimeSelect = function WorkingTimeSelect(_ref) {
     })));
   };
 
-  return /*#__PURE__*/React.createElement("div", {
+  return /*#__PURE__*/_react.default.createElement("div", {
     className: style.container
-  }, /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/_react.default.createElement("div", {
     className: style.resultContainer
-  }, /*#__PURE__*/React.createElement(Days, {
+  }, /*#__PURE__*/_react.default.createElement(_Days.default, {
     startWeekDay: startWeekDay,
     selectedTime: selectedTime,
     startTime: startTime,
     interval: interval
-  })), /*#__PURE__*/React.createElement(Grid, {
+  })), /*#__PURE__*/_react.default.createElement(_Grid.default, {
     isMobile: isMobile,
     className: style.gridContainer,
     cols: 8,
@@ -139,7 +156,7 @@ var WorkingTimeSelect = function WorkingTimeSelect(_ref) {
       return col === 0 ? style.firstColumn : '';
     },
     cellProps: {
-      children: /*#__PURE__*/React.createElement(Cell, {
+      children: /*#__PURE__*/_react.default.createElement(_Cell.default, {
         startTime: startTime,
         startWeekDay: startWeekDay,
         endTime: endTime,
@@ -155,14 +172,14 @@ var WorkingTimeSelect = function WorkingTimeSelect(_ref) {
 };
 
 WorkingTimeSelect.propTypes = {
-  onChange: PropTypes.func,
-  isMobile: PropTypes.bool,
-  selectedTimeText: PropTypes.string,
-  startTime: PropTypes.number,
-  endTime: PropTypes.number,
-  startWeekDay: PropTypes.number,
-  interval: PropTypes.number,
-  workingTimeIntervals: PropTypes.object
+  onChange: _propTypes.default.func,
+  isMobile: _propTypes.default.bool,
+  selectedTimeText: _propTypes.default.string,
+  startTime: _propTypes.default.number,
+  endTime: _propTypes.default.number,
+  startWeekDay: _propTypes.default.number,
+  interval: _propTypes.default.number,
+  workingTimeIntervals: _propTypes.default.object
 };
 WorkingTimeSelect.defaultProps = {
   workingTime: [],
@@ -173,4 +190,5 @@ WorkingTimeSelect.defaultProps = {
   //utc day of week
   workingTimeIntervals: {}
 };
-export default WorkingTimeSelect;
+var _default = WorkingTimeSelect;
+exports.default = _default;

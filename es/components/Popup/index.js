@@ -1,3 +1,22 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
+var _core = require("@material-ui/core");
+
+var _PopupBackground = _interopRequireDefault(require("../PopupBackground"));
+
+var _Button = _interopRequireDefault(require("../Button"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
@@ -18,11 +37,6 @@ function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Grid } from '@material-ui/core';
-import PopupBackground from '../PopupBackground';
-import Button from '../Button';
 var styles = {
   "container": "style-module_fq_container___1KNAu",
   "buttonContainer": "style-module_fq_buttonContainer___txOay",
@@ -58,12 +72,12 @@ var Popup = function Popup(_ref) {
       showCancel = props.showCancel,
       popupBackgroundsProps = props.popupBackgroundsProps;
 
-  var _React$useState = React.useState(showPopup),
+  var _React$useState = _react.default.useState(showPopup),
       _React$useState2 = _slicedToArray(_React$useState, 2),
       showPopupState = _React$useState2[0],
       setState = _React$useState2[1];
 
-  React.useEffect(function () {
+  _react.default.useEffect(function () {
     setState(showPopup);
   }, [showPopup]);
 
@@ -77,30 +91,30 @@ var Popup = function Popup(_ref) {
     setState(false);
   };
 
-  return /*#__PURE__*/React.createElement(PopupBackground, _extends({
+  return /*#__PURE__*/_react.default.createElement(_PopupBackground.default, _extends({
     visible: showPopupState || showForce,
     onClick: handleCancell
-  }, popupBackgroundsProps), /*#__PURE__*/React.createElement(Grid, {
+  }, popupBackgroundsProps), /*#__PURE__*/_react.default.createElement(_core.Grid, {
     container: true,
     direction: "column",
     className: [styles.container, className, classes.root].join(' '),
     style: _objectSpread({}, style)
-  }, /*#__PURE__*/React.createElement(Grid, {
+  }, /*#__PURE__*/_react.default.createElement(_core.Grid, {
     item: true,
     className: [styles.dataContainer, classes.dataContainer, childrenContainerClassName].join(' '),
     xs: 12
-  }, children), /*#__PURE__*/React.createElement(Grid, {
+  }, children), /*#__PURE__*/_react.default.createElement(_core.Grid, {
     item: true,
     xs: 12,
     className: [styles.buttonContainer, classes.buttonContainer].join(' ')
-  }, showCancel && /*#__PURE__*/React.createElement(Button, _extends({
+  }, showCancel && /*#__PURE__*/_react.default.createElement(_Button.default, _extends({
     onClick: handleCancell,
     className: styles.button,
     color: "default",
     disabled: disableCancel,
     variant: "text",
     fontSize: '0.8rem'
-  }, cancelButtonProps), cancelButtonText), showSubmit && /*#__PURE__*/React.createElement(Button, _extends({
+  }, cancelButtonProps), cancelButtonText), showSubmit && /*#__PURE__*/_react.default.createElement(_Button.default, _extends({
     color: "primary",
     onClick: handleSubmit,
     disabled: disableSubmit,
@@ -110,30 +124,30 @@ var Popup = function Popup(_ref) {
 };
 
 Popup.propTypes = {
-  showPopup: PropTypes.bool,
-  onSubmit: PropTypes.func,
-  onCancel: PropTypes.func,
-  cancelButtonText: PropTypes.string,
-  submitButtonText: PropTypes.string,
-  className: PropTypes.string,
-  children: PropTypes.element,
-  classes: PropTypes.shape({
-    root: PropTypes.string,
-    dataContainer: PropTypes.string,
-    buttonContainer: PropTypes.string
+  showPopup: _propTypes.default.bool,
+  onSubmit: _propTypes.default.func,
+  onCancel: _propTypes.default.func,
+  cancelButtonText: _propTypes.default.string,
+  submitButtonText: _propTypes.default.string,
+  className: _propTypes.default.string,
+  children: _propTypes.default.element,
+  classes: _propTypes.default.shape({
+    root: _propTypes.default.string,
+    dataContainer: _propTypes.default.string,
+    buttonContainer: _propTypes.default.string
   }),
-  confirmButtonClasses: PropTypes.objectOf(PropTypes.object),
-  cancelButtonClasses: PropTypes.objectOf(PropTypes.object),
-  disableSubmit: PropTypes.bool,
-  disableCancel: PropTypes.bool,
-  showSubmit: PropTypes.bool,
-  showCancel: PropTypes.bool,
-  showForce: PropTypes.bool,
-  style: PropTypes.object,
-  confirmButtonProps: PropTypes.object,
-  cancelButtonProps: PropTypes.object,
-  childrenContainerClassName: PropTypes.string,
-  popupBackgroundsProps: PropTypes.object
+  confirmButtonClasses: _propTypes.default.objectOf(_propTypes.default.object),
+  cancelButtonClasses: _propTypes.default.objectOf(_propTypes.default.object),
+  disableSubmit: _propTypes.default.bool,
+  disableCancel: _propTypes.default.bool,
+  showSubmit: _propTypes.default.bool,
+  showCancel: _propTypes.default.bool,
+  showForce: _propTypes.default.bool,
+  style: _propTypes.default.object,
+  confirmButtonProps: _propTypes.default.object,
+  cancelButtonProps: _propTypes.default.object,
+  childrenContainerClassName: _propTypes.default.string,
+  popupBackgroundsProps: _propTypes.default.object
 };
 Popup.defaultProps = {
   cancelButtonText: 'Отменить',
@@ -149,4 +163,5 @@ Popup.defaultProps = {
   confirmButtonProps: {},
   cancelButtonProps: {}
 };
-export default Popup;
+var _default = Popup;
+exports.default = _default;

@@ -1,3 +1,24 @@
+"use strict";
+
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
+var _Wrapper = _interopRequireDefault(require("./Wrapper"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -10,14 +31,11 @@ function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
-import React, { useRef, useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
 var style = {
   "container": "style-module_fq_container___2pgq-",
   "positionContainer": "style-module_fq_positionContainer___3rdF0",
   "background": "style-module_fq_background___3Lefb"
 };
-import Wrapper from './Wrapper';
 
 var Popover = function Popover(_ref) {
   var children = _ref.children,
@@ -29,21 +47,21 @@ var Popover = function Popover(_ref) {
       _ref$onClose = _ref.onClose,
       onClose = _ref$onClose === void 0 ? function () {} : _ref$onClose;
 
-  var _useState = useState(visible),
+  var _useState = (0, _react.useState)(visible),
       _useState2 = _slicedToArray(_useState, 2),
       show = _useState2[0],
       switchShow = _useState2[1];
 
-  useEffect(function () {
+  (0, _react.useEffect)(function () {
     switchShow(visible);
   }, [visible]); // BUG:  showd after mount
 
-  useEffect(function () {
+  (0, _react.useEffect)(function () {
     if (!show) {
       onClose();
     }
   }, [show]);
-  return (show || showForce) && /*#__PURE__*/React.createElement(Wrapper, {
+  return (show || showForce) && /*#__PURE__*/_react.default.createElement(_Wrapper.default, {
     anchorEl: anchorEl,
     onClick: function onClick() {
       switchShow(!show);
@@ -52,9 +70,10 @@ var Popover = function Popover(_ref) {
 };
 
 Popover.propTypes = {
-  children: PropTypes.any,
-  showForce: PropTypes.bool,
-  visible: PropTypes.bool,
-  onClose: PropTypes.func
+  children: _propTypes.default.any,
+  showForce: _propTypes.default.bool,
+  visible: _propTypes.default.bool,
+  onClose: _propTypes.default.func
 };
-export default Popover;
+var _default = Popover;
+exports.default = _default;

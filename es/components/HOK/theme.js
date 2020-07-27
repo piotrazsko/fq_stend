@@ -1,5 +1,13 @@
-import { createMuiTheme } from '@material-ui/core/styles';
-export var theme = createMuiTheme({
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.theme = void 0;
+
+var _styles = require("@material-ui/core/styles");
+
+var theme = (0, _styles.createMuiTheme)({
   palette: {
     // secondary: {
     //     main: orange[500],
@@ -52,3 +60,4 @@ export var theme = createMuiTheme({
     }
   }
 });
+exports.theme = theme;

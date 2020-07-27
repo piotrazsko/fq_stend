@@ -1,7 +1,20 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Rating from '../Rating';
-import Avatar from '../Avatar';
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
+var _Rating = _interopRequireDefault(require("../Rating"));
+
+var _Avatar = _interopRequireDefault(require("../Avatar"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 var styles = {
   "userInfo__user": "styles-module_fq_userInfo__user___2-qew",
   "userInfo__icon": "styles-module_fq_userInfo__icon___3InyY",
@@ -23,27 +36,27 @@ var UserInfo = function UserInfo(_ref) {
       avatarOnClick = _ref.avatarOnClick,
       nameOnClick = _ref.nameOnClick,
       children = _ref.children;
-  return /*#__PURE__*/React.createElement("div", {
+  return /*#__PURE__*/_react.default.createElement("div", {
     className: [styles['userInfo__user'], classNames.container].join(' ')
-  }, /*#__PURE__*/React.createElement(Avatar, {
+  }, /*#__PURE__*/_react.default.createElement(_Avatar.default, {
     onClick: avatarOnClick,
     imageUrl: avatar,
     className: [styles['userInfo__icon'], classNames.avatar || ''].join(' ')
-  }), /*#__PURE__*/React.createElement("div", {
+  }), /*#__PURE__*/_react.default.createElement("div", {
     className: [styles['userInfo__text'], classNames.textBlock || ''].join(' ')
-  }, userStatus && /*#__PURE__*/React.createElement("div", {
+  }, userStatus && /*#__PURE__*/_react.default.createElement("div", {
     className: [styles['userInfo__user-status'], classNames.status || ''].join(' ')
-  }, userStatus), /*#__PURE__*/React.createElement("div", {
+  }, userStatus), /*#__PURE__*/_react.default.createElement("div", {
     onClick: nameOnClick,
     className: [styles['userInfo__user-name'], classNames.name || ''].join(' ')
-  }, firstName + ' ' + lastName), location && /*#__PURE__*/React.createElement("div", {
+  }, firstName + ' ' + lastName), location && /*#__PURE__*/_react.default.createElement("div", {
     className: [styles['userInfo__user-name'], classNames.location || ''].join(' ')
-  }, location), rating && /*#__PURE__*/React.createElement("div", {
+  }, location), rating && /*#__PURE__*/_react.default.createElement("div", {
     className: [styles['userInfo__rating'], classNames.rating].join(' ')
-  }, /*#__PURE__*/React.createElement(Rating, {
+  }, /*#__PURE__*/_react.default.createElement(_Rating.default, {
     rating: parseFloat(rating),
     className: [styles['userInfo__rating-star'], classNames.ratingStars || ''].join(' ')
-  }), /*#__PURE__*/React.createElement("span", {
+  }), /*#__PURE__*/_react.default.createElement("span", {
     className: styles['userInfo__rating-value']
   }, rating)), children));
 };
@@ -64,25 +77,26 @@ UserInfo.defaultProps = {
   }
 };
 UserInfo.propTypes = {
-  firstName: PropTypes.string,
-  lastName: PropTypes.string,
-  avatarOnClick: PropTypes.func,
-  nameOnClick: PropTypes.func,
-  rating: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  location: PropTypes.string,
-  userStatus: PropTypes.string,
-  avatar: PropTypes.string,
-  classNames: PropTypes.shape({
-    container: PropTypes.string,
-    textBlock: PropTypes.string,
-    avatar: PropTypes.string,
-    status: PropTypes.string,
-    name: PropTypes.string,
-    location: PropTypes.string,
-    rating: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    ratingText: PropTypes.string,
-    ratingStars: PropTypes.string
+  firstName: _propTypes.default.string,
+  lastName: _propTypes.default.string,
+  avatarOnClick: _propTypes.default.func,
+  nameOnClick: _propTypes.default.func,
+  rating: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.number]),
+  location: _propTypes.default.string,
+  userStatus: _propTypes.default.string,
+  avatar: _propTypes.default.string,
+  classNames: _propTypes.default.shape({
+    container: _propTypes.default.string,
+    textBlock: _propTypes.default.string,
+    avatar: _propTypes.default.string,
+    status: _propTypes.default.string,
+    name: _propTypes.default.string,
+    location: _propTypes.default.string,
+    rating: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.number]),
+    ratingText: _propTypes.default.string,
+    ratingStars: _propTypes.default.string
   }),
-  children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]).isRequired
+  children: _propTypes.default.oneOfType([_propTypes.default.arrayOf(_propTypes.default.node), _propTypes.default.node]).isRequired
 };
-export default UserInfo;
+var _default = UserInfo;
+exports.default = _default;

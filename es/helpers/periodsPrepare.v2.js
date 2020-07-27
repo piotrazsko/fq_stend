@@ -1,3 +1,14 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.getBookedTimePeriods = exports.getCustomTimePeriods = exports.getPermanentWorkingPeriods = void 0;
+
+var _moment = _interopRequireDefault(require("moment"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -10,16 +21,14 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToAr
 
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
-import moment from 'moment';
-
 var reduceIntervals = function reduceIntervals(arr, interval) {
   return arr.reduce(function (acc, item) {
     var startTimeArr = item.start.match(/^.{1,2}:..($|:..)/gm) ? item.start.split(':') : function () {
-      var time = new Date(moment(item.start).toDate());
+      var time = new Date((0, _moment.default)(item.start).toDate());
       return [time.getHours().toString(), time.getMinutes().toString()];
     }();
     var endTimeArr = item.end.match(/^.{1,2}:..($|:..)/gm) ? item.end.split(':') : function () {
-      var time = new Date(moment(item.end).toDate());
+      var time = new Date((0, _moment.default)(item.end).toDate());
       var hours = time.getHours();
       return [hours.toString(), time.getMinutes().toString()];
     }();
@@ -36,13 +45,16 @@ var reduceIntervals = function reduceIntervals(arr, interval) {
   }, []);
 };
 
-export var getPermanentWorkingPeriods = function getPermanentWorkingPeriods(_ref) {
+var getPermanentWorkingPeriods = function getPermanentWorkingPeriods(_ref) {
   var workingTimeDay = _ref.workingTimeDay,
       _ref$interval = _ref.interval,
       interval = _ref$interval === void 0 ? 60 : _ref$interval;
   return workingTimeDay && Object.keys(workingTimeDay).length > 0 ? reduceIntervals(workingTimeDay, interval) : [];
 };
-export var getCustomTimePeriods = function getCustomTimePeriods(_ref2) {
+
+exports.getPermanentWorkingPeriods = getPermanentWorkingPeriods;
+
+var getCustomTimePeriods = function getCustomTimePeriods(_ref2) {
   var customTimeDay = _ref2.customTimeDay,
       _ref2$interval = _ref2.interval,
       interval = _ref2$interval === void 0 ? 60 : _ref2$interval;
@@ -51,12 +63,15 @@ export var getCustomTimePeriods = function getCustomTimePeriods(_ref2) {
     disabled: customTimeDay.disabled ? reduceIntervals(customTimeDay.disabled, interval) : []
   };
 };
-export var getBookedTimePeriods = function getBookedTimePeriods(_ref3) {
+
+exports.getCustomTimePeriods = getCustomTimePeriods;
+
+var getBookedTimePeriods = function getBookedTimePeriods(_ref3) {
   var bookedTimeDay = _ref3.bookedTimeDay,
       _ref3$interval = _ref3.interval,
       interval = _ref3$interval === void 0 ? 60 : _ref3$interval;
   return bookedTimeDay.reduce(function (acc, item) {
-    var date = new Date(moment(item.date).toDate());
+    var date = new Date((0, _moment.default)(item.date).toDate());
     var startTime = date.getHours() * 60 + date.getMinutes();
     var endTime = startTime + item.duration; // TODO:  need check it for calnedar
 
@@ -67,3 +82,5 @@ export var getBookedTimePeriods = function getBookedTimePeriods(_ref3) {
     return _toConsumableArray(acc);
   }, []);
 };
+
+exports.getBookedTimePeriods = getBookedTimePeriods;
