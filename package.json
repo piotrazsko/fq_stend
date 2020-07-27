@@ -24,7 +24,8 @@
         "react-router-dom": "^5.0.1",
         "react-scripts": "3.0.1",
         "react-styleguidist": "^9.1.7",
-        "react-text-mask": "^5.4.3"
+        "react-text-mask": "^5.4.3",
+        "url-loader": "^4.1.0"
     },
     "scripts": {
         "start": "cross-env NODE_ENV=development node --max_old_space_size=8192 node_modules/react-styleguidist/lib/bin/styleguidist server --config ./styleguide.config.js",
