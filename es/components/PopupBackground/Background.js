@@ -23,14 +23,14 @@ var Background = function Background(_ref) {
     onClick(event);
   };
 
-  return React.createElement("div", {
+  return /*#__PURE__*/React.createElement("div", {
     className: [style.popup_background, className].join(' '),
     role: "presentation",
     onClick: function onClick(ev) {
       handleClick(ev);
       ev.stopPropagation();
     }
-  }, React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("div", {
     className: [style.popup_background_inbox, childrenClassName].join(' '),
     onClick: function onClick(ev) {
       return ev.stopPropagation();

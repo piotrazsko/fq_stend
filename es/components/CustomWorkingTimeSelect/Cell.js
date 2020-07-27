@@ -1,8 +1,12 @@
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 
-function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
@@ -77,7 +81,7 @@ var Cell = function Cell(_ref) {
     case Boolean(bookedTime.find(function (i) {
       return i.col == col && i.row == row;
     })):
-      return React.createElement("div", {
+      return /*#__PURE__*/React.createElement("div", {
         className: style.reservedTime
       }, "\u0417\u0430\u043F\u0438\u0441\u044C");
 
@@ -86,7 +90,7 @@ var Cell = function Cell(_ref) {
         var time = startTime + (row - 1) * interval;
         var minutes = (time % 60).toString();
         var child = typeof selectedTimeText == 'string' ? isMobile ? "".concat(Math.floor(time / 60), ":").concat(minutes.length === 1 ? '0' + minutes : minutes) : "".concat(Math.floor(time / 60), ":").concat(minutes.length === 1 ? '0' + minutes : minutes, " \u0412\u0440\u0435\u043C\u044F \u0432\u044B\u0431\u0440\u0430\u043D\u043E") : selectedTimeText;
-        return React.createElement("div", {
+        return /*#__PURE__*/React.createElement("div", {
           date: cell.itemTime.toISOString(),
           className: isSelected ? style.cellCustomDayDisabled : style.cellCustomDay
         }, child);
@@ -100,7 +104,7 @@ var Cell = function Cell(_ref) {
 
         var _child = typeof selectedTimeText == 'string' ? isMobile ? "".concat(Math.floor(_time / 60), ":").concat(_minutes.length === 1 ? '0' + _minutes : _minutes) : "".concat(Math.floor(_time / 60), ":").concat(_minutes.length === 1 ? '0' + _minutes : _minutes, " \u0412\u0440\u0435\u043C\u044F \u0432\u044B\u0431\u0440\u0430\u043D\u043E") : selectedTimeText;
 
-        return React.createElement("div", {
+        return /*#__PURE__*/React.createElement("div", {
           className: style.selectedCell
         }, _child);
       }
@@ -111,19 +115,19 @@ var Cell = function Cell(_ref) {
 
         var _minutes2 = (_time2 % 60).toString();
 
-        return React.createElement("div", {
+        return /*#__PURE__*/React.createElement("div", {
           className: style.cellTime
         }, "".concat(Math.floor(_time2 / 60), ":").concat(_minutes2.length === 1 ? '0' + _minutes2 : _minutes2));
       }
 
     case col === 8 && row == 0:
       {
-        return React.createElement(IconButton, {
+        return /*#__PURE__*/React.createElement(IconButton, {
           size: "small",
           onClick: function onClick() {
             setCurentDay(new Date(curentDay.valueOf() + 7 * DAY_MS));
           }
-        }, React.createElement(ArrowForwardIosIcon, {
+        }, /*#__PURE__*/React.createElement(ArrowForwardIosIcon, {
           style: {
             fontSize: 20
           },
@@ -133,12 +137,12 @@ var Cell = function Cell(_ref) {
 
     case col === 0 && row == 0:
       {
-        return React.createElement(IconButton, {
+        return /*#__PURE__*/React.createElement(IconButton, {
           size: "small",
           onClick: function onClick() {
             setCurentDay(new Date(curentDay.valueOf() - 7 * DAY_MS));
           }
-        }, React.createElement(ArrowForwardIosIcon, {
+        }, /*#__PURE__*/React.createElement(ArrowForwardIosIcon, {
           htmlColor: "#000",
           style: {
             transform: 'rotate(180deg)',
@@ -152,28 +156,28 @@ var Cell = function Cell(_ref) {
         var dayOfWeek = (col - 1 + startWeekDay) % 7;
         var date = new Date(curentDay);
         date.setDate(curentDay.getDate() - curentDay.getDay() + (col - 1) % 7 + startWeekDay);
-        return React.createElement("div", {
+        return /*#__PURE__*/React.createElement("div", {
           className: style.cellDay
-        }, React.createElement("div", null, isMobile ? "".concat(date.getDate(), " ").concat(WEEKDAYS_SHORT[dayOfWeek]) : "".concat(date.getDate(), " ").concat(WEEKDAYS_LONG[dayOfWeek])), React.createElement("div", null, React.createElement(IconButton, {
+        }, /*#__PURE__*/React.createElement("div", null, isMobile ? "".concat(date.getDate(), " ").concat(WEEKDAYS_SHORT[dayOfWeek]) : "".concat(date.getDate(), " ").concat(WEEKDAYS_LONG[dayOfWeek])), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(IconButton, {
           size: "small",
           onClick: handleClick
-        }, React.createElement(MoreVertIcon, {
+        }, /*#__PURE__*/React.createElement(MoreVertIcon, {
           style: {
             fontSize: 15
           }
-        })), React.createElement(Menu, {
+        })), /*#__PURE__*/React.createElement(Menu, {
           id: "simple-menu",
           anchorEl: anchorEl,
           keepMounted: true,
           open: Boolean(anchorEl),
           onClose: handleClose
-        }, React.createElement(MenuItem, {
+        }, /*#__PURE__*/React.createElement(MenuItem, {
           onClick: function onClick() {
             return onMenuClick(col);
           }
-        }, React.createElement("div", {
+        }, /*#__PURE__*/React.createElement("div", {
           className: style.menuItem
-        }, React.createElement(DeleteForeverIcon, {
+        }, /*#__PURE__*/React.createElement(DeleteForeverIcon, {
           style: {
             fontSize: 18
           }
@@ -181,7 +185,7 @@ var Cell = function Cell(_ref) {
       }
 
     default:
-      return React.createElement("div", null);
+      return /*#__PURE__*/React.createElement("div", null);
   }
 };
 

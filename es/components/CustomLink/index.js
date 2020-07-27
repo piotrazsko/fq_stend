@@ -20,7 +20,7 @@ var CustomLink = function CustomLink(_ref) {
   var linkClasses = classNames(className, styles.link, _defineProperty({}, styles.underline, hasUnderline));
   var isRouterLink = typeof to === 'string';
   var props = (_props = {}, _defineProperty(_props, isRouterLink ? 'to' : 'onClick', to), _defineProperty(_props, "className", linkClasses), _defineProperty(_props, 'aria-label', ariaLabel), _props);
-  return isRouterLink ? React.createElement(NavLink, props, children) : React.createElement("a", props, children);
+  return isRouterLink ? /*#__PURE__*/React.createElement(NavLink, props, children) : /*#__PURE__*/React.createElement("a", props, children);
 };
 
 CustomLink.propTypes = {

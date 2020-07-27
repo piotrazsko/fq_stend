@@ -23,7 +23,7 @@ var Month = function Month(_ref) {
   var disabledDays = disableBeforeCurentTime ? function (date) {
     return date <= yesterday || disabledDaysFunction(date).length == 0;
   } : [];
-  return React.createElement(DayPicker, {
+  return /*#__PURE__*/React.createElement(DayPicker, {
     onMonthChange: function onMonthChange(month) {
       var day = new Date(curentDay);
       day.setMonth(month.getMonth());

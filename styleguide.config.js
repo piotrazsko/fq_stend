@@ -20,4 +20,23 @@ module.exports = {
             base: '"Roboto", sans-serif',
         },
     },
+    webpackConfig: {
+        module: {
+            rules: [
+                {
+                    test: /\.js?$/,
+                    exclude: /node_modules/,
+                    loader: 'babel-loader',
+                },
+                {
+                    test: /\.(png|svg)$/,
+                    use: ['file-loader'],
+                },
+                {
+                    test: /\.css$/,
+                    use: ['style-loader', 'css-loader'],
+                },
+            ],
+        },
+    },
 };

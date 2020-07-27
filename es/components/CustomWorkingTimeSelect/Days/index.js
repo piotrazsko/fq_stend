@@ -27,31 +27,31 @@ var Days = function Days(_ref) {
   var curentDay = _ref.curentDay,
       setCurentDay = _ref.setCurentDay;
   var firstDayMs = curentDay.valueOf() - curentDay.getDay() * DAY_MS;
-  return React.createElement(React.Fragment, null, React.createElement("div", {
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
     className: style.monthTitle
-  }, React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("div", {
     className: style.month
-  }, MONTHS[new Date(firstDayMs).getMonth()]), React.createElement("div", {
+  }, MONTHS[new Date(firstDayMs).getMonth()]), /*#__PURE__*/React.createElement("div", {
     className: style.year
-  }, curentDay.getFullYear()), React.createElement("div", {
+  }, curentDay.getFullYear()), /*#__PURE__*/React.createElement("div", {
     className: style.buttons
-  }, React.createElement(IconButton, {
+  }, /*#__PURE__*/React.createElement(IconButton, {
     size: "small",
     onClick: function onClick() {
       setCurentDay(getPrevMonth(curentDay));
     }
-  }, React.createElement(ArrowForwardIosIcon, {
+  }, /*#__PURE__*/React.createElement(ArrowForwardIosIcon, {
     htmlColor: "#000",
     style: {
       transform: 'rotate(180deg)',
       fontSize: 18
     }
-  })), React.createElement(IconButton, {
+  })), /*#__PURE__*/React.createElement(IconButton, {
     size: "small",
     onClick: function onClick() {
       setCurentDay(getNextMonth(curentDay));
     }
-  }, React.createElement(ArrowForwardIosIcon, {
+  }, /*#__PURE__*/React.createElement(ArrowForwardIosIcon, {
     style: {
       fontSize: 18
     },

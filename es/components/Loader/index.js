@@ -8,22 +8,22 @@ var styles = {
 
 var Loader = function Loader(_ref) {
   var isLoading = _ref.isLoading;
-  return isLoading ? React.createElement("div", {
+  return isLoading ? /*#__PURE__*/React.createElement("div", {
     className: styles.container
-  }, React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("div", {
     className: styles.loader
-  }, React.createElement("svg", null, React.createElement("defs", null, React.createElement("filter", {
+  }, /*#__PURE__*/React.createElement("svg", null, /*#__PURE__*/React.createElement("defs", null, /*#__PURE__*/React.createElement("filter", {
     id: "goo"
-  }, React.createElement("feGaussianBlur", {
+  }, /*#__PURE__*/React.createElement("feGaussianBlur", {
     in: "SourceGraphic",
     stdDeviation: "2",
     result: "blur"
-  }), React.createElement("feColorMatrix", {
+  }), /*#__PURE__*/React.createElement("feColorMatrix", {
     in: "blur",
     mode: "matrix",
     values: "1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 5 -2",
     result: "gooey"
-  }), React.createElement("feComposite", {
+  }), /*#__PURE__*/React.createElement("feComposite", {
     in: "SourceGraphic",
     in2: "gooey",
     operator: "atop"

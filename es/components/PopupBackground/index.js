@@ -9,7 +9,7 @@ var PopupBackground = function PopupBackground(_ref) {
       className = _ref.className,
       children = _ref.children,
       childrenClassName = _ref.childrenClassName;
-  return visible ? React.createElement(Background, {
+  return visible ? /*#__PURE__*/React.createElement(Background, {
     onClick: onClick,
     className: className,
     childrenClassName: childrenClassName
