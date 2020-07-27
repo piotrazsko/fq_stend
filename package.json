@@ -8,7 +8,9 @@
         "@emotion/styled": "^10.0.27",
         "@material-ui/core": "^4.6.1",
         "@material-ui/icons": "^4.9.1",
+        "@svgr/webpack": "^5.4.0",
         "babel-loader": "^8.0.6",
+        "babel-plugin-named-asset-import": "^0.3.6",
         "classnames": "^2.2.6",
         "css-loader": "^4.0.0",
         "libphonenumber-js": "^1.7.44",
@@ -25,6 +27,7 @@
         "react-scripts": "3.0.1",
         "react-styleguidist": "^9.1.7",
         "react-text-mask": "^5.4.3",
+        "svg-inline-loader": "^0.8.2",
         "url-loader": "^4.1.0"
     },
     "scripts": {
