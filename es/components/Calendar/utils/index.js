@@ -1,3 +1,20 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+Object.defineProperty(exports, "getDataForSelectedDate", {
+  enumerable: true,
+  get: function get() {
+    return _curentDayPrepareV.getDataForSelectedDate;
+  }
+});
+exports.workingTimePrepare = void 0;
+
+var _periodsPrepareV = require("../../../helpers/periodsPrepare.v2.js");
+
+var _curentDayPrepareV = require("../../../helpers/curentDayPrepare.v2.js");
+
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -10,24 +27,21 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToAr
 
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
-/*global  Set*/
-import { getPermanentWorkingPeriods, getCustomTimePeriods, getBookedTimePeriods } from '../../../helpers/periodsPrepare.v2.js';
-export { getDataForSelectedDate } from '../../../helpers/curentDayPrepare.v2.js';
-export var workingTimePrepare = function workingTimePrepare(_ref) {
+var workingTimePrepare = function workingTimePrepare(_ref) {
   var workingTimeDay = _ref.workingTimeDay,
       customTimeDay = _ref.customTimeDay,
       bookedTimeDay = _ref.bookedTimeDay,
       _ref$interval = _ref.interval,
       interval = _ref$interval === void 0 ? 15 : _ref$interval;
-  var permanentWorkingIntervals = getPermanentWorkingPeriods({
+  var permanentWorkingIntervals = (0, _periodsPrepareV.getPermanentWorkingPeriods)({
     workingTimeDay: workingTimeDay,
     interval: interval
   });
-  var customTimePeriods = getCustomTimePeriods({
+  var customTimePeriods = (0, _periodsPrepareV.getCustomTimePeriods)({
     customTimeDay: customTimeDay,
     interval: interval
   });
-  var bookedTimePeriods = getBookedTimePeriods({
+  var bookedTimePeriods = (0, _periodsPrepareV.getBookedTimePeriods)({
     bookedTimeDay: bookedTimeDay,
     interval: interval
   });
@@ -57,3 +71,5 @@ export var workingTimePrepare = function workingTimePrepare(_ref) {
     });
   });
 };
+
+exports.workingTimePrepare = workingTimePrepare;

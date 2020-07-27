@@ -1,3 +1,22 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
+var _utils = require("./utils");
+
+var _Day = _interopRequireDefault(require("./components/Day"));
+
+var _Month = _interopRequireDefault(require("./components/Month"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -16,11 +35,6 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-import React from 'react';
-import PropTypes from 'prop-types';
-import { workingTimePrepare, getDataForSelectedDate } from './utils';
-import Day from './components/Day';
-import Month from './components/Month';
 var style = {
   "container": "style-module_fq_container___ohkyl"
 };
@@ -31,7 +45,7 @@ var getActualIntervalsByDay = function getActualIntervalsByDay(_ref) {
       customTime = _ref.customTime,
       bookedTime = _ref.bookedTime,
       interval = _ref.interval;
-  return workingTimePrepare(_objectSpread(_objectSpread({}, getDataForSelectedDate({
+  return (0, _utils.workingTimePrepare)(_objectSpread(_objectSpread({}, (0, _utils.getDataForSelectedDate)({
     workingTime: workingTimeIntervals,
     customTime: customTime,
     bookedTime: bookedTime,
@@ -62,24 +76,25 @@ var Calendar = function Calendar(_ref2) {
       selectedTimeProps = _ref2$selectedDate === void 0 ? today : _ref2$selectedDate,
       classNames = _ref2.classNames;
 
-  var _React$useState = React.useState(curentDayDefault),
+  var _React$useState = _react.default.useState(curentDayDefault),
       _React$useState2 = _slicedToArray(_React$useState, 2),
       curentDay = _React$useState2[0],
       setCurentDay = _React$useState2[1];
 
-  var _React$useState3 = React.useState(selectedTimeProps),
+  var _React$useState3 = _react.default.useState(selectedTimeProps),
       _React$useState4 = _slicedToArray(_React$useState3, 2),
       selectedDate = _React$useState4[0],
       _selectDate = _React$useState4[1];
 
-  var _React$useState5 = React.useState(defaultShowDay),
+  var _React$useState5 = _react.default.useState(defaultShowDay),
       _React$useState6 = _slicedToArray(_React$useState5, 2),
       showTime = _React$useState6[0],
       _setShowTime = _React$useState6[1];
 
-  React.useEffect(function () {
+  _react.default.useEffect(function () {
     _selectDate(selectedTimeProps);
   }, [selectedTimeProps]);
+
   var curentDayIntervals = getActualIntervalsByDay({
     day: curentDay,
     workingTimeIntervals: workingTimeIntervals,
@@ -87,9 +102,9 @@ var Calendar = function Calendar(_ref2) {
     bookedTime: bookedTime,
     interval: interval
   });
-  return /*#__PURE__*/React.createElement("div", {
+  return /*#__PURE__*/_react.default.createElement("div", {
     className: [style.container, classNames.container || ''].join(' ')
-  }, showTime ? /*#__PURE__*/React.createElement(Day, {
+  }, showTime ? /*#__PURE__*/_react.default.createElement(_Day.default, {
     workingTimeActual: curentDayIntervals,
     disableBeforeCurentTime: true,
     curentDay: curentDay,
@@ -103,7 +118,7 @@ var Calendar = function Calendar(_ref2) {
     setShowTime: function setShowTime() {
       return _setShowTime(!showTime);
     }
-  }) : /*#__PURE__*/React.createElement(Month, {
+  }) : /*#__PURE__*/_react.default.createElement(_Month.default, {
     disableBeforeCurentTime: true,
     workingTimeActual: curentDayIntervals,
     curentDay: curentDay,
@@ -125,18 +140,18 @@ var Calendar = function Calendar(_ref2) {
 
 Calendar.getActualIntervals = getActualIntervalsByDay;
 Calendar.propTypes = {
-  defaultShowDay: PropTypes.bool,
-  bookedTime: PropTypes.array,
-  onConfirm: PropTypes.func.isRequired,
-  workingTimeIntervals: PropTypes.object.isRequired,
-  customTime: PropTypes.array,
-  interval: PropTypes.number,
-  curentDay: PropTypes.instanceOf(Date),
-  selectedDate: PropTypes.instanceOf(Date),
-  classNames: PropTypes.shape({
-    container: PropTypes.string
+  defaultShowDay: _propTypes.default.bool,
+  bookedTime: _propTypes.default.array,
+  onConfirm: _propTypes.default.func.isRequired,
+  workingTimeIntervals: _propTypes.default.object.isRequired,
+  customTime: _propTypes.default.array,
+  interval: _propTypes.default.number,
+  curentDay: _propTypes.default.instanceOf(Date),
+  selectedDate: _propTypes.default.instanceOf(Date),
+  classNames: _propTypes.default.shape({
+    container: _propTypes.default.string
   }),
-  onCancel: PropTypes.func
+  onCancel: _propTypes.default.func
 };
 Calendar.defaultProps = {
   selectedDay: new Date(),
@@ -144,4 +159,5 @@ Calendar.defaultProps = {
     conatainer: ''
   }
 };
-export default Calendar;
+var _default = Calendar;
+exports.default = _default;

@@ -1,3 +1,16 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
@@ -12,8 +25,6 @@ function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
-import React from 'react';
-import PropTypes from 'prop-types';
 var style = {
   "gridContainer": "style-module_fq_gridContainer___2eraD",
   "cell": "style-module_fq_cell___3gC2k",
@@ -82,12 +93,12 @@ var Grid = function Grid(_ref) {
   var divs = rows * cols;
   var arr = Array(divs).fill(1);
 
-  var _React$useState = React.useState(null),
+  var _React$useState = _react.default.useState(null),
       _React$useState2 = _slicedToArray(_React$useState, 2),
       mouseDownCell = _React$useState2[0],
       setMouseDown = _React$useState2[1];
 
-  var _React$useState3 = React.useState([]),
+  var _React$useState3 = _react.default.useState([]),
       _React$useState4 = _slicedToArray(_React$useState3, 2),
       mouseEnterCell = _React$useState4[0],
       setMouseEnter = _React$useState4[1];
@@ -115,7 +126,7 @@ var Grid = function Grid(_ref) {
     }
   };
 
-  return /*#__PURE__*/React.createElement("div", {
+  return /*#__PURE__*/_react.default.createElement("div", {
     onPointerLeave: onMouseLeave,
     className: [style.gridContainer, className].join(' '),
     style: {
@@ -135,12 +146,12 @@ var Grid = function Grid(_ref) {
     var Child = cellProps.children && typeof cellProps.children == 'function' ? function (_ref2) {
       var col = _ref2.col,
           row = _ref2.row;
-      return /*#__PURE__*/React.createElement(cellProps.children, {
+      return /*#__PURE__*/_react.default.createElement(cellProps.children, {
         col: col,
         row: row
       });
     } : '';
-    return /*#__PURE__*/React.createElement("div", _extends({
+    return /*#__PURE__*/_react.default.createElement("div", _extends({
       onMouseDown: function onMouseDown() {
         _onMouseDown({
           col: col,
@@ -169,10 +180,10 @@ var Grid = function Grid(_ref) {
       col: col,
       row: row,
       key: key
-    }, item.props ? item.props : {}, cellProps), isSelected ? isSelected.children : '', cellProps.children && (typeof cellProps.children == 'function' ? /*#__PURE__*/React.createElement(Child, {
+    }, item.props ? item.props : {}, cellProps), isSelected ? isSelected.children : '', cellProps.children && (typeof cellProps.children == 'function' ? /*#__PURE__*/_react.default.createElement(Child, {
       col: col,
       row: row
-    }) : /*#__PURE__*/React.cloneElement(cellProps.children, {
+    }) : /*#__PURE__*/_react.default.cloneElement(cellProps.children, {
       row: row,
       col: col,
       isSelected: Boolean(isSelected)
@@ -181,28 +192,29 @@ var Grid = function Grid(_ref) {
 };
 
 Grid.propTypes = {
-  cols: PropTypes.number,
-  rows: PropTypes.number,
-  selected: PropTypes.arrayOf(PropTypes.shape({
-    col: PropTypes.number,
-    row: PropTypes.number,
-    children: PropTypes.any,
-    props: PropTypes.object
+  cols: _propTypes.default.number,
+  rows: _propTypes.default.number,
+  selected: _propTypes.default.arrayOf(_propTypes.default.shape({
+    col: _propTypes.default.number,
+    row: _propTypes.default.number,
+    children: _propTypes.default.any,
+    props: _propTypes.default.object
   })),
-  verticalSize: PropTypes.number,
-  setColStyle: PropTypes.func,
-  setRowStyle: PropTypes.func,
-  setCellStyle: PropTypes.func,
-  selectFromCol: PropTypes.number,
-  selectToCol: PropTypes.number,
-  selectFromRow: PropTypes.number,
-  selectToRow: PropTypes.number,
-  cellClassName: PropTypes.string,
-  className: PropTypes.string,
-  cellProps: PropTypes.object,
-  children: PropTypes.any,
-  onSelect: PropTypes.func,
-  rowSize: PropTypes.string,
-  colSize: PropTypes.string
+  verticalSize: _propTypes.default.number,
+  setColStyle: _propTypes.default.func,
+  setRowStyle: _propTypes.default.func,
+  setCellStyle: _propTypes.default.func,
+  selectFromCol: _propTypes.default.number,
+  selectToCol: _propTypes.default.number,
+  selectFromRow: _propTypes.default.number,
+  selectToRow: _propTypes.default.number,
+  cellClassName: _propTypes.default.string,
+  className: _propTypes.default.string,
+  cellProps: _propTypes.default.object,
+  children: _propTypes.default.any,
+  onSelect: _propTypes.default.func,
+  rowSize: _propTypes.default.string,
+  colSize: _propTypes.default.string
 };
-export default Grid;
+var _default = Grid;
+exports.default = _default;

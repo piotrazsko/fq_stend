@@ -1,3 +1,20 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = PhoneInput;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
+var _reactPhoneInput = _interopRequireDefault(require("react-phone-input-2"));
+
+require("react-phone-input-2/lib/material.css");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -10,15 +27,12 @@ function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
-import React from 'react';
-import PropTypes from 'prop-types';
-import PhoneInputDefault from 'react-phone-input-2';
 var style = {
   "commonContainer": "style-module_fq_commonContainer___t49P3",
   "container": "style-module_fq_container___vC_4B"
 };
-import 'react-phone-input-2/lib/material.css';
-export default function PhoneInput(_ref) {
+
+function PhoneInput(_ref) {
   var value = _ref.value,
       _ref$onlyNumbers = _ref.onlyNumbers,
       onlyNumbers = _ref$onlyNumbers === void 0 ? true : _ref$onlyNumbers,
@@ -35,20 +49,22 @@ export default function PhoneInput(_ref) {
     root: ''
   } : _ref$classNames;
 
-  var _React$useState = React.useState(value),
+  var _React$useState = _react.default.useState(value),
       _React$useState2 = _slicedToArray(_React$useState, 2),
       phone = _React$useState2[0],
       setPhone = _React$useState2[1];
 
-  React.useEffect(function () {
+  _react.default.useEffect(function () {
     setPhone(value);
   }, [value]);
-  React.useEffect(function () {
+
+  _react.default.useEffect(function () {
     if (phone) {
       onChange(onlyNumbers ? phone.replace(/\D/g, '') : phone);
     }
   }, [phone]);
-  return /*#__PURE__*/React.createElement(PhoneInputDefault, {
+
+  return /*#__PURE__*/_react.default.createElement(_reactPhoneInput.default, {
     containerClass: ['react-tel-input', style.commonContainer, classNames.root].join(' '),
     inputClass: [style.container, classNames.input].join(' '),
     dropdownClass: style.dropdownClass,
@@ -64,16 +80,17 @@ export default function PhoneInput(_ref) {
     }
   });
 }
+
 PhoneInput.propTypes = {
-  onlyNumbers: PropTypes.bool,
-  value: PropTypes.string,
-  countryCode: PropTypes.string.isRequired,
-  onChange: PropTypes.func,
-  name: PropTypes.string,
-  disabled: PropTypes.bool,
-  classNames: PropTypes.shape({
-    root: PropTypes.string,
-    input: PropTypes.string
+  onlyNumbers: _propTypes.default.bool,
+  value: _propTypes.default.string,
+  countryCode: _propTypes.default.string.isRequired,
+  onChange: _propTypes.default.func,
+  name: _propTypes.default.string,
+  disabled: _propTypes.default.bool,
+  classNames: _propTypes.default.shape({
+    root: _propTypes.default.string,
+    input: _propTypes.default.string
   }),
-  onlyCountries: PropTypes.arrayOf(PropTypes.string)
+  onlyCountries: _propTypes.default.arrayOf(_propTypes.default.string)
 };

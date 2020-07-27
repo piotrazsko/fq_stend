@@ -1,12 +1,24 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
+var _PopupsCore = require("../PopupsCore");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-import React from 'react';
-import PropTypes from 'prop-types';
-import { PopupCore } from '../PopupsCore';
 var style = {
   "confirm": "style-module_fq_confirm___2_NRm"
 };
@@ -38,7 +50,7 @@ var ConfirmPopup = function ConfirmPopup(_ref) {
     textContainer: ''
   } : _ref$classNames;
 
-  return /*#__PURE__*/React.createElement(PopupCore, {
+  return /*#__PURE__*/_react.default.createElement(_PopupsCore.PopupCore, {
     maxWidth: maxWidth,
     showIcon: showIcon,
     showForce: showForce,
@@ -61,26 +73,27 @@ var ConfirmPopup = function ConfirmPopup(_ref) {
       variant: 'outlined'
     }, cancellButtonProps),
     confirmButtonProps: _objectSpread({}, confirmButtonProps)
-  }, /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/_react.default.createElement("div", {
     className: [style.confirm, classNames.textContainer || ''].join(' ')
   }, message));
 };
 
 ConfirmPopup.propTypes = {
-  type: PropTypes.oneOf(['danger', undefined]),
-  maxWidth: PropTypes.string,
-  onClick: PropTypes.func,
-  onCancel: PropTypes.func,
-  show: PropTypes.bool,
-  message: PropTypes.element,
-  textConfirm: PropTypes.string,
-  showForce: PropTypes.bool,
-  textCancel: PropTypes.string,
-  confirmButtonProps: PropTypes.object,
-  cancellButtonProps: PropTypes.object,
-  showIcon: PropTypes.bool,
-  classNames: PropTypes.shape({
-    textContainer: PropTypes.string
+  type: _propTypes.default.oneOf(['danger', undefined]),
+  maxWidth: _propTypes.default.string,
+  onClick: _propTypes.default.func,
+  onCancel: _propTypes.default.func,
+  show: _propTypes.default.bool,
+  message: _propTypes.default.element,
+  textConfirm: _propTypes.default.string,
+  showForce: _propTypes.default.bool,
+  textCancel: _propTypes.default.string,
+  confirmButtonProps: _propTypes.default.object,
+  cancellButtonProps: _propTypes.default.object,
+  showIcon: _propTypes.default.bool,
+  classNames: _propTypes.default.shape({
+    textContainer: _propTypes.default.string
   })
 };
-export default ConfirmPopup;
+var _default = ConfirmPopup;
+exports.default = _default;

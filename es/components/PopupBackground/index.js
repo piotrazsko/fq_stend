@@ -1,6 +1,17 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Background from './Background';
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
+var _Background = _interopRequireDefault(require("./Background"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var PopupBackground = function PopupBackground(_ref) {
   var onClick = _ref.onClick,
@@ -9,7 +20,7 @@ var PopupBackground = function PopupBackground(_ref) {
       className = _ref.className,
       children = _ref.children,
       childrenClassName = _ref.childrenClassName;
-  return visible ? /*#__PURE__*/React.createElement(Background, {
+  return visible ? /*#__PURE__*/_react.default.createElement(_Background.default, {
     onClick: onClick,
     className: className,
     childrenClassName: childrenClassName
@@ -17,10 +28,11 @@ var PopupBackground = function PopupBackground(_ref) {
 };
 
 PopupBackground.propTypes = {
-  visible: PropTypes.bool,
-  className: PropTypes.string,
-  childrenClassName: PropTypes.string,
-  onClick: PropTypes.func,
-  children: PropTypes.oneOfType([PropTypes.string, PropTypes.element, PropTypes.array]).isRequired
+  visible: _propTypes.default.bool,
+  className: _propTypes.default.string,
+  childrenClassName: _propTypes.default.string,
+  onClick: _propTypes.default.func,
+  children: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.element, _propTypes.default.array]).isRequired
 };
-export default PopupBackground;
+var _default = PopupBackground;
+exports.default = _default;
