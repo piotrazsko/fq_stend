@@ -10,6 +10,17 @@
     ],
     "plugins": [
         "inline-react-svg",
+        [
+            "file-loader",
+            {
+                "name": "[hash].[ext]",
+                "extensions": ["png", "jpg", "jpeg", "gif", "svg"],
+                "publicPath": "/es",
+                "outputPath": "/es",
+                "context": "",
+                "limit": 0
+            }
+        ],
         "@babel/plugin-proposal-class-properties",
         [
             "css-modules-transform",
