@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import DayPicker from 'react-day-picker';
 import { MONTHS, WEEKDAYS_SHORT } from '../../../../helpers/config';
 import style from './style.module.scss';
-import 'react-day-picker/lib/style.css';
+// import 'react-day-picker/lib/style.css';
 const yesterday = new Date();
 yesterday.setDate(new Date().getDate() - 1);
 yesterday.setHours(12);

@@ -13,13 +13,12 @@ var _reactDayPicker = _interopRequireDefault(require("react-day-picker"));
 
 var _config = require("../../../../helpers/config");
 
-require("react-day-picker/lib/style.css");
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var style = {
   "datapicker": "style-module_fq_datapicker___1IAIn"
-};
+}; // import 'react-day-picker/lib/style.css';
+
 var yesterday = new Date();
 yesterday.setDate(new Date().getDate() - 1);
 yesterday.setHours(12);
