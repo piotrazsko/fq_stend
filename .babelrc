@@ -15,7 +15,7 @@
             {
                 "name": "[path][hash].[ext]",
                 "extensions": ["png", "jpg", "jpeg", "gif", "svg"],
-                "publicPath": "/node_modules/feelqueen_components/es/",
+                "publicPath": "../../",
                 "outputPath": "",
                 "context": "",
                 "limit": 0
