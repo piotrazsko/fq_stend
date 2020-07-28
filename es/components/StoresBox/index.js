@@ -18,8 +18,8 @@ var styles = {
   "link": "styles-module_fq_link___2POHs",
   "imageContainer": "styles-module_fq_imageContainer___1Gs7j"
 };
-var appStore = "/src/static/images/stores/097295b898a7e7c4ead484051257ba1e.png";
-var googlePlay = "/src/static/images/stores/ad720b31b694ade3b53cf489497c08e9.png";
+var appStore = "/node_modules/feelqueen_components/es/src/static/images/stores/097295b898a7e7c4ead484051257ba1e.png";
+var googlePlay = "/node_modules/feelqueen_components/es/src/static/images/stores/ad720b31b694ade3b53cf489497c08e9.png";
 
 var StoresBox = function StoresBox(_ref) {
   var appStoreLink = _ref.appStoreLink,
