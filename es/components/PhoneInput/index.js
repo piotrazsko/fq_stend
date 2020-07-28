@@ -11,8 +11,6 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _reactPhoneInput = _interopRequireDefault(require("react-phone-input-2"));
 
-require("react-phone-input-2/lib/material.css");
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
@@ -30,7 +28,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 var style = {
   "commonContainer": "style-module_fq_commonContainer___t49P3",
   "container": "style-module_fq_container___vC_4B"
-};
+}; // import 'react-phone-input-2/lib/material.css';
 
 function PhoneInput(_ref) {
   var value = _ref.value,
