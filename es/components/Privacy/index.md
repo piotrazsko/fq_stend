@@ -1,3 +1,0 @@
-```jsx
-<Privacy showPopup={false} />
-```

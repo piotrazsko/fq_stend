@@ -1,3 +1,0 @@
-```jsx
-<Terms showPopup={false} />
-```
