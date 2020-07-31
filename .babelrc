@@ -13,10 +13,10 @@
         [
             "file-loader",
             {
-                "name": "[path][hash].[ext]",
+                "name": "[hash].[ext]",
                 "extensions": ["png", "jpg", "jpeg", "gif", "svg"],
-                "publicPath": "../../",
-                "outputPath": "",
+                "publicPath": "/public",
+                "outputPath": "/public",
                 "context": "",
                 "limit": 0
             }
