@@ -1,7 +1,6 @@
 'use strict';
 
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-const CompressionPlugin = require('compression-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 const path = require('path');
 const webpack = require('webpack');
@@ -244,19 +243,14 @@ module.exports = {
             VERSION: JSON.stringify('5fa3b9'),
             BROWSER_SUPPORTS_HTML5: true,
             TWO: '1+1',
-            'typeof window': JSON.stringify('object'),
             'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
         }),
         // Minify the code.
         new UglifyJsPlugin({
             cache: true,
             parallel: true,
-            uglifyOptions: {
-                compress: false,
-                ecma: 6,
-                mangle: true,
-            },
-            sourceMap: true,
+            sourceMap: false,
+            extractComments: true,
         }),
         new ExtractTextPlugin({
             filename: cssFilename,
@@ -265,9 +259,6 @@ module.exports = {
             fileName: 'asset-manifest.json',
         }),
 
-        new CompressionPlugin({
-            test: /\.js(\?.*)?$/i,
-        }),
         new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
     ],
     node: {
