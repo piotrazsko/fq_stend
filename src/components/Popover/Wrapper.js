@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import style from './style.module.scss';
 
 const positionPopover = (el, container) => {
-    if (el) {
+    if (el && window) {
         const position = el.getBoundingClientRect();
         // window.outerHeight
         if (position.left < 0) {
