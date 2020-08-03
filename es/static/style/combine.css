@@ -80,18 +80,6 @@
     max-width: 80vw; }
 /*  imported from style.module.scss  */
 
-.style-module_fq_confirm___2_NRm {
-  margin: 30px 20px;
-  font-family: Roboto;
-  text-align: center; }
-/*  imported from style.module.scss  */
-
-.style-module_fq_alert___2u1n1 {
-  margin: 30px 20px;
-  font-family: Roboto;
-  text-align: center; }
-/*  imported from style.module.scss  */
-
 .style-module_fq_container___3UmWF {
   min-height: 27px;
   min-width: 50%;
@@ -115,6 +103,18 @@
     font-weight: 500; }
 /*  imported from style.module.scss  */
 
+.style-module_fq_confirm___2_NRm {
+  margin: 30px 20px;
+  font-family: Roboto;
+  text-align: center; }
+/*  imported from style.module.scss  */
+
+.style-module_fq_alert___2u1n1 {
+  margin: 30px 20px;
+  font-family: Roboto;
+  text-align: center; }
+/*  imported from style.module.scss  */
+
 .style-module_fq_content___Avf_5 {
   display: flex;
   flex-direction: column;
@@ -131,6 +131,27 @@
     .style-module_fq_content___Avf_5 .style-module_fq_inputContainer___2SWTP .style-module_fq_input___2S9_k {
       text-align: center !important;
       font-size: 1.2em; }
+/*  imported from styles.module.scss  */
+
+.styles-module_fq_container___m2A_R {
+  min-height: 27px;
+  min-width: 50%;
+  display: flex;
+  align-items: center; }
+  .styles-module_fq_container___m2A_R .styles-module_fq_appStore___d0OZc {
+    height: 50px;
+    width: 168px;
+    margin-left: 20px; }
+  .styles-module_fq_container___m2A_R .styles-module_fq_googlePlay___2Lxtp {
+    height: 50px;
+    width: 168px;
+    margin-left: 20px; }
+  .styles-module_fq_container___m2A_R .styles-module_fq_link___2POHs {
+    outline: none;
+    margin: 10px; }
+  .styles-module_fq_container___m2A_R .styles-module_fq_imageContainer___1Gs7j {
+    width: 100%;
+    height: auto; }
 /*  imported from style.module.scss  */
 
 .style-module_fq_circle___3yxPj {
@@ -168,27 +189,6 @@
     .style-module_fq_content___1Le95 .style-module_fq_inputContainer___3oiiF .style-module_fq_input___2-ZSO {
       text-align: center !important;
       font-size: 1.2em; }
-/*  imported from styles.module.scss  */
-
-.styles-module_fq_container___m2A_R {
-  min-height: 27px;
-  min-width: 50%;
-  display: flex;
-  align-items: center; }
-  .styles-module_fq_container___m2A_R .styles-module_fq_appStore___d0OZc {
-    height: 50px;
-    width: 168px;
-    margin-left: 20px; }
-  .styles-module_fq_container___m2A_R .styles-module_fq_googlePlay___2Lxtp {
-    height: 50px;
-    width: 168px;
-    margin-left: 20px; }
-  .styles-module_fq_container___m2A_R .styles-module_fq_link___2POHs {
-    outline: none;
-    margin: 10px; }
-  .styles-module_fq_container___m2A_R .styles-module_fq_imageContainer___1Gs7j {
-    width: 100%;
-    height: auto; }
 /*  imported from styles.module.scss  */
 
 .styles-module_fq_userInfo__user___2-qew {
