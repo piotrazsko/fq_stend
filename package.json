@@ -2,7 +2,7 @@
     "name": "feelqueen_components",
     "version": "0.1.2",
     "private": true,
-    "main": "es/components/index.js",
+    "main": "es/bundle.js",
     "dependencies": {
         "@emotion/core": "^10.0.28",
         "@emotion/styled": "^10.0.27",
@@ -26,15 +26,13 @@
         "react-rating": "^1.7.2",
         "react-router-dom": "^5.0.1",
         "react-scripts": "3.0.1",
-        "react-styleguidist": "^9.1.7",
-        "react-text-mask": "^5.4.3",
-        "svg-inline-loader": "^0.8.2",
-        "url-loader": "^4.1.0"
+        "react-styleguidist": "^9.1.7"
     },
     "scripts": {
         "start": "cross-env NODE_ENV=development node --max_old_space_size=8192 node_modules/react-styleguidist/lib/bin/styleguidist server --config ./styleguide.config.js",
         "build": "cross-env NODE_ENV=production styleguidist build && yarn dist && node prepare.js",
         "build:dev": "cross-env NODE_ENV=development styleguidist build",
+        "build:package": "",
         "dist": "./node_modules/.bin/babel src/ -d es --copy-files",
         "clean": "rimraf es",
         "patch": "yarn version --patch",
@@ -58,7 +56,23 @@
             "last 1 firefox version"
         ]
     },
+    "peerDependencies": {
+        "react": ">=15.0.1",
+        "react-dom": ">=15.0.1"
+    },
     "devDependencies": {
+        "mini-css-extract-plugin": "^0.9.0",
+        "react-text-mask": "^5.4.3",
+        "sass-loader": "^9.0.2",
+        "svg-inline-loader": "^0.8.2",
+        "compression-webpack-plugin": "^4.0.0",
+        "eslint-loader": "^4.0.2",
+        "extract-text-webpack-plugin": "^4.0.0-beta.0",
+        "html-webpack-plugin": "^4.3.0",
+        "sw-precache-webpack-plugin": "^1.0.0",
+        "uglifyjs-webpack-plugin": "^2.2.0",
+        "url-loader": "^4.1.0",
+        "webpack-manifest-plugin": "^2.2.0",
         "@babel/cli": "^7.1.2",
         "@babel/core": "^7.10.5",
         "@babel/plugin-proposal-class-properties": "^7.1.0",
@@ -66,7 +80,7 @@
         "@babel/preset-env": "^7.10.4",
         "@babel/preset-react": "^7.10.4",
         "@envato/babel-plugin-postcss-cssmodules-transform": "^0.0.1",
-        "autoprefixer": "^9.6.0",
+        "autoprefixer": "^9.8.6",
         "babel-eslint": "^10.0.1",
         "babel-loader": "^8.0.4",
         "babel-plugin-css-modules-transform": "^1.6.2",
@@ -97,6 +111,7 @@
         "react-styleguidist": "^8.0.3",
         "svg-react-loader": "^0.4.6",
         "webpack": "^4.25.1",
+        "webpack-cli": "^3.3.12",
         "window-or-global": "^1.0.1"
     }
 }
