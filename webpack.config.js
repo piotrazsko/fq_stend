@@ -48,13 +48,13 @@ module.exports = {
         react: {
             commonjs: 'react',
             commonjs2: 'react',
-            amd: 'React',
+            // amd: 'React',
             root: 'React',
         },
         'react-dom': {
             commonjs: 'react-dom',
             commonjs2: 'react-dom',
-            amd: 'ReactDOM',
+            // amd: 'ReactDOM',
             root: 'ReactDOM',
         },
     },
@@ -246,12 +246,12 @@ module.exports = {
             'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
         }),
         // Minify the code.
-        new UglifyJsPlugin({
-            cache: true,
-            parallel: true,
-            sourceMap: false,
-            extractComments: true,
-        }),
+        // new UglifyJsPlugin({
+        //     cache: true,
+        //     parallel: true,
+        //     sourceMap: false,
+        //     extractComments: true,
+        // }),
         new ExtractTextPlugin({
             filename: cssFilename,
         }),
