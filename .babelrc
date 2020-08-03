@@ -8,33 +8,7 @@
         ],
         "@babel/preset-react"
     ],
-    "plugins": [
-        "inline-react-svg",
-        [
-            "file-loader",
-            {
-                "name": "[hash].[ext]",
-                "extensions": ["svg"],
-                "publicPath": "/public",
-                "outputPath": "/public",
-                "context": "",
-                "limit": 0
-            }
-        ],
-        "@babel/plugin-proposal-class-properties",
-        [
-            "css-modules-transform",
-            {
-                "devMode": false,
-                "extensions": [".scss", ".less"],
-                "generateScopedName": "[name]_fq_[local]___[hash:base64:5]", // in case you don't want to use a function
-                "hashPrefix": "string",
-                "preprocessCss": "./preprocessor.config.js",
-                "extractCss": "./es/static/style/combine.css"
-            }
-        ],
-        ["lodash", { "id": ["lodash", "recompose"] }]
-    ],
+
     "env": {
         "production": {
             "plugins": ["transform-react-remove-prop-types"]

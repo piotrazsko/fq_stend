@@ -1,9 +1,10 @@
+/* global global */
 import React from 'react';
 import PropTypes from 'prop-types';
 import style from './style.module.scss';
 
 const positionPopover = (el, container) => {
-    if (el && window) {
+    if (el && global) {
         const position = el.getBoundingClientRect();
         // window.outerHeight
         if (position.left < 0) {
@@ -12,8 +13,8 @@ const positionPopover = (el, container) => {
         if (position.top < 0) {
             container.style.top = 0;
         }
-        if (position.right > window.outerWidth) {
-            container.style.left = window.outerWidth - (position.width + 15) + 'px';
+        if (position.right > global.outerWidth) {
+            container.style.left = global.outerWidth - (position.width + 15) + 'px';
         }
     }
 };
