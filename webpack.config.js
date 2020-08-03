@@ -88,7 +88,6 @@ module.exports = {
                     },
                     {
                         test: /\.(js|jsx)$/,
-                        // include: paths.appSrc,
                         loader: require.resolve('babel-loader'),
                         options: {
                             compact: true,
@@ -124,8 +123,6 @@ module.exports = {
                                         {
                                             loader: require.resolve('postcss-loader'),
                                             options: {
-                                                // Necessary for external CSS imports to work
-                                                // https://github.com/facebookincubator/create-react-app/issues/2677
                                                 ident: 'postcss',
                                                 plugins: () => [
                                                     require('postcss-flexbugs-fixes'),
@@ -165,8 +162,6 @@ module.exports = {
                             {
                                 loader: require.resolve('postcss-loader'),
                                 options: {
-                                    // Necessary for external CSS imports to work
-                                    // https://github.com/facebookincubator/create-react-app/issues/2677
                                     ident: 'postcss',
                                     plugins: () => [
                                         require('postcss-flexbugs-fixes'),
@@ -207,8 +202,6 @@ module.exports = {
                             {
                                 loader: require.resolve('postcss-loader'),
                                 options: {
-                                    // Necessary for external CSS imports to work
-                                    // https://github.com/facebookincubator/create-react-app/issues/2677
                                     ident: 'postcss',
                                     plugins: () => [
                                         require('postcss-flexbugs-fixes'),
@@ -264,7 +257,6 @@ module.exports = {
             },
             sourceMap: true,
         }),
-        // Note: this won't work without ExtractTextPlugin.extract(..) in `loaders`.
         new ExtractTextPlugin({
             filename: cssFilename,
         }),
