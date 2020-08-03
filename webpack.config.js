@@ -99,7 +99,6 @@ module.exports = {
                         loader: ExtractTextPlugin.extract(
                             Object.assign(
                                 {
-                                    fallback: require.resolve('style-loader'),
                                     use: [
                                         {
                                             loader: require.resolve('css-loader'),
@@ -138,7 +137,6 @@ module.exports = {
                         test: sassModuleRegex,
                         exclude: [/node_modules/, sassRegex],
                         use: [
-                            require.resolve('style-loader'),
                             {
                                 loader: require.resolve('css-loader'),
                                 options: {
@@ -180,7 +178,6 @@ module.exports = {
                         test: sassRegex,
                         exclude: /node_modules/,
                         use: [
-                            require.resolve('style-loader'),
                             {
                                 loader: require.resolve('css-loader'),
                                 options: {
