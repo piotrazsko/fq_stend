@@ -64,22 +64,6 @@
     left: -12.5%; }
 /*  imported from style.module.scss  */
 
-.style-module_fq_container___1KNAu {
-  min-width: 300px;
-  padding: 20px 25px;
-  max-height: 80vh;
-  max-width: 80vw; }
-  .style-module_fq_container___1KNAu .style-module_fq_buttonContainer___txOay {
-    padding-top: 25px;
-    display: flex;
-    justify-content: flex-end; }
-  .style-module_fq_container___1KNAu .style-module_fq_dataContainer___3LZ9C {
-    overflow: auto;
-    padding: 20px 25px;
-    max-height: calc(80vh - 125px);
-    max-width: 80vw; }
-/*  imported from style.module.scss  */
-
 .style-module_fq_container___3UmWF {
   min-height: 27px;
   min-width: 50%;
@@ -103,13 +87,29 @@
     font-weight: 500; }
 /*  imported from style.module.scss  */
 
-.style-module_fq_confirm___2_NRm {
+.style-module_fq_container___1KNAu {
+  min-width: 300px;
+  padding: 20px 25px;
+  max-height: 80vh;
+  max-width: 80vw; }
+  .style-module_fq_container___1KNAu .style-module_fq_buttonContainer___txOay {
+    padding-top: 25px;
+    display: flex;
+    justify-content: flex-end; }
+  .style-module_fq_container___1KNAu .style-module_fq_dataContainer___3LZ9C {
+    overflow: auto;
+    padding: 20px 25px;
+    max-height: calc(80vh - 125px);
+    max-width: 80vw; }
+/*  imported from style.module.scss  */
+
+.style-module_fq_alert___2u1n1 {
   margin: 30px 20px;
   font-family: Roboto;
   text-align: center; }
 /*  imported from style.module.scss  */
 
-.style-module_fq_alert___2u1n1 {
+.style-module_fq_confirm___2_NRm {
   margin: 30px 20px;
   font-family: Roboto;
   text-align: center; }
@@ -131,27 +131,6 @@
     .style-module_fq_content___Avf_5 .style-module_fq_inputContainer___2SWTP .style-module_fq_input___2S9_k {
       text-align: center !important;
       font-size: 1.2em; }
-/*  imported from styles.module.scss  */
-
-.styles-module_fq_container___m2A_R {
-  min-height: 27px;
-  min-width: 50%;
-  display: flex;
-  align-items: center; }
-  .styles-module_fq_container___m2A_R .styles-module_fq_appStore___d0OZc {
-    height: 50px;
-    width: 168px;
-    margin-left: 20px; }
-  .styles-module_fq_container___m2A_R .styles-module_fq_googlePlay___2Lxtp {
-    height: 50px;
-    width: 168px;
-    margin-left: 20px; }
-  .styles-module_fq_container___m2A_R .styles-module_fq_link___2POHs {
-    outline: none;
-    margin: 10px; }
-  .styles-module_fq_container___m2A_R .styles-module_fq_imageContainer___1Gs7j {
-    width: 100%;
-    height: auto; }
 /*  imported from style.module.scss  */
 
 .style-module_fq_circle___3yxPj {
@@ -189,6 +168,27 @@
     .style-module_fq_content___1Le95 .style-module_fq_inputContainer___3oiiF .style-module_fq_input___2-ZSO {
       text-align: center !important;
       font-size: 1.2em; }
+/*  imported from styles.module.scss  */
+
+.styles-module_fq_container___m2A_R {
+  min-height: 27px;
+  min-width: 50%;
+  display: flex;
+  align-items: center; }
+  .styles-module_fq_container___m2A_R .styles-module_fq_appStore___d0OZc {
+    height: 50px;
+    width: 168px;
+    margin-left: 20px; }
+  .styles-module_fq_container___m2A_R .styles-module_fq_googlePlay___2Lxtp {
+    height: 50px;
+    width: 168px;
+    margin-left: 20px; }
+  .styles-module_fq_container___m2A_R .styles-module_fq_link___2POHs {
+    outline: none;
+    margin: 10px; }
+  .styles-module_fq_container___m2A_R .styles-module_fq_imageContainer___1Gs7j {
+    width: 100%;
+    height: auto; }
 /*  imported from styles.module.scss  */
 
 .styles-module_fq_userInfo__user___2-qew {
@@ -629,6 +629,15 @@
     font-size: 12px; }
 /*  imported from style.module.scss  */
 
+.style-module_fq_datapicker___1IAIn {
+  font-family: Roboto; }
+  .style-module_fq_datapicker___1IAIn .DayPicker-Day--selected {
+    width: 23px;
+    height: 23px;
+    line-height: 1;
+    text-align: center; }
+/*  imported from style.module.scss  */
+
 .style-module_fq_cell___3Cojs {
   min-width: 10px !important; }
 
@@ -736,15 +745,6 @@
 .style-module_fq_time_grid__item-disable___2oJ7l {
   color: grey;
   cursor: not-allowed; }
-/*  imported from style.module.scss  */
-
-.style-module_fq_datapicker___1IAIn {
-  font-family: Roboto; }
-  .style-module_fq_datapicker___1IAIn .DayPicker-Day--selected {
-    width: 23px;
-    height: 23px;
-    line-height: 1;
-    text-align: center; }
 /*  imported from style.module.scss  */
 
 .style-module_fq_monthTitle___12gCN {
