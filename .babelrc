@@ -14,7 +14,7 @@
             "file-loader",
             {
                 "name": "[hash].[ext]",
-                "extensions": ["png", "jpg", "jpeg", "gif", "svg"],
+                "extensions": ["svg"],
                 "publicPath": "/public",
                 "outputPath": "/public",
                 "context": "",

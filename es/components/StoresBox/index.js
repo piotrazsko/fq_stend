@@ -9,6 +9,10 @@ var _react = _interopRequireDefault(require("react"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
+var _appStore = _interopRequireDefault(require("../../static/images/stores/appStore.png"));
+
+var _googlePlay = _interopRequireDefault(require("../../static/images/stores/googlePlay.png"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var styles = {
@@ -18,8 +22,6 @@ var styles = {
   "link": "styles-module_fq_link___2POHs",
   "imageContainer": "styles-module_fq_imageContainer___1Gs7j"
 };
-var appStore = "/public/097295b898a7e7c4ead484051257ba1e.png";
-var googlePlay = "/public/ad720b31b694ade3b53cf489497c08e9.png";
 
 var StoresBox = function StoresBox(_ref) {
   var appStoreLink = _ref.appStoreLink,
@@ -36,7 +38,7 @@ var StoresBox = function StoresBox(_ref) {
   }, /*#__PURE__*/_react.default.createElement("img", {
     className: styles.imageContainer,
     alt: "app_store",
-    src: appStore
+    src: _appStore.default
   })), /*#__PURE__*/_react.default.createElement("a", {
     href: googlePlayLink,
     target: target,
@@ -45,7 +47,7 @@ var StoresBox = function StoresBox(_ref) {
   }, /*#__PURE__*/_react.default.createElement("img", {
     className: styles.imageContainer,
     alt: "google_play",
-    src: googlePlay
+    src: _googlePlay.default
   })));
 };
 
