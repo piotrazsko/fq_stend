@@ -30,7 +30,7 @@ module.exports = {
     // In production, we only want to load the polyfills and the app code.
     entry: path.join(__dirname, './src/components/index.js'),
     output: {
-        path: path.join(__dirname, './es'),
+        path: path.join(__dirname, './es/'),
         filename: 'bundle.js',
         library: libraryName,
         libraryTarget: 'umd',
@@ -246,12 +246,12 @@ module.exports = {
             'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
         }),
         // Minify the code.
-        // new UglifyJsPlugin({
-        //     cache: true,
-        //     parallel: true,
-        //     sourceMap: false,
-        //     extractComments: true,
-        // }),
+        new UglifyJsPlugin({
+            cache: true,
+            parallel: true,
+            sourceMap: false,
+            extractComments: true,
+        }),
         new ExtractTextPlugin({
             filename: cssFilename,
         }),
