@@ -155,8 +155,8 @@ module.exports = {
                                 options: {
                                     importLoaders: 1,
                                     modules: true,
-                                    camelCase: true,
-                                    localIdentName: '[folder]__[local]--[hash:base64:5]',
+                                    // camelCase: true,
+                                    // localIdentName: '[folder]__[local]--[hash:base64:5]',
                                 },
                             },
                             {
@@ -177,11 +177,12 @@ module.exports = {
                                     ],
                                 },
                             },
+                            require.resolve('resolve-url-loader'),
                             {
                                 loader: require.resolve('sass-loader'),
                                 options: {
                                     // paths: [path.resolve(__dirname, 'src/styles')],
-                                    javascriptEnabled: true,
+                                    // javascriptEnabled: true,
                                 },
                             },
                         ],

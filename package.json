@@ -3,6 +3,15 @@
     "version": "0.1.2",
     "private": true,
     "main": "es/bundle.js",
+    "publishConfig": {
+        "access": "restricted"
+    },
+    "babel": {
+        "presets": [
+            "@babel/env",
+            "@babel/react"
+        ]
+    },
     "dependencies": {
         "@emotion/core": "^10.0.28",
         "@emotion/styled": "^10.0.27",
@@ -27,9 +36,11 @@
         "react-router-dom": "^5.0.1",
         "react-scripts": "3.0.1",
         "react-styleguidist": "^9.1.7",
+        "resolve-url-loader": "^3.1.1",
         "sass-loader": "^9.0.2"
     },
     "scripts": {
+        "prepublish": "rm -rf ./dist && npm run build",
         "start": "cross-env NODE_ENV=development node --max_old_space_size=8192 node_modules/react-styleguidist/lib/bin/styleguidist server --config ./styleguide.config.js",
         "build": "cross-env NODE_ENV=production styleguidist build && yarn dist && node prepare.js",
         "build:dev": "cross-env NODE_ENV=development styleguidist build",
