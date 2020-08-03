@@ -103,31 +103,16 @@
     max-width: 80vw; }
 /*  imported from style.module.scss  */
 
+.style-module_fq_alert___2u1n1 {
+  margin: 30px 20px;
+  font-family: Roboto;
+  text-align: center; }
+/*  imported from style.module.scss  */
+
 .style-module_fq_confirm___2_NRm {
   margin: 30px 20px;
   font-family: Roboto;
   text-align: center; }
-/*  imported from styles.module.scss  */
-
-.styles-module_fq_container___m2A_R {
-  min-height: 27px;
-  min-width: 50%;
-  display: flex;
-  align-items: center; }
-  .styles-module_fq_container___m2A_R .styles-module_fq_appStore___d0OZc {
-    height: 50px;
-    width: 168px;
-    margin-left: 20px; }
-  .styles-module_fq_container___m2A_R .styles-module_fq_googlePlay___2Lxtp {
-    height: 50px;
-    width: 168px;
-    margin-left: 20px; }
-  .styles-module_fq_container___m2A_R .styles-module_fq_link___2POHs {
-    outline: none;
-    margin: 10px; }
-  .styles-module_fq_container___m2A_R .styles-module_fq_imageContainer___1Gs7j {
-    width: 100%;
-    height: auto; }
 /*  imported from style.module.scss  */
 
 .style-module_fq_content___Avf_5 {
@@ -185,6 +170,27 @@
       font-size: 1.2em; }
 /*  imported from styles.module.scss  */
 
+.styles-module_fq_container___m2A_R {
+  min-height: 27px;
+  min-width: 50%;
+  display: flex;
+  align-items: center; }
+  .styles-module_fq_container___m2A_R .styles-module_fq_appStore___d0OZc {
+    height: 50px;
+    width: 168px;
+    margin-left: 20px; }
+  .styles-module_fq_container___m2A_R .styles-module_fq_googlePlay___2Lxtp {
+    height: 50px;
+    width: 168px;
+    margin-left: 20px; }
+  .styles-module_fq_container___m2A_R .styles-module_fq_link___2POHs {
+    outline: none;
+    margin: 10px; }
+  .styles-module_fq_container___m2A_R .styles-module_fq_imageContainer___1Gs7j {
+    width: 100%;
+    height: auto; }
+/*  imported from styles.module.scss  */
+
 .styles-module_fq_userInfo__user___2-qew {
   display: flex;
   justify-content: flex-start; }
@@ -224,12 +230,6 @@
 .styles-module_fq_userInfo__rating-star___1nox5 {
   width: 12px;
   height: 12px; }
-/*  imported from style.module.scss  */
-
-.style-module_fq_alert___2u1n1 {
-  margin: 30px 20px;
-  font-family: Roboto;
-  text-align: center; }
 /*  imported from style.module.scss  */
 
 .style-module_fq_container___ohkyl {
