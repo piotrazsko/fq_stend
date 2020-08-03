@@ -36,6 +36,7 @@ module.exports = {
         libraryTarget: 'umd',
         publicPath: '/es/',
         umdNamedDefine: true,
+        globalObject: 'this',
     },
     resolve: {
         alias: {

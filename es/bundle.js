@@ -1,7 +1,7 @@
 /*! For license information please see bundle.js.LICENSE */
 !function(e, t) {
     'object' == typeof exports && 'object' == typeof module ? module.exports = t(require('react'), require('react-dom')) : 'function' == typeof define && define.amd ? define('feelqueen_components', ['react', 'react-dom'], t) : 'object' == typeof exports ? exports.feelqueen_components = t(require('react'), require('react-dom')) : e.feelqueen_components = t(e.react, e['react-dom']);
-}(window, (function(e, t) {
+}(this, (function(e, t) {
     return o = {}, n.m = r = [function(e, t, n) {
         var r = n(26);
         e.exports = n(120)(r.isElement, !0);
