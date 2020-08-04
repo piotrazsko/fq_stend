@@ -42,7 +42,7 @@
         "start": "cross-env NODE_ENV=development node --max_old_space_size=8192 node_modules/react-styleguidist/lib/bin/styleguidist server --config ./styleguide.config.js",
         "build": "cross-env NODE_ENV=production styleguidist build && yarn dist && node prepare.js",
         "build:dev": "cross-env NODE_ENV=development styleguidist build",
-        "build:package": "",
+        "build:package": "yarn run webpack",
         "dist": "./node_modules/.bin/babel src/ -d es --copy-files",
         "clean": "rimraf es",
         "patch": "yarn version --patch",
