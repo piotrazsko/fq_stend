@@ -100,7 +100,12 @@ module.exports = {
                             Object.assign(
                                 {
                                     use: [
-                                        require.resolve('style-loader'),
+                                        {
+                                            loader: require.resolve('style-loader'),
+                                            options: {
+                                                esModule: true,
+                                            },
+                                        },
                                         {
                                             loader: require.resolve('css-loader'),
                                             options: {
@@ -138,7 +143,12 @@ module.exports = {
                         test: sassModuleRegex,
                         exclude: [/node_modules/, sassRegex],
                         use: [
-                            require.resolve('style-loader'),
+                            {
+                                loader: require.resolve('style-loader'),
+                                options: {
+                                    esModule: true,
+                                },
+                            },
                             {
                                 loader: require.resolve('css-loader'),
                                 options: {
@@ -180,7 +190,12 @@ module.exports = {
                         test: sassRegex,
                         exclude: /node_modules/,
                         use: [
-                            require.resolve('style-loader'),
+                            {
+                                loader: require.resolve('style-loader'),
+                                options: {
+                                    esModule: true,
+                                },
+                            },
                             {
                                 loader: require.resolve('css-loader'),
                                 options: {
@@ -207,6 +222,7 @@ module.exports = {
                                     ],
                                 },
                             },
+                            require.resolve('resolve-url-loader'),
                             {
                                 loader: require.resolve('sass-loader'),
                                 options: {
