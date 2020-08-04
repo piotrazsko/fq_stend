@@ -1,8 +1,8 @@
 {
   "main.css": "/es/main.css",
   "main.js": "/es/bundle.js",
-  "bundle.js.LICENSE": "/es/bundle.js.LICENSE",
-  "static/media/Group3.70e8e1d0.svg": "/es/static/media/Group3.70e8e1d0.svg",
-  "static/media/appStore.png": "/es/static/media/appStore.097295b8.png",
-  "static/media/googlePlay.png": "/es/static/media/googlePlay.ad720b31.png"
+  "appStore.png": "/es/097295b898a7e7c4ead484051257ba1e.png",
+  "70e8e1d0b2e5ebaf137e693f85002c80.svg": "/es/70e8e1d0b2e5ebaf137e693f85002c80.svg",
+  "googlePlay.png": "/es/ad720b31b694ade3b53cf489497c08e9.png",
+  "bundle.js.LICENSE": "/es/bundle.js.LICENSE"
 }
