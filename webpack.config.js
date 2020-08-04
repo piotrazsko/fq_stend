@@ -104,6 +104,7 @@ module.exports = {
                                             loader: require.resolve('style-loader'),
                                             options: {
                                                 esModule: true,
+                                                injectType: 'styleTag',
                                             },
                                         },
                                         {
@@ -147,6 +148,7 @@ module.exports = {
                                 loader: require.resolve('style-loader'),
                                 options: {
                                     esModule: true,
+                                    injectType: 'styleTag',
                                 },
                             },
                             {
@@ -194,6 +196,7 @@ module.exports = {
                                 loader: require.resolve('style-loader'),
                                 options: {
                                     esModule: true,
+                                    injectType: 'styleTag',
                                 },
                             },
                             {
