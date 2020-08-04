@@ -1,5 +1,5 @@
 'use strict';
-
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 const path = require('path');
@@ -8,6 +8,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const eslintFormatter = require('react-dev-utils/eslintFormatter');
 const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
+const postcssPresetEnv = require('postcss-preset-env');
 
 const sassModuleRegex = /\.(scss|sass)$/;
 const sassRegex = /\.common\.(scss|sass)$/;
@@ -95,74 +96,28 @@ module.exports = {
                         },
                     },
                     {
-                        test: /\.css$/,
-                        loader: ExtractTextPlugin.extract(
-                            Object.assign(
-                                {
-                                    use: [
-                                        {
-                                            loader: require.resolve('style-loader'),
-                                            options: {
-                                                esModule: true,
-                                                injectType: 'styleTag',
-                                            },
-                                        },
-                                        {
-                                            loader: require.resolve('css-loader'),
-                                            options: {
-                                                importLoaders: 1,
-                                                minimize: true,
-                                                sourceMap: shouldUseSourceMap,
-                                            },
-                                        },
-                                        {
-                                            loader: require.resolve('postcss-loader'),
-                                            options: {
-                                                ident: 'postcss',
-                                                plugins: () => [
-                                                    require('postcss-flexbugs-fixes'),
-                                                    autoprefixer({
-                                                        browsers: [
-                                                            '>1%',
-                                                            'last 4 versions',
-                                                            'Firefox ESR',
-                                                            'not ie < 9', // React doesn't support IE8 anyway
-                                                        ],
-                                                        flexbox: 'no-2009',
-                                                    }),
-                                                ],
-                                            },
-                                        },
-                                    ],
-                                },
-                                extractTextPluginOptions
-                            )
-                        ),
-                        // Note: this won't work without `new ExtractTextPlugin()` in `plugins`.
-                    },
-                    {
-                        test: sassModuleRegex,
-                        exclude: [/node_modules/, sassRegex],
+                        // For pure CSS - /\.css$/i,
+                        // For Sass/SCSS - /\.((c|sa|sc)ss)$/i,
+                        // For Less - /\.((c|le)ss)$/i,
+                        test: /\.((c|sa|sc)ss)$/i,
                         use: [
+                            MiniCssExtractPlugin.loader,
                             {
-                                loader: require.resolve('style-loader'),
+                                loader: 'css-loader',
                                 options: {
-                                    esModule: true,
-                                    injectType: 'styleTag',
+                                    url: false,
+                                    // Run `postcss-loader` on each CSS `@import`, do not forget that `sass-loader` compile non CSS `@import`'s into a single file
+                                    // If you need run `sass-loader` and `postcss-loader` on each CSS `@import` please set it to `2`
+                                    importLoaders: 2,
+                                    // Automatically enable css modules for files satisfying `/\.module\.\w+$/i` RegExp.
+                                    modules: { auto: true },
                                 },
                             },
                             {
-                                loader: require.resolve('css-loader'),
+                                loader: 'postcss-loader',
                                 options: {
-                                    importLoaders: 1,
-                                    modules: true,
-                                    // camelCase: true,
-                                    // localIdentName: '[folder]__[local]--[hash:base64:5]',
-                                },
-                            },
-                            {
-                                loader: require.resolve('postcss-loader'),
-                                options: {
+                                    // Necessary for external CSS imports to work
+                                    // https://github.com/facebookincubator/create-react-app/issues/2677
                                     ident: 'postcss',
                                     plugins: () => [
                                         require('postcss-flexbugs-fixes'),
@@ -178,59 +133,11 @@ module.exports = {
                                     ],
                                 },
                             },
-                            require.resolve('resolve-url-loader'),
+                            // Can be `less-loader`
                             {
-                                loader: require.resolve('sass-loader'),
+                                loader: 'sass-loader',
                                 options: {
-                                    // paths: [path.resolve(__dirname, 'src/styles')],
                                     // javascriptEnabled: true,
-                                },
-                            },
-                        ],
-                    },
-                    {
-                        test: sassRegex,
-                        exclude: /node_modules/,
-                        use: [
-                            {
-                                loader: require.resolve('style-loader'),
-                                options: {
-                                    esModule: true,
-                                    injectType: 'styleTag',
-                                },
-                            },
-                            {
-                                loader: require.resolve('css-loader'),
-                                options: {
-                                    importLoaders: 1,
-                                    camelCase: true,
-                                    localIdentName: '[folder]__[local]--[hash:base64:5]',
-                                },
-                            },
-                            {
-                                loader: require.resolve('postcss-loader'),
-                                options: {
-                                    ident: 'postcss',
-                                    plugins: () => [
-                                        require('postcss-flexbugs-fixes'),
-                                        autoprefixer({
-                                            browsers: [
-                                                '>1%',
-                                                'last 4 versions',
-                                                'Firefox ESR',
-                                                'not ie < 9', // React doesn't support IE8 anyway
-                                            ],
-                                            flexbox: 'no-2009',
-                                        }),
-                                    ],
-                                },
-                            },
-                            require.resolve('resolve-url-loader'),
-                            {
-                                loader: require.resolve('sass-loader'),
-                                options: {
-                                    // paths: [path.resolve(__dirname, 'src/styles')],
-                                    javascriptEnabled: true,
                                 },
                             },
                         ],
@@ -261,9 +168,7 @@ module.exports = {
             sourceMap: false,
             extractComments: true,
         }),
-        new ExtractTextPlugin({
-            filename: cssFilename,
-        }),
+        new MiniCssExtractPlugin({ filename: '[name].css' }),
         new ManifestPlugin({
             fileName: 'asset-manifest.json',
         }),
