@@ -70,10 +70,10 @@ module.exports = {
                 oneOf: [
                     {
                         test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/, /\.svg$/],
-                        loader: require.resolve('file-loader'),
+                        loader: require.resolve('url-loader'),
                         options: {
-                            limit: 10000,
-                            // name: 'static/media/[name].[hash:8].[ext]',
+                            // limit: 10000,
+                            name: 'static/media/[name].[hash:8].[ext]',
                         },
                     },
                     {
@@ -175,9 +175,9 @@ module.exports = {
             extractComments: true,
         }),
         new MiniCssExtractPlugin({ filename: '[name].css' }),
-        // new ManifestPlugin({
-        //     fileName: 'asset-manifest.json',
-        // }),
+        new ManifestPlugin({
+            fileName: 'asset-manifest.json',
+        }),
 
         new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
     ],
