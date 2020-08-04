@@ -101,11 +101,16 @@ module.exports = {
                         // For Less - /\.((c|le)ss)$/i,
                         test: /\.((c|sa|sc)ss)$/i,
                         use: [
-                            MiniCssExtractPlugin.loader,
+                            {
+                                loader: MiniCssExtractPlugin.loader,
+                                options: {
+                                    esModule: true,
+                                },
+                            },
                             {
                                 loader: 'css-loader',
                                 options: {
-                                    url: false,
+                                    // url: false,
                                     // Run `postcss-loader` on each CSS `@import`, do not forget that `sass-loader` compile non CSS `@import`'s into a single file
                                     // If you need run `sass-loader` and `postcss-loader` on each CSS `@import` please set it to `2`
                                     importLoaders: 2,
@@ -134,6 +139,7 @@ module.exports = {
                                 },
                             },
                             // Can be `less-loader`
+                            'resolve-url-loader',
                             {
                                 loader: 'sass-loader',
                                 options: {
