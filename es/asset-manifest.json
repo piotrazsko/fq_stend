@@ -2,7 +2,10 @@
   "main.css": "/es/main.css",
   "main.js": "/es/bundle.js",
   "appStore.png": "/es/097295b898a7e7c4ead484051257ba1e.png",
+  "fullStar.svg": "/es/3471b2c1189b0e59c671db6cda8b68f1.svg",
+  "3700bbdca09059693027c6046a335a1a.svg": "/es/3700bbdca09059693027c6046a335a1a.svg",
   "70e8e1d0b2e5ebaf137e693f85002c80.svg": "/es/70e8e1d0b2e5ebaf137e693f85002c80.svg",
+  "emptyStar.svg": "/es/74dd2202e461e26b2a86c9a486573036.svg",
   "googlePlay.png": "/es/ad720b31b694ade3b53cf489497c08e9.png",
   "bundle.js.LICENSE": "/es/bundle.js.LICENSE"
 }

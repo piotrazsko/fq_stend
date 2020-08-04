@@ -72,17 +72,8 @@ module.exports = {
                         test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/, /\.svg$/],
                         loader: require.resolve('url-loader'),
                         options: {
-                            limit: 10000,
+                            limit: false,
                             // name: 'static/media/[name].[hash:8].[ext]',
-                            generator: (content, mimetype, encoding, resourcePath) => {
-                                if (/\.html$/i.test(resourcePath)) {
-                                    return `data:${mimetype},${content.toString()}`;
-                                }
-
-                                return `data:${mimetype}${
-                                    encoding ? `;${encoding}` : ''
-                                },${content.toString(encoding)}`;
-                            },
                         },
                     },
                     {
