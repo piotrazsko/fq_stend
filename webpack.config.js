@@ -15,10 +15,9 @@ const shouldUseRelativeAssetPaths = true;
 const shouldUseSourceMap = false;
 
 const cssFilename = 'static/css/[name].[contenthash:8].css';
-const extractTextPluginOptions = shouldUseRelativeAssetPaths
-    ? // Making sure that the publicPath goes back to to build folder.
-      { publicPath: Array(cssFilename.split('/').length).join('../') }
-    : {};
+const extractTextPluginOptions = {
+    filename: cssFilename,
+};
 const pkg = require('./package.json');
 const libraryName = pkg.name;
 module.exports = {
@@ -101,6 +100,7 @@ module.exports = {
                             Object.assign(
                                 {
                                     use: [
+                                        require.resolve('style-loader'),
                                         {
                                             loader: require.resolve('css-loader'),
                                             options: {
@@ -138,6 +138,7 @@ module.exports = {
                         test: sassModuleRegex,
                         exclude: [/node_modules/, sassRegex],
                         use: [
+                            require.resolve('style-loader'),
                             {
                                 loader: require.resolve('css-loader'),
                                 options: {
@@ -179,6 +180,7 @@ module.exports = {
                         test: sassRegex,
                         exclude: /node_modules/,
                         use: [
+                            require.resolve('style-loader'),
                             {
                                 loader: require.resolve('css-loader'),
                                 options: {
