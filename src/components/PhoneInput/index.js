@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import PhoneInputDefault from 'react-phone-input-2';
 import style from './style.module.scss';
-// import 'react-phone-input-2/lib/material.css';
+import 'react-phone-input-2/lib/material.css';
 
 export default function PhoneInput({
     value,
