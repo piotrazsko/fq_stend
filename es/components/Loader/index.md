@@ -1,3 +1,0 @@
-```jsx
-<Loader isLoading = {false}/>
-```
