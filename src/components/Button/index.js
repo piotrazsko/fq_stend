@@ -14,7 +14,6 @@ const Button = ({
     minWidth,
     ...rest
 }) => {
-    console.log(rest);
     switch (type) {
         case 'icon':
             return (
