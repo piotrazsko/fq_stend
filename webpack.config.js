@@ -104,14 +104,10 @@ module.exports = {
                                     // If you need run `sass-loader` and `postcss-loader` on each CSS `@import` please set it to `2`
                                     importLoaders: 2,
                                     // Automatically enable css modules for files satisfying `/\.module\.\w+$/i` RegExp.
+                                    // camelCase: true,
+                                    // localIdentName: '[folder]__[local]--[hash:base64:5]',
                                     modules: {
                                         auto: true,
-                                        options: {
-                                            // importLoaders: 1,
-                                            // modules: true,
-                                            camelCase: true,
-                                            localIdentName: '[folder]__[local]--[hash:base64:5]',
-                                        },
                                     },
                                 },
                             },
