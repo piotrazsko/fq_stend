@@ -4,21 +4,10 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 const path = require('path');
 const webpack = require('webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const eslintFormatter = require('react-dev-utils/eslintFormatter');
-const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
-const postcssPresetEnv = require('postcss-preset-env');
-
-const sassModuleRegex = /\.(scss|sass)$/;
-const sassRegex = /\.common\.(scss|sass)$/;
-const shouldUseRelativeAssetPaths = true;
 const shouldUseSourceMap = false;
 
-const cssFilename = 'static/css/[name].[contenthash:8].css';
-const extractTextPluginOptions = {
-    filename: cssFilename,
-};
 const pkg = require('./package.json');
 const libraryName = pkg.name;
 module.exports = {
@@ -99,7 +88,7 @@ module.exports = {
                         // For pure CSS - /\.css$/i,
                         // For Sass/SCSS - /\.((c|sa|sc)ss)$/i,
                         // For Less - /\.((c|le)ss)$/i,
-                        test: /\.((c|sa|sc)ss)$/i,
+                        test: /\.((sa|sc)ss)$/i,
                         use: [
                             {
                                 loader: MiniCssExtractPlugin.loader,
@@ -115,7 +104,15 @@ module.exports = {
                                     // If you need run `sass-loader` and `postcss-loader` on each CSS `@import` please set it to `2`
                                     importLoaders: 2,
                                     // Automatically enable css modules for files satisfying `/\.module\.\w+$/i` RegExp.
-                                    modules: { auto: true },
+                                    modules: {
+                                        auto: true,
+                                        options: {
+                                            // importLoaders: 1,
+                                            // modules: true,
+                                            camelCase: true,
+                                            localIdentName: '[folder]__[local]--[hash:base64:5]',
+                                        },
+                                    },
                                 },
                             },
                             {
