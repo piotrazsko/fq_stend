@@ -107,6 +107,7 @@ module.exports = {
                                     // camelCase: true,
                                     // localIdentName: '[folder]__[local]--[hash:base64:5]',
                                     modules: {
+                                        localIdentName: '[path][name]__[local]--[hash:base64:5]',
                                         auto: true,
                                     },
                                 },
