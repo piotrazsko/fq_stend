@@ -23,7 +23,7 @@ const [x, setX] = React.useState(1);
             // setTime(data);
         }}
         isMobile={false}
-        interval={15}
+        interval={45}
         startTime={0}
         workingTimeIntervals={time}
     />
