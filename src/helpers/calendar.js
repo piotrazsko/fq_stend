@@ -123,65 +123,6 @@ export const preppareDataforWorkTime = data => {
     }
     return res;
 };
-export const recoveryDataForWorkTime = (
-    data = {
-        mon: '{}',
-        tue: '{}',
-        wed: '{}',
-        thu: '{}',
-        fri: '{}',
-        sat: '{}',
-        sun: '{}',
-    }
-) => {
-    let res = [];
-    if (typeof data === 'object' && data !== null) {
-        Object.keys(data).forEach(i => {
-            const day =
-                data[i] !== null && (typeof data[i] === 'string' || typeof data[i] === 'object')
-                    ? Object.keys(typeof data[i] === 'string' ? JSON.parse(data[i]) : data[i])
-                    : [];
-            day.forEach(item => {
-                let key = 1;
-                switch (i) {
-                    case 'sun': {
-                        key = 1;
-                        break;
-                    }
-                    case 'mon': {
-                        key = 2;
-                        break;
-                    }
-                    case 'tue': {
-                        key = 3;
-                        break;
-                    }
-                    case 'wed': {
-                        key = 4;
-                        break;
-                    }
-                    case 'thu': {
-                        key = 5;
-                        break;
-                    }
-                    case 'fri': {
-                        key = 6;
-                        break;
-                    }
-                    case 'sat': {
-                        key = 7;
-                        break;
-                    }
-
-                    default:
-                        break;
-                }
-                res = [...res, { col: key, row: parseInt(item) }];
-            });
-        });
-    }
-    return res;
-};
 
 export const formatHours = (row, interval, startTime) => {
     let hour = Math.floor((startTime + interval * (row - 1)) / 60);
@@ -292,11 +233,15 @@ export const recoveryWorkingTimeIntervals = ({
     if (typeof data === 'object' && data !== null) {
         for (let index = startWeekDay; index < DAYS_OF_WEEK.length + startWeekDay; index++) {
             const day = data[DAYS_OF_WEEK[(index + startWeekDay) % 7].value] || [];
+
             const arr = day.reduce((acc, item) => {
                 const start = item.start.split(':');
                 const end = item.end.split(':');
                 const startWorkingTime = start[0] * 60 + parseInt(start[1]);
-                const endWorkingTime = end[0] * 60 + parseInt(end[1]);
+                const endWorkingTime = end[0] * 60 + parseInt(end[1]) || 3600;
+                if (endWorkingTime < startWorkingTime) {
+                    throw new Error("endWork can't be less than startWorkingTime");
+                }
                 for (
                     let j = Math.floor(startWorkingTime / interval);
                     j < Math.floor(endWorkingTime / interval);

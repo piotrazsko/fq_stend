@@ -16,27 +16,23 @@ const WorkingTimeSelect = ({
     startWeekDay,
     onChange,
 }) => {
-    const [selectedTime, selectTime] = React.useState([
-        ...recoveryWorkingTimeIntervals({
-            data: workingTimeIntervals,
-            startTime,
-            interval,
-            startWeekDay,
-        }),
-    ]);
-    React.useEffect(() => {
-        onChange(
-            prepareWorkingTimeIntervals({ data: selectedTime, startTime, interval, startWeekDay })
-        );
-    }, [selectedTime]);
-
-    React.useEffect(() => {
-        const workingTimePrepared = recoveryWorkingTimeIntervals({
+    const workingTimePrepared = React.useMemo(() => {
+        return recoveryWorkingTimeIntervals({
             data: workingTimeIntervals,
             startTime,
             interval,
             startWeekDay,
         });
+    }, [workingTimeIntervals, startTime, interval, startWeekDay]);
+
+    const [selectedTime, selectTime] = React.useState([...workingTimePrepared]);
+
+    React.useEffect(() => {
+        onChange(
+            prepareWorkingTimeIntervals({ data: selectedTime, startTime, interval, startWeekDay })
+        );
+    }, [selectedTime]);
+    React.useEffect(() => {
         if (
             workingTimePrepared.length !== selectedTime.length ||
             !workingTimePrepared.every(item =>
@@ -49,12 +45,6 @@ const WorkingTimeSelect = ({
 
     // TODO:  we can get bugs
     React.useEffect(() => {
-        const workingTimePrepared = recoveryWorkingTimeIntervals({
-            data: workingTimeIntervals,
-            startTime,
-            interval,
-            startWeekDay,
-        });
         selectTime([...workingTimePrepared]);
     }, [interval]);
 
