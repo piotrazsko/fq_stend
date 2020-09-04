@@ -2,11 +2,11 @@ WorkingTimeSelect example:
 
 ```js
 const [time, setTime] = React.useState({
-    // mon: [{ start: '02:00:00', end: '07:00:00' }],
-    // tue: [{ start: '04:00:00', end: '08:00:00' }, { start: '10:00:00', end: '14:00:00' }],
-    // wed: [{ start: '04:00:00', end: '08:00:00' }, { start: '09:00:00', end: '14:00:00' }],
-    // thu: [{ start: '04:00:00', end: '10:00:00' }],
-    // fri: [{ start: '04:00', end: '14:00' }],
+    mon: [{ start: '02:00:00', end: '07:00:00' }],
+    tue: [{ start: '04:00:00', end: '08:00:00' }, { start: '10:00:00', end: '14:00:00' }],
+    wed: [{ start: '04:00:00', end: '08:00:00' }, { start: '09:00:00', end: '14:00:00' }],
+    thu: [{ start: '04:00:00', end: '10:00:00' }],
+    fri: [{ start: '00:00', end: '14:00' }],
     sat: [{ start: '04:00', end: '00:00' }],
     sun: [{ start: '04:00', end: '00:00' }],
 });
@@ -23,8 +23,8 @@ const [x, setX] = React.useState(1);
             // setTime(data);
         }}
         isMobile={false}
-        interval={60}
-        startTime={60}
+        interval={15}
+        startTime={0}
         workingTimeIntervals={time}
     />
 </div>;

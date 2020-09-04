@@ -281,7 +281,7 @@ var recoveryWorkingTimeIntervals = function recoveryWorkingTimeIntervals(_ref2) 
         var start = item.start.split(':');
         var end = item.end.split(':');
         var startWorkingTime = start[0] * 60 + parseInt(start[1]);
-        var endWorkingTime = end[0] * 60 + parseInt(end[1]) || 3600;
+        var endWorkingTime = end[0] * 60 + parseInt(end[1]) || 1440;
 
         if (endWorkingTime < startWorkingTime) {
           throw new Error("endWork can't be less than startWorkingTime");

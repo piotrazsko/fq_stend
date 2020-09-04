@@ -238,7 +238,7 @@ export const recoveryWorkingTimeIntervals = ({
                 const start = item.start.split(':');
                 const end = item.end.split(':');
                 const startWorkingTime = start[0] * 60 + parseInt(start[1]);
-                const endWorkingTime = end[0] * 60 + parseInt(end[1]) || 3600;
+                const endWorkingTime = end[0] * 60 + parseInt(end[1]) || 1440;
                 if (endWorkingTime < startWorkingTime) {
                     throw new Error("endWork can't be less than startWorkingTime");
                 }
