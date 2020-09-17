@@ -3,17 +3,22 @@ import PropTypes from 'prop-types';
 import styles from './styles.module.scss';
 import classes from 'classnames';
 
-const Avatar = ({ imageUrl, className, onClick, children }) => (
+const Avatar = ({ imageUrl, className, onClick, children, diametr }) => (
     <div
         onClick={onClick}
-        style={
-            imageUrl
-                ? {
-                      backgroundImage: `url(${imageUrl})`,
-                  }
-                : null
-        }
-        className={classes(styles.icon, styles.iconDefault, className)}
+        style={{
+            ...{ backgroundImage: imageUrl ? `url(${imageUrl})` : '' },
+            ...{
+                minHeight: diametr ? diametr : 'inherit',
+                minWidth: diametr ? diametr : 'inherit',
+            },
+        }}
+        className={classes(
+            styles.icon,
+            styles.iconDefault,
+            imageUrl ? styles.image : '',
+            className
+        )}
     >
         {children}
     </div>
@@ -24,6 +29,7 @@ Avatar.propTypes = {
     className: PropTypes.string,
     onClick: PropTypes.func,
     children: PropTypes.element,
+    diametr: PropTypes.number,
 };
 
 export default Avatar;
