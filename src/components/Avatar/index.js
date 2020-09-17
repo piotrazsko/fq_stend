@@ -9,8 +9,8 @@ const Avatar = ({ imageUrl, className, onClick, children, diametr }) => (
         style={{
             ...{ backgroundImage: imageUrl ? `url(${imageUrl})` : '' },
             ...{
-                minHeight: diametr ? diametr : 'inherit',
-                minWidth: diametr ? diametr : 'inherit',
+                minHeight: diametr ? diametr : undefined,
+                minWidth: diametr ? diametr : undefined,
             },
         }}
         className={classes(
