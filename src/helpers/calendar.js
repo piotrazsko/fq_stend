@@ -214,7 +214,65 @@ export const prepareWorkingTimeIntervals = ({
     });
     return res;
 };
+export const recoveryDataForWorkTime = (
+    data = {
+        mon: '{}',
+        tue: '{}',
+        wed: '{}',
+        thu: '{}',
+        fri: '{}',
+        sat: '{}',
+        sun: '{}',
+    }
+) => {
+    let res = [];
+    if (typeof data === 'object' && data !== null) {
+        Object.keys(data).forEach(i => {
+            const day =
+                data[i] !== null && (typeof data[i] === 'string' || typeof data[i] === 'object')
+                    ? Object.keys(typeof data[i] === 'string' ? JSON.parse(data[i]) : data[i])
+                    : [];
+            day.forEach(item => {
+                let key = 1;
+                switch (i) {
+                    case 'sun': {
+                        key = 1;
+                        break;
+                    }
+                    case 'mon': {
+                        key = 2;
+                        break;
+                    }
+                    case 'tue': {
+                        key = 3;
+                        break;
+                    }
+                    case 'wed': {
+                        key = 4;
+                        break;
+                    }
+                    case 'thu': {
+                        key = 5;
+                        break;
+                    }
+                    case 'fri': {
+                        key = 6;
+                        break;
+                    }
+                    case 'sat': {
+                        key = 7;
+                        break;
+                    }
 
+                    default:
+                        break;
+                }
+                res = [...res, { col: key, row: parseInt(item) }];
+            });
+        });
+    }
+    return res;
+};
 export const recoveryWorkingTimeIntervals = ({
     data = {
         mon: [],
