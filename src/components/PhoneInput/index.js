@@ -13,6 +13,7 @@ export default function PhoneInput({
     countryCode = 'by',
     onlyCountries = ['ru', 'by'],
     classNames = { root: '' },
+    inputProps,
 }) {
     const [phone, setPhone] = React.useState(value);
 
@@ -37,10 +38,14 @@ export default function PhoneInput({
             placeholder="Телефон"
             disabled={disabled}
             name={name}
+            inputProps={{ name, ...inputProps }}
             onChange={phone => setPhone(phone)}
         />
     );
 }
+PhoneInput.defaultProps = {
+    inputProps: {},
+};
 PhoneInput.propTypes = {
     onlyNumbers: PropTypes.bool,
     value: PropTypes.string,
