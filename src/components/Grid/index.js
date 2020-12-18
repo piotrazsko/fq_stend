@@ -39,6 +39,12 @@ const Grid = ({
     setCellStyle = () => '',
     rowSize = '1fr',
     colSize = '1fr',
+    setColSpan = () => 0,
+    setRowSpan = () => 0,
+    setCellStyleAttr = () => {
+        {
+        }
+    },
 }) => {
     const divs = rows * cols;
     const arr = Array(divs).fill(1);
@@ -91,6 +97,12 @@ const Grid = ({
                     cellProps.children && typeof cellProps.children == 'function'
                         ? ({ col, row }) => <cellProps.children col={col} row={row} />
                         : '';
+                const gridArea = `${row * verticalSize + 1} / ${col + 1} / ${row * verticalSize +
+                    1 +
+                    verticalSize +
+                    setColSpan({ col, row, verticalSize })} / ${col +
+                    2 +
+                    setColSpan({ col, row, verticalSize })}`;
                 return (
                     <div
                         onMouseDown={() => {
@@ -101,10 +113,8 @@ const Grid = ({
                         }}
                         onMouseEnter={() => onMouseEnter({ col, row })}
                         style={{
-                            'grid-area': `${row * verticalSize + 1} / ${col + 1} / ${row *
-                                verticalSize +
-                                1 +
-                                verticalSize} / ${col + 2}`,
+                            'grid-area': gridArea,
+                            ...setCellStyleAttr({ col, row, verticalSize }),
                         }}
                         className={[
                             style.cell,

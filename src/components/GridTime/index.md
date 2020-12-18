@@ -1,7 +1,7 @@
 grid example:
 
 ```js
-<div style={{ width: '20vw' }}>
+<div style={{ width: '50vw' }}>
     <TimeGrid />
 </div>
 ```

@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import style from './style.module.scss';
 import Grid from '../Grid';
+import Cell from './Cell';
 const parseArr = (start, end) => {
     const arr = [];
     for (
@@ -42,10 +43,17 @@ const TimeGrid = ({
 }) => {
     return (
         <Grid
-            cols={1}
+            cols={3}
+            verticalSize={1}
             rows={60}
+            setColSpan={({ col, row, verticalSize }) => {
+                return col == 5 && row == 2 ? 5 : 0;
+            }}
+            setRowSpan={({ col, row, verticalSize }) => {
+                return col == 5 && row == 2 ? 5 : 0;
+            }}
             cellProps={{
-                children: () => '1',
+                children: <Cell />,
             }}
         />
     );
