@@ -15,6 +15,7 @@ const WorkingTimeSelect = ({
     interval,
     startWeekDay,
     onChange,
+    showIntervals = true,
 }) => {
     const workingTimePrepared = React.useMemo(() => {
         return recoveryWorkingTimeIntervals({
@@ -73,14 +74,16 @@ const WorkingTimeSelect = ({
 
     return (
         <div className={style.container}>
-            <div className={style.resultContainer}>
-                <Days
-                    startWeekDay={startWeekDay}
-                    selectedTime={selectedTime}
-                    startTime={startTime}
-                    interval={interval}
-                />
-            </div>
+            {showIntervals && (
+                <div className={style.resultContainer}>
+                    <Days
+                        startWeekDay={startWeekDay}
+                        selectedTime={selectedTime}
+                        startTime={startTime}
+                        interval={interval}
+                    />
+                </div>
+            )}
             <Grid
                 isMobile={isMobile}
                 className={style.gridContainer}
@@ -125,6 +128,7 @@ WorkingTimeSelect.propTypes = {
     startWeekDay: PropTypes.number,
     interval: PropTypes.number,
     workingTimeIntervals: PropTypes.object,
+    showIntervals: PropTypes.bool,
 };
 WorkingTimeSelect.defaultProps = {
     workingTime: [],
