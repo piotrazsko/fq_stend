@@ -6,22 +6,27 @@ import { IconButton } from '@material-ui/core';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 
-import { WEEKDAYS_LONG, WEEKDAYS_SHORT } from '../../helpers/calendar.js';
+import { WEEKDAYS_LONG, WEEKDAYS_SHORT } from '../../../../helpers/calendar.js';
+
 import style from './style.module.scss';
-const Cell = ({
-    interval,
-    row,
-    col,
-    colSpan,
-    rowSpan,
-    isSelected,
-    isMobile,
-    onClear = () => {},
-    selectedTimeText = 'Рабочее время',
-}) => {
+
+const Cell = ({ row, col, isSelected, startTime = 0, interval = 15 }) => {
     switch (true) {
         case isSelected: {
             return '';
+        }
+        case col === 0 && row > 0: {
+            const time = startTime + (row - 1) * interval;
+            const minutes = (time % 60).toString();
+            return (
+                <div className={style.cellTime}>
+                    {time % 60 == 0
+                        ? `${Math.floor(time / 60)}:${
+                              minutes.length === 1 ? '0' + minutes : minutes
+                          }`
+                        : ''}
+                </div>
+            );
         }
         case col == 5 && row == 2:
             return <div className={style.test} />;
@@ -34,13 +39,6 @@ Cell.propTypes = {
     row: PropTypes.number,
     col: PropTypes.number,
     isSelected: PropTypes.bool,
-    onClear: PropTypes.func,
-    isMobile: PropTypes.bool,
-    selectedTimeText: PropTypes.string,
-    startTime: PropTypes.number,
-    endTime: PropTypes.number,
-    interval: PropTypes.number,
-    startWeekDay: PropTypes.number,
 };
 
 export default Cell;

@@ -2,89 +2,59 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import style from './style.module.scss';
 import Grid from '../Grid';
-import Cell from './Cell';
-const parseArr = (start, end) => {
-    const arr = [];
-    for (
-        let i = start.col < end.col ? start.col : end.col;
-        i <= (start.col < end.col ? end.col : start.col);
-        i++
-    ) {
-        for (
-            let j = start.row < end.row ? start.row : end.row;
-            j <= (start.row < end.row ? end.row : start.row);
-            j++
-        ) {
-            arr.push({ col: i, row: j });
-        }
-    }
-    return arr;
-};
+import Cell from './components/Cell';
+import EventCell from './components/EventCell';
 
-const TimeGrid = ({
-    rows = 5,
-    verticalSize = 1,
-    cols = 5,
-    cellProps = {},
-    selected = [],
-    onSelect = () => {},
-    children = '',
-    selectFromCol = 0,
-    selectToCol = Infinity,
-    selectFromRow = 0,
-    selectToRow = Infinity,
-    className = '',
-    cellClassName = '',
-    setColStyle = () => '',
-    setRowStyle = () => '',
-    setCellStyle = () => '',
-    rowSize = '1fr',
-    colSize = '1fr',
-}) => {
+const events = [
+    { id: 1, masterid: 1, startTime: 0, endTime: 60 },
+    { id: 1, masterid: 1, startTime: 360, endTime: 390 },
+    { id: 1, masterid: 2, startTime: 600, endTime: 700 },
+    { id: 2, masterid: 1, startTime: 860, endTime: 900 },
+];
+
+const TimeGrid = ({ interval = 10, ...props }) => {
+    const verticalSize = 3;
     return (
         <Grid
+            className={style.gridContainer}
+            setRowStyle={row => {
+                switch (true) {
+                    case row === 0:
+                        return style.firstRow;
+                    case row % (60 / interval) == 1:
+                        return style.borderedCell;
+                    default:
+                        return style.cell;
+                }
+            }}
+            setColStyle={col => {
+                return col === 0 ? style.firstColumn : '';
+            }}
             cols={3}
-            verticalSize={1}
-            rows={60}
-            setColSpan={({ col, row, verticalSize }) => {
-                return col == 5 && row == 2 ? 5 : 0;
-            }}
-            setRowSpan={({ col, row, verticalSize }) => {
-                return col == 5 && row == 2 ? 5 : 0;
-            }}
+            verticalSize={verticalSize}
+            rows={(60 / interval) * 24 + 1}
             cellProps={{
-                children: <Cell />,
+                children: <Cell interval={interval} />,
             }}
-        />
+            setCellStyle={cell => {
+                // return cell;
+            }}
+        >
+            {events.map(i => (
+                <EventCell
+                    key={i.id}
+                    startTime={i.startTime}
+                    endTime={i.endTime}
+                    verticalSize={verticalSize}
+                    col={i.masterid}
+                    interval={interval}
+                    rowOffset={1}
+                />
+            ))}
+        </Grid>
     );
 };
 
-TimeGrid.propTypes = {
-    cols: PropTypes.number,
-    rows: PropTypes.number,
-    selected: PropTypes.arrayOf(
-        PropTypes.shape({
-            col: PropTypes.number,
-            row: PropTypes.number,
-            children: PropTypes.any,
-            props: PropTypes.object,
-        })
-    ),
-    verticalSize: PropTypes.number,
-    setColStyle: PropTypes.func,
-    setRowStyle: PropTypes.func,
-    setCellStyle: PropTypes.func,
-    selectFromCol: PropTypes.number,
-    selectToCol: PropTypes.number,
-    selectFromRow: PropTypes.number,
-    selectToRow: PropTypes.number,
-    cellClassName: PropTypes.string,
-    className: PropTypes.string,
-    cellProps: PropTypes.object,
-    children: PropTypes.any,
-    onSelect: PropTypes.func,
-    rowSize: PropTypes.string,
-    colSize: PropTypes.string,
-};
+TimeGrid.propTypes = {};
 
 export default TimeGrid;

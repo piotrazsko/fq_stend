@@ -1,0 +1,24 @@
+.firstColumn {
+    grid-column-end: first-row !important;
+    min-width: 30px;
+    display: flex;
+    align-items: center;
+    border-top: none !important;
+    border-bottom: none !important;
+}
+
+.cellTime {
+    font-family: Montserrat;
+    font-weight: 400;
+    font-size: 12px;
+    color: #000;
+    max-width: 50px;
+    user-select: none;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    position: relative;
+    top: -10px;
+}

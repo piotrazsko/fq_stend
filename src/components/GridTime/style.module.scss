@@ -1,6 +1,18 @@
 @import '../../styles/endpoints.scss';
 
-.test {
-    background-color: red;
-    z-index: 1;
+.gridContainer {
+    grid-template-rows: [first] 40px !important;
+    grid-template-columns: [first-row] 30px !important;
+    margin-top: 5px;
+}
+.firstRow {
+    grid-row-start: first !important;
+    background-color: #f8f8f8;
+}
+.borderedCell {
+    border-top-width: 2px;
+    // border-top-color: rgba(219, 219, 219, 0.5);
+}
+.cell {
+    // border-color: rgba(219, 219, 219, 0.25);
 }

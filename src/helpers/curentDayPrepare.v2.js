@@ -40,7 +40,6 @@ export const getDataForSelectedDate = ({
     const bookedTimeDay = () => {
         return bookedTime.filter(item => {
             const itemDate = new Date(moment(item.date).toDate());
-            console.log(itemDate.getFullYear() === year);
             return (
                 itemDate.getFullYear() === year &&
                 itemDate.getMonth() === month &&
