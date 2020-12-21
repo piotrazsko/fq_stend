@@ -12,6 +12,12 @@ const events = [
     { id: 2, masterid: 1, startTime: 860, endTime: 900 },
 ];
 
+const masters = [
+    { name: 'Vasia', avatar: '' },
+    { name: 'Petia', avatar: '' },
+    { name: 'Tolia', avatar: '' },
+];
+
 const TimeGrid = ({ interval = 10, ...props }) => {
     const verticalSize = 3;
     return (
@@ -30,11 +36,18 @@ const TimeGrid = ({ interval = 10, ...props }) => {
             setColStyle={col => {
                 return col === 0 ? style.firstColumn : '';
             }}
-            cols={3}
+            cols={masters.length + 1}
             verticalSize={verticalSize}
             rows={(60 / interval) * 24 + 1}
             cellProps={{
-                children: <Cell interval={interval} />,
+                children: (
+                    <Cell
+                        interval={interval}
+                        getMaster={col => {
+                            return masters[col - 1];
+                        }}
+                    />
+                ),
             }}
             setCellStyle={cell => {
                 // return cell;

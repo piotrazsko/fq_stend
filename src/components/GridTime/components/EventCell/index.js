@@ -2,7 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import style from './style.scss';
 
-const EventCell = ({ startTime, endTime, verticalSize, col, interval, rowOffset = 1 }) => {
+const EventCell = ({
+    startTime,
+    endTime,
+    verticalSize,
+    col,
+    interval,
+    rowOffset = 1,
+    eventData,
+}) => {
     // const
     //
     const cellRowStart = startTime / (interval * verticalSize);
@@ -14,7 +22,10 @@ const EventCell = ({ startTime, endTime, verticalSize, col, interval, rowOffset 
 
     const gridArea = `${row + 1} / ${col + 1} / ${colSpan + 1} / ${col + 2}`;
     return (
-        <div style={{ gridArea: gridArea, background: '#61C9BE', margin: 2, borderRadius: 5 }}>
+        <div
+            className={style.confirmedEvent}
+            style={{ gridArea: gridArea, background: '#61C9BE', margin: 2, borderRadius: 5 }}
+        >
             555
         </div>
     );
