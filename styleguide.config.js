@@ -10,6 +10,10 @@ module.exports = {
                 },
                 {
                     rel: 'stylesheet',
+                    href: 'https://fonts.googleapis.com/css2?family=Montserrat',
+                },
+                {
+                    rel: 'stylesheet',
                     href: 'http://localhost:6060/src/static/fonts/stylesheet.css',
                 },
             ],

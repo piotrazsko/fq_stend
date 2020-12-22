@@ -20,8 +20,8 @@ const Cell = ({ row, col, isSelected, startTime = 0, interval = 15, master, getM
             const master = getMaster(col);
             return (
                 <div>
-                    <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
-                    <div>{master.name}</div>
+                    <Avatar alt="Remy Sharp" src={master.avatar} />
+                    <div className={style.name}>{master.name}</div>
                 </div>
             );
         }

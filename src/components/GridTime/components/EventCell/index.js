@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import style from './style.module.scss';
+import moment from 'moment';
 
 const EventCell = ({
     startTime,
@@ -11,7 +12,9 @@ const EventCell = ({
     rowOffset = 1,
     eventData,
     eventConfirmed = true,
+    data,
 }) => {
+    const { title, comment } = data;
     // const
     //
     const cellRowStart = startTime / (interval * verticalSize);
@@ -29,7 +32,23 @@ const EventCell = ({
                 gridArea: gridArea,
             }}
         >
-            555
+            <div className={style.container}>
+                <div
+                    className={eventConfirmed ? style.confirmedTime : style.orderedTime}
+                >{`${moment()
+                    .hour(0)
+                    .minute(startTime)
+                    .format('HH:mm')} - ${moment()
+                    .hour(0)
+                    .minute(endTime)
+                    .format('HH:mm')}`}</div>
+                <div className={eventConfirmed ? style.confirmedTitle : style.orderedTitle}>
+                    {title}
+                </div>
+                <div className={eventConfirmed ? style.confirmedComment : style.orderedComment}>
+                    {comment}
+                </div>
+            </div>
         </div>
     );
 };

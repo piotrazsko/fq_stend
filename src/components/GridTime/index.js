@@ -5,47 +5,12 @@ import Grid from '../Grid';
 import Cell from './components/Cell';
 import EventCell from './components/EventCell';
 import DisabledCell from './components/DisabledCell';
+import CurrentTime from './components/CurrentTime';
 
-const masters = [
-    {
-        name: 'Vasia',
-        avatar: '',
-        disabledTime: [{ startTime: 0, endTime: 200 }, { startTime: 450, endTime: 600 }],
-        events: [
-            { id: 1, startTime: 50, endTime: 160, confirmed: false },
-            { id: 1, startTime: 260, endTime: 390 },
-            { id: 1, startTime: 300, endTime: 600 },
-        ],
-    },
-    {
-        name: 'Petia',
-        avatar: '',
-        disabledTime: [{ startTime: 0, endTime: 200 }, { startTime: 450, endTime: 600 }],
-        events: [
-            { id: 1, startTime: 0, endTime: 60 },
-            { id: 1, startTime: 760, endTime: 890, confirmed: false },
-            { id: 1, startTime: 900, endTime: 980 },
-        ],
-    },
-    {
-        name: 'Tolia',
-        avatar: '',
-        disabledTime: [
-            { startTime: 0, endTime: 100 },
-            { startTime: 470, endTime: 600 },
-            { startTime: 1200, endTime: 1440 },
-        ],
-        events: [
-            { id: 1, startTime: 20, endTime: 60 },
-            { id: 1, startTime: 360, endTime: 300, confirmed: false },
-            { id: 1, startTime: 200, endTime: 400 },
-        ],
-    },
-];
-
-const TimeGrid = ({ interval = 10, ...props }) => {
+const TimeGrid = ({ interval = 10, masters, showCurrentTime = true, ...props }) => {
     const verticalSize = 5;
-
+    const rowOffset = 1;
+    const currentTime = new Date();
     return (
         <Grid
             className={style.gridContainer}
@@ -90,7 +55,7 @@ const TimeGrid = ({ interval = 10, ...props }) => {
                         verticalSize={verticalSize}
                         col={index + 1}
                         interval={interval}
-                        rowOffset={1}
+                        rowOffset={rowOffset}
                         data={i}
                     />
                 ));
@@ -106,15 +71,26 @@ const TimeGrid = ({ interval = 10, ...props }) => {
                         verticalSize={verticalSize}
                         col={index + 1}
                         interval={interval}
-                        rowOffset={1}
+                        rowOffset={rowOffset}
                     />
                 ));
                 return [...acc, ...masterEvents];
             }, [])}
+            {showCurrentTime && (
+                <CurrentTime
+                    time={currentTime}
+                    cols={masters.length + 1}
+                    verticalSize={verticalSize}
+                    interval={interval}
+                    rowOffset={rowOffset}
+                />
+            )}
         </Grid>
     );
 };
-
+TimeGrid.defaultProps = {
+    masters: [],
+};
 TimeGrid.propTypes = {};
 
 export default TimeGrid;
