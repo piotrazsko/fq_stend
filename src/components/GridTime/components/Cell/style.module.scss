@@ -5,9 +5,11 @@
     align-items: center;
     border-top: none !important;
     border-bottom: none !important;
+    z-index: 3;
 }
 
 .cellTime {
+    background-color: #fff;
     font-family: Montserrat;
     font-weight: 400;
     font-size: 12px;

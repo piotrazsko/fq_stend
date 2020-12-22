@@ -8,6 +8,9 @@
 .firstRow {
     grid-row-start: first !important;
     background-color: #f8f8f8;
+    z-index: 3;
+    position: sticky;
+    top: 0;
 }
 .borderedCell {
     border-top-width: 2px;

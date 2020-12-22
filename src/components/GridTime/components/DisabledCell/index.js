@@ -10,7 +10,6 @@ const EventCell = ({
     interval,
     rowOffset = 1,
     eventData,
-    eventConfirmed = true,
 }) => {
     // const
     //
@@ -22,16 +21,7 @@ const EventCell = ({
     const colSpan = Math.ceil((cellRowEnd * verticalSize + rowOffset) * verticalSize);
 
     const gridArea = `${row + 1} / ${col + 1} / ${colSpan + 1} / ${col + 2}`;
-    return (
-        <div
-            className={eventConfirmed ? style.confirmedEvent : style.orderEvent}
-            style={{
-                gridArea: gridArea,
-            }}
-        >
-            555
-        </div>
-    );
+    return <div className={style.confirmedEvent} style={{ gridArea: gridArea }} />;
 };
 
 EventCell.propTypes = {

@@ -1,0 +1,15 @@
+.confirmedEvent {
+    z-index: 2;
+    background: #61c9be;
+    margin: 2px;
+    border-radius: 5px;
+}
+.orderEvent {
+    z-index: 2;
+    margin: 2px;
+    background: #ffffff;
+    border: 1px solid #61c9be;
+    box-sizing: border-box;
+    box-shadow: 0px 5px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}

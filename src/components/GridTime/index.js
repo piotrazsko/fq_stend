@@ -4,22 +4,48 @@ import style from './style.module.scss';
 import Grid from '../Grid';
 import Cell from './components/Cell';
 import EventCell from './components/EventCell';
-
-const events = [
-    { id: 1, masterid: 1, startTime: 0, endTime: 60 },
-    { id: 1, masterid: 1, startTime: 360, endTime: 390 },
-    { id: 1, masterid: 2, startTime: 600, endTime: 700 },
-    { id: 2, masterid: 1, startTime: 860, endTime: 900 },
-];
+import DisabledCell from './components/DisabledCell';
 
 const masters = [
-    { name: 'Vasia', avatar: '' },
-    { name: 'Petia', avatar: '' },
-    { name: 'Tolia', avatar: '' },
+    {
+        name: 'Vasia',
+        avatar: '',
+        disabledTime: [{ startTime: 0, endTime: 200 }, { startTime: 450, endTime: 600 }],
+        events: [
+            { id: 1, startTime: 50, endTime: 160, confirmed: false },
+            { id: 1, startTime: 260, endTime: 390 },
+            { id: 1, startTime: 300, endTime: 600 },
+        ],
+    },
+    {
+        name: 'Petia',
+        avatar: '',
+        disabledTime: [{ startTime: 0, endTime: 200 }, { startTime: 450, endTime: 600 }],
+        events: [
+            { id: 1, startTime: 0, endTime: 60 },
+            { id: 1, startTime: 760, endTime: 890, confirmed: false },
+            { id: 1, startTime: 900, endTime: 980 },
+        ],
+    },
+    {
+        name: 'Tolia',
+        avatar: '',
+        disabledTime: [
+            { startTime: 0, endTime: 100 },
+            { startTime: 470, endTime: 600 },
+            { startTime: 1200, endTime: 1440 },
+        ],
+        events: [
+            { id: 1, startTime: 20, endTime: 60 },
+            { id: 1, startTime: 360, endTime: 300, confirmed: false },
+            { id: 1, startTime: 200, endTime: 400 },
+        ],
+    },
 ];
 
 const TimeGrid = ({ interval = 10, ...props }) => {
-    const verticalSize = 3;
+    const verticalSize = 5;
+
     return (
         <Grid
             className={style.gridContainer}
@@ -53,17 +79,38 @@ const TimeGrid = ({ interval = 10, ...props }) => {
                 // return cell;
             }}
         >
-            {events.map(i => (
-                <EventCell
-                    key={i.id}
-                    startTime={i.startTime}
-                    endTime={i.endTime}
-                    verticalSize={verticalSize}
-                    col={i.masterid}
-                    interval={interval}
-                    rowOffset={1}
-                />
-            ))}
+            {masters.reduce((acc, item, index) => {
+                const { events } = item;
+                const masterEvents = events.map(i => (
+                    <EventCell
+                        eventConfirmed={i.confirmed}
+                        key={i.id}
+                        startTime={i.startTime}
+                        endTime={i.endTime}
+                        verticalSize={verticalSize}
+                        col={index + 1}
+                        interval={interval}
+                        rowOffset={1}
+                        data={i}
+                    />
+                ));
+                return [...acc, ...masterEvents];
+            }, [])}
+            {masters.reduce((acc, item, index) => {
+                const { disabledTime } = item;
+                const masterEvents = disabledTime.map(i => (
+                    <DisabledCell
+                        key={i.id}
+                        startTime={i.startTime}
+                        endTime={i.endTime}
+                        verticalSize={verticalSize}
+                        col={index + 1}
+                        interval={interval}
+                        rowOffset={1}
+                    />
+                ));
+                return [...acc, ...masterEvents];
+            }, [])}
         </Grid>
     );
 };

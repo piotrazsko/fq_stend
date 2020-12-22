@@ -10,11 +10,12 @@
         min-width: 60px;
     }
     // min-width: 60px;
-    border: 1px solid #eeedee;
-    background-color: #fff;
+    border: 1px solid #dbdbdb;
+    background-color: transparent;
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 1;
     &:hover {
         background: rgb(230, 230, 230);
     }
