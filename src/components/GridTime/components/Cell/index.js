@@ -6,15 +6,19 @@ import { IconButton } from '@material-ui/core';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import Avatar from '@material-ui/core/Avatar';
-
+import HoveredCell from '../HovetedCell';
 import { WEEKDAYS_LONG, WEEKDAYS_SHORT } from '../../../../helpers/calendar.js';
 
 import style from './style.module.scss';
 
 const Cell = ({ row, col, isSelected, startTime = 0, interval = 15, master, getMaster }) => {
+    const [showTime, setShowtime] = React.useState(false);
+    const time = startTime + (row - 1) * interval;
+    const minutes = (time % 60).toString();
+    const hour = Math.floor(time / 60);
     switch (true) {
         case isSelected: {
-            return '';
+            return <div>sss</div>;
         }
         case col > 0 && row === 0: {
             const master = getMaster(col);
@@ -26,9 +30,6 @@ const Cell = ({ row, col, isSelected, startTime = 0, interval = 15, master, getM
             );
         }
         case col === 0 && row > 0: {
-            const time = startTime + (row - 1) * interval;
-            const minutes = (time % 60).toString();
-
             return (
                 <div className={style.cellTime}>
                     {time % 60 == 0
@@ -41,8 +42,16 @@ const Cell = ({ row, col, isSelected, startTime = 0, interval = 15, master, getM
         }
         case col == 5 && row == 2:
             return <div className={style.test} />;
-        default:
-            return <div />;
+        default: {
+            return (
+                <div className={style.emptyCell}>
+                    <div className={style.content}>
+                        {' '}
+                        {hour + ':' + (minutes.length == 1 ? '0' + minutes : minutes)}
+                    </div>
+                </div>
+            );
+        }
     }
 };
 

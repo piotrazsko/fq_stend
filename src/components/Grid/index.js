@@ -75,7 +75,6 @@ const Grid = ({
             setMouseEnter(parseArr(mouseDownCell, cell));
         }
     };
-    console.log(verticalSize);
     return (
         <div
             onPointerLeave={onMouseLeave}
