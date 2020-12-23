@@ -25,7 +25,7 @@ const TimeGrid = ({ interval = 10, masters, showCurrentTime = true, ...props }) 
                 }
             }}
             setColStyle={col => {
-                return col === 0 ? style.firstColumn : '';
+                return col === 0 ? style.firstColumn : style.column;
             }}
             cols={masters.length + 1}
             verticalSize={verticalSize}
