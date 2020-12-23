@@ -34,16 +34,20 @@
     width: 100%;
     height: 100%;
     text-align: center;
+    font-size: 12px;
+
     .content {
         width: 100%;
         height: 100%;
         text-align: center;
         display: none;
+        align-items: center;
+        justify-content: center;
         &:hover {
             display: block !important;
         }
     }
     &:hover .content {
-        display: block !important;
+        display: flex !important;
     }
 }

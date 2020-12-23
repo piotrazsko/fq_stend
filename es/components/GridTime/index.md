@@ -51,6 +51,72 @@ const masters = [
         ],
     },
     {
+        name: 'Petia',
+        avatar: 'https://randomuser.me/api/portraits/men/75.jpg',
+
+        disabledTime: [{ startTime: 0, endTime: 200 }, { startTime: 450, endTime: 600 }],
+        events: [
+            { id: 1, startTime: 0, endTime: 60 },
+            { id: 1, startTime: 760, endTime: 890, confirmed: false },
+            { id: 1, startTime: 900, endTime: 1080 },
+        ],
+    },
+    {
+        name: 'Petia',
+        avatar: 'https://randomuser.me/api/portraits/men/78.jpg',
+
+        disabledTime: [{ startTime: 0, endTime: 200 }, { startTime: 450, endTime: 600 }],
+        events: [
+            { id: 1, startTime: 0, endTime: 60 },
+            { id: 1, startTime: 760, endTime: 890, confirmed: false },
+            { id: 1, startTime: 900, endTime: 1080 },
+        ],
+    },
+    {
+        name: 'Petia',
+        avatar: 'https://randomuser.me/api/portraits/men/78.jpg',
+
+        disabledTime: [{ startTime: 0, endTime: 200 }, { startTime: 450, endTime: 600 }],
+        events: [
+            { id: 1, startTime: 0, endTime: 60 },
+            { id: 1, startTime: 760, endTime: 890, confirmed: false },
+            { id: 1, startTime: 900, endTime: 1080 },
+        ],
+    },
+    {
+        name: 'Petia',
+        avatar: 'https://randomuser.me/api/portraits/men/78.jpg',
+
+        disabledTime: [{ startTime: 0, endTime: 200 }, { startTime: 450, endTime: 600 }],
+        events: [
+            { id: 1, startTime: 0, endTime: 60 },
+            { id: 1, startTime: 760, endTime: 890, confirmed: false },
+            { id: 1, startTime: 900, endTime: 1080 },
+        ],
+    },
+    {
+        name: 'Petia',
+        avatar: 'https://randomuser.me/api/portraits/men/78.jpg',
+
+        disabledTime: [{ startTime: 0, endTime: 200 }, { startTime: 450, endTime: 600 }],
+        events: [
+            { id: 1, startTime: 0, endTime: 60 },
+            { id: 1, startTime: 760, endTime: 890, confirmed: false },
+            { id: 1, startTime: 900, endTime: 1080 },
+        ],
+    },
+    {
+        name: 'Petia',
+        avatar: 'https://randomuser.me/api/portraits/men/78.jpg',
+
+        disabledTime: [{ startTime: 0, endTime: 200 }, { startTime: 450, endTime: 600 }],
+        events: [
+            { id: 1, startTime: 0, endTime: 60 },
+            { id: 1, startTime: 760, endTime: 890, confirmed: false },
+            { id: 1, startTime: 900, endTime: 1080 },
+        ],
+    },
+    {
         name: 'Tolia',
         avatar: 'https://randomuser.me/api/portraits/men/54.jpg',
 
@@ -66,6 +132,7 @@ const masters = [
         ],
     },
 ];
+
 <div style={{ width: '70vw' }}>
     <TimeGrid masters={masters} />
 </div>;

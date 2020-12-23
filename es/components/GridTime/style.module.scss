@@ -8,7 +8,7 @@
 }
 .firstRow {
     grid-row-start: first !important;
-    background-color: #f6f6f6;
+    background-color: #f6f6f6 !important;
     border: none;
     padding-top: 15px;
     padding-bottom: 15px;
@@ -23,4 +23,7 @@
 }
 .cell {
     // border-color: rgba(219, 219, 219, 0.25);
+}
+.column {
+    min-width: 200px;
 }

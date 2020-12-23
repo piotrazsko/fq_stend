@@ -65,7 +65,7 @@ var TimeGrid = function TimeGrid(_ref) {
       }
     },
     setColStyle: function setColStyle(col) {
-      return col === 0 ? _styleModule.default.firstColumn : '';
+      return col === 0 ? _styleModule.default.firstColumn : _styleModule.default.column;
     },
     cols: masters.length + 1,
     verticalSize: verticalSize,
