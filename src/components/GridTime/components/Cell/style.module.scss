@@ -35,7 +35,7 @@
     height: 100%;
     text-align: center;
     font-size: 12px;
-
+    line-height: 1;
     .content {
         width: 100%;
         height: 100%;
@@ -43,8 +43,9 @@
         display: none;
         align-items: center;
         justify-content: center;
+
         &:hover {
-            display: block !important;
+            display: flex !important;
         }
     }
     &:hover .content {
