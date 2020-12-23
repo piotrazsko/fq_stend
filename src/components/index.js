@@ -15,6 +15,7 @@ export { default as FeedbackForm } from './FeedbackForm';
 export { default as StoresBox } from './StoresBox';
 export { default as UserInfo } from './UserInfo';
 export { default as Calendar } from './Calendar';
+export { default as TimeGrid } from './GridTime';
 export { default as PhoneInput } from './PhoneInput';
 export { PopupCore } from './PopupsCore';
 export { default as Popover } from './Popover';

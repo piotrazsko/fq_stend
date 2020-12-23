@@ -20,6 +20,7 @@ var _exportNames = {
   StoresBox: true,
   UserInfo: true,
   Calendar: true,
+  TimeGrid: true,
   PhoneInput: true,
   PopupCore: true,
   Popover: true,
@@ -126,6 +127,12 @@ Object.defineProperty(exports, "Calendar", {
     return _Calendar.default;
   }
 });
+Object.defineProperty(exports, "TimeGrid", {
+  enumerable: true,
+  get: function get() {
+    return _GridTime.default;
+  }
+});
 Object.defineProperty(exports, "PhoneInput", {
   enumerable: true,
   get: function get() {
@@ -225,6 +232,8 @@ var _StoresBox = _interopRequireDefault(require("./StoresBox"));
 var _UserInfo = _interopRequireDefault(require("./UserInfo"));
 
 var _Calendar = _interopRequireDefault(require("./Calendar"));
+
+var _GridTime = _interopRequireDefault(require("./GridTime"));
 
 var _PhoneInput = _interopRequireDefault(require("./PhoneInput"));
 
