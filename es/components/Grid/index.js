@@ -15,6 +15,12 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -84,7 +90,19 @@ var Grid = function Grid(_ref) {
       _ref$rowSize = _ref.rowSize,
       rowSize = _ref$rowSize === void 0 ? '1fr' : _ref$rowSize,
       _ref$colSize = _ref.colSize,
-      colSize = _ref$colSize === void 0 ? '1fr' : _ref$colSize;
+      colSize = _ref$colSize === void 0 ? '1fr' : _ref$colSize,
+      _ref$setColSpan = _ref.setColSpan,
+      setColSpan = _ref$setColSpan === void 0 ? function () {
+    return 0;
+  } : _ref$setColSpan,
+      _ref$setRowSpan = _ref.setRowSpan,
+      setRowSpan = _ref$setRowSpan === void 0 ? function () {
+    return 0;
+  } : _ref$setRowSpan,
+      _ref$setCellStyleAttr = _ref.setCellStyleAttr,
+      setCellStyleAttr = _ref$setCellStyleAttr === void 0 ? function () {
+    return {};
+  } : _ref$setCellStyleAttr;
   var divs = rows * cols;
   var arr = Array(divs).fill(1);
 
@@ -146,6 +164,15 @@ var Grid = function Grid(_ref) {
         row: row
       });
     } : '';
+    var gridArea = "".concat(row * verticalSize + 1, " / ").concat(col + 1, " / ").concat((row + 1) * verticalSize + 1 + setColSpan({
+      col: col,
+      row: row,
+      verticalSize: verticalSize
+    }), " / ").concat(col + 2 + setRowSpan({
+      col: col,
+      row: row,
+      verticalSize: verticalSize
+    }));
     return /*#__PURE__*/_react.default.createElement("div", _extends({
       onMouseDown: function onMouseDown() {
         _onMouseDown({
@@ -165,9 +192,13 @@ var Grid = function Grid(_ref) {
           row: row
         });
       },
-      style: {
-        'grid-area': "".concat(row * verticalSize + 1, " / ").concat(col + 1, " / ").concat(row * verticalSize + 1 + verticalSize, " / ").concat(col + 2)
-      },
+      style: _objectSpread({
+        'grid-area': gridArea
+      }, setCellStyleAttr({
+        col: col,
+        row: row,
+        verticalSize: verticalSize
+      })),
       className: [_styleModule.default.cell, isSelected ? _styleModule.default.selected : '', isHovered ? _styleModule.default.hovered : '', setColStyle(col), setRowStyle(row), setCellStyle({
         row: row,
         col: col

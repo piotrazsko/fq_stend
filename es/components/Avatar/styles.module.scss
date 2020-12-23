@@ -1,14 +1,23 @@
+$size: 50px;
+
 .icon {
-  border-radius: 1000px;
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-color: rgb(227, 227, 227);
-  background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: rgb(227, 227, 227);
+    background-position: center;
+    height: $size;
+    width: $size;
+    border-radius: 50%;
 }
 .iconDefault {
-  background-image: url("../../static/images/avatar_icon.svg");
-  min-height: 50px;
-  min-width: 50px;
-  height: 50px;
-  width: 50px;
+    height: $size;
+    width: $size;
+    border-radius: 50%;
+    background-image: url('../../static/images/empty_ava.png');
+    background-size: 68%;
+    background-position: center;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
+}
+.image {
+    background-size: cover;
 }

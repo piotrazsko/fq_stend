@@ -51,7 +51,9 @@ var WorkingTimeSelect = function WorkingTimeSelect(_ref) {
       endTime = _ref.endTime,
       interval = _ref.interval,
       startWeekDay = _ref.startWeekDay,
-      onChange = _ref.onChange;
+      onChange = _ref.onChange,
+      _ref$showIntervals = _ref.showIntervals,
+      showIntervals = _ref$showIntervals === void 0 ? true : _ref$showIntervals;
 
   var workingTimePrepared = _react.default.useMemo(function () {
     return (0, _utils.recoveryWorkingTimeIntervals)({
@@ -113,7 +115,7 @@ var WorkingTimeSelect = function WorkingTimeSelect(_ref) {
 
   return /*#__PURE__*/_react.default.createElement("div", {
     className: _styleModule.default.container
-  }, /*#__PURE__*/_react.default.createElement("div", {
+  }, showIntervals && /*#__PURE__*/_react.default.createElement("div", {
     className: _styleModule.default.resultContainer
   }, /*#__PURE__*/_react.default.createElement(_Days.default, {
     startWeekDay: startWeekDay,
@@ -159,7 +161,8 @@ WorkingTimeSelect.propTypes = {
   endTime: _propTypes.default.number,
   startWeekDay: _propTypes.default.number,
   interval: _propTypes.default.number,
-  workingTimeIntervals: _propTypes.default.object
+  workingTimeIntervals: _propTypes.default.object,
+  showIntervals: _propTypes.default.bool
 };
 WorkingTimeSelect.defaultProps = {
   workingTime: [],

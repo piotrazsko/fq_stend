@@ -17,6 +17,12 @@ require("react-phone-input-2/lib/material.css");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -44,7 +50,8 @@ function PhoneInput(_ref) {
       _ref$classNames = _ref.classNames,
       classNames = _ref$classNames === void 0 ? {
     root: ''
-  } : _ref$classNames;
+  } : _ref$classNames,
+      inputProps = _ref.inputProps;
 
   var _React$useState = _react.default.useState(value),
       _React$useState2 = _slicedToArray(_React$useState, 2),
@@ -72,12 +79,18 @@ function PhoneInput(_ref) {
     placeholder: "\u0422\u0435\u043B\u0435\u0444\u043E\u043D",
     disabled: disabled,
     name: name,
+    inputProps: _objectSpread({
+      name: name
+    }, inputProps),
     onChange: function onChange(phone) {
       return setPhone(phone);
     }
   });
 }
 
+PhoneInput.defaultProps = {
+  inputProps: {}
+};
 PhoneInput.propTypes = {
   onlyNumbers: _propTypes.default.bool,
   value: _propTypes.default.string,

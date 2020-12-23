@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.recoveryWorkingTimeIntervals = exports.prepareWorkingTimeIntervals = exports.strPrepare = exports.getWorkPeriodsOfDay = exports.getObjectOfPeriods = exports.formatHours = exports.preppareDataforWorkTime = exports.DAYS_OF_WEEK = exports.WEEKDAYS_ENG_RUS = exports.WEEKDAYS_SHORT = exports.WEEKDAYS_LONG = exports.MONTHS = void 0;
+exports.recoveryWorkingTimeIntervals = exports.recoveryDataForWorkTime = exports.prepareWorkingTimeIntervals = exports.strPrepare = exports.getWorkPeriodsOfDay = exports.getObjectOfPeriods = exports.formatHours = exports.preppareDataforWorkTime = exports.DAYS_OF_WEEK = exports.WEEKDAYS_ENG_RUS = exports.WEEKDAYS_SHORT = exports.WEEKDAYS_LONG = exports.MONTHS = void 0;
 
 var _lodash = _interopRequireDefault(require("lodash"));
 
@@ -255,6 +255,84 @@ var prepareWorkingTimeIntervals = function prepareWorkingTimeIntervals(_ref) {
 };
 
 exports.prepareWorkingTimeIntervals = prepareWorkingTimeIntervals;
+
+var recoveryDataForWorkTime = function recoveryDataForWorkTime() {
+  var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
+    mon: '{}',
+    tue: '{}',
+    wed: '{}',
+    thu: '{}',
+    fri: '{}',
+    sat: '{}',
+    sun: '{}'
+  };
+  var res = [];
+
+  if (_typeof(data) === 'object' && data !== null) {
+    Object.keys(data).forEach(function (i) {
+      var day = data[i] !== null && (typeof data[i] === 'string' || _typeof(data[i]) === 'object') ? Object.keys(typeof data[i] === 'string' ? JSON.parse(data[i]) : data[i]) : [];
+      day.forEach(function (item) {
+        var key = 1;
+
+        switch (i) {
+          case 'sun':
+            {
+              key = 1;
+              break;
+            }
+
+          case 'mon':
+            {
+              key = 2;
+              break;
+            }
+
+          case 'tue':
+            {
+              key = 3;
+              break;
+            }
+
+          case 'wed':
+            {
+              key = 4;
+              break;
+            }
+
+          case 'thu':
+            {
+              key = 5;
+              break;
+            }
+
+          case 'fri':
+            {
+              key = 6;
+              break;
+            }
+
+          case 'sat':
+            {
+              key = 7;
+              break;
+            }
+
+          default:
+            break;
+        }
+
+        res = [].concat(_toConsumableArray(res), [{
+          col: key,
+          row: parseInt(item)
+        }]);
+      });
+    });
+  }
+
+  return res;
+};
+
+exports.recoveryDataForWorkTime = recoveryDataForWorkTime;
 
 var recoveryWorkingTimeIntervals = function recoveryWorkingTimeIntervals(_ref2) {
   var _ref2$data = _ref2.data,

@@ -5,14 +5,15 @@
 }
 
 .userInfo__icon {
-    --icon-size: 68.5px;
+    --icon-size: 63.5px;
     width: var(--icon-size);
     height: var(--icon-size);
     min-width: var(--icon-size);
     min-height: var(--icon-size);
-    background-image: url(../../static/images/avatar_icon.svg);
-    background-repeat: no-repeat;
-    background-size: contain;
+    // background-image: url(../../static/images/avatar_icon.svg);
+    // background-repeat: no-repeat;
+    // background-size: contain;
+    margin: 5px;
     cursor: pointer;
 }
 

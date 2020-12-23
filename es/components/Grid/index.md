@@ -2,14 +2,14 @@ grid example:
 
 ```js
 <Grid
-	cols={4}
-	rows={4}
-	cellProps={{
-		children: ({ col, row }) => (
-			<div>
-				{col} {row}
-			</div>
-		),
-	}}
+    cols={6}
+    rows={6}
+    cellProps={{
+        children: ({ col, row }) => (
+            <div>
+                {col} {row}
+            </div>
+        ),
+    }}
 />
 ```

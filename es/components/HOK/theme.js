@@ -7,55 +7,73 @@ exports.theme = void 0;
 
 var _styles = require("@material-ui/core/styles");
 
+var _green = _interopRequireDefault(require("@material-ui/core/colors/green"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 var theme = (0, _styles.createMuiTheme)({
   palette: {
-    // secondary: {
-    //     main: orange[500],
-    // },
     primary: {
-      main: '#4688f1' // dark: '#2f97ff',
-      // light: '#6da8e3',
-
+      main: '#fa835f'
     },
-    contrastThreshold: 3,
-    tonalOffset: -0.2
+    secondary: {
+      main: _green.default[500]
+    }
+  },
+  typography: {
+    fontSize: 16,
+    fontWeight: 500,
+    fontFamily: ['Montserrat'].join(','),
+    h4: {
+      fontFamily: ['Raleway'].join(','),
+      fontSize: 32,
+      fontWeight: 700
+    },
+    button: {
+      'font-family': 'Montserrat',
+      'font-size': '14px',
+      'font-style': 'normal',
+      fontWeight: 600,
+      textTransform: 'none'
+    }
   },
   overrides: {
     MuiButton: {
-      primary: {
-        'background-color': '#4688f1',
-        color: 'white',
-        '&:hover': {
-          'background-color': '#549cff'
-        }
-      },
       root: {
-        'font-weight': 'bold',
-        'font-size': '16px',
-        'padding-left': '20px',
-        'padding-right': '20px',
+        fontSize: 14,
+        'padding-left': '40px',
+        'padding-right': '40px',
         'min-width': 120,
-        margin: '0 5px'
+        margin: '0 5px',
+        '&:disabled': {
+          'background-color': 'rgba(0, 0, 0, 0.12)'
+        },
+        borderRadius: 12
       },
-      disabled: {
-        'background-color': 'rgba(0, 0, 0, 0.12)'
-      },
+      contained: {},
+      // disabled: {},
+      // outlinedPrimary: {
+      //     color: '#0080FF',
+      //     'border-color': '#0080FF',
+      // },
       outlinedPrimary: {
-        color: '#4688f1',
-        'border-color': '#4688f1'
+        color: 'black' // '&:hover': {
+        //     'background-color': '#549cff !important',
+        // },
+
       },
       containedPrimary: {
-        'background-color': '#4688f1',
-        color: 'white',
-        '&:hover': {
-          'background-color': '#549cff !important'
-        }
+        color: 'white' // '&:hover': {
+        //     'background-color': '#549cff !important',
+        // },
+
       }
     },
-    MuiTab: {
-      // Name of the rule
+    MuiFormLabel: {
       root: {
-        minHeight: '30px'
+        fontWeight: 500,
+        fontSize: 18 // color: '#000',
+
       }
     }
   }

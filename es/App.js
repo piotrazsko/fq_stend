@@ -11,6 +11,8 @@ var _logo = _interopRequireDefault(require("./logo.svg"));
 
 require("./App.css");
 
+require("./static/fonts/stylesheet.common.scss");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function App() {
