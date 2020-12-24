@@ -4,17 +4,11 @@ import style from './style.module.scss';
 import moment from 'moment';
 
 const CurrentTime = ({ time, cols, verticalSize, interval, rowOffset }) => {
-    const cellRowStart =
-        (moment(time).get('minutes') + moment(time).get('hours') * 60) / (interval * verticalSize);
+    const ceil = (60 * interval) / (60 * verticalSize);
 
-    const row = Math.ceil((cellRowStart * verticalSize + rowOffset) * verticalSize);
-    console.log(
-        moment(time).get('minutes') + moment(time).get('hours') * 60,
-        cellRowStart,
-        row,
-        'row'
-    );
-
+    const cellRowStart = (moment(time).get('minutes') + moment(time).get('hours') * 60) / ceil;
+    const row = Math.ceil(cellRowStart) + rowOffset * verticalSize;
+    console.log(row);
     const gridArea = `${row + 1} / ${2} / ${row + 2} / ${cols + 1}`;
     const gridArea2 = `${row + 1} / ${1} / ${row + 2} / ${2}`;
     return (

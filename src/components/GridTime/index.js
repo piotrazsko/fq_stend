@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 import PropTypes from 'prop-types';
 import style from './style.module.scss';
 import Grid from '../Grid';
@@ -10,7 +11,16 @@ import CurrentTime from './components/CurrentTime';
 const TimeGrid = ({ interval = 10, masters, showCurrentTime = true, ...props }) => {
     const verticalSize = 5;
     const rowOffset = 1;
-    const currentTime = new Date();
+    const [currentTime, setTime] = React.useState(
+        moment('17.18 24.12.2020', 'HH.mm DD.MM.YYYY').toDate()
+    );
+    React.useState(() => {
+        if (showCurrentTime) {
+            setInterval(() => {
+                setTime(new Date());
+            }, 30000);
+        }
+    }, []);
     return (
         <Grid
             className={style.gridContainer}
