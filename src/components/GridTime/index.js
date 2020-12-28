@@ -49,6 +49,7 @@ const TimeGrid = ({ interval = 10, masters, showCurrentTime = false, ...props })
                         rowOffset={rowOffset}
                         data={i}
                         setRef={ref => {
+                            console.log(ref);
                             if (!showCurrentTime && minTime === i.startTime) {
                                 ref.scrollIntoView({ block: 'center' });
                             }
