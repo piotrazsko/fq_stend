@@ -8,8 +8,8 @@ import EventCell from './components/EventCell';
 import DisabledCell from './components/DisabledCell';
 import CurrentTime from './components/CurrentTime';
 
-const TimeGrid = ({ interval = 10, masters, showCurrentTime = false, ...props }) => {
-    const verticalSize = 5;
+const TimeGrid = ({ interval, masters, showCurrentTime, verticalSize, ...props }) => {
+    // const verticalSize = 5;
     const rowOffset = 1;
     const [currentTime, setTime] = React.useState(
         moment('17.18 24.12.2020', 'HH.mm DD.MM.YYYY').toDate()
@@ -50,7 +50,6 @@ const TimeGrid = ({ interval = 10, masters, showCurrentTime = false, ...props })
                         data={i}
                         setRef={ref => {
                             if (!showCurrentTime && minTime === i.startTime) {
-                                console.log(ref);
                                 ref.scrollIntoView({ block: 'center' });
                             }
                         }}
@@ -131,7 +130,15 @@ const TimeGrid = ({ interval = 10, masters, showCurrentTime = false, ...props })
 };
 TimeGrid.defaultProps = {
     masters: [],
+    interval: 10,
+    verticalSize: 5,
+    showCurrentTime: false,
 };
-TimeGrid.propTypes = { masters: PropTypes.array };
+TimeGrid.propTypes = {
+    masters: PropTypes.array,
+    showCurrentTime: PropTypes.bool,
+    interval: PropTypes.number,
+    verticalSize: PropTypes.number,
+};
 
 export default TimeGrid;

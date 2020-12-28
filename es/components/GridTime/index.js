@@ -52,14 +52,13 @@ function _objectWithoutProperties(source, excluded) { if (source == null) return
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
 var TimeGrid = function TimeGrid(_ref) {
-  var _ref$interval = _ref.interval,
-      interval = _ref$interval === void 0 ? 10 : _ref$interval,
+  var interval = _ref.interval,
       masters = _ref.masters,
-      _ref$showCurrentTime = _ref.showCurrentTime,
-      showCurrentTime = _ref$showCurrentTime === void 0 ? false : _ref$showCurrentTime,
-      props = _objectWithoutProperties(_ref, ["interval", "masters", "showCurrentTime"]);
+      showCurrentTime = _ref.showCurrentTime,
+      verticalSize = _ref.verticalSize,
+      props = _objectWithoutProperties(_ref, ["interval", "masters", "showCurrentTime", "verticalSize"]);
 
-  var verticalSize = 5;
+  // const verticalSize = 5;
   var rowOffset = 1;
 
   var _React$useState = _react.default.useState((0, _moment.default)('17.18 24.12.2020', 'HH.mm DD.MM.YYYY').toDate()),
@@ -103,7 +102,6 @@ var TimeGrid = function TimeGrid(_ref) {
           data: i,
           setRef: function setRef(ref) {
             if (!showCurrentTime && minTime === i.startTime) {
-              console.log(ref);
               ref.scrollIntoView({
                 block: 'center'
               });
@@ -178,10 +176,16 @@ var TimeGrid = function TimeGrid(_ref) {
 };
 
 TimeGrid.defaultProps = {
-  masters: []
+  masters: [],
+  interval: 10,
+  verticalSize: 5,
+  showCurrentTime: false
 };
 TimeGrid.propTypes = {
-  masters: _propTypes.default.array
+  masters: _propTypes.default.array,
+  showCurrentTime: _propTypes.default.bool,
+  interval: _propTypes.default.number,
+  verticalSize: _propTypes.default.number
 };
 var _default = TimeGrid;
 exports.default = _default;
