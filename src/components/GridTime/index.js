@@ -38,7 +38,8 @@ const TimeGrid = ({ interval, masters, showCurrentTime, verticalSize, ...props }
             const masterEvents = events.map((i, j) => {
                 return (
                     <EventCell
-                        type
+                        classes={{ ...(i.classes || {}) }}
+                        onClick={i.onClick}
                         eventConfirmed={i.confirmed}
                         key={'event' + index + j}
                         startTime={i.startTime}

@@ -14,6 +14,8 @@ const EventCell = ({
     eventConfirmed = true,
     data,
     setRef,
+    classes,
+    onClick,
 }) => {
     const { title, comment } = data;
     // const
@@ -32,15 +34,22 @@ const EventCell = ({
     const gridArea = `${row + 1} / ${col + 1} / ${colSpan + 1} / ${col + 2}`;
     return (
         <div
+            onClick={onClick}
             ref={ref}
-            className={eventConfirmed ? style.confirmedEvent : style.orderEvent}
+            className={[
+                eventConfirmed ? style.confirmedEvent : style.orderEvent,
+                classes.root,
+            ].join(' ')}
             style={{
                 gridArea: gridArea,
             }}
         >
             <div className={style.container}>
                 <div
-                    className={eventConfirmed ? style.confirmedTime : style.orderedTime}
+                    className={[
+                        eventConfirmed ? style.confirmedTime : style.orderedTime,
+                        classes.time,
+                    ].join(' ')}
                 >{`${moment()
                     .hour(0)
                     .minute(startTime)
@@ -48,10 +57,20 @@ const EventCell = ({
                     .hour(0)
                     .minute(endTime)
                     .format('HH:mm')}`}</div>
-                <div className={eventConfirmed ? style.confirmedTitle : style.orderedTitle}>
+                <div
+                    className={[
+                        eventConfirmed ? style.confirmedTitle : style.orderedTitle,
+                        classes.title,
+                    ].join(' ')}
+                >
                     {title}
                 </div>
-                <div className={eventConfirmed ? style.confirmedComment : style.orderedComment}>
+                <div
+                    className={[
+                        eventConfirmed ? style.confirmedComment : style.orderedComment,
+                        classes.content,
+                    ].join(' ')}
+                >
                     {comment}
                 </div>
             </div>
@@ -61,9 +80,18 @@ const EventCell = ({
 
 EventCell.propTypes = {
     setRef: PropTypes.func,
+    classes: PropTypes.shape({
+        root: PropTypes.string,
+        title: PropTypes.string,
+        time: PropTypes.string,
+        content: PropTypes.string,
+    }),
+    onClick: PropTypes.func,
 };
 EventCell.defaultProps = {
     setRef: () => {},
+    onClick: () => {},
+    classes: { root: '', title: '', content: '', time: '' },
 };
 
 export default EventCell;
