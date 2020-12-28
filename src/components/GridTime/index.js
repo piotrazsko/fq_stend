@@ -108,9 +108,7 @@ const TimeGrid = ({ interval = 10, masters, showCurrentTime = false, ...props })
                     />
                 ),
             }}
-            setCellStyle={cell => {
-                // return cell;
-            }}
+            {...props}
         >
             {eventsArr}
             {disableArr}

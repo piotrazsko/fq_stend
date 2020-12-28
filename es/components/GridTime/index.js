@@ -25,6 +25,8 @@ var _CurrentTime = _interopRequireDefault(require("./components/CurrentTime"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -131,7 +133,7 @@ var TimeGrid = function TimeGrid(_ref) {
     }, []);
   }, [masters]);
 
-  return /*#__PURE__*/_react.default.createElement(_Grid.default, {
+  return /*#__PURE__*/_react.default.createElement(_Grid.default, _extends({
     className: _styleModule.default.gridContainer,
     setRowStyle: function setRowStyle(row) {
       switch (true) {
@@ -158,10 +160,8 @@ var TimeGrid = function TimeGrid(_ref) {
           return masters[col - 1];
         }
       })
-    },
-    setCellStyle: function setCellStyle(cell) {// return cell;
     }
-  }, eventsArr, disableArr, showCurrentTime && /*#__PURE__*/_react.default.createElement(_CurrentTime.default, {
+  }, props), eventsArr, disableArr, showCurrentTime && /*#__PURE__*/_react.default.createElement(_CurrentTime.default, {
     setRef: function setRef(ref) {
       if (showCurrentTime) {
         ref.scrollIntoView({
