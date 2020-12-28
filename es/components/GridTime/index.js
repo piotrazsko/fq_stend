@@ -100,9 +100,8 @@ var TimeGrid = function TimeGrid(_ref) {
           rowOffset: rowOffset,
           data: i,
           setRef: function setRef(ref) {
-            console.log(ref);
-
             if (!showCurrentTime && minTime === i.startTime) {
+              console.log(ref);
               ref.scrollIntoView({
                 block: 'center'
               });

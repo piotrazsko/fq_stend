@@ -46,6 +46,7 @@ var EventCell = function EventCell(_ref) {
   var colSpan = Math.ceil((cellRowEnd * verticalSize + rowOffset) * verticalSize);
   var gridArea = "".concat(row + 1, " / ").concat(col + 1, " / ").concat(colSpan + 1, " / ").concat(col + 2);
   return /*#__PURE__*/_react.default.createElement("div", {
+    ref: ref,
     className: eventConfirmed ? _styleModule.default.confirmedEvent : _styleModule.default.orderEvent,
     style: {
       gridArea: gridArea
@@ -61,7 +62,8 @@ var EventCell = function EventCell(_ref) {
   }, comment)));
 };
 
-EventCell.propTypes = {// : PropTypes.
+EventCell.propTypes = {
+  setRef: _propTypes.default.func
 };
 EventCell.defaultProps = {
   setRef: function setRef() {}

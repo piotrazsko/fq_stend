@@ -19,7 +19,6 @@ const EventCell = ({
     // const
     //
     const ref = React.useRef();
-
     React.useEffect(() => {
         if (ref.current) {
             setRef(ref.current);
@@ -33,6 +32,7 @@ const EventCell = ({
     const gridArea = `${row + 1} / ${col + 1} / ${colSpan + 1} / ${col + 2}`;
     return (
         <div
+            ref={ref}
             className={eventConfirmed ? style.confirmedEvent : style.orderEvent}
             style={{
                 gridArea: gridArea,
@@ -60,7 +60,7 @@ const EventCell = ({
 };
 
 EventCell.propTypes = {
-    // : PropTypes.
+    setRef: PropTypes.func,
 };
 EventCell.defaultProps = {
     setRef: () => {},
