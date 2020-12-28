@@ -1,8 +1,9 @@
 @import '../../styles/endpoints.scss';
 
 .gridContainer {
-    grid-template-rows: [first] 80px !important;
+    grid-template-rows: [first] 80px !important ;
     grid-template-columns: [first-row] 80px !important;
+    grid-auto-rows: minmax(5px, 5px);
     margin-top: 5px;
     font-family: Montserrat;
 }
@@ -22,6 +23,7 @@
     // border-top-color: rgba(219, 219, 219, 0.5);
 }
 .cell {
+    // grid-row-start: other !important;
     // border-color: rgba(219, 219, 219, 0.25);
 }
 .column {

@@ -1,6 +1,6 @@
 import React from 'react';
-import moment from 'moment';
 import PropTypes from 'prop-types';
+import moment from 'moment';
 import style from './style.module.scss';
 import Grid from '../Grid';
 import Cell from './components/Cell';
@@ -8,7 +8,7 @@ import EventCell from './components/EventCell';
 import DisabledCell from './components/DisabledCell';
 import CurrentTime from './components/CurrentTime';
 
-const TimeGrid = ({ interval = 10, masters, showCurrentTime = true, ...props }) => {
+const TimeGrid = ({ interval = 10, masters, showCurrentTime = false, ...props }) => {
     const verticalSize = 5;
     const rowOffset = 1;
     const [currentTime, setTime] = React.useState(
@@ -21,6 +21,63 @@ const TimeGrid = ({ interval = 10, masters, showCurrentTime = true, ...props }) 
             }, 30000);
         }
     }, []);
+    const minTime = React.useMemo(() => {
+        let minTime = Infinity;
+        masters.forEach(item => {
+            const { events } = item;
+            events.forEach(i => {
+                minTime = i.startTime < minTime ? i.startTime : minTime;
+            });
+        });
+        return minTime;
+    }, [masters]);
+
+    const eventsArr = React.useMemo(() => {
+        return masters.reduce((acc, item, index) => {
+            const { events } = item;
+            const masterEvents = events.map((i, j) => {
+                return (
+                    <EventCell
+                        type
+                        eventConfirmed={i.confirmed}
+                        key={'event' + index + j}
+                        startTime={i.startTime}
+                        endTime={i.endTime}
+                        verticalSize={verticalSize}
+                        col={index + 1}
+                        interval={interval}
+                        rowOffset={rowOffset}
+                        data={i}
+                        setRef={ref => {
+                            if (!showCurrentTime && minTime === i.startTime) {
+                                ref.scrollIntoView({ block: 'center' });
+                            }
+                        }}
+                    />
+                );
+            });
+            return [...acc, ...masterEvents];
+        }, []);
+    }, [masters]);
+
+    const disableArr = React.useMemo(() => {
+        return masters.reduce((acc, item, index) => {
+            const { disabledTime } = item;
+            const masterEvents = disabledTime.map((i, j) => (
+                <DisabledCell
+                    key={'disable' + index + j}
+                    startTime={i.startTime}
+                    endTime={i.endTime}
+                    verticalSize={verticalSize}
+                    col={index + 1}
+                    interval={interval}
+                    rowOffset={rowOffset}
+                />
+            ));
+            return [...acc, ...masterEvents];
+        }, []);
+    }, [masters]);
+
     return (
         <Grid
             className={style.gridContainer}
@@ -54,40 +111,15 @@ const TimeGrid = ({ interval = 10, masters, showCurrentTime = true, ...props }) 
                 // return cell;
             }}
         >
-            {masters.reduce((acc, item, index) => {
-                const { events } = item;
-                const masterEvents = events.map(i => (
-                    <EventCell
-                        eventConfirmed={i.confirmed}
-                        key={i.id}
-                        startTime={i.startTime}
-                        endTime={i.endTime}
-                        verticalSize={verticalSize}
-                        col={index + 1}
-                        interval={interval}
-                        rowOffset={rowOffset}
-                        data={i}
-                    />
-                ));
-                return [...acc, ...masterEvents];
-            }, [])}
-            {masters.reduce((acc, item, index) => {
-                const { disabledTime } = item;
-                const masterEvents = disabledTime.map(i => (
-                    <DisabledCell
-                        key={i.id}
-                        startTime={i.startTime}
-                        endTime={i.endTime}
-                        verticalSize={verticalSize}
-                        col={index + 1}
-                        interval={interval}
-                        rowOffset={rowOffset}
-                    />
-                ));
-                return [...acc, ...masterEvents];
-            }, [])}
+            {eventsArr}
+            {disableArr}
             {showCurrentTime && (
                 <CurrentTime
+                    setRef={ref => {
+                        if (showCurrentTime) {
+                            ref.scrollIntoView({ block: 'center' });
+                        }
+                    }}
                     time={currentTime}
                     cols={masters.length + 1}
                     verticalSize={verticalSize}
@@ -101,6 +133,6 @@ const TimeGrid = ({ interval = 10, masters, showCurrentTime = true, ...props }) 
 TimeGrid.defaultProps = {
     masters: [],
 };
-TimeGrid.propTypes = {};
+TimeGrid.propTypes = { masters: PropTypes.array };
 
 export default TimeGrid;

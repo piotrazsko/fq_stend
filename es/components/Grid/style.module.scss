@@ -3,9 +3,10 @@
     display: grid;
     grid-column-gap: 0px;
     grid-row-gap: 0px;
+    grid-auto-rows: minmax(5px, 5px);
 }
 .cell {
-    min-height: 20px;
+    // min-height: 20px;
     @media (max-width: $isMobile) {
         min-width: 60px;
     }

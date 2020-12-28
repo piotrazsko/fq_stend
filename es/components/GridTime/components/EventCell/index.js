@@ -26,14 +26,22 @@ var EventCell = function EventCell(_ref) {
       eventData = _ref.eventData,
       _ref$eventConfirmed = _ref.eventConfirmed,
       eventConfirmed = _ref$eventConfirmed === void 0 ? true : _ref$eventConfirmed,
-      data = _ref.data;
+      data = _ref.data,
+      setRef = _ref.setRef;
   var title = data.title,
       comment = data.comment; // const
   //
 
-  var cellRowStart = startTime / (interval * verticalSize);
-  var cellRowEnd = endTime / (interval * verticalSize); // console.log(cellRowEnd, colSpan);
+  var ref = _react.default.useRef();
 
+  _react.default.useEffect(function () {
+    if (ref.current) {
+      setRef(ref.current);
+    }
+  }, [ref]);
+
+  var cellRowStart = startTime / (interval * verticalSize);
+  var cellRowEnd = endTime / (interval * verticalSize);
   var row = Math.ceil((cellRowStart * verticalSize + rowOffset) * verticalSize);
   var colSpan = Math.ceil((cellRowEnd * verticalSize + rowOffset) * verticalSize);
   var gridArea = "".concat(row + 1, " / ").concat(col + 1, " / ").concat(colSpan + 1, " / ").concat(col + 2);
@@ -54,6 +62,9 @@ var EventCell = function EventCell(_ref) {
 };
 
 EventCell.propTypes = {// : PropTypes.
+};
+EventCell.defaultProps = {
+  setRef: function setRef() {}
 };
 var _default = EventCell;
 exports.default = _default;

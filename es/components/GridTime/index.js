@@ -9,6 +9,8 @@ var _react = _interopRequireDefault(require("react"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
+var _moment = _interopRequireDefault(require("moment"));
+
 var _styleModule = _interopRequireDefault(require("./style.module.scss"));
 
 var _Grid = _interopRequireDefault(require("../Grid"));
@@ -27,13 +29,21 @@ function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableTo
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
 function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
 
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
 
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
 
@@ -44,12 +54,82 @@ var TimeGrid = function TimeGrid(_ref) {
       interval = _ref$interval === void 0 ? 10 : _ref$interval,
       masters = _ref.masters,
       _ref$showCurrentTime = _ref.showCurrentTime,
-      showCurrentTime = _ref$showCurrentTime === void 0 ? true : _ref$showCurrentTime,
+      showCurrentTime = _ref$showCurrentTime === void 0 ? false : _ref$showCurrentTime,
       props = _objectWithoutProperties(_ref, ["interval", "masters", "showCurrentTime"]);
 
   var verticalSize = 5;
   var rowOffset = 1;
-  var currentTime = new Date();
+
+  var _React$useState = _react.default.useState((0, _moment.default)('17.18 24.12.2020', 'HH.mm DD.MM.YYYY').toDate()),
+      _React$useState2 = _slicedToArray(_React$useState, 2),
+      currentTime = _React$useState2[0],
+      setTime = _React$useState2[1];
+
+  _react.default.useState(function () {
+    if (showCurrentTime) {
+      setInterval(function () {
+        setTime(new Date());
+      }, 30000);
+    }
+  }, []);
+
+  var minTime = _react.default.useMemo(function () {
+    var minTime = Infinity;
+    masters.forEach(function (item) {
+      var events = item.events;
+      events.forEach(function (i) {
+        minTime = i.startTime < minTime ? i.startTime : minTime;
+      });
+    });
+    return minTime;
+  }, [masters]);
+
+  var eventsArr = _react.default.useMemo(function () {
+    return masters.reduce(function (acc, item, index) {
+      var events = item.events;
+      var masterEvents = events.map(function (i, j) {
+        return /*#__PURE__*/_react.default.createElement(_EventCell.default, {
+          type: true,
+          eventConfirmed: i.confirmed,
+          key: 'event' + index + j,
+          startTime: i.startTime,
+          endTime: i.endTime,
+          verticalSize: verticalSize,
+          col: index + 1,
+          interval: interval,
+          rowOffset: rowOffset,
+          data: i,
+          setRef: function setRef(ref) {
+            if (!showCurrentTime && minTime === i.startTime) {
+              ref.scrollIntoView({
+                block: 'center'
+              });
+            }
+          }
+        });
+      });
+      return [].concat(_toConsumableArray(acc), _toConsumableArray(masterEvents));
+    }, []);
+  }, [masters]);
+
+  var disableArr = _react.default.useMemo(function () {
+    return masters.reduce(function (acc, item, index) {
+      var disabledTime = item.disabledTime;
+      var masterEvents = disabledTime.map(function (i, j) {
+        return /*#__PURE__*/_react.default.createElement(_DisabledCell.default, {
+          key: 'disable' + index + j,
+          startTime: i.startTime,
+          endTime: i.endTime,
+          verticalSize: verticalSize,
+          col: index + 1,
+          interval: interval,
+          rowOffset: rowOffset
+        });
+      });
+      return [].concat(_toConsumableArray(acc), _toConsumableArray(masterEvents));
+    }, []);
+  }, [masters]);
+
   return /*#__PURE__*/_react.default.createElement(_Grid.default, {
     className: _styleModule.default.gridContainer,
     setRowStyle: function setRowStyle(row) {
@@ -80,37 +160,14 @@ var TimeGrid = function TimeGrid(_ref) {
     },
     setCellStyle: function setCellStyle(cell) {// return cell;
     }
-  }, masters.reduce(function (acc, item, index) {
-    var events = item.events;
-    var masterEvents = events.map(function (i) {
-      return /*#__PURE__*/_react.default.createElement(_EventCell.default, {
-        eventConfirmed: i.confirmed,
-        key: i.id,
-        startTime: i.startTime,
-        endTime: i.endTime,
-        verticalSize: verticalSize,
-        col: index + 1,
-        interval: interval,
-        rowOffset: rowOffset,
-        data: i
-      });
-    });
-    return [].concat(_toConsumableArray(acc), _toConsumableArray(masterEvents));
-  }, []), masters.reduce(function (acc, item, index) {
-    var disabledTime = item.disabledTime;
-    var masterEvents = disabledTime.map(function (i) {
-      return /*#__PURE__*/_react.default.createElement(_DisabledCell.default, {
-        key: i.id,
-        startTime: i.startTime,
-        endTime: i.endTime,
-        verticalSize: verticalSize,
-        col: index + 1,
-        interval: interval,
-        rowOffset: rowOffset
-      });
-    });
-    return [].concat(_toConsumableArray(acc), _toConsumableArray(masterEvents));
-  }, []), showCurrentTime && /*#__PURE__*/_react.default.createElement(_CurrentTime.default, {
+  }, eventsArr, disableArr, showCurrentTime && /*#__PURE__*/_react.default.createElement(_CurrentTime.default, {
+    setRef: function setRef(ref) {
+      if (showCurrentTime) {
+        ref.scrollIntoView({
+          block: 'center'
+        });
+      }
+    },
     time: currentTime,
     cols: masters.length + 1,
     verticalSize: verticalSize,
@@ -122,6 +179,8 @@ var TimeGrid = function TimeGrid(_ref) {
 TimeGrid.defaultProps = {
   masters: []
 };
-TimeGrid.propTypes = {};
+TimeGrid.propTypes = {
+  masters: _propTypes.default.array
+};
 var _default = TimeGrid;
 exports.default = _default;

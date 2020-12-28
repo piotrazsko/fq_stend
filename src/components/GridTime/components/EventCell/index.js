@@ -13,14 +13,20 @@ const EventCell = ({
     eventData,
     eventConfirmed = true,
     data,
+    setRef,
 }) => {
     const { title, comment } = data;
     // const
     //
+    const ref = React.useRef();
+
+    React.useEffect(() => {
+        if (ref.current) {
+            setRef(ref.current);
+        }
+    }, [ref]);
     const cellRowStart = startTime / (interval * verticalSize);
     const cellRowEnd = endTime / (interval * verticalSize);
-    // console.log(cellRowEnd, colSpan);
-
     const row = Math.ceil((cellRowStart * verticalSize + rowOffset) * verticalSize);
     const colSpan = Math.ceil((cellRowEnd * verticalSize + rowOffset) * verticalSize);
 
@@ -55,6 +61,9 @@ const EventCell = ({
 
 EventCell.propTypes = {
     // : PropTypes.
+};
+EventCell.defaultProps = {
+    setRef: () => {},
 };
 
 export default EventCell;
