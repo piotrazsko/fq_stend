@@ -14,6 +14,7 @@ const masters = [
                 confirmed: false,
                 comment: 'bla-bla',
                 title: 'Мужская стрижка',
+                clientName: 'Ghjs jsjasdh',
             },
             {
                 id: 1,
@@ -22,6 +23,7 @@ const masters = [
                 confirmed: false,
                 comment: 'bla-bla',
                 title: 'Мужская стрижка',
+                clientName: 'Ghjs jsjasdh',
             },
             {
                 id: 1,
@@ -29,6 +31,7 @@ const masters = [
                 endTime: 390,
                 coment: 'bla-bla',
                 title: 'Мужская стрижка',
+                clientName: 'Ghjs jsjasdh',
             },
             {
                 id: 1,
@@ -36,6 +39,7 @@ const masters = [
                 endTime: 900,
                 coment: 'bla-bla',
                 title: 'Мужская стрижка',
+                clientName: 'Ghjs jsjasdh',
             },
         ],
     },

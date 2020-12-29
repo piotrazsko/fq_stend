@@ -102,6 +102,7 @@ var TimeGrid = function TimeGrid(_ref) {
           key: 'event' + index + j,
           startTime: i.startTime,
           endTime: i.endTime,
+          name: i.clientName,
           verticalSize: verticalSize,
           col: index + 1,
           interval: interval,

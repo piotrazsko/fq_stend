@@ -16,6 +16,7 @@ const EventCell = ({
     setRef,
     classes,
     onClick,
+    name,
 }) => {
     const { title, comment } = data;
     // const
@@ -37,8 +38,8 @@ const EventCell = ({
             onClick={onClick}
             ref={ref}
             className={[
-                eventConfirmed ? style.confirmedEvent : style.orderEvent,
                 classes.root,
+                eventConfirmed ? style.confirmedEvent : style.orderEvent,
             ].join(' ')}
             style={{
                 gridArea: gridArea,
@@ -47,8 +48,8 @@ const EventCell = ({
             <div className={style.container}>
                 <div
                     className={[
-                        eventConfirmed ? style.confirmedTime : style.orderedTime,
                         classes.time,
+                        eventConfirmed ? style.confirmedTime : style.orderedTime,
                     ].join(' ')}
                 >{`${moment()
                     .hour(0)
@@ -59,16 +60,24 @@ const EventCell = ({
                     .format('HH:mm')}`}</div>
                 <div
                     className={[
-                        eventConfirmed ? style.confirmedTitle : style.orderedTitle,
                         classes.title,
+                        eventConfirmed ? style.confirmedTitle : style.orderedTitle,
                     ].join(' ')}
                 >
                     {title}
                 </div>
                 <div
                     className={[
-                        eventConfirmed ? style.confirmedComment : style.orderedComment,
+                        classes.name,
+                        eventConfirmed ? style.confirmedTitle : style.orderedTitle,
+                    ].join(' ')}
+                >
+                    {name}
+                </div>
+                <div
+                    className={[
                         classes.content,
+                        eventConfirmed ? style.confirmedComment : style.orderedComment,
                     ].join(' ')}
                 >
                     {comment}
@@ -85,13 +94,16 @@ EventCell.propTypes = {
         title: PropTypes.string,
         time: PropTypes.string,
         content: PropTypes.string,
+        name: PropTypes.string,
     }),
     onClick: PropTypes.func,
+    name: PropTypes.string,
 };
 EventCell.defaultProps = {
     setRef: () => {},
     onClick: () => {},
-    classes: { root: '', title: '', content: '', time: '' },
+    classes: { root: '', title: '', content: '', time: '', name: '' },
+    name: '',
 };
 
 export default EventCell;

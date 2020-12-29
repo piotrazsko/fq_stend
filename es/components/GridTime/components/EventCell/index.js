@@ -29,7 +29,8 @@ var EventCell = function EventCell(_ref) {
       data = _ref.data,
       setRef = _ref.setRef,
       classes = _ref.classes,
-      onClick = _ref.onClick;
+      onClick = _ref.onClick,
+      name = _ref.name;
   var title = data.title,
       comment = data.comment; // const
   //
@@ -50,18 +51,20 @@ var EventCell = function EventCell(_ref) {
   return /*#__PURE__*/_react.default.createElement("div", {
     onClick: onClick,
     ref: ref,
-    className: [eventConfirmed ? _styleModule.default.confirmedEvent : _styleModule.default.orderEvent, classes.root].join(' '),
+    className: [classes.root, eventConfirmed ? _styleModule.default.confirmedEvent : _styleModule.default.orderEvent].join(' '),
     style: {
       gridArea: gridArea
     }
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: _styleModule.default.container
   }, /*#__PURE__*/_react.default.createElement("div", {
-    className: [eventConfirmed ? _styleModule.default.confirmedTime : _styleModule.default.orderedTime, classes.time].join(' ')
+    className: [classes.time, eventConfirmed ? _styleModule.default.confirmedTime : _styleModule.default.orderedTime].join(' ')
   }, "".concat((0, _moment.default)().hour(0).minute(startTime).format('HH:mm'), " - ").concat((0, _moment.default)().hour(0).minute(endTime).format('HH:mm'))), /*#__PURE__*/_react.default.createElement("div", {
-    className: [eventConfirmed ? _styleModule.default.confirmedTitle : _styleModule.default.orderedTitle, classes.title].join(' ')
+    className: [classes.title, eventConfirmed ? _styleModule.default.confirmedTitle : _styleModule.default.orderedTitle].join(' ')
   }, title), /*#__PURE__*/_react.default.createElement("div", {
-    className: [eventConfirmed ? _styleModule.default.confirmedComment : _styleModule.default.orderedComment, classes.content].join(' ')
+    className: [classes.name, eventConfirmed ? _styleModule.default.confirmedTitle : _styleModule.default.orderedTitle].join(' ')
+  }, name), /*#__PURE__*/_react.default.createElement("div", {
+    className: [classes.content, eventConfirmed ? _styleModule.default.confirmedComment : _styleModule.default.orderedComment].join(' ')
   }, comment)));
 };
 
@@ -71,9 +74,11 @@ EventCell.propTypes = {
     root: _propTypes.default.string,
     title: _propTypes.default.string,
     time: _propTypes.default.string,
-    content: _propTypes.default.string
+    content: _propTypes.default.string,
+    name: _propTypes.default.string
   }),
-  onClick: _propTypes.default.func
+  onClick: _propTypes.default.func,
+  name: _propTypes.default.string
 };
 EventCell.defaultProps = {
   setRef: function setRef() {},
@@ -82,8 +87,10 @@ EventCell.defaultProps = {
     root: '',
     title: '',
     content: '',
-    time: ''
-  }
+    time: '',
+    name: ''
+  },
+  name: ''
 };
 var _default = EventCell;
 exports.default = _default;
