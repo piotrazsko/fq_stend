@@ -11,9 +11,7 @@ import CurrentTime from './components/CurrentTime';
 const TimeGrid = ({ interval, masters, showCurrentTime, verticalSize, ...props }) => {
     // const verticalSize = 5;
     const rowOffset = 1;
-    const [currentTime, setTime] = React.useState(
-        moment('17.18 24.12.2020', 'HH.mm DD.MM.YYYY').toDate()
-    );
+    const [currentTime, setTime] = React.useState(new Date());
     React.useState(() => {
         if (showCurrentTime) {
             setInterval(() => {

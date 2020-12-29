@@ -67,7 +67,7 @@ var TimeGrid = function TimeGrid(_ref) {
   // const verticalSize = 5;
   var rowOffset = 1;
 
-  var _React$useState = _react.default.useState((0, _moment.default)('17.18 24.12.2020', 'HH.mm DD.MM.YYYY').toDate()),
+  var _React$useState = _react.default.useState(new Date()),
       _React$useState2 = _slicedToArray(_React$useState, 2),
       currentTime = _React$useState2[0],
       setTime = _React$useState2[1];
