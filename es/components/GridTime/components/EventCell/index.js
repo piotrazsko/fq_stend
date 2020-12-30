@@ -56,7 +56,7 @@ var EventCell = function EventCell(_ref) {
       gridArea: gridArea
     }
   }, /*#__PURE__*/_react.default.createElement("div", {
-    className: _styleModule.default.container
+    className: [_styleModule.default.container, classes.container].join(' ')
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: [classes.time, eventConfirmed ? _styleModule.default.confirmedTime : _styleModule.default.orderedTime].join(' ')
   }, "".concat((0, _moment.default)().hour(0).minute(startTime).format('HH:mm'), " - ").concat((0, _moment.default)().hour(0).minute(endTime).format('HH:mm'))), /*#__PURE__*/_react.default.createElement("div", {
@@ -75,7 +75,8 @@ EventCell.propTypes = {
     title: _propTypes.default.string,
     time: _propTypes.default.string,
     content: _propTypes.default.string,
-    name: _propTypes.default.string
+    name: _propTypes.default.string,
+    container: _propTypes.default.string
   }),
   onClick: _propTypes.default.func,
   name: _propTypes.default.string
@@ -88,7 +89,8 @@ EventCell.defaultProps = {
     title: '',
     content: '',
     time: '',
-    name: ''
+    name: '',
+    container: ''
   },
   name: ''
 };

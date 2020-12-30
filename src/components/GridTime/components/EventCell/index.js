@@ -45,7 +45,7 @@ const EventCell = ({
                 gridArea: gridArea,
             }}
         >
-            <div className={style.container}>
+            <div className={[style.container, classes.container].join(' ')}>
                 <div
                     className={[
                         classes.time,
@@ -95,6 +95,7 @@ EventCell.propTypes = {
         time: PropTypes.string,
         content: PropTypes.string,
         name: PropTypes.string,
+        container: PropTypes.string,
     }),
     onClick: PropTypes.func,
     name: PropTypes.string,
@@ -102,7 +103,7 @@ EventCell.propTypes = {
 EventCell.defaultProps = {
     setRef: () => {},
     onClick: () => {},
-    classes: { root: '', title: '', content: '', time: '', name: '' },
+    classes: { root: '', title: '', content: '', time: '', name: '', container: '' },
     name: '',
 };
 
