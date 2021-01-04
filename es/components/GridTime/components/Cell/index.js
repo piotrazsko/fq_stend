@@ -21,8 +21,6 @@ var _DeleteForever = _interopRequireDefault(require("@material-ui/icons/DeleteFo
 
 var _Avatar = _interopRequireDefault(require("@material-ui/core/Avatar"));
 
-var _HovetedCell = _interopRequireDefault(require("../HovetedCell"));
-
 var _calendar = require("../../../../helpers/calendar.js");
 
 var _styleModule = _interopRequireDefault(require("./style.module.scss"));
@@ -67,11 +65,18 @@ var Cell = function Cell(_ref) {
         return /*#__PURE__*/_react.default.createElement("div", null, "sss");
       }
 
+    case col === 0 && row === 0:
+      {
+        return /*#__PURE__*/_react.default.createElement("div", null);
+      }
+
     case col > 0 && row === 0:
       {
         var _master = getMaster(col);
 
-        return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Avatar.default, {
+        return /*#__PURE__*/_react.default.createElement("div", {
+          className: _styleModule.default.avatarContainer
+        }, /*#__PURE__*/_react.default.createElement(_Avatar.default, {
           alt: "Remy Sharp",
           src: _master.avatar
         }), /*#__PURE__*/_react.default.createElement("div", {
@@ -97,7 +102,7 @@ var Cell = function Cell(_ref) {
           className: _styleModule.default.emptyCell
         }, /*#__PURE__*/_react.default.createElement("div", {
           className: _styleModule.default.content
-        }, ' ', hour + ':' + (minutes.length == 1 ? '0' + minutes : minutes)));
+        }, hour + ':' + (minutes.length == 1 ? '0' + minutes : minutes)));
       }
   }
 };

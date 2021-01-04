@@ -6,7 +6,6 @@ import { IconButton } from '@material-ui/core';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import Avatar from '@material-ui/core/Avatar';
-import HoveredCell from '../HovetedCell';
 import { WEEKDAYS_LONG, WEEKDAYS_SHORT } from '../../../../helpers/calendar.js';
 
 import style from './style.module.scss';
@@ -20,10 +19,13 @@ const Cell = ({ row, col, isSelected, startTime = 0, interval = 15, master, getM
         case isSelected: {
             return <div>sss</div>;
         }
+        case col === 0 && row === 0: {
+            return <div />;
+        }
         case col > 0 && row === 0: {
             const master = getMaster(col);
             return (
-                <div>
+                <div className={style.avatarContainer}>
                     <Avatar alt="Remy Sharp" src={master.avatar} />
                     <div className={style.name}>{master.name}</div>
                 </div>
@@ -46,7 +48,6 @@ const Cell = ({ row, col, isSelected, startTime = 0, interval = 15, master, getM
             return (
                 <div className={style.emptyCell}>
                     <div className={style.content}>
-                        {' '}
                         {hour + ':' + (minutes.length == 1 ? '0' + minutes : minutes)}
                     </div>
                 </div>
