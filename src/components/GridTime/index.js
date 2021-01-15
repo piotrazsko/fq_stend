@@ -8,7 +8,14 @@ import EventCell from './components/EventCell';
 import DisabledCell from './components/DisabledCell';
 import CurrentTime from './components/CurrentTime';
 
-const TimeGrid = ({ interval, masters, showCurrentTime, verticalSize, ...props }) => {
+const TimeGrid = ({
+    interval,
+    masters,
+    showCurrentTime,
+    verticalSize,
+    defaultCellOnclick,
+    ...props
+}) => {
     // const verticalSize = 5;
     const rowOffset = 1;
     const [currentTime, setTime] = React.useState(new Date());
@@ -100,6 +107,7 @@ const TimeGrid = ({ interval, masters, showCurrentTime, verticalSize, ...props }
             cellProps={{
                 children: (
                     <Cell
+                        defaultCellOnclick={defaultCellOnclick}
                         interval={interval}
                         getMaster={col => {
                             return masters[col - 1];
@@ -133,12 +141,14 @@ TimeGrid.defaultProps = {
     interval: 10,
     verticalSize: 5,
     showCurrentTime: false,
+    defaultCellOnclick: () => {},
 };
 TimeGrid.propTypes = {
     masters: PropTypes.array,
     showCurrentTime: PropTypes.bool,
     interval: PropTypes.number,
     verticalSize: PropTypes.number,
+    defaultCellOnclick: PropTypes.func,
 };
 
 export default TimeGrid;

@@ -48,7 +48,8 @@ var Cell = function Cell(_ref) {
       _ref$interval = _ref.interval,
       interval = _ref$interval === void 0 ? 15 : _ref$interval,
       master = _ref.master,
-      getMaster = _ref.getMaster;
+      getMaster = _ref.getMaster,
+      defaultCellOnclick = _ref.defaultCellOnclick;
 
   var _React$useState = _react.default.useState(false),
       _React$useState2 = _slicedToArray(_React$useState, 2),
@@ -99,7 +100,13 @@ var Cell = function Cell(_ref) {
     default:
       {
         return /*#__PURE__*/_react.default.createElement("div", {
-          className: _styleModule.default.emptyCell
+          className: _styleModule.default.emptyCell,
+          onClick: function onClick() {
+            return defaultCellOnclick({
+              hour: hour,
+              minutes: minutes
+            });
+          }
         }, /*#__PURE__*/_react.default.createElement("div", {
           className: _styleModule.default.content
         }, hour + ':' + (minutes.length == 1 ? '0' + minutes : minutes)));
@@ -111,6 +118,9 @@ Cell.propTypes = {
   row: _propTypes.default.number,
   col: _propTypes.default.number,
   isSelected: _propTypes.default.bool
+};
+Cell.defaultProps = {
+  defaultCellOnclick: function defaultCellOnclick() {}
 };
 var _default = Cell;
 exports.default = _default;

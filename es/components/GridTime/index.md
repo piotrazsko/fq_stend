@@ -62,6 +62,11 @@ const masters = [
 ];
 
 <div style={{ width: '70vw' }}>
-    <TimeGrid masters={masters} />
+    <TimeGrid
+        masters={masters}
+        defaultCellOnclick={data => {
+            console.log(data);
+        }}
+    />
 </div>;
 ```

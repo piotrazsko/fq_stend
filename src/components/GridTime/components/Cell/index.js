@@ -10,7 +10,16 @@ import { WEEKDAYS_LONG, WEEKDAYS_SHORT } from '../../../../helpers/calendar.js';
 
 import style from './style.module.scss';
 
-const Cell = ({ row, col, isSelected, startTime = 0, interval = 15, master, getMaster }) => {
+const Cell = ({
+    row,
+    col,
+    isSelected,
+    startTime = 0,
+    interval = 15,
+    master,
+    getMaster,
+    defaultCellOnclick,
+}) => {
     const [showTime, setShowtime] = React.useState(false);
     const time = startTime + (row - 1) * interval;
     const minutes = (time % 60).toString();
@@ -46,7 +55,10 @@ const Cell = ({ row, col, isSelected, startTime = 0, interval = 15, master, getM
             return <div className={style.test} />;
         default: {
             return (
-                <div className={style.emptyCell}>
+                <div
+                    className={style.emptyCell}
+                    onClick={() => defaultCellOnclick({ hour, minutes })}
+                >
                     <div className={style.content}>
                         {hour + ':' + (minutes.length == 1 ? '0' + minutes : minutes)}
                     </div>
@@ -60,6 +72,9 @@ Cell.propTypes = {
     row: PropTypes.number,
     col: PropTypes.number,
     isSelected: PropTypes.bool,
+};
+Cell.defaultProps = {
+    defaultCellOnclick: () => {},
 };
 
 export default Cell;
