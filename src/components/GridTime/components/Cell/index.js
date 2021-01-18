@@ -57,7 +57,7 @@ const Cell = ({
             return (
                 <div
                     className={style.emptyCell}
-                    onClick={() => defaultCellOnclick({ hour, minutes })}
+                    onClick={() => defaultCellOnclick({ time: { hour, minutes }, col, row })}
                 >
                     <div className={style.content}>
                         {hour + ':' + (minutes.length == 1 ? '0' + minutes : minutes)}

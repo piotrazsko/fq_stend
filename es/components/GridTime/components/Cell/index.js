@@ -103,8 +103,12 @@ var Cell = function Cell(_ref) {
           className: _styleModule.default.emptyCell,
           onClick: function onClick() {
             return defaultCellOnclick({
-              hour: hour,
-              minutes: minutes
+              time: {
+                hour: hour,
+                minutes: minutes
+              },
+              col: col,
+              row: row
             });
           }
         }, /*#__PURE__*/_react.default.createElement("div", {
