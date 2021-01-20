@@ -63,7 +63,8 @@ var TimeGrid = function TimeGrid(_ref) {
       showCurrentTime = _ref.showCurrentTime,
       verticalSize = _ref.verticalSize,
       defaultCellOnclick = _ref.defaultCellOnclick,
-      props = _objectWithoutProperties(_ref, ["interval", "masters", "showCurrentTime", "verticalSize", "defaultCellOnclick"]);
+      onMasterClick = _ref.onMasterClick,
+      props = _objectWithoutProperties(_ref, ["interval", "masters", "showCurrentTime", "verticalSize", "defaultCellOnclick", "onMasterClick"]);
 
   // const verticalSize = 5;
   var rowOffset = 1;
@@ -162,6 +163,7 @@ var TimeGrid = function TimeGrid(_ref) {
     rows: 60 / interval * 24 + 1,
     cellProps: {
       children: /*#__PURE__*/_react.default.createElement(_Cell.default, {
+        onMasterClick: onMasterClick,
         defaultCellOnclick: defaultCellOnclick,
         interval: interval,
         getMaster: function getMaster(col) {
@@ -190,7 +192,8 @@ TimeGrid.defaultProps = {
   interval: 10,
   verticalSize: 5,
   showCurrentTime: false,
-  defaultCellOnclick: function defaultCellOnclick() {}
+  defaultCellOnclick: function defaultCellOnclick() {},
+  onMasterClick: function onMasterClick() {}
 };
 TimeGrid.propTypes = {
   masters: _propTypes.default.array,

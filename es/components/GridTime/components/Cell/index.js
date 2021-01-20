@@ -49,7 +49,8 @@ var Cell = function Cell(_ref) {
       interval = _ref$interval === void 0 ? 15 : _ref$interval,
       master = _ref.master,
       getMaster = _ref.getMaster,
-      defaultCellOnclick = _ref.defaultCellOnclick;
+      defaultCellOnclick = _ref.defaultCellOnclick,
+      onMasterClick = _ref.onMasterClick;
 
   var _React$useState = _react.default.useState(false),
       _React$useState2 = _slicedToArray(_React$useState, 2),
@@ -76,7 +77,10 @@ var Cell = function Cell(_ref) {
         var _master = getMaster(col);
 
         return /*#__PURE__*/_react.default.createElement("div", {
-          className: _styleModule.default.avatarContainer
+          className: _styleModule.default.avatarContainer,
+          onClick: function onClick() {
+            return onMasterClick(_master);
+          }
         }, /*#__PURE__*/_react.default.createElement(_Avatar.default, {
           alt: "Remy Sharp",
           src: _master.avatar

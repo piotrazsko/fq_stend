@@ -63,7 +63,7 @@ var EventCell = function EventCell(_ref) {
     className: [classes.title, eventConfirmed ? _styleModule.default.confirmedTitle : _styleModule.default.orderedTitle].join(' ')
   }, title), /*#__PURE__*/_react.default.createElement("div", {
     className: [classes.name, eventConfirmed ? _styleModule.default.confirmedTitle : _styleModule.default.orderedTitle].join(' ')
-  }, name), /*#__PURE__*/_react.default.createElement("div", {
+  }, name || 0), /*#__PURE__*/_react.default.createElement("div", {
     className: [classes.content, eventConfirmed ? _styleModule.default.confirmedComment : _styleModule.default.orderedComment].join(' ')
   }, comment)));
 };

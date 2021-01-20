@@ -108,6 +108,7 @@ const TimeGrid = ({
             cellProps={{
                 children: (
                     <Cell
+                        onMasterClick={onMasterClick}
                         defaultCellOnclick={defaultCellOnclick}
                         interval={interval}
                         getMaster={col => {
