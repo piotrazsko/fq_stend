@@ -19,6 +19,7 @@ const Cell = ({
     master,
     getMaster,
     defaultCellOnclick,
+    onMasterClick,
 }) => {
     const [showTime, setShowtime] = React.useState(false);
     const time = startTime + (row - 1) * interval;
@@ -34,7 +35,7 @@ const Cell = ({
         case col > 0 && row === 0: {
             const master = getMaster(col);
             return (
-                <div className={style.avatarContainer}>
+                <div className={style.avatarContainer} onClick={() => onMasterClick(master)}>
                     <Avatar alt="Remy Sharp" src={master.avatar} />
                     <div className={style.name}>{master.name}</div>
                 </div>

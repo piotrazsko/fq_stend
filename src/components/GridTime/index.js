@@ -14,6 +14,7 @@ const TimeGrid = ({
     showCurrentTime,
     verticalSize,
     defaultCellOnclick,
+    onMasterClick,
     ...props
 }) => {
     // const verticalSize = 5;
@@ -142,6 +143,7 @@ TimeGrid.defaultProps = {
     verticalSize: 5,
     showCurrentTime: false,
     defaultCellOnclick: () => {},
+    onMasterClick: () => {},
 };
 TimeGrid.propTypes = {
     masters: PropTypes.array,

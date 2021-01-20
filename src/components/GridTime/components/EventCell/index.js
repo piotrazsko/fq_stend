@@ -72,7 +72,7 @@ const EventCell = ({
                         eventConfirmed ? style.confirmedTitle : style.orderedTitle,
                     ].join(' ')}
                 >
-                    {name}
+                    {name || 0}
                 </div>
                 <div
                     className={[
