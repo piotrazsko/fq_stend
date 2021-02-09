@@ -152,6 +152,7 @@ TimeGrid.propTypes = {
     interval: PropTypes.number,
     verticalSize: PropTypes.number,
     defaultCellOnclick: PropTypes.func,
+    onMasterClick: PropTypes.func,
 };
 
 export default TimeGrid;

@@ -200,7 +200,8 @@ TimeGrid.propTypes = {
   showCurrentTime: _propTypes.default.bool,
   interval: _propTypes.default.number,
   verticalSize: _propTypes.default.number,
-  defaultCellOnclick: _propTypes.default.func
+  defaultCellOnclick: _propTypes.default.func,
+  onMasterClick: _propTypes.default.func
 };
 var _default = TimeGrid;
 exports.default = _default;

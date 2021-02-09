@@ -78,8 +78,8 @@ var Cell = function Cell(_ref) {
 
         return /*#__PURE__*/_react.default.createElement("div", {
           className: _styleModule.default.avatarContainer,
-          onClick: function onClick() {
-            return onMasterClick(_master);
+          onClick: function onClick(ev) {
+            return onMasterClick(_master, ev);
           }
         }, /*#__PURE__*/_react.default.createElement(_Avatar.default, {
           alt: "Remy Sharp",
