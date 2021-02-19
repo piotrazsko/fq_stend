@@ -3,7 +3,7 @@
 .gridContainer {
     grid-template-rows: [first] 55px !important ;
     grid-template-columns: [first-row] 40px !important;
-    grid-auto-rows: minmax(4px, 4px);
+    grid-auto-rows: minmax(4px, 4px) !important;
     grid-auto-columns: minmax(20px, 1fr);
     margin-top: 5px;
     font-family: Montserrat;
