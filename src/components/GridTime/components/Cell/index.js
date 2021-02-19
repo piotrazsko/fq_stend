@@ -36,7 +36,7 @@ const Cell = ({
             const master = getMaster(col);
             return (
                 <div className={style.avatarContainer} onClick={ev => onMasterClick(master, ev)}>
-                    <Avatar alt="Remy Sharp" src={master.avatar} />
+                    <Avatar className={style.avatar} alt="Remy Sharp" src={master.avatar} />
                     <div className={style.name}>{master.name}</div>
                 </div>
             );

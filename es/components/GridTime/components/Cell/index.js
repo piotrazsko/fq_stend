@@ -82,6 +82,7 @@ var Cell = function Cell(_ref) {
             return onMasterClick(_master, ev);
           }
         }, /*#__PURE__*/_react.default.createElement(_Avatar.default, {
+          className: _styleModule.default.avatar,
           alt: "Remy Sharp",
           src: _master.avatar
         }), /*#__PURE__*/_react.default.createElement("div", {

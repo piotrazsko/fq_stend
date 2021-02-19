@@ -8,7 +8,7 @@
     z-index: 5 !important;
 }
 .name {
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 400;
     text-align: center;
     margin-top: 8px;
@@ -35,6 +35,10 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+}
+.avatar {
+    width: 32px !important;
+    height: 32px !important;
 }
 .emptyCell {
     width: 100%;

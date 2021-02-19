@@ -1,9 +1,10 @@
 @import '../../styles/endpoints.scss';
 
 .gridContainer {
-    grid-template-rows: [first] 80px !important ;
-    grid-template-columns: [first-row] 80px !important;
-    grid-auto-rows: minmax(5px, 5px);
+    grid-template-rows: [first] 70px !important ;
+    grid-template-columns: [first-row] 40px !important;
+    grid-auto-rows: minmax(4px, 4px);
+    grid-auto-columns: minmax(20px, 1fr);
     margin-top: 5px;
     font-family: Montserrat;
 }
