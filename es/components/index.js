@@ -32,7 +32,8 @@ var _exportNames = {
   CustomWorkingTimeSelect: true,
   FeedbackItem: true,
   SkillItem: true,
-  NumberFormat: true
+  NumberFormat: true,
+  RatingDetails: true
 };
 Object.defineProperty(exports, "Avatar", {
   enumerable: true,
@@ -208,6 +209,12 @@ Object.defineProperty(exports, "NumberFormat", {
     return _NumberFormat.default;
   }
 });
+Object.defineProperty(exports, "RatingDetails", {
+  enumerable: true,
+  get: function get() {
+    return _RatingDetails.default;
+  }
+});
 
 var _helpers = require("../helpers");
 
@@ -279,5 +286,7 @@ var _FeedbackItem = _interopRequireDefault(require("./FeedbackItem"));
 var _SkillItem = _interopRequireDefault(require("./SkillItem"));
 
 var _NumberFormat = _interopRequireDefault(require("./NumberFormat"));
+
+var _RatingDetails = _interopRequireDefault(require("./RatingDetails"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }

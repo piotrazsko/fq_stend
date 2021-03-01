@@ -28,3 +28,4 @@ export { default as CustomWorkingTimeSelect } from './CustomWorkingTimeSelect';
 export { default as FeedbackItem } from './FeedbackItem';
 export { default as SkillItem } from './SkillItem';
 export { default as NumberFormat } from './NumberFormat';
+export { default as RatingDetails } from './RatingDetails';
