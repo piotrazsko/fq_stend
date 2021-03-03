@@ -19,7 +19,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 // import { ReactComponent as Location } from '../../static/images/Location.svg';
 var RatingLocation = function RatingLocation(_ref) {
-  var feedback_count = _ref.feedback_count,
+  var useAltText = _ref.useAltText,
+      altText = _ref.altText,
+      feedback_count = _ref.feedback_count,
       rating = _ref.rating,
       city = _ref.city,
       _ref$className = _ref.className,
@@ -33,7 +35,7 @@ var RatingLocation = function RatingLocation(_ref) {
     className: _styleModule.default.rating
   }, rating)) : '', /*#__PURE__*/_react.default.createElement("span", {
     className: _styleModule.default.feedbacks
-  }, feedback_count ? "(".concat(feedback_count, ")") : 'Нет отзывов'), city && /*#__PURE__*/_react.default.createElement(_Location.default, {
+  }, !useAltText || feedback_count ? "(".concat(feedback_count, ")") : altText), city && /*#__PURE__*/_react.default.createElement(_Location.default, {
     city: city
   }));
 };
@@ -42,7 +44,13 @@ RatingLocation.propTypes = {
   feedback_count: _propTypes.default.number,
   rating: _propTypes.default.number,
   city: _propTypes.default.string,
-  className: _propTypes.default.string
+  className: _propTypes.default.string,
+  altText: _propTypes.default.string,
+  useAltText: _propTypes.default.bool
+};
+RatingLocation.defaultProps = {
+  altText: 'Нет  отзывов',
+  useAltText: true
 };
 var _default = RatingLocation;
 exports.default = _default;

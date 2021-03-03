@@ -5,7 +5,7 @@ import StarIcon from '@material-ui/icons/Star';
 import Location from '../Location';
 import style from './style.module.scss';
 
-const RatingLocation = ({ feedback_count, rating, city, className = '' }) => {
+const RatingLocation = ({ useAltText, altText, feedback_count, rating, city, className = '' }) => {
     return (
         <div className={[style.additionalInfo, className].join(' ')}>
             {feedback_count ? (
@@ -17,7 +17,7 @@ const RatingLocation = ({ feedback_count, rating, city, className = '' }) => {
                 ''
             )}
             <span className={style.feedbacks}>
-                {feedback_count ? `(${feedback_count})` : 'Нет отзывов'}
+                {!useAltText || feedback_count ? `(${feedback_count})` : altText}
             </span>
             {city && <Location city={city} />}
         </div>
@@ -29,6 +29,12 @@ RatingLocation.propTypes = {
     rating: PropTypes.number,
     city: PropTypes.string,
     className: PropTypes.string,
+    altText: PropTypes.string,
+    useAltText: PropTypes.bool,
+};
+RatingLocation.defaultProps = {
+    altText: 'Нет  отзывов',
+    useAltText: true,
 };
 
 export default RatingLocation;
