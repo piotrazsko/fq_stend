@@ -37,6 +37,8 @@ export default function CalendarPicker({
     color,
     variant = 'text',
     children,
+    pickerProps,
+    buttonProps,
 }) {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const classes = useStyles();
@@ -70,6 +72,7 @@ export default function CalendarPicker({
                         outlined: classes.outlined,
                         root: classes.buttonRoot,
                     }}
+                    {...buttonProps}
                 >
                     <div className={style.buttonContent}>
                         <div
@@ -138,6 +141,7 @@ export default function CalendarPicker({
                             }}
                             showSelectionPreview
                             date={date}
+                            {...pickerProps}
                         />
                     </div>
                 </div>
@@ -148,6 +152,8 @@ export default function CalendarPicker({
 CalendarPicker.defaultProps = {
     options: [],
     onChange: () => {},
+    pickerProps: {},
+    buttonProps: {},
 };
 CalendarPicker.propTypes = {
     date: PropTypes.instanceOf(Date),
@@ -156,4 +162,6 @@ CalendarPicker.propTypes = {
     color: PropTypes.string,
     variant: PropTypes.string,
     children: PropTypes.element,
+    pickerProps: PropTypes.object,
+    buttonProps: PropTypes.object,
 };

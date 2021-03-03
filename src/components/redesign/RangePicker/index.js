@@ -20,7 +20,6 @@ import {
     startOfWeek,
     endOfWeek,
     isSameDay,
-    differenceInCalendarDays,
 } from 'date-fns';
 import style from './style.module.scss';
 import 'react-date-range/dist/styles.css'; // main css file
@@ -129,6 +128,8 @@ export default function RangePicker({
     color,
     variant = 'text',
     rightAlign = false,
+    buttonProps,
+    pickerProps,
 }) {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const classes = useStyles();
@@ -186,6 +187,7 @@ export default function RangePicker({
                 }}
                 name="name"
                 variant={variant}
+                {...buttonProps}
             >
                 <ChevronLeftIcon fontSize="small" color="primary" />
                 <span className={style.textButton}>
@@ -278,6 +280,7 @@ export default function RangePicker({
                             ranges={state}
                             direction="horizontal"
                             maxDate={new Date()}
+                            {...pickerProps}
                         />
                     </div>
                     <div className={style.buttonConfirm}>
@@ -298,6 +301,8 @@ export default function RangePicker({
 RangePicker.defaultProps = {
     options: [],
     onChange: () => {},
+    pickerProps: {},
+    buttonProps: {},
 };
 RangePicker.propTypes = {
     date: PropTypes.shape({
@@ -307,6 +312,7 @@ RangePicker.propTypes = {
     color: PropTypes.string,
     variant: PropTypes.string,
     rightAlign: PropTypes.bool,
-
+    pickerProps: PropTypes.object,
+    buttonProps: PropTypes.object,
     onChange: PropTypes.func,
 };
