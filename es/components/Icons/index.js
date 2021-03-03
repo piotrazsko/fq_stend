@@ -105,6 +105,24 @@ Object.defineProperty(exports, "CreditCardIcon", {
     return _CreditCardIcon.ReactComponent;
   }
 });
+Object.defineProperty(exports, "AvatarIcon", {
+  enumerable: true,
+  get: function get() {
+    return _AvatarIcon.ReactComponent;
+  }
+});
+Object.defineProperty(exports, "DistanceIcon", {
+  enumerable: true,
+  get: function get() {
+    return _DistanceIcon.ReactComponent;
+  }
+});
+Object.defineProperty(exports, "StarIcon", {
+  enumerable: true,
+  get: function get() {
+    return _StarIcon.ReactComponent;
+  }
+});
 
 var _react = _interopRequireDefault(require("react"));
 
@@ -141,5 +159,11 @@ var _UsersIcon = require("../../static/images/svg/UsersIcon.svg");
 var _CasheIcon = require("../../static/images/svg/CasheIcon.svg");
 
 var _CreditCardIcon = require("../../static/images/svg/CreditCardIcon.svg");
+
+var _AvatarIcon = require("../../static/images/svg/AvatarIcon.svg");
+
+var _DistanceIcon = require("../../static/images/svg/DistanceIcon.svg");
+
+var _StarIcon = require("../../static/images/svg/StarIcon.svg");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }

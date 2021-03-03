@@ -16,3 +16,6 @@ export { ReactComponent as SuitCaseIcon } from '../../static/images/svg/SuitCase
 export { ReactComponent as UsersIcon } from '../../static/images/svg/UsersIcon.svg';
 export { ReactComponent as CasheIcon } from '../../static/images/svg/CasheIcon.svg';
 export { ReactComponent as CreditCardIcon } from '../../static/images/svg/CreditCardIcon.svg';
+export { ReactComponent as AvatarIcon } from '../../static/images/svg/AvatarIcon.svg';
+export { ReactComponent as DistanceIcon } from '../../static/images/svg/DistanceIcon.svg';
+export { ReactComponent as StarIcon } from '../../static/images/svg/StarIcon.svg';

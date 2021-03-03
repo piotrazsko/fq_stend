@@ -21,7 +21,7 @@ module.exports = {
     },
     theme: {
         fontFamily: {
-            base: '"Montserrat", sans-serif',
+            base: 'Montserrat, sans-serif',
         },
     },
 };
