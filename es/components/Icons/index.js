@@ -93,6 +93,18 @@ Object.defineProperty(exports, "UsersIcon", {
     return _UsersIcon.ReactComponent;
   }
 });
+Object.defineProperty(exports, "CasheIcon", {
+  enumerable: true,
+  get: function get() {
+    return _CasheIcon.ReactComponent;
+  }
+});
+Object.defineProperty(exports, "CreditCardIcon", {
+  enumerable: true,
+  get: function get() {
+    return _CreditCardIcon.ReactComponent;
+  }
+});
 
 var _react = _interopRequireDefault(require("react"));
 
@@ -125,5 +137,9 @@ var _ProfileIcon = require("../../static/images/svg/ProfileIcon.svg");
 var _SuitCaseIcon = require("../../static/images/svg/SuitCaseIcon.svg");
 
 var _UsersIcon = require("../../static/images/svg/UsersIcon.svg");
+
+var _CasheIcon = require("../../static/images/svg/CasheIcon.svg");
+
+var _CreditCardIcon = require("../../static/images/svg/CreditCardIcon.svg");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
