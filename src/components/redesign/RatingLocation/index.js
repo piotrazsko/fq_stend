@@ -5,9 +5,9 @@ import StarIcon from '@material-ui/icons/Star';
 import Location from '../Location';
 import style from './style.module.scss';
 
-const RatingLocation = ({ feedback_count, rating, city }) => {
+const RatingLocation = ({ feedback_count, rating, city, className = '' }) => {
     return (
-        <div className={style.additionalInfo}>
+        <div className={[style.additionalInfo, className].join(' ')}>
             {feedback_count ? (
                 <React.Fragment>
                     <StarIcon htmlColor="#FFBB2F" className={style.locationIcon} />
@@ -28,6 +28,7 @@ RatingLocation.propTypes = {
     feedback_count: PropTypes.number,
     rating: PropTypes.number,
     city: PropTypes.string,
+    className: PropTypes.string,
 };
 
 export default RatingLocation;

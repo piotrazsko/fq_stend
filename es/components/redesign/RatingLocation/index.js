@@ -21,9 +21,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var RatingLocation = function RatingLocation(_ref) {
   var feedback_count = _ref.feedback_count,
       rating = _ref.rating,
-      city = _ref.city;
+      city = _ref.city,
+      _ref$className = _ref.className,
+      className = _ref$className === void 0 ? '' : _ref$className;
   return /*#__PURE__*/_react.default.createElement("div", {
-    className: _styleModule.default.additionalInfo
+    className: [_styleModule.default.additionalInfo, className].join(' ')
   }, feedback_count ? /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_Star.default, {
     htmlColor: "#FFBB2F",
     className: _styleModule.default.locationIcon
@@ -39,7 +41,8 @@ var RatingLocation = function RatingLocation(_ref) {
 RatingLocation.propTypes = {
   feedback_count: _propTypes.default.number,
   rating: _propTypes.default.number,
-  city: _propTypes.default.string
+  city: _propTypes.default.string,
+  className: _propTypes.default.string
 };
 var _default = RatingLocation;
 exports.default = _default;

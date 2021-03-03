@@ -1,12 +1,9 @@
 .additionalInfo {
-    margin-left: 20px;
     display: flex;
     font-size: 14px;
     font-weight: 400;
     align-items: center;
     justify-content: center;
-    min-width: 109px;
-    margin-right: 15px;
     font-family: Montserrat;
     .rating {
         margin: 0 3px;
@@ -14,11 +11,5 @@
     .feedbacks {
         margin: 0 15px 0 3px;
         font-weight: 300;
-    }
-    .locationIcon {
-        font-size: 1.2em;
-    }
-    .city {
-        margin-left: 3px;
     }
 }
