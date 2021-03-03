@@ -42,6 +42,8 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -169,7 +171,9 @@ function RangePicker(_ref) {
       _ref$variant = _ref.variant,
       variant = _ref$variant === void 0 ? 'text' : _ref$variant,
       _ref$rightAlign = _ref.rightAlign,
-      rightAlign = _ref$rightAlign === void 0 ? false : _ref$rightAlign;
+      rightAlign = _ref$rightAlign === void 0 ? false : _ref$rightAlign,
+      buttonProps = _ref.buttonProps,
+      pickerProps = _ref.pickerProps;
 
   var _React$useState = _react.default.useState(null),
       _React$useState2 = _slicedToArray(_React$useState, 2),
@@ -224,7 +228,7 @@ function RangePicker(_ref) {
     onChange(state);
   };
 
-  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_Button.default, {
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_Button.default, _extends({
     className: rightAlign ? '' : _styleModule.default.headerButton,
     onClick: handleClick,
     color: color,
@@ -235,7 +239,7 @@ function RangePicker(_ref) {
     },
     name: "name",
     variant: variant
-  }, /*#__PURE__*/_react.default.createElement(_ChevronLeft.default, {
+  }, buttonProps), /*#__PURE__*/_react.default.createElement(_ChevronLeft.default, {
     fontSize: "small",
     color: "primary"
   }), /*#__PURE__*/_react.default.createElement("span", {
@@ -258,7 +262,7 @@ function RangePicker(_ref) {
     }
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: _styleModule.default.container
-  }, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_reactDateRange.DateRangePicker, {
+  }, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_reactDateRange.DateRangePicker, _extends({
     color: "#fa835f",
     showPreview: false,
     navigatorRenderer: function navigatorRenderer(currentFocusedDate, changeShownDate) {
@@ -300,7 +304,7 @@ function RangePicker(_ref) {
     ranges: state,
     direction: "horizontal",
     maxDate: new Date()
-  })), /*#__PURE__*/_react.default.createElement("div", {
+  }, pickerProps))), /*#__PURE__*/_react.default.createElement("div", {
     className: _styleModule.default.buttonConfirm
   }, /*#__PURE__*/_react.default.createElement(_Button.default, {
     size: "small",
@@ -312,7 +316,9 @@ function RangePicker(_ref) {
 
 RangePicker.defaultProps = {
   options: [],
-  onChange: function onChange() {}
+  onChange: function onChange() {},
+  pickerProps: {},
+  buttonProps: {}
 };
 RangePicker.propTypes = {
   date: _propTypes.default.shape({
@@ -322,5 +328,7 @@ RangePicker.propTypes = {
   color: _propTypes.default.string,
   variant: _propTypes.default.string,
   rightAlign: _propTypes.default.bool,
+  pickerProps: _propTypes.default.object,
+  buttonProps: _propTypes.default.object,
   onChange: _propTypes.default.func
 };

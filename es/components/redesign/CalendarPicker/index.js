@@ -41,6 +41,8 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -80,7 +82,9 @@ function CalendarPicker(_ref) {
       color = _ref.color,
       _ref$variant = _ref.variant,
       variant = _ref$variant === void 0 ? 'text' : _ref$variant,
-      children = _ref.children;
+      children = _ref.children,
+      pickerProps = _ref.pickerProps,
+      buttonProps = _ref.buttonProps;
 
   var _React$useState = _react.default.useState(null),
       _React$useState2 = _slicedToArray(_React$useState, 2),
@@ -119,14 +123,14 @@ function CalendarPicker(_ref) {
   return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, children && /*#__PURE__*/_react.default.cloneElement(children, {
     onClick: handleClick,
     disabled: disabled
-  }) || /*#__PURE__*/_react.default.createElement(_Button.default, {
+  }) || /*#__PURE__*/_react.default.createElement(_Button.default, _extends({
     variant: variant,
     classes: {
       text: classes.root,
       outlined: classes.outlined,
       root: classes.buttonRoot
     }
-  }, /*#__PURE__*/_react.default.createElement("div", {
+  }, buttonProps), /*#__PURE__*/_react.default.createElement("div", {
     className: _styleModule.default.buttonContent
   }, /*#__PURE__*/_react.default.createElement("div", {
     size: "small",
@@ -169,7 +173,7 @@ function CalendarPicker(_ref) {
     }
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: _styleModule.default.container
-  }, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_reactDateRange.Calendar, {
+  }, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_reactDateRange.Calendar, _extends({
     color: "#fa835f",
     showPreview: false,
     showMonthAndYearPickers: false,
@@ -181,12 +185,14 @@ function CalendarPicker(_ref) {
     },
     showSelectionPreview: true,
     date: date
-  })))));
+  }, pickerProps))))));
 }
 
 CalendarPicker.defaultProps = {
   options: [],
-  onChange: function onChange() {}
+  onChange: function onChange() {},
+  pickerProps: {},
+  buttonProps: {}
 };
 CalendarPicker.propTypes = {
   date: _propTypes.default.instanceOf(Date),
@@ -194,5 +200,7 @@ CalendarPicker.propTypes = {
   disabled: _propTypes.default.bool,
   color: _propTypes.default.string,
   variant: _propTypes.default.string,
-  children: _propTypes.default.element
+  children: _propTypes.default.element,
+  pickerProps: _propTypes.default.object,
+  buttonProps: _propTypes.default.object
 };

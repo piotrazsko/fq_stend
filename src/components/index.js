@@ -29,7 +29,7 @@ export { default as FeedbackItem } from './FeedbackItem';
 
 export { default as SkillItem } from './redesign/SkillItem';
 export { default as NumberFormat } from './NumberFormat';
-export { default as RatingDetails } from './redesign/RatingLocation';
-export { default as RatingLocation } from './redesign/RatingDetails';
+export { default as RatingLocation } from './redesign/RatingLocation';
+export { default as RatingDetails } from './redesign/RatingDetails';
 export { default as Location } from './redesign/Location';
 export { default as TimePicker } from './redesign/TimePicker';
