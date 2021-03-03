@@ -9,7 +9,7 @@ var _react = _interopRequireDefault(require("react"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _Location = require("../../../static/images/Location.svg");
+var _Icons = require("../../Icons");
 
 var _styleModule = _interopRequireDefault(require("./style.module.scss"));
 
@@ -21,7 +21,7 @@ var Location = function Location(_ref) {
       className = _ref$className === void 0 ? '' : _ref$className;
   return /*#__PURE__*/_react.default.createElement("div", {
     className: [_styleModule.default.container, className].join(' ')
-  }, city && /*#__PURE__*/_react.default.createElement(_Location.ReactComponent, {
+  }, city && /*#__PURE__*/_react.default.createElement(_Icons.LocationIcon, {
     className: _styleModule.default.locationIcon
   }), /*#__PURE__*/_react.default.createElement("span", {
     className: _styleModule.default.city

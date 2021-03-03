@@ -33,3 +33,4 @@ export { default as RatingLocation } from './redesign/RatingLocation';
 export { default as RatingDetails } from './redesign/RatingDetails';
 export { default as Location } from './redesign/Location';
 export { default as TimePicker } from './redesign/TimePicker';
+export * from './Icons';

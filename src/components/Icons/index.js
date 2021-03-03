@@ -1,0 +1,16 @@
+import React from 'react';
+export { ReactComponent as PhoneIcon } from '../../static/images/svg/Phone.svg';
+export { ReactComponent as LocationIcon } from '../../static/images/svg/Location.svg';
+export { ReactComponent as CalendarIcon } from '../../static/images/svg/CalendarIcon.svg';
+export { ReactComponent as CaseIcon } from '../../static/images/svg/CaseIcon.svg';
+export { ReactComponent as ChartPieIcon } from '../../static/images/svg/ChartPieIcon.svg';
+export { ReactComponent as CommentIcon } from '../../static/images/svg/CommentIcon.svg';
+export { ReactComponent as CupIcon } from '../../static/images/svg/CupIcon.svg';
+export { ReactComponent as DeleteIcon } from '../../static/images/svg/DeleteIcon.svg';
+export { ReactComponent as EditCommentIcon } from '../../static/images/svg/EditCommentIcon.svg';
+export { ReactComponent as EditIcon } from '../../static/images/svg/EditIcon.svg';
+export { ReactComponent as HeartIcon } from '../../static/images/svg/HeartIcon.svg';
+export { ReactComponent as HomeIcon } from '../../static/images/svg/HomeIcon.svg';
+export { ReactComponent as ProfileIcon } from '../../static/images/svg/ProfileIcon.svg';
+export { ReactComponent as SuitCaseIcon } from '../../static/images/svg/SuitCaseIcon.svg';
+export { ReactComponent as UsersIcon } from '../../static/images/svg/UsersIcon.svg';

@@ -316,4 +316,17 @@ var _Location = _interopRequireDefault(require("./redesign/Location"));
 
 var _TimePicker = _interopRequireDefault(require("./redesign/TimePicker"));
 
+var _Icons = require("./Icons");
+
+Object.keys(_Icons).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  if (Object.prototype.hasOwnProperty.call(_exportNames, key)) return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _Icons[key];
+    }
+  });
+});
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
