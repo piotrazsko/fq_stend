@@ -1,0 +1,3 @@
+```jsx
+<Location city={'Minsk'} />
+```

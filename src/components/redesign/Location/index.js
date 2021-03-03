@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ReactComponent as LocationIcon } from '../../static/images/Location.svg';
+import { ReactComponent as LocationIcon } from '../../../static/images/Location.svg';
 
 import style from './style.module.scss';
 

@@ -1,5 +1,5 @@
 module.exports = {
-    components: 'src/components/*/index.js',
+    components: ['src/components/*/index.js', 'src/components/redesign/*/index.js'],
     styleguideDir: 'dist',
     template: {
         head: {
@@ -21,7 +21,7 @@ module.exports = {
     },
     theme: {
         fontFamily: {
-            base: '"Roboto", sans-serif',
+            base: '"Montserrat", sans-serif',
         },
     },
 };

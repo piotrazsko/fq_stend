@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import get from 'lodash/get';
-import NumberFormat from '../NumberFormat';
 import { makeStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
 import Icon from '@material-ui/core/Icon';
@@ -9,6 +8,8 @@ import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 import DeleteOutlineOutlinedIcon from '@material-ui/icons/DeleteOutlineOutlined';
 import Tooltip from '@material-ui/core/Tooltip';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
+
+import NumberFormat from '../../NumberFormat';
 import {
     Cosmetics,
     MakeUpIcon,
@@ -17,7 +18,7 @@ import {
     ScissorsIcon,
     SpaIcon,
     Tattoo,
-} from '../Icons/services';
+} from '../../Icons/services';
 import style from './style.module.scss';
 
 const useStyles = makeStyles(theme => ({

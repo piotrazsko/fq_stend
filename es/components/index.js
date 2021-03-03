@@ -33,7 +33,9 @@ var _exportNames = {
   FeedbackItem: true,
   SkillItem: true,
   NumberFormat: true,
-  RatingDetails: true
+  RatingDetails: true,
+  RatingLocation: true,
+  Location: true
 };
 Object.defineProperty(exports, "Avatar", {
   enumerable: true,
@@ -212,7 +214,19 @@ Object.defineProperty(exports, "NumberFormat", {
 Object.defineProperty(exports, "RatingDetails", {
   enumerable: true,
   get: function get() {
+    return _RatingLocation.default;
+  }
+});
+Object.defineProperty(exports, "RatingLocation", {
+  enumerable: true,
+  get: function get() {
     return _RatingDetails.default;
+  }
+});
+Object.defineProperty(exports, "Location", {
+  enumerable: true,
+  get: function get() {
+    return _Location.default;
   }
 });
 
@@ -287,6 +301,10 @@ var _SkillItem = _interopRequireDefault(require("./SkillItem"));
 
 var _NumberFormat = _interopRequireDefault(require("./NumberFormat"));
 
-var _RatingDetails = _interopRequireDefault(require("./RatingDetails"));
+var _RatingLocation = _interopRequireDefault(require("./redesign/RatingLocation"));
+
+var _RatingDetails = _interopRequireDefault(require("./redesign/RatingDetails"));
+
+var _Location = _interopRequireDefault(require("./redesign/Location"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
