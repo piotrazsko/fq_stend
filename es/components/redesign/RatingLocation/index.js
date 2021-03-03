@@ -30,7 +30,7 @@ var RatingLocation = function RatingLocation(_ref) {
     className: [_styleModule.default.additionalInfo, className].join(' ')
   }, feedback_count ? /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_Star.default, {
     htmlColor: "#FFBB2F",
-    className: _styleModule.default.locationIcon
+    className: _styleModule.default.starIcon
   }), /*#__PURE__*/_react.default.createElement("span", {
     className: _styleModule.default.rating
   }, rating)) : '', /*#__PURE__*/_react.default.createElement("span", {

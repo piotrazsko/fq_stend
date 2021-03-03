@@ -10,7 +10,7 @@ const RatingLocation = ({ useAltText, altText, feedback_count, rating, city, cla
         <div className={[style.additionalInfo, className].join(' ')}>
             {feedback_count ? (
                 <React.Fragment>
-                    <StarIcon htmlColor="#FFBB2F" className={style.locationIcon} />
+                    <StarIcon htmlColor="#FFBB2F" className={style.starIcon} />
                     <span className={style.rating}>{rating}</span>
                 </React.Fragment>
             ) : (
