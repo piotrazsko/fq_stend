@@ -302,7 +302,7 @@ var _HOK = _interopRequireDefault(require("./HOK"));
 
 var _CustomWorkingTimeSelect = _interopRequireDefault(require("./CustomWorkingTimeSelect"));
 
-var _FeedbackItem = _interopRequireDefault(require("./FeedbackItem"));
+var _FeedbackItem = _interopRequireDefault(require("./redesign/FeedbackItem"));
 
 var _SkillItem = _interopRequireDefault(require("./redesign/SkillItem"));
 
