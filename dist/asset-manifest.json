@@ -1,12 +1,12 @@
 {
   "files": {
     "main.css": "/static/css/main.d54720a5.chunk.css",
-    "main.js": "/build/main.c7641867.js",
+    "main.js": "/build/main.7ec321c1.js",
     "runtime~main.js": "/build/bundle.016cd79a.js",
     "static/css/2.e75511bb.chunk.css": "/static/css/2.e75511bb.chunk.css",
-    "build/2.9a9db0dc.js": "/build/2.9a9db0dc.js",
+    "build/2.fd31822b.js": "/build/2.fd31822b.js",
     "index.html": "/index.html",
-    "precache-manifest.e73cfa672079783263313f5090a28e13.js": "/precache-manifest.e73cfa672079783263313f5090a28e13.js",
+    "precache-manifest.e2983f92ce5c2a8489b12508443dfce5.js": "/precache-manifest.e2983f92ce5c2a8489b12508443dfce5.js",
     "service-worker.js": "/service-worker.js",
     "static/css/2.e75511bb.chunk.css.map": "/static/css/2.e75511bb.chunk.css.map",
     "static/css/main.d54720a5.chunk.css.map": "/static/css/main.d54720a5.chunk.css.map",
@@ -29,6 +29,7 @@
     "static/media/HomeIcon.a65867bc.svg": "/static/media/HomeIcon.a65867bc.svg",
     "static/media/InstagramIcon.608e92cd.svg": "/static/media/InstagramIcon.608e92cd.svg",
     "static/media/Location.9ea0ebf9.svg": "/static/media/Location.9ea0ebf9.svg",
+    "static/media/Logo.9e8c7226.svg": "/static/media/Logo.9e8c7226.svg",
     "static/media/MakeUpIcon.5ac139a8.svg": "/static/media/MakeUpIcon.5ac139a8.svg",
     "static/media/MassageIcon.0eab0ae8.svg": "/static/media/MassageIcon.0eab0ae8.svg",
     "static/media/NailIcon.20320304.svg": "/static/media/NailIcon.20320304.svg",

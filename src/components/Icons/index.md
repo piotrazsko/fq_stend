@@ -59,6 +59,10 @@ import {
     <br />
     <EmailIcon width="20" />
     <br />
+    <InstagramIcon /> <br />
+    <TelegramIcon /> <br />
+    <VKIcon /> <br />
+    <WhatsAppIcon /> <br />
     <CosmeticsIcon /> <br />
     <MakeUpIcon /> <br />
     <MassageIcon /> <br />
@@ -66,9 +70,5 @@ import {
     <ScissorsIcon /> <br />
     <SpaIcon /> <br />
     <TattooIcon /> <br />
-    <InstagramIcon /> <br />
-    <TelegramIcon /> <br />
-    <VKIcon /> <br />
-    <WhatsAppIcon /> <br />
 </div>;
 ```

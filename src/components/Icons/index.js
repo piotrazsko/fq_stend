@@ -24,6 +24,7 @@ export { ReactComponent as InstagramIcon } from '../../static/images/svg/Instagr
 export { ReactComponent as TelegramIcon } from '../../static/images/svg/TelegramIcon.svg';
 export { ReactComponent as VKIcon } from '../../static/images/svg/VKIcon.svg';
 export { ReactComponent as WhatsAppIcon } from '../../static/images/svg/WhatsAppIcon.svg';
+export { ReactComponent as Logo } from '../../static/images/svg/Logo.svg';
 
 export {
     ReactComponent as CosmeticsIcon,
