@@ -19,3 +19,13 @@ export { ReactComponent as CreditCardIcon } from '../../static/images/svg/Credit
 export { ReactComponent as AvatarIcon } from '../../static/images/svg/AvatarIcon.svg';
 export { ReactComponent as DistanceIcon } from '../../static/images/svg/DistanceIcon.svg';
 export { ReactComponent as StarIcon } from '../../static/images/svg/StarIcon.svg';
+
+export {
+    ReactComponent as CosmeticsIcon,
+} from '../../static/images/svg/services/CosmeticsIcon.svg';
+export { ReactComponent as MakeUpIcon } from '../../static/images/svg/services/MakeUpIcon.svg';
+export { ReactComponent as MassageIcon } from '../../static/images/svg/services/MassageIcon.svg';
+export { ReactComponent as NailIcon } from '../../static/images/svg/services/NailIcon.svg';
+export { ReactComponent as ScissorsIcon } from '../../static/images/svg/services/ScissorsIcon.svg';
+export { ReactComponent as SpaIcon } from '../../static/images/svg/services/SpaIcon.svg';
+export { ReactComponent as TattooIcon } from '../../static/images/svg/services/TattooIcon.svg';

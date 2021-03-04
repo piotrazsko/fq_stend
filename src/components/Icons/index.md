@@ -20,6 +20,13 @@ import {
     AvatarIcon,
     DistanceIcon,
     StarIcon,
+    CosmeticsIcon,
+    MakeUpIcon,
+    MassageIcon,
+    NailIcon,
+    ScissorsIcon,
+    SpaIcon,
+    TattooIcon,
 } from './';
 <div>
     <PhoneIcon />
@@ -45,5 +52,12 @@ import {
     <StarIcon /> <br />
     <AvatarIcon width="20" />
     <br />
+    <CosmeticsIcon /> <br />
+    <MakeUpIcon /> <br />
+    <MassageIcon /> <br />
+    <NailIcon /> <br />
+    <ScissorsIcon /> <br />
+    <SpaIcon /> <br />
+    <TattooIcon /> <br />
 </div>;
 ```
