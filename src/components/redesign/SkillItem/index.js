@@ -10,15 +10,24 @@ import Tooltip from '@material-ui/core/Tooltip';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 
 import NumberFormat from '../../NumberFormat';
+// import {
+//     Cosmetics,
+//     MakeUpIcon,
+//     MassageIcon,
+//     NailIcon,
+//     ScissorsIcon,
+//     SpaIcon,
+//     Tattoo,
+// } from '../../Icons/services';
 import {
-    Cosmetics,
+    CosmeticsIcon,
     MakeUpIcon,
     MassageIcon,
     NailIcon,
     ScissorsIcon,
     SpaIcon,
-    Tattoo,
-} from '../../Icons/services';
+    TattooIcon,
+} from '../../Icons';
 import style from './style.module.scss';
 
 const useStyles = makeStyles(theme => ({
@@ -49,9 +58,9 @@ const SkillItem = ({
             case 'nails':
                 return <NailIcon />;
             case 'tattoo':
-                return <Tattoo />;
+                return <TattooIcon />;
             case 'cosmetology':
-                return <Cosmetics />;
+                return <CosmeticsIcon />;
             case 'face':
                 return <MakeUpIcon />;
             default:
