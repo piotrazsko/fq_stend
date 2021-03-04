@@ -27,7 +27,7 @@ var _ClickAwayListener = _interopRequireDefault(require("@material-ui/core/Click
 
 var _NumberFormat = _interopRequireDefault(require("../../NumberFormat"));
 
-var _services = require("../../Icons/services");
+var _Icons = require("../../Icons");
 
 var _styleModule = _interopRequireDefault(require("./style.module.scss"));
 
@@ -71,25 +71,25 @@ var SkillItem = function SkillItem(_ref) {
   var getIcon = function getIcon() {
     switch (data.parent_uid) {
       case 'hair':
-        return /*#__PURE__*/_react.default.createElement(_services.ScissorsIcon, null);
+        return /*#__PURE__*/_react.default.createElement(_Icons.ScissorsIcon, null);
 
       case 'massage':
-        return /*#__PURE__*/_react.default.createElement(_services.MassageIcon, null);
+        return /*#__PURE__*/_react.default.createElement(_Icons.MassageIcon, null);
 
       case 'body':
-        return /*#__PURE__*/_react.default.createElement(_services.SpaIcon, null);
+        return /*#__PURE__*/_react.default.createElement(_Icons.SpaIcon, null);
 
       case 'nails':
-        return /*#__PURE__*/_react.default.createElement(_services.NailIcon, null);
+        return /*#__PURE__*/_react.default.createElement(_Icons.NailIcon, null);
 
       case 'tattoo':
-        return /*#__PURE__*/_react.default.createElement(_services.Tattoo, null);
+        return /*#__PURE__*/_react.default.createElement(_Icons.TattooIcon, null);
 
       case 'cosmetology':
-        return /*#__PURE__*/_react.default.createElement(_services.Cosmetics, null);
+        return /*#__PURE__*/_react.default.createElement(_Icons.CosmeticsIcon, null);
 
       case 'face':
-        return /*#__PURE__*/_react.default.createElement(_services.MakeUpIcon, null);
+        return /*#__PURE__*/_react.default.createElement(_Icons.MakeUpIcon, null);
 
       default:
         return /*#__PURE__*/_react.default.createElement(_Icon.default, null);

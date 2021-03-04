@@ -27,6 +27,7 @@ import {
     ScissorsIcon,
     SpaIcon,
     TattooIcon,
+    EmailIcon,
 } from './';
 <div>
     <PhoneIcon />
@@ -51,6 +52,8 @@ import {
     <DistanceIcon /> <br />
     <StarIcon /> <br />
     <AvatarIcon width="20" />
+    <br />
+    <EmailIcon width="20" />
     <br />
     <CosmeticsIcon /> <br />
     <MakeUpIcon /> <br />

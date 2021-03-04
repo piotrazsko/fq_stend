@@ -123,6 +123,78 @@ Object.defineProperty(exports, "StarIcon", {
     return _StarIcon.ReactComponent;
   }
 });
+Object.defineProperty(exports, "EmailIcon", {
+  enumerable: true,
+  get: function get() {
+    return _EmailIcon.ReactComponent;
+  }
+});
+Object.defineProperty(exports, "InstagramIcon", {
+  enumerable: true,
+  get: function get() {
+    return _InstagramIcon.ReactComponent;
+  }
+});
+Object.defineProperty(exports, "TelegramIcon", {
+  enumerable: true,
+  get: function get() {
+    return _TelegramIcon.ReactComponent;
+  }
+});
+Object.defineProperty(exports, "VKIcon", {
+  enumerable: true,
+  get: function get() {
+    return _VKIcon.ReactComponent;
+  }
+});
+Object.defineProperty(exports, "WhatsAppIcon", {
+  enumerable: true,
+  get: function get() {
+    return _WhatsAppIcon.ReactComponent;
+  }
+});
+Object.defineProperty(exports, "CosmeticsIcon", {
+  enumerable: true,
+  get: function get() {
+    return _CosmeticsIcon.ReactComponent;
+  }
+});
+Object.defineProperty(exports, "MakeUpIcon", {
+  enumerable: true,
+  get: function get() {
+    return _MakeUpIcon.ReactComponent;
+  }
+});
+Object.defineProperty(exports, "MassageIcon", {
+  enumerable: true,
+  get: function get() {
+    return _MassageIcon.ReactComponent;
+  }
+});
+Object.defineProperty(exports, "NailIcon", {
+  enumerable: true,
+  get: function get() {
+    return _NailIcon.ReactComponent;
+  }
+});
+Object.defineProperty(exports, "ScissorsIcon", {
+  enumerable: true,
+  get: function get() {
+    return _ScissorsIcon.ReactComponent;
+  }
+});
+Object.defineProperty(exports, "SpaIcon", {
+  enumerable: true,
+  get: function get() {
+    return _SpaIcon.ReactComponent;
+  }
+});
+Object.defineProperty(exports, "TattooIcon", {
+  enumerable: true,
+  get: function get() {
+    return _TattooIcon.ReactComponent;
+  }
+});
 
 var _react = _interopRequireDefault(require("react"));
 
@@ -165,5 +237,29 @@ var _AvatarIcon = require("../../static/images/svg/AvatarIcon.svg");
 var _DistanceIcon = require("../../static/images/svg/DistanceIcon.svg");
 
 var _StarIcon = require("../../static/images/svg/StarIcon.svg");
+
+var _EmailIcon = require("../../static/images/svg/EmailIcon.svg");
+
+var _InstagramIcon = require("../../static/images/svg/InstagramIcon.svg");
+
+var _TelegramIcon = require("../../static/images/svg/TelegramIcon.svg");
+
+var _VKIcon = require("../../static/images/svg/VKIcon.svg");
+
+var _WhatsAppIcon = require("../../static/images/svg/WhatsAppIcon.svg");
+
+var _CosmeticsIcon = require("../../static/images/svg/services/CosmeticsIcon.svg");
+
+var _MakeUpIcon = require("../../static/images/svg/services/MakeUpIcon.svg");
+
+var _MassageIcon = require("../../static/images/svg/services/MassageIcon.svg");
+
+var _NailIcon = require("../../static/images/svg/services/NailIcon.svg");
+
+var _ScissorsIcon = require("../../static/images/svg/services/ScissorsIcon.svg");
+
+var _SpaIcon = require("../../static/images/svg/services/SpaIcon.svg");
+
+var _TattooIcon = require("../../static/images/svg/services/TattooIcon.svg");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }

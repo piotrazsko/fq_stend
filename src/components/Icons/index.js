@@ -19,6 +19,11 @@ export { ReactComponent as CreditCardIcon } from '../../static/images/svg/Credit
 export { ReactComponent as AvatarIcon } from '../../static/images/svg/AvatarIcon.svg';
 export { ReactComponent as DistanceIcon } from '../../static/images/svg/DistanceIcon.svg';
 export { ReactComponent as StarIcon } from '../../static/images/svg/StarIcon.svg';
+export { ReactComponent as EmailIcon } from '../../static/images/svg/EmailIcon.svg';
+export { ReactComponent as InstagramIcon } from '../../static/images/svg/InstagramIcon.svg';
+export { ReactComponent as TelegramIcon } from '../../static/images/svg/TelegramIcon.svg';
+export { ReactComponent as VKIcon } from '../../static/images/svg/VKIcon.svg';
+export { ReactComponent as WhatsAppIcon } from '../../static/images/svg/WhatsAppIcon.svg';
 
 export {
     ReactComponent as CosmeticsIcon,
