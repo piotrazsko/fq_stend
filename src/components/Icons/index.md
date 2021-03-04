@@ -28,6 +28,10 @@ import {
     SpaIcon,
     TattooIcon,
     EmailIcon,
+    InstagramIcon,
+    TelegramIcon,
+    VKIcon,
+    WhatsAppIcon,
 } from './';
 <div>
     <PhoneIcon />
@@ -62,5 +66,9 @@ import {
     <ScissorsIcon /> <br />
     <SpaIcon /> <br />
     <TattooIcon /> <br />
+    <InstagramIcon /> <br />
+    <TelegramIcon /> <br />
+    <VKIcon /> <br />
+    <WhatsAppIcon /> <br />
 </div>;
 ```
