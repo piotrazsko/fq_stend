@@ -26,6 +26,10 @@ export { ReactComponent as VKIcon } from '../../static/images/svg/VKIcon.svg';
 export { ReactComponent as WhatsAppIcon } from '../../static/images/svg/WhatsAppIcon.svg';
 export { ReactComponent as Logo } from '../../static/images/svg/Logo.svg';
 export { ReactComponent as MessagesIcon } from '../../static/images/svg/Messages.svg';
+export { ReactComponent as JournalIcon } from '../../static/images/svg/JournalIcon.svg';
+export { ReactComponent as AdvertIcon } from '../../static/images/svg/AdvertIcon.svg';
+export { ReactComponent as PersonIcon } from '../../static/images/svg/PersonIcon.svg';
+export { ReactComponent as SearchIcon } from '../../static/images/svg/SearchIcon.svg';
 
 export {
     ReactComponent as CosmeticsIcon,

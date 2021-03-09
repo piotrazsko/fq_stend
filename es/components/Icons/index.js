@@ -165,6 +165,30 @@ Object.defineProperty(exports, "MessagesIcon", {
     return _Messages.ReactComponent;
   }
 });
+Object.defineProperty(exports, "JournalIcon", {
+  enumerable: true,
+  get: function get() {
+    return _JournalIcon.ReactComponent;
+  }
+});
+Object.defineProperty(exports, "AdvertIcon", {
+  enumerable: true,
+  get: function get() {
+    return _AdvertIcon.ReactComponent;
+  }
+});
+Object.defineProperty(exports, "PersonIcon", {
+  enumerable: true,
+  get: function get() {
+    return _PersonIcon.ReactComponent;
+  }
+});
+Object.defineProperty(exports, "SearchIcon", {
+  enumerable: true,
+  get: function get() {
+    return _SearchIcon.ReactComponent;
+  }
+});
 Object.defineProperty(exports, "CosmeticsIcon", {
   enumerable: true,
   get: function get() {
@@ -263,6 +287,14 @@ var _WhatsAppIcon = require("../../static/images/svg/WhatsAppIcon.svg");
 var _Logo = require("../../static/images/svg/Logo.svg");
 
 var _Messages = require("../../static/images/svg/Messages.svg");
+
+var _JournalIcon = require("../../static/images/svg/JournalIcon.svg");
+
+var _AdvertIcon = require("../../static/images/svg/AdvertIcon.svg");
+
+var _PersonIcon = require("../../static/images/svg/PersonIcon.svg");
+
+var _SearchIcon = require("../../static/images/svg/SearchIcon.svg");
 
 var _CosmeticsIcon = require("../../static/images/svg/services/CosmeticsIcon.svg");
 
