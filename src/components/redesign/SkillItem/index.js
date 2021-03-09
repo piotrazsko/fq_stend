@@ -46,6 +46,7 @@ const SkillItem = ({
     showEdit = true,
     showDelete = true,
     currency_id,
+    onClick,
 }) => {
     const getIcon = () => {
         switch (data.parent_uid) {
@@ -71,18 +72,21 @@ const SkillItem = ({
     const { title, id, duration, price, description } = data;
     const [open, setOpen] = React.useState(false);
 
-    const handleTooltipClose = () => {
+    const handleTooltipClose = ev => {
+        ev.stopPropagation();
         setOpen(false);
     };
 
-    const handleTooltipOpen = () => {
+    const handleTooltipOpen = ev => {
+        ev.stopPropagation();
+
         setOpen(true);
     };
     // console.log(data);
     // const { duration, price } = get(data, 'pivot', {});
     return (
         !!data && (
-            <div className={style.item} key={id}>
+            <div className={style.item} key={id} onClick={onClick}>
                 {getIcon()}
                 <div className={style.titleContainer}>
                     <div className={style.title}> {title}</div>
@@ -118,7 +122,13 @@ const SkillItem = ({
                                     disableTouchListener
                                     title={description}
                                 >
-                                    <IconButton size="small" onClick={handleTooltipOpen}>
+                                    <IconButton
+                                        size="small"
+                                        onClick={ev => {
+                                            ev.stopPropagation();
+                                            handleTooltipOpen();
+                                        }}
+                                    >
                                         <InfoOutlinedIcon
                                             className={style.icon}
                                             htmlColor={color}
@@ -129,7 +139,13 @@ const SkillItem = ({
                         </ClickAwayListener>
                     )}
                     {showDelete && (
-                        <IconButton size="small" onClick={onDelete}>
+                        <IconButton
+                            size="small"
+                            onClick={ev => {
+                                ev.stopPropagation();
+                                onDelete();
+                            }}
+                        >
                             <DeleteOutlineOutlinedIcon className={style.icon} htmlColor={color} />
                         </IconButton>
                     )}
@@ -142,9 +158,11 @@ const SkillItem = ({
 SkillItem.propTypes = {
     onDelete: PropTypes.func.isRequired,
     currency_id: PropTypes.number,
+    onClick: PropTypes.func,
 };
 SkillItem.defaultProps = {
     data: {},
     currency_id: 1,
+    onClick: () => {},
 };
 export default SkillItem;

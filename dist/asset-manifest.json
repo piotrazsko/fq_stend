@@ -1,12 +1,12 @@
 {
   "files": {
     "main.css": "/static/css/main.d54720a5.chunk.css",
-    "main.js": "/build/main.7ec321c1.js",
+    "main.js": "/build/main.7af976d7.js",
     "runtime~main.js": "/build/bundle.016cd79a.js",
     "static/css/2.e75511bb.chunk.css": "/static/css/2.e75511bb.chunk.css",
     "build/2.fd31822b.js": "/build/2.fd31822b.js",
     "index.html": "/index.html",
-    "precache-manifest.e2983f92ce5c2a8489b12508443dfce5.js": "/precache-manifest.e2983f92ce5c2a8489b12508443dfce5.js",
+    "precache-manifest.0f302c57f573f3744b85e460e1fb2065.js": "/precache-manifest.0f302c57f573f3744b85e460e1fb2065.js",
     "service-worker.js": "/service-worker.js",
     "static/css/2.e75511bb.chunk.css.map": "/static/css/2.e75511bb.chunk.css.map",
     "static/css/main.d54720a5.chunk.css.map": "/static/css/main.d54720a5.chunk.css.map",
@@ -32,6 +32,7 @@
     "static/media/Logo.9e8c7226.svg": "/static/media/Logo.9e8c7226.svg",
     "static/media/MakeUpIcon.5ac139a8.svg": "/static/media/MakeUpIcon.5ac139a8.svg",
     "static/media/MassageIcon.0eab0ae8.svg": "/static/media/MassageIcon.0eab0ae8.svg",
+    "static/media/Messages.1df07912.svg": "/static/media/Messages.1df07912.svg",
     "static/media/NailIcon.20320304.svg": "/static/media/NailIcon.20320304.svg",
     "static/media/Phone.aa21793a.svg": "/static/media/Phone.aa21793a.svg",
     "static/media/ProfileIcon.5b920a41.svg": "/static/media/ProfileIcon.5b920a41.svg",

@@ -66,7 +66,8 @@ var SkillItem = function SkillItem(_ref) {
       showEdit = _ref$showEdit === void 0 ? true : _ref$showEdit,
       _ref$showDelete = _ref.showDelete,
       showDelete = _ref$showDelete === void 0 ? true : _ref$showDelete,
-      currency_id = _ref.currency_id;
+      currency_id = _ref.currency_id,
+      onClick = _ref.onClick;
 
   var getIcon = function getIcon() {
     switch (data.parent_uid) {
@@ -108,11 +109,13 @@ var SkillItem = function SkillItem(_ref) {
       open = _React$useState2[0],
       setOpen = _React$useState2[1];
 
-  var handleTooltipClose = function handleTooltipClose() {
+  var handleTooltipClose = function handleTooltipClose(ev) {
+    ev.stopPropagation();
     setOpen(false);
   };
 
-  var handleTooltipOpen = function handleTooltipOpen() {
+  var handleTooltipOpen = function handleTooltipOpen(ev) {
+    ev.stopPropagation();
     setOpen(true);
   }; // console.log(data);
   // const { duration, price } = get(data, 'pivot', {});
@@ -120,7 +123,8 @@ var SkillItem = function SkillItem(_ref) {
 
   return !!data && /*#__PURE__*/_react.default.createElement("div", {
     className: _styleModule.default.item,
-    key: id
+    key: id,
+    onClick: onClick
   }, getIcon(), /*#__PURE__*/_react.default.createElement("div", {
     className: _styleModule.default.titleContainer
   }, /*#__PURE__*/_react.default.createElement("div", {
@@ -150,13 +154,19 @@ var SkillItem = function SkillItem(_ref) {
     title: description
   }, /*#__PURE__*/_react.default.createElement(_IconButton.default, {
     size: "small",
-    onClick: handleTooltipOpen
+    onClick: function onClick(ev) {
+      ev.stopPropagation();
+      handleTooltipOpen();
+    }
   }, /*#__PURE__*/_react.default.createElement(_InfoOutlined.default, {
     className: _styleModule.default.icon,
     htmlColor: color
   }))))), showDelete && /*#__PURE__*/_react.default.createElement(_IconButton.default, {
     size: "small",
-    onClick: onDelete
+    onClick: function onClick(ev) {
+      ev.stopPropagation();
+      onDelete();
+    }
   }, /*#__PURE__*/_react.default.createElement(_DeleteOutlineOutlined.default, {
     className: _styleModule.default.icon,
     htmlColor: color
@@ -165,11 +175,13 @@ var SkillItem = function SkillItem(_ref) {
 
 SkillItem.propTypes = {
   onDelete: _propTypes.default.func.isRequired,
-  currency_id: _propTypes.default.number
+  currency_id: _propTypes.default.number,
+  onClick: _propTypes.default.func
 };
 SkillItem.defaultProps = {
   data: {},
-  currency_id: 1
+  currency_id: 1,
+  onClick: function onClick() {}
 };
 var _default = SkillItem;
 exports.default = _default;

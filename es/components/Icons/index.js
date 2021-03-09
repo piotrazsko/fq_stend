@@ -159,6 +159,12 @@ Object.defineProperty(exports, "Logo", {
     return _Logo.ReactComponent;
   }
 });
+Object.defineProperty(exports, "Messages", {
+  enumerable: true,
+  get: function get() {
+    return _Messages.ReactComponent;
+  }
+});
 Object.defineProperty(exports, "CosmeticsIcon", {
   enumerable: true,
   get: function get() {
@@ -255,6 +261,8 @@ var _VKIcon = require("../../static/images/svg/VKIcon.svg");
 var _WhatsAppIcon = require("../../static/images/svg/WhatsAppIcon.svg");
 
 var _Logo = require("../../static/images/svg/Logo.svg");
+
+var _Messages = require("../../static/images/svg/Messages.svg");
 
 var _CosmeticsIcon = require("../../static/images/svg/services/CosmeticsIcon.svg");
 
