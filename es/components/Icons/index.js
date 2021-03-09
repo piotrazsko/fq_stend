@@ -159,7 +159,7 @@ Object.defineProperty(exports, "Logo", {
     return _Logo.ReactComponent;
   }
 });
-Object.defineProperty(exports, "Messages", {
+Object.defineProperty(exports, "MessagesIcon", {
   enumerable: true,
   get: function get() {
     return _Messages.ReactComponent;

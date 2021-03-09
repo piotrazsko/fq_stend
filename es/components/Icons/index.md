@@ -32,7 +32,7 @@ import {
     TelegramIcon,
     VKIcon,
     WhatsAppIcon,
-    Messages,
+    MessagesIcon,
 } from './';
 <div>
     <PhoneIcon />
