@@ -11,6 +11,9 @@ const shouldUseSourceMap = false;
 const pkg = require('./package.json');
 const libraryName = pkg.name;
 module.exports = {
+    optimization: {
+        sideEffects: false,
+    },
     // Don't attempt to continue if there are any errors.
     bail: true,
     // We generate sourcemaps in production. This is slow but gives good results.
