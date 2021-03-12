@@ -26,6 +26,7 @@ import {
     ScissorsIcon,
     SpaIcon,
     TattooIcon,
+    DeleteIcon,
 } from '../../Icons';
 import style from './style.module.scss';
 
@@ -50,21 +51,21 @@ const SkillItem = ({
     const getIcon = () => {
         switch (data.parent_uid) {
             case 'hair':
-                return <ScissorsIcon />;
+                return <ScissorsIcon width="35px" height="35px" />;
             case 'massage':
-                return <MassageIcon />;
+                return <MassageIcon width="35px" height="35px" />;
             case 'body':
-                return <SpaIcon />;
+                return <SpaIcon width="35px" height="35px" />;
             case 'nails':
-                return <NailIcon />;
+                return <NailIcon width="35px" height="35px" />;
             case 'tattoo':
-                return <TattooIcon />;
+                return <TattooIcon width="35px" height="35px" />;
             case 'cosmetology':
-                return <CosmeticsIcon />;
+                return <CosmeticsIcon width="35px" height="35px" />;
             case 'face':
-                return <MakeUpIcon />;
+                return <MakeUpIcon width="35px" height="35px" />;
             default:
-                return <Icon />;
+                return <Icon width="35px" height="35px" />;
         }
     };
     // const classes = useStyles();
@@ -145,7 +146,7 @@ const SkillItem = ({
                                 onDelete();
                             }}
                         >
-                            <DeleteOutlineOutlinedIcon className={style.icon} htmlColor={color} />
+                            <DeleteIcon className={style.icon} htmlColor={color} />
                         </IconButton>
                     )}
                 </div>
