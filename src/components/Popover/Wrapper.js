@@ -6,7 +6,6 @@ import style from './style.module.scss';
 const positionPopover = (el, container) => {
     if (el && global) {
         const position = el.getBoundingClientRect();
-        // window.outerHeight
         if (position.left < 0) {
             container.style.left = 0;
         }

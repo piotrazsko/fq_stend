@@ -16,7 +16,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 /* global global */
 var positionPopover = function positionPopover(el, container) {
   if (el && global) {
-    var position = el.getBoundingClientRect(); // window.outerHeight
+    var position = el.getBoundingClientRect();
 
     if (position.left < 0) {
       container.style.left = 0;
