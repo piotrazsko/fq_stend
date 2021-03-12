@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import MuiPhoneNumber from 'material-ui-phone-number';
+import NoSsr from '@material-ui/core/NoSsr';
 
 export default function PhoneInput({
     value = '',
@@ -25,23 +26,25 @@ export default function PhoneInput({
     }, [phone]);
 
     return (
-        <MuiPhoneNumber
-            countryCodeEditable
-            defaultCountry={countryCode}
-            onlyCountries={onlyCountries}
-            margin="normal"
-            fullWidth
-            required={required}
-            label={label}
-            value={phone}
-            placeholder={placeholder}
-            disabled={disabled}
-            name={name}
-            onChange={phone => {
-                setPhone(phone);
-            }}
-            {...props}
-        />
+        <NoSsr>
+            <MuiPhoneNumber
+                countryCodeEditable
+                defaultCountry={countryCode}
+                onlyCountries={onlyCountries}
+                margin="normal"
+                fullWidth
+                required={required}
+                label={label}
+                value={phone}
+                placeholder={placeholder}
+                disabled={disabled}
+                name={name}
+                onChange={phone => {
+                    setPhone(phone);
+                }}
+                {...props}
+            />
+        </NoSsr>
     );
 }
 PhoneInput.defaultProps = {
