@@ -66,7 +66,9 @@ function PhoneInput(_ref) {
     }
   }, [phone]);
 
-  return /*#__PURE__*/_react.default.createElement(_NoSsr.default, null, /*#__PURE__*/_react.default.createElement(_materialUiPhoneNumber.default, _extends({
+  return /*#__PURE__*/_react.default.createElement(_NoSsr.default, {
+    defer: true
+  }, /*#__PURE__*/_react.default.createElement(_materialUiPhoneNumber.default, _extends({
     countryCodeEditable: true,
     defaultCountry: countryCode,
     onlyCountries: onlyCountries,

@@ -26,7 +26,7 @@ export default function PhoneInput({
     }, [phone]);
 
     return (
-        <NoSsr>
+        <NoSsr defer>
             <MuiPhoneNumber
                 countryCodeEditable
                 defaultCountry={countryCode}
