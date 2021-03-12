@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/static/css/main.df6b5ad0.chunk.css",
-    "main.js": "/build/main.de6a1613.js",
+    "main.css": "/static/css/main.8c793688.chunk.css",
+    "main.js": "/build/main.3c82f6cc.js",
     "runtime~main.js": "/build/bundle.016cd79a.js",
     "static/css/2.9f5161a1.chunk.css": "/static/css/2.9f5161a1.chunk.css",
-    "build/2.9f204ba7.js": "/build/2.9f204ba7.js",
+    "build/2.683373d9.js": "/build/2.683373d9.js",
     "index.html": "/index.html",
-    "precache-manifest.5d7edbf362c1fe68428d5273b89ef4ce.js": "/precache-manifest.5d7edbf362c1fe68428d5273b89ef4ce.js",
+    "precache-manifest.cd779e31c92ee85aae32b00db80bc424.js": "/precache-manifest.cd779e31c92ee85aae32b00db80bc424.js",
     "service-worker.js": "/service-worker.js",
     "static/css/2.9f5161a1.chunk.css.map": "/static/css/2.9f5161a1.chunk.css.map",
-    "static/css/main.df6b5ad0.chunk.css.map": "/static/css/main.df6b5ad0.chunk.css.map",
+    "static/css/main.8c793688.chunk.css.map": "/static/css/main.8c793688.chunk.css.map",
     "static/media/AdvertIcon.589a27ad.svg": "/static/media/AdvertIcon.589a27ad.svg",
     "static/media/AvatarIcon.3700bbdc.svg": "/static/media/AvatarIcon.3700bbdc.svg",
     "static/media/CalendarIcon.178957e5.svg": "/static/media/CalendarIcon.178957e5.svg",
@@ -51,6 +51,7 @@
     "static/media/WhatsAppIcon.58910a12.svg": "/static/media/WhatsAppIcon.58910a12.svg",
     "static/media/appStore.png": "/static/media/appStore.097295b8.png",
     "static/media/emptyStar.svg": "/static/media/emptyStar.74dd2202.svg",
+    "static/media/flags.png": "/static/media/flags.59587db5.png",
     "static/media/fullStar.svg": "/static/media/fullStar.3471b2c1.svg",
     "static/media/googlePlay.png": "/static/media/googlePlay.ad720b31.png"
   }

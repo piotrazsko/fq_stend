@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import MuiPhoneNumber from 'material-ui-phone-number';
+import MuiPhoneNumber from '../MuiPhoneNumber';
 import NoSsr from '@material-ui/core/NoSsr';
 
 export default function PhoneInput({

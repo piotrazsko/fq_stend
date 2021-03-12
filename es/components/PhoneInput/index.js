@@ -9,7 +9,7 @@ var _react = _interopRequireDefault(require("react"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _materialUiPhoneNumber = _interopRequireDefault(require("material-ui-phone-number"));
+var _MuiPhoneNumber = _interopRequireDefault(require("../MuiPhoneNumber"));
 
 var _NoSsr = _interopRequireDefault(require("@material-ui/core/NoSsr"));
 
@@ -68,7 +68,7 @@ function PhoneInput(_ref) {
 
   return /*#__PURE__*/_react.default.createElement(_NoSsr.default, {
     defer: true
-  }, /*#__PURE__*/_react.default.createElement(_materialUiPhoneNumber.default, _extends({
+  }, /*#__PURE__*/_react.default.createElement(_MuiPhoneNumber.default, _extends({
     countryCodeEditable: true,
     defaultCountry: countryCode,
     onlyCountries: onlyCountries,
