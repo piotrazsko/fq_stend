@@ -69,9 +69,9 @@ import {
     <VKIcon /> <br />
     <WhatsAppIcon /> <br />
     <CosmeticsIcon /> <br />
-    <MakeUpIcon /> <br />
+    <MakeUpIcon fill="red" stroke="green" /> <br />
     <MassageIcon /> <br />
-    <NailIcon /> <br />
+    <NailIcon fill="red" /> <br />
     <ScissorsIcon /> <br />
     <SpaIcon /> <br />
     <TattooIcon /> <br />

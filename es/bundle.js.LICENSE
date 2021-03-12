@@ -1,6 +1,20 @@
 //! moment.js
 
 /**
+ * A better abstraction over CSS.
+ *
+ * @copyright Oleg Isonen (Slobodskoi) / Isonen 2014-present
+ * @website https://github.com/cssinjs/jss
+ * @license MIT
+ */
+
+/** @license Material-UI v4.10.0
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+/**
  * @license
  * Lodash <https://lodash.com/>
  * Copyright OpenJS Foundation and other contributors <https://openjsf.org/>
@@ -80,12 +94,4 @@ object-assign
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
- */
-
-/**
- * A better abstraction over CSS.
- *
- * @copyright Oleg Isonen (Slobodskoi) / Isonen 2014-present
- * @website https://github.com/cssinjs/jss
- * @license MIT
  */

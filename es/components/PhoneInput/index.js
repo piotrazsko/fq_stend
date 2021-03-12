@@ -9,19 +9,11 @@ var _react = _interopRequireDefault(require("react"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _reactPhoneInput = _interopRequireDefault(require("react-phone-input-2"));
-
-var _styleModule = _interopRequireDefault(require("./style.module.scss"));
-
-require("react-phone-input-2/lib/material.css");
+var _materialUiPhoneNumber = _interopRequireDefault(require("material-ui-phone-number"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
@@ -35,10 +27,13 @@ function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
 function PhoneInput(_ref) {
-  var value = _ref.value,
-      _ref$onlyNumbers = _ref.onlyNumbers,
-      onlyNumbers = _ref$onlyNumbers === void 0 ? true : _ref$onlyNumbers,
+  var _ref$value = _ref.value,
+      value = _ref$value === void 0 ? '' : _ref$value,
       _ref$onChange = _ref.onChange,
       onChange = _ref$onChange === void 0 ? function () {} : _ref$onChange,
       name = _ref.name,
@@ -47,11 +42,12 @@ function PhoneInput(_ref) {
       countryCode = _ref$countryCode === void 0 ? 'by' : _ref$countryCode,
       _ref$onlyCountries = _ref.onlyCountries,
       onlyCountries = _ref$onlyCountries === void 0 ? ['ru', 'by'] : _ref$onlyCountries,
-      _ref$classNames = _ref.classNames,
-      classNames = _ref$classNames === void 0 ? {
-    root: ''
-  } : _ref$classNames,
-      inputProps = _ref.inputProps;
+      _ref$placeholder = _ref.placeholder,
+      placeholder = _ref$placeholder === void 0 ? 'Телефон' : _ref$placeholder,
+      _ref$label = _ref.label,
+      label = _ref$label === void 0 ? 'Контактный номер' : _ref$label,
+      required = _ref.required,
+      props = _objectWithoutProperties(_ref, ["value", "onChange", "name", "disabled", "countryCode", "onlyCountries", "placeholder", "label", "required"]);
 
   var _React$useState = _react.default.useState(value),
       _React$useState2 = _slicedToArray(_React$useState, 2),
@@ -64,35 +60,32 @@ function PhoneInput(_ref) {
 
   _react.default.useEffect(function () {
     if (phone) {
-      onChange(onlyNumbers ? phone.replace(/\D/g, '') : phone);
+      onChange(phone);
     }
   }, [phone]);
 
-  return /*#__PURE__*/_react.default.createElement(_reactPhoneInput.default, {
-    containerClass: ['react-tel-input', _styleModule.default.commonContainer, classNames.root].join(' '),
-    inputClass: [_styleModule.default.container, classNames.input].join(' '),
-    dropdownClass: _styleModule.default.dropdownClass,
-    currentStyle: "material",
-    country: countryCode,
+  return /*#__PURE__*/_react.default.createElement(_materialUiPhoneNumber.default, _extends({
+    countryCodeEditable: true,
+    defaultCountry: countryCode,
     onlyCountries: onlyCountries,
+    margin: "normal",
+    fullWidth: true,
+    required: required,
+    label: label,
     value: phone,
-    placeholder: "\u0422\u0435\u043B\u0435\u0444\u043E\u043D",
+    placeholder: placeholder,
     disabled: disabled,
     name: name,
-    inputProps: _objectSpread({
-      name: name
-    }, inputProps),
     onChange: function onChange(phone) {
-      return setPhone(phone);
+      setPhone(phone);
     }
-  });
+  }, props));
 }
 
 PhoneInput.defaultProps = {
   inputProps: {}
 };
 PhoneInput.propTypes = {
-  onlyNumbers: _propTypes.default.bool,
   value: _propTypes.default.string,
   countryCode: _propTypes.default.string.isRequired,
   onChange: _propTypes.default.func,
@@ -102,5 +95,8 @@ PhoneInput.propTypes = {
     root: _propTypes.default.string,
     input: _propTypes.default.string
   }),
+  placeholder: _propTypes.default.string,
+  label: _propTypes.default.string,
+  required: _propTypes.default.bool,
   onlyCountries: _propTypes.default.arrayOf(_propTypes.default.string)
 };

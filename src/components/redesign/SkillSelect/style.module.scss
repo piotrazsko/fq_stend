@@ -1,0 +1,27 @@
+.container {
+    margin: 8px 0;
+    box-sizing: border-box;
+    user-select: none;
+    .titleContainer {
+        border: 1px solid #fff;
+        &:hover {
+            border: 1px solid #fa835f;
+        }
+        box-sizing: border-box;
+        padding: 10px 20px;
+        background: #f7f7f7;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .title {
+            font-size: 0.8em;
+        }
+        &.expanded {
+            background: #fffaf6;
+            border: 1px solid #fa835f;
+            box-sizing: border-box;
+            border-radius: 12px;
+        }
+    }
+}

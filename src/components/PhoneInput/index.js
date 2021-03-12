@@ -1,45 +1,46 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import PhoneInputDefault from 'react-phone-input-2';
-import style from './style.module.scss';
-import 'react-phone-input-2/lib/material.css';
+import MuiPhoneNumber from 'material-ui-phone-number';
 
 export default function PhoneInput({
-    value,
-    onlyNumbers = true,
+    value = '',
     onChange = () => {},
     name,
     disabled,
     countryCode = 'by',
     onlyCountries = ['ru', 'by'],
-    classNames = { root: '' },
-    inputProps,
+    placeholder = 'Телефон',
+    label = 'Контактный номер',
+    required,
+    ...props
 }) {
     const [phone, setPhone] = React.useState(value);
-
     React.useEffect(() => {
         setPhone(value);
     }, [value]);
     React.useEffect(() => {
         if (phone) {
-            onChange(onlyNumbers ? phone.replace(/\D/g, '') : phone);
+            onChange(phone);
         }
     }, [phone]);
 
     return (
-        <PhoneInputDefault
-            containerClass={['react-tel-input', style.commonContainer, classNames.root].join(' ')}
-            inputClass={[style.container, classNames.input].join(' ')}
-            dropdownClass={style.dropdownClass}
-            currentStyle="material"
-            country={countryCode}
+        <MuiPhoneNumber
+            countryCodeEditable
+            defaultCountry={countryCode}
             onlyCountries={onlyCountries}
+            margin="normal"
+            fullWidth
+            required={required}
+            label={label}
             value={phone}
-            placeholder="Телефон"
+            placeholder={placeholder}
             disabled={disabled}
             name={name}
-            inputProps={{ name, ...inputProps }}
-            onChange={phone => setPhone(phone)}
+            onChange={phone => {
+                setPhone(phone);
+            }}
+            {...props}
         />
     );
 }
@@ -47,7 +48,6 @@ PhoneInput.defaultProps = {
     inputProps: {},
 };
 PhoneInput.propTypes = {
-    onlyNumbers: PropTypes.bool,
     value: PropTypes.string,
     countryCode: PropTypes.string.isRequired,
     onChange: PropTypes.func,
@@ -57,5 +57,8 @@ PhoneInput.propTypes = {
         root: PropTypes.string,
         input: PropTypes.string,
     }),
+    placeholder: PropTypes.string,
+    label: PropTypes.string,
+    required: PropTypes.bool,
     onlyCountries: PropTypes.arrayOf(PropTypes.string),
 };

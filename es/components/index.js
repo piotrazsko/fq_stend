@@ -32,11 +32,15 @@ var _exportNames = {
   CustomWorkingTimeSelect: true,
   FeedbackItem: true,
   SkillItem: true,
+  SkillSelect: true,
   NumberFormat: true,
   RatingLocation: true,
   RatingDetails: true,
   Location: true,
-  TimePicker: true
+  AddDataButton: true,
+  AddDataClientPopup: true,
+  TimePicker: true,
+  Skeleton: true
 };
 Object.defineProperty(exports, "Avatar", {
   enumerable: true,
@@ -206,6 +210,12 @@ Object.defineProperty(exports, "SkillItem", {
     return _SkillItem.default;
   }
 });
+Object.defineProperty(exports, "SkillSelect", {
+  enumerable: true,
+  get: function get() {
+    return _SkillSelect.default;
+  }
+});
 Object.defineProperty(exports, "NumberFormat", {
   enumerable: true,
   get: function get() {
@@ -230,10 +240,28 @@ Object.defineProperty(exports, "Location", {
     return _Location.default;
   }
 });
+Object.defineProperty(exports, "AddDataButton", {
+  enumerable: true,
+  get: function get() {
+    return _AddDataButton.default;
+  }
+});
+Object.defineProperty(exports, "AddDataClientPopup", {
+  enumerable: true,
+  get: function get() {
+    return _AddClientPopup.default;
+  }
+});
 Object.defineProperty(exports, "TimePicker", {
   enumerable: true,
   get: function get() {
     return _TimePicker.default;
+  }
+});
+Object.defineProperty(exports, "Skeleton", {
+  enumerable: true,
+  get: function get() {
+    return _Skeleton.default;
   }
 });
 
@@ -306,7 +334,9 @@ var _FeedbackItem = _interopRequireDefault(require("./redesign/FeedbackItem"));
 
 var _SkillItem = _interopRequireDefault(require("./redesign/SkillItem"));
 
-var _NumberFormat = _interopRequireDefault(require("./NumberFormat"));
+var _SkillSelect = _interopRequireDefault(require("./redesign/SkillSelect"));
+
+var _NumberFormat = _interopRequireDefault(require("./redesign/NumberFormat"));
 
 var _RatingLocation = _interopRequireDefault(require("./redesign/RatingLocation"));
 
@@ -314,7 +344,13 @@ var _RatingDetails = _interopRequireDefault(require("./redesign/RatingDetails"))
 
 var _Location = _interopRequireDefault(require("./redesign/Location"));
 
+var _AddDataButton = _interopRequireDefault(require("./redesign/AddDataButton"));
+
+var _AddClientPopup = _interopRequireDefault(require("./redesign/AddClientPopup"));
+
 var _TimePicker = _interopRequireDefault(require("./redesign/TimePicker"));
+
+var _Skeleton = _interopRequireDefault(require("./redesign/Skeleton"));
 
 var _Icons = require("./Icons");
 

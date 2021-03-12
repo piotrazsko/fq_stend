@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import get from 'lodash/get';
 import { makeStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
 import Icon from '@material-ui/core/Icon';
@@ -9,7 +8,7 @@ import DeleteOutlineOutlinedIcon from '@material-ui/icons/DeleteOutlineOutlined'
 import Tooltip from '@material-ui/core/Tooltip';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 
-import NumberFormat from '../../NumberFormat';
+import NumberFormat from '../NumberFormat';
 // import {
 //     Cosmetics,
 //     MakeUpIcon,

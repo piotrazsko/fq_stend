@@ -9,8 +9,6 @@ var _react = _interopRequireDefault(require("react"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _get = _interopRequireDefault(require("lodash/get"));
-
 var _styles = require("@material-ui/core/styles");
 
 var _IconButton = _interopRequireDefault(require("@material-ui/core/IconButton"));
@@ -25,7 +23,7 @@ var _Tooltip = _interopRequireDefault(require("@material-ui/core/Tooltip"));
 
 var _ClickAwayListener = _interopRequireDefault(require("@material-ui/core/ClickAwayListener"));
 
-var _NumberFormat = _interopRequireDefault(require("../../NumberFormat"));
+var _NumberFormat = _interopRequireDefault(require("../NumberFormat"));
 
 var _Icons = require("../../Icons");
 

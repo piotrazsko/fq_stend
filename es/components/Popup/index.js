@@ -9,13 +9,19 @@ var _react = _interopRequireDefault(require("react"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _core = require("@material-ui/core");
+var _IconButton = _interopRequireDefault(require("@material-ui/core/IconButton"));
+
+var _Grid = _interopRequireDefault(require("@material-ui/core/Grid"));
+
+var _Button = _interopRequireDefault(require("@material-ui/core/Button"));
+
+var _Clear = _interopRequireDefault(require("@material-ui/icons/Clear"));
 
 var _PopupBackground = _interopRequireDefault(require("../PopupBackground"));
 
-var _Button = _interopRequireDefault(require("../Button"));
-
 var _styleModule = _interopRequireDefault(require("./style.module.scss"));
+
+var _Typography = _interopRequireDefault(require("@material-ui/core/Typography"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -25,25 +31,16 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 var Popup = function Popup(_ref) {
   var props = _extends({}, _ref);
 
-  var onSubmit = props.onSubmit,
+  var _props$align = props.align,
+      align = _props$align === void 0 ? 'left' : _props$align,
+      onSubmit = props.onSubmit,
       onCancel = props.onCancel,
+      onClear = props.onClear,
       cancelButtonText = props.cancelButtonText,
       submitButtonText = props.submitButtonText,
       showPopup = props.showPopup,
@@ -59,65 +56,82 @@ var Popup = function Popup(_ref) {
       confirmButtonProps = _props$confirmButtonP === void 0 ? {} : _props$confirmButtonP,
       _props$cancelButtonPr = props.cancelButtonProps,
       cancelButtonProps = _props$cancelButtonPr === void 0 ? {} : _props$cancelButtonPr,
-      _props$showForce = props.showForce,
-      showForce = _props$showForce === void 0 ? false : _props$showForce,
-      _props$style = props.style,
-      style = _props$style === void 0 ? {} : _props$style,
+      style = props.style,
       _props$childrenContai = props.childrenContainerClassName,
       childrenContainerClassName = _props$childrenContai === void 0 ? '' : _props$childrenContai,
       showSubmit = props.showSubmit,
       showCancel = props.showCancel,
-      popupBackgroundsProps = props.popupBackgroundsProps;
-
-  var _React$useState = _react.default.useState(showPopup),
-      _React$useState2 = _slicedToArray(_React$useState, 2),
-      showPopupState = _React$useState2[0],
-      setState = _React$useState2[1];
-
-  _react.default.useEffect(function () {
-    setState(showPopup);
-  }, [showPopup]);
+      _props$showClear = props.showClear,
+      showClear = _props$showClear === void 0 ? false : _props$showClear,
+      popupBackgroundsProps = props.popupBackgroundsProps,
+      _props$message = props.message,
+      message = _props$message === void 0 ? '' : _props$message,
+      _props$textError = props.textError,
+      textError = _props$textError === void 0 ? '' : _props$textError,
+      _props$textInfo = props.textInfo,
+      textInfo = _props$textInfo === void 0 ? '' : _props$textInfo,
+      title = props.title;
 
   var handleSubmit = function handleSubmit() {
     onSubmit();
-    setState(false);
   };
 
   var handleCancell = function handleCancell() {
     onCancel();
-    setState(false);
   };
 
   return /*#__PURE__*/_react.default.createElement(_PopupBackground.default, _extends({
-    visible: showPopupState || showForce,
-    onClick: handleCancell
-  }, popupBackgroundsProps), /*#__PURE__*/_react.default.createElement(_core.Grid, {
+    visible: showPopup,
+    onClick: handleCancell,
+    childrenClassName: _styleModule.default.background
+  }, popupBackgroundsProps), /*#__PURE__*/_react.default.createElement(_Grid.default, {
     container: true,
     direction: "column",
     className: [_styleModule.default.container, className, classes.root].join(' '),
     style: _objectSpread({}, style)
-  }, /*#__PURE__*/_react.default.createElement(_core.Grid, {
+  }, showClear && /*#__PURE__*/_react.default.createElement(_Grid.default, {
+    item: true,
+    xs: 12,
+    className: _styleModule.default.clear
+  }, /*#__PURE__*/_react.default.createElement(_IconButton.default, {
+    size: "small",
+    className: style.buttonClear,
+    onClick: onClear
+  }, /*#__PURE__*/_react.default.createElement(_Clear.default, null))), title && /*#__PURE__*/_react.default.createElement(_Grid.default, {
+    item: true,
+    xs: 12,
+    className: _styleModule.default.title
+  }, /*#__PURE__*/_react.default.createElement(_Typography.default, {
+    variant: 'h4'
+  }, title)), /*#__PURE__*/_react.default.createElement(_Grid.default, {
     item: true,
     className: [_styleModule.default.dataContainer, classes.dataContainer, childrenContainerClassName].join(' '),
     xs: 12
-  }, children), /*#__PURE__*/_react.default.createElement(_core.Grid, {
+  }, children, message), (showCancel || showSubmit) && /*#__PURE__*/_react.default.createElement(_Grid.default, {
     item: true,
     xs: 12,
-    className: [_styleModule.default.buttonContainer, classes.buttonContainer].join(' ')
+    className: [align === 'left' ? _styleModule.default.buttonContainer_left : _styleModule.default.buttonContainer_right, classes.buttonContainer].join(' ')
   }, showCancel && /*#__PURE__*/_react.default.createElement(_Button.default, _extends({
     onClick: handleCancell,
     className: _styleModule.default.button,
-    color: "default",
     disabled: disableCancel,
-    variant: "text",
-    fontSize: '0.8rem'
+    variant: "outlined",
+    fontSize: '0.8rem',
+    color: "primary",
+    size: "large"
   }, cancelButtonProps), cancelButtonText), showSubmit && /*#__PURE__*/_react.default.createElement(_Button.default, _extends({
     color: "primary",
     onClick: handleSubmit,
     disabled: disableSubmit,
+    variant: "contained",
     type: "submit",
-    fontSize: '0.8rem'
-  }, confirmButtonProps), submitButtonText))));
+    fontSize: '0.8rem',
+    size: "large"
+  }, confirmButtonProps), submitButtonText), /*#__PURE__*/_react.default.createElement("span", {
+    className: _styleModule.default.textError
+  }, " ", textError), /*#__PURE__*/_react.default.createElement("span", {
+    className: _styleModule.default.textInfo
+  }, " ", textInfo))));
 };
 
 Popup.propTypes = {
@@ -144,21 +158,31 @@ Popup.propTypes = {
   confirmButtonProps: _propTypes.default.object,
   cancelButtonProps: _propTypes.default.object,
   childrenContainerClassName: _propTypes.default.string,
-  popupBackgroundsProps: _propTypes.default.object
+  popupBackgroundsProps: _propTypes.default.object,
+  align: _propTypes.default.string,
+  message: _propTypes.default.any,
+  textError: _propTypes.default.string,
+  textInfo: _propTypes.default.string,
+  showClear: _propTypes.default.bool,
+  onClear: _propTypes.default.func,
+  title: _propTypes.default.string
 };
 Popup.defaultProps = {
   cancelButtonText: 'Отменить',
   submitButtonText: 'Применить',
   onSubmit: function onSubmit() {},
   onCancel: function onCancel() {},
+  onClear: function onClear() {},
   showPopup: true,
   disableSubmit: false,
   disableCancel: false,
   showSubmit: true,
   showCancel: true,
   showForce: false,
+  align: 'left',
   confirmButtonProps: {},
-  cancelButtonProps: {}
+  cancelButtonProps: {},
+  style: {}
 };
 var _default = Popup;
 exports.default = _default;

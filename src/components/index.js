@@ -28,9 +28,13 @@ export { default as CustomWorkingTimeSelect } from './CustomWorkingTimeSelect';
 
 export { default as FeedbackItem } from './redesign/FeedbackItem';
 export { default as SkillItem } from './redesign/SkillItem';
-export { default as NumberFormat } from './NumberFormat';
+export { default as SkillSelect } from './redesign/SkillSelect';
+export { default as NumberFormat } from './redesign/NumberFormat';
 export { default as RatingLocation } from './redesign/RatingLocation';
 export { default as RatingDetails } from './redesign/RatingDetails';
 export { default as Location } from './redesign/Location';
+export { default as AddDataButton } from './redesign/AddDataButton';
+export { default as AddDataClientPopup } from './redesign/AddClientPopup';
 export { default as TimePicker } from './redesign/TimePicker';
+export { default as Skeleton } from './redesign/Skeleton';
 export * from './Icons';
