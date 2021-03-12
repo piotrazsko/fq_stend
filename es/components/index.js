@@ -14,11 +14,9 @@ var _exportNames = {
   AlertPopup: true,
   ConfirmPopup: true,
   PopupBackground: true,
-  Rating: true,
   FeedbackFormMobile: true,
   FeedbackForm: true,
   StoresBox: true,
-  UserInfo: true,
   Calendar: true,
   TimeGrid: true,
   PhoneInput: true,
@@ -42,7 +40,11 @@ var _exportNames = {
   TimePicker: true,
   Skeleton: true,
   IncreasePicker: true,
-  InfoCardLine: true
+  InfoCardLine: true,
+  InfoCard: true,
+  SelectSkillsPopup: true,
+  UserInfo: true,
+  Rating: true
 };
 Object.defineProperty(exports, "Avatar", {
   enumerable: true,
@@ -104,12 +106,6 @@ Object.defineProperty(exports, "PopupBackground", {
     return _PopupBackground.default;
   }
 });
-Object.defineProperty(exports, "Rating", {
-  enumerable: true,
-  get: function get() {
-    return _Rating.default;
-  }
-});
 Object.defineProperty(exports, "FeedbackFormMobile", {
   enumerable: true,
   get: function get() {
@@ -126,12 +122,6 @@ Object.defineProperty(exports, "StoresBox", {
   enumerable: true,
   get: function get() {
     return _StoresBox.default;
-  }
-});
-Object.defineProperty(exports, "UserInfo", {
-  enumerable: true,
-  get: function get() {
-    return _UserInfo.default;
   }
 });
 Object.defineProperty(exports, "Calendar", {
@@ -278,6 +268,30 @@ Object.defineProperty(exports, "InfoCardLine", {
     return _InfoCardLine.default;
   }
 });
+Object.defineProperty(exports, "InfoCard", {
+  enumerable: true,
+  get: function get() {
+    return _InfoCard.default;
+  }
+});
+Object.defineProperty(exports, "SelectSkillsPopup", {
+  enumerable: true,
+  get: function get() {
+    return _SelectSkillsPopup.default;
+  }
+});
+Object.defineProperty(exports, "UserInfo", {
+  enumerable: true,
+  get: function get() {
+    return _UserInfo.default;
+  }
+});
+Object.defineProperty(exports, "Rating", {
+  enumerable: true,
+  get: function get() {
+    return _Rating.default;
+  }
+});
 
 var _helpers = require("../helpers");
 
@@ -312,15 +326,11 @@ var _ConfirmPopup = _interopRequireDefault(require("./ConfirmPopup"));
 
 var _PopupBackground = _interopRequireDefault(require("./PopupBackground"));
 
-var _Rating = _interopRequireDefault(require("./Rating"));
-
 var _FeedbackFormMobile = _interopRequireDefault(require("./FeedbackFormMobile"));
 
 var _FeedbackForm = _interopRequireDefault(require("./FeedbackForm"));
 
 var _StoresBox = _interopRequireDefault(require("./StoresBox"));
-
-var _UserInfo = _interopRequireDefault(require("./UserInfo"));
 
 var _Calendar = _interopRequireDefault(require("./Calendar"));
 
@@ -369,6 +379,14 @@ var _Skeleton = _interopRequireDefault(require("./redesign/Skeleton"));
 var _IncreasePicker = _interopRequireDefault(require("./redesign/IncreasePicker"));
 
 var _InfoCardLine = _interopRequireDefault(require("./redesign/InfoCardLine"));
+
+var _InfoCard = _interopRequireDefault(require("./redesign/InfoCard"));
+
+var _SelectSkillsPopup = _interopRequireDefault(require("./redesign/SelectSkillsPopup"));
+
+var _UserInfo = _interopRequireDefault(require("./redesign/UserInfo"));
+
+var _Rating = _interopRequireDefault(require("./redesign/Rating"));
 
 var _Icons = require("./Icons");
 
