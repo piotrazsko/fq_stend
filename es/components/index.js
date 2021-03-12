@@ -41,7 +41,8 @@ var _exportNames = {
   AddDataClientPopup: true,
   TimePicker: true,
   Skeleton: true,
-  IncreasePicker: true
+  IncreasePicker: true,
+  InfoCardLine: true
 };
 Object.defineProperty(exports, "Avatar", {
   enumerable: true,
@@ -271,6 +272,12 @@ Object.defineProperty(exports, "IncreasePicker", {
     return _IncreasePicker.default;
   }
 });
+Object.defineProperty(exports, "InfoCardLine", {
+  enumerable: true,
+  get: function get() {
+    return _InfoCardLine.default;
+  }
+});
 
 var _helpers = require("../helpers");
 
@@ -360,6 +367,8 @@ var _TimePicker = _interopRequireDefault(require("./redesign/TimePicker"));
 var _Skeleton = _interopRequireDefault(require("./redesign/Skeleton"));
 
 var _IncreasePicker = _interopRequireDefault(require("./redesign/IncreasePicker"));
+
+var _InfoCardLine = _interopRequireDefault(require("./redesign/InfoCardLine"));
 
 var _Icons = require("./Icons");
 

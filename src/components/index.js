@@ -38,4 +38,5 @@ export { default as AddDataClientPopup } from './redesign/AddClientPopup';
 export { default as TimePicker } from './redesign/TimePicker';
 export { default as Skeleton } from './redesign/Skeleton';
 export { default as IncreasePicker } from './redesign/IncreasePicker';
+export { default as InfoCardLine } from './redesign/InfoCardLine';
 export * from './Icons';
