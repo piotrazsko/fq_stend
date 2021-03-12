@@ -1,14 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Grid } from '@material-ui/core';
+import IconButton from '@material-ui/core/IconButton';
+import Grid from '@material-ui/core/Grid';
+import Button from '@material-ui/core/Button';
+import ClearIcon from '@material-ui/icons/Clear';
 import PopupBackground from '../PopupBackground';
-import Button from '../Button';
 import styles from './style.module.scss';
+import Typography from '@material-ui/core/Typography';
 
 const Popup = ({ ...props }) => {
     const {
+        align = 'left',
         onSubmit,
         onCancel,
+        onClear,
         cancelButtonText,
         submitButtonText,
         showPopup,
@@ -19,29 +24,28 @@ const Popup = ({ ...props }) => {
         classes = {},
         confirmButtonProps = {},
         cancelButtonProps = {},
-        showForce = false,
-        style = {},
+        style,
         childrenContainerClassName = '',
         showSubmit,
         showCancel,
+        showClear = false,
         popupBackgroundsProps,
+        message = '',
+        textError = '',
+        textInfo = '',
+        title,
     } = props;
-    const [showPopupState, setState] = React.useState(showPopup);
-    React.useEffect(() => {
-        setState(showPopup);
-    }, [showPopup]);
     const handleSubmit = () => {
         onSubmit();
-        setState(false);
     };
     const handleCancell = () => {
         onCancel();
-        setState(false);
     };
     return (
         <PopupBackground
-            visible={showPopupState || showForce}
+            visible={showPopup}
             onClick={handleCancell}
+            childrenClassName={styles.background}
             {...popupBackgroundsProps}
         >
             <Grid
@@ -50,6 +54,20 @@ const Popup = ({ ...props }) => {
                 className={[styles.container, className, classes.root].join(' ')}
                 style={{ ...style }}
             >
+                {showClear && (
+                    <Grid item xs={12} className={styles.clear}>
+                        <IconButton size="small" className={style.buttonClear} onClick={onClear}>
+                            <ClearIcon />
+                        </IconButton>
+                    </Grid>
+                )}
+
+                {title && (
+                    <Grid item xs={12} className={styles.title}>
+                        <Typography variant={'h4'}>{title}</Typography>
+                    </Grid>
+                )}
+
                 <Grid
                     item
                     className={[
@@ -60,38 +78,51 @@ const Popup = ({ ...props }) => {
                     xs={12}
                 >
                     {children}
+                    {message}
                 </Grid>
-                <Grid
-                    item
-                    xs={12}
-                    className={[styles.buttonContainer, classes.buttonContainer].join(' ')}
-                >
-                    {showCancel && (
-                        <Button
-                            onClick={handleCancell}
-                            className={styles.button}
-                            color="default"
-                            disabled={disableCancel}
-                            variant="text"
-                            fontSize={'0.8rem'}
-                            {...cancelButtonProps}
-                        >
-                            {cancelButtonText}
-                        </Button>
-                    )}
-                    {showSubmit && (
-                        <Button
-                            color="primary"
-                            onClick={handleSubmit}
-                            disabled={disableSubmit}
-                            type="submit"
-                            fontSize={'0.8rem'}
-                            {...confirmButtonProps}
-                        >
-                            {submitButtonText}
-                        </Button>
-                    )}
-                </Grid>
+                {(showCancel || showSubmit) && (
+                    <Grid
+                        item
+                        xs={12}
+                        className={[
+                            align === 'left'
+                                ? styles.buttonContainer_left
+                                : styles.buttonContainer_right,
+                            classes.buttonContainer,
+                        ].join(' ')}
+                    >
+                        {showCancel && (
+                            <Button
+                                onClick={handleCancell}
+                                className={styles.button}
+                                disabled={disableCancel}
+                                variant="outlined"
+                                fontSize={'0.8rem'}
+                                color="primary"
+                                size="large"
+                                {...cancelButtonProps}
+                            >
+                                {cancelButtonText}
+                            </Button>
+                        )}
+                        {showSubmit && (
+                            <Button
+                                color="primary"
+                                onClick={handleSubmit}
+                                disabled={disableSubmit}
+                                variant="contained"
+                                type="submit"
+                                fontSize={'0.8rem'}
+                                size="large"
+                                {...confirmButtonProps}
+                            >
+                                {submitButtonText}
+                            </Button>
+                        )}
+                        <span className={styles.textError}> {textError}</span>
+                        <span className={styles.textInfo}> {textInfo}</span>
+                    </Grid>
+                )}
             </Grid>
         </PopupBackground>
     );
@@ -122,20 +153,30 @@ Popup.propTypes = {
     cancelButtonProps: PropTypes.object,
     childrenContainerClassName: PropTypes.string,
     popupBackgroundsProps: PropTypes.object,
+    align: PropTypes.string,
+    message: PropTypes.any,
+    textError: PropTypes.string,
+    textInfo: PropTypes.string,
+    showClear: PropTypes.bool,
+    onClear: PropTypes.func,
+    title: PropTypes.string,
 };
 Popup.defaultProps = {
     cancelButtonText: 'Отменить',
     submitButtonText: 'Применить',
     onSubmit: () => {},
     onCancel: () => {},
+    onClear: () => {},
     showPopup: true,
     disableSubmit: false,
     disableCancel: false,
     showSubmit: true,
     showCancel: true,
     showForce: false,
+    align: 'left',
     confirmButtonProps: {},
     cancelButtonProps: {},
+    style: {},
 };
 
 export default Popup;
