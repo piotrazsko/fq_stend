@@ -29,7 +29,6 @@
         "classnames": "^2.2.6",
         "date-fns": "^2.18.0",
         "libphonenumber-js": "^1.7.44",
-        "material-ui-phone-number": "^2.2.6",
         "moment": "^2.24.0",
         "postcss-preset-env": "^6.7.0",
         "prettier": "^1.18.2",

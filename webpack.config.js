@@ -36,11 +36,14 @@ module.exports = {
             'react-dom': path.resolve(__dirname, './node_modules/react-dom'),
         },
     },
-    externals: {
-        // Don't bundle react or react-dom
-        react: 'react',
-        'react-dom': 'react-dom',
-    },
+    externals: [
+        {
+            // Don't bundle react or react-dom
+            react: 'react',
+            'react-dom': 'react-dom',
+        },
+        /@material-ui\/.*/,
+    ],
     module: {
         strictExportPresence: true,
         rules: [
