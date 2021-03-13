@@ -186,8 +186,8 @@ var SkillItem = function SkillItem(_ref) {
       onDelete();
     }
   }, /*#__PURE__*/_react.default.createElement(_Icons.DeleteIcon, {
-    width: "16px",
-    height: "16px",
+    width: "13px",
+    height: "13px",
     className: _styleModule.default.icon,
     htmlColor: color
   }))));

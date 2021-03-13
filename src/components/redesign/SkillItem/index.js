@@ -142,8 +142,8 @@ const SkillItem = ({
                             }}
                         >
                             <DeleteIcon
-                                width="16px"
-                                height="16px"
+                                width="13px"
+                                height="13px"
                                 className={style.icon}
                                 htmlColor={color}
                             />

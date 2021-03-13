@@ -4,7 +4,7 @@ import TextField from '@material-ui/core/TextField';
 import PopupBackground from '../../Popup';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import SearchIcon from '@material-ui/icons/Search';
-import SkillsSelect from '../SkillItem';
+import SkillsSelect from '../SkillSelect';
 import style from './style.module.scss';
 
 const color = '#fa835f';

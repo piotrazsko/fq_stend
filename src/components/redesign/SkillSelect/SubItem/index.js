@@ -24,7 +24,7 @@ const useStyles = makeStyles(theme => ({
         paddingTop: '9px',
         paddingBottom: '9px',
     },
-    icon: { width: '32px', height: '32px' },
+    icon: { width: '35px', height: '35px' },
 }));
 const saveNumber = ({ setNumber, ev }) => {
     const str = ev.target.value || '';
@@ -47,21 +47,21 @@ const SubItem = ({ data, selected, setSelected, showInputs, inputComponent }) =>
     const getIcon = () => {
         switch (data.parent_uid) {
             case 'hair':
-                return <ScissorsIcon />;
+                return <ScissorsIcon width="35px" height="35px" />;
             case 'massage':
-                return <MassageIcon />;
+                return <MassageIcon width="35px" height="35px" />;
             case 'body':
-                return <SpaIcon />;
+                return <SpaIcon width="35px" height="35px" />;
             case 'nails':
-                return <NailIcon />;
+                return <NailIcon width="35px" height="35px" />;
             case 'tattoo':
-                return <TattooIcon />;
+                return <TattooIcon width="35px" height="35px" />;
             case 'cosmetology':
-                return <CosmeticsIcon />;
+                return <CosmeticsIcon width="35px" height="35px" />;
             case 'face':
-                return <MakeUpIcon />;
+                return <MakeUpIcon width="35px" height="35px" />;
             default:
-                return <Icon />;
+                return <Icon width="35px" height="35px" />;
         }
     };
     return (
