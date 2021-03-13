@@ -39,7 +39,6 @@ const color = '#fa835f';
 
 const SkillItem = ({
     onDelete,
-    onEdit,
     data,
     showDuration = true,
     showPrice = true,
@@ -77,13 +76,9 @@ const SkillItem = ({
         setOpen(false);
     };
 
-    const handleTooltipOpen = ev => {
-        ev.stopPropagation();
-
+    const handleTooltipOpen = () => {
         setOpen(true);
     };
-    // console.log(data);
-    // const { duration, price } = get(data, 'pivot', {});
     return (
         !!data && (
             <div className={style.item} key={id} onClick={onClick}>
@@ -146,7 +141,12 @@ const SkillItem = ({
                                 onDelete();
                             }}
                         >
-                            <DeleteIcon className={style.icon} htmlColor={color} />
+                            <DeleteIcon
+                                width="16px"
+                                height="16px"
+                                className={style.icon}
+                                htmlColor={color}
+                            />
                         </IconButton>
                     )}
                 </div>

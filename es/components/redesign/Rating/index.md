@@ -1,3 +1,3 @@
 ```jsx
-<Rating rating={3.5} />
+<Rating data={{ master_feedbacks_count: 10, user_rating: 20 }} />
 ```

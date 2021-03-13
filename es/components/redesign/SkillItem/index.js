@@ -54,7 +54,6 @@ var color = '#fa835f';
 
 var SkillItem = function SkillItem(_ref) {
   var onDelete = _ref.onDelete,
-      onEdit = _ref.onEdit,
       data = _ref.data,
       _ref$showDuration = _ref.showDuration,
       showDuration = _ref$showDuration === void 0 ? true : _ref$showDuration,
@@ -136,12 +135,9 @@ var SkillItem = function SkillItem(_ref) {
     setOpen(false);
   };
 
-  var handleTooltipOpen = function handleTooltipOpen(ev) {
-    ev.stopPropagation();
+  var handleTooltipOpen = function handleTooltipOpen() {
     setOpen(true);
-  }; // console.log(data);
-  // const { duration, price } = get(data, 'pivot', {});
-
+  };
 
   return !!data && /*#__PURE__*/_react.default.createElement("div", {
     className: _styleModule.default.item,
@@ -190,6 +186,8 @@ var SkillItem = function SkillItem(_ref) {
       onDelete();
     }
   }, /*#__PURE__*/_react.default.createElement(_Icons.DeleteIcon, {
+    width: "16px",
+    height: "16px",
     className: _styleModule.default.icon,
     htmlColor: color
   }))));
