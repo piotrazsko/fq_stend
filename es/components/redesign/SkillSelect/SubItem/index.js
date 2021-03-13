@@ -58,8 +58,8 @@ var useStyles = (0, _styles.makeStyles)(function (theme) {
       paddingBottom: '9px'
     },
     icon: {
-      width: '32px',
-      height: '32px'
+      width: '35px',
+      height: '35px'
     }
   };
 });
@@ -108,28 +108,52 @@ var SubItem = function SubItem(_ref2) {
   var getIcon = function getIcon() {
     switch (data.parent_uid) {
       case 'hair':
-        return /*#__PURE__*/_react.default.createElement(_Icons.ScissorsIcon, null);
+        return /*#__PURE__*/_react.default.createElement(_Icons.ScissorsIcon, {
+          width: "35px",
+          height: "35px"
+        });
 
       case 'massage':
-        return /*#__PURE__*/_react.default.createElement(_Icons.MassageIcon, null);
+        return /*#__PURE__*/_react.default.createElement(_Icons.MassageIcon, {
+          width: "35px",
+          height: "35px"
+        });
 
       case 'body':
-        return /*#__PURE__*/_react.default.createElement(_Icons.SpaIcon, null);
+        return /*#__PURE__*/_react.default.createElement(_Icons.SpaIcon, {
+          width: "35px",
+          height: "35px"
+        });
 
       case 'nails':
-        return /*#__PURE__*/_react.default.createElement(_Icons.NailIcon, null);
+        return /*#__PURE__*/_react.default.createElement(_Icons.NailIcon, {
+          width: "35px",
+          height: "35px"
+        });
 
       case 'tattoo':
-        return /*#__PURE__*/_react.default.createElement(_Icons.TattooIcon, null);
+        return /*#__PURE__*/_react.default.createElement(_Icons.TattooIcon, {
+          width: "35px",
+          height: "35px"
+        });
 
       case 'cosmetology':
-        return /*#__PURE__*/_react.default.createElement(_Icons.CosmeticsIcon, null);
+        return /*#__PURE__*/_react.default.createElement(_Icons.CosmeticsIcon, {
+          width: "35px",
+          height: "35px"
+        });
 
       case 'face':
-        return /*#__PURE__*/_react.default.createElement(_Icons.MakeUpIcon, null);
+        return /*#__PURE__*/_react.default.createElement(_Icons.MakeUpIcon, {
+          width: "35px",
+          height: "35px"
+        });
 
       default:
-        return /*#__PURE__*/_react.default.createElement(_Icon.default, null);
+        return /*#__PURE__*/_react.default.createElement(_Icon.default, {
+          width: "35px",
+          height: "35px"
+        });
     }
   };
 

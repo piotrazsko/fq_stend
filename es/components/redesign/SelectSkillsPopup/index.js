@@ -17,7 +17,7 @@ var _InputAdornment = _interopRequireDefault(require("@material-ui/core/InputAdo
 
 var _Search = _interopRequireDefault(require("@material-ui/icons/Search"));
 
-var _SkillItem = _interopRequireDefault(require("../SkillItem"));
+var _SkillSelect = _interopRequireDefault(require("../SkillSelect"));
 
 var _styleModule = _interopRequireDefault(require("./style.module.scss"));
 
@@ -121,7 +121,7 @@ var SelectSkillsPopup = function SelectSkillsPopup(_ref) {
     placeholder: "\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u043D\u0430\u0437\u0432\u0430\u043D\u0438\u0435 \u0443\u0441\u043B\u0443\u0433\u0438, \u043D\u0430\u043F\u0440\u0438\u043C\u0435\u0440 \u043C\u0430\u043D\u0438\u043A\u044E\u0440"
   })), /*#__PURE__*/_react.default.createElement("div", {
     className: _styleModule.default.container
-  }, /*#__PURE__*/_react.default.createElement(_SkillItem.default, {
+  }, /*#__PURE__*/_react.default.createElement(_SkillSelect.default, {
     forceExpand: forceExpand,
     selectedSkills: selectedSkillsState,
     onChange: setSelectedSkills,
