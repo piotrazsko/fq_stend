@@ -25,7 +25,7 @@ export { default as CustomWorkingTimeSelect } from './CustomWorkingTimeSelect';
 
 export { default as FeedbackItem } from './redesign/FeedbackItem';
 export { default as SkillItem } from './redesign/SkillItem';
-export { default as SkillSelect } from './redesign/SkillSelect';
+export { default as SkillsSelect } from './redesign/SkillSelect';
 export { default as NumberFormat } from './redesign/NumberFormat';
 export { default as RatingLocation } from './redesign/RatingLocation';
 export { default as RatingDetails } from './redesign/RatingDetails';

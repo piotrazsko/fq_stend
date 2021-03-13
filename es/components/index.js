@@ -29,7 +29,7 @@ var _exportNames = {
   CustomWorkingTimeSelect: true,
   FeedbackItem: true,
   SkillItem: true,
-  SkillSelect: true,
+  SkillsSelect: true,
   NumberFormat: true,
   RatingLocation: true,
   RatingDetails: true,
@@ -195,7 +195,7 @@ Object.defineProperty(exports, "SkillItem", {
     return _SkillItem.default;
   }
 });
-Object.defineProperty(exports, "SkillSelect", {
+Object.defineProperty(exports, "SkillsSelect", {
   enumerable: true,
   get: function get() {
     return _SkillSelect.default;
