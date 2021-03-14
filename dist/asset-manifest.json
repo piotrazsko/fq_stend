@@ -1,12 +1,12 @@
 {
   "files": {
     "main.css": "/static/css/main.25b8dc63.chunk.css",
-    "main.js": "/build/main.99575b6e.js",
+    "main.js": "/build/main.b83652c3.js",
     "runtime~main.js": "/build/bundle.016cd79a.js",
     "static/css/2.a503f436.chunk.css": "/static/css/2.a503f436.chunk.css",
-    "build/2.82073c6c.js": "/build/2.82073c6c.js",
+    "build/2.9d315f0e.js": "/build/2.9d315f0e.js",
     "index.html": "/index.html",
-    "precache-manifest.50a55b86692accbcfe3338e133cd6f70.js": "/precache-manifest.50a55b86692accbcfe3338e133cd6f70.js",
+    "precache-manifest.a821a6204b2ca63a80ad8375c133de66.js": "/precache-manifest.a821a6204b2ca63a80ad8375c133de66.js",
     "service-worker.js": "/service-worker.js",
     "static/css/2.a503f436.chunk.css.map": "/static/css/2.a503f436.chunk.css.map",
     "static/css/main.25b8dc63.chunk.css.map": "/static/css/main.25b8dc63.chunk.css.map",
@@ -27,6 +27,7 @@
     "static/media/EmailIcon.5f77df44.svg": "/static/media/EmailIcon.5f77df44.svg",
     "static/media/style.module.scss": "/static/media/Group3.70e8e1d0.svg",
     "static/media/HeartIcon.a78cf823.svg": "/static/media/HeartIcon.a78cf823.svg",
+    "static/media/HelpIcon.bd7e08d0.svg": "/static/media/HelpIcon.bd7e08d0.svg",
     "static/media/HomeIcon.a65867bc.svg": "/static/media/HomeIcon.a65867bc.svg",
     "static/media/InstagramIcon.608e92cd.svg": "/static/media/InstagramIcon.608e92cd.svg",
     "static/media/JournalIcon.52450f37.svg": "/static/media/JournalIcon.52450f37.svg",

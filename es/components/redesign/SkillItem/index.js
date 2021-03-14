@@ -9,19 +9,9 @@ var _react = _interopRequireDefault(require("react"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _styles = require("@material-ui/core/styles");
-
-var _IconButton = _interopRequireDefault(require("@material-ui/core/IconButton"));
-
-var _Icon = _interopRequireDefault(require("@material-ui/core/Icon"));
+var _core = require("@material-ui/core");
 
 var _InfoOutlined = _interopRequireDefault(require("@material-ui/icons/InfoOutlined"));
-
-var _DeleteOutlineOutlined = _interopRequireDefault(require("@material-ui/icons/DeleteOutlineOutlined"));
-
-var _Tooltip = _interopRequireDefault(require("@material-ui/core/Tooltip"));
-
-var _ClickAwayListener = _interopRequireDefault(require("@material-ui/core/ClickAwayListener"));
 
 var _NumberFormat = _interopRequireDefault(require("../NumberFormat"));
 
@@ -43,7 +33,7 @@ function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
-var useStyles = (0, _styles.makeStyles)(function (theme) {
+var useStyles = (0, _core.makeStyles)(function (theme) {
   return {
     input: {
       fontSize: '12px !important'
@@ -111,7 +101,7 @@ var SkillItem = function SkillItem(_ref) {
         });
 
       default:
-        return /*#__PURE__*/_react.default.createElement(_Icon.default, {
+        return /*#__PURE__*/_react.default.createElement(_core.Icon, {
           width: "35px",
           height: "35px"
         });
@@ -158,9 +148,9 @@ var SkillItem = function SkillItem(_ref) {
     className: _styleModule.default.duration
   }, "  /  ", duration, " \u043C\u0438\u043D.")), /*#__PURE__*/_react.default.createElement("div", {
     className: _styleModule.default.inputs
-  }, showEdit && /*#__PURE__*/_react.default.createElement(_ClickAwayListener.default, {
+  }, showEdit && /*#__PURE__*/_react.default.createElement(_core.ClickAwayListener, {
     onClickAway: handleTooltipClose
-  }, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Tooltip.default, {
+  }, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_core.Tooltip, {
     PopperProps: {
       disablePortal: true
     },
@@ -170,7 +160,7 @@ var SkillItem = function SkillItem(_ref) {
     disableHoverListener: true,
     disableTouchListener: true,
     title: description
-  }, /*#__PURE__*/_react.default.createElement(_IconButton.default, {
+  }, /*#__PURE__*/_react.default.createElement(_core.IconButton, {
     size: "small",
     onClick: function onClick(ev) {
       ev.stopPropagation();
@@ -179,7 +169,7 @@ var SkillItem = function SkillItem(_ref) {
   }, /*#__PURE__*/_react.default.createElement(_InfoOutlined.default, {
     className: _styleModule.default.icon,
     htmlColor: color
-  }))))), showDelete && /*#__PURE__*/_react.default.createElement(_IconButton.default, {
+  }))))), showDelete && /*#__PURE__*/_react.default.createElement(_core.IconButton, {
     size: "small",
     onClick: function onClick(ev) {
       ev.stopPropagation();

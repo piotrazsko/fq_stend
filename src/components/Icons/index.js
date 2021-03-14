@@ -30,6 +30,7 @@ export { ReactComponent as JournalIcon } from '../../static/images/svg/JournalIc
 export { ReactComponent as AdvertIcon } from '../../static/images/svg/AdvertIcon.svg';
 export { ReactComponent as PersonIcon } from '../../static/images/svg/PersonIcon.svg';
 export { ReactComponent as SearchIcon } from '../../static/images/svg/SearchIcon.svg';
+export { ReactComponent as HelpIcon } from '../../static/images/svg/HelpIcon.svg';
 
 export {
     ReactComponent as CosmeticsIcon,
