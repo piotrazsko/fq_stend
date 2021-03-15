@@ -1,12 +1,12 @@
 {
   "files": {
     "main.css": "/static/css/main.f3864646.chunk.css",
-    "main.js": "/build/main.39dca8d6.js",
+    "main.js": "/build/main.9e4038b2.js",
     "runtime~main.js": "/build/bundle.016cd79a.js",
     "static/css/2.a503f436.chunk.css": "/static/css/2.a503f436.chunk.css",
     "build/2.325cb7ed.js": "/build/2.325cb7ed.js",
     "index.html": "/index.html",
-    "precache-manifest.d32b0afe0a6013d565217ca353263684.js": "/precache-manifest.d32b0afe0a6013d565217ca353263684.js",
+    "precache-manifest.05cefedd2814692d5502368c33fd8567.js": "/precache-manifest.05cefedd2814692d5502368c33fd8567.js",
     "service-worker.js": "/service-worker.js",
     "static/css/2.a503f436.chunk.css.map": "/static/css/2.a503f436.chunk.css.map",
     "static/css/main.f3864646.chunk.css.map": "/static/css/main.f3864646.chunk.css.map",
@@ -59,7 +59,7 @@
     "static/media/googlePlay.png": "/static/media/googlePlay.ad720b31.png",
     "static/media/haircut_icon.33a6d3d8.svg": "/static/media/haircut_icon.33a6d3d8.svg",
     "static/media/makeup_icon.1e4903b4.svg": "/static/media/makeup_icon.1e4903b4.svg",
-    "static/media/massagelanding_icon.b262e49d.svg": "/static/media/massagelanding_icon.b262e49d.svg",
+    "static/media/massagelanding_icon.9e9d529c.svg": "/static/media/massagelanding_icon.9e9d529c.svg",
     "static/media/nails_salon_icon.e6e40d19.svg": "/static/media/nails_salon_icon.e6e40d19.svg",
     "static/media/other.57df2fc5.svg": "/static/media/other.57df2fc5.svg",
     "static/media/tattoo_icon.8a63b612.svg": "/static/media/tattoo_icon.8a63b612.svg"
