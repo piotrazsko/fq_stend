@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "608a1ffaa29bb35f4c7f",
-    "url": "build/2.608a1ffa.js"
+    "revision": "325cb7ede221c79dfb61",
+    "url": "build/2.325cb7ed.js"
   },
   {
     "revision": "016cd79aefb974ae89bb",
     "url": "build/bundle.016cd79a.js"
   },
   {
-    "revision": "a49ddc50bb99cecc9076",
-    "url": "build/main.a49ddc50.js"
+    "revision": "39dca8d6ea0775d6c68b",
+    "url": "build/main.39dca8d6.js"
   },
   {
-    "revision": "02c6564c8bec7548354644d26a6ccaaa",
+    "revision": "2c890b2e89b92c547f8cb311ac098144",
     "url": "index.html"
   },
   {
-    "revision": "608a1ffaa29bb35f4c7f",
-    "url": "static/css/2.8054c284.chunk.css"
+    "revision": "325cb7ede221c79dfb61",
+    "url": "static/css/2.a503f436.chunk.css"
   },
   {
-    "revision": "a49ddc50bb99cecc9076",
-    "url": "static/css/main.d1c8654c.chunk.css"
+    "revision": "39dca8d6ea0775d6c68b",
+    "url": "static/css/main.f3864646.chunk.css"
   },
   {
     "revision": "589a27ad18d5eef55d857806102ee900",
@@ -90,6 +90,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "a78cf8237899f246c5b158df7d384280",
     "url": "static/media/HeartIcon.a78cf823.svg"
+  },
+  {
+    "revision": "85000796c9fc5338f272bfa836185127",
+    "url": "static/media/HelpIcon.85000796.svg"
   },
   {
     "revision": "a65867bcce323fbb28e205c0f0be94a3",
@@ -184,8 +188,16 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "static/media/appStore.097295b8.png"
   },
   {
+    "revision": "1c444022ff72058d2577631e5f1a124d",
+    "url": "static/media/brows_icon.1c444022.svg"
+  },
+  {
     "revision": "74dd2202e461e26b2a86c9a486573036",
     "url": "static/media/emptyStar.74dd2202.svg"
+  },
+  {
+    "revision": "4b38111813996635c72f20974482bf56",
+    "url": "static/media/epilation_icon.4b381118.svg"
   },
   {
     "revision": "59587db5d411b4ef08aefb0bdd18b57d",
@@ -198,5 +210,29 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "ad720b31b694ade3b53cf489497c08e9",
     "url": "static/media/googlePlay.ad720b31.png"
+  },
+  {
+    "revision": "33a6d3d8f25a13228a48eaf9de2dcab5",
+    "url": "static/media/haircut_icon.33a6d3d8.svg"
+  },
+  {
+    "revision": "1e4903b43603c9ed4dcca320191fcd80",
+    "url": "static/media/makeup_icon.1e4903b4.svg"
+  },
+  {
+    "revision": "b262e49d6a08daa4a8e33479069ba208",
+    "url": "static/media/massagelanding_icon.b262e49d.svg"
+  },
+  {
+    "revision": "e6e40d19216a25bbcc8471b266d5404a",
+    "url": "static/media/nails_salon_icon.e6e40d19.svg"
+  },
+  {
+    "revision": "57df2fc5fd8e6941c731695aee05cfdf",
+    "url": "static/media/other.57df2fc5.svg"
+  },
+  {
+    "revision": "8a63b612337ba4293314525735c6f2fc",
+    "url": "static/media/tattoo_icon.8a63b612.svg"
   }
 ]);

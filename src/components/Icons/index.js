@@ -32,6 +32,7 @@ export { ReactComponent as PersonIcon } from '../../static/images/svg/PersonIcon
 export { ReactComponent as SearchIcon } from '../../static/images/svg/SearchIcon.svg';
 export { ReactComponent as HelpIcon } from '../../static/images/svg/HelpIcon.svg';
 
+//services
 export {
     ReactComponent as CosmeticsIcon,
 } from '../../static/images/svg/services/CosmeticsIcon.svg';
@@ -41,3 +42,29 @@ export { ReactComponent as NailIcon } from '../../static/images/svg/services/Nai
 export { ReactComponent as ScissorsIcon } from '../../static/images/svg/services/ScissorsIcon.svg';
 export { ReactComponent as SpaIcon } from '../../static/images/svg/services/SpaIcon.svg';
 export { ReactComponent as TattooIcon } from '../../static/images/svg/services/TattooIcon.svg';
+//landingservices
+export {
+    ReactComponent as OtherLandingIcon,
+} from '../../static/images/svg/landing_services/other.svg';
+export {
+    ReactComponent as MassageLandingIcon,
+} from '../../static/images/svg/landing_services/massagelanding_icon.svg';
+
+export {
+    ReactComponent as EpilationLandingIcon,
+} from '../../static/images/svg/landing_services/epilation_icon.svg';
+export {
+    ReactComponent as ScissorsLandingIcon,
+} from '../../static/images/svg/landing_services/haircut_icon.svg';
+export {
+    ReactComponent as MakeUpLandingIcon,
+} from '../../static/images/svg/landing_services/makeup_icon.svg';
+export {
+    ReactComponent as NailLandingIcon,
+} from '../../static/images/svg/landing_services/nails_salon_icon.svg';
+export {
+    ReactComponent as TattooLandingIcon,
+} from '../../static/images/svg/landing_services/tattoo_icon.svg';
+export {
+    ReactComponent as BrowsLandingIcon,
+} from '../../static/images/svg/landing_services/brows_icon.svg';

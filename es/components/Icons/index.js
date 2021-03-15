@@ -237,6 +237,54 @@ Object.defineProperty(exports, "TattooIcon", {
     return _TattooIcon.ReactComponent;
   }
 });
+Object.defineProperty(exports, "OtherLandingIcon", {
+  enumerable: true,
+  get: function get() {
+    return _other.ReactComponent;
+  }
+});
+Object.defineProperty(exports, "MassageLandingIcon", {
+  enumerable: true,
+  get: function get() {
+    return _massagelanding_icon.ReactComponent;
+  }
+});
+Object.defineProperty(exports, "EpilationLandingIcon", {
+  enumerable: true,
+  get: function get() {
+    return _epilation_icon.ReactComponent;
+  }
+});
+Object.defineProperty(exports, "ScissorsLandingIcon", {
+  enumerable: true,
+  get: function get() {
+    return _haircut_icon.ReactComponent;
+  }
+});
+Object.defineProperty(exports, "MakeUpLandingIcon", {
+  enumerable: true,
+  get: function get() {
+    return _makeup_icon.ReactComponent;
+  }
+});
+Object.defineProperty(exports, "NailLandingIcon", {
+  enumerable: true,
+  get: function get() {
+    return _nails_salon_icon.ReactComponent;
+  }
+});
+Object.defineProperty(exports, "TattooLandingIcon", {
+  enumerable: true,
+  get: function get() {
+    return _tattoo_icon.ReactComponent;
+  }
+});
+Object.defineProperty(exports, "BrowsLandingIcon", {
+  enumerable: true,
+  get: function get() {
+    return _brows_icon.ReactComponent;
+  }
+});
 
 var _react = _interopRequireDefault(require("react"));
 
@@ -317,5 +365,21 @@ var _ScissorsIcon = require("../../static/images/svg/services/ScissorsIcon.svg")
 var _SpaIcon = require("../../static/images/svg/services/SpaIcon.svg");
 
 var _TattooIcon = require("../../static/images/svg/services/TattooIcon.svg");
+
+var _other = require("../../static/images/svg/landing_services/other.svg");
+
+var _massagelanding_icon = require("../../static/images/svg/landing_services/massagelanding_icon.svg");
+
+var _epilation_icon = require("../../static/images/svg/landing_services/epilation_icon.svg");
+
+var _haircut_icon = require("../../static/images/svg/landing_services/haircut_icon.svg");
+
+var _makeup_icon = require("../../static/images/svg/landing_services/makeup_icon.svg");
+
+var _nails_salon_icon = require("../../static/images/svg/landing_services/nails_salon_icon.svg");
+
+var _tattoo_icon = require("../../static/images/svg/landing_services/tattoo_icon.svg");
+
+var _brows_icon = require("../../static/images/svg/landing_services/brows_icon.svg");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
