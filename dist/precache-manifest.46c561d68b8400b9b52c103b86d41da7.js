@@ -1,26 +1,26 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "325cb7ede221c79dfb61",
-    "url": "build/2.325cb7ed.js"
+    "revision": "ab67ff8917d0caf6f9b4",
+    "url": "build/2.ab67ff89.js"
   },
   {
     "revision": "016cd79aefb974ae89bb",
     "url": "build/bundle.016cd79a.js"
   },
   {
-    "revision": "39dca8d6ea0775d6c68b",
-    "url": "build/main.39dca8d6.js"
+    "revision": "45eba2e68a72d6e7b97e",
+    "url": "build/main.45eba2e6.js"
   },
   {
-    "revision": "2c890b2e89b92c547f8cb311ac098144",
+    "revision": "0ad524412c647b19905c539cc0b41ccb",
     "url": "index.html"
   },
   {
-    "revision": "325cb7ede221c79dfb61",
+    "revision": "ab67ff8917d0caf6f9b4",
     "url": "static/css/2.a503f436.chunk.css"
   },
   {
-    "revision": "39dca8d6ea0775d6c68b",
+    "revision": "45eba2e68a72d6e7b97e",
     "url": "static/css/main.f3864646.chunk.css"
   },
   {
@@ -220,8 +220,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "static/media/makeup_icon.1e4903b4.svg"
   },
   {
-    "revision": "b262e49d6a08daa4a8e33479069ba208",
-    "url": "static/media/massagelanding_icon.b262e49d.svg"
+    "revision": "4a3be3b55a17892a646b7ddbee107b87",
+    "url": "static/media/massagelanding_icon.4a3be3b5.svg"
   },
   {
     "revision": "e6e40d19216a25bbcc8471b266d5404a",
