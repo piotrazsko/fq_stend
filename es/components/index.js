@@ -44,7 +44,9 @@ var _exportNames = {
   InfoCard: true,
   SelectSkillsPopup: true,
   UserInfo: true,
-  Rating: true
+  Rating: true,
+  CalendarPicker: true,
+  RangePicker: true
 };
 Object.defineProperty(exports, "Avatar", {
   enumerable: true,
@@ -292,6 +294,18 @@ Object.defineProperty(exports, "Rating", {
     return _Rating.default;
   }
 });
+Object.defineProperty(exports, "CalendarPicker", {
+  enumerable: true,
+  get: function get() {
+    return _CalendarPicker.default;
+  }
+});
+Object.defineProperty(exports, "RangePicker", {
+  enumerable: true,
+  get: function get() {
+    return _RangePicker.default;
+  }
+});
 
 var _helpers = require("../helpers");
 
@@ -387,6 +401,10 @@ var _SelectSkillsPopup = _interopRequireDefault(require("./redesign/SelectSkills
 var _UserInfo = _interopRequireDefault(require("./redesign/UserInfo"));
 
 var _Rating = _interopRequireDefault(require("./redesign/Rating"));
+
+var _CalendarPicker = _interopRequireDefault(require("./redesign/CalendarPicker"));
+
+var _RangePicker = _interopRequireDefault(require("./redesign/RangePicker"));
 
 var _Icons = require("./Icons");
 
