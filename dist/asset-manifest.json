@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/static/css/main.ae7e9365.chunk.css",
-    "main.js": "/build/main.1daf90f3.js",
+    "main.css": "/static/css/main.9d87297b.chunk.css",
+    "main.js": "/build/main.7aba45fc.js",
     "runtime~main.js": "/build/bundle.016cd79a.js",
     "static/css/2.a503f436.chunk.css": "/static/css/2.a503f436.chunk.css",
-    "build/2.cbfa8fb4.js": "/build/2.cbfa8fb4.js",
+    "build/2.0769c45f.js": "/build/2.0769c45f.js",
     "index.html": "/index.html",
-    "precache-manifest.63f22ab2531bdc4aac5fd8a9d82a1377.js": "/precache-manifest.63f22ab2531bdc4aac5fd8a9d82a1377.js",
+    "precache-manifest.104639730e30740af338fbcb71441023.js": "/precache-manifest.104639730e30740af338fbcb71441023.js",
     "service-worker.js": "/service-worker.js",
     "static/css/2.a503f436.chunk.css.map": "/static/css/2.a503f436.chunk.css.map",
-    "static/css/main.ae7e9365.chunk.css.map": "/static/css/main.ae7e9365.chunk.css.map",
+    "static/css/main.9d87297b.chunk.css.map": "/static/css/main.9d87297b.chunk.css.map",
     "static/media/AdvertIcon.589a27ad.svg": "/static/media/AdvertIcon.589a27ad.svg",
     "static/media/AvatarIcon.3700bbdc.svg": "/static/media/AvatarIcon.3700bbdc.svg",
     "static/media/CalendarIcon.178957e5.svg": "/static/media/CalendarIcon.178957e5.svg",
@@ -51,9 +51,17 @@
     "static/media/VKIcon.74030823.svg": "/static/media/VKIcon.74030823.svg",
     "static/media/WhatsAppIcon.58910a12.svg": "/static/media/WhatsAppIcon.58910a12.svg",
     "static/media/appStore.png": "/static/media/appStore.097295b8.png",
+    "static/media/brows_icon.1c444022.svg": "/static/media/brows_icon.1c444022.svg",
     "static/media/emptyStar.svg": "/static/media/emptyStar.74dd2202.svg",
+    "static/media/epilation_icon.4b381118.svg": "/static/media/epilation_icon.4b381118.svg",
     "static/media/flags.png": "/static/media/flags.59587db5.png",
     "static/media/fullStar.svg": "/static/media/fullStar.3471b2c1.svg",
-    "static/media/googlePlay.png": "/static/media/googlePlay.ad720b31.png"
+    "static/media/googlePlay.png": "/static/media/googlePlay.ad720b31.png",
+    "static/media/haircut_icon.33a6d3d8.svg": "/static/media/haircut_icon.33a6d3d8.svg",
+    "static/media/makeup_icon.1e4903b4.svg": "/static/media/makeup_icon.1e4903b4.svg",
+    "static/media/massagelanding_icon.4a3be3b5.svg": "/static/media/massagelanding_icon.4a3be3b5.svg",
+    "static/media/nails_salon_icon.e6e40d19.svg": "/static/media/nails_salon_icon.e6e40d19.svg",
+    "static/media/other.57df2fc5.svg": "/static/media/other.57df2fc5.svg",
+    "static/media/tattoo_icon.8a63b612.svg": "/static/media/tattoo_icon.8a63b612.svg"
   }
 }

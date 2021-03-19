@@ -37,6 +37,14 @@ import {
     AdvertIcon,
     PersonIcon,
     SearchIcon,
+    OtherLandingIcon,
+    MassageLandingIcon,
+    EpilationLandingIcon,
+    ScissorsLandingIcon,
+    MakeUpLandingIcon,
+    NailLandingIcon,
+    TattooLandingIcon,
+    BrowsLandingIcon,
 } from './';
 <div>
     <PhoneIcon />
@@ -80,5 +88,21 @@ import {
     <AdvertIcon /> <br />
     <PersonIcon /> <br />
     <SearchIcon /> <br />
+    <OtherLandingIcon stroke="green" />
+    <br />
+    <MassageLandingIcon stroke="green" />
+    <br />
+    <EpilationLandingIcon fill="red" />
+    <br />
+    <ScissorsLandingIcon fill="red" />
+    <br />
+    <MakeUpLandingIcon fill="red" />
+    <br />
+    <NailLandingIcon fill="red" />
+    <br />
+    <TattooLandingIcon fill="red" />
+    <br />
+    <BrowsLandingIcon stroke="red" />
+    <br />
 </div>;
 ```
