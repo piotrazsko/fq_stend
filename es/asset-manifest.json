@@ -3,7 +3,5 @@
   "main.js": "/es/bundle.js",
   "main.css.map": "/es/main.css.map",
   "main.js.map": "/es/bundle.js.map",
-  "bundle.js.LICENSE": "/es/bundle.js.LICENSE",
-  "static/media/default.css": "/es/static/media/default.be7b8161.css",
-  "static/media/styles.css": "/es/static/media/styles.19c2a0b2.css"
+  "bundle.js.LICENSE": "/es/bundle.js.LICENSE"
 }
