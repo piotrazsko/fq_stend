@@ -6,7 +6,7 @@ const path = require('path');
 const webpack = require('webpack');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const eslintFormatter = require('react-dev-utils/eslintFormatter');
-const shouldUseSourceMap = false;
+const shouldUseSourceMap = true;
 
 const pkg = require('./package.json');
 const libraryName = pkg.name;
@@ -77,6 +77,7 @@ module.exports = {
                         loader: require.resolve('babel-loader'),
                         options: {
                             compact: true,
+                            sourceMaps: true,
                             plugins: [
                                 [
                                     require.resolve('babel-plugin-named-asset-import'),
