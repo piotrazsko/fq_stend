@@ -55,7 +55,6 @@ const SkillSelect = ({
               ]
             : [];
     }, [customSkills]);
-    console.log(customSkills, customSkillsFiltred);
     const [expanded, setExpanded] = React.useState([]);
     const [selected, setSelected] = React.useState([...selectedSkills]);
     const [selectedCustom, setSelectedCustom] = React.useState([...selectedCustomSkills]);
