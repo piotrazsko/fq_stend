@@ -87,8 +87,6 @@ var SkillSelect = function SkillSelect(_ref) {
     }] : [];
   }, [customSkills]);
 
-  console.log(customSkills, customSkillsFiltred);
-
   var _React$useState = _react.default.useState([]),
       _React$useState2 = _slicedToArray(_React$useState, 2),
       expanded = _React$useState2[0],

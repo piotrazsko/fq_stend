@@ -42,7 +42,7 @@ module.exports = {
             react: 'react',
             'react-dom': 'react-dom',
         },
-        // /@material-ui\/.*/,
+        /@material-ui\/.*/,
     ],
     module: {
         strictExportPresence: true,
@@ -55,6 +55,7 @@ module.exports = {
                         options: {
                             formatter: eslintFormatter,
                             eslintPath: require.resolve('eslint'),
+                            sourceMaps: true,
                         },
                         loader: require.resolve('eslint-loader'),
                     },
