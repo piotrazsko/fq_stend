@@ -4,7 +4,6 @@ import moment from 'moment';
 import { makeStyles } from '@material-ui/core/styles';
 import Popover from '@material-ui/core/Popover';
 import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import { Calendar as CalendarDefault } from 'react-date-range';
@@ -30,7 +29,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-export default function CalendarPicker({
+const CalendarPicker = ({
     onChange,
     date,
     disabled,
@@ -39,7 +38,7 @@ export default function CalendarPicker({
     children,
     pickerProps,
     buttonProps,
-}) {
+}) => {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const classes = useStyles();
     const open = Boolean(anchorEl);
@@ -148,7 +147,10 @@ export default function CalendarPicker({
             </Popover>
         </React.Fragment>
     );
-}
+};
+
+export default CalendarPicker;
+
 CalendarPicker.defaultProps = {
     options: [],
     onChange: () => {},

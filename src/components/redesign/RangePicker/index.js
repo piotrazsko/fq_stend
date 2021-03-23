@@ -122,7 +122,7 @@ export const defaultStaticRanges = createStaticRanges([
     },
 ]);
 
-export default function RangePicker({
+const RangePicker = ({
     onChange,
     date,
     color,
@@ -130,7 +130,7 @@ export default function RangePicker({
     rightAlign = false,
     buttonProps,
     pickerProps,
-}) {
+}) => {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const classes = useStyles();
     const open = Boolean(anchorEl);
@@ -297,7 +297,10 @@ export default function RangePicker({
             </Popover>
         </>
     );
-}
+};
+
+export default RangePicker;
+
 RangePicker.defaultProps = {
     options: [],
     onChange: () => {},
