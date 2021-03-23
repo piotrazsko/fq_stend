@@ -42,7 +42,7 @@ module.exports = {
             react: 'react',
             'react-dom': 'react-dom',
         },
-        // /@material-ui\/.*/,
+        /@material-ui\/.*/,
     ],
     module: {
         strictExportPresence: true,
