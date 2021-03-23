@@ -11,7 +11,7 @@ var _get = _interopRequireDefault(require("lodash/get"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _style = _interopRequireDefault(require("./style.scss"));
+var _styleModule = _interopRequireDefault(require("./style.module.scss"));
 
 var _moment = _interopRequireDefault(require("moment"));
 
@@ -37,27 +37,25 @@ var UserInfo = function UserInfo(_ref) {
       master_feedbacks_count = data.master_feedbacks_count,
       avatar = data.avatar,
       id = data.id,
-      user_events_count = data.user_events_count,
-      feedback_count = data.feedback_count,
-      last_event_date = data.last_event_date;
+      feedback_count = data.feedback_count;
   var isAdmin = false;
   return !!data && /*#__PURE__*/_react.default.createElement("div", {
     onClick: onClick,
-    className: _style.default.item,
+    className: _styleModule.default.item,
     key: id
   }, /*#__PURE__*/_react.default.createElement(_Avatar.default, {
     alt: "",
     src: avatar || ''
   }, "".concat((0, _get.default)(first_name, '[0]', '')).concat((0, _get.default)(last_name, '[0]', ''))), /*#__PURE__*/_react.default.createElement("div", {
-    className: _style.default.titleContainer
+    className: _styleModule.default.titleContainer
   }, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", {
-    className: _style.default.title
+    className: _styleModule.default.title
   }, "".concat(first_name || '', " ").concat(last_name || '')), phone && !isMaster && /*#__PURE__*/_react.default.createElement("div", {
-    className: _style.default.phone
+    className: _styleModule.default.phone
   }, "+", phone))), /*#__PURE__*/_react.default.createElement("div", {
-    className: _style.default.additionalInfo
+    className: _styleModule.default.additionalInfo
   }, /*#__PURE__*/_react.default.createElement("div", {
-    className: _style.default.rating
+    className: _styleModule.default.rating
   }, /*#__PURE__*/_react.default.createElement(_Rating.default, {
     data: {
       user_rating: rating,
