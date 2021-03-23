@@ -22,8 +22,8 @@ import {
     isSameDay,
 } from 'date-fns';
 import style from './style.module.scss';
-// import 'react-date-range/dist/styles.css'; // main css file
-// import 'react-date-range/dist/theme/default.css'; // theme css file
+import 'react-date-range/dist/styles.css'; // main css file
+import 'react-date-range/dist/theme/default.css'; // theme css file
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -175,7 +175,7 @@ const RangePicker = ({
     };
 
     return (
-        <>
+        <React.Fragment>
             <Button
                 className={rightAlign ? '' : style.headerButton}
                 onClick={handleClick}
@@ -295,7 +295,7 @@ const RangePicker = ({
                     </div>
                 </div>
             </Popover>
-        </>
+        </React.Fragment>
     );
 };
 

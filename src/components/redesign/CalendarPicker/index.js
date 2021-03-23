@@ -11,8 +11,8 @@ import { Calendar as CalendarDefault } from 'react-date-range';
 import * as locales from 'react-date-range/dist/locale';
 
 import style from './style.module.scss';
-// import 'react-date-range/dist/styles.css'; // main css file
-// import 'react-date-range/dist/theme/default.css'; // theme css file
+import 'react-date-range/dist/styles.css'; // main css file
+import 'react-date-range/dist/theme/default.css'; // theme css file
 
 const useStyles = makeStyles(theme => ({
     buttonRoot: {
