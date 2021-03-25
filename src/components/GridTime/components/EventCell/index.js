@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import style from './style.module.scss';
 import moment from 'moment';
+import { PhoneIcon } from '../../../../components/Icons';
 
 const EventCell = ({
     startTime,
@@ -10,17 +11,15 @@ const EventCell = ({
     col,
     interval,
     rowOffset = 1,
-    eventData,
     eventConfirmed = true,
     data,
     setRef,
     classes,
     onClick,
     name,
+    onEventRightClick,
 }) => {
-    const { title, comment } = data;
-    // const
-    //
+    const { title, comment, phone } = data;
     const ref = React.useRef();
     React.useEffect(() => {
         if (ref.current) {
@@ -35,6 +34,10 @@ const EventCell = ({
     const gridArea = `${row + 1} / ${col + 1} / ${colSpan + 1} / ${col + 2}`;
     return (
         <div
+            onContextMenu={ev => {
+                ev.preventDefault();
+                onEventRightClick({ ev, startTime, endTime, data });
+            }}
             onClick={onClick}
             ref={ref}
             className={[
@@ -72,8 +75,19 @@ const EventCell = ({
                         eventConfirmed ? style.confirmedTitle : style.orderedTitle,
                     ].join(' ')}
                 >
-                    {name || 0}
+                    {name || false}
                 </div>
+                {phone && (
+                    <div
+                        className={[
+                            classes.phone,
+                            eventConfirmed ? style.confirmedComment : style.orderedComment,
+                        ].join(' ')}
+                    >
+                        <PhoneIcon height="14" />
+                        <span className={style.phoneText}>{phone}</span>
+                    </div>
+                )}
                 <div
                     className={[
                         classes.content,
@@ -96,14 +110,25 @@ EventCell.propTypes = {
         content: PropTypes.string,
         name: PropTypes.string,
         container: PropTypes.string,
+        phone: PropTypes.string,
     }),
+    data: PropTypes.object,
     onClick: PropTypes.func,
     name: PropTypes.string,
+    onEventRightClick: PropTypes.func,
+    startTime: PropTypes.number,
+    endTime: PropTypes.number,
+    verticalSize: PropTypes.number,
+    col: PropTypes.number,
+    interval: PropTypes.number,
+    rowOffset: PropTypes.number,
+    eventConfirmed: PropTypes.bool,
 };
 EventCell.defaultProps = {
     setRef: () => {},
+    onEventRightClick: () => {},
     onClick: () => {},
-    classes: { root: '', title: '', content: '', time: '', name: '', container: '' },
+    classes: { root: '', title: '', content: '', time: '', name: '', container: '', phone: '' },
     name: '',
 };
 

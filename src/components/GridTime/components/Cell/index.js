@@ -20,6 +20,8 @@ const Cell = ({
     getMaster,
     defaultCellOnclick,
     onMasterClick,
+    onMasterRightClick,
+    onCellRightClick,
 }) => {
     const [showTime, setShowtime] = React.useState(false);
     const time = startTime + (row - 1) * interval;
@@ -35,7 +37,16 @@ const Cell = ({
         case col > 0 && row === 0: {
             const master = getMaster(col);
             return (
-                <div className={style.avatarContainer} onClick={ev => onMasterClick(master, ev)}>
+                <div
+                    className={style.avatarContainer}
+                    onContextMenu={ev => {
+                        onMasterRightClick({ ev, master, interval });
+                        ev.preventDefault();
+                    }}
+                    onClick={ev => {
+                        onMasterClick(master, ev);
+                    }}
+                >
                     <Avatar className={style.avatar} alt="Remy Sharp" src={master.avatar} />
                     <div className={style.name}>{master.name}</div>
                 </div>
@@ -58,7 +69,19 @@ const Cell = ({
             return (
                 <div
                     className={style.emptyCell}
-                    onClick={() => defaultCellOnclick({ time: { hour, minutes }, col, row })}
+                    onContextMenu={ev => {
+                        onCellRightClick({
+                            ev,
+                            time: { hour, minutes },
+                            col,
+                            row,
+                            master: getMaster(col),
+                        });
+                        ev.preventDefault();
+                    }}
+                    onClick={ev => {
+                        defaultCellOnclick({ time: { hour, minutes }, col, row });
+                    }}
                 >
                     <div className={style.content}>
                         {hour + ':' + (minutes.length == 1 ? '0' + minutes : minutes)}

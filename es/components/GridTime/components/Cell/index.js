@@ -50,7 +50,9 @@ var Cell = function Cell(_ref) {
       master = _ref.master,
       getMaster = _ref.getMaster,
       defaultCellOnclick = _ref.defaultCellOnclick,
-      onMasterClick = _ref.onMasterClick;
+      onMasterClick = _ref.onMasterClick,
+      onMasterRightClick = _ref.onMasterRightClick,
+      onCellRightClick = _ref.onCellRightClick;
 
   var _React$useState = _react.default.useState(false),
       _React$useState2 = _slicedToArray(_React$useState, 2),
@@ -78,8 +80,16 @@ var Cell = function Cell(_ref) {
 
         return /*#__PURE__*/_react.default.createElement("div", {
           className: _styleModule.default.avatarContainer,
+          onContextMenu: function onContextMenu(ev) {
+            onMasterRightClick({
+              ev: ev,
+              master: _master,
+              interval: interval
+            });
+            ev.preventDefault();
+          },
           onClick: function onClick(ev) {
-            return onMasterClick(_master, ev);
+            onMasterClick(_master, ev);
           }
         }, /*#__PURE__*/_react.default.createElement(_Avatar.default, {
           className: _styleModule.default.avatar,
@@ -106,8 +116,21 @@ var Cell = function Cell(_ref) {
       {
         return /*#__PURE__*/_react.default.createElement("div", {
           className: _styleModule.default.emptyCell,
-          onClick: function onClick() {
-            return defaultCellOnclick({
+          onContextMenu: function onContextMenu(ev) {
+            onCellRightClick({
+              ev: ev,
+              time: {
+                hour: hour,
+                minutes: minutes
+              },
+              col: col,
+              row: row,
+              master: getMaster(col)
+            });
+            ev.preventDefault();
+          },
+          onClick: function onClick(ev) {
+            defaultCellOnclick({
               time: {
                 hour: hour,
                 minutes: minutes

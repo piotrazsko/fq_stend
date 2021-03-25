@@ -64,7 +64,10 @@ var TimeGrid = function TimeGrid(_ref) {
       verticalSize = _ref.verticalSize,
       defaultCellOnclick = _ref.defaultCellOnclick,
       onMasterClick = _ref.onMasterClick,
-      props = _objectWithoutProperties(_ref, ["interval", "masters", "showCurrentTime", "verticalSize", "defaultCellOnclick", "onMasterClick"]);
+      onMasterRightClick = _ref.onMasterRightClick,
+      onCellRightClick = _ref.onCellRightClick,
+      onEventRightClick = _ref.onEventRightClick,
+      props = _objectWithoutProperties(_ref, ["interval", "masters", "showCurrentTime", "verticalSize", "defaultCellOnclick", "onMasterClick", "onMasterRightClick", "onCellRightClick", "onEventRightClick"]);
 
   // const verticalSize = 5;
   var rowOffset = 1;
@@ -98,6 +101,7 @@ var TimeGrid = function TimeGrid(_ref) {
       var events = item.events;
       var masterEvents = events.map(function (i, j) {
         return /*#__PURE__*/_react.default.createElement(_EventCell.default, {
+          onEventRightClick: onEventRightClick,
           classes: _objectSpread({}, i.classes || {}),
           onClick: i.onClick,
           eventConfirmed: i.confirmed,
@@ -166,6 +170,8 @@ var TimeGrid = function TimeGrid(_ref) {
         onMasterClick: onMasterClick,
         defaultCellOnclick: defaultCellOnclick,
         interval: interval,
+        onMasterRightClick: onMasterRightClick,
+        onCellRightClick: onCellRightClick,
         getMaster: function getMaster(col) {
           return masters[col - 1];
         }
@@ -193,7 +199,10 @@ TimeGrid.defaultProps = {
   verticalSize: 5,
   showCurrentTime: false,
   defaultCellOnclick: function defaultCellOnclick() {},
-  onMasterClick: function onMasterClick() {}
+  onMasterClick: function onMasterClick() {},
+  onMasterRightClick: function onMasterRightClick() {},
+  onCellRightClick: function onCellRightClick() {},
+  onEventRightClick: function onEventRightClick() {}
 };
 TimeGrid.propTypes = {
   masters: _propTypes.default.array,
@@ -201,7 +210,10 @@ TimeGrid.propTypes = {
   interval: _propTypes.default.number,
   verticalSize: _propTypes.default.number,
   defaultCellOnclick: _propTypes.default.func,
-  onMasterClick: _propTypes.default.func
+  onMasterClick: _propTypes.default.func,
+  onMasterRightClick: _propTypes.default.func,
+  onCellRightClick: _propTypes.default.func,
+  onEventRightClick: _propTypes.default.func
 };
 var _default = TimeGrid;
 exports.default = _default;

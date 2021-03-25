@@ -15,6 +15,9 @@ const TimeGrid = ({
     verticalSize,
     defaultCellOnclick,
     onMasterClick,
+    onMasterRightClick,
+    onCellRightClick,
+    onEventRightClick,
     ...props
 }) => {
     // const verticalSize = 5;
@@ -44,6 +47,7 @@ const TimeGrid = ({
             const masterEvents = events.map((i, j) => {
                 return (
                     <EventCell
+                        onEventRightClick={onEventRightClick}
                         classes={{ ...(i.classes || {}) }}
                         onClick={i.onClick}
                         eventConfirmed={i.confirmed}
@@ -111,6 +115,8 @@ const TimeGrid = ({
                         onMasterClick={onMasterClick}
                         defaultCellOnclick={defaultCellOnclick}
                         interval={interval}
+                        onMasterRightClick={onMasterRightClick}
+                        onCellRightClick={onCellRightClick}
                         getMaster={col => {
                             return masters[col - 1];
                         }}
@@ -145,6 +151,9 @@ TimeGrid.defaultProps = {
     showCurrentTime: false,
     defaultCellOnclick: () => {},
     onMasterClick: () => {},
+    onMasterRightClick: () => {},
+    onCellRightClick: () => {},
+    onEventRightClick: () => {},
 };
 TimeGrid.propTypes = {
     masters: PropTypes.array,
@@ -153,6 +162,9 @@ TimeGrid.propTypes = {
     verticalSize: PropTypes.number,
     defaultCellOnclick: PropTypes.func,
     onMasterClick: PropTypes.func,
+    onMasterRightClick: PropTypes.func,
+    onCellRightClick: PropTypes.func,
+    onEventRightClick: PropTypes.func,
 };
 
 export default TimeGrid;

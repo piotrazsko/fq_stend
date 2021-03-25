@@ -13,6 +13,8 @@ var _styleModule = _interopRequireDefault(require("./style.module.scss"));
 
 var _moment = _interopRequireDefault(require("moment"));
 
+var _Icons = require("../../../../components/Icons");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var EventCell = function EventCell(_ref) {
@@ -23,17 +25,17 @@ var EventCell = function EventCell(_ref) {
       interval = _ref.interval,
       _ref$rowOffset = _ref.rowOffset,
       rowOffset = _ref$rowOffset === void 0 ? 1 : _ref$rowOffset,
-      eventData = _ref.eventData,
       _ref$eventConfirmed = _ref.eventConfirmed,
       eventConfirmed = _ref$eventConfirmed === void 0 ? true : _ref$eventConfirmed,
       data = _ref.data,
       setRef = _ref.setRef,
       classes = _ref.classes,
       onClick = _ref.onClick,
-      name = _ref.name;
+      name = _ref.name,
+      onEventRightClick = _ref.onEventRightClick;
   var title = data.title,
-      comment = data.comment; // const
-  //
+      comment = data.comment,
+      phone = data.phone;
 
   var ref = _react.default.useRef();
 
@@ -49,6 +51,15 @@ var EventCell = function EventCell(_ref) {
   var colSpan = Math.ceil((cellRowEnd * verticalSize + rowOffset) * verticalSize);
   var gridArea = "".concat(row + 1, " / ").concat(col + 1, " / ").concat(colSpan + 1, " / ").concat(col + 2);
   return /*#__PURE__*/_react.default.createElement("div", {
+    onContextMenu: function onContextMenu(ev) {
+      ev.preventDefault();
+      onEventRightClick({
+        ev: ev,
+        startTime: startTime,
+        endTime: endTime,
+        data: data
+      });
+    },
     onClick: onClick,
     ref: ref,
     className: [classes.root, eventConfirmed ? _styleModule.default.confirmedEvent : _styleModule.default.orderEvent].join(' '),
@@ -63,7 +74,13 @@ var EventCell = function EventCell(_ref) {
     className: [classes.title, eventConfirmed ? _styleModule.default.confirmedTitle : _styleModule.default.orderedTitle].join(' ')
   }, title), /*#__PURE__*/_react.default.createElement("div", {
     className: [classes.name, eventConfirmed ? _styleModule.default.confirmedTitle : _styleModule.default.orderedTitle].join(' ')
-  }, name || 0), /*#__PURE__*/_react.default.createElement("div", {
+  }, name || false), phone && /*#__PURE__*/_react.default.createElement("div", {
+    className: [classes.phone, eventConfirmed ? _styleModule.default.confirmedComment : _styleModule.default.orderedComment].join(' ')
+  }, /*#__PURE__*/_react.default.createElement(_Icons.PhoneIcon, {
+    height: "14"
+  }), /*#__PURE__*/_react.default.createElement("span", {
+    className: _styleModule.default.phoneText
+  }, phone)), /*#__PURE__*/_react.default.createElement("div", {
     className: [classes.content, eventConfirmed ? _styleModule.default.confirmedComment : _styleModule.default.orderedComment].join(' ')
   }, comment)));
 };
@@ -76,13 +93,24 @@ EventCell.propTypes = {
     time: _propTypes.default.string,
     content: _propTypes.default.string,
     name: _propTypes.default.string,
-    container: _propTypes.default.string
+    container: _propTypes.default.string,
+    phone: _propTypes.default.string
   }),
+  data: _propTypes.default.object,
   onClick: _propTypes.default.func,
-  name: _propTypes.default.string
+  name: _propTypes.default.string,
+  onEventRightClick: _propTypes.default.func,
+  startTime: _propTypes.default.number,
+  endTime: _propTypes.default.number,
+  verticalSize: _propTypes.default.number,
+  col: _propTypes.default.number,
+  interval: _propTypes.default.number,
+  rowOffset: _propTypes.default.number,
+  eventConfirmed: _propTypes.default.bool
 };
 EventCell.defaultProps = {
   setRef: function setRef() {},
+  onEventRightClick: function onEventRightClick() {},
   onClick: function onClick() {},
   classes: {
     root: '',
@@ -90,7 +118,8 @@ EventCell.defaultProps = {
     content: '',
     time: '',
     name: '',
-    container: ''
+    container: '',
+    phone: ''
   },
   name: ''
 };

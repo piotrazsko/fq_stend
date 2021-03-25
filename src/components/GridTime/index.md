@@ -15,6 +15,7 @@ const masters = [
                 comment: 'bla-bla',
                 title: 'Мужская стрижка',
                 clientName: 'Ghjs jsjasdh',
+                phone:'375256666666'
             },
             {
                 id: 1,
@@ -23,7 +24,7 @@ const masters = [
                 confirmed: false,
                 comment: 'bla-bla',
                 title: 'Мужская стрижка',
-                clientName: 'Ghjs jsjasdh',
+                clientName: 'Ghjs jsjasdh',  phone:'375256666666'
             },
             {
                 id: 1,
@@ -31,7 +32,7 @@ const masters = [
                 endTime: 390,
                 coment: 'bla-bla',
                 title: 'Мужская стрижка',
-                clientName: 'Ghjs jsjasdh',
+                clientName: 'Ghjs jsjasdh',  phone:'375256666666'
             },
             {
                 id: 1,
@@ -39,7 +40,7 @@ const masters = [
                 endTime: 900,
                 coment: 'bla-bla',
                 title: 'Мужская стрижка',
-                clientName: 'Ghjs jsjasdh',
+                clientName: 'Ghjs jsjasdh',  phone:'375256666666'
             },
         ],
     },
@@ -63,6 +64,8 @@ const masters = [
 
 <div style={{ width: '70vw' }}>
     <TimeGrid
+     onEventRightClick = {(data)=>{console.log(data)}}
+     onCellRightClick = {(data)=>{console.log(data)}}
         masters={masters}
         defaultCellOnclick={data => {
             console.log(data);
