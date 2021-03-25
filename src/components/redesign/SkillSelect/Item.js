@@ -3,7 +3,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
-import RestaurantIcon from '@material-ui/icons/Restaurant';
 import CheckBoxIcon from '@material-ui/icons/CheckBox';
 import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
 import IconButton from '@material-ui/core/IconButton';

@@ -14,6 +14,7 @@ const SkillSelect = ({
     customSkills = [],
     itemComponentSubSkill,
     forceExpand,
+    defaultExpand,
     showSelectAll = false,
     showSelectedItemsCount = false,
 }) => {
@@ -57,7 +58,7 @@ const SkillSelect = ({
               ]
             : [];
     }, [customSkills]);
-    const [expanded, setExpanded] = React.useState([]);
+    const [expanded, setExpanded] = React.useState(defaultExpand ? [...skills.map(i => i.id)] : []);
     const [selected, setSelected] = React.useState([...selectedSkills]);
     const [selectedCustom, setSelectedCustom] = React.useState([...selectedCustomSkills]);
     React.useEffect(() => {
@@ -123,13 +124,12 @@ SkillSelect.defaultProps = {
     onChangeCustomSkills: () => {},
     forceExpand: false,
     skills: [],
+    defaultExpand: false,
 };
 
 SkillSelect.propTypes = {
     skills: PropTypes.array,
     searchText: PropTypes.string,
-    addCustomSkills: PropTypes.func.isRequired,
-    showCustomSkill: PropTypes.bool,
     showInputs: PropTypes.bool,
     selectedSkills: PropTypes.array,
     onChange: PropTypes.func,
@@ -140,6 +140,8 @@ SkillSelect.propTypes = {
     itemComponentSubSkill: PropTypes.element,
     forceExpand: PropTypes.bool,
     showSelectedItemsCount: PropTypes.bool,
+    showSelectAll: PropTypes.bool,
+    defaultExpand: PropTypes.bool,
 };
 
 export default SkillSelect;

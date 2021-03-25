@@ -1,5 +1,5 @@
 ```jsx
-<SkillSelect showSelectAll showSelectedItemsCount skills = {[
+<SkillSelect defaultExpand showSelectAll showSelectedItemsCount skills = {[
 	{ 
 		"id": 1,
 		"title": "Волосы",

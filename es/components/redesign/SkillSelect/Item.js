@@ -13,8 +13,6 @@ var _ExpandMore = _interopRequireDefault(require("@material-ui/icons/ExpandMore"
 
 var _ExpandLess = _interopRequireDefault(require("@material-ui/icons/ExpandLess"));
 
-var _Restaurant = _interopRequireDefault(require("@material-ui/icons/Restaurant"));
-
 var _CheckBox = _interopRequireDefault(require("@material-ui/icons/CheckBox"));
 
 var _CheckBoxOutlineBlank = _interopRequireDefault(require("@material-ui/icons/CheckBoxOutlineBlank"));

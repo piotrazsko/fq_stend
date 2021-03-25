@@ -53,6 +53,7 @@ var SkillSelect = function SkillSelect(_ref) {
       customSkills = _ref$customSkills === void 0 ? [] : _ref$customSkills,
       itemComponentSubSkill = _ref.itemComponentSubSkill,
       forceExpand = _ref.forceExpand,
+      defaultExpand = _ref.defaultExpand,
       _ref$showSelectAll = _ref.showSelectAll,
       showSelectAll = _ref$showSelectAll === void 0 ? false : _ref$showSelectAll,
       _ref$showSelectedItem = _ref.showSelectedItemsCount,
@@ -91,7 +92,9 @@ var SkillSelect = function SkillSelect(_ref) {
     }] : [];
   }, [customSkills]);
 
-  var _React$useState = _react.default.useState([]),
+  var _React$useState = _react.default.useState(defaultExpand ? _toConsumableArray(skills.map(function (i) {
+    return i.id;
+  })) : []),
       _React$useState2 = _slicedToArray(_React$useState, 2),
       expanded = _React$useState2[0],
       setExpanded = _React$useState2[1];
@@ -162,13 +165,12 @@ SkillSelect.defaultProps = {
   itemComponentSubSkill: false,
   onChangeCustomSkills: function onChangeCustomSkills() {},
   forceExpand: false,
-  skills: []
+  skills: [],
+  defaultExpand: false
 };
 SkillSelect.propTypes = {
   skills: _propTypes.default.array,
   searchText: _propTypes.default.string,
-  addCustomSkills: _propTypes.default.func.isRequired,
-  showCustomSkill: _propTypes.default.bool,
   showInputs: _propTypes.default.bool,
   selectedSkills: _propTypes.default.array,
   onChange: _propTypes.default.func,
@@ -178,7 +180,9 @@ SkillSelect.propTypes = {
   selectedCustomSkills: _propTypes.default.array,
   itemComponentSubSkill: _propTypes.default.element,
   forceExpand: _propTypes.default.bool,
-  showSelectedItemsCount: _propTypes.default.bool
+  showSelectedItemsCount: _propTypes.default.bool,
+  showSelectAll: _propTypes.default.bool,
+  defaultExpand: _propTypes.default.bool
 };
 var _default = SkillSelect;
 exports.default = _default;
