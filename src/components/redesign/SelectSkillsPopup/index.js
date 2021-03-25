@@ -23,6 +23,7 @@ const SelectSkillsPopup = ({
     onAddCustomSkills,
     showSelectAll,
     showSelectedItemsCount,
+    slillsSelectProps,
 }) => {
     const [search, setSearch] = React.useState();
     const [selectedSkillsState, setSelectedSkills] = React.useState([...selectedSkills]);
@@ -86,6 +87,7 @@ const SelectSkillsPopup = ({
                     selectedCustomSkills={selectedCustomSkillsState}
                     onChangeCustomSkills={setSelectedCustomSkills}
                     addCustomSkills={onAddCustomSkills}
+                    {...slillsSelectProps}
                 />
             </div>
         </PopupBackground>
@@ -106,6 +108,7 @@ SelectSkillsPopup.propTypes = {
     onAddCustomSkills: PropTypes.func,
     showSelectAll: PropTypes.bool,
     showSelectedItemsCount: PropTypes.bool,
+    slillsSelectProps: PropTypes.object,
 };
 SelectSkillsPopup.defaultProps = {
     selectedCustomSkills: [],
@@ -119,6 +122,7 @@ SelectSkillsPopup.defaultProps = {
     onClose: () => {},
     showSelectAll: false,
     showSelectedItemsCount: false,
+    slillsSelectProps: {},
 };
 
 export default SelectSkillsPopup;

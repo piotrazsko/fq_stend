@@ -23,6 +23,8 @@ var _styleModule = _interopRequireDefault(require("./style.module.scss"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -60,7 +62,8 @@ var SelectSkillsPopup = function SelectSkillsPopup(_ref) {
       forceExpand = _ref.forceExpand,
       onAddCustomSkills = _ref.onAddCustomSkills,
       showSelectAll = _ref.showSelectAll,
-      showSelectedItemsCount = _ref.showSelectedItemsCount;
+      showSelectedItemsCount = _ref.showSelectedItemsCount,
+      slillsSelectProps = _ref.slillsSelectProps;
 
   var _React$useState = _react.default.useState(),
       _React$useState2 = _slicedToArray(_React$useState, 2),
@@ -123,7 +126,7 @@ var SelectSkillsPopup = function SelectSkillsPopup(_ref) {
     placeholder: "\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u043D\u0430\u0437\u0432\u0430\u043D\u0438\u0435 \u0443\u0441\u043B\u0443\u0433\u0438, \u043D\u0430\u043F\u0440\u0438\u043C\u0435\u0440 \u043C\u0430\u043D\u0438\u043A\u044E\u0440"
   })), /*#__PURE__*/_react.default.createElement("div", {
     className: _styleModule.default.container
-  }, /*#__PURE__*/_react.default.createElement(_SkillSelect.default, {
+  }, /*#__PURE__*/_react.default.createElement(_SkillSelect.default, _extends({
     showSelectAll: showSelectAll,
     showSelectedItemsCount: showSelectedItemsCount,
     forceExpand: forceExpand,
@@ -138,7 +141,7 @@ var SelectSkillsPopup = function SelectSkillsPopup(_ref) {
     selectedCustomSkills: selectedCustomSkillsState,
     onChangeCustomSkills: setSelectedCustomSkills,
     addCustomSkills: onAddCustomSkills
-  })));
+  }, slillsSelectProps))));
 };
 
 SelectSkillsPopup.propTypes = {
@@ -154,7 +157,8 @@ SelectSkillsPopup.propTypes = {
   selectedCustomSkills: _propTypes.default.array,
   onAddCustomSkills: _propTypes.default.func,
   showSelectAll: _propTypes.default.bool,
-  showSelectedItemsCount: _propTypes.default.bool
+  showSelectedItemsCount: _propTypes.default.bool,
+  slillsSelectProps: _propTypes.default.object
 };
 SelectSkillsPopup.defaultProps = {
   selectedCustomSkills: [],
@@ -167,7 +171,8 @@ SelectSkillsPopup.defaultProps = {
   onCancel: function onCancel() {},
   onClose: function onClose() {},
   showSelectAll: false,
-  showSelectedItemsCount: false
+  showSelectedItemsCount: false,
+  slillsSelectProps: {}
 };
 var _default = SelectSkillsPopup;
 exports.default = _default;
