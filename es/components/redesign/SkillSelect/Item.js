@@ -15,11 +15,17 @@ var _ExpandLess = _interopRequireDefault(require("@material-ui/icons/ExpandLess"
 
 var _Restaurant = _interopRequireDefault(require("@material-ui/icons/Restaurant"));
 
+var _CheckBox = _interopRequireDefault(require("@material-ui/icons/CheckBox"));
+
+var _CheckBoxOutlineBlank = _interopRequireDefault(require("@material-ui/icons/CheckBoxOutlineBlank"));
+
 var _IconButton = _interopRequireDefault(require("@material-ui/core/IconButton"));
 
 var _SubItem = _interopRequireDefault(require("./SubItem"));
 
 var _styleModule = _interopRequireDefault(require("./style.module.scss"));
+
+var _windowOrGlobal = require("window-or-global");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -48,7 +54,11 @@ var Item = function Item(_ref) {
       setExpanded = _ref.setExpanded,
       selected = _ref.selected,
       setSelected = _ref.setSelected,
-      itemComponent = _ref.itemComponent;
+      itemComponent = _ref.itemComponent,
+      _ref$showSelectAll = _ref.showSelectAll,
+      showSelectAll = _ref$showSelectAll === void 0 ? false : _ref$showSelectAll,
+      _ref$showSelectedItem = _ref.showSelectedItemsCount,
+      showSelectedItemsCount = _ref$showSelectedItem === void 0 ? false : _ref$showSelectedItem;
 
   var isExpanded = _react.default.useMemo(function () {
     return expanded.find(function (i) {
@@ -56,6 +66,22 @@ var Item = function Item(_ref) {
     });
   }, [expanded]);
 
+  var selectedFullPrepared = _react.default.useMemo(function () {
+    return selected.map(function (i) {
+      return i.id;
+    });
+  }, [selected]);
+
+  var selectedInCategory = _react.default.useMemo(function () {
+    return data.sub_skills.reduce(function (acc, i) {
+      var item = selectedFullPrepared.find(function (item) {
+        return item === i.id;
+      });
+      return item ? [].concat(_toConsumableArray(acc), [item]) : acc;
+    }, []);
+  }, [selectedFullPrepared, data]);
+
+  var isSelected = data.sub_skills.length === selectedInCategory.length;
   return /*#__PURE__*/_react.default.createElement("div", {
     className: _styleModule.default.container
   }, /*#__PURE__*/_react.default.createElement("div", {
@@ -66,14 +92,50 @@ var Item = function Item(_ref) {
       }));
     }
   }, /*#__PURE__*/_react.default.createElement("div", {
+    className: _styleModule.default.titleButtons
+  }, showSelectAll && /*#__PURE__*/_react.default.createElement(_IconButton.default, {
+    className: _styleModule.default.selectAllButton,
+    size: "small",
+    onClick: function onClick(ev) {
+      ev.stopPropagation();
+
+      if (!isSelected) {
+        setSelected(_windowOrGlobal.Array.from(new Set([].concat(_toConsumableArray(selectedFullPrepared), _toConsumableArray(data.sub_skills.map(function (i) {
+          return i.id;
+        }))))).map(function (i) {
+          return {
+            id: i
+          };
+        }));
+      } else {
+        setSelected(_windowOrGlobal.Array.from(new Set(_toConsumableArray(selectedFullPrepared.filter(function (item) {
+          return !data.sub_skills.find(function (i) {
+            return i.id == item;
+          });
+        })))).map(function (i) {
+          return {
+            id: i
+          };
+        }));
+      }
+    }
+  }, isSelected ? /*#__PURE__*/_react.default.createElement(_CheckBox.default, {
+    htmlColor: '#FA835F'
+  }) : /*#__PURE__*/_react.default.createElement(_CheckBoxOutlineBlank.default, {
+    htmlColor: '#FA835F'
+  })), /*#__PURE__*/_react.default.createElement("div", {
     className: _styleModule.default.title
-  }, data.title), /*#__PURE__*/_react.default.createElement(_IconButton.default, {
+  }, data.title)), /*#__PURE__*/_react.default.createElement("div", {
+    className: _styleModule.default.icons
+  }, showSelectedItemsCount && /*#__PURE__*/_react.default.createElement("div", {
+    className: _styleModule.default.count
+  }, selectedInCategory.length), /*#__PURE__*/_react.default.createElement(_IconButton.default, {
     size: "small"
   }, isExpanded ? /*#__PURE__*/_react.default.createElement(_ExpandLess.default, {
     htmlColor: '#FA835F'
   }) : /*#__PURE__*/_react.default.createElement(_ExpandMore.default, {
     htmlColor: '#FA835F'
-  }))), isExpanded && data.sub_skills.map(function (i) {
+  })))), isExpanded && data.sub_skills.map(function (i) {
     return itemComponent ? /*#__PURE__*/_react.default.createElement(itemComponent, _objectSpread({}, i)) : /*#__PURE__*/_react.default.createElement(_SubItem.default, {
       showInputs: showInputs,
       key: i.id,
@@ -86,8 +148,14 @@ var Item = function Item(_ref) {
 
 Item.propTypes = {
   showInputs: _propTypes.default.bool,
-  itemComponent: _propTypes.default.any // : PropTypes.
-
+  itemComponent: _propTypes.default.any,
+  data: _propTypes.default.object,
+  expanded: _propTypes.default.bool,
+  setExpanded: _propTypes.default.bool,
+  selected: _propTypes.default.array,
+  setSelected: _propTypes.default.func,
+  showSelectAll: _propTypes.default.bool,
+  showSelectedItemsCount: _propTypes.default.bool
 };
 var _default = Item;
 exports.default = _default;

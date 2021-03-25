@@ -14,6 +14,8 @@ const SkillSelect = ({
     customSkills = [],
     itemComponentSubSkill,
     forceExpand,
+    showSelectAll = false,
+    showSelectedItemsCount = false,
 }) => {
     const skillsFiltred = React.useMemo(() => {
         return showOnlySkills
@@ -55,7 +57,6 @@ const SkillSelect = ({
               ]
             : [];
     }, [customSkills]);
-    console.log(customSkills, customSkillsFiltred);
     const [expanded, setExpanded] = React.useState([]);
     const [selected, setSelected] = React.useState([...selectedSkills]);
     const [selectedCustom, setSelectedCustom] = React.useState([...selectedCustomSkills]);
@@ -74,6 +75,7 @@ const SkillSelect = ({
         <div>
             {(searchText || showOnlySkills ? skillsFiltred : skills).map(i => (
                 <Item
+                    showSelectAll={showSelectAll}
                     showInputs={showInputs}
                     key={i.id}
                     expanded={
@@ -84,12 +86,15 @@ const SkillSelect = ({
                     setExpanded={setExpanded}
                     selected={selected}
                     setSelected={setSelected}
+                    showSelectedItemsCount={showSelectedItemsCount}
                     data={i}
                 />
             ))}
             {customSkills &&
                 customSkillsFiltred.map(i => (
                     <Item
+                        showSelectedItemsCount={showSelectedItemsCount}
+                        showSelectAll={showSelectAll}
                         itemComponent={itemComponentSubSkill}
                         showInputs={showInputs}
                         key={i.id}
@@ -134,6 +139,7 @@ SkillSelect.propTypes = {
     selectedCustomSkills: PropTypes.array,
     itemComponentSubSkill: PropTypes.element,
     forceExpand: PropTypes.bool,
+    showSelectedItemsCount: PropTypes.bool,
 };
 
 export default SkillSelect;

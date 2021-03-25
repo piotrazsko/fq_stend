@@ -52,7 +52,11 @@ var SkillSelect = function SkillSelect(_ref) {
       _ref$customSkills = _ref.customSkills,
       customSkills = _ref$customSkills === void 0 ? [] : _ref$customSkills,
       itemComponentSubSkill = _ref.itemComponentSubSkill,
-      forceExpand = _ref.forceExpand;
+      forceExpand = _ref.forceExpand,
+      _ref$showSelectAll = _ref.showSelectAll,
+      showSelectAll = _ref$showSelectAll === void 0 ? false : _ref$showSelectAll,
+      _ref$showSelectedItem = _ref.showSelectedItemsCount,
+      showSelectedItemsCount = _ref$showSelectedItem === void 0 ? false : _ref$showSelectedItem;
 
   var skillsFiltred = _react.default.useMemo(function () {
     return showOnlySkills ? skills.reduce(function (acc, i) {
@@ -87,8 +91,6 @@ var SkillSelect = function SkillSelect(_ref) {
     }] : [];
   }, [customSkills]);
 
-  console.log(customSkills, customSkillsFiltred);
-
   var _React$useState = _react.default.useState([]),
       _React$useState2 = _slicedToArray(_React$useState, 2),
       expanded = _React$useState2[0],
@@ -120,6 +122,7 @@ var SkillSelect = function SkillSelect(_ref) {
 
   return /*#__PURE__*/_react.default.createElement("div", null, (searchText || showOnlySkills ? skillsFiltred : skills).map(function (i) {
     return /*#__PURE__*/_react.default.createElement(_Item.default, {
+      showSelectAll: showSelectAll,
       showInputs: showInputs,
       key: i.id,
       expanded: forceExpand || searchText || showOnlySkills ? skillsFiltred.map(function (i) {
@@ -128,10 +131,13 @@ var SkillSelect = function SkillSelect(_ref) {
       setExpanded: setExpanded,
       selected: selected,
       setSelected: setSelected,
+      showSelectedItemsCount: showSelectedItemsCount,
       data: i
     });
   }), customSkills && customSkillsFiltred.map(function (i) {
     return /*#__PURE__*/_react.default.createElement(_Item.default, {
+      showSelectedItemsCount: showSelectedItemsCount,
+      showSelectAll: showSelectAll,
       itemComponent: itemComponentSubSkill,
       showInputs: showInputs,
       key: i.id,
@@ -171,7 +177,8 @@ SkillSelect.propTypes = {
   customSkills: _propTypes.default.array,
   selectedCustomSkills: _propTypes.default.array,
   itemComponentSubSkill: _propTypes.default.element,
-  forceExpand: _propTypes.default.bool
+  forceExpand: _propTypes.default.bool,
+  showSelectedItemsCount: _propTypes.default.bool
 };
 var _default = SkillSelect;
 exports.default = _default;

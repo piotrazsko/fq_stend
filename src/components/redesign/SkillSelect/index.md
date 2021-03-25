@@ -1,6 +1,6 @@
 ```jsx
-<SkillSelect skills = {[
-	{
+<SkillSelect showSelectAll showSelectedItemsCount skills = {[
+	{ 
 		"id": 1,
 		"title": "Волосы",
 		"description": "Волосы",
