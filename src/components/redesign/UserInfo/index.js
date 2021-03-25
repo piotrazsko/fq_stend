@@ -1,7 +1,7 @@
 import React from 'react';
 import gets from 'lodash/get';
 import PropTypes from 'prop-types';
-import style from './style.scss';
+import style from './style.module.scss';
 import moment from 'moment';
 import { makeStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
@@ -17,10 +17,7 @@ const UserInfo = ({ data, onClick, isMaster = false }) => {
         master_feedbacks_count,
         avatar,
         id,
-
-        user_events_count,
         feedback_count,
-        last_event_date,
     } = data;
     const isAdmin = false;
     return (

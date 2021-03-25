@@ -5,7 +5,6 @@ import IconButton from '@material-ui/core/IconButton';
 import AddIcon from '@material-ui/icons/Add';
 import FormHelperText from '@material-ui/core/FormHelperText';
 const color = '#fa835f';
-console.log(style);
 
 const AddDataButton = ({ onClick, title, helperText = '' }) => {
     return (

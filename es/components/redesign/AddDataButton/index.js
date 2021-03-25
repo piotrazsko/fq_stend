@@ -20,7 +20,6 @@ var _FormHelperText = _interopRequireDefault(require("@material-ui/core/FormHelp
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var color = '#fa835f';
-console.log(_styleModule.default);
 
 var AddDataButton = function AddDataButton(_ref) {
   var onClick = _ref.onClick,

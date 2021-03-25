@@ -5,7 +5,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = CalendarPicker;
+exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
@@ -18,8 +18,6 @@ var _styles = require("@material-ui/core/styles");
 var _Popover = _interopRequireDefault(require("@material-ui/core/Popover"));
 
 var _Button = _interopRequireDefault(require("@material-ui/core/Button"));
-
-var _IconButton = _interopRequireDefault(require("@material-ui/core/IconButton"));
 
 var _ChevronRight = _interopRequireDefault(require("@material-ui/icons/ChevronRight"));
 
@@ -75,7 +73,7 @@ var useStyles = (0, _styles.makeStyles)(function (theme) {
   };
 });
 
-function CalendarPicker(_ref) {
+var CalendarPicker = function CalendarPicker(_ref) {
   var onChange = _ref.onChange,
       date = _ref.date,
       disabled = _ref.disabled,
@@ -186,8 +184,10 @@ function CalendarPicker(_ref) {
     showSelectionPreview: true,
     date: date
   }, pickerProps))))));
-}
+};
 
+var _default = CalendarPicker;
+exports.default = _default;
 CalendarPicker.defaultProps = {
   options: [],
   onChange: function onChange() {},

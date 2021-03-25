@@ -171,9 +171,7 @@ TimePicker.propTypes = {
 
 TimePicker.defaultProps = {
     disabledTime: [],
-    onChange: date => {
-        console.log(date);
-    },
+    onChange: date => {},
     hourStep: 1,
     minuteStep: 5,
     inputProps: {},

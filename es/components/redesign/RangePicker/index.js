@@ -5,8 +5,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = RangePicker;
-exports.defaultStaticRanges = void 0;
+exports.default = exports.defaultStaticRanges = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
@@ -164,7 +163,7 @@ var defaultStaticRanges = createStaticRanges([{
 }]);
 exports.defaultStaticRanges = defaultStaticRanges;
 
-function RangePicker(_ref) {
+var RangePicker = function RangePicker(_ref) {
   var onChange = _ref.onChange,
       date = _ref.date,
       color = _ref.color,
@@ -312,8 +311,10 @@ function RangePicker(_ref) {
     variant: "contained",
     onClick: handleClose
   }, "Ok")))));
-}
+};
 
+var _default = RangePicker;
+exports.default = _default;
 RangePicker.defaultProps = {
   options: [],
   onChange: function onChange() {},

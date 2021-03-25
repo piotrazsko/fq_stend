@@ -41,5 +41,7 @@ export { default as InfoCard } from './redesign/InfoCard';
 export { default as SelectSkillsPopup } from './redesign/SelectSkillsPopup';
 export { default as UserInfo } from './redesign/UserInfo';
 export { default as Rating } from './redesign/Rating';
+// export { default as CalendarPicker } from './redesign/CalendarPicker';
+// export { default as RangePicker } from './redesign/RangePicker';
 
 export * from './Icons';
