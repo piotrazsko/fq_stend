@@ -58,7 +58,9 @@ var SelectSkillsPopup = function SelectSkillsPopup(_ref) {
       title = _ref$title === void 0 ? 'Выберите услуги для комлекса' : _ref$title,
       customSkills = _ref.customSkills,
       forceExpand = _ref.forceExpand,
-      onAddCustomSkills = _ref.onAddCustomSkills;
+      onAddCustomSkills = _ref.onAddCustomSkills,
+      showSelectAll = _ref.showSelectAll,
+      showSelectedItemsCount = _ref.showSelectedItemsCount;
 
   var _React$useState = _react.default.useState(),
       _React$useState2 = _slicedToArray(_React$useState, 2),
@@ -122,6 +124,8 @@ var SelectSkillsPopup = function SelectSkillsPopup(_ref) {
   })), /*#__PURE__*/_react.default.createElement("div", {
     className: _styleModule.default.container
   }, /*#__PURE__*/_react.default.createElement(_SkillSelect.default, {
+    showSelectAll: showSelectAll,
+    showSelectedItemsCount: showSelectedItemsCount,
     forceExpand: forceExpand,
     selectedSkills: selectedSkillsState,
     onChange: setSelectedSkills,
@@ -148,7 +152,9 @@ SelectSkillsPopup.propTypes = {
   customSkills: _propTypes.default.array,
   forceExpand: _propTypes.default.bool,
   selectedCustomSkills: _propTypes.default.array,
-  onAddCustomSkills: _propTypes.default.func
+  onAddCustomSkills: _propTypes.default.func,
+  showSelectAll: _propTypes.default.bool,
+  showSelectedItemsCount: _propTypes.default.bool
 };
 SelectSkillsPopup.defaultProps = {
   selectedCustomSkills: [],
@@ -159,7 +165,9 @@ SelectSkillsPopup.defaultProps = {
   title: 'test',
   onSubmit: function onSubmit() {},
   onCancel: function onCancel() {},
-  onClose: function onClose() {}
+  onClose: function onClose() {},
+  showSelectAll: false,
+  showSelectedItemsCount: false
 };
 var _default = SelectSkillsPopup;
 exports.default = _default;
