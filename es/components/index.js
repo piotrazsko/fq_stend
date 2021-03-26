@@ -44,7 +44,8 @@ var _exportNames = {
   InfoCard: true,
   SelectSkillsPopup: true,
   UserInfo: true,
-  Rating: true
+  Rating: true,
+  SempleSelect: true
 };
 Object.defineProperty(exports, "Avatar", {
   enumerable: true,
@@ -292,6 +293,12 @@ Object.defineProperty(exports, "Rating", {
     return _Rating.default;
   }
 });
+Object.defineProperty(exports, "SempleSelect", {
+  enumerable: true,
+  get: function get() {
+    return _SimpleSelect.default;
+  }
+});
 
 var _helpers = require("../helpers");
 
@@ -387,6 +394,8 @@ var _SelectSkillsPopup = _interopRequireDefault(require("./redesign/SelectSkills
 var _UserInfo = _interopRequireDefault(require("./redesign/UserInfo"));
 
 var _Rating = _interopRequireDefault(require("./redesign/Rating"));
+
+var _SimpleSelect = _interopRequireDefault(require("./redesign/SimpleSelect"));
 
 var _Icons = require("./Icons");
 
