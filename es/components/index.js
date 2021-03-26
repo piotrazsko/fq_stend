@@ -45,7 +45,7 @@ var _exportNames = {
   SelectSkillsPopup: true,
   UserInfo: true,
   Rating: true,
-  SempleSelect: true
+  SimpleSelect: true
 };
 Object.defineProperty(exports, "Avatar", {
   enumerable: true,
@@ -293,7 +293,7 @@ Object.defineProperty(exports, "Rating", {
     return _Rating.default;
   }
 });
-Object.defineProperty(exports, "SempleSelect", {
+Object.defineProperty(exports, "SimpleSelect", {
   enumerable: true,
   get: function get() {
     return _SimpleSelect.default;

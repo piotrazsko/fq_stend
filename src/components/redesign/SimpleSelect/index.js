@@ -20,7 +20,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-export default function SimpleSelect({
+const SimpleSelect = ({
     options,
     placeholder,
     onChange,
@@ -28,7 +28,7 @@ export default function SimpleSelect({
     variant = 'text',
     color,
     children,
-}) {
+}) => {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const classes = useStyles();
     const open = Boolean(anchorEl);
@@ -95,7 +95,8 @@ export default function SimpleSelect({
             </Popover>
         </>
     );
-}
+};
+
 SimpleSelect.defaultProps = {
     options: [],
     onChange: () => {},
@@ -109,3 +110,5 @@ SimpleSelect.propTypes = {
     color: PropTypes.string,
     children: PropTypes.element,
 };
+
+export default SimpleSelect;

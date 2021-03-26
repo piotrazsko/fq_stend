@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = SimpleSelect;
+exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
@@ -54,7 +54,7 @@ var useStyles = (0, _styles.makeStyles)(function (theme) {
   };
 });
 
-function SimpleSelect(_ref) {
+var SimpleSelect = function SimpleSelect(_ref) {
   var options = _ref.options,
       placeholder = _ref.placeholder,
       _onChange = _ref.onChange,
@@ -130,7 +130,7 @@ function SimpleSelect(_ref) {
       label: i.label
     });
   }))));
-}
+};
 
 SimpleSelect.defaultProps = {
   options: [],
@@ -145,3 +145,5 @@ SimpleSelect.propTypes = {
   color: _propTypes.default.string,
   children: _propTypes.default.element
 };
+var _default = SimpleSelect;
+exports.default = _default;
