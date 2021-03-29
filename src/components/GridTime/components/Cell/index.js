@@ -16,20 +16,18 @@ const Cell = ({
     isSelected,
     startTime = 0,
     interval = 15,
-    master,
     getMaster,
     defaultCellOnclick,
     onMasterClick,
     onMasterRightClick,
     onCellRightClick,
 }) => {
-    const [showTime, setShowtime] = React.useState(false);
     const time = startTime + (row - 1) * interval;
     const minutes = (time % 60).toString();
     const hour = Math.floor(time / 60);
     switch (true) {
         case isSelected: {
-            return <div>sss</div>;
+            return <div />;
         }
         case col === 0 && row === 0: {
             return <div />;

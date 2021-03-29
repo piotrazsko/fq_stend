@@ -48,8 +48,10 @@ const Grid = ({
 
     const [mouseDownCell, setMouseDown] = React.useState(null);
     const [mouseEnterCell, setMouseEnter] = React.useState([]);
-    const onMouseDown = cell => {
-        setMouseDown(cell);
+    const onMouseDown = (cell, ev) => {
+        if (ev.button === 0) {
+            setMouseDown(cell);
+        }
     };
     const onMouseUp = cell => {
         if (mouseDownCell) {
@@ -67,9 +69,7 @@ const Grid = ({
             setMouseEnter([]);
         }
     };
-    const onMouseLeave = () => {
-        // setMouseDown(null);
-    };
+
     const onMouseEnter = cell => {
         if (mouseDownCell) {
             setMouseEnter(parseArr(mouseDownCell, cell));
@@ -77,7 +77,6 @@ const Grid = ({
     };
     return (
         <div
-            onPointerLeave={onMouseLeave}
             className={[style.gridContainer, className].join(' ')}
             style={{
                 'grid-template-columns': `repeat(${cols}, ${colSize})`,
@@ -102,13 +101,13 @@ const Grid = ({
                     setRowSpan({ col, row, verticalSize })}`;
                 return (
                     <div
-                        onMouseDown={() => {
-                            onMouseDown({ col, row });
+                        onMouseDown={ev => {
+                            onMouseDown({ col, row }, ev);
                         }}
                         onMouseUp={() => {
                             onMouseUp({ col, row });
                         }}
-                        onMouseEnter={() => onMouseEnter({ col, row })}
+                        onMouseEnter={ev => onMouseEnter({ col, row }, ev)}
                         style={{
                             'grid-area': gridArea,
                             ...setCellStyleAttr({ col, row, verticalSize }),

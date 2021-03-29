@@ -116,8 +116,10 @@ var Grid = function Grid(_ref) {
       mouseEnterCell = _React$useState4[0],
       setMouseEnter = _React$useState4[1];
 
-  var _onMouseDown = function onMouseDown(cell) {
-    setMouseDown(cell);
+  var _onMouseDown = function onMouseDown(cell, ev) {
+    if (ev.button === 0) {
+      setMouseDown(cell);
+    }
   };
 
   var _onMouseUp = function onMouseUp(cell) {
@@ -130,9 +132,6 @@ var Grid = function Grid(_ref) {
     }
   };
 
-  var onMouseLeave = function onMouseLeave() {// setMouseDown(null);
-  };
-
   var _onMouseEnter = function onMouseEnter(cell) {
     if (mouseDownCell) {
       setMouseEnter(parseArr(mouseDownCell, cell));
@@ -140,7 +139,6 @@ var Grid = function Grid(_ref) {
   };
 
   return /*#__PURE__*/_react.default.createElement("div", {
-    onPointerLeave: onMouseLeave,
     className: [_styleModule.default.gridContainer, className].join(' '),
     style: {
       'grid-template-columns': "repeat(".concat(cols, ", ").concat(colSize, ")"),
@@ -174,11 +172,11 @@ var Grid = function Grid(_ref) {
       verticalSize: verticalSize
     }));
     return /*#__PURE__*/_react.default.createElement("div", _extends({
-      onMouseDown: function onMouseDown() {
+      onMouseDown: function onMouseDown(ev) {
         _onMouseDown({
           col: col,
           row: row
-        });
+        }, ev);
       },
       onMouseUp: function onMouseUp() {
         _onMouseUp({
@@ -186,11 +184,11 @@ var Grid = function Grid(_ref) {
           row: row
         });
       },
-      onMouseEnter: function onMouseEnter() {
+      onMouseEnter: function onMouseEnter(ev) {
         return _onMouseEnter({
           col: col,
           row: row
-        });
+        }, ev);
       },
       style: _objectSpread({
         'grid-area': gridArea
