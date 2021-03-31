@@ -124,8 +124,8 @@ function Select(_ref) {
     },
     htmlFor: "outlined-select-simple"
   }, label || placeholder), /*#__PURE__*/_react.default.createElement(_Select.default, _extends({
-    onChange: function onChange(ev) {
-      return _onChange(ev);
+    onChange: function onChange(ev, value) {
+      _onChange(ev, value);
     },
     value: value,
     input: variant === 'outlined' ? /*#__PURE__*/_react.default.createElement(_OutlinedInput.default, {

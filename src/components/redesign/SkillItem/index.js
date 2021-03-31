@@ -1,18 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { makeStyles, IconButton, Icon, Tooltip, ClickAwayListener } from '@material-ui/core';
+import { IconButton, Icon, Tooltip, ClickAwayListener } from '@material-ui/core';
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 
 import NumberFormat from '../NumberFormat';
-// import {
-//     Cosmetics,
-//     MakeUpIcon,
-//     MassageIcon,
-//     NailIcon,
-//     ScissorsIcon,
-//     SpaIcon,
-//     Tattoo,
-// } from '../../Icons/services';
+
 import {
     CosmeticsIcon,
     MakeUpIcon,
@@ -22,25 +14,23 @@ import {
     SpaIcon,
     TattooIcon,
     DeleteIcon,
+    EditIcon,
 } from '../../Icons';
 import style from './style.module.scss';
 
-const useStyles = makeStyles(theme => ({
-    input: {
-        fontSize: '12px !important',
-    },
-}));
 const color = '#fa835f';
 
 const SkillItem = ({
     onDelete,
     data,
-    showDuration = true,
-    showPrice = true,
-    showEdit = true,
-    showDelete = true,
+    showDuration,
+    showPrice,
+    showEdit,
+    showInfo,
+    showDelete,
     currency_id,
     onClick,
+    onEdit,
 }) => {
     const getIcon = () => {
         switch (data.parent_uid) {
@@ -98,7 +88,7 @@ const SkillItem = ({
                     )}
                 </div>
                 <div className={style.inputs}>
-                    {showEdit && (
+                    {showInfo && (
                         <ClickAwayListener onClickAway={handleTooltipClose}>
                             <div>
                                 <Tooltip
@@ -128,6 +118,22 @@ const SkillItem = ({
                             </div>
                         </ClickAwayListener>
                     )}
+                    {showEdit && (
+                        <IconButton
+                            size="small"
+                            onClick={ev => {
+                                ev.stopPropagation();
+                                onEdit();
+                            }}
+                        >
+                            <EditIcon
+                                width="13px"
+                                height="13px"
+                                className={style.icon}
+                                htmlColor={color}
+                            />
+                        </IconButton>
+                    )}
                     {showDelete && (
                         <IconButton
                             size="small"
@@ -154,10 +160,22 @@ SkillItem.propTypes = {
     onDelete: PropTypes.func.isRequired,
     currency_id: PropTypes.number,
     onClick: PropTypes.func,
+    onEdit: PropTypes.func,
+    showEdit: PropTypes.bool,
+    data: PropTypes.object,
+    showDuration: PropTypes.bool,
+    showPrice: PropTypes.bool,
+    showInfo: PropTypes.bool,
+    showDelete: PropTypes.bool,
 };
 SkillItem.defaultProps = {
     data: {},
     currency_id: 1,
     onClick: () => {},
+    showEdit: false,
+    showDuration: true,
+    showPrice: true,
+    showInfo: true,
+    showDelete: true,
 };
 export default SkillItem;

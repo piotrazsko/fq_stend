@@ -23,6 +23,7 @@
         duration: 30,
         deleted_at: null,
     }}
+    onEdit = {()=>{alert()}}
 />
 <SkillItem
     googlePlayLink="http://google.com"

@@ -68,7 +68,9 @@ export default function Select({
                 {label || placeholder}
             </InputLabel>
             <SelectDefault
-                onChange={ev => onChange(ev)}
+                onChange={(ev, value) => {
+                    onChange(ev, value);
+                }}
                 value={value}
                 input={
                     variant === 'outlined' ? (
