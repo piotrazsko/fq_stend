@@ -20,6 +20,7 @@ const Item = ({
     itemComponent,
     showSelectAll = false,
     showSelectedItemsCount = false,
+    count,
 }) => {
     const isExpanded = React.useMemo(() => {
         return expanded.find(i => i == data.id);
@@ -86,7 +87,7 @@ const Item = ({
                 </div>
                 <div className={style.icons}>
                     {showSelectedItemsCount && (
-                        <div className={style.count}>{selectedInCategory.length}</div>
+                        <div className={style.count}>{count || selectedInCategory.length}</div>
                     )}
                     <IconButton size="small">
                         {isExpanded ? (
@@ -125,6 +126,7 @@ Item.propTypes = {
     setSelected: PropTypes.func,
     showSelectAll: PropTypes.bool,
     showSelectedItemsCount: PropTypes.bool,
+    count: PropTypes.number,
 };
 
 export default Item;

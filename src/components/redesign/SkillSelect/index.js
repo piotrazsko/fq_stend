@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Item from './Item';
+import get from 'lodash/get';
 
 const SkillSelect = ({
     skills,
@@ -12,11 +13,13 @@ const SkillSelect = ({
     onChange,
     showOnlySkills,
     customSkills = [],
+    itemComponentCustomSubSkill,
     itemComponentSubSkill,
     forceExpand,
     defaultExpand,
     showSelectAll = false,
     showSelectedItemsCount = false,
+    customSkillCount = false,
 }) => {
     const skillsFiltred = React.useMemo(() => {
         return showOnlySkills
@@ -36,7 +39,7 @@ const SkillSelect = ({
                       ? [...acc, { ...i, sub_skills: filtredSubskills }]
                       : [...acc];
               }, []);
-    }, [searchText, showOnlySkills]);
+    }, [searchText, showOnlySkills, skills]);
     const customSkillsFiltred = React.useMemo(() => {
         const skills =
             searchText.length > 0
@@ -57,7 +60,7 @@ const SkillSelect = ({
                   },
               ]
             : [];
-    }, [customSkills]);
+    }, [customSkills, searchText]);
     const [expanded, setExpanded] = React.useState(defaultExpand ? [...skills.map(i => i.id)] : []);
     const [selected, setSelected] = React.useState([...selectedSkills]);
     const [selectedCustom, setSelectedCustom] = React.useState([...selectedCustomSkills]);
@@ -89,6 +92,7 @@ const SkillSelect = ({
                     setSelected={setSelected}
                     showSelectedItemsCount={showSelectedItemsCount}
                     data={i}
+                    itemComponent={itemComponentSubSkill}
                 />
             ))}
             {customSkills &&
@@ -96,7 +100,7 @@ const SkillSelect = ({
                     <Item
                         showSelectedItemsCount={showSelectedItemsCount}
                         showSelectAll={showSelectAll}
-                        itemComponent={itemComponentSubSkill}
+                        itemComponent={itemComponentCustomSubSkill}
                         showInputs={showInputs}
                         key={i.id}
                         expanded={
@@ -108,6 +112,11 @@ const SkillSelect = ({
                         selected={selectedCustom}
                         setSelected={setSelectedCustom}
                         data={i}
+                        count={
+                            customSkillCount
+                                ? get(customSkillsFiltred, '[0].sub_skills', []).length
+                                : false
+                        }
                     />
                 ))}
         </div>
@@ -121,10 +130,12 @@ SkillSelect.defaultProps = {
     searchText: '',
     showOnlySkills: false,
     itemComponentSubSkill: false,
+    itemComponentCustomSubSkill: false,
     onChangeCustomSkills: () => {},
     forceExpand: false,
     skills: [],
     defaultExpand: false,
+    customSkillCount: false,
 };
 
 SkillSelect.propTypes = {
@@ -138,10 +149,12 @@ SkillSelect.propTypes = {
     customSkills: PropTypes.array,
     selectedCustomSkills: PropTypes.array,
     itemComponentSubSkill: PropTypes.element,
+    itemComponentCustomSubSkill: PropTypes.element,
     forceExpand: PropTypes.bool,
     showSelectedItemsCount: PropTypes.bool,
     showSelectAll: PropTypes.bool,
     defaultExpand: PropTypes.bool,
+    customSkillCount: PropTypes.number,
 };
 
 export default SkillSelect;
