@@ -26,6 +26,8 @@ var _Select = _interopRequireDefault(require("@material-ui/core/Select"));
 
 var _Input = _interopRequireDefault(require("@material-ui/core/Input"));
 
+var _ExpandMore = _interopRequireDefault(require("@material-ui/icons/ExpandMore"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -134,7 +136,8 @@ function Select(_ref) {
       labelWidth: labelWidth,
       name: name,
       id: "outlined-select-simple"
-    })
+    }),
+    IconComponent: _ExpandMore.default
   }, props), options.map(function (item) {
     return /*#__PURE__*/_react.default.createElement(_MenuItem.default, {
       key: item.value,

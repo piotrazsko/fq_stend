@@ -8,6 +8,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import SelectDefault from '@material-ui/core/Select';
 import Input from '@material-ui/core/Input';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -80,6 +81,7 @@ export default function Select({
                         <Input labelWidth={labelWidth} name={name} id="outlined-select-simple" />
                     )
                 }
+                IconComponent={ExpandMoreIcon}
                 {...props}
             >
                 {options.map(item => (
