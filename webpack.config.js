@@ -96,7 +96,7 @@ module.exports = {
                         // For pure CSS - /\.css$/i,
                         // For Sass/SCSS - /\.((c|sa|sc)ss)$/i,
                         // For Less - /\.((c|le)ss)$/i,
-                        test: /\.((sa|sc)ss)$/i,
+                        test: /\.((sa|sc|c)ss)$/i,
                         use: [
                             {
                                 loader: MiniCssExtractPlugin.loader,
