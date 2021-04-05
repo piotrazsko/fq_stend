@@ -11,6 +11,8 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _Item = _interopRequireDefault(require("./Item"));
 
+var _get = _interopRequireDefault(require("lodash/get"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
@@ -51,13 +53,16 @@ var SkillSelect = function SkillSelect(_ref) {
       showOnlySkills = _ref.showOnlySkills,
       _ref$customSkills = _ref.customSkills,
       customSkills = _ref$customSkills === void 0 ? [] : _ref$customSkills,
+      itemComponentCustomSubSkill = _ref.itemComponentCustomSubSkill,
       itemComponentSubSkill = _ref.itemComponentSubSkill,
       forceExpand = _ref.forceExpand,
       defaultExpand = _ref.defaultExpand,
       _ref$showSelectAll = _ref.showSelectAll,
       showSelectAll = _ref$showSelectAll === void 0 ? false : _ref$showSelectAll,
       _ref$showSelectedItem = _ref.showSelectedItemsCount,
-      showSelectedItemsCount = _ref$showSelectedItem === void 0 ? false : _ref$showSelectedItem;
+      showSelectedItemsCount = _ref$showSelectedItem === void 0 ? false : _ref$showSelectedItem,
+      _ref$customSkillCount = _ref.customSkillCount,
+      customSkillCount = _ref$customSkillCount === void 0 ? false : _ref$customSkillCount;
 
   var skillsFiltred = _react.default.useMemo(function () {
     return showOnlySkills ? skills.reduce(function (acc, i) {
@@ -75,7 +80,7 @@ var SkillSelect = function SkillSelect(_ref) {
         sub_skills: filtredSubskills
       })]) : _toConsumableArray(acc);
     }, []);
-  }, [searchText, showOnlySkills]);
+  }, [searchText, showOnlySkills, skills]);
 
   var customSkillsFiltred = _react.default.useMemo(function () {
     var skills = searchText.length > 0 ? customSkills.filter(function (i) {
@@ -90,7 +95,7 @@ var SkillSelect = function SkillSelect(_ref) {
       title: 'Уникальные услуги',
       uid: 'customSkills'
     }] : [];
-  }, [customSkills]);
+  }, [customSkills, searchText]);
 
   var _React$useState = _react.default.useState(defaultExpand ? _toConsumableArray(skills.map(function (i) {
     return i.id;
@@ -135,13 +140,14 @@ var SkillSelect = function SkillSelect(_ref) {
       selected: selected,
       setSelected: setSelected,
       showSelectedItemsCount: showSelectedItemsCount,
-      data: i
+      data: i,
+      itemComponent: itemComponentSubSkill
     });
   }), customSkills && customSkillsFiltred.map(function (i) {
     return /*#__PURE__*/_react.default.createElement(_Item.default, {
       showSelectedItemsCount: showSelectedItemsCount,
       showSelectAll: showSelectAll,
-      itemComponent: itemComponentSubSkill,
+      itemComponent: itemComponentCustomSubSkill,
       showInputs: showInputs,
       key: i.id,
       expanded: forceExpand || searchText || showOnlySkills ? customSkillsFiltred.map(function (i) {
@@ -150,7 +156,8 @@ var SkillSelect = function SkillSelect(_ref) {
       setExpanded: setExpanded,
       selected: selectedCustom,
       setSelected: setSelectedCustom,
-      data: i
+      data: i,
+      count: customSkillCount ? (0, _get.default)(customSkillsFiltred, '[0].sub_skills', []).length : false
     });
   }));
 };
@@ -163,10 +170,12 @@ SkillSelect.defaultProps = {
   searchText: '',
   showOnlySkills: false,
   itemComponentSubSkill: false,
+  itemComponentCustomSubSkill: false,
   onChangeCustomSkills: function onChangeCustomSkills() {},
   forceExpand: false,
   skills: [],
-  defaultExpand: false
+  defaultExpand: false,
+  customSkillCount: false
 };
 SkillSelect.propTypes = {
   skills: _propTypes.default.array,
@@ -179,10 +188,12 @@ SkillSelect.propTypes = {
   customSkills: _propTypes.default.array,
   selectedCustomSkills: _propTypes.default.array,
   itemComponentSubSkill: _propTypes.default.element,
+  itemComponentCustomSubSkill: _propTypes.default.element,
   forceExpand: _propTypes.default.bool,
   showSelectedItemsCount: _propTypes.default.bool,
   showSelectAll: _propTypes.default.bool,
-  defaultExpand: _propTypes.default.bool
+  defaultExpand: _propTypes.default.bool,
+  customSkillCount: _propTypes.default.number
 };
 var _default = SkillSelect;
 exports.default = _default;

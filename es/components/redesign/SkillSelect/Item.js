@@ -56,7 +56,8 @@ var Item = function Item(_ref) {
       _ref$showSelectAll = _ref.showSelectAll,
       showSelectAll = _ref$showSelectAll === void 0 ? false : _ref$showSelectAll,
       _ref$showSelectedItem = _ref.showSelectedItemsCount,
-      showSelectedItemsCount = _ref$showSelectedItem === void 0 ? false : _ref$showSelectedItem;
+      showSelectedItemsCount = _ref$showSelectedItem === void 0 ? false : _ref$showSelectedItem,
+      count = _ref.count;
 
   var isExpanded = _react.default.useMemo(function () {
     return expanded.find(function (i) {
@@ -127,7 +128,7 @@ var Item = function Item(_ref) {
     className: _styleModule.default.icons
   }, showSelectedItemsCount && /*#__PURE__*/_react.default.createElement("div", {
     className: _styleModule.default.count
-  }, selectedInCategory.length), /*#__PURE__*/_react.default.createElement(_IconButton.default, {
+  }, count || selectedInCategory.length), /*#__PURE__*/_react.default.createElement(_IconButton.default, {
     size: "small"
   }, isExpanded ? /*#__PURE__*/_react.default.createElement(_ExpandLess.default, {
     htmlColor: '#FA835F'
@@ -153,7 +154,8 @@ Item.propTypes = {
   selected: _propTypes.default.array,
   setSelected: _propTypes.default.func,
   showSelectAll: _propTypes.default.bool,
-  showSelectedItemsCount: _propTypes.default.bool
+  showSelectedItemsCount: _propTypes.default.bool,
+  count: _propTypes.default.number
 };
 var _default = Item;
 exports.default = _default;

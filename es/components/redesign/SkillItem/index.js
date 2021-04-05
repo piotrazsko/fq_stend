@@ -33,28 +33,19 @@ function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
-var useStyles = (0, _core.makeStyles)(function (theme) {
-  return {
-    input: {
-      fontSize: '12px !important'
-    }
-  };
-});
 var color = '#fa835f';
 
 var SkillItem = function SkillItem(_ref) {
   var onDelete = _ref.onDelete,
       data = _ref.data,
-      _ref$showDuration = _ref.showDuration,
-      showDuration = _ref$showDuration === void 0 ? true : _ref$showDuration,
-      _ref$showPrice = _ref.showPrice,
-      showPrice = _ref$showPrice === void 0 ? true : _ref$showPrice,
-      _ref$showEdit = _ref.showEdit,
-      showEdit = _ref$showEdit === void 0 ? true : _ref$showEdit,
-      _ref$showDelete = _ref.showDelete,
-      showDelete = _ref$showDelete === void 0 ? true : _ref$showDelete,
+      showDuration = _ref.showDuration,
+      showPrice = _ref.showPrice,
+      showEdit = _ref.showEdit,
+      showInfo = _ref.showInfo,
+      showDelete = _ref.showDelete,
       currency_id = _ref.currency_id,
-      onClick = _ref.onClick;
+      onClick = _ref.onClick,
+      onEdit = _ref.onEdit;
 
   var getIcon = function getIcon() {
     switch (data.parent_uid) {
@@ -148,7 +139,7 @@ var SkillItem = function SkillItem(_ref) {
     className: _styleModule.default.duration
   }, "  /  ", duration, " \u043C\u0438\u043D.")), /*#__PURE__*/_react.default.createElement("div", {
     className: _styleModule.default.inputs
-  }, showEdit && /*#__PURE__*/_react.default.createElement(_core.ClickAwayListener, {
+  }, showInfo && /*#__PURE__*/_react.default.createElement(_core.ClickAwayListener, {
     onClickAway: handleTooltipClose
   }, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_core.Tooltip, {
     PopperProps: {
@@ -169,7 +160,18 @@ var SkillItem = function SkillItem(_ref) {
   }, /*#__PURE__*/_react.default.createElement(_InfoOutlined.default, {
     className: _styleModule.default.icon,
     htmlColor: color
-  }))))), showDelete && /*#__PURE__*/_react.default.createElement(_core.IconButton, {
+  }))))), showEdit && /*#__PURE__*/_react.default.createElement(_core.IconButton, {
+    size: "small",
+    onClick: function onClick(ev) {
+      ev.stopPropagation();
+      onEdit();
+    }
+  }, /*#__PURE__*/_react.default.createElement(_Icons.EditIcon, {
+    width: "13px",
+    height: "13px",
+    className: _styleModule.default.icon,
+    htmlColor: color
+  })), showDelete && /*#__PURE__*/_react.default.createElement(_core.IconButton, {
     size: "small",
     onClick: function onClick(ev) {
       ev.stopPropagation();
@@ -186,12 +188,24 @@ var SkillItem = function SkillItem(_ref) {
 SkillItem.propTypes = {
   onDelete: _propTypes.default.func.isRequired,
   currency_id: _propTypes.default.number,
-  onClick: _propTypes.default.func
+  onClick: _propTypes.default.func,
+  onEdit: _propTypes.default.func,
+  showEdit: _propTypes.default.bool,
+  data: _propTypes.default.object,
+  showDuration: _propTypes.default.bool,
+  showPrice: _propTypes.default.bool,
+  showInfo: _propTypes.default.bool,
+  showDelete: _propTypes.default.bool
 };
 SkillItem.defaultProps = {
   data: {},
   currency_id: 1,
-  onClick: function onClick() {}
+  onClick: function onClick() {},
+  showEdit: false,
+  showDuration: true,
+  showPrice: true,
+  showInfo: true,
+  showDelete: true
 };
 var _default = SkillItem;
 exports.default = _default;
