@@ -46,11 +46,8 @@ var _exportNames = {
   UserInfo: true,
   Rating: true,
   SimpleSelect: true,
-<<<<<<< HEAD
+  Select: true,
   CalendarPicker: true
-=======
-  Select: true
->>>>>>> 9d2062609c3ebd445ad7d26b9fa365df9bafa749
 };
 Object.defineProperty(exports, "Avatar", {
   enumerable: true,
@@ -304,17 +301,16 @@ Object.defineProperty(exports, "SimpleSelect", {
     return _SimpleSelect.default;
   }
 });
-<<<<<<< HEAD
-Object.defineProperty(exports, "CalendarPicker", {
-  enumerable: true,
-  get: function get() {
-    return _CalendarPicker.default;
-=======
 Object.defineProperty(exports, "Select", {
   enumerable: true,
   get: function get() {
     return _Select.default;
->>>>>>> 9d2062609c3ebd445ad7d26b9fa365df9bafa749
+  }
+});
+Object.defineProperty(exports, "CalendarPicker", {
+  enumerable: true,
+  get: function get() {
+    return _CalendarPicker.default;
   }
 });
 
@@ -415,11 +411,9 @@ var _Rating = _interopRequireDefault(require("./redesign/Rating"));
 
 var _SimpleSelect = _interopRequireDefault(require("./redesign/SimpleSelect"));
 
-<<<<<<< HEAD
-var _CalendarPicker = _interopRequireDefault(require("./redesign/CalendarPicker"));
-=======
 var _Select = _interopRequireDefault(require("./redesign/Select"));
->>>>>>> 9d2062609c3ebd445ad7d26b9fa365df9bafa749
+
+var _CalendarPicker = _interopRequireDefault(require("./redesign/CalendarPicker"));
 
 var _Icons = require("./Icons");
 

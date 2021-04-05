@@ -42,12 +42,10 @@ export { default as SelectSkillsPopup } from './redesign/SelectSkillsPopup';
 export { default as UserInfo } from './redesign/UserInfo';
 export { default as Rating } from './redesign/Rating';
 export { default as SimpleSelect } from './redesign/SimpleSelect';
-<<<<<<< HEAD
-export { default as CalendarPicker } from './redesign/CalendarPicker';
-=======
 export { default as Select } from './redesign/Select';
-// export { default as CalendarPicker } from './redesign/CalendarPicker';
->>>>>>> 9d2062609c3ebd445ad7d26b9fa365df9bafa749
+
+export { default as CalendarPicker } from './redesign/CalendarPicker';
+
 // export { default as RangePicker } from './redesign/RangePicker';
 
 export * from './Icons';
