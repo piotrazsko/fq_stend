@@ -29,6 +29,10 @@ var locales = _interopRequireWildcard(require("react-date-range/dist/locale"));
 
 var _styleModule = _interopRequireDefault(require("./style.module.scss"));
 
+require("react-date-range/dist/styles.css");
+
+require("react-date-range/dist/theme/default.css");
+
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
@@ -49,15 +53,13 @@ function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
-// import 'react-date-range/dist/styles.css'; // main css file
-// import 'react-date-range/dist/theme/default.css'; // theme css file
+// theme css file
 var useStyles = (0, _styles.makeStyles)(function (theme) {
   return {
     buttonRoot: {
       padding: '12px 20px'
     },
-    root: {
-      backgroundColor: theme.palette.action.hover
+    root: {// backgroundColor: theme.palette.action.hover,
     },
     outlined: {
       backgroundColor: '#fff'
