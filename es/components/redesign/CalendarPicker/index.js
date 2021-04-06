@@ -1,7 +1,5 @@
 "use strict";
 
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -21,19 +19,7 @@ var _ChevronRight = _interopRequireDefault(require("@material-ui/icons/ChevronRi
 
 var _ChevronLeft = _interopRequireDefault(require("@material-ui/icons/ChevronLeft"));
 
-var _reactDateRange = require("react-date-range");
-
-var locales = _interopRequireWildcard(require("react-date-range/dist/locale"));
-
 var _styleModule = _interopRequireDefault(require("./style.module.scss"));
-
-require("react-date-range/dist/styles.css");
-
-require("react-date-range/dist/theme/default.css");
-
-function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -51,7 +37,8 @@ function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
-// theme css file
+// import 'react-date-range/dist/styles.css'; // main css file
+// import 'react-date-range/dist/theme/default.css'; // theme css file
 // const useStyles = makeStyles(theme => ({
 //     buttonRoot: {
 //         // padding: '12px 20px',
@@ -163,19 +150,7 @@ var CalendarPicker = function CalendarPicker(_ref) {
     }
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: _styleModule.default.container
-  }, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_reactDateRange.Calendar, _extends({
-    color: "#fa835f",
-    showPreview: false,
-    showMonthAndYearPickers: false,
-    showDateDisplay: false,
-    locale: locales['ru'],
-    onChange: function onChange(item) {
-      handleClose(item);
-      setState(item);
-    },
-    showSelectionPreview: true,
-    date: date
-  }, pickerProps))))));
+  }, /*#__PURE__*/_react.default.createElement("div", null))));
 };
 
 var _default = CalendarPicker;
