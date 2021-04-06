@@ -127,7 +127,7 @@ const CalendarPicker = ({
             >
                 <div className={style.container}>
                     <div>
-                        {/*  <Calendar
+                        <Calendar
                             color="#fa835f"
                             showPreview={false}
                             showMonthAndYearPickers={false}
@@ -140,7 +140,7 @@ const CalendarPicker = ({
                             showSelectionPreview
                             date={date}
                             {...pickerProps}
-                        />*/}
+                        />
                     </div>
                 </div>
             </Popover>

@@ -171,7 +171,19 @@ var CalendarPicker = function CalendarPicker(_ref) {
     }
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: _styleModule.default.container
-  }, /*#__PURE__*/_react.default.createElement("div", null))));
+  }, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_reactDateRange.Calendar, _extends({
+    color: "#fa835f",
+    showPreview: false,
+    showMonthAndYearPickers: false,
+    showDateDisplay: false,
+    locale: locales['ru'],
+    onChange: function onChange(item) {
+      handleClose(item);
+      setState(item);
+    },
+    showSelectionPreview: true,
+    date: date
+  }, pickerProps))))));
 };
 
 var _default = CalendarPicker;
