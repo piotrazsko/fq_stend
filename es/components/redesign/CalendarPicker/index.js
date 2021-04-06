@@ -56,8 +56,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 // theme css file
 var useStyles = (0, _styles.makeStyles)(function (theme) {
   return {
-    buttonRoot: {
-      padding: '12px 20px'
+    buttonRoot: {// padding: '12px 20px',
     },
     root: {// backgroundColor: theme.palette.action.hover,
     },
@@ -65,7 +64,7 @@ var useStyles = (0, _styles.makeStyles)(function (theme) {
       backgroundColor: '#fff'
     },
     checkboxContainer: {
-      padding: theme.spacing(2),
+      // padding: theme.spacing(2),
       display: 'flex',
       flexDirection: 'column'
     }

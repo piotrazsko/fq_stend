@@ -16,14 +16,14 @@ import 'react-date-range/dist/theme/default.css'; // theme css file
 
 const useStyles = makeStyles(theme => ({
     buttonRoot: {
-        padding: '12px 20px',
+        // padding: '12px 20px',
     },
     root: {
         // backgroundColor: theme.palette.action.hover,
     },
     outlined: { backgroundColor: '#fff' },
     checkboxContainer: {
-        padding: theme.spacing(2),
+        // padding: theme.spacing(2),
         display: 'flex',
         flexDirection: 'column',
     },
