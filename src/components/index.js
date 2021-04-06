@@ -44,7 +44,7 @@ export { default as Rating } from './redesign/Rating';
 export { default as SimpleSelect } from './redesign/SimpleSelect';
 export { default as Select } from './redesign/Select';
 
-export { default as CalendarPicker } from './redesign/CalendarPicker';
+// export { default as CalendarPicker } from './redesign/CalendarPicker';
 
 // export { default as RangePicker } from './redesign/RangePicker';
 
