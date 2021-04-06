@@ -7,7 +7,7 @@ import Button from '@material-ui/core/Button';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 // import { Calendar } from 'react-date-range';
-// import * as locales from 'react-date-range/dist/locale';
+import * as locales from 'react-date-range/dist/locale';
 
 import style from './style.module.scss';
 import 'react-date-range/dist/styles.css'; // main css file
