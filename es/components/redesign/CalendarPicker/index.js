@@ -13,8 +13,6 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _moment = _interopRequireDefault(require("moment"));
 
-var _styles = require("@material-ui/core/styles");
-
 var _Popover = _interopRequireDefault(require("@material-ui/core/Popover"));
 
 var _Button = _interopRequireDefault(require("@material-ui/core/Button"));
@@ -54,23 +52,20 @@ function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 // theme css file
-var useStyles = (0, _styles.makeStyles)(function (theme) {
-  return {
-    buttonRoot: {// padding: '12px 20px',
-    },
-    root: {// backgroundColor: theme.palette.action.hover,
-    },
-    outlined: {
-      backgroundColor: '#fff'
-    },
-    checkboxContainer: {
-      // padding: theme.spacing(2),
-      display: 'flex',
-      flexDirection: 'column'
-    }
-  };
-});
-
+// const useStyles = makeStyles(theme => ({
+//     buttonRoot: {
+//         // padding: '12px 20px',
+//     },
+//     root: {
+//         // backgroundColor: theme.palette.action.hover,
+//     },
+//     outlined: { backgroundColor: '#fff' },
+//     checkboxContainer: {
+//         // padding: theme.spacing(2),
+//         display: 'flex',
+//         flexDirection: 'column',
+//     },
+// }));
 var CalendarPicker = function CalendarPicker(_ref) {
   var onChange = _ref.onChange,
       date = _ref.date,
@@ -85,9 +80,9 @@ var CalendarPicker = function CalendarPicker(_ref) {
   var _React$useState = _react.default.useState(null),
       _React$useState2 = _slicedToArray(_React$useState, 2),
       anchorEl = _React$useState2[0],
-      setAnchorEl = _React$useState2[1];
+      setAnchorEl = _React$useState2[1]; // const classes = useStyles();
 
-  var classes = useStyles();
+
   var open = Boolean(anchorEl);
   var id = open ? 'simple-popover' : undefined;
 
@@ -121,10 +116,9 @@ var CalendarPicker = function CalendarPicker(_ref) {
     disabled: disabled
   }) || /*#__PURE__*/_react.default.createElement(_Button.default, _extends({
     variant: variant,
-    classes: {
-      text: classes.root,
-      outlined: classes.outlined,
-      root: classes.buttonRoot
+    classes: {// text: classes.root,
+      // outlined: classes.outlined,
+      // root: classes.buttonRoot,
     }
   }, buttonProps), /*#__PURE__*/_react.default.createElement("div", {
     className: _styleModule.default.buttonContent

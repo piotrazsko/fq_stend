@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
-import { makeStyles } from '@material-ui/core/styles';
+// import { makeStyles } from '@material-ui/core/styles';
 import Popover from '@material-ui/core/Popover';
 import Button from '@material-ui/core/Button';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
@@ -14,20 +14,20 @@ import style from './style.module.scss';
 import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 
-const useStyles = makeStyles(theme => ({
-    buttonRoot: {
-        // padding: '12px 20px',
-    },
-    root: {
-        // backgroundColor: theme.palette.action.hover,
-    },
-    outlined: { backgroundColor: '#fff' },
-    checkboxContainer: {
-        // padding: theme.spacing(2),
-        display: 'flex',
-        flexDirection: 'column',
-    },
-}));
+// const useStyles = makeStyles(theme => ({
+//     buttonRoot: {
+//         // padding: '12px 20px',
+//     },
+//     root: {
+//         // backgroundColor: theme.palette.action.hover,
+//     },
+//     outlined: { backgroundColor: '#fff' },
+//     checkboxContainer: {
+//         // padding: theme.spacing(2),
+//         display: 'flex',
+//         flexDirection: 'column',
+//     },
+// }));
 
 const CalendarPicker = ({
     onChange,
@@ -40,7 +40,7 @@ const CalendarPicker = ({
     buttonProps,
 }) => {
     const [anchorEl, setAnchorEl] = React.useState(null);
-    const classes = useStyles();
+    // const classes = useStyles();
     const open = Boolean(anchorEl);
     const id = open ? 'simple-popover' : undefined;
     const handleClick = event => {
@@ -66,11 +66,13 @@ const CalendarPicker = ({
             {(children && React.cloneElement(children, { onClick: handleClick, disabled })) || (
                 <Button
                     variant={variant}
-                    classes={{
-                        text: classes.root,
-                        outlined: classes.outlined,
-                        root: classes.buttonRoot,
-                    }}
+                    classes={
+                        {
+                            // text: classes.root,
+                            // outlined: classes.outlined,
+                            // root: classes.buttonRoot,
+                        }
+                    }
                     {...buttonProps}
                 >
                     <div className={style.buttonContent}>
