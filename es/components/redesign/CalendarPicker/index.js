@@ -23,6 +23,8 @@ var _ChevronRight = _interopRequireDefault(require("@material-ui/icons/ChevronRi
 
 var _ChevronLeft = _interopRequireDefault(require("@material-ui/icons/ChevronLeft"));
 
+var _reactDateRange = require("react-date-range");
+
 var locales = _interopRequireWildcard(require("react-date-range/dist/locale"));
 
 var _styleModule = _interopRequireDefault(require("./style.module.scss"));
