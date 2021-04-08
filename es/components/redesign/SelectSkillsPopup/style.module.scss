@@ -2,11 +2,9 @@
 
 .container {
     height: inherit;
-    width: 70vw;
+    min-width: 70vw;
     max-height: 48vh;
     min-height: 48vh;
-    max-width: 80vw;
-    // padding: 30px;
     border-radius: 12px;
     overflow-y: auto;
 }
