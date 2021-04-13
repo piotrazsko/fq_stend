@@ -10,22 +10,27 @@ import SelectDefault from '@material-ui/core/Select';
 import Input from '@material-ui/core/Input';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
-const useStyles = makeStyles(theme => ({
-    root: {
-        display: 'flex',
-        flexWrap: 'wrap',
-    },
-    formControl: {
-        // margin: theme.spacing(1),
-        minWidth: 160,
-    },
-    selectEmpty: {
-        // marginTop: theme.spacing(2),
-    },
-    label: {
-        // transform: 'translate(0px, -4px) scale(0.75) !important',
-    },
-}));
+const useStyles = makeStyles(theme => {
+    console.log(theme);
+    return {
+        root: {
+            // display: 'flex',
+            // flexWrap: 'wrap',
+        },
+        formControl: {
+            // margin: theme.spacing(1),
+            minWidth: 160,
+        },
+        selectEmpty: {
+            marginTop: theme.spacing(2),
+        },
+        label: {
+            transform: 'translate(2px, -6px) scale(0.75) !important',
+            background: '#fff',
+            padding: '0 2px',
+        },
+    };
+});
 
 export const optionsPreparingSelect = (arr, valueKey, labelKey) =>
     arr.map(item => {
@@ -45,15 +50,14 @@ export default function Select({
     value,
     required,
     name = 'select',
-    labelProps = {},
     ...props
 }) {
     const classes = useStyles();
-    // const inputLabel = React.useRef(null);
-    // const [labelWidth, setLabelWidth] = React.useState(0);
-    // React.useEffect(() => {
-    //     setLabelWidth(inputLabel.current.offsetWidth);
-    // }, []);
+    const inputLabel = React.useRef(null);
+    const [labelWidth, setLabelWidth] = React.useState(0);
+    React.useEffect(() => {
+        setLabelWidth(inputLabel.current.offsetWidth);
+    }, []);
     return (
         <FormControl
             required={required}
@@ -62,10 +66,9 @@ export default function Select({
             fullWidth={fullWidth}
         >
             <InputLabel
-                // ref={inputLabel}
+                ref={inputLabel}
                 classes={{ root: classes.label }}
                 htmlFor="outlined-select-simple"
-                {...labelProps}
             >
                 {label || placeholder}
             </InputLabel>
@@ -101,5 +104,4 @@ Select.propTypes = {
     variant: PropTypes.string,
     label: PropTypes.string,
     fullWidth: PropTypes.bool,
-    labelProps: PropTypes.object,
 };
