@@ -75,6 +75,11 @@ var theme = (0, _styles.createMuiTheme)({
         fontSize: 18 // color: '#000',
 
       }
+    },
+    PrivateNotchedOutline: {
+      legend: {
+        fontSize: '0.75em'
+      }
     }
   }
 });

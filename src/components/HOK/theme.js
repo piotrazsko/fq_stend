@@ -67,5 +67,10 @@ export const theme = createMuiTheme({
                 // color: '#000',
             },
         },
+        PrivateNotchedOutline: {
+            legend: {
+                fontSize: '0.75em',
+            },
+        },
     },
 });

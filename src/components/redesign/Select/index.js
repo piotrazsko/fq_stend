@@ -18,15 +18,13 @@ const useStyles = makeStyles(theme => {
             // flexWrap: 'wrap',
         },
         formControl: {
-            // margin: theme.spacing(1),
+            margin: theme.spacing(1),
             minWidth: 160,
         },
         selectEmpty: {
             marginTop: theme.spacing(2),
         },
         label: {
-            transform: 'translate(2px, -6px) scale(0.75) !important',
-            background: '#fff',
             padding: '0 2px',
         },
     };
@@ -67,17 +65,30 @@ export default function Select({
         >
             <InputLabel
                 ref={inputLabel}
+                variant={variant}
                 classes={{ root: classes.label }}
                 htmlFor="outlined-select-simple"
             >
                 {label || placeholder}
             </InputLabel>
             <SelectDefault
+                variant={variant}
                 onChange={(ev, value) => {
                     onChange(ev, value);
                 }}
                 value={value}
                 IconComponent={ExpandMoreIcon}
+                input={
+                    variant === 'outlined' ? (
+                        <OutlinedInput
+                            labelWidth={labelWidth}
+                            name={name}
+                            id="outlined-select-simple"
+                        />
+                    ) : (
+                        <Input labelWidth={labelWidth} name={name} id="outlined-select-simple" />
+                    )
+                }
                 {...props}
             >
                 {options.map(item => (

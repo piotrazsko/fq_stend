@@ -57,15 +57,13 @@ var useStyles = (0, _styles.makeStyles)(function (theme) {
       // flexWrap: 'wrap',
     },
     formControl: {
-      // margin: theme.spacing(1),
+      margin: theme.spacing(1),
       minWidth: 160
     },
     selectEmpty: {
       marginTop: theme.spacing(2)
     },
     label: {
-      transform: 'translate(2px, -6px) scale(0.75) !important',
-      background: '#fff',
       padding: '0 2px'
     }
   };
@@ -121,16 +119,27 @@ function Select(_ref) {
     fullWidth: fullWidth
   }, /*#__PURE__*/_react.default.createElement(_InputLabel.default, {
     ref: inputLabel,
+    variant: variant,
     classes: {
       root: classes.label
     },
     htmlFor: "outlined-select-simple"
   }, label || placeholder), /*#__PURE__*/_react.default.createElement(_Select.default, _extends({
+    variant: variant,
     onChange: function onChange(ev, value) {
       _onChange(ev, value);
     },
     value: value,
-    IconComponent: _ExpandMore.default
+    IconComponent: _ExpandMore.default,
+    input: variant === 'outlined' ? /*#__PURE__*/_react.default.createElement(_OutlinedInput.default, {
+      labelWidth: labelWidth,
+      name: name,
+      id: "outlined-select-simple"
+    }) : /*#__PURE__*/_react.default.createElement(_Input.default, {
+      labelWidth: labelWidth,
+      name: name,
+      id: "outlined-select-simple"
+    })
   }, props), options.map(function (item) {
     return /*#__PURE__*/_react.default.createElement(_MenuItem.default, {
       key: item.value,
