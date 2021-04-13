@@ -20,10 +20,10 @@ const useStyles = makeStyles(theme => ({
         minWidth: 160,
     },
     selectEmpty: {
-        marginTop: theme.spacing(2),
+        // marginTop: theme.spacing(2),
     },
     label: {
-        transform: 'translate(0px, -4px) scale(0.75) !important',
+        // transform: 'translate(0px, -4px) scale(0.75) !important',
     },
 }));
 
@@ -45,25 +45,27 @@ export default function Select({
     value,
     required,
     name = 'select',
+    labelProps = {},
     ...props
 }) {
     const classes = useStyles();
-    const inputLabel = React.useRef(null);
-    const [labelWidth, setLabelWidth] = React.useState(0);
-    React.useEffect(() => {
-        setLabelWidth(inputLabel.current.offsetWidth);
-    }, []);
+    // const inputLabel = React.useRef(null);
+    // const [labelWidth, setLabelWidth] = React.useState(0);
+    // React.useEffect(() => {
+    //     setLabelWidth(inputLabel.current.offsetWidth);
+    // }, []);
     return (
         <FormControl
             required={required}
-            variant="outlined"
+            variant={variant}
             className={clsx(classes.formControl, className)}
             fullWidth={fullWidth}
         >
             <InputLabel
-                ref={inputLabel}
+                // ref={inputLabel}
                 classes={{ root: classes.label }}
                 htmlFor="outlined-select-simple"
+                {...labelProps}
             >
                 {label || placeholder}
             </InputLabel>
@@ -72,17 +74,6 @@ export default function Select({
                     onChange(ev, value);
                 }}
                 value={value}
-                input={
-                    variant === 'outlined' ? (
-                        <OutlinedInput
-                            labelWidth={labelWidth}
-                            name={name}
-                            id="outlined-select-simple"
-                        />
-                    ) : (
-                        <Input labelWidth={labelWidth} name={name} id="outlined-select-simple" />
-                    )
-                }
                 IconComponent={ExpandMoreIcon}
                 {...props}
             >
@@ -110,4 +101,5 @@ Select.propTypes = {
     variant: PropTypes.string,
     label: PropTypes.string,
     fullWidth: PropTypes.bool,
+    labelProps: PropTypes.object,
 };

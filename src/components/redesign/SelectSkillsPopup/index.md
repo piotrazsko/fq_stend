@@ -1,6 +1,7 @@
 ```jsx
 <SelectSkillsPopup
-    showPopup={true}
+    variant="outlined"
+    showPopup={false}
     skills={[
         {
             id: 1,
