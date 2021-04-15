@@ -82,7 +82,8 @@ var CalendarPicker = function CalendarPicker(_ref) {
       variant = _ref$variant === void 0 ? 'text' : _ref$variant,
       children = _ref.children,
       pickerProps = _ref.pickerProps,
-      buttonProps = _ref.buttonProps;
+      buttonProps = _ref.buttonProps,
+      rightSide = _ref.rightSide;
 
   var _React$useState = _react.default.useState(null),
       _React$useState2 = _slicedToArray(_React$useState, 2),
@@ -171,7 +172,9 @@ var CalendarPicker = function CalendarPicker(_ref) {
     }
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: _styleModule.default.container
-  }, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_reactDateRange.Calendar, _extends({
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: _styleModule.default.calendarContainer
+  }, /*#__PURE__*/_react.default.createElement(_reactDateRange.Calendar, _extends({
     color: "#fa835f",
     showPreview: false,
     showMonthAndYearPickers: false,
@@ -183,7 +186,7 @@ var CalendarPicker = function CalendarPicker(_ref) {
     },
     showSelectionPreview: true,
     date: date
-  }, pickerProps))))));
+  }, pickerProps)), rightSide))));
 };
 
 var _default = CalendarPicker;
@@ -192,7 +195,8 @@ CalendarPicker.defaultProps = {
   options: [],
   onChange: function onChange() {},
   pickerProps: {},
-  buttonProps: {}
+  buttonProps: {},
+  rightSide: false
 };
 CalendarPicker.propTypes = {
   date: _propTypes.default.instanceOf(Date),
@@ -202,5 +206,6 @@ CalendarPicker.propTypes = {
   variant: _propTypes.default.string,
   children: _propTypes.default.element,
   pickerProps: _propTypes.default.object,
-  buttonProps: _propTypes.default.object
+  buttonProps: _propTypes.default.object,
+  rightSide: _propTypes.default.any
 };

@@ -1,3 +1,3 @@
 ```jsx
-<CalendarPicker />
+<CalendarPicker rightSide={<div>a-a-a</div>} />
 ```

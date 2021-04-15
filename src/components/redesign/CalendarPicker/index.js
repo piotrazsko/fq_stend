@@ -37,6 +37,7 @@ const CalendarPicker = ({
     children,
     pickerProps,
     buttonProps,
+    rightSide,
 }) => {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const classes = useStyles();
@@ -126,7 +127,7 @@ const CalendarPicker = ({
                 }}
             >
                 <div className={style.container}>
-                    <div>
+                    <div className={style.calendarContainer}>
                         <Calendar
                             color="#fa835f"
                             showPreview={false}
@@ -141,6 +142,7 @@ const CalendarPicker = ({
                             date={date}
                             {...pickerProps}
                         />
+                        {rightSide}
                     </div>
                 </div>
             </Popover>
@@ -155,6 +157,7 @@ CalendarPicker.defaultProps = {
     onChange: () => {},
     pickerProps: {},
     buttonProps: {},
+    rightSide: false,
 };
 CalendarPicker.propTypes = {
     date: PropTypes.instanceOf(Date),
@@ -165,4 +168,5 @@ CalendarPicker.propTypes = {
     children: PropTypes.element,
     pickerProps: PropTypes.object,
     buttonProps: PropTypes.object,
+    rightSide: PropTypes.any,
 };
