@@ -40,7 +40,7 @@ const CalendarPicker = ({
     rightSide,
     autoClose = true,
     forceClose = false,
-    calendar,
+    calendarClasses,
 }) => {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const classes = useStyles();
@@ -140,7 +140,12 @@ const CalendarPicker = ({
                 }}
             >
                 <div className={style.container}>
-                    <div className={[style.calendarContainer, classes.calendarContainer].join(' ')}>
+                    <div
+                        className={[
+                            style.calendarContainer,
+                            calendarClasses.calendarContainer,
+                        ].join(' ')}
+                    >
                         <Calendar
                             color="#fa835f"
                             showPreview={false}
@@ -171,7 +176,7 @@ CalendarPicker.defaultProps = {
     pickerProps: {},
     buttonProps: {},
     rightSide: false,
-    classes: { calendarContainer: '' },
+    calendarClasses: { calendarContainer: '' },
 };
 CalendarPicker.propTypes = {
     date: PropTypes.instanceOf(Date),
@@ -185,5 +190,5 @@ CalendarPicker.propTypes = {
     rightSide: PropTypes.any,
     autoClose: PropTypes.bool,
     forceClose: PropTypes.bool,
-    classes: PropTypes.shape({ calendarContainer: PropTypes.string }),
+    calendarClasses: PropTypes.shape({ calendarContainer: PropTypes.string }),
 };

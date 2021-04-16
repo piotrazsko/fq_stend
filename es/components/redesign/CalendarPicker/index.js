@@ -88,7 +88,7 @@ var CalendarPicker = function CalendarPicker(_ref) {
       autoClose = _ref$autoClose === void 0 ? true : _ref$autoClose,
       _ref$forceClose = _ref.forceClose,
       forceClose = _ref$forceClose === void 0 ? false : _ref$forceClose,
-      calendar = _ref.calendar;
+      calendarClasses = _ref.calendarClasses;
 
   var _React$useState = _react.default.useState(null),
       _React$useState2 = _slicedToArray(_React$useState, 2),
@@ -188,7 +188,7 @@ var CalendarPicker = function CalendarPicker(_ref) {
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: _styleModule.default.container
   }, /*#__PURE__*/_react.default.createElement("div", {
-    className: [_styleModule.default.calendarContainer, classes.calendarContainer].join(' ')
+    className: [_styleModule.default.calendarContainer, calendarClasses.calendarContainer].join(' ')
   }, /*#__PURE__*/_react.default.createElement(_reactDateRange.Calendar, _extends({
     color: "#fa835f",
     showPreview: false,
@@ -212,7 +212,7 @@ CalendarPicker.defaultProps = {
   pickerProps: {},
   buttonProps: {},
   rightSide: false,
-  classes: {
+  calendarClasses: {
     calendarContainer: ''
   }
 };
@@ -228,7 +228,7 @@ CalendarPicker.propTypes = {
   rightSide: _propTypes.default.any,
   autoClose: _propTypes.default.bool,
   forceClose: _propTypes.default.bool,
-  classes: _propTypes.default.shape({
+  calendarClasses: _propTypes.default.shape({
     calendarContainer: _propTypes.default.string
   })
 };
