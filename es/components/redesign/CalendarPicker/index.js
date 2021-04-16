@@ -123,7 +123,9 @@ var CalendarPicker = function CalendarPicker(_ref) {
   }, [forceClose]);
 
   var handleClose = function handleClose(date) {
-    if (autoClose) {
+    if (!date) {
+      setAnchorEl(null);
+    } else if (date && autoClose) {
       setAnchorEl(null);
     }
 

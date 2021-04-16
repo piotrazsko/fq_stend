@@ -64,9 +64,12 @@ const CalendarPicker = ({
     }, [forceClose]);
 
     const handleClose = date => {
-        if (autoClose) {
+        if (!date) {
+            setAnchorEl(null);
+        } else if (date && autoClose) {
             setAnchorEl(null);
         }
+
         if (date) {
             onChange(date);
         }
