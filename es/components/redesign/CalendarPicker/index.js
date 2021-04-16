@@ -83,7 +83,12 @@ var CalendarPicker = function CalendarPicker(_ref) {
       children = _ref.children,
       pickerProps = _ref.pickerProps,
       buttonProps = _ref.buttonProps,
-      rightSide = _ref.rightSide;
+      rightSide = _ref.rightSide,
+      _ref$autoClose = _ref.autoClose,
+      autoClose = _ref$autoClose === void 0 ? true : _ref$autoClose,
+      _ref$forceClose = _ref.forceClose,
+      forceClose = _ref$forceClose === void 0 ? false : _ref$forceClose,
+      calendar = _ref.calendar;
 
   var _React$useState = _react.default.useState(null),
       _React$useState2 = _slicedToArray(_React$useState, 2),
@@ -111,8 +116,16 @@ var CalendarPicker = function CalendarPicker(_ref) {
     }
   }, [date]);
 
+  _react.default.useEffect(function () {
+    if (forceClose) {
+      setAnchorEl(null);
+    }
+  }, [forceClose]);
+
   var handleClose = function handleClose(date) {
-    setAnchorEl(null);
+    if (autoClose) {
+      setAnchorEl(null);
+    }
 
     if (date) {
       onChange(date);
@@ -173,7 +186,7 @@ var CalendarPicker = function CalendarPicker(_ref) {
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: _styleModule.default.container
   }, /*#__PURE__*/_react.default.createElement("div", {
-    className: _styleModule.default.calendarContainer
+    className: [_styleModule.default.calendarContainer, classes.calendarContainer].join(' ')
   }, /*#__PURE__*/_react.default.createElement(_reactDateRange.Calendar, _extends({
     color: "#fa835f",
     showPreview: false,
@@ -196,7 +209,10 @@ CalendarPicker.defaultProps = {
   onChange: function onChange() {},
   pickerProps: {},
   buttonProps: {},
-  rightSide: false
+  rightSide: false,
+  classes: {
+    calendarContainer: ''
+  }
 };
 CalendarPicker.propTypes = {
   date: _propTypes.default.instanceOf(Date),
@@ -207,5 +223,10 @@ CalendarPicker.propTypes = {
   children: _propTypes.default.element,
   pickerProps: _propTypes.default.object,
   buttonProps: _propTypes.default.object,
-  rightSide: _propTypes.default.any
+  rightSide: _propTypes.default.any,
+  autoClose: _propTypes.default.bool,
+  forceClose: _propTypes.default.bool,
+  classes: _propTypes.default.shape({
+    calendarContainer: _propTypes.default.string
+  })
 };
