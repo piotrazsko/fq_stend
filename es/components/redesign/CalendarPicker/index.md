@@ -1,3 +1,9 @@
 ```jsx
-<CalendarPicker rightSide={<div>a-a-a</div>} />
+const [day, setDay] = React.useState(new Date());
+<CalendarPicker
+    rightSide={<div>{day.toString()}</div>}
+    value={day}
+    onChange={setDay}
+    autoClose={false}
+/>;
 ```

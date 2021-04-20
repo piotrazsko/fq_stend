@@ -20,6 +20,7 @@ const SkillSelect = ({
     showSelectAll = false,
     showSelectedItemsCount = false,
     customSkillCount = false,
+    onFilter,
 }) => {
     const skillsFiltred = React.useMemo(() => {
         return showOnlySkills
@@ -40,6 +41,12 @@ const SkillSelect = ({
                       : [...acc];
               }, []);
     }, [searchText, showOnlySkills, skills]);
+    React.useEffect(() => {
+        onFilter({
+            skillsFiltred,
+            customSkillsFiltred,
+        });
+    }, [skillsFiltred, customSkillsFiltred]);
     const customSkillsFiltred = React.useMemo(() => {
         const skills =
             searchText.length > 0
@@ -136,6 +143,7 @@ SkillSelect.defaultProps = {
     skills: [],
     defaultExpand: false,
     customSkillCount: false,
+    onFilter: () => {},
 };
 
 SkillSelect.propTypes = {
@@ -155,6 +163,7 @@ SkillSelect.propTypes = {
     showSelectAll: PropTypes.bool,
     defaultExpand: PropTypes.bool,
     customSkillCount: PropTypes.number,
+    onFilter: PropTypes.func,
 };
 
 export default SkillSelect;

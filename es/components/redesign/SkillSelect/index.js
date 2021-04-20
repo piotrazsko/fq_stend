@@ -62,7 +62,8 @@ var SkillSelect = function SkillSelect(_ref) {
       _ref$showSelectedItem = _ref.showSelectedItemsCount,
       showSelectedItemsCount = _ref$showSelectedItem === void 0 ? false : _ref$showSelectedItem,
       _ref$customSkillCount = _ref.customSkillCount,
-      customSkillCount = _ref$customSkillCount === void 0 ? false : _ref$customSkillCount;
+      customSkillCount = _ref$customSkillCount === void 0 ? false : _ref$customSkillCount,
+      onFilter = _ref.onFilter;
 
   var skillsFiltred = _react.default.useMemo(function () {
     return showOnlySkills ? skills.reduce(function (acc, i) {
@@ -81,6 +82,13 @@ var SkillSelect = function SkillSelect(_ref) {
       })]) : _toConsumableArray(acc);
     }, []);
   }, [searchText, showOnlySkills, skills]);
+
+  _react.default.useEffect(function () {
+    onFilter({
+      skillsFiltred: skillsFiltred,
+      customSkillsFiltred: customSkillsFiltred
+    });
+  }, [skillsFiltred, customSkillsFiltred]);
 
   var customSkillsFiltred = _react.default.useMemo(function () {
     var skills = searchText.length > 0 ? customSkills.filter(function (i) {
@@ -175,7 +183,8 @@ SkillSelect.defaultProps = {
   forceExpand: false,
   skills: [],
   defaultExpand: false,
-  customSkillCount: false
+  customSkillCount: false,
+  onFilter: function onFilter() {}
 };
 SkillSelect.propTypes = {
   skills: _propTypes.default.array,
@@ -193,7 +202,8 @@ SkillSelect.propTypes = {
   showSelectedItemsCount: _propTypes.default.bool,
   showSelectAll: _propTypes.default.bool,
   defaultExpand: _propTypes.default.bool,
-  customSkillCount: _propTypes.default.number
+  customSkillCount: _propTypes.default.number,
+  onFilter: _propTypes.default.func
 };
 var _default = SkillSelect;
 exports.default = _default;
