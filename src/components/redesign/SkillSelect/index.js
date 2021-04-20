@@ -41,12 +41,7 @@ const SkillSelect = ({
                       : [...acc];
               }, []);
     }, [searchText, showOnlySkills, skills]);
-    React.useEffect(() => {
-        onFilter({
-            skillsFiltred,
-            customSkillsFiltred,
-        });
-    }, [skillsFiltred, customSkillsFiltred]);
+
     const customSkillsFiltred = React.useMemo(() => {
         const skills =
             searchText.length > 0
@@ -82,6 +77,12 @@ const SkillSelect = ({
     React.useEffect(() => {
         onChangeCustomSkills([...selectedCustom]);
     }, [selectedCustom]);
+    React.useEffect(() => {
+        onFilter({
+            skillsFiltred,
+            customSkillsFiltred,
+        });
+    }, [skillsFiltred, customSkillsFiltred]);
     return (
         <div>
             {(searchText || showOnlySkills ? skillsFiltred : skills).map(i => (

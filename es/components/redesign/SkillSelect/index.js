@@ -83,13 +83,6 @@ var SkillSelect = function SkillSelect(_ref) {
     }, []);
   }, [searchText, showOnlySkills, skills]);
 
-  _react.default.useEffect(function () {
-    onFilter({
-      skillsFiltred: skillsFiltred,
-      customSkillsFiltred: customSkillsFiltred
-    });
-  }, [skillsFiltred, customSkillsFiltred]);
-
   var customSkillsFiltred = _react.default.useMemo(function () {
     var skills = searchText.length > 0 ? customSkills.filter(function (i) {
       return i.title.toLowerCase().search(searchText.toLowerCase()) !== -1;
@@ -135,6 +128,13 @@ var SkillSelect = function SkillSelect(_ref) {
   _react.default.useEffect(function () {
     onChangeCustomSkills(_toConsumableArray(selectedCustom));
   }, [selectedCustom]);
+
+  _react.default.useEffect(function () {
+    onFilter({
+      skillsFiltred: skillsFiltred,
+      customSkillsFiltred: customSkillsFiltred
+    });
+  }, [skillsFiltred, customSkillsFiltred]);
 
   return /*#__PURE__*/_react.default.createElement("div", null, (searchText || showOnlySkills ? skillsFiltred : skills).map(function (i) {
     return /*#__PURE__*/_react.default.createElement(_Item.default, {
