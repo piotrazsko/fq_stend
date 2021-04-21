@@ -1,12 +1,12 @@
 {
   "files": {
     "main.css": "/static/css/main.8f4ccbdc.chunk.css",
-    "main.js": "/build/main.14f021ae.js",
+    "main.js": "/build/main.0c30d8a8.js",
     "runtime~main.js": "/build/bundle.016cd79a.js",
     "static/css/2.a4969555.chunk.css": "/static/css/2.a4969555.chunk.css",
     "build/2.1003d663.js": "/build/2.1003d663.js",
     "index.html": "/index.html",
-    "precache-manifest.978c2b9ec268b6981b0d6bd81c89557c.js": "/precache-manifest.978c2b9ec268b6981b0d6bd81c89557c.js",
+    "precache-manifest.b68cc3dd47008d208a2322827bd4d9ea.js": "/precache-manifest.b68cc3dd47008d208a2322827bd4d9ea.js",
     "service-worker.js": "/service-worker.js",
     "static/css/2.a4969555.chunk.css.map": "/static/css/2.a4969555.chunk.css.map",
     "static/css/main.8f4ccbdc.chunk.css.map": "/static/css/main.8f4ccbdc.chunk.css.map",
@@ -32,7 +32,7 @@
     "static/media/InstagramIcon.608e92cd.svg": "/static/media/InstagramIcon.608e92cd.svg",
     "static/media/JournalIcon.52450f37.svg": "/static/media/JournalIcon.52450f37.svg",
     "static/media/Location.9ea0ebf9.svg": "/static/media/Location.9ea0ebf9.svg",
-    "static/media/Logo.9e8c7226.svg": "/static/media/Logo.9e8c7226.svg",
+    "static/media/Logo.4edcb4f2.svg": "/static/media/Logo.4edcb4f2.svg",
     "static/media/MakeUpIcon.0dd2963b.svg": "/static/media/MakeUpIcon.0dd2963b.svg",
     "static/media/MassageIcon.9a2e4412.svg": "/static/media/MassageIcon.9a2e4412.svg",
     "static/media/Messages.1df07912.svg": "/static/media/Messages.1df07912.svg",
