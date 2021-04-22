@@ -44,12 +44,13 @@ function PhoneInput(_ref) {
       countryCode = _ref$countryCode === void 0 ? 'by' : _ref$countryCode,
       _ref$onlyCountries = _ref.onlyCountries,
       onlyCountries = _ref$onlyCountries === void 0 ? ['ru', 'by'] : _ref$onlyCountries,
+      countryCodes = _ref.countryCodes,
       _ref$placeholder = _ref.placeholder,
       placeholder = _ref$placeholder === void 0 ? 'Телефон' : _ref$placeholder,
       _ref$label = _ref.label,
       label = _ref$label === void 0 ? 'Контактный номер' : _ref$label,
       required = _ref.required,
-      props = _objectWithoutProperties(_ref, ["value", "onChange", "name", "disabled", "countryCode", "onlyCountries", "placeholder", "label", "required"]);
+      props = _objectWithoutProperties(_ref, ["value", "onChange", "name", "disabled", "countryCode", "onlyCountries", "countryCodes", "placeholder", "label", "required"]);
 
   var _React$useState = _react.default.useState(value),
       _React$useState2 = _slicedToArray(_React$useState, 2),
@@ -66,11 +67,25 @@ function PhoneInput(_ref) {
     }
   }, [phone]);
 
+  var countryByPhone = _react.default.useMemo(function () {
+    switch (true) {
+      case countryCodes.some(function (i) {
+        return value.indexOf(i.code) === 0;
+      }):
+        return countryCodes.find(function (i) {
+          return value.indexOf(i.code) === 0;
+        }).country;
+
+      default:
+        return countryCode;
+    }
+  }, [value, onlyCountries, countryCodes]);
+
   return /*#__PURE__*/_react.default.createElement(_NoSsr.default, {
     defer: true
   }, /*#__PURE__*/_react.default.createElement(_MuiPhoneNumber.default, _extends({
     countryCodeEditable: true,
-    defaultCountry: countryCode,
+    defaultCountry: countryByPhone,
     onlyCountries: onlyCountries,
     margin: "normal",
     fullWidth: true,
@@ -87,7 +102,14 @@ function PhoneInput(_ref) {
 }
 
 PhoneInput.defaultProps = {
-  inputProps: {}
+  inputProps: {},
+  countryCodes: [{
+    country: 'by',
+    code: '375'
+  }, {
+    code: '7',
+    country: 'ru'
+  }]
 };
 PhoneInput.propTypes = {
   value: _propTypes.default.string,
@@ -102,5 +124,9 @@ PhoneInput.propTypes = {
   placeholder: _propTypes.default.string,
   label: _propTypes.default.string,
   required: _propTypes.default.bool,
-  onlyCountries: _propTypes.default.arrayOf(_propTypes.default.string)
+  onlyCountries: _propTypes.default.arrayOf(_propTypes.default.string),
+  countryCodes: _propTypes.default.arrayOf(_propTypes.default.shape({
+    country: _propTypes.default.string,
+    code: _propTypes.default.string
+  }))
 };

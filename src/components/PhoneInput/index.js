@@ -10,6 +10,7 @@ export default function PhoneInput({
     disabled,
     countryCode = 'by',
     onlyCountries = ['ru', 'by'],
+    countryCodes,
     placeholder = 'Телефон',
     label = 'Контактный номер',
     required,
@@ -24,12 +25,19 @@ export default function PhoneInput({
             onChange(phone);
         }
     }, [phone]);
-
+    const countryByPhone = React.useMemo(() => {
+        switch (true) {
+            case countryCodes.some(i => value.indexOf(i.code) === 0):
+                return countryCodes.find(i => value.indexOf(i.code) === 0).country;
+            default:
+                return countryCode;
+        }
+    }, [value, onlyCountries, countryCodes]);
     return (
         <NoSsr defer>
             <MuiPhoneNumber
                 countryCodeEditable
-                defaultCountry={countryCode}
+                defaultCountry={countryByPhone}
                 onlyCountries={onlyCountries}
                 margin="normal"
                 fullWidth
@@ -49,6 +57,7 @@ export default function PhoneInput({
 }
 PhoneInput.defaultProps = {
     inputProps: {},
+    countryCodes: [{ country: 'by', code: '375' }, { code: '7', country: 'ru' }],
 };
 PhoneInput.propTypes = {
     value: PropTypes.string,
@@ -64,4 +73,7 @@ PhoneInput.propTypes = {
     label: PropTypes.string,
     required: PropTypes.bool,
     onlyCountries: PropTypes.arrayOf(PropTypes.string),
+    countryCodes: PropTypes.arrayOf(
+        PropTypes.shape({ country: PropTypes.string, code: PropTypes.string })
+    ),
 };
