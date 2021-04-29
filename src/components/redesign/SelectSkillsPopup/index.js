@@ -24,6 +24,7 @@ const SelectSkillsPopup = ({
     showSelectAll,
     showSelectedItemsCount,
     slillsSelectProps,
+    popupProps,
 }) => {
     const [search, setSearch] = React.useState();
     const [selectedSkillsState, setSelectedSkills] = React.useState([...selectedSkills]);
@@ -50,6 +51,7 @@ const SelectSkillsPopup = ({
             submitButtonText="Добавить"
             childrenContainerClassName={style.dataContainer}
             popupBackgroundsProps={{ onClick: onClose }}
+            {...popupProps}
         >
             <div className={style.topBlock}>
                 <TextField
@@ -109,6 +111,7 @@ SelectSkillsPopup.propTypes = {
     showSelectAll: PropTypes.bool,
     showSelectedItemsCount: PropTypes.bool,
     slillsSelectProps: PropTypes.object,
+    popupProps: PropTypes.object,
 };
 SelectSkillsPopup.defaultProps = {
     selectedCustomSkills: [],
@@ -123,6 +126,7 @@ SelectSkillsPopup.defaultProps = {
     showSelectAll: false,
     showSelectedItemsCount: false,
     slillsSelectProps: {},
+    popupProps: {},
 };
 
 export default SelectSkillsPopup;

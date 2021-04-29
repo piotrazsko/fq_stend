@@ -63,7 +63,8 @@ var SelectSkillsPopup = function SelectSkillsPopup(_ref) {
       onAddCustomSkills = _ref.onAddCustomSkills,
       showSelectAll = _ref.showSelectAll,
       showSelectedItemsCount = _ref.showSelectedItemsCount,
-      slillsSelectProps = _ref.slillsSelectProps;
+      slillsSelectProps = _ref.slillsSelectProps,
+      popupProps = _ref.popupProps;
 
   var _React$useState = _react.default.useState(),
       _React$useState2 = _slicedToArray(_React$useState, 2),
@@ -80,7 +81,7 @@ var SelectSkillsPopup = function SelectSkillsPopup(_ref) {
       selectedCustomSkillsState = _React$useState6[0],
       setSelectedCustomSkills = _React$useState6[1];
 
-  return /*#__PURE__*/_react.default.createElement(_Popup.default, {
+  return /*#__PURE__*/_react.default.createElement(_Popup.default, _extends({
     showClear: true,
     title: title,
     onClear: function onClear() {
@@ -104,7 +105,7 @@ var SelectSkillsPopup = function SelectSkillsPopup(_ref) {
     popupBackgroundsProps: {
       onClick: onClose
     }
-  }, /*#__PURE__*/_react.default.createElement("div", {
+  }, popupProps), /*#__PURE__*/_react.default.createElement("div", {
     className: _styleModule.default.topBlock
   }, /*#__PURE__*/_react.default.createElement(_TextField.default, {
     className: _styleModule.default.searchInput,
@@ -158,7 +159,8 @@ SelectSkillsPopup.propTypes = {
   onAddCustomSkills: _propTypes.default.func,
   showSelectAll: _propTypes.default.bool,
   showSelectedItemsCount: _propTypes.default.bool,
-  slillsSelectProps: _propTypes.default.object
+  slillsSelectProps: _propTypes.default.object,
+  popupProps: _propTypes.default.object
 };
 SelectSkillsPopup.defaultProps = {
   selectedCustomSkills: [],
@@ -172,7 +174,8 @@ SelectSkillsPopup.defaultProps = {
   onClose: function onClose() {},
   showSelectAll: false,
   showSelectedItemsCount: false,
-  slillsSelectProps: {}
+  slillsSelectProps: {},
+  popupProps: {}
 };
 var _default = SelectSkillsPopup;
 exports.default = _default;
