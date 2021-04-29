@@ -23,14 +23,21 @@ const BorderLinearProgress = withStyles(theme => ({
 const RatingDetails = ({ data }) => {
     const { count, ratings: rating = [] } = data;
     const ratingValue =
-        (rating[5] * 5 + rating[4] * 4 + rating[3] * 3 + rating[2] * 2 + rating[1] * 1) / count;
+        Math.ceil(
+            ((rating[5] * 5 + rating[4] * 4 + rating[3] * 3 + rating[2] * 2 + rating[1] * 1) * 10) /
+                count
+        ) / 10;
     return (
         !!rating && (
             <div className={style.container}>
                 <div className={style.topLine}>
-                    {ratingValue}
-                    /5
-                    <Rating className={style.rating} value={ratingValue} size="small" />
+                    {`${isNaN(ratingValue) ? 5 : ratingValue} / 5`}
+
+                    <Rating
+                        className={style.rating}
+                        value={isNaN(ratingValue) ? 5 : ratingValue}
+                        size="small"
+                    />
                     <span className={style.feedbacksCount}>{count} отзыв/-ов</span>
                 </div>
                 <div className={style.lines}>

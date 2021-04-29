@@ -42,14 +42,14 @@ var RatingDetails = function RatingDetails(_ref) {
   var count = data.count,
       _data$ratings = data.ratings,
       rating = _data$ratings === void 0 ? [] : _data$ratings;
-  var ratingValue = (rating[5] * 5 + rating[4] * 4 + rating[3] * 3 + rating[2] * 2 + rating[1] * 1) / count;
+  var ratingValue = Math.ceil((rating[5] * 5 + rating[4] * 4 + rating[3] * 3 + rating[2] * 2 + rating[1] * 1) * 10 / count) / 10;
   return !!rating && /*#__PURE__*/_react.default.createElement("div", {
     className: _styleModule.default.container
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: _styleModule.default.topLine
-  }, ratingValue, "/5", /*#__PURE__*/_react.default.createElement(_Rating.default, {
+  }, "".concat(isNaN(ratingValue) ? 5 : ratingValue, " / 5"), /*#__PURE__*/_react.default.createElement(_Rating.default, {
     className: _styleModule.default.rating,
-    value: ratingValue,
+    value: isNaN(ratingValue) ? 5 : ratingValue,
     size: "small"
   }), /*#__PURE__*/_react.default.createElement("span", {
     className: _styleModule.default.feedbacksCount
