@@ -8,14 +8,14 @@ $maxHeight: 100vh;
     padding: 20px;
 }
 .container {
-    min-width: 300px;
+    min-width: 280px;
     max-height: $maxHeight;
     max-width: $maxWidth;
     @media (max-width: $md) {
         max-width: $maxWidthMobile;
     }
     @media (min-width: $md) {
-        min-width: 350px;
+        min-width: 280px;
     }
     .title {
         padding: 0 25px 12px 25px;

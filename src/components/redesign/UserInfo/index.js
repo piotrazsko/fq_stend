@@ -8,7 +8,7 @@ import Avatar from '@material-ui/core/Avatar';
 import Rating from '../Rating';
 const color = '#fa835f';
 
-const UserInfo = ({ data, onClick, isMaster = false }) => {
+const UserInfo = ({ data, onClick, isMaster = false, classes }) => {
     const {
         first_name,
         phone,
@@ -22,13 +22,13 @@ const UserInfo = ({ data, onClick, isMaster = false }) => {
     const isAdmin = false;
     return (
         !!data && (
-            <div onClick={onClick} className={style.item} key={id}>
+            <div onClick={onClick} className={[style.item, classes.root].join(' ')} key={id}>
                 <Avatar alt="" src={avatar || ''}>
                     {`${gets(first_name, '[0]', '')}${gets(last_name, '[0]', '')}`}
                 </Avatar>
                 <div className={style.titleContainer}>
                     <div>
-                        <div className={style.title}>
+                        <div className={[style.title, classes.title].join(' ')}>
                             {`${first_name || ''} ${last_name || ''}`}
                         </div>
                         {phone && !isMaster && <div className={style.phone}>+{phone}</div>}
@@ -36,7 +36,7 @@ const UserInfo = ({ data, onClick, isMaster = false }) => {
                 </div>
 
                 <div className={style.additionalInfo}>
-                    <div className={style.rating}>
+                    <div className={[style.rating, classes.rating].join(' ')}>
                         <Rating
                             data={{
                                 user_rating: rating,
@@ -71,11 +71,21 @@ const UserInfo = ({ data, onClick, isMaster = false }) => {
 UserInfo.defaultProps = {
     data: {},
     onClick: () => {},
+    classes: {
+        root: '',
+        rating: '',
+        title: '',
+    },
 };
 
 UserInfo.propTypes = {
     onClick: PropTypes.func,
     isMaster: PropTypes.bool,
+    classes: PropTypes.shape({
+        root: PropTypes.string,
+        title: PropTypes.string,
+        rating: PropTypes.string,
+    }),
 };
 
 export default UserInfo;

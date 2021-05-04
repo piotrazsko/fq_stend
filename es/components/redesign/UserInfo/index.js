@@ -29,7 +29,8 @@ var UserInfo = function UserInfo(_ref) {
   var data = _ref.data,
       onClick = _ref.onClick,
       _ref$isMaster = _ref.isMaster,
-      isMaster = _ref$isMaster === void 0 ? false : _ref$isMaster;
+      isMaster = _ref$isMaster === void 0 ? false : _ref$isMaster,
+      classes = _ref.classes;
   var first_name = data.first_name,
       phone = data.phone,
       last_name = data.last_name,
@@ -41,7 +42,7 @@ var UserInfo = function UserInfo(_ref) {
   var isAdmin = false;
   return !!data && /*#__PURE__*/_react.default.createElement("div", {
     onClick: onClick,
-    className: _styleModule.default.item,
+    className: [_styleModule.default.item, classes.root].join(' '),
     key: id
   }, /*#__PURE__*/_react.default.createElement(_Avatar.default, {
     alt: "",
@@ -49,13 +50,13 @@ var UserInfo = function UserInfo(_ref) {
   }, "".concat((0, _get.default)(first_name, '[0]', '')).concat((0, _get.default)(last_name, '[0]', ''))), /*#__PURE__*/_react.default.createElement("div", {
     className: _styleModule.default.titleContainer
   }, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", {
-    className: _styleModule.default.title
+    className: [_styleModule.default.title, classes.title].join(' ')
   }, "".concat(first_name || '', " ").concat(last_name || '')), phone && !isMaster && /*#__PURE__*/_react.default.createElement("div", {
     className: _styleModule.default.phone
   }, "+", phone))), /*#__PURE__*/_react.default.createElement("div", {
     className: _styleModule.default.additionalInfo
   }, /*#__PURE__*/_react.default.createElement("div", {
-    className: _styleModule.default.rating
+    className: [_styleModule.default.rating, classes.rating].join(' ')
   }, /*#__PURE__*/_react.default.createElement(_Rating.default, {
     data: {
       user_rating: rating,
@@ -66,11 +67,21 @@ var UserInfo = function UserInfo(_ref) {
 
 UserInfo.defaultProps = {
   data: {},
-  onClick: function onClick() {}
+  onClick: function onClick() {},
+  classes: {
+    root: '',
+    rating: '',
+    title: ''
+  }
 };
 UserInfo.propTypes = {
   onClick: _propTypes.default.func,
-  isMaster: _propTypes.default.bool
+  isMaster: _propTypes.default.bool,
+  classes: _propTypes.default.shape({
+    root: _propTypes.default.string,
+    title: _propTypes.default.string,
+    rating: _propTypes.default.string
+  })
 };
 var _default = UserInfo;
 exports.default = _default;
