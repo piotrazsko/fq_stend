@@ -31,6 +31,7 @@ const SkillItem = ({
     currency_id,
     onClick,
     onEdit,
+    classes,
 }) => {
     const getIcon = () => {
         switch (data.parent_uid) {
@@ -66,12 +67,12 @@ const SkillItem = ({
     };
     return (
         !!data && (
-            <div className={style.item} key={id} onClick={onClick}>
+            <div className={[style.item, classes.root].join(' ')} key={id} onClick={onClick}>
                 {getIcon()}
                 <div className={style.titleContainer}>
-                    <div className={style.title}> {title}</div>
+                    <div className={[style.title, classes.title].join(' ')}> {title}</div>
                 </div>
-                <div className={style.price}>
+                <div className={[style.price, classes.price].join(' ')}>
                     {showPrice && (
                         <NumberFormat
                             value={parseFloat(price)}
@@ -167,6 +168,11 @@ SkillItem.propTypes = {
     showPrice: PropTypes.bool,
     showInfo: PropTypes.bool,
     showDelete: PropTypes.bool,
+    classes: PropTypes.shape({
+        price: PropTypes.string,
+        title: PropTypes.string,
+        root: PropTypes.string,
+    }),
 };
 SkillItem.defaultProps = {
     data: {},
@@ -177,5 +183,6 @@ SkillItem.defaultProps = {
     showPrice: true,
     showInfo: true,
     showDelete: true,
+    classes: { price: '', title: '', root: '' },
 };
 export default SkillItem;

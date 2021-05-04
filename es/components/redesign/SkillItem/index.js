@@ -45,7 +45,8 @@ var SkillItem = function SkillItem(_ref) {
       showDelete = _ref.showDelete,
       currency_id = _ref.currency_id,
       onClick = _ref.onClick,
-      onEdit = _ref.onEdit;
+      onEdit = _ref.onEdit,
+      classes = _ref.classes;
 
   var getIcon = function getIcon() {
     switch (data.parent_uid) {
@@ -121,15 +122,15 @@ var SkillItem = function SkillItem(_ref) {
   };
 
   return !!data && /*#__PURE__*/_react.default.createElement("div", {
-    className: _styleModule.default.item,
+    className: [_styleModule.default.item, classes.root].join(' '),
     key: id,
     onClick: onClick
   }, getIcon(), /*#__PURE__*/_react.default.createElement("div", {
     className: _styleModule.default.titleContainer
   }, /*#__PURE__*/_react.default.createElement("div", {
-    className: _styleModule.default.title
+    className: [_styleModule.default.title, classes.title].join(' ')
   }, " ", title)), /*#__PURE__*/_react.default.createElement("div", {
-    className: _styleModule.default.price
+    className: [_styleModule.default.price, classes.price].join(' ')
   }, showPrice && /*#__PURE__*/_react.default.createElement(_NumberFormat.default, {
     value: parseFloat(price),
     displayType: 'text',
@@ -195,7 +196,12 @@ SkillItem.propTypes = {
   showDuration: _propTypes.default.bool,
   showPrice: _propTypes.default.bool,
   showInfo: _propTypes.default.bool,
-  showDelete: _propTypes.default.bool
+  showDelete: _propTypes.default.bool,
+  classes: _propTypes.default.shape({
+    price: _propTypes.default.string,
+    title: _propTypes.default.string,
+    root: _propTypes.default.string
+  })
 };
 SkillItem.defaultProps = {
   data: {},
@@ -205,7 +211,12 @@ SkillItem.defaultProps = {
   showDuration: true,
   showPrice: true,
   showInfo: true,
-  showDelete: true
+  showDelete: true,
+  classes: {
+    price: '',
+    title: '',
+    root: ''
+  }
 };
 var _default = SkillItem;
 exports.default = _default;
