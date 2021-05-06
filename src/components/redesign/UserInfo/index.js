@@ -35,7 +35,7 @@ const UserInfo = ({ data, onClick, isMaster = false, classes }) => {
                     </div>
                 </div>
 
-                <div className={style.additionalInfo}>
+                <div className={[style.additionalInfo, classes.dataContainer].join(' ')}>
                     <div className={[style.rating, classes.rating].join(' ')}>
                         <Rating
                             data={{
@@ -75,6 +75,7 @@ UserInfo.defaultProps = {
         root: '',
         rating: '',
         title: '',
+        dataContainer: '',
     },
 };
 
@@ -85,6 +86,7 @@ UserInfo.propTypes = {
         root: PropTypes.string,
         title: PropTypes.string,
         rating: PropTypes.string,
+        dataContainer: PropTypes.string,
     }),
 };
 

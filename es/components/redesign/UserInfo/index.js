@@ -54,7 +54,7 @@ var UserInfo = function UserInfo(_ref) {
   }, "".concat(first_name || '', " ").concat(last_name || '')), phone && !isMaster && /*#__PURE__*/_react.default.createElement("div", {
     className: _styleModule.default.phone
   }, "+", phone))), /*#__PURE__*/_react.default.createElement("div", {
-    className: _styleModule.default.additionalInfo
+    className: [_styleModule.default.additionalInfo, classes.dataContainer].join(' ')
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: [_styleModule.default.rating, classes.rating].join(' ')
   }, /*#__PURE__*/_react.default.createElement(_Rating.default, {
@@ -71,7 +71,8 @@ UserInfo.defaultProps = {
   classes: {
     root: '',
     rating: '',
-    title: ''
+    title: '',
+    dataContainer: ''
   }
 };
 UserInfo.propTypes = {
@@ -80,7 +81,8 @@ UserInfo.propTypes = {
   classes: _propTypes.default.shape({
     root: _propTypes.default.string,
     title: _propTypes.default.string,
-    rating: _propTypes.default.string
+    rating: _propTypes.default.string,
+    dataContainer: _propTypes.default.string
   })
 };
 var _default = UserInfo;
