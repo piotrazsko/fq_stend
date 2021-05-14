@@ -195,6 +195,12 @@ Object.defineProperty(exports, "HelpIcon", {
     return _HelpIcon.ReactComponent;
   }
 });
+Object.defineProperty(exports, "FilterIcon", {
+  enumerable: true,
+  get: function get() {
+    return _Filter.ReactComponent;
+  }
+});
 Object.defineProperty(exports, "CosmeticsIcon", {
   enumerable: true,
   get: function get() {
@@ -351,6 +357,8 @@ var _PersonIcon = require("../../static/images/svg/PersonIcon.svg");
 var _SearchIcon = require("../../static/images/svg/SearchIcon.svg");
 
 var _HelpIcon = require("../../static/images/svg/HelpIcon.svg");
+
+var _Filter = require("../../static/images/svg/Filter.svg");
 
 var _CosmeticsIcon = require("../../static/images/svg/services/CosmeticsIcon.svg");
 
