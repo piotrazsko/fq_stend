@@ -44,7 +44,7 @@ var FeedbackItem = function FeedbackItem(_ref) {
       user_id = data.user_id;
   var skillsStr = !showParent ? skills.map(function (i) {
     return i.title;
-  }).join(',') : Array.from(new Set((0, _skills.getParentsSkillsBySkills)(skills, skillsList))).map(function (i) {
+  }).join(',') : Array.from(new Set((0, _skills.getParentsSkillsBySkillsUID)(skills, skillsList))).map(function (i) {
     return i.title;
   }).join(', ');
   console.log(skillsStr);

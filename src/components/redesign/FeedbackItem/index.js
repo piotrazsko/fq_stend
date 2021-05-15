@@ -6,7 +6,7 @@ import get from 'lodash/get';
 import Rating from '@material-ui/lab/Rating';
 import moment from 'moment';
 import style from './style.module.scss';
-import { getParentsSkillsBySkills } from '../../../helpers/skills';
+import { getParentsSkillsBySkillsUID } from '../../../helpers/skills';
 
 const FeedbackItem = ({
     data = {},
@@ -18,7 +18,7 @@ const FeedbackItem = ({
     const { rating, master, feedback, user, created_at, skills, id, user_id } = data;
     const skillsStr = !showParent
         ? skills.map(i => i.title).join(',')
-        : Array.from(new Set(getParentsSkillsBySkills(skills, skillsList)))
+        : Array.from(new Set(getParentsSkillsBySkillsUID(skills, skillsList)))
               .map(i => i.title)
               .join(', ');
     console.log(skillsStr);
