@@ -21,6 +21,7 @@ const FeedbackItem = ({
         : Array.from(new Set(getParentsSkillsBySkills(skills, skillsList)))
               .map(i => i.title)
               .join(', ');
+    console.log(skillsStr);
     return (
         <div className={[style.container, showDivider ? style.divider : ''].join(' ')}>
             <div

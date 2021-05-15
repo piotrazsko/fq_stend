@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.getAllSkills = exports.getSalonsSkills = exports.findSubskillsByIds = exports.getParentsSkillsBySkills = exports.filterSkillsForSelect = exports.prepareSkilsForSearch = void 0;
+exports.getAllSkills = exports.getSalonsSkills = exports.findSubskillsByIds = exports.getParentsSkillsBySkillsUID = exports.getParentsSkillsBySkills = exports.filterSkillsForSelect = exports.prepareSkilsForSearch = void 0;
 
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
@@ -85,6 +85,32 @@ var getParentsSkillsBySkills = function getParentsSkillsBySkills(skills, allSkil
 };
 
 exports.getParentsSkillsBySkills = getParentsSkillsBySkills;
+
+var getParentsSkillsBySkillsUID = function getParentsSkillsBySkillsUID(skills, allSkills) {
+  return allSkills.map(function (_ref2) {
+    var uid = _ref2.uid,
+        title = _ref2.title,
+        id = _ref2.id;
+    return {
+      id: id,
+      uid: uid,
+      title: title
+    };
+  }).filter(function (i) {
+    var count = 0;
+    skills.forEach(function (el) {
+      if (el.parent_uid === i.uid) {
+        count++;
+      }
+    });
+    i.count = count;
+    return skills.find(function (item) {
+      return item.parent_uid == i.uid;
+    });
+  });
+};
+
+exports.getParentsSkillsBySkillsUID = getParentsSkillsBySkillsUID;
 
 var findSubskillsByIds = function findSubskillsByIds() {
   var fullsKills = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];

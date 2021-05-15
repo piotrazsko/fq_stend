@@ -34,6 +34,24 @@ export const getParentsSkillsBySkills = (skills, allSkills) => {
             return skills.find(item => item.parent_skill_id == i.id);
         });
 };
+export const getParentsSkillsBySkillsUID = (skills, allSkills) => {
+    return allSkills
+        .map(({ uid, title, id }) => ({
+            id,
+            uid,
+            title,
+        }))
+        .filter(i => {
+            let count = 0;
+            skills.forEach(el => {
+                if (el.parent_uid === i.uid) {
+                    count++;
+                }
+            });
+            i.count = count;
+            return skills.find(item => item.parent_uid == i.uid);
+        });
+};
 export const findSubskillsByIds = (fullsKills = [], ids = []) => {
     return fullsKills
         .reduce((acc, item) => {

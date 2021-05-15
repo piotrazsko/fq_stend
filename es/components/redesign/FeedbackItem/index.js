@@ -47,6 +47,7 @@ var FeedbackItem = function FeedbackItem(_ref) {
   }).join(',') : Array.from(new Set((0, _skills.getParentsSkillsBySkills)(skills, skillsList))).map(function (i) {
     return i.title;
   }).join(', ');
+  console.log(skillsStr);
   return /*#__PURE__*/_react.default.createElement("div", {
     className: [_styleModule.default.container, showDivider ? _styleModule.default.divider : ''].join(' ')
   }, /*#__PURE__*/_react.default.createElement("div", {
