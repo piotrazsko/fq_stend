@@ -15,3 +15,15 @@ Object.keys(_calendar).forEach(function (key) {
     }
   });
 });
+
+var _skills = require("./skills");
+
+Object.keys(_skills).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _skills[key];
+    }
+  });
+});

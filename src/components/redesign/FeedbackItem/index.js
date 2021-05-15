@@ -1,3 +1,4 @@
+/* global Set */
 import React from 'react';
 import PropTypes from 'prop-types';
 import Avatar from '@material-ui/core/Avatar';
@@ -5,9 +6,21 @@ import get from 'lodash/get';
 import Rating from '@material-ui/lab/Rating';
 import moment from 'moment';
 import style from './style.module.scss';
+import { getParentsSkillsBySkills } from '../../../helpers/skills';
 
-const FeedbackItem = ({ data = {}, history, showDivider = true }) => {
+const FeedbackItem = ({
+    data = {},
+    history,
+    showDivider = true,
+    showParent = false,
+    skillsList = [],
+}) => {
     const { rating, master, feedback, user, created_at, skills, id, user_id } = data;
+    const skillsStr = !showParent
+        ? skills.map(i => i.title).join(',')
+        : Array.from(new Set(getParentsSkillsBySkills(skills, skillsList)))
+              .map(i => i.title)
+              .join(', ');
     return (
         <div className={[style.container, showDivider ? style.divider : ''].join(' ')}>
             <div
@@ -39,7 +52,7 @@ const FeedbackItem = ({ data = {}, history, showDivider = true }) => {
                 </div>
                 <div className={style.skills}>
                     <span className={style.title}>Услуги:</span>
-                    <span className={style.value}>{skills.map(i => i.title).join(',')}</span>
+                    <span className={style.value}>{skillsStr}</span>
                 </div>
             </div>
         </div>
@@ -49,6 +62,9 @@ const FeedbackItem = ({ data = {}, history, showDivider = true }) => {
 FeedbackItem.propTypes = {
     data: PropTypes.object,
     history: PropTypes.object,
+    showDivider: PropTypes.bool,
+    showParent: PropTypes.bool,
+    skillsList: PropTypes.array,
 };
 
 export default FeedbackItem;
