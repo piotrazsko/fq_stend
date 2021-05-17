@@ -15,9 +15,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var InfoCardLine = function InfoCardLine(_ref) {
   var title = _ref.title,
-      value = _ref.value;
+      value = _ref.value,
+      _ref$className = _ref.className,
+      className = _ref$className === void 0 ? '' : _ref$className;
   return /*#__PURE__*/_react.default.createElement("div", {
-    className: _styleModule.default.container
+    className: [_styleModule.default.container, className].join(' ')
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: _styleModule.default.title
   }, title), /*#__PURE__*/_react.default.createElement("div", {
@@ -27,7 +29,8 @@ var InfoCardLine = function InfoCardLine(_ref) {
 
 InfoCardLine.propTypes = {
   title: _propTypes.default.string,
-  value: _propTypes.default.string
+  value: _propTypes.default.string,
+  className: _propTypes.default.string
 };
 var _default = InfoCardLine;
 exports.default = _default;
