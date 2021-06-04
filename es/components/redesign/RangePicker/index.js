@@ -171,6 +171,7 @@ var RangePicker = function RangePicker(_ref) {
       variant = _ref$variant === void 0 ? 'text' : _ref$variant,
       _ref$rightAlign = _ref.rightAlign,
       rightAlign = _ref$rightAlign === void 0 ? false : _ref$rightAlign,
+      placeholder = _ref.placeholder,
       buttonProps = _ref.buttonProps,
       pickerProps = _ref.pickerProps;
 
@@ -238,15 +239,15 @@ var RangePicker = function RangePicker(_ref) {
     },
     name: "name",
     variant: variant
-  }, buttonProps), /*#__PURE__*/_react.default.createElement(_ChevronLeft.default, {
+  }, buttonProps), placeholder ? placeholder : /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_ChevronLeft.default, {
     fontSize: "small",
     color: "primary"
   }), /*#__PURE__*/_react.default.createElement("span", {
     className: _styleModule.default.textButton
-  }, datePrepared.from.format('MM YYYY') !== datePrepared.to.format('MM YYYY') ? "   ".concat(datePrepared.from.format('DD.MM.YYYY'), " - ").concat(datePrepared.to.format('DD.MM.YYYY')) : "   ".concat(datePrepared.from.format('DD'), " - ").concat(datePrepared.to.format('DD.MM.YYYY'))), /*#__PURE__*/_react.default.createElement(_ChevronRight.default, {
+  }, date.from.format('MM YYYY') !== date.to.format('MM YYYY') ? "   ".concat(date.from.format('DD.MM.YYYY'), " - ").concat(date.to.format('DD.MM.YYYY')) : "   ".concat(date.from.format('DD'), " - ").concat(date.to.format('DD.MM.YYYY'))), /*#__PURE__*/_react.default.createElement(_ChevronRight.default, {
     color: "primary",
     fontSize: "small"
-  })), /*#__PURE__*/_react.default.createElement(_Popover.default, {
+  }))), /*#__PURE__*/_react.default.createElement(_Popover.default, {
     id: id,
     open: open,
     anchorEl: anchorEl,
@@ -331,5 +332,6 @@ RangePicker.propTypes = {
   rightAlign: _propTypes.default.bool,
   pickerProps: _propTypes.default.object,
   buttonProps: _propTypes.default.object,
-  onChange: _propTypes.default.func
+  onChange: _propTypes.default.func,
+  placeholder: _propTypes.default.string
 };

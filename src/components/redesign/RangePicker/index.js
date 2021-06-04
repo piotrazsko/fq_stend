@@ -20,6 +20,7 @@ import {
     startOfWeek,
     endOfWeek,
     isSameDay,
+    differenceInCalendarDays,
 } from 'date-fns';
 import style from './style.module.scss';
 import 'react-date-range/dist/styles.css'; // main css file
@@ -128,6 +129,7 @@ const RangePicker = ({
     color,
     variant = 'text',
     rightAlign = false,
+    placeholder,
     buttonProps,
     pickerProps,
 }) => {
@@ -175,7 +177,7 @@ const RangePicker = ({
     };
 
     return (
-        <React.Fragment>
+        <>
             <Button
                 className={rightAlign ? '' : style.headerButton}
                 onClick={handleClick}
@@ -189,17 +191,21 @@ const RangePicker = ({
                 variant={variant}
                 {...buttonProps}
             >
-                <ChevronLeftIcon fontSize="small" color="primary" />
-                <span className={style.textButton}>
-                    {datePrepared.from.format('MM YYYY') !== datePrepared.to.format('MM YYYY')
-                        ? `   ${datePrepared.from.format('DD.MM.YYYY')} - ${datePrepared.to.format(
-                              'DD.MM.YYYY'
-                          )}`
-                        : `   ${datePrepared.from.format('DD')} - ${datePrepared.to.format(
-                              'DD.MM.YYYY'
-                          )}`}
-                </span>
-                <ChevronRightIcon color="primary" fontSize="small" />
+                {placeholder ? (
+                    placeholder
+                ) : (
+                    <>
+                        <ChevronLeftIcon fontSize="small" color="primary" />
+                        <span className={style.textButton}>
+                            {date.from.format('MM YYYY') !== date.to.format('MM YYYY')
+                                ? `   ${date.from.format('DD.MM.YYYY')} - ${date.to.format(
+                                      'DD.MM.YYYY'
+                                  )}`
+                                : `   ${date.from.format('DD')} - ${date.to.format('DD.MM.YYYY')}`}
+                        </span>
+                        <ChevronRightIcon color="primary" fontSize="small" />
+                    </>
+                )}
             </Button>
             <Popover
                 id={id}
@@ -295,7 +301,7 @@ const RangePicker = ({
                     </div>
                 </div>
             </Popover>
-        </React.Fragment>
+        </>
     );
 };
 
@@ -318,4 +324,5 @@ RangePicker.propTypes = {
     pickerProps: PropTypes.object,
     buttonProps: PropTypes.object,
     onChange: PropTypes.func,
+    placeholder: PropTypes.string,
 };
