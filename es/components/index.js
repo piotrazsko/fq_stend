@@ -47,6 +47,7 @@ var _exportNames = {
   UserInfoSearch: true,
   Rating: true,
   SimpleSelect: true,
+  SimpleInput: true,
   Select: true,
   CalendarPicker: true
 };
@@ -308,6 +309,12 @@ Object.defineProperty(exports, "SimpleSelect", {
     return _SimpleSelect.default;
   }
 });
+Object.defineProperty(exports, "SimpleInput", {
+  enumerable: true,
+  get: function get() {
+    return _SimpleInput.default;
+  }
+});
 Object.defineProperty(exports, "Select", {
   enumerable: true,
   get: function get() {
@@ -419,6 +426,8 @@ var _UserInfoSearch = _interopRequireDefault(require("./redesign/UserInfoSearch"
 var _Rating = _interopRequireDefault(require("./redesign/Rating"));
 
 var _SimpleSelect = _interopRequireDefault(require("./redesign/SimpleSelect"));
+
+var _SimpleInput = _interopRequireDefault(require("./redesign/SimpleInput"));
 
 var _Select = _interopRequireDefault(require("./redesign/Select"));
 

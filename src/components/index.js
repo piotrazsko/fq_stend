@@ -43,6 +43,7 @@ export { default as UserInfo } from './redesign/UserInfo';
 export { default as UserInfoSearch } from './redesign/UserInfoSearch';
 export { default as Rating } from './redesign/Rating';
 export { default as SimpleSelect } from './redesign/SimpleSelect';
+export { default as SimpleInput } from './redesign/SimpleInput';
 export { default as Select } from './redesign/Select';
 
 export { default as CalendarPicker } from './redesign/CalendarPicker';
