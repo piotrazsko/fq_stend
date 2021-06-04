@@ -21,7 +21,7 @@ const useStyles = makeStyles(theme => ({
     },
     input: {
         maxWidth: '45%',
-        width: 80,
+        width: 120,
         // height: 24,
         // fontSize: 22,
     },

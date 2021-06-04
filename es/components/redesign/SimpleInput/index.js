@@ -55,7 +55,7 @@ var useStyles = (0, _styles.makeStyles)(function (theme) {
     },
     input: {
       maxWidth: '45%',
-      width: 80 // height: 24,
+      width: 120 // height: 24,
       // fontSize: 22,
 
     },
