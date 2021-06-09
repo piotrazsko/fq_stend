@@ -63,7 +63,7 @@ var SelectSkillsPopup = function SelectSkillsPopup(_ref) {
       onAddCustomSkills = _ref.onAddCustomSkills,
       showSelectAll = _ref.showSelectAll,
       showSelectedItemsCount = _ref.showSelectedItemsCount,
-      slillsSelectProps = _ref.slillsSelectProps,
+      skillsSelectProps = _ref.skillsSelectProps,
       popupProps = _ref.popupProps;
 
   var _React$useState = _react.default.useState(),
@@ -142,7 +142,7 @@ var SelectSkillsPopup = function SelectSkillsPopup(_ref) {
     selectedCustomSkills: selectedCustomSkillsState,
     onChangeCustomSkills: setSelectedCustomSkills,
     addCustomSkills: onAddCustomSkills
-  }, slillsSelectProps))));
+  }, skillsSelectProps))));
 };
 
 SelectSkillsPopup.propTypes = {
@@ -159,7 +159,7 @@ SelectSkillsPopup.propTypes = {
   onAddCustomSkills: _propTypes.default.func,
   showSelectAll: _propTypes.default.bool,
   showSelectedItemsCount: _propTypes.default.bool,
-  slillsSelectProps: _propTypes.default.object,
+  skillsSelectProps: _propTypes.default.object,
   popupProps: _propTypes.default.object
 };
 SelectSkillsPopup.defaultProps = {
@@ -174,7 +174,7 @@ SelectSkillsPopup.defaultProps = {
   onClose: function onClose() {},
   showSelectAll: false,
   showSelectedItemsCount: false,
-  slillsSelectProps: {},
+  skillsSelectProps: {},
   popupProps: {}
 };
 var _default = SelectSkillsPopup;
