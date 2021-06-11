@@ -1,8 +1,22 @@
 ```jsx
+import AccountCircle from '@material-ui/icons/AccountCircle';
+import InputAdornment from '@material-ui/core/InputAdornment';
 <SkillSelect
     showSelectAll
     showSelectedItemsCount
-    subItemProps={() => ({ inputProps: { disabled: true } })}
+    subItemProps={() => ({
+        inputProps: {
+            defaultValue: 100,
+        },
+        InputPriceProps: {
+            endAdornment: (
+                <InputAdornment position="start">
+                    <AccountCircle />
+                </InputAdornment>
+            ),
+        },
+        showInputsForce: true,
+    })}
     customSkills={[
         {
             id: 128,
@@ -2247,5 +2261,5 @@
             ],
         },
     ]}
-/>
+/>;
 ```

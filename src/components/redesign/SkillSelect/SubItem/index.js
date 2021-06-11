@@ -40,6 +40,9 @@ const SubItem = ({
     inputProps,
     priceProps,
     durationProps,
+    showInputsForce,
+    InputPriceProps,
+    InputDurationProps,
 }) => {
     const classes = useStyles();
     const isSelected = React.useMemo(() => {
@@ -93,7 +96,7 @@ const SubItem = ({
                 )}
                 <div className={style.title}> {data.title}</div>
             </div>
-            {isSelected && showInputs && (
+            {((isSelected && showInputs) || showInputsForce) && (
                 <div
                     className={style.inputs}
                     onClick={ev => {
@@ -110,12 +113,18 @@ const SubItem = ({
                                 input: classes.input,
                             },
                             inputComponent: inputComponent,
+                            ...InputPriceProps,
                         }}
                         value={price}
                         onChange={ev => saveNumber({ ev, setNumber: setPrice })}
                         placeholder={'Цена, руб.'}
                         variant="outlined"
                         size="small"
+                        onFocus={() => {
+                            setSelected(
+                                !isSelected ? [...selected, { id: data.id }] : [...selected]
+                            );
+                        }}
                         {...inputProps}
                         {...priceProps}
                     />
@@ -134,6 +143,12 @@ const SubItem = ({
                                 suffix: ` мин`,
                             },
                             inputComponent: inputComponent,
+                            ...InputDurationProps,
+                        }}
+                        onFocus={() => {
+                            setSelected(
+                                !isSelected ? [...selected, { id: data.id }] : [...selected]
+                            );
                         }}
                         variant="outlined"
                         size="small"
@@ -157,6 +172,9 @@ SubItem.propTypes = {
     showUnselectedPriceDuration: PropTypes.bool,
     priceProps: PropTypes.object,
     durationProps: PropTypes.object,
+    showInputsForce: PropTypes.bool,
+    InputPriceProps: PropTypes.object,
+    InputDurationProps: PropTypes.bool,
 };
 
 export default SubItem;

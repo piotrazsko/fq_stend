@@ -81,7 +81,10 @@ var SubItem = function SubItem(_ref2) {
       inputComponent = _ref2.inputComponent,
       inputProps = _ref2.inputProps,
       priceProps = _ref2.priceProps,
-      durationProps = _ref2.durationProps;
+      durationProps = _ref2.durationProps,
+      showInputsForce = _ref2.showInputsForce,
+      InputPriceProps = _ref2.InputPriceProps,
+      InputDurationProps = _ref2.InputDurationProps;
   var classes = useStyles();
 
   var isSelected = _react.default.useMemo(function () {
@@ -179,13 +182,13 @@ var SubItem = function SubItem(_ref2) {
     className: classes.icon
   }) : getIcon(), /*#__PURE__*/_react.default.createElement("div", {
     className: _styleModule.default.title
-  }, " ", data.title)), isSelected && showInputs && /*#__PURE__*/_react.default.createElement("div", {
+  }, " ", data.title)), (isSelected && showInputs || showInputsForce) && /*#__PURE__*/_react.default.createElement("div", {
     className: _styleModule.default.inputs,
     onClick: function onClick(ev) {
       ev.stopPropagation();
     }
   }, /*#__PURE__*/_react.default.createElement(_TextField.default, _extends({
-    InputProps: {
+    InputProps: _objectSpread({
       inputProps: {
         displayType: 'input'
       },
@@ -194,7 +197,7 @@ var SubItem = function SubItem(_ref2) {
         input: classes.input
       },
       inputComponent: inputComponent
-    },
+    }, InputPriceProps),
     value: price,
     onChange: function onChange(ev) {
       return saveNumber({
@@ -216,7 +219,7 @@ var SubItem = function SubItem(_ref2) {
       });
     },
     placeholder: 'Время, мин.',
-    InputProps: {
+    InputProps: _objectSpread({
       classes: {
         root: classes.root,
         input: classes.input
@@ -226,7 +229,7 @@ var SubItem = function SubItem(_ref2) {
         suffix: " \u043C\u0438\u043D"
       },
       inputComponent: inputComponent
-    },
+    }, InputDurationProps),
     variant: "outlined",
     size: "small"
   }, inputProps, durationProps))));
@@ -242,7 +245,10 @@ SubItem.propTypes = {
   inputProps: _propTypes.default.object,
   showUnselectedPriceDuration: _propTypes.default.bool,
   priceProps: _propTypes.default.object,
-  durationProps: _propTypes.default.object
+  durationProps: _propTypes.default.object,
+  showInputsForce: _propTypes.default.bool,
+  InputPriceProps: _propTypes.default.object,
+  InputDurationProps: _propTypes.default.bool
 };
 var _default = SubItem;
 exports.default = _default;
