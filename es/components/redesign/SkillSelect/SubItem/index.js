@@ -207,7 +207,12 @@ var SubItem = function SubItem(_ref2) {
     },
     placeholder: 'Цена, руб.',
     variant: "outlined",
-    size: "small"
+    size: "small",
+    onFocus: function onFocus() {
+      setSelected(!isSelected ? [].concat(_toConsumableArray(selected), [{
+        id: data.id
+      }]) : _toConsumableArray(selected));
+    }
   }, inputProps, priceProps)), /*#__PURE__*/_react.default.createElement("span", {
     className: _styleModule.default.divider
   }, " / "), /*#__PURE__*/_react.default.createElement(_TextField.default, _extends({
@@ -230,6 +235,11 @@ var SubItem = function SubItem(_ref2) {
       },
       inputComponent: inputComponent
     }, InputDurationProps),
+    onFocus: function onFocus() {
+      setSelected(!isSelected ? [].concat(_toConsumableArray(selected), [{
+        id: data.id
+      }]) : _toConsumableArray(selected));
+    },
     variant: "outlined",
     size: "small"
   }, inputProps, durationProps))));

@@ -6,7 +6,6 @@ import InputAdornment from '@material-ui/core/InputAdornment';
     showSelectedItemsCount
     subItemProps={() => ({
         inputProps: {
-            /* disabled: true, */
             defaultValue: 100,
         },
         InputPriceProps: {
