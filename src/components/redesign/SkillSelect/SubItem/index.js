@@ -31,7 +31,7 @@ const saveNumber = ({ setNumber, ev }) => {
     setNumber(str.replace(/[^0-9.]/g, ''));
 };
 
-const SubItem = ({ data, selected, setSelected, showInputs, inputComponent }) => {
+const SubItem = ({ data, selected, setSelected, showInputs, inputComponent, inputProps }) => {
     const classes = useStyles();
     const isSelected = React.useMemo(() => {
         return selected.find(i => i.id === data.id);
@@ -107,6 +107,7 @@ const SubItem = ({ data, selected, setSelected, showInputs, inputComponent }) =>
                         placeholder={'Цена, руб.'}
                         variant="outlined"
                         size="small"
+                        {...inputProps}
                     />
                     <span className={style.divider}> / </span>
                     <TextField
@@ -126,6 +127,7 @@ const SubItem = ({ data, selected, setSelected, showInputs, inputComponent }) =>
                         }}
                         variant="outlined"
                         size="small"
+                        {...inputProps}
                     />
                 </div>
             )}

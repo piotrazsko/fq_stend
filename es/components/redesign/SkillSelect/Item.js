@@ -27,6 +27,8 @@ var _windowOrGlobal = require("window-or-global");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -57,7 +59,8 @@ var Item = function Item(_ref) {
       showSelectAll = _ref$showSelectAll === void 0 ? false : _ref$showSelectAll,
       _ref$showSelectedItem = _ref.showSelectedItemsCount,
       showSelectedItemsCount = _ref$showSelectedItem === void 0 ? false : _ref$showSelectedItem,
-      count = _ref.count;
+      count = _ref.count,
+      subItemProps = _ref.subItemProps;
 
   var isExpanded = _react.default.useMemo(function () {
     return expanded.find(function (i) {
@@ -135,16 +138,19 @@ var Item = function Item(_ref) {
   }) : /*#__PURE__*/_react.default.createElement(_ExpandMore.default, {
     htmlColor: '#FA835F'
   })))), isExpanded && data.sub_skills.map(function (i) {
-    return itemComponent ? /*#__PURE__*/_react.default.createElement(itemComponent, _objectSpread({}, i)) : /*#__PURE__*/_react.default.createElement(_SubItem.default, {
+    return itemComponent ? /*#__PURE__*/_react.default.createElement(itemComponent, _objectSpread({}, i)) : /*#__PURE__*/_react.default.createElement(_SubItem.default, _extends({
       showInputs: showInputs,
       key: i.id,
       selected: selected,
       setSelected: setSelected,
       data: i
-    });
+    }, subItemProps(i)));
   }));
 };
 
+Item.defaultProps = {
+  subItemProps: function subItemProps() {}
+};
 Item.propTypes = {
   showInputs: _propTypes.default.bool,
   itemComponent: _propTypes.default.any,
@@ -155,7 +161,8 @@ Item.propTypes = {
   setSelected: _propTypes.default.func,
   showSelectAll: _propTypes.default.bool,
   showSelectedItemsCount: _propTypes.default.bool,
-  count: _propTypes.default.number
+  count: _propTypes.default.number,
+  subItemProps: _propTypes.default.func
 };
 var _default = Item;
 exports.default = _default;

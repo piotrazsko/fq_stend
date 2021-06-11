@@ -2,6 +2,7 @@
 <SkillSelect
     showSelectAll
     showSelectedItemsCount
+    subItemProps={() => ({ inputProps: { disabled: true } })}
     customSkills={[
         {
             id: 128,

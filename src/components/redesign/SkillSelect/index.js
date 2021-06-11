@@ -21,6 +21,8 @@ const SkillSelect = ({
     showSelectedItemsCount = false,
     customSkillCount = false,
     onFilter,
+    itemProps,
+    subItemProps,
 }) => {
     const skillsFiltred = React.useMemo(() => {
         return showOnlySkills
@@ -101,6 +103,8 @@ const SkillSelect = ({
                     showSelectedItemsCount={showSelectedItemsCount}
                     data={i}
                     itemComponent={itemComponentSubSkill}
+                    subItemProps={subItemProps}
+                    {...itemProps}
                 />
             ))}
             {customSkills &&
@@ -125,6 +129,8 @@ const SkillSelect = ({
                                 ? get(customSkillsFiltred, '[0].sub_skills', []).length
                                 : false
                         }
+                        subItemProps={subItemProps}
+                        {...itemProps}
                     />
                 ))}
         </div>
@@ -165,6 +171,8 @@ SkillSelect.propTypes = {
     defaultExpand: PropTypes.bool,
     customSkillCount: PropTypes.number,
     onFilter: PropTypes.func,
+    itemProps: PropTypes.object,
+    subItemProps: PropTypes.func,
 };
 
 export default SkillSelect;

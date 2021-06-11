@@ -21,6 +21,7 @@ const Item = ({
     showSelectAll = false,
     showSelectedItemsCount = false,
     count,
+    subItemProps,
 }) => {
     const isExpanded = React.useMemo(() => {
         return expanded.find(i => i == data.id);
@@ -109,11 +110,15 @@ const Item = ({
                             selected={selected}
                             setSelected={setSelected}
                             data={i}
+                            {...subItemProps(i)}
                         />
                     )
                 )}
         </div>
     );
+};
+Item.defaultProps = {
+    subItemProps: () => {},
 };
 
 Item.propTypes = {
@@ -127,6 +132,7 @@ Item.propTypes = {
     showSelectAll: PropTypes.bool,
     showSelectedItemsCount: PropTypes.bool,
     count: PropTypes.number,
+    subItemProps: PropTypes.func,
 };
 
 export default Item;

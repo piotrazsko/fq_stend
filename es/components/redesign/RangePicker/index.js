@@ -244,7 +244,7 @@ var RangePicker = function RangePicker(_ref) {
     color: "primary"
   }), /*#__PURE__*/_react.default.createElement("span", {
     className: _styleModule.default.textButton
-  }, date.from.format('MM YYYY') !== date.to.format('MM YYYY') ? "   ".concat(date.from.format('DD.MM.YYYY'), " - ").concat(date.to.format('DD.MM.YYYY')) : "   ".concat(date.from.format('DD'), " - ").concat(date.to.format('DD.MM.YYYY'))), /*#__PURE__*/_react.default.createElement(_ChevronRight.default, {
+  }, datePrepared.from.format('MM YYYY') !== datePrepared.to.format('MM YYYY') ? "   ".concat(datePrepared.from.format('DD.MM.YYYY'), " - ").concat(datePrepared.to.format('DD.MM.YYYY')) : "   ".concat(datePrepared.from.format('DD'), " - ").concat(datePrepared.to.format('DD.MM.YYYY'))), /*#__PURE__*/_react.default.createElement(_ChevronRight.default, {
     color: "primary",
     fontSize: "small"
   }))), /*#__PURE__*/_react.default.createElement(_Popover.default, {

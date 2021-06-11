@@ -15,6 +15,8 @@ var _get = _interopRequireDefault(require("lodash/get"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -63,7 +65,9 @@ var SkillSelect = function SkillSelect(_ref) {
       showSelectedItemsCount = _ref$showSelectedItem === void 0 ? false : _ref$showSelectedItem,
       _ref$customSkillCount = _ref.customSkillCount,
       customSkillCount = _ref$customSkillCount === void 0 ? false : _ref$customSkillCount,
-      onFilter = _ref.onFilter;
+      onFilter = _ref.onFilter,
+      itemProps = _ref.itemProps,
+      subItemProps = _ref.subItemProps;
 
   var skillsFiltred = _react.default.useMemo(function () {
     return showOnlySkills ? skills.reduce(function (acc, i) {
@@ -137,7 +141,7 @@ var SkillSelect = function SkillSelect(_ref) {
   }, [skillsFiltred, customSkillsFiltred]);
 
   return /*#__PURE__*/_react.default.createElement("div", null, (searchText || showOnlySkills ? skillsFiltred : skills).map(function (i) {
-    return /*#__PURE__*/_react.default.createElement(_Item.default, {
+    return /*#__PURE__*/_react.default.createElement(_Item.default, _extends({
       showSelectAll: showSelectAll,
       showInputs: showInputs,
       key: i.id,
@@ -149,10 +153,11 @@ var SkillSelect = function SkillSelect(_ref) {
       setSelected: setSelected,
       showSelectedItemsCount: showSelectedItemsCount,
       data: i,
-      itemComponent: itemComponentSubSkill
-    });
+      itemComponent: itemComponentSubSkill,
+      subItemProps: subItemProps
+    }, itemProps));
   }), customSkills && customSkillsFiltred.map(function (i) {
-    return /*#__PURE__*/_react.default.createElement(_Item.default, {
+    return /*#__PURE__*/_react.default.createElement(_Item.default, _extends({
       showSelectedItemsCount: showSelectedItemsCount,
       showSelectAll: showSelectAll,
       itemComponent: itemComponentCustomSubSkill,
@@ -165,8 +170,9 @@ var SkillSelect = function SkillSelect(_ref) {
       selected: selectedCustom,
       setSelected: setSelectedCustom,
       data: i,
-      count: customSkillCount ? (0, _get.default)(customSkillsFiltred, '[0].sub_skills', []).length : false
-    });
+      count: customSkillCount ? (0, _get.default)(customSkillsFiltred, '[0].sub_skills', []).length : false,
+      subItemProps: subItemProps
+    }, itemProps));
   }));
 };
 
@@ -203,7 +209,9 @@ SkillSelect.propTypes = {
   showSelectAll: _propTypes.default.bool,
   defaultExpand: _propTypes.default.bool,
   customSkillCount: _propTypes.default.number,
-  onFilter: _propTypes.default.func
+  onFilter: _propTypes.default.func,
+  itemProps: _propTypes.default.object,
+  subItemProps: _propTypes.default.func
 };
 var _default = SkillSelect;
 exports.default = _default;
