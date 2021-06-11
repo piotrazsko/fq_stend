@@ -197,11 +197,14 @@ const RangePicker = ({
                     <>
                         <ChevronLeftIcon fontSize="small" color="primary" />
                         <span className={style.textButton}>
-                            {date.from.format('MM YYYY') !== date.to.format('MM YYYY')
-                                ? `   ${date.from.format('DD.MM.YYYY')} - ${date.to.format(
+                            {datePrepared.from.format('MM YYYY') !==
+                            datePrepared.to.format('MM YYYY')
+                                ? `   ${datePrepared.from.format(
                                       'DD.MM.YYYY'
-                                  )}`
-                                : `   ${date.from.format('DD')} - ${date.to.format('DD.MM.YYYY')}`}
+                                  )} - ${datePrepared.to.format('DD.MM.YYYY')}`
+                                : `   ${datePrepared.from.format('DD')} - ${datePrepared.to.format(
+                                      'DD.MM.YYYY'
+                                  )}`}
                         </span>
                         <ChevronRightIcon color="primary" fontSize="small" />
                     </>
