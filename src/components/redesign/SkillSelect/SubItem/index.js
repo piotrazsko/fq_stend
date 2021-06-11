@@ -31,7 +31,16 @@ const saveNumber = ({ setNumber, ev }) => {
     setNumber(str.replace(/[^0-9.]/g, ''));
 };
 
-const SubItem = ({ data, selected, setSelected, showInputs, inputComponent, inputProps }) => {
+const SubItem = ({
+    data,
+    selected,
+    setSelected,
+    showInputs,
+    inputComponent,
+    inputProps,
+    priceProps,
+    durationProps,
+}) => {
     const classes = useStyles();
     const isSelected = React.useMemo(() => {
         return selected.find(i => i.id === data.id);
@@ -108,6 +117,7 @@ const SubItem = ({ data, selected, setSelected, showInputs, inputComponent, inpu
                         variant="outlined"
                         size="small"
                         {...inputProps}
+                        {...priceProps}
                     />
                     <span className={style.divider}> / </span>
                     <TextField
@@ -128,6 +138,7 @@ const SubItem = ({ data, selected, setSelected, showInputs, inputComponent, inpu
                         variant="outlined"
                         size="small"
                         {...inputProps}
+                        {...durationProps}
                     />
                 </div>
             )}
@@ -142,6 +153,10 @@ SubItem.propTypes = {
     setSelected: PropTypes.func.isRequired,
     showInputs: PropTypes.bool,
     inputComponent: PropTypes.element,
+    inputProps: PropTypes.object,
+    showUnselectedPriceDuration: PropTypes.bool,
+    priceProps: PropTypes.object,
+    durationProps: PropTypes.object,
 };
 
 export default SubItem;

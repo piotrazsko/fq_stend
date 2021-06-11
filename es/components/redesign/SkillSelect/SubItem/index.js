@@ -79,7 +79,9 @@ var SubItem = function SubItem(_ref2) {
       setSelected = _ref2.setSelected,
       showInputs = _ref2.showInputs,
       inputComponent = _ref2.inputComponent,
-      inputProps = _ref2.inputProps;
+      inputProps = _ref2.inputProps,
+      priceProps = _ref2.priceProps,
+      durationProps = _ref2.durationProps;
   var classes = useStyles();
 
   var isSelected = _react.default.useMemo(function () {
@@ -203,7 +205,7 @@ var SubItem = function SubItem(_ref2) {
     placeholder: 'Цена, руб.',
     variant: "outlined",
     size: "small"
-  }, inputProps)), /*#__PURE__*/_react.default.createElement("span", {
+  }, inputProps, priceProps)), /*#__PURE__*/_react.default.createElement("span", {
     className: _styleModule.default.divider
   }, " / "), /*#__PURE__*/_react.default.createElement(_TextField.default, _extends({
     value: duration,
@@ -227,7 +229,7 @@ var SubItem = function SubItem(_ref2) {
     },
     variant: "outlined",
     size: "small"
-  }, inputProps))));
+  }, inputProps, durationProps))));
 };
 
 SubItem.propTypes = {
@@ -236,7 +238,11 @@ SubItem.propTypes = {
   selected: _propTypes.default.array.isRequired,
   setSelected: _propTypes.default.func.isRequired,
   showInputs: _propTypes.default.bool,
-  inputComponent: _propTypes.default.element
+  inputComponent: _propTypes.default.element,
+  inputProps: _propTypes.default.object,
+  showUnselectedPriceDuration: _propTypes.default.bool,
+  priceProps: _propTypes.default.object,
+  durationProps: _propTypes.default.object
 };
 var _default = SubItem;
 exports.default = _default;
