@@ -119,6 +119,8 @@ var SkillSelect = function SkillSelect(_ref) {
       selectedCustom = _React$useState6[0],
       setSelectedCustom = _React$useState6[1];
 
+  console.log(selectedCustom);
+
   _react.default.useEffect(function () {
     if (selectedSkills.length !== selected.length) {
       setSelected(_toConsumableArray(selectedSkills));

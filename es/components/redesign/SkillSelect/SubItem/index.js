@@ -169,7 +169,11 @@ var SubItem = function SubItem(_ref2) {
     className: _styleModule.default.item,
     key: data.id,
     onClick: function onClick() {
-      setSelected(!isSelected ? [].concat(_toConsumableArray(selected), [{
+      setSelected(!isSelected ? [].concat(_toConsumableArray(selected), [showInputsForce ? {
+        id: data.id,
+        price: priceProps.defaultValue || 0,
+        duration: durationProps.defaultValue || 0
+      } : {
         id: data.id
       }]) : selected.filter(function (i) {
         return i.id !== data.id;

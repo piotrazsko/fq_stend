@@ -68,6 +68,7 @@ const SkillSelect = ({
     const [expanded, setExpanded] = React.useState(defaultExpand ? [...skills.map(i => i.id)] : []);
     const [selected, setSelected] = React.useState([...selectedSkills]);
     const [selectedCustom, setSelectedCustom] = React.useState([...selectedCustomSkills]);
+    console.log(selectedCustom);
     React.useEffect(() => {
         if (selectedSkills.length !== selected.length) {
             setSelected([...selectedSkills]);

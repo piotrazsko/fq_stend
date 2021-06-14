@@ -2,8 +2,8 @@
 <SelectSkillsPopup
     variant="outlined"
     showPopup={true}
-    onSubmit={data => {
-        console.log(data);
+    onSubmit={(data, data1) => {
+        console.log(data, data1);
     }}
     skillsSelectProps={{
         defaultExpand: true,
@@ -16,8 +16,45 @@
                 durationProps: { defaultValue: 30 },
             };
         },
-        onChangeCustomSkills: () => {},
     }}
+    customSkills={[
+        {
+            id: 128,
+            salon_id: 114,
+            title: 'test',
+            description: 'test-test',
+            price: 500,
+            duration: 500,
+            deleted_at: null,
+            parent_skill_id: null,
+            parent_uid: 'hair',
+            skills: [],
+        },
+        {
+            id: 135,
+            salon_id: 114,
+            title: 'Загибание пальцев  в козу',
+            description: null,
+            price: 1000,
+            duration: 30,
+            deleted_at: null,
+            parent_skill_id: null,
+            parent_uid: 'body',
+            skills: [],
+        },
+        {
+            id: 134,
+            salon_id: 114,
+            title: 'ускоренное выращивание волос',
+            description: null,
+            price: 100,
+            duration: 20,
+            deleted_at: null,
+            parent_skill_id: null,
+            parent_uid: 'hair',
+            skills: [],
+        },
+    ]}
     skills={[
         {
             id: 1,

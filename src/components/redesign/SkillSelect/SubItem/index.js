@@ -83,7 +83,16 @@ const SubItem = ({
             onClick={() => {
                 setSelected(
                     !isSelected
-                        ? [...selected, { id: data.id }]
+                        ? [
+                              ...selected,
+                              showInputsForce
+                                  ? {
+                                        id: data.id,
+                                        price: priceProps.defaultValue || 0,
+                                        duration: durationProps.defaultValue || 0,
+                                    }
+                                  : { id: data.id },
+                          ]
                         : selected.filter(i => i.id !== data.id)
                 );
             }}
