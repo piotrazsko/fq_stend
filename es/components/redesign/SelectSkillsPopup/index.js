@@ -132,8 +132,9 @@ var SelectSkillsPopup = function SelectSkillsPopup(_ref) {
     showSelectedItemsCount: showSelectedItemsCount,
     forceExpand: forceExpand,
     selectedSkills: selectedSkillsState,
-    onChange: setSelectedSkills,
-    onChangeCustom: true,
+    onChange: function onChange(data) {
+      setSelectedSkills(data);
+    },
     showInputs: false,
     skills: skills,
     searchText: search,

@@ -79,8 +79,9 @@ const SelectSkillsPopup = ({
                     showSelectedItemsCount={showSelectedItemsCount}
                     forceExpand={forceExpand}
                     selectedSkills={selectedSkillsState}
-                    onChange={setSelectedSkills}
-                    onChangeCustom
+                    onChange={data => {
+                        setSelectedSkills(data);
+                    }}
                     showInputs={false}
                     skills={skills}
                     searchText={search}

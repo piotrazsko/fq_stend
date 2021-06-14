@@ -1,7 +1,23 @@
 ```jsx
 <SelectSkillsPopup
     variant="outlined"
-    showPopup={false}
+    showPopup={true}
+    onSubmit={data => {
+        console.log(data);
+    }}
+    skillsSelectProps={{
+        defaultExpand: true,
+        showInputs: true,
+        subItemProps: i => {
+            return {
+                InputPriceProps: { endAdorned: 'test' },
+                showInputsForce: true,
+                priceProps: { defaultValue: 100 },
+                durationProps: { defaultValue: 30 },
+            };
+        },
+        onChangeCustomSkills: () => {},
+    }}
     skills={[
         {
             id: 1,

@@ -210,7 +210,9 @@ var SubItem = function SubItem(_ref2) {
     size: "small",
     onFocus: function onFocus() {
       setSelected(!isSelected ? [].concat(_toConsumableArray(selected), [{
-        id: data.id
+        id: data.id,
+        price: priceProps.defaultValue || 0,
+        duration: durationProps.defaultValue || 0
       }]) : _toConsumableArray(selected));
     }
   }, inputProps, priceProps)), /*#__PURE__*/_react.default.createElement("span", {
@@ -237,7 +239,9 @@ var SubItem = function SubItem(_ref2) {
     }, InputDurationProps),
     onFocus: function onFocus() {
       setSelected(!isSelected ? [].concat(_toConsumableArray(selected), [{
-        id: data.id
+        id: data.id,
+        price: priceProps.defaultValue || 0,
+        duration: durationProps.defaultValue || 0
       }]) : _toConsumableArray(selected));
     },
     variant: "outlined",

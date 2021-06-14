@@ -122,7 +122,16 @@ const SubItem = ({
                         size="small"
                         onFocus={() => {
                             setSelected(
-                                !isSelected ? [...selected, { id: data.id }] : [...selected]
+                                !isSelected
+                                    ? [
+                                          ...selected,
+                                          {
+                                              id: data.id,
+                                              price: priceProps.defaultValue || 0,
+                                              duration: durationProps.defaultValue || 0,
+                                          },
+                                      ]
+                                    : [...selected]
                             );
                         }}
                         {...inputProps}
@@ -147,7 +156,16 @@ const SubItem = ({
                         }}
                         onFocus={() => {
                             setSelected(
-                                !isSelected ? [...selected, { id: data.id }] : [...selected]
+                                !isSelected
+                                    ? [
+                                          ...selected,
+                                          {
+                                              id: data.id,
+                                              price: priceProps.defaultValue || 0,
+                                              duration: durationProps.defaultValue || 0,
+                                          },
+                                      ]
+                                    : [...selected]
                             );
                         }}
                         variant="outlined"
