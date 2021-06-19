@@ -1,4 +1,6 @@
 ```jsx
+import AccountCircle from '@material-ui/icons/AccountCircle';
+import InputAdornment from '@material-ui/core/InputAdornment';
 <SelectSkillsPopup
     variant="outlined"
     showPopup={true}
@@ -10,7 +12,14 @@
         showInputs: true,
         subItemProps: i => {
             return {
-                InputPriceProps: { endAdorned: 'test' },
+                InputPriceProps: {
+                    endAdorned: 'test',
+                    endAdornment: (
+                        <InputAdornment position="start">
+                            <AccountCircle />
+                        </InputAdornment>
+                    ),
+                },
                 showInputsForce: true,
                 priceProps: { defaultValue: 100 },
                 durationProps: { defaultValue: 30 },
@@ -2261,5 +2270,5 @@
             ],
         },
     ]}
-/>
+/>;
 ```

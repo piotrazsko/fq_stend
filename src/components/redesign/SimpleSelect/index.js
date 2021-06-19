@@ -51,7 +51,7 @@ const SimpleSelect = ({
                     classes={{ text: classes.root, outlined: classes.outlined }}
                     name="name"
                     variant={variant}
-                    endIcon={<ExpandMoreIcon color="primary" />}
+                    endIcon={<ExpandMoreIcon color={color === 'primary' ? undefined : 'primary'} />}
                 >
                     {get(value, 'label', placeholder)}
                 </Button>
