@@ -3,7 +3,7 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import InputAdornment from '@material-ui/core/InputAdornment';
 <SelectSkillsPopup
     variant="outlined"
-    showPopup={true}
+    showPopup={false}
     onSubmit={(data, data1) => {
         console.log(data, data1);
     }}
