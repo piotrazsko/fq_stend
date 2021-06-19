@@ -127,7 +127,7 @@ var SimpleInput = function SimpleInput(_ref) {
     name: "name",
     variant: variant,
     endIcon: /*#__PURE__*/_react.default.createElement(_ExpandMore.default, {
-      color: "primary"
+      color: color === 'primary' ? undefined : 'primary'
     })
   }, (0, _get.default)(value, 'label', placeholder)), /*#__PURE__*/_react.default.createElement(_Popover.default, {
     id: id,
