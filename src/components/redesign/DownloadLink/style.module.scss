@@ -1,0 +1,23 @@
+@mixin link {
+    text-decoration: none;
+    display: inline-flex;
+    font-family: Montserrat;
+    font-size: 12px;
+    font-weight: 500;
+    align-items: center;
+}
+.link {
+    @include link;
+    .text {
+        margin-left: 15px;
+        color: #fa835f;
+    }
+}
+.linkLeft {
+    @include link;
+    flex-direction: row-reverse;
+    .text {
+        color: #fa835f;
+        margin-right: 6px;
+    }
+}

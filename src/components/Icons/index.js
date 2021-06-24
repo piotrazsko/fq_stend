@@ -33,6 +33,7 @@ export { ReactComponent as SearchIcon } from '../../static/images/svg/SearchIcon
 export { ReactComponent as HelpIcon } from '../../static/images/svg/HelpIcon.svg';
 export { ReactComponent as FilterIcon } from '../../static/images/svg/Filter.svg';
 export { ReactComponent as PaymentIcon } from '../../static/images/svg/Payments.svg';
+export { ReactComponent as DownloadIcon } from '../../static/images/svg/DownloadIcon.svg';
 
 //services
 export {

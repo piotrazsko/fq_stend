@@ -47,6 +47,7 @@ import {
     BrowsLandingIcon,
     FilterIcon,
     PaymentIcon,
+    DownloadIcon,
 } from './';
 <div>
     <PhoneIcon />
@@ -104,11 +105,13 @@ import {
     <br />
     <TattooLandingIcon fill="red" />
     <br />
-    <BrowsLandingIcon stroke="red" />
+    <BrowsLandingIcon fill="red" />
     <br />
-    <FilterIcon stroke="red" />
+    <FilterIcon fill="red" />
     <br />
-    <PaymentIcon stroke="red" />
+    <PaymentIcon fill="red" />
+    <br />
+    <DownloadIcon fill="red" />
     <br />
 </div>;
 ```
