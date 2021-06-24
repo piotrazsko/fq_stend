@@ -49,6 +49,7 @@ var _exportNames = {
   SimpleSelect: true,
   SimpleInput: true,
   Select: true,
+  DownloadLink: true,
   CalendarPicker: true
 };
 Object.defineProperty(exports, "Avatar", {
@@ -321,6 +322,12 @@ Object.defineProperty(exports, "Select", {
     return _Select.default;
   }
 });
+Object.defineProperty(exports, "DownloadLink", {
+  enumerable: true,
+  get: function get() {
+    return _DownloadLink.default;
+  }
+});
 Object.defineProperty(exports, "CalendarPicker", {
   enumerable: true,
   get: function get() {
@@ -430,6 +437,8 @@ var _SimpleSelect = _interopRequireDefault(require("./redesign/SimpleSelect"));
 var _SimpleInput = _interopRequireDefault(require("./redesign/SimpleInput"));
 
 var _Select = _interopRequireDefault(require("./redesign/Select"));
+
+var _DownloadLink = _interopRequireDefault(require("./redesign/DownloadLink"));
 
 var _CalendarPicker = _interopRequireDefault(require("./redesign/CalendarPicker"));
 
