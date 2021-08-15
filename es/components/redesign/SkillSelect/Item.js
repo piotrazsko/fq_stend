@@ -60,10 +60,11 @@ var Item = function Item(_ref) {
       _ref$showSelectedItem = _ref.showSelectedItemsCount,
       showSelectedItemsCount = _ref$showSelectedItem === void 0 ? false : _ref$showSelectedItem,
       count = _ref.count,
-      subItemProps = _ref.subItemProps;
+      subItemProps = _ref.subItemProps,
+      forceExpand = _ref.forceExpand;
 
   var isExpanded = _react.default.useMemo(function () {
-    return expanded.find(function (i) {
+    return forceExpand ? true : expanded.find(function (i) {
       return i == data.id;
     });
   }, [expanded]);
@@ -162,7 +163,8 @@ Item.propTypes = {
   showSelectAll: _propTypes.default.bool,
   showSelectedItemsCount: _propTypes.default.bool,
   count: _propTypes.default.number,
-  subItemProps: _propTypes.default.func
+  subItemProps: _propTypes.default.func,
+  forceExpand: _propTypes.default.bool
 };
 var _default = Item;
 exports.default = _default;

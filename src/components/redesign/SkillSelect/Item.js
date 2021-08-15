@@ -22,9 +22,10 @@ const Item = ({
     showSelectedItemsCount = false,
     count,
     subItemProps,
+    forceExpand,
 }) => {
     const isExpanded = React.useMemo(() => {
-        return expanded.find(i => i == data.id);
+        return forceExpand ? true : expanded.find(i => i == data.id);
     }, [expanded]);
     const selectedFullPrepared = React.useMemo(() => {
         return selected.map(i => i.id);
@@ -133,6 +134,7 @@ Item.propTypes = {
     showSelectedItemsCount: PropTypes.bool,
     count: PropTypes.number,
     subItemProps: PropTypes.func,
+    forceExpand: PropTypes.bool,
 };
 
 export default Item;

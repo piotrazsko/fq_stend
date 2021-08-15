@@ -109,17 +109,22 @@ var SkillSelect = function SkillSelect(_ref) {
       expanded = _React$useState2[0],
       setExpanded = _React$useState2[1];
 
-  var _React$useState3 = _react.default.useState(_toConsumableArray(selectedSkills)),
+  var _React$useState3 = _react.default.useState(defaultExpand ? [].concat(_toConsumableArray(customSkills.map(function (i) {
+    return i.id;
+  })), ['custom']) : []),
       _React$useState4 = _slicedToArray(_React$useState3, 2),
-      selected = _React$useState4[0],
-      setSelected = _React$useState4[1];
+      expandedCustom = _React$useState4[0],
+      setExpandedCustom = _React$useState4[1];
 
-  var _React$useState5 = _react.default.useState(_toConsumableArray(selectedCustomSkills)),
+  var _React$useState5 = _react.default.useState(_toConsumableArray(selectedSkills)),
       _React$useState6 = _slicedToArray(_React$useState5, 2),
-      selectedCustom = _React$useState6[0],
-      setSelectedCustom = _React$useState6[1];
+      selected = _React$useState6[0],
+      setSelected = _React$useState6[1];
 
-  console.log(selectedCustom);
+  var _React$useState7 = _react.default.useState(_toConsumableArray(selectedCustomSkills)),
+      _React$useState8 = _slicedToArray(_React$useState7, 2),
+      selectedCustom = _React$useState8[0],
+      setSelectedCustom = _React$useState8[1];
 
   _react.default.useEffect(function () {
     if (selectedSkills.length !== selected.length) {
@@ -147,10 +152,11 @@ var SkillSelect = function SkillSelect(_ref) {
       showSelectAll: showSelectAll,
       showInputs: showInputs,
       key: i.id,
-      expanded: forceExpand || searchText || showOnlySkills ? skillsFiltred.map(function (i) {
+      expanded: searchText || showOnlySkills ? skillsFiltred.map(function (i) {
         return i.id;
       }) : expanded,
       setExpanded: setExpanded,
+      forceExpand: forceExpand,
       selected: selected,
       setSelected: setSelected,
       showSelectedItemsCount: showSelectedItemsCount,
@@ -165,10 +171,11 @@ var SkillSelect = function SkillSelect(_ref) {
       itemComponent: itemComponentCustomSubSkill,
       showInputs: showInputs,
       key: i.id,
-      expanded: forceExpand || searchText || showOnlySkills ? customSkillsFiltred.map(function (i) {
+      expanded: searchText || showOnlySkills ? customSkillsFiltred.map(function (i) {
         return i.id;
-      }) : expanded,
-      setExpanded: setExpanded,
+      }) : expandedCustom,
+      forceExpand: forceExpand,
+      setExpanded: setExpandedCustom,
       selected: selectedCustom,
       setSelected: setSelectedCustom,
       data: i,
