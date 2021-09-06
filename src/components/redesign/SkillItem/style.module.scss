@@ -24,6 +24,7 @@
         .title {
             margin-left: 5px;
             font-size: 0.8em;
+            word-break: break-all;
         }
     }
     .inputs {
@@ -42,6 +43,7 @@
         margin-right: 10px;
         font-size: 14px;
         color: #fa835f;
+        white-space: break-spaces;
     }
     .duration {
         color: #767676;
