@@ -125,7 +125,9 @@ var SkillItem = function SkillItem(_ref) {
     className: [_styleModule.default.item, classes.root].join(' '),
     key: id,
     onClick: onClick
-  }, getIcon(), /*#__PURE__*/_react.default.createElement("div", {
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: _styleModule.default.iconContainer
+  }, getIcon()), /*#__PURE__*/_react.default.createElement("div", {
     className: _styleModule.default.titleContainer
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: [_styleModule.default.title, classes.title].join(' ')

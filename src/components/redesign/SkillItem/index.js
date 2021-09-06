@@ -68,7 +68,7 @@ const SkillItem = ({
     return (
         !!data && (
             <div className={[style.item, classes.root].join(' ')} key={id} onClick={onClick}>
-                {getIcon()}
+                <div className={style.iconContainer}>{getIcon()}</div>
                 <div className={style.titleContainer}>
                     <div className={[style.title, classes.title].join(' ')}> {title}</div>
                 </div>
