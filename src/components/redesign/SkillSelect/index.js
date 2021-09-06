@@ -66,9 +66,11 @@ const SkillSelect = ({
             : [];
     }, [customSkills, searchText]);
     const [expanded, setExpanded] = React.useState(defaultExpand ? [...skills.map(i => i.id)] : []);
+    const [expandedCustom, setExpandedCustom] = React.useState(
+        defaultExpand ? [...customSkills.map(i => i.id), 'custom'] : []
+    );
     const [selected, setSelected] = React.useState([...selectedSkills]);
     const [selectedCustom, setSelectedCustom] = React.useState([...selectedCustomSkills]);
-    console.log(selectedCustom);
     React.useEffect(() => {
         if (selectedSkills.length !== selected.length) {
             setSelected([...selectedSkills]);
@@ -94,11 +96,10 @@ const SkillSelect = ({
                     showInputs={showInputs}
                     key={i.id}
                     expanded={
-                        forceExpand || searchText || showOnlySkills
-                            ? skillsFiltred.map(i => i.id)
-                            : expanded
+                        searchText || showOnlySkills ? skillsFiltred.map(i => i.id) : expanded
                     }
                     setExpanded={setExpanded}
+                    forceExpand={forceExpand}
                     selected={selected}
                     setSelected={setSelected}
                     showSelectedItemsCount={showSelectedItemsCount}
@@ -117,11 +118,12 @@ const SkillSelect = ({
                         showInputs={showInputs}
                         key={i.id}
                         expanded={
-                            forceExpand || searchText || showOnlySkills
+                            searchText || showOnlySkills
                                 ? customSkillsFiltred.map(i => i.id)
-                                : expanded
+                                : expandedCustom
                         }
-                        setExpanded={setExpanded}
+                        forceExpand={forceExpand}
+                        setExpanded={setExpandedCustom}
                         selected={selectedCustom}
                         setSelected={setSelectedCustom}
                         data={i}

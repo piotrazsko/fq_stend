@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "e5b07fbb562a99278896",
-    "url": "build/2.e5b07fbb.js"
+    "revision": "2d1d4a3840afd11aed60",
+    "url": "build/2.2d1d4a38.js"
   },
   {
     "revision": "016cd79aefb974ae89bb",
     "url": "build/bundle.016cd79a.js"
   },
   {
-    "revision": "4e251e8bb752028d7739",
-    "url": "build/main.4e251e8b.js"
+    "revision": "57ebba0a7a24b697dad4",
+    "url": "build/main.57ebba0a.js"
   },
   {
-    "revision": "e9cb74f3d02e4952843efd4d6859b84d",
+    "revision": "812f7fd5221dd72b891a3b6a2b550fdc",
     "url": "index.html"
   },
   {
-    "revision": "e5b07fbb562a99278896",
-    "url": "static/css/2.a503f436.chunk.css"
+    "revision": "2d1d4a3840afd11aed60",
+    "url": "static/css/2.e82b8916.chunk.css"
   },
   {
-    "revision": "4e251e8bb752028d7739",
-    "url": "static/css/main.192aaf95.chunk.css"
+    "revision": "57ebba0a7a24b697dad4",
+    "url": "static/css/main.b59063a8.chunk.css"
   },
   {
     "revision": "589a27ad18d5eef55d857806102ee900",
@@ -72,6 +72,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "static/media/DistanceIcon.abe51b40.svg"
   },
   {
+    "revision": "c2e723a9051a2a85704b89b591ecd761",
+    "url": "static/media/DownloadIcon.c2e723a9.svg"
+  },
+  {
     "revision": "b78241b14e1972dfe11cad1500e91be7",
     "url": "static/media/EditCommentIcon.b78241b1.svg"
   },
@@ -84,8 +88,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "static/media/EmailIcon.5f77df44.svg"
   },
   {
-    "revision": "cbd9a387372c06f8f695369e8e203991",
-    "url": "static/media/Filter.cbd9a387.svg"
+    "revision": "d9e797fdf83fff5f88e577aada365609",
+    "url": "static/media/Filter.d9e797fd.svg"
   },
   {
     "revision": "70e8e1d0b2e5ebaf137e693f85002c80",
@@ -134,6 +138,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "d6859c1a1c5e0233cbbc650c5454990a",
     "url": "static/media/NailIcon.d6859c1a.svg"
+  },
+  {
+    "revision": "1a86bc09ec08488cb92f43c4b9682a25",
+    "url": "static/media/Payments.1a86bc09.svg"
   },
   {
     "revision": "8ee91de2f96a9be9031a7327e0a48ad4",
