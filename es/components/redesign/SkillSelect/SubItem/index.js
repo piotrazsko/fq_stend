@@ -181,10 +181,12 @@ var SubItem = function SubItem(_ref2) {
     }
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: _styleModule.default.titleContainer
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: _styleModule.default.iconContainer
   }, isSelected ? /*#__PURE__*/_react.default.createElement(_CheckCircle.default, {
     htmlColor: "#fa835f",
     className: classes.icon
-  }) : getIcon(), /*#__PURE__*/_react.default.createElement("div", {
+  }) : getIcon()), /*#__PURE__*/_react.default.createElement("div", {
     className: _styleModule.default.title
   }, " ", data.title)), (isSelected && showInputs || showInputsForce) && /*#__PURE__*/_react.default.createElement("div", {
     className: _styleModule.default.inputs,

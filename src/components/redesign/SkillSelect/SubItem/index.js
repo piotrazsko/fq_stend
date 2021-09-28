@@ -98,11 +98,13 @@ const SubItem = ({
             }}
         >
             <div className={style.titleContainer}>
-                {isSelected ? (
-                    <CheckCircleIcon htmlColor="#fa835f" className={classes.icon} />
-                ) : (
-                    getIcon()
-                )}
+                <div className={style.iconContainer}>
+                    {isSelected ? (
+                        <CheckCircleIcon htmlColor="#fa835f" className={classes.icon} />
+                    ) : (
+                        getIcon()
+                    )}
+                </div>
                 <div className={style.title}> {data.title}</div>
             </div>
             {((isSelected && showInputs) || showInputsForce) && (
