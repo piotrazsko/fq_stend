@@ -1,10 +1,11 @@
+
 .item {
     display: flex;
+    flex-direction: column;
     box-sizing: border-box;
     padding: 10px 20px;
     margin: 8px 0;
     display: flex;
-    align-items: center;
     justify-content: flex-start;
     background: #ffffff;
     border: 1px solid rgba(204, 204, 204, 0.7);
@@ -16,12 +17,36 @@
     box-sizing: border-box;
     cursor: pointer;
 
+    p {
+        margin: 0px;
+    }
+    
+    .descriptionContainer {
+        padding-bottom: 16px;
+        p {
+            color: #fa835f;
+        }
+    }
+
+    .bookingTimeContainer {
+        padding-top: 12px;
+        display: flex;
+        flex-direction: row;
+        .bookingTime {
+            background-color: #fff;
+            padding: 9px 8px;
+            border: 1px solid rgba(204, 204, 204, 0.7);
+            border-radius: 6px;
+            margin-right: 7px;
+        }
+    }
+
+
     .titleContainer {
         display: flex;
         font-size: 16px;
         align-items: center;
         min-width: 40%;
-        padding-left: 16px;
         .title {
         }
         .phone {
@@ -35,12 +60,10 @@
         }
     }
     .additionalInfo {
-        margin-left: 20px;
         display: flex;
         font-size: 14px;
         font-weight: 400;
         align-items: center;
-        margin-right: 15px;
         .rating {
             min-width: 120px;
         }

@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.recoveryWorkingTimeIntervals = exports.recoveryDataForWorkTime = exports.prepareWorkingTimeIntervals = exports.strPrepare = exports.getWorkPeriodsOfDay = exports.getObjectOfPeriods = exports.formatHours = exports.preppareDataforWorkTime = exports.DAYS_OF_WEEK = exports.WEEKDAYS_ENG_RUS = exports.WEEKDAYS_SHORT = exports.WEEKDAYS_LONG = exports.MONTHS = void 0;
+exports.recoveryWorkingTimeIntervals = exports.recoveryDataForWorkTime = exports.prepareWorkingTimeIntervals = exports.strPrepare = exports.getWorkPeriodsOfDay = exports.getObjectOfPeriods = exports.formatHours = exports.preppareDataforWorkTime = exports.DAYS_OF_WEEK = exports.WEEKDAYS_ENG_RUS = exports.WEEKDAYS_SHORT = exports.WEEKDAYS_LONG = exports.NOW_DATE = exports.MONTHS_SHORT = exports.MONTHS = void 0;
 
 var _lodash = _interopRequireDefault(require("lodash"));
 
@@ -34,6 +34,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 var DAY_MS = 60 * 1000 * 60 * 24;
 var MONTHS = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'];
 exports.MONTHS = MONTHS;
+var MONTHS_SHORT = ['янв', 'фев', 'мар', 'апр', 'май', 'июн', 'июл', 'авг', 'сен', 'окт', 'ноя', 'дек'];
+exports.MONTHS_SHORT = MONTHS_SHORT;
+
+var NOW_DATE = function NOW_DATE() {
+  return new Date().toJSON().slice(0, 10).replace(/-/g, '-');
+};
+
+exports.NOW_DATE = NOW_DATE;
 var WEEKDAYS_LONG = ['Воскресение', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'];
 exports.WEEKDAYS_LONG = WEEKDAYS_LONG;
 var WEEKDAYS_SHORT = ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'];
