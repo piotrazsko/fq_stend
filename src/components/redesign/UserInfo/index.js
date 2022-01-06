@@ -2,7 +2,9 @@ import React from 'react';
 import gets from 'lodash/get';
 import PropTypes from 'prop-types';
 import style from './style.module.scss';
+import PinDropOutlined from '@material-ui/icons/PinDropOutlined';
 import {MONTHS_SHORT, NOW_DATE} from '../../../helpers/calendar';
+import {stringLengthFix} from '../../../helpers/skills';
 import moment from 'moment';
 import { makeStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
@@ -30,25 +32,27 @@ const UserInfo = ({ data, onClick, isMaster = false, classes }) => {
                     <Avatar alt="" src={avatar || ''}>
                         {`${gets(first_name, '[0]', '')}${gets(last_name, '[0]', '')}`}
                     </Avatar>
-                    <div className={[style.title, classes.title].join(' ')}>
-                        {`${first_name || ''} ${last_name || ''}`}
+                    <div className={[style.additionalInfo, classes.dataContainer].join(' ')}>
+                        <div className={[style.title, classes.title].join(' ')}>
+                            {`${first_name || ''} ${last_name || ''}`}
+                        </div>
+                        <div className={[style.rating, classes.rating].join(' ')}>
+                            <Rating
+                                data={{
+                                    user_rating: rating,
+                                    master_feedbacks_count: feedback_count || master_feedbacks_count,
+                                }}
+                            />
+                            <PinDropOutlined className={style.pinIcon} htmlColor='#000000 '/>
+                            <p>{city || ''}</p>
+                        </div>
+                        {isAdmin && <span>Admin</span>}
                     </div>
                 </div>
-                <div className={[style.additionalInfo, classes.dataContainer].join(' ')}>
-                    <div className={[style.rating, classes.rating].join(' ')}>
-                        <Rating
-                            data={{
-                                user_rating: rating,
-                                master_feedbacks_count: feedback_count || master_feedbacks_count,
-                            }}
-                        />
-                        {city || ''}
-                    </div>
-                    {isAdmin && <span>Admin</span>}
-                </div>
+
                 <div className={[style.descriptionContainer, classes.descriptionContainer].join(' ')}>
-                    <p>
-                        {description}
+                    <p className={description ? style.description : style.NoDescription}>
+                        {stringLengthFix(description) || 'Нет описания'}
                     </p>
                 </div>
                 <div>
@@ -59,11 +63,13 @@ const UserInfo = ({ data, onClick, isMaster = false, classes }) => {
 
                             return (
                                 <div className={[style.bookingTime, classes.bookingTime].join(' ')} key={index}>
-                                    {dayNow ? 'Сегодня' : date.split('-')[2].split(' ')[0]}
-                                    {' '}
-                                    {!dayNow && MONTHS_SHORT[Number(date.split('-')[1])-1]}
-                                    {' '}
-                                    {date.split('-')[2].split(' ')[1].slice(0,5)}
+                                    <p>
+                                        {dayNow ? 'Сегодня' : date.split('-')[2].split(' ')[0]}
+                                        {' '}
+                                        {!dayNow && MONTHS_SHORT[Number(date.split('-')[1])-1]}
+                                        {' '}
+                                        {date.split('-')[2].split(' ')[1].slice(0,5)}
+                                    </p>
                                 </div>
                             )} 
                         )}

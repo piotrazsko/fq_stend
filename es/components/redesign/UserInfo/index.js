@@ -13,7 +13,11 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _styleModule = _interopRequireDefault(require("./style.module.scss"));
 
+var _PinDropOutlined = _interopRequireDefault(require("@material-ui/icons/PinDropOutlined"));
+
 var _calendar = require("../../../helpers/calendar");
+
+var _skills = require("../../../helpers/skills");
 
 var _moment = _interopRequireDefault(require("moment"));
 
@@ -54,26 +58,31 @@ var UserInfo = function UserInfo(_ref) {
     alt: "",
     src: avatar || ''
   }, "".concat((0, _get.default)(first_name, '[0]', '')).concat((0, _get.default)(last_name, '[0]', ''))), /*#__PURE__*/_react.default.createElement("div", {
-    className: [_styleModule.default.title, classes.title].join(' ')
-  }, "".concat(first_name || '', " ").concat(last_name || ''))), /*#__PURE__*/_react.default.createElement("div", {
     className: [_styleModule.default.additionalInfo, classes.dataContainer].join(' ')
   }, /*#__PURE__*/_react.default.createElement("div", {
+    className: [_styleModule.default.title, classes.title].join(' ')
+  }, "".concat(first_name || '', " ").concat(last_name || '')), /*#__PURE__*/_react.default.createElement("div", {
     className: [_styleModule.default.rating, classes.rating].join(' ')
   }, /*#__PURE__*/_react.default.createElement(_Rating.default, {
     data: {
       user_rating: rating,
       master_feedbacks_count: feedback_count || master_feedbacks_count
     }
-  }), city || ''), isAdmin && /*#__PURE__*/_react.default.createElement("span", null, "Admin")), /*#__PURE__*/_react.default.createElement("div", {
+  }), /*#__PURE__*/_react.default.createElement(_PinDropOutlined.default, {
+    className: _styleModule.default.pinIcon,
+    htmlColor: "#000000 "
+  }), /*#__PURE__*/_react.default.createElement("p", null, city || '')), isAdmin && /*#__PURE__*/_react.default.createElement("span", null, "Admin"))), /*#__PURE__*/_react.default.createElement("div", {
     className: [_styleModule.default.descriptionContainer, classes.descriptionContainer].join(' ')
-  }, /*#__PURE__*/_react.default.createElement("p", null, description)), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("p", null, "\u0411\u043B\u0438\u0436\u0430\u0439\u0448\u0435\u0435 \u0441\u0432\u043E\u0431\u043E\u0434\u043D\u043E\u0435 \u0432\u0440\u0435\u043C\u044F"), /*#__PURE__*/_react.default.createElement("div", {
+  }, /*#__PURE__*/_react.default.createElement("p", {
+    className: description ? _styleModule.default.description : _styleModule.default.NoDescription
+  }, (0, _skills.stringLengthFix)(description) || 'Нет описания')), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("p", null, "\u0411\u043B\u0438\u0436\u0430\u0439\u0448\u0435\u0435 \u0441\u0432\u043E\u0431\u043E\u0434\u043D\u043E\u0435 \u0432\u0440\u0435\u043C\u044F"), /*#__PURE__*/_react.default.createElement("div", {
     className: [_styleModule.default.bookingTimeContainer, classes.bookingTimeContainer].join(' ')
   }, closest_booking_time.map(function (date, index) {
     var dayNow = String((0, _calendar.NOW_DATE)()) === date.split(' ')[0];
     return /*#__PURE__*/_react.default.createElement("div", {
       className: [_styleModule.default.bookingTime, classes.bookingTime].join(' '),
       key: index
-    }, dayNow ? 'Сегодня' : date.split('-')[2].split(' ')[0], ' ', !dayNow && _calendar.MONTHS_SHORT[Number(date.split('-')[1]) - 1], ' ', date.split('-')[2].split(' ')[1].slice(0, 5));
+    }, /*#__PURE__*/_react.default.createElement("p", null, dayNow ? 'Сегодня' : date.split('-')[2].split(' ')[0], ' ', !dayNow && _calendar.MONTHS_SHORT[Number(date.split('-')[1]) - 1], ' ', date.split('-')[2].split(' ')[1].slice(0, 5)));
   }))));
 };
 
