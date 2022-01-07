@@ -113,6 +113,18 @@ var SubItem = function SubItem(_ref2) {
       price = _ref3.price,
       duration = _ref3.duration;
 
+  var hangleClick = function hangleClick() {
+    setSelected(!isSelected ? [].concat(_toConsumableArray(selected), [showInputsForce ? {
+      id: data.id,
+      price: priceProps.defaultValue || 0,
+      duration: durationProps.defaultValue || 0
+    } : {
+      id: data.id
+    }]) : selected.filter(function (i) {
+      return i.id !== data.id;
+    }));
+  };
+
   var getIcon = function getIcon() {
     switch (data.parent_uid) {
       case 'hair':
@@ -168,17 +180,7 @@ var SubItem = function SubItem(_ref2) {
   return /*#__PURE__*/_react.default.createElement("div", {
     className: _styleModule.default.item,
     key: data.id,
-    onClick: function onClick() {
-      setSelected(!isSelected ? [].concat(_toConsumableArray(selected), [showInputsForce ? {
-        id: data.id,
-        price: priceProps.defaultValue || 0,
-        duration: durationProps.defaultValue || 0
-      } : {
-        id: data.id
-      }]) : selected.filter(function (i) {
-        return i.id !== data.id;
-      }));
-    }
+    onClick: hangleClick
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: _styleModule.default.titleContainer
   }, /*#__PURE__*/_react.default.createElement("div", {

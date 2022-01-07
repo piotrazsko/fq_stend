@@ -8,7 +8,6 @@ const SkillSelect = ({
     searchText,
     showInputs = true,
     selectedSkills,
-    selectedCustomSkills,
     onChangeCustomSkills,
     onChange,
     showOnlySkills,
@@ -23,6 +22,10 @@ const SkillSelect = ({
     onFilter,
     itemProps,
     subItemProps,
+    selectedCustom,
+    selected,
+    setSelected,
+    setSelectedCustom
 }) => {
     const skillsFiltred = React.useMemo(() => {
         return showOnlySkills
@@ -68,9 +71,7 @@ const SkillSelect = ({
     const [expanded, setExpanded] = React.useState(defaultExpand ? [...skills.map(i => i.id)] : []);
     const [expandedCustom, setExpandedCustom] = React.useState(
         defaultExpand ? [...customSkills.map(i => i.id), 'custom'] : []
-    );
-    const [selected, setSelected] = React.useState([...selectedSkills]);
-    const [selectedCustom, setSelectedCustom] = React.useState([...selectedCustomSkills]);
+    )
     React.useEffect(() => {
         if (selectedSkills.length !== selected.length) {
             setSelected([...selectedSkills]);
@@ -140,6 +141,10 @@ const SkillSelect = ({
     );
 };
 SkillSelect.defaultProps = {
+    selectedCustom: [],
+    selected: [],
+    setSelected: () => {},
+    setSelectedCustom: () => {},
     selectedSkills: [],
     customSkills: [],
     selectedCustomSkills: [],
@@ -162,6 +167,10 @@ SkillSelect.propTypes = {
     showInputs: PropTypes.bool,
     selectedSkills: PropTypes.array,
     onChange: PropTypes.func,
+    selectedCustom: PropTypes.array,
+    selected: PropTypes.array,
+    setSelected: PropTypes.func,
+    setSelectedCustom: PropTypes.func,
     showOnlySkills: PropTypes.array,
     onChangeCustomSkills: PropTypes.func,
     customSkills: PropTypes.array,
