@@ -25,7 +25,7 @@ const SkillSelect = ({
     selectedCustom,
     selected,
     setSelected,
-    setSelectedCustom
+    setSelectedCustom,
 }) => {
     const skillsFiltred = React.useMemo(() => {
         return showOnlySkills
