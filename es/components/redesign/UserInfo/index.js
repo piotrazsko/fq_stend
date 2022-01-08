@@ -13,6 +13,8 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _styleModule = _interopRequireDefault(require("./style.module.scss"));
 
+var _Star = _interopRequireDefault(require("@material-ui/icons/Star"));
+
 var _PinDropOutlined = _interopRequireDefault(require("@material-ui/icons/PinDropOutlined"));
 
 var _calendar = require("../../../helpers/calendar");
@@ -46,7 +48,8 @@ var UserInfo = function UserInfo(_ref) {
       feedback_count = data.feedback_count,
       city = data.city,
       description = data.description,
-      closest_booking_time = data.closest_booking_time;
+      closest_booking_time = data.closest_booking_time,
+      isTopMaster = data.isTopMaster;
   var isAdmin = false;
   return !!data && /*#__PURE__*/_react.default.createElement("div", {
     onClick: onClick,
@@ -54,7 +57,10 @@ var UserInfo = function UserInfo(_ref) {
     key: id
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: _styleModule.default.titleContainer
-  }, /*#__PURE__*/_react.default.createElement(_Avatar.default, {
+  }, /*#__PURE__*/_react.default.createElement(_Star.default, {
+    className: _styleModule.default.starIcon,
+    htmlColor: "#FFFFFF"
+  }), /*#__PURE__*/_react.default.createElement(_Avatar.default, {
     alt: "",
     src: avatar || ''
   }, "".concat((0, _get.default)(first_name, '[0]', '')).concat((0, _get.default)(last_name, '[0]', ''))), /*#__PURE__*/_react.default.createElement("div", {

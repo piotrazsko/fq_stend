@@ -2,6 +2,7 @@ import React from 'react';
 import gets from 'lodash/get';
 import PropTypes from 'prop-types';
 import style from './style.module.scss';
+import Star from '@material-ui/icons/Star';
 import PinDropOutlined from '@material-ui/icons/PinDropOutlined';
 import {MONTHS_SHORT, NOW_DATE} from '../../../helpers/calendar';
 import {stringLengthFix} from '../../../helpers/skills';
@@ -22,13 +23,15 @@ const UserInfo = ({ data, onClick, isMaster = false, classes }) => {
         feedback_count,
         city,
         description,
-        closest_booking_time
+        closest_booking_time,
+        isTopMaster
     } = data;
     const isAdmin = false;
     return (
         !!data && (
             <div onClick={onClick} className={[style.item, classes.root].join(' ')} key={id}>
                 <div className={style.titleContainer}>
+                    <Star className={style.starIcon} htmlColor='#FFFFFF'/>
                     <Avatar alt="" src={avatar || ''}>
                         {`${gets(first_name, '[0]', '')}${gets(last_name, '[0]', '')}`}
                     </Avatar>
