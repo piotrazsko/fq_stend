@@ -44,6 +44,7 @@ var _exportNames = {
   InfoCard: true,
   SelectSkillsPopup: true,
   UserInfo: true,
+  AnyFreeMaster: true,
   UserInfoSearch: true,
   Rating: true,
   SimpleSelect: true,
@@ -292,6 +293,12 @@ Object.defineProperty(exports, "UserInfo", {
     return _UserInfo.default;
   }
 });
+Object.defineProperty(exports, "AnyFreeMaster", {
+  enumerable: true,
+  get: function get() {
+    return _AnyFreeMaster.default;
+  }
+});
 Object.defineProperty(exports, "UserInfoSearch", {
   enumerable: true,
   get: function get() {
@@ -427,6 +434,8 @@ var _InfoCard = _interopRequireDefault(require("./redesign/InfoCard"));
 var _SelectSkillsPopup = _interopRequireDefault(require("./redesign/SelectSkillsPopup"));
 
 var _UserInfo = _interopRequireDefault(require("./redesign/UserInfo"));
+
+var _AnyFreeMaster = _interopRequireDefault(require("./redesign/AnyFreeMaster"));
 
 var _UserInfoSearch = _interopRequireDefault(require("./redesign/UserInfoSearch"));
 

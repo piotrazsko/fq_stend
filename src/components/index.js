@@ -40,6 +40,7 @@ export { default as InfoCardLine } from './redesign/InfoCardLine';
 export { default as InfoCard } from './redesign/InfoCard';
 export { default as SelectSkillsPopup } from './redesign/SelectSkillsPopup';
 export { default as UserInfo } from './redesign/UserInfo';
+export { default as AnyFreeMaster } from './redesign/AnyFreeMaster';
 export { default as UserInfoSearch } from './redesign/UserInfoSearch';
 export { default as Rating } from './redesign/Rating';
 export { default as SimpleSelect } from './redesign/SimpleSelect';
