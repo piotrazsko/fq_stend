@@ -46,6 +46,7 @@ export { default as SimpleSelect } from './redesign/SimpleSelect';
 export { default as SimpleInput } from './redesign/SimpleInput';
 export { default as Select } from './redesign/Select';
 export { default as DownloadLink } from './redesign/DownloadLink';
+export { default as SkillSelectEvent } from './redesign/SkillSelectEvent'
 
 export { default as CalendarPicker } from './redesign/CalendarPicker';
 
