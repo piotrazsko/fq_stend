@@ -1,0 +1,27 @@
+.container {
+    font-family: Montserrat;
+
+    box-sizing: border-box;
+    user-select: none;
+    .titleContainer {
+        box-sizing: border-box;
+        padding-bottom: 8px;
+        background: #ffffff;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .titleButtons {
+            display: flex;
+            align-items: center;
+        }
+        .title {
+            font-size: 20px;
+            line-height: 24px;
+            font-weight: 500;
+        }
+        .selectAllButton {
+            margin-right: 10px;
+        }
+    }
+}
