@@ -6,19 +6,20 @@
     align-items: center;
     justify-content: center;
 
-    margin-right: 15px;
+    margin-right: 12px;
 
     .rating {
-        margin: 0 3px;
-        line-height: 1;
+        margin-right: 3px;
+        font-size: 11px;
     }
     .feedbacks {
-        margin: 0 15px 0 0px;
         font-weight: 300;
         line-height: 1;
+        color: #a7a7a7;
+        font-size: 11px;
     }
     .locationIcon {
-        font-size: 1.2em;
+        font-size: 16px;
         margin-right: 3px;
     }
 }

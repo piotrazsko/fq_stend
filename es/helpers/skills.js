@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.getAllSkills = exports.getSalonsSkills = exports.findSubskillsByIds = exports.getParentsSkillsBySkillsUID = exports.getParentsSkillsBySkills = exports.filterSkillsForSelect = exports.prepareSkilsForSearch = void 0;
+exports.getAllSkills = exports.getSalonsSkills = exports.findSubskillsByIds = exports.getParentsSkillsBySkillsUID = exports.getParentsSkillsBySkills = exports.stringLengthFix = exports.filterSkillsForSelect = exports.prepareSkilsForSearch = void 0;
 
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
@@ -59,6 +59,14 @@ var filterSkillsForSelect = function filterSkillsForSelect() {
 };
 
 exports.filterSkillsForSelect = filterSkillsForSelect;
+
+var stringLengthFix = function stringLengthFix(string) {
+  if (string.length >= 94) {
+    return string.slice(0, 93) + "...";
+  } else return string;
+};
+
+exports.stringLengthFix = stringLengthFix;
 
 var getParentsSkillsBySkills = function getParentsSkillsBySkills(skills, allSkills) {
   return allSkills.map(function (_ref) {
