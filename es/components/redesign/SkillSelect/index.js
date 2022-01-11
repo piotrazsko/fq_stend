@@ -49,7 +49,6 @@ var SkillSelect = function SkillSelect(_ref) {
       _ref$showInputs = _ref.showInputs,
       showInputs = _ref$showInputs === void 0 ? true : _ref$showInputs,
       selectedSkills = _ref.selectedSkills,
-      selectedCustomSkills = _ref.selectedCustomSkills,
       onChangeCustomSkills = _ref.onChangeCustomSkills,
       onChange = _ref.onChange,
       showOnlySkills = _ref.showOnlySkills,
@@ -67,7 +66,11 @@ var SkillSelect = function SkillSelect(_ref) {
       customSkillCount = _ref$customSkillCount === void 0 ? false : _ref$customSkillCount,
       onFilter = _ref.onFilter,
       itemProps = _ref.itemProps,
-      subItemProps = _ref.subItemProps;
+      subItemProps = _ref.subItemProps,
+      selectedCustom = _ref.selectedCustom,
+      selected = _ref.selected,
+      setSelected = _ref.setSelected,
+      setSelectedCustom = _ref.setSelectedCustom;
 
   var skillsFiltred = _react.default.useMemo(function () {
     return showOnlySkills ? skills.reduce(function (acc, i) {
@@ -115,16 +118,6 @@ var SkillSelect = function SkillSelect(_ref) {
       _React$useState4 = _slicedToArray(_React$useState3, 2),
       expandedCustom = _React$useState4[0],
       setExpandedCustom = _React$useState4[1];
-
-  var _React$useState5 = _react.default.useState(_toConsumableArray(selectedSkills)),
-      _React$useState6 = _slicedToArray(_React$useState5, 2),
-      selected = _React$useState6[0],
-      setSelected = _React$useState6[1];
-
-  var _React$useState7 = _react.default.useState(_toConsumableArray(selectedCustomSkills)),
-      _React$useState8 = _slicedToArray(_React$useState7, 2),
-      selectedCustom = _React$useState8[0],
-      setSelectedCustom = _React$useState8[1];
 
   _react.default.useEffect(function () {
     if (selectedSkills.length !== selected.length) {
@@ -186,6 +179,10 @@ var SkillSelect = function SkillSelect(_ref) {
 };
 
 SkillSelect.defaultProps = {
+  selectedCustom: [],
+  selected: [],
+  setSelected: function setSelected() {},
+  setSelectedCustom: function setSelectedCustom() {},
   selectedSkills: [],
   customSkills: [],
   selectedCustomSkills: [],
@@ -207,6 +204,10 @@ SkillSelect.propTypes = {
   showInputs: _propTypes.default.bool,
   selectedSkills: _propTypes.default.array,
   onChange: _propTypes.default.func,
+  selectedCustom: _propTypes.default.array,
+  selected: _propTypes.default.array,
+  setSelected: _propTypes.default.func,
+  setSelectedCustom: _propTypes.default.func,
   showOnlySkills: _propTypes.default.array,
   onChangeCustomSkills: _propTypes.default.func,
   customSkills: _propTypes.default.array,

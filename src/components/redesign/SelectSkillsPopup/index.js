@@ -25,6 +25,10 @@ const SelectSkillsPopup = ({
     showSelectedItemsCount,
     skillsSelectProps,
     popupProps,
+    selectedCustom,
+    selected,
+    setSelected,
+    setSelectedCustom
 }) => {
     const [search, setSearch] = React.useState();
     const [selectedSkillsState, setSelectedSkills] = React.useState([...selectedSkills]);
@@ -69,12 +73,16 @@ const SelectSkillsPopup = ({
                     fullWidth
                     size="small"
                     variant="outlined"
-                    placeholder="Введите название услуги, например маникюр"
+                    placeholder="Найдите услугу"
                 />
             </div>
 
             <div className={style.container}>
                 <SkillsSelect
+                    selectedCustom={selectedCustom}
+                    selected={selected}
+                    setSelected={setSelected}
+                    setSelectedCustom={setSelectedCustom}
                     showSelectAll={showSelectAll}
                     showSelectedItemsCount={showSelectedItemsCount}
                     forceExpand={forceExpand}
@@ -113,6 +121,10 @@ SelectSkillsPopup.propTypes = {
     showSelectedItemsCount: PropTypes.bool,
     skillsSelectProps: PropTypes.object,
     popupProps: PropTypes.object,
+    selectedCustom: PropTypes.array,
+    selected: PropTypes.array,
+    setSelected: PropTypes.func,
+    setSelectedCustom: PropTypes.func,
 };
 SelectSkillsPopup.defaultProps = {
     selectedCustomSkills: [],
@@ -128,6 +140,10 @@ SelectSkillsPopup.defaultProps = {
     showSelectedItemsCount: false,
     skillsSelectProps: {},
     popupProps: {},
+    selectedCustom: [],
+    selected: [],
+    setSelected: () => {},
+    setSelectedCustom: () => {},
 };
 
 export default SelectSkillsPopup;
