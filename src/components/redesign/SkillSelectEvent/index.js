@@ -9,7 +9,6 @@ const SkillSelectEvent = ({
     searchText,
     showInputs = true,
     selectedSkills,
-    selectedCustomSkills,
     onChangeCustomSkills,
     onChange,
     showOnlySkills,

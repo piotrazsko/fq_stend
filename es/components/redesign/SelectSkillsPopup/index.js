@@ -19,6 +19,8 @@ var _Search = _interopRequireDefault(require("@material-ui/icons/Search"));
 
 var _SkillSelect = _interopRequireDefault(require("../SkillSelect"));
 
+var _SkillSelectEvent = _interopRequireDefault(require("../SkillSelectEvent"));
+
 var _styleModule = _interopRequireDefault(require("./style.module.scss"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -64,7 +66,11 @@ var SelectSkillsPopup = function SelectSkillsPopup(_ref) {
       showSelectAll = _ref.showSelectAll,
       showSelectedItemsCount = _ref.showSelectedItemsCount,
       skillsSelectProps = _ref.skillsSelectProps,
-      popupProps = _ref.popupProps;
+      popupProps = _ref.popupProps,
+      selected = _ref.selected,
+      setSelected = _ref.setSelected,
+      selectedCustom = _ref.selectedCustom,
+      setSelectedCustom = _ref.setSelectedCustom;
 
   var _React$useState = _react.default.useState(),
       _React$useState2 = _slicedToArray(_React$useState, 2),
@@ -135,6 +141,26 @@ var SelectSkillsPopup = function SelectSkillsPopup(_ref) {
     onChange: function onChange(data) {
       setSelectedSkills(data);
     },
+    showInputs: false,
+    skills: skills,
+    searchText: search,
+    showCustomSkill: false,
+    customSkills: customSkills,
+    selectedCustomSkills: selectedCustomSkillsState,
+    onChangeCustomSkills: setSelectedCustomSkills,
+    addCustomSkills: onAddCustomSkills
+  }, skillsSelectProps)), /*#__PURE__*/_react.default.createElement(_SkillSelectEvent.default, _extends({
+    showSelectAll: showSelectAll,
+    showSelectedItemsCount: showSelectedItemsCount,
+    forceExpand: forceExpand,
+    selectedSkills: selectedSkillsState,
+    onChange: function onChange(data) {
+      setSelectedSkills(data);
+    },
+    selected: selected,
+    setSelected: setSelected,
+    selectedCustom: selectedCustom,
+    setSelectedCustom: setSelectedCustom,
     showInputs: false,
     skills: skills,
     searchText: search,

@@ -51,7 +51,6 @@ var SkillSelectEvent = function SkillSelectEvent(_ref) {
       _ref$showInputs = _ref.showInputs,
       showInputs = _ref$showInputs === void 0 ? true : _ref$showInputs,
       selectedSkills = _ref.selectedSkills,
-      selectedCustomSkills = _ref.selectedCustomSkills,
       onChangeCustomSkills = _ref.onChangeCustomSkills,
       onChange = _ref.onChange,
       showOnlySkills = _ref.showOnlySkills,

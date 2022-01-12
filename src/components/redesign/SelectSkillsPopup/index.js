@@ -5,6 +5,7 @@ import PopupBackground from '../../Popup';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import SearchIcon from '@material-ui/icons/Search';
 import SkillsSelect from '../SkillSelect';
+import SkillSelectEvent from '../SkillSelectEvent'
 import style from './style.module.scss';
 
 const color = '#fa835f';
@@ -25,6 +26,10 @@ const SelectSkillsPopup = ({
     showSelectedItemsCount,
     skillsSelectProps,
     popupProps,
+    selected,
+    setSelected,
+    selectedCustom,
+    setSelectedCustom
 }) => {
     const [search, setSearch] = React.useState();
     const [selectedSkillsState, setSelectedSkills] = React.useState([...selectedSkills]);
@@ -82,6 +87,28 @@ const SelectSkillsPopup = ({
                     onChange={data => {
                         setSelectedSkills(data);
                     }}
+                    showInputs={false}
+                    skills={skills}
+                    searchText={search}
+                    showCustomSkill={false}
+                    customSkills={customSkills}
+                    selectedCustomSkills={selectedCustomSkillsState}
+                    onChangeCustomSkills={setSelectedCustomSkills}
+                    addCustomSkills={onAddCustomSkills}
+                    {...skillsSelectProps}
+                />
+                <SkillSelectEvent
+                    showSelectAll={showSelectAll}
+                    showSelectedItemsCount={showSelectedItemsCount}
+                    forceExpand={forceExpand}
+                    selectedSkills={selectedSkillsState}
+                    onChange={data => {
+                        setSelectedSkills(data);
+                    }}
+                    selected={selected}
+                    setSelected={setSelected}
+                    selectedCustom={selectedCustom}
+                    setSelectedCustom={setSelectedCustom}
                     showInputs={false}
                     skills={skills}
                     searchText={search}
