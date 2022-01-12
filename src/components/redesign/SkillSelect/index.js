@@ -22,10 +22,7 @@ const SkillSelect = ({
     onFilter,
     itemProps,
     subItemProps,
-    selectedCustom,
-    selected,
-    setSelected,
-    setSelectedCustom,
+    selectedCustomSkills,
 }) => {
     const skillsFiltred = React.useMemo(() => {
         return showOnlySkills
@@ -72,6 +69,8 @@ const SkillSelect = ({
     const [expandedCustom, setExpandedCustom] = React.useState(
         defaultExpand ? [...customSkills.map(i => i.id), 'custom'] : []
     )
+    const [selected, setSelected] = React.useState([...selectedSkills]);
+    const [selectedCustom, setSelectedCustom] = React.useState([...selectedCustomSkills]);
     React.useEffect(() => {
         if (selectedSkills.length !== selected.length) {
             setSelected([...selectedSkills]);

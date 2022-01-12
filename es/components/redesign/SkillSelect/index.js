@@ -67,10 +67,7 @@ var SkillSelect = function SkillSelect(_ref) {
       onFilter = _ref.onFilter,
       itemProps = _ref.itemProps,
       subItemProps = _ref.subItemProps,
-      selectedCustom = _ref.selectedCustom,
-      selected = _ref.selected,
-      setSelected = _ref.setSelected,
-      setSelectedCustom = _ref.setSelectedCustom;
+      selectedCustomSkills = _ref.selectedCustomSkills;
 
   var skillsFiltred = _react.default.useMemo(function () {
     return showOnlySkills ? skills.reduce(function (acc, i) {
@@ -118,6 +115,16 @@ var SkillSelect = function SkillSelect(_ref) {
       _React$useState4 = _slicedToArray(_React$useState3, 2),
       expandedCustom = _React$useState4[0],
       setExpandedCustom = _React$useState4[1];
+
+  var _React$useState5 = _react.default.useState(_toConsumableArray(selectedSkills)),
+      _React$useState6 = _slicedToArray(_React$useState5, 2),
+      selected = _React$useState6[0],
+      setSelected = _React$useState6[1];
+
+  var _React$useState7 = _react.default.useState(_toConsumableArray(selectedCustomSkills)),
+      _React$useState8 = _slicedToArray(_React$useState7, 2),
+      selectedCustom = _React$useState8[0],
+      setSelectedCustom = _React$useState8[1];
 
   _react.default.useEffect(function () {
     if (selectedSkills.length !== selected.length) {
