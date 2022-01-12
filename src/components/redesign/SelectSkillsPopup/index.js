@@ -29,7 +29,8 @@ const SelectSkillsPopup = ({
     selected,
     setSelected,
     selectedCustom,
-    setSelectedCustom
+    setSelectedCustom,
+    isEvent
 }) => {
     const [search, setSearch] = React.useState();
     const [selectedSkillsState, setSelectedSkills] = React.useState([...selectedSkills]);
@@ -79,46 +80,49 @@ const SelectSkillsPopup = ({
             </div>
 
             <div className={style.container}>
-                <SkillsSelect
-                    showSelectAll={showSelectAll}
-                    showSelectedItemsCount={showSelectedItemsCount}
-                    forceExpand={forceExpand}
-                    selectedSkills={selectedSkillsState}
-                    onChange={data => {
-                        setSelectedSkills(data);
-                    }}
-                    showInputs={false}
-                    skills={skills}
-                    searchText={search}
-                    showCustomSkill={false}
-                    customSkills={customSkills}
-                    selectedCustomSkills={selectedCustomSkillsState}
-                    onChangeCustomSkills={setSelectedCustomSkills}
-                    addCustomSkills={onAddCustomSkills}
-                    {...skillsSelectProps}
-                />
-                <SkillSelectEvent
-                    showSelectAll={showSelectAll}
-                    showSelectedItemsCount={showSelectedItemsCount}
-                    forceExpand={forceExpand}
-                    selectedSkills={selectedSkillsState}
-                    onChange={data => {
-                        setSelectedSkills(data);
-                    }}
-                    selected={selected}
-                    setSelected={setSelected}
-                    selectedCustom={selectedCustom}
-                    setSelectedCustom={setSelectedCustom}
-                    showInputs={false}
-                    skills={skills}
-                    searchText={search}
-                    showCustomSkill={false}
-                    customSkills={customSkills}
-                    selectedCustomSkills={selectedCustomSkillsState}
-                    onChangeCustomSkills={setSelectedCustomSkills}
-                    addCustomSkills={onAddCustomSkills}
-                    {...skillsSelectProps}
-                />
+                {!isEvent ?
+                    <SkillsSelect
+                        showSelectAll={showSelectAll}
+                        showSelectedItemsCount={showSelectedItemsCount}
+                        forceExpand={forceExpand}
+                        selectedSkills={selectedSkillsState}
+                        onChange={data => {
+                            setSelectedSkills(data);
+                        }}
+                        showInputs={false}
+                        skills={skills}
+                        searchText={search}
+                        showCustomSkill={false}
+                        customSkills={customSkills}
+                        selectedCustomSkills={selectedCustomSkillsState}
+                        onChangeCustomSkills={setSelectedCustomSkills}
+                        addCustomSkills={onAddCustomSkills}
+                        {...skillsSelectProps}
+                    />
+                    :
+                    <SkillSelectEvent
+                        showSelectAll={showSelectAll}
+                        showSelectedItemsCount={showSelectedItemsCount}
+                        forceExpand={forceExpand}
+                        selectedSkills={selectedSkillsState}
+                        onChange={data => {
+                            setSelectedSkills(data);
+                        }}
+                        selected={selected}
+                        setSelected={setSelected}
+                        selectedCustom={selectedCustom}
+                        setSelectedCustom={setSelectedCustom}
+                        showInputs={false}
+                        skills={skills}
+                        searchText={search}
+                        showCustomSkill={false}
+                        customSkills={customSkills}
+                        selectedCustomSkills={selectedCustomSkillsState}
+                        onChangeCustomSkills={setSelectedCustomSkills}
+                        addCustomSkills={onAddCustomSkills}
+                        {...skillsSelectProps}
+                    />
+                }
             </div>
         </PopupBackground>
     );
@@ -140,6 +144,11 @@ SelectSkillsPopup.propTypes = {
     showSelectedItemsCount: PropTypes.bool,
     skillsSelectProps: PropTypes.object,
     popupProps: PropTypes.object,
+    selectedCustom: PropTypes.array,
+    selected: PropTypes.array,
+    setSelected: PropTypes.func,
+    setSelectedCustom: PropTypes.func,
+    isEvent: PropTypes.bool,
 };
 SelectSkillsPopup.defaultProps = {
     selectedCustomSkills: [],
@@ -155,6 +164,11 @@ SelectSkillsPopup.defaultProps = {
     showSelectedItemsCount: false,
     skillsSelectProps: {},
     popupProps: {},
+    isEvent: false,
+    selectedCustom: [],
+    selected: [],
+    setSelected: () => {},
+    setSelectedCustom: () => {},
 };
 
 export default SelectSkillsPopup;
