@@ -26,6 +26,7 @@ import InputAdornment from '@material-ui/core/InputAdornment';
             };
         },
     }}
+    isEvent={1}
     customSkills={[
         {
             id: 128,

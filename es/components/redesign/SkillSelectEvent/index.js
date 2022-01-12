@@ -58,8 +58,6 @@ var SkillSelectEvent = function SkillSelectEvent(_ref) {
       customSkills = _ref$customSkills === void 0 ? [] : _ref$customSkills,
       itemComponentCustomSubSkill = _ref.itemComponentCustomSubSkill,
       itemComponentSubSkill = _ref.itemComponentSubSkill,
-      forceExpand = _ref.forceExpand,
-      defaultExpand = _ref.defaultExpand,
       _ref$showSelectAll = _ref.showSelectAll,
       showSelectAll = _ref$showSelectAll === void 0 ? false : _ref$showSelectAll,
       _ref$showSelectedItem = _ref.showSelectedItemsCount,
@@ -107,20 +105,6 @@ var SkillSelectEvent = function SkillSelectEvent(_ref) {
     }] : [];
   }, [customSkills, searchText]);
 
-  var _React$useState = _react.default.useState(defaultExpand ? _toConsumableArray(skills.map(function (i) {
-    return i.id;
-  })) : []),
-      _React$useState2 = _slicedToArray(_React$useState, 2),
-      expanded = _React$useState2[0],
-      setExpanded = _React$useState2[1];
-
-  var _React$useState3 = _react.default.useState(defaultExpand ? [].concat(_toConsumableArray(customSkills.map(function (i) {
-    return i.id;
-  })), ['custom']) : []),
-      _React$useState4 = _slicedToArray(_React$useState3, 2),
-      expandedCustom = _React$useState4[0],
-      setExpandedCustom = _React$useState4[1];
-
   _react.default.useEffect(function () {
     if (selectedSkills.length !== selected.length) {
       setSelected(_toConsumableArray(selectedSkills));
@@ -142,22 +126,21 @@ var SkillSelectEvent = function SkillSelectEvent(_ref) {
     });
   }, [skillsFiltred, customSkillsFiltred]);
 
-  var setCatedory = function setCatedory() {};
+  var _React$useState = _react.default.useState(null),
+      _React$useState2 = _slicedToArray(_React$useState, 2),
+      focusElement = _React$useState2[0],
+      setFocusElement = _React$useState2[1];
 
   return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_CategoryTabs.default, {
     skills: skills,
     customSkills: customSkills,
-    onClick: setCatedory
+    onClick: setFocusElement
   }), (searchText || showOnlySkills ? skillsFiltred : skills).map(function (i) {
     return /*#__PURE__*/_react.default.createElement(_Item.default, _extends({
+      focusElement: focusElement,
       showSelectAll: showSelectAll,
       showInputs: showInputs,
       key: i.id,
-      expanded: searchText || showOnlySkills ? skillsFiltred.map(function (i) {
-        return i.id;
-      }) : expanded,
-      setExpanded: setExpanded,
-      forceExpand: forceExpand,
       selected: selected,
       setSelected: setSelected,
       showSelectedItemsCount: showSelectedItemsCount,
@@ -167,16 +150,12 @@ var SkillSelectEvent = function SkillSelectEvent(_ref) {
     }, itemProps));
   }), customSkills && customSkillsFiltred.map(function (i) {
     return /*#__PURE__*/_react.default.createElement(_Item.default, _extends({
+      focusElement: focusElement,
       showSelectedItemsCount: showSelectedItemsCount,
       showSelectAll: showSelectAll,
       itemComponent: itemComponentCustomSubSkill,
       showInputs: showInputs,
       key: i.id,
-      expanded: searchText || showOnlySkills ? customSkillsFiltred.map(function (i) {
-        return i.id;
-      }) : expandedCustom,
-      forceExpand: forceExpand,
-      setExpanded: setExpandedCustom,
       selected: selectedCustom,
       setSelected: setSelectedCustom,
       data: i,

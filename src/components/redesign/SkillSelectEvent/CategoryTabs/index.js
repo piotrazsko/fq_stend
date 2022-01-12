@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styles from './styles.module.scss';
 import classes from 'classnames';
 
 const CatedoryTabs = props => {
     const {skills, customSkills, onClick} = props;
+
     return (
         <div className={styles.tabsContainer}>
             <div className={styles.tabs}>
@@ -13,7 +14,7 @@ const CatedoryTabs = props => {
                         key={skill.id}
                         type="button"
                         className={styles.tabsButton}
-                        onClick={onClick}
+                        onClick={() => onClick(skill.id)}
                     >
                         {skill.title}
                     </button>
@@ -22,7 +23,7 @@ const CatedoryTabs = props => {
                 <button
                     type="button"
                     className={styles.tabsButton}
-                    onClick={onClick}
+                    onClick={() => onClick("custom")}
                 >
                     Уникальные услуги
                 </button>}

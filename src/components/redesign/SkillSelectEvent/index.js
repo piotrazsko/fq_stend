@@ -15,8 +15,6 @@ const SkillSelectEvent = ({
     customSkills = [],
     itemComponentCustomSubSkill,
     itemComponentSubSkill,
-    forceExpand,
-    defaultExpand,
     showSelectAll = false,
     showSelectedItemsCount = false,
     customSkillCount = false,
@@ -69,10 +67,6 @@ const SkillSelectEvent = ({
               ]
             : [];
     }, [customSkills, searchText]);
-    const [expanded, setExpanded] = React.useState(defaultExpand ? [...skills.map(i => i.id)] : []);
-    const [expandedCustom, setExpandedCustom] = React.useState(
-        defaultExpand ? [...customSkills.map(i => i.id), 'custom'] : []
-    );
     React.useEffect(() => {
         if (selectedSkills.length !== selected.length) {
             setSelected([...selectedSkills]);
@@ -91,25 +85,21 @@ const SkillSelectEvent = ({
         });
     }, [skillsFiltred, customSkillsFiltred]);
 
-    const setCatedory = () => {};
+    const [focusElement, setFocusElement] = React.useState(null);
 
     return (
         <div>
             <CatedoryTabs
                 skills={skills}
                 customSkills={customSkills}
-                onClick={setCatedory}
+                onClick={setFocusElement}
             />
             {(searchText || showOnlySkills ? skillsFiltred : skills).map(i => (
                 <Item
+                    focusElement={focusElement}
                     showSelectAll={showSelectAll}
                     showInputs={showInputs}
                     key={i.id}
-                    expanded={
-                        searchText || showOnlySkills ? skillsFiltred.map(i => i.id) : expanded
-                    }
-                    setExpanded={setExpanded}
-                    forceExpand={forceExpand}
                     selected={selected}
                     setSelected={setSelected}
                     showSelectedItemsCount={showSelectedItemsCount}
@@ -122,18 +112,12 @@ const SkillSelectEvent = ({
             {customSkills &&
                 customSkillsFiltred.map(i => (
                     <Item
+                        focusElement={focusElement}
                         showSelectedItemsCount={showSelectedItemsCount}
                         showSelectAll={showSelectAll}
                         itemComponent={itemComponentCustomSubSkill}
                         showInputs={showInputs}
                         key={i.id}
-                        expanded={
-                            searchText || showOnlySkills
-                                ? customSkillsFiltred.map(i => i.id)
-                                : expandedCustom
-                        }
-                        forceExpand={forceExpand}
-                        setExpanded={setExpandedCustom}
                         selected={selectedCustom}
                         setSelected={setSelectedCustom}
                         data={i}
