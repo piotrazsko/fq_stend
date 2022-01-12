@@ -69,7 +69,11 @@ var SkillSelectEvent = function SkillSelectEvent(_ref) {
       customSkillCount = _ref$customSkillCount === void 0 ? false : _ref$customSkillCount,
       onFilter = _ref.onFilter,
       itemProps = _ref.itemProps,
-      subItemProps = _ref.subItemProps;
+      subItemProps = _ref.subItemProps,
+      selectedCustom = _ref.selectedCustom,
+      selected = _ref.selected,
+      setSelected = _ref.setSelected,
+      setSelectedCustom = _ref.setSelectedCustom;
 
   var skillsFiltred = _react.default.useMemo(function () {
     return showOnlySkills ? skills.reduce(function (acc, i) {
@@ -117,16 +121,6 @@ var SkillSelectEvent = function SkillSelectEvent(_ref) {
       _React$useState4 = _slicedToArray(_React$useState3, 2),
       expandedCustom = _React$useState4[0],
       setExpandedCustom = _React$useState4[1];
-
-  var _React$useState5 = _react.default.useState(_toConsumableArray(selectedSkills)),
-      _React$useState6 = _slicedToArray(_React$useState5, 2),
-      selected = _React$useState6[0],
-      setSelected = _React$useState6[1];
-
-  var _React$useState7 = _react.default.useState(_toConsumableArray(selectedCustomSkills)),
-      _React$useState8 = _slicedToArray(_React$useState7, 2),
-      selectedCustom = _React$useState8[0],
-      setSelectedCustom = _React$useState8[1];
 
   _react.default.useEffect(function () {
     if (selectedSkills.length !== selected.length) {
@@ -207,7 +201,11 @@ SkillSelectEvent.defaultProps = {
   skills: [],
   defaultExpand: false,
   customSkillCount: false,
-  onFilter: function onFilter() {}
+  onFilter: function onFilter() {},
+  selectedCustom: [],
+  selected: [],
+  setSelected: function setSelected() {},
+  setSelectedCustom: function setSelectedCustom() {}
 };
 SkillSelectEvent.propTypes = {
   skills: _propTypes.default.array,
@@ -228,7 +226,11 @@ SkillSelectEvent.propTypes = {
   customSkillCount: _propTypes.default.number,
   onFilter: _propTypes.default.func,
   itemProps: _propTypes.default.object,
-  subItemProps: _propTypes.default.func
+  subItemProps: _propTypes.default.func,
+  selectedCustom: _propTypes.default.array,
+  selected: _propTypes.default.array,
+  setSelected: _propTypes.default.func,
+  setSelectedCustom: _propTypes.default.func
 };
 var _default = SkillSelectEvent;
 exports.default = _default;
