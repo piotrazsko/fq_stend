@@ -4,10 +4,42 @@ import styles from './styles.module.scss';
 
 const CatedoryTabs = props => {
     const {skills, customSkills, onClick, focusElement} = props;
+    const scrollRef = React.useRef(null);
+    const [state, setState] = React.useState({
+        isScrolling: false,
+        clientX: 0,
+        scrollX: 0
+      });
+
+    const handleMouseDown = element => {
+        setState({
+            ...state,
+            isScrolling: true,
+            clientX: element.clientX
+        });
+    };
+    const handleMouseUp = () => {
+        setState({ ...state, isScrolling: false });
+    };
+    const handleMouseMove = element => {
+        let { clientX, scrollX } = state;
+        if (state.isScrolling) {
+            scrollRef.current.scrollLeft = scrollX - element.clientX + clientX;
+            scrollX = scrollX + element.clientX - clientX;
+            clientX = element.clientX;
+        }
+    };
 
     return (
         <div className={styles.tabsContainer}>
-            <div className={styles.tabs}>
+            <div
+                className={styles.tabs}
+                ref={scrollRef} 
+                onMouseDown={handleMouseDown}
+                onMouseUp={handleMouseUp}
+                onMouseMove={handleMouseMove}
+                onMouseLeave={handleMouseUp}
+            >
                 {skills.map(skill => (
                     <button
                         key={skill.id}
