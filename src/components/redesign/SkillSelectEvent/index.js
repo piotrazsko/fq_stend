@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Item from './Item';
 import get from 'lodash/get';
-import CatedoryTabs from './CategoryTabs';
 
 const SkillSelectEvent = ({
     skills,
@@ -25,6 +24,7 @@ const SkillSelectEvent = ({
     selected,
     setSelected,
     setSelectedCustom,
+    focusElement
 }) => {
     const skillsFiltred = React.useMemo(() => {
         return showOnlySkills
@@ -85,15 +85,8 @@ const SkillSelectEvent = ({
         });
     }, [skillsFiltred, customSkillsFiltred]);
 
-    const [focusElement, setFocusElement] = React.useState(null);
-
     return (
         <div>
-            <CatedoryTabs
-                skills={skills}
-                customSkills={customSkills}
-                onClick={setFocusElement}
-            />
             {(searchText || showOnlySkills ? skillsFiltred : skills).map(i => (
                 <Item
                     focusElement={focusElement}
@@ -152,6 +145,7 @@ SkillSelectEvent.defaultProps = {
     selected: [],
     setSelected: () => {},
     setSelectedCustom: () => {},
+    focusElement: ''
 };
 
 SkillSelectEvent.propTypes = {
@@ -178,6 +172,7 @@ SkillSelectEvent.propTypes = {
     selected: PropTypes.array,
     setSelected: PropTypes.func,
     setSelectedCustom: PropTypes.func,
+    focusElement: PropTypes.string
 };
 
 export default SkillSelectEvent;

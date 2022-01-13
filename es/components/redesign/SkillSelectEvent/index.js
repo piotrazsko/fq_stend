@@ -13,19 +13,9 @@ var _Item = _interopRequireDefault(require("./Item"));
 
 var _get = _interopRequireDefault(require("lodash/get"));
 
-var _CategoryTabs = _interopRequireDefault(require("./CategoryTabs"));
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
@@ -70,7 +60,8 @@ var SkillSelectEvent = function SkillSelectEvent(_ref) {
       selectedCustom = _ref.selectedCustom,
       selected = _ref.selected,
       setSelected = _ref.setSelected,
-      setSelectedCustom = _ref.setSelectedCustom;
+      setSelectedCustom = _ref.setSelectedCustom,
+      focusElement = _ref.focusElement;
 
   var skillsFiltred = _react.default.useMemo(function () {
     return showOnlySkills ? skills.reduce(function (acc, i) {
@@ -126,16 +117,7 @@ var SkillSelectEvent = function SkillSelectEvent(_ref) {
     });
   }, [skillsFiltred, customSkillsFiltred]);
 
-  var _React$useState = _react.default.useState(null),
-      _React$useState2 = _slicedToArray(_React$useState, 2),
-      focusElement = _React$useState2[0],
-      setFocusElement = _React$useState2[1];
-
-  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_CategoryTabs.default, {
-    skills: skills,
-    customSkills: customSkills,
-    onClick: setFocusElement
-  }), (searchText || showOnlySkills ? skillsFiltred : skills).map(function (i) {
+  return /*#__PURE__*/_react.default.createElement("div", null, (searchText || showOnlySkills ? skillsFiltred : skills).map(function (i) {
     return /*#__PURE__*/_react.default.createElement(_Item.default, _extends({
       focusElement: focusElement,
       showSelectAll: showSelectAll,
@@ -183,7 +165,8 @@ SkillSelectEvent.defaultProps = {
   selectedCustom: [],
   selected: [],
   setSelected: function setSelected() {},
-  setSelectedCustom: function setSelectedCustom() {}
+  setSelectedCustom: function setSelectedCustom() {},
+  focusElement: ''
 };
 SkillSelectEvent.propTypes = {
   skills: _propTypes.default.array,
@@ -208,7 +191,8 @@ SkillSelectEvent.propTypes = {
   selectedCustom: _propTypes.default.array,
   selected: _propTypes.default.array,
   setSelected: _propTypes.default.func,
-  setSelectedCustom: _propTypes.default.func
+  setSelectedCustom: _propTypes.default.func,
+  focusElement: _propTypes.default.string
 };
 var _default = SkillSelectEvent;
 exports.default = _default;

@@ -21,6 +21,8 @@ var _SkillSelect = _interopRequireDefault(require("../SkillSelect"));
 
 var _SkillSelectEvent = _interopRequireDefault(require("../SkillSelectEvent"));
 
+var _CategoryTabs = _interopRequireDefault(require("./CategoryTabs"));
+
 var _styleModule = _interopRequireDefault(require("./style.module.scss"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -88,6 +90,11 @@ var SelectSkillsPopup = function SelectSkillsPopup(_ref) {
       selectedCustomSkillsState = _React$useState6[0],
       setSelectedCustomSkills = _React$useState6[1];
 
+  var _React$useState7 = _react.default.useState(null),
+      _React$useState8 = _slicedToArray(_React$useState7, 2),
+      focusElement = _React$useState8[0],
+      setFocusElement = _React$useState8[1];
+
   return /*#__PURE__*/_react.default.createElement(_Popup.default, _extends({
     showClear: true,
     title: title,
@@ -132,7 +139,12 @@ var SelectSkillsPopup = function SelectSkillsPopup(_ref) {
     size: "small",
     variant: "outlined",
     placeholder: "\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u043D\u0430\u0437\u0432\u0430\u043D\u0438\u0435 \u0443\u0441\u043B\u0443\u0433\u0438, \u043D\u0430\u043F\u0440\u0438\u043C\u0435\u0440 \u043C\u0430\u043D\u0438\u043A\u044E\u0440"
-  })), /*#__PURE__*/_react.default.createElement("div", {
+  })), !isEvent ? null : /*#__PURE__*/_react.default.createElement(_CategoryTabs.default, {
+    skills: skills,
+    customSkills: customSkills,
+    onClick: setFocusElement,
+    focusElement: focusElement
+  }), /*#__PURE__*/_react.default.createElement("div", {
     className: _styleModule.default.container
   }, !isEvent ? /*#__PURE__*/_react.default.createElement(_SkillSelect.default, _extends({
     showSelectAll: showSelectAll,
@@ -158,6 +170,7 @@ var SelectSkillsPopup = function SelectSkillsPopup(_ref) {
     onChange: function onChange(data) {
       setSelectedSkills(data);
     },
+    focusElement: focusElement,
     selected: selected,
     setSelected: setSelected,
     selectedCustom: selectedCustom,

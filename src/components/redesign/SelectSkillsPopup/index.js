@@ -6,6 +6,7 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import SearchIcon from '@material-ui/icons/Search';
 import SkillsSelect from '../SkillSelect';
 import SkillSelectEvent from '../SkillSelectEvent'
+import CatedoryTabs from './CategoryTabs';
 import style from './style.module.scss';
 
 const color = '#fa835f';
@@ -37,6 +38,7 @@ const SelectSkillsPopup = ({
     const [selectedCustomSkillsState, setSelectedCustomSkills] = React.useState([
         ...selectedCustomSkills,
     ]);
+    const [focusElement, setFocusElement] = React.useState(null); 
     return (
         <PopupBackground
             showClear
@@ -78,7 +80,16 @@ const SelectSkillsPopup = ({
                     placeholder="Введите название услуги, например маникюр"
                 />
             </div>
-
+            {!isEvent ?
+                    null
+                    :
+                    <CatedoryTabs
+                        skills={skills}
+                        customSkills={customSkills}
+                        onClick={setFocusElement}
+                        focusElement={focusElement}
+                    />
+            }
             <div className={style.container}>
                 {!isEvent ?
                     <SkillsSelect
@@ -108,6 +119,7 @@ const SelectSkillsPopup = ({
                         onChange={data => {
                             setSelectedSkills(data);
                         }}
+                        focusElement={focusElement}
                         selected={selected}
                         setSelected={setSelected}
                         selectedCustom={selectedCustom}

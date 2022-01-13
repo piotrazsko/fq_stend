@@ -52,7 +52,7 @@ var Item = function Item(_ref) {
       setId = _React$useState2[1];
 
   _react.default.useEffect(function () {
-    if (id == focusElement) {
+    if (id && id == focusElement) {
       scrollRef.current.scrollIntoView();
     }
   }, [focusElement]);
@@ -60,7 +60,6 @@ var Item = function Item(_ref) {
   _react.default.useEffect(function () {
     if (scrollRef.current.id) {
       setId(scrollRef.current.id);
-      console.log(scrollRef.current.id);
     }
   }, [scrollRef]);
 

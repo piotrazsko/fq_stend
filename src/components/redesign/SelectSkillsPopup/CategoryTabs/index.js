@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './styles.module.scss';
 import classes from 'classnames';
 
 const CatedoryTabs = props => {
-    const {skills, customSkills, onClick} = props;
+    const {skills, customSkills, onClick, focusElement} = props;
 
     return (
         <div className={styles.tabsContainer}>
@@ -13,7 +13,7 @@ const CatedoryTabs = props => {
                     <button
                         key={skill.id}
                         type="button"
-                        className={styles.tabsButton}
+                        className={[styles.tabsButton, focusElement === skill.id ? styles.selected : ''].join(' ')}
                         onClick={() => onClick(skill.id)}
                     >
                         {skill.title}
@@ -22,7 +22,7 @@ const CatedoryTabs = props => {
                 {customSkills &&
                 <button
                     type="button"
-                    className={styles.tabsButton}
+                    className={[styles.tabsButton, focusElement === "custom" ? styles.selected : ''].join(' ')}
                     onClick={() => onClick("custom")}
                 >
                     Уникальные услуги
@@ -33,6 +33,7 @@ const CatedoryTabs = props => {
 };
 
 CatedoryTabs.propTypes = {
+    focusElement: PropTypes.string,
     skills: PropTypes.array,
     customSkills: PropTypes.array,
     onClick: PropTypes.func,

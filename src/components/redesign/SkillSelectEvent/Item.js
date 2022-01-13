@@ -18,7 +18,7 @@ const Item = ({
     const [id, setId] = React.useState(null)
 
     React.useEffect(() => {
-        if (id == focusElement) {
+        if (id && id == focusElement) {
             scrollRef.current.scrollIntoView()
         }
     }, [focusElement])
@@ -26,7 +26,6 @@ const Item = ({
     React.useEffect(() => {
         if (scrollRef.current.id) {
             setId(scrollRef.current.id)
-            console.log(scrollRef.current.id)
         }
     }, [scrollRef])
 
