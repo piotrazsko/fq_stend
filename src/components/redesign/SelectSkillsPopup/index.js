@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import TextField from '@material-ui/core/TextField';
 import PopupBackground from '../../Popup';
@@ -38,7 +38,21 @@ const SelectSkillsPopup = ({
     const [selectedCustomSkillsState, setSelectedCustomSkills] = React.useState([
         ...selectedCustomSkills,
     ]);
-    const [focusElement, setFocusElement] = React.useState(null); 
+    const [focusElement, setFocusElement] = React.useState(null);
+    const [scrollPosition, setScrollPosition] = React.useState(0);
+    const scrollElement = React.useRef(null);
+
+    React.useEffect(() => {
+        setScrollPosition(scrollElement.current.scrollTop)
+    }, [focusElement]);
+
+    const handleScroll = element => {
+        const difference = scrollPosition - element.target.scrollTop;
+        if (difference > 300 || difference < -300) {
+            setFocusElement(null)
+        }
+    };
+
     return (
         <PopupBackground
             showClear
@@ -90,7 +104,11 @@ const SelectSkillsPopup = ({
                         focusElement={focusElement}
                     />
             }
-            <div className={style.container}>
+            <div 
+                onScroll={handleScroll} 
+                ref={scrollElement} 
+                className={style.container}
+            >
                 {!isEvent ?
                     <SkillsSelect
                         showSelectAll={showSelectAll}

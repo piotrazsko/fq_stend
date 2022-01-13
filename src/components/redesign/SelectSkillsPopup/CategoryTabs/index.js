@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './styles.module.scss';
-import classes from 'classnames';
 
 const CatedoryTabs = props => {
     const {skills, customSkills, onClick, focusElement} = props;
