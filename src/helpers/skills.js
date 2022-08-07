@@ -16,6 +16,11 @@ export const filterSkillsForSelect = (fullSkills = [], filteredSkills = []) => {
         return { ...item, sub_skills };
     });
 };
+export const stringLengthFix = (string) => {
+    if (string.length >= 94) {
+        return string.slice(0, 93) + "...";
+    } else return string
+  };
 export const getParentsSkillsBySkills = (skills, allSkills) => {
     return allSkills
         .map(({ uid, title, id }) => ({

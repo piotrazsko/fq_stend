@@ -64,7 +64,11 @@ var SelectSkillsPopup = function SelectSkillsPopup(_ref) {
       showSelectAll = _ref.showSelectAll,
       showSelectedItemsCount = _ref.showSelectedItemsCount,
       skillsSelectProps = _ref.skillsSelectProps,
-      popupProps = _ref.popupProps;
+      popupProps = _ref.popupProps,
+      selectedCustom = _ref.selectedCustom,
+      selected = _ref.selected,
+      setSelected = _ref.setSelected,
+      setSelectedCustom = _ref.setSelectedCustom;
 
   var _React$useState = _react.default.useState(),
       _React$useState2 = _slicedToArray(_React$useState, 2),
@@ -124,10 +128,14 @@ var SelectSkillsPopup = function SelectSkillsPopup(_ref) {
     fullWidth: true,
     size: "small",
     variant: "outlined",
-    placeholder: "\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u043D\u0430\u0437\u0432\u0430\u043D\u0438\u0435 \u0443\u0441\u043B\u0443\u0433\u0438, \u043D\u0430\u043F\u0440\u0438\u043C\u0435\u0440 \u043C\u0430\u043D\u0438\u043A\u044E\u0440"
+    placeholder: "\u041D\u0430\u0439\u0434\u0438\u0442\u0435 \u0443\u0441\u043B\u0443\u0433\u0443"
   })), /*#__PURE__*/_react.default.createElement("div", {
     className: _styleModule.default.container
   }, /*#__PURE__*/_react.default.createElement(_SkillSelect.default, _extends({
+    selectedCustom: selectedCustom,
+    selected: selected,
+    setSelected: setSelected,
+    setSelectedCustom: setSelectedCustom,
     showSelectAll: showSelectAll,
     showSelectedItemsCount: showSelectedItemsCount,
     forceExpand: forceExpand,
@@ -161,7 +169,11 @@ SelectSkillsPopup.propTypes = {
   showSelectAll: _propTypes.default.bool,
   showSelectedItemsCount: _propTypes.default.bool,
   skillsSelectProps: _propTypes.default.object,
-  popupProps: _propTypes.default.object
+  popupProps: _propTypes.default.object,
+  selectedCustom: _propTypes.default.array,
+  selected: _propTypes.default.array,
+  setSelected: _propTypes.default.func,
+  setSelectedCustom: _propTypes.default.func
 };
 SelectSkillsPopup.defaultProps = {
   selectedCustomSkills: [],
@@ -176,7 +188,11 @@ SelectSkillsPopup.defaultProps = {
   showSelectAll: false,
   showSelectedItemsCount: false,
   skillsSelectProps: {},
-  popupProps: {}
+  popupProps: {},
+  selectedCustom: [],
+  selected: [],
+  setSelected: function setSelected() {},
+  setSelectedCustom: function setSelectedCustom() {}
 };
 var _default = SelectSkillsPopup;
 exports.default = _default;

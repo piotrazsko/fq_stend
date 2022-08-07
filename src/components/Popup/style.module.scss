@@ -6,6 +6,10 @@ $maxHeight: 100vh;
 .background {
     border-radius: 16px !important;
     padding: 20px;
+    @media (max-width: $md) {
+        border-radius: 0px !important;
+        width: 100%;
+    }
 }
 .container {
     min-width: 280px;
@@ -13,12 +17,16 @@ $maxHeight: 100vh;
     max-width: $maxWidth;
     @media (max-width: $md) {
         max-width: $maxWidthMobile;
+        max-height: none;
     }
     @media (min-width: $md) {
         min-width: 280px;
     }
     .title {
         padding: 0 25px 12px 25px;
+        @media (max-width: $md) {
+            display: none;
+        }
     }
     .textError {
         margin-left: 16px;
@@ -67,6 +75,9 @@ $maxHeight: 100vh;
         justify-content: flex-end;
         max-height: 15px;
         left: 10px;
+        @media (max-width: $md) {
+            padding-bottom: 30px;
+        }
     }
     .buttonClear {
         min-height: 32px;

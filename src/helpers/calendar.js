@@ -16,6 +16,23 @@ export const MONTHS = [
     'Ноябрь',
     'Декабрь',
 ];
+export const MONTHS_SHORT = [
+    'янв',
+    'фев',
+    'мар',
+    'апр',
+    'май',
+    'июн',
+    'июл',
+    'авг',
+    'сен',
+    'окт',
+    'ноя',
+    'дек',
+];
+export const NOW_DATE = () => {
+    return new Date().toJSON().slice(0, 10).replace(/-/g,'-');
+  } 
 export const WEEKDAYS_LONG = [
     'Воскресение',
     'Понедельник',

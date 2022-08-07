@@ -7,6 +7,9 @@
     min-height: 48vh;
     border-radius: 12px;
     overflow-y: auto;
+    @media screen and (max-width: $md) { 
+        max-height: none;
+    }
 }
 .dataContainer {
     // min-height: calc(570px - 125px) !important;

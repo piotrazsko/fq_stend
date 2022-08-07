@@ -56,6 +56,23 @@ const SubItem = ({
     };
     const { price, duration } = isSelected || {};
 
+    const hangleClick = () => {
+        setSelected(
+            !isSelected
+                ? [
+                      ...selected,
+                      showInputsForce
+                          ? {
+                                id: data.id,
+                                price: priceProps.defaultValue || 0,
+                                duration: durationProps.defaultValue || 0,
+                            }
+                          : { id: data.id },
+                  ]
+                : selected.filter(i => i.id !== data.id)
+        );
+    }
+
     const getIcon = () => {
         switch (data.parent_uid) {
             case 'hair':
@@ -80,22 +97,7 @@ const SubItem = ({
         <div
             className={style.item}
             key={data.id}
-            onClick={() => {
-                setSelected(
-                    !isSelected
-                        ? [
-                              ...selected,
-                              showInputsForce
-                                  ? {
-                                        id: data.id,
-                                        price: priceProps.defaultValue || 0,
-                                        duration: durationProps.defaultValue || 0,
-                                    }
-                                  : { id: data.id },
-                          ]
-                        : selected.filter(i => i.id !== data.id)
-                );
-            }}
+            onClick={hangleClick}
         >
             <div className={style.titleContainer}>
                 <div className={style.iconContainer}>
