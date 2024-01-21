@@ -2,7 +2,7 @@
     "name": "feelqueen_components",
     "version": "0.1.2",
     "private": true,
-    "main": "es/bundle.js",
+    "main": "dist/index.js",
     "publishConfig": {
         "access": "restricted"
     },
@@ -93,11 +93,5 @@
         "@babel/core": "^7.16.0",
         "@babel/preset-env": "^7.16.0",
         "@babel/preset-react": "^7.16.0"
-    },
-    "babel": {
-        "presets": [
-            "@babel/preset-env",
-            "@babel/preset-react"
-        ]
     }
 }
