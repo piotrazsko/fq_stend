@@ -2,7 +2,7 @@
     "name": "feelqueen_components",
     "version": "0.1.2",
     "private": true,
-    "main": "dist/index.js",
+    "main": "dist/components/index.js",
     "publishConfig": {
         "access": "restricted"
     },
