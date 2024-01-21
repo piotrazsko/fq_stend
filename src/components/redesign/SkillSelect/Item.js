@@ -8,7 +8,7 @@ import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
 import IconButton from '@material-ui/core/IconButton';
 import SubItem from './SubItem';
 import style from './style.module.scss';
-import { Array } from 'window-or-global';
+// import { Array } from 'window-or-global';
 
 const Item = ({
     showInputs,

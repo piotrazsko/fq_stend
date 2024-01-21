@@ -79,19 +79,20 @@
         "react-dom": ">=15.0.1"
     },
     "devDependencies": {
+        "@babel/cli": "^7.16.0",
+        "@babel/core": "^7.16.0",
+        "@babel/preset-env": "^7.16.0",
+        "@babel/preset-react": "^7.16.0",
         "autoprefixer": "^9.8.6",
         "cross-env": "^5.2.0",
         "husky": "^1.1.0",
         "lint-staged": "^7.3.0",
         "mini-css-extract-plugin": "^0.9.0",
-        "sass": "^1.49.9",
         "npm-run-all": "^4.1.5",
         "react-styleguidist": "^12",
         "react-text-mask": "^5.4.3",
-        "window-or-global": "^1.0.1",
-        "@babel/cli": "^7.16.0",
-        "@babel/core": "^7.16.0",
-        "@babel/preset-env": "^7.16.0",
-        "@babel/preset-react": "^7.16.0"
+        "sass": "^1.49.9",
+        "webpack-cli": "^5.1.4",
+        "window-or-global": "^1.0.1"
     }
 }

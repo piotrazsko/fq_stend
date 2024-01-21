@@ -3,7 +3,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import SubItem from './SubItem';
 import style from './style.module.scss';
-import { Array } from 'window-or-global';
 
 const Item = ({
     showInputs,

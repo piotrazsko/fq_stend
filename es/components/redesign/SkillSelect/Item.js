@@ -13,9 +13,10 @@ var _CheckBoxOutlineBlank = _interopRequireDefault(require("@material-ui/icons/C
 var _IconButton = _interopRequireDefault(require("@material-ui/core/IconButton"));
 var _SubItem = _interopRequireDefault(require("./SubItem"));
 var _styleModule = _interopRequireDefault(require("./style.module.scss"));
-var _windowOrGlobal = require("window-or-global");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); } /* global Set */
+// import { Array } from 'window-or-global';
+
 const Item = _ref => {
   let {
     showInputs,
@@ -57,11 +58,11 @@ const Item = _ref => {
     onClick: ev => {
       ev.stopPropagation();
       if (!isSelected) {
-        setSelected(_windowOrGlobal.Array.from(new Set([...selectedFullPrepared, ...data.sub_skills.map(i => i.id)])).map(i => ({
+        setSelected(Array.from(new Set([...selectedFullPrepared, ...data.sub_skills.map(i => i.id)])).map(i => ({
           id: i
         })));
       } else {
-        setSelected(_windowOrGlobal.Array.from(new Set([...selectedFullPrepared.filter(item => {
+        setSelected(Array.from(new Set([...selectedFullPrepared.filter(item => {
           return !data.sub_skills.find(i => i.id == item);
         })])).map(i => ({
           id: i
