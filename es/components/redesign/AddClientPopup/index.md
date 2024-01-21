@@ -1,3 +1,0 @@
-```jsx
-<AddClientPopup showPopup={false} />
-```

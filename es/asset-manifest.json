@@ -1,7 +1,0 @@
-{
-  "main.css": "/es/main.css",
-  "main.js": "/es/bundle.js",
-  "main.css.map": "/es/main.css.map",
-  "main.js.map": "/es/bundle.js.map",
-  "bundle.js.LICENSE": "/es/bundle.js.LICENSE"
-}

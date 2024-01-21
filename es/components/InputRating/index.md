@@ -1,5 +1,0 @@
-```jsx
-<InputRating onClick={
-  alert
-  }/>
-```

@@ -1,3 +1,0 @@
-```jsx
-<AddDataButton title="test" />
-```
