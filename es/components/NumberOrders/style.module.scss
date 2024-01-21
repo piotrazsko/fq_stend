@@ -1,0 +1,25 @@
+.container {
+	min-height: 27px;
+	min-width: 50%;
+	display: flex;
+	align-items: center;
+
+	.baseblock {
+		font-family: Roboto;
+		font-size: 16px;
+		margin-right: 30px;
+	}
+	.numberblock {
+		width: 27px;
+		display: flex;
+		height: 27px;
+		background-color: #3196ff;
+		border-radius: 50%;
+		color: #ffffff;
+		align-items: center;
+		justify-content: center;
+		font-family: Roboto;
+		font-size: 18px;
+		font-weight: 500;
+	}
+}
