@@ -1,0 +1,29 @@
+.commonContainer {
+    *::before {
+        content: '' !important;
+    }
+}
+.container {
+    border-top: none !important;
+    border-left: none !important;
+    border-radius: 0 !important;
+    border-right: none !important;
+    font-family: Roboto !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.42) !important;
+    &:hover {
+        border-bottom: 2px solid rgba(0, 0, 0, 0.87) !important;
+    }
+    &:focus {
+        border-bottom: 2px solid #4688f1 !important;
+    }
+    width: auto !important;
+    padding: 6px 14px 6px 58px !important;
+    min-width: 250px;
+    &:focus {
+        // border-top: none;
+        // border-left: none;
+        // border-radius: 0;
+        // border-right: none;
+        box-shadow: none !important;
+    }
+}

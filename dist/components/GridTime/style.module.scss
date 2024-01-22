@@ -1,0 +1,32 @@
+@import '../../styles/endpoints.scss';
+
+.gridContainer {
+    grid-template-rows: [first] 55px !important ;
+    grid-template-columns: [first-row] 40px !important;
+    grid-auto-rows: minmax(4px, 4px) !important;
+    grid-auto-columns: minmax(200px, 1fr);
+    margin-top: 5px;
+    font-family: Montserrat;
+}
+.firstRow {
+    grid-row-start: first !important;
+    background-color: #f6f6f6 !important;
+    border: none;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    z-index: 4 !important;
+    position: sticky;
+    top: 0;
+    border-bottom: 1px solid rgba(219, 219, 219, 0.5);
+}
+.borderedCell {
+    border-top-width: 2px;
+    // border-top-color: rgba(219, 219, 219, 0.5);
+}
+.cell {
+    // grid-row-start: other !important;
+    // border-color: rgba(219, 219, 219, 0.25);
+}
+.column {
+    min-width: 200px;
+}

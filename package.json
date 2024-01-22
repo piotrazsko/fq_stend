@@ -2,7 +2,7 @@
     "name": "feelqueen_components",
     "version": "0.1.2",
     "private": true,
-    "main": "src/components/index.js",
+    "main": "dist/components/index.js",
     "publishConfig": {
         "access": "restricted"
     },
@@ -46,7 +46,7 @@
         "build": "styleguidist build",
         "build:dev": "cross-env NODE_ENV=development styleguidist build",
         "build:package": "yarn run webpack",
-        "build:components": "babel src --out-dir dist",
+        "build:components": "babel src --out-dir dist --copy-files --ignore **/*.test.js,**/*.spec.js",
         "dist": "./node_modules/.bin/babel src/ -d es --copy-files",
         "clean": "rimraf es",
         "patch": "yarn version --patch",
